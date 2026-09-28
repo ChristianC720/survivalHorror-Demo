@@ -6,14 +6,14 @@ Esta página ayuda a describir el juego con más precisión sin confundir **gén
 
 ## Diferencia rápida
 
-| Concepto | Pregunta que responde |
-|---|---|
-| Género | ¿Qué tipo general de experiencia es? |
-| Subgénero | ¿Qué especialización tiene? |
-| Perspectiva | ¿Cómo observa el jugador el mundo? |
-| Cámara | ¿Cómo se mueve o controla la vista? |
-| Modo | ¿Cómo participan los jugadores? |
-| Plataforma | ¿Dónde se juega? |
+| Concepto       | Pregunta que responde                          |
+| -------------- | ---------------------------------------------- |
+| Género         | ¿Qué tipo general de experiencia es?           |
+| Subgénero      | ¿Qué especialización tiene?                    |
+| Perspectiva    | ¿Cómo observa el jugador el mundo?             |
+| Cámara         | ¿Cómo se mueve o controla la vista?            |
+| Modo           | ¿Cómo participan los jugadores?                |
+| Plataforma     | ¿Dónde se juega?                               |
 | Característica | ¿Qué sistemas o propiedades adicionales tiene? |
 
 ## Características posibles

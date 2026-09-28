@@ -115,8 +115,8 @@ Si el juego no encaja claramente en las categorías anteriores, documenta aquí 
 
 ### Elección del proyecto
 
-**Género principal:**  
-**Justificación:**  
+**Género principal:**  Supervivencia.
+**Justificación:**  El género principal del videojuego es la supervivencia, ya que el jugador tiene que gestionar recursos limitados, enfrentarse a amenazas más fuertes que el personaje principal, administrar un inventario 6-slots, y llegar en las mejores condiciones posibles hasta el final.
 
-**Géneros secundarios:**  
-**Justificación:**
+**Géneros secundarios:**  Terror y Roguelite.
+**Justificación:** El Terror se toma como género secundario porque el juego tendrá una ambientación oscura, se enfrentará a monstruos, y la historia estará centrada en el terror y lo que le sucede al personaje dentro de este mundo. También se tomó el Roguelite porqué se implementará una generación procedural de cuartos a partir del punto inicial, y cada que el jugador pierda una partida al morir, el escenario cambiará por completo. Esto como parte de la narrativa y jugabilidad que se tienen contemplados.

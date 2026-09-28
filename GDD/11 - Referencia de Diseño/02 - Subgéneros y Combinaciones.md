@@ -92,8 +92,8 @@ Un juego puede combinar varios géneros.
 
 ### Elección del proyecto
 
-**Subgénero principal:**  
-**¿Por qué?**
+**Subgénero principal:** Survival Horror.
+**¿Por qué?:** Porque combina la supervivencia de los recursos limitados y los enemigos difíciles con el terror de la narrativa y el mundo que lo rodea.
 
 **Combinaciones adicionales:**  
 **¿Qué aporta cada una?**

@@ -1,0 +1,223 @@
+{
+  "main": {
+    "id": "4ddce71c7bc9b5bb",
+    "type": "split",
+    "children": [
+      {
+        "id": "ec7997fc7f70b9f2",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "69e1f5a799e72607",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "Nueva pestaña"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "70efe82a437afbe8",
+    "type": "split",
+    "children": [
+      {
+        "id": "8bf3a954fa04eb5a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "40618c9f011d4bcf",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Explorador de archivos"
+            }
+          },
+          {
+            "id": "55ccd35633a312b3",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Buscar"
+            }
+          },
+          {
+            "id": "5662a1079d1c9416",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-bookmark",
+              "title": "Marcadores"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "f241531cf3ec69ba",
+    "type": "split",
+    "children": [
+      {
+        "id": "f42cf390715df51a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "93464fc5b4170d0c",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Enlaces entrantes"
+            }
+          },
+          {
+            "id": "97ec99eca67107f3",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Enlaces salientes"
+            }
+          },
+          {
+            "id": "9148b5ef027d3f1e",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Etiquetas"
+            }
+          },
+          {
+            "id": "84d03c29c4b0d7e7",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "Todas las propiedades"
+            }
+          },
+          {
+            "id": "71010506ecde83a8",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Esquema"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Abrir selector rápido": false,
+      "graph:Abrir vista gráfica": false,
+      "canvas:Crear nuevo lienzo": false,
+      "daily-notes:Abrir la nota de hoy": false,
+      "templates:Insertar plantilla": false,
+      "command-palette:Abrir paleta de comandos": false,
+      "bases:Crear nueva base": false
+    }
+  },
+  "active": "69e1f5a799e72607",
+  "lastOpenFiles": [
+    "README.md",
+    "02 - Diseño/02 - Mecánicas.md",
+    "02 - Diseño/01 - Jugabilidad.md",
+    "02 - Diseño/07 - Reglas y Estados del Juego.md",
+    "01 - Visión/01 - Ficha del Proyecto.md",
+    "11 - Referencia de Diseño/04 - Perspectivas y Cámaras.md",
+    "01 - Visión/02 - Visión del Juego.md",
+    "01 - Visión/03 - Público y Plataforma.md",
+    "01 - Visión/04 - Pilares de Diseño.md",
+    "00 - Índice.md",
+    "00 - Acerca de esta guía.md",
+    "11 - Referencia de Diseño/06 - Clasificaciones y Etiquetas.md",
+    "11 - Referencia de Diseño/05 - Modos de Juego.md",
+    "11 - Referencia de Diseño/03 - Plataformas y Consolas.md",
+    "11 - Referencia de Diseño/02 - Subgéneros y Combinaciones.md",
+    "11 - Referencia de Diseño/01 - Géneros.md",
+    "11 - Referencia de Diseño/00 - Biblioteca de Clasificación.md",
+    "snippets/GDD-checkbox-fix.css",
+    "snippets",
+    "11 - Referencia de Diseño",
+    "10 - Referencia/04 - Historial de Versiones.md",
+    "10 - Referencia/03 - Registro de Decisiones.md",
+    "10 - Referencia/02 - Referencias e Inspiración.md",
+    "10 - Referencia/01 - Glosario.md",
+    "10 - Referencia",
+    "09 - Calidad/04 - Criterios de Aceptación.md",
+    "09 - Calidad/03 - Bugs y Seguimiento.md",
+    "09 - Calidad/02 - Pruebas.md",
+    "09 - Calidad/01 - Criterios de Calidad.md",
+    "09 - Calidad",
+    "08 - Producción/05 - Gestión de Cambios.md",
+    "08 - Producción",
+    "07 - Tecnología",
+    "06 - Experiencia",
+    "05 - Arte y Audio",
+    "04 - Contenido"
+  ]
+}

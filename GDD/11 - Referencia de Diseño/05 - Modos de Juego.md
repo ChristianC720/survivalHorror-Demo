@@ -42,7 +42,7 @@ El juego puede incluir ambos tipos de interacción en diferentes modos.
 
 ### Elección del proyecto
 
-**Modo principal:**  
-**Jugadores simultáneos:**  
-**Local / En línea:**  
-**Justificación:**
+**Modo principal:**  Un jugador
+**Jugadores simultáneos:**  No
+**Local / En línea:**  Local
+**Justificación:** El juego será de un solo jugador, ya que el tipo de juego y la historia que se quiere implementar fue pensado para este modo de juego y que el jugador se pueda enfocar ya sea en la narrativa o simplemente disfrutar de avanzar en el juego a su propio paso.

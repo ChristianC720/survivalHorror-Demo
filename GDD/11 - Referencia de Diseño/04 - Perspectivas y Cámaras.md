@@ -60,8 +60,8 @@ La cámara cambia automáticamente según acciones, eventos o contexto.
 
 ## Decisión del proyecto
 
-**Perspectiva principal:**  
-**Tipo de cámara:**  
-**¿Puede cambiar durante el juego?:**  
+**Perspectiva principal:**  Tercera Persona
+**Tipo de cámara:**  Cámara Dinámica
+**¿Puede cambiar durante el juego?:**  Sí, la cámara cambiará dinámicamente dependiendo del contexto y acciones entre Over the Shoulder (Tercera persona) e Isométrica.
 
-**Justificación de diseño:**
+**Justificación de diseño:** La cámara Isométrica servirá para que el usuario pueda observar el mundo que lo rodea con facilidad (cuando no existan amenazas), mientras que la cámara en tercera persona servirá para interpretar al protagonista cuando entre en acción o requiera realizar acciones específicas.

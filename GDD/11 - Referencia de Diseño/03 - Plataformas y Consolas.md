@@ -76,8 +76,8 @@ Videojuegos ejecutados mediante tecnologías web.
 
 ## Elección del proyecto
 
-**Plataforma principal:**  
-**¿Por qué?**
+**Plataforma principal:**  PC
+**¿Por qué?:** Por su versatilidad y rendimiento
 
 **Plataformas secundarias:**  
 **¿Qué cambios requerirían?**
