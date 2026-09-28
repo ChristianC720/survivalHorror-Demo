@@ -8,10 +8,10 @@ Esta ficha identifica el proyecto de forma rápida. Debe permitir que alguien qu
 
 | Campo                        | Información                                                                                                                                    |
 | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Nombre del proyecto**      | <!-- Nombre oficial o nombre temporal -->                                                                                                      |
-| **Nombre clave**             | Survival Horror Demo                                                                                                                           |
+| **Nombre del proyecto**      | Por Definir <!-- Nombre oficial o nombre temporal -->                                                                                          |
+| **Nombre clave**             | Heartbeat                                                                                                                                      |
 | **Versión del GDD**          | 0.1.0                                                                                                                                          |
-| **Estado del proyecto**      | Concepto<!-- / Preproducción / Producción / Pruebas / Publicado -->                                                                            |
+| **Estado del proyecto**      | Concepto <!-- / Preproducción / Producción / Pruebas / Publicado -->                                                                           |
 | **Equipo**                   | Victor Gabriel Alvarado Chay<br>Christian Coronel Palma<br>Lenin Ramón López Córdoba<br>Brian Iván Navarrete Canché<br>Lian Daniel Sierra Sosa |
 | **Responsable del proyecto** | Christian Coronel Palma                                                                                                                        |
 | **Fecha de inicio**          | 2026-09-25                                                                                                                                     |
@@ -50,7 +50,7 @@ Esta ficha identifica el proyecto de forma rápida. Debe permitir que alguien qu
 
 **Respuesta:**
 
-Survival Horror con elementos Roguelike en el que el jugador debe explorar escenarios generados proceduralmente, administrar los recursos limitados y sobrevivir a criaturas más fuertes que él. Combinando una cámara dinámica entre perspectiva isométrica y tercera persona, haciendo que cada partida cambie en jugabilidad y narrativamente.
+Survival Horror con elementos Roguelite en el que el jugador debe explorar escenarios generados proceduralmente, administrar recursos y sobrevivir a criaturas más fuertes que él. Combinando una cámara dinámica entre perspectiva isométrica y tercera persona, haciendo que cada partida cambie en jugabilidad y narrativa.
 
 ## Estado actual
 
