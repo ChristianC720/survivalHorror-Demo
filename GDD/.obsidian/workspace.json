@@ -11,10 +11,14 @@
             "id": "69e1f5a799e72607",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "02 - Diseño/02 - Mecánicas.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "Nueva pestaña"
+              "title": "02 - Mecánicas"
             }
           }
         ]
@@ -183,22 +187,22 @@
   },
   "active": "69e1f5a799e72607",
   "lastOpenFiles": [
-    "README.md",
-    "02 - Diseño/02 - Mecánicas.md",
     "02 - Diseño/01 - Jugabilidad.md",
-    "02 - Diseño/07 - Reglas y Estados del Juego.md",
-    "01 - Visión/01 - Ficha del Proyecto.md",
-    "11 - Referencia de Diseño/04 - Perspectivas y Cámaras.md",
-    "01 - Visión/02 - Visión del Juego.md",
-    "01 - Visión/03 - Público y Plataforma.md",
+    "02 - Diseño/02 - Mecánicas.md",
     "01 - Visión/04 - Pilares de Diseño.md",
+    "01 - Visión/03 - Público y Plataforma.md",
+    "01 - Visión/02 - Visión del Juego.md",
+    "11 - Referencia de Diseño/01 - Géneros.md",
+    "01 - Visión/01 - Ficha del Proyecto.md",
+    "README.md",
+    "02 - Diseño/07 - Reglas y Estados del Juego.md",
+    "11 - Referencia de Diseño/04 - Perspectivas y Cámaras.md",
     "00 - Índice.md",
     "00 - Acerca de esta guía.md",
     "11 - Referencia de Diseño/06 - Clasificaciones y Etiquetas.md",
     "11 - Referencia de Diseño/05 - Modos de Juego.md",
     "11 - Referencia de Diseño/03 - Plataformas y Consolas.md",
     "11 - Referencia de Diseño/02 - Subgéneros y Combinaciones.md",
-    "11 - Referencia de Diseño/01 - Géneros.md",
     "11 - Referencia de Diseño/00 - Biblioteca de Clasificación.md",
     "snippets/GDD-checkbox-fix.css",
     "snippets",
