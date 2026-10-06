@@ -8,13 +8,10 @@ Aquí se define la **idea central** del videojuego. Esta sección funciona como 
 
 **El videojuego trata sobre:**
 
-Trata sobre sobrevivir en un entorno hostil, oscuro e impredecible en el que el jugador se encuentra en desventaja frente a las amenazas que lo rodean. Para avanzar, debe explorar, administrar recursos limitados, decidir cuándo combatir o evitar enfrentamientos y adaptarse a escenarios que cambian después de cada muerte. Combinando elementos de Survival Horror y Roguelite, utilizando la muerte, la generación procedural y el cambio dinámico de cámara como parte de la jugabilidad y de la narrativa.
-
-> Explica la fantasía principal que el jugador debe experimentar.
+Heartbeat es una experiencia de Survival Horror centrada en la supervivencia, la incertidumbre y las decisiones bajo presión, el jugador explora un entorno peligroso en el que la información es limitada, los recursos son escasos y enfrentarse directamente a las amenazas no siempre representa la mejor opción.
+ Para avanzar, debe explorar, administrar recursos limitados, decidir cuándo combatir o evitar enfrentamientos y adaptarse a escenarios que cambian después de cada muerte. Combinando elementos de Survival Horror y Roguelite, utilizando la muerte, la generación procedural y el cambio dinámico de cámara como parte de la jugabilidad y de la narrativa.
 
 ## Experiencia deseada
-
-Completa:
 
 - **Quiero que el jugador se sienta:** Quiero que se sienta vulnerable, intranquilo, limitado y constantemente amenazado por el ambiente y las criaturas que lo rodean.
 - **Quiero que el jugador piense:** Quiero que piense en cómo utilizar sus recursos, qué objetos conservar, hacia donde explorar, cuándo combatir y cuándo evitar un enfrentamiento.
@@ -23,20 +20,8 @@ Completa:
 
 ## Fantasía del jugador
 
-> [!question] Pregunta clave
-> ¿Qué fantasía estamos permitiendo cumplir al jugador?
-
-Le estamos permitiendo convertirse en una persona tratando de sobrevivir atrapado en un entorno hostil que no termina de comprender del todo y que constantemente representa una amenaza.
-
-Ejemplos:
-- Sentirse como un explorador.
-- Sentirse como un estratega.
-- Sentirse como un superviviente.
-- Sentirse como un héroe.
-
+Le estamos permitiendo convertirse en un hombre que busca la última pista que le dejó su esposa fallecida y que, atrapado en un ciclo sin fin dentro de un entorno hostil que no termina de comprender del todo y que constantemente representa una amenaza, debe sobrevivir y encontrar la forma de salir.
 ## Propuesta de valor
-
-¿Por qué alguien querría jugar este videojuego?
 
 El videojuego busca ofrecer una experiencia de Survival Horror en cada escenario, donde el jugador no pueda depender completamente de memorizarlo debido a la generación procedural y las constantes amenazas que lo rodean.
 
@@ -48,7 +33,7 @@ La muerte no funciona únicamente como una condición de derrota, si no que form
 
 ## Características principales
 
-Lista las características que definen la experiencia.
+Lista de características que definen la experiencia.
 
 1. Supervivencia basada en recursos limitados.
 2. Inventario limitado a 6 espacios.
@@ -89,7 +74,7 @@ Este videojuego **NO** es:
 - Un juego donde el jugador pueda almacenar grandes cantidades de recursos sin consecuencias.
 - Un Roguelike puro basado exclusivamente en progresión, estadísticas o generación procedural.
 - Un juego donde la generación procedural sustituya completamente al diseño manual de escenarios.
-- Un juego donde la cámara cambie libremente únicamente por preferencia del jugador, sus cambios tienen una función contextual dentro del diseño.
+- Un juego donde la cámara cambie libremente y sin costo únicamente por preferencia del jugador: la vista sobre el hombro es la vista por defecto y la vista isométrica de vigilancia solo está disponible en salas con cámara activa, con ruido y retraso, y se bloquea cuando el jugador es detectado.
 - Un videojuego donde morir implique repetir exactamente el mismo escenario.
 
 El objetivo es mantener el proyecto enfocado en una experiencia de **supervivencia, vulnerabilidad, exploración, incertidumbre y terror**, evitando agregar sistemas que reduzcan estas sensaciones o incrementen innecesariamente el alcance del proyecto.

@@ -6,12 +6,6 @@ La jugabilidad explica **qué hace el jugador, qué recibe a cambio y cómo evol
 
 ## Bucle principal de juego
 
-Describe el ciclo que se repite durante la experiencia.
-
-**Ejemplo conceptual:**
-
-`Explorar → Encontrar desafío → Resolver → Obtener recompensa → Mejorar → Explorar`
-
 **Bucle del proyecto:**
 
 `Explorar → Identificar amenazas y recursos → Combatir / Evadir / Interactuar → Descubrir información  → Morir  → Aplicar conocimiento adquirido → Explorar`
@@ -133,15 +127,11 @@ La generación procedural deberá producir suficiente variación para evitar que
 
 A nivel de jugabilidad, un intento exitoso deberá requerir que el jugador alcance y complete un objetivo final después de sobrevivir al recorrido del escenario.
 
-La condición definitiva de victoria del videojuego completo se encuentra actualmente **por definir,** pero se considerará uno de los siguientes escenarios posibles:
+La condición de victoria de la demo es **derrotar a The Mother**, el jefe final. Para llegar a ella, el jugador debe atravesar los pisos del escenario (2 pisos en la demo, valor inicial, sujeto a balance) y alcanzar su sala, que es una sala clave fija. El encuentro consta de 3 fases que reutilizan mecánicas existentes: hackeo de nodos bajo presión, supervivencia y huida, y pocos disparos a puntos débiles expuestos (ver [[02 - Mecánicas]]).
 
-- Alcanzar una habitación final.
-- Completar un objetivo específico.
-- Resolver un encuentro final.
-- Derrotar o sobrevivir a un jefe.
-- Obtener un elemento necesario y escapar.
+Al ser derrotada, The Mother revela que existe algo más (la criatura lovecraftiana que es el laboratorio), pero no puede explicarlo.
 
-La condición seleccionada deberá permitir demostrar el ciclo completo de juego sin ampliar innecesariamente el alcance de la demo.
+La condición seleccionada permite demostrar el ciclo completo de juego sin ampliar innecesariamente el alcance de la demo, ya que el encuentro no introduce sistemas nuevos.
 
 ## Condición de derrota
 
@@ -162,7 +152,9 @@ Como consecuencia:
 
 Otras condiciones de fracaso podrán existir únicamente si aportan valor al diseño.
 
-Actualmente se está considerando implementar un final "secundario" donde si el jugador llega a perder 5 partidas consecutivas, se activa una secuencia de derrota definitiva.
+Existe además un final secundario de derrota: si el jugador muere 5 veces consecutivas sin llegar a una sala clave, se activa el final de "Disolución de identidad". Llegar a una sala clave reinicia el contador. Cada muerte también provoca una degradación estética acumulativa (mayor corrupción CRT, distorsión de voz y deterioro de los diálogos del protagonista) que no afecta la jugabilidad. El detalle de estas reglas se documenta en [[02 - Mecánicas]].
+
+Los estados de muerte, reconstrucción, victoria y final de disolución, con sus transiciones, se documentan en [[07 - Reglas y Estados del Juego]].
 
 ## Ritmo
 
@@ -297,14 +289,14 @@ Si el jugador consume un recurso, combate o abandona un objeto, debe comprender 
 
 ### 5. La cámara no elimina el control del jugador:
 
-Los cambios entre perspectiva isométrica y Over the Shoulder deberán ser:
+La perspectiva Over the Shoulder es la vista por defecto. La vista isométrica de vigilancia se activa manualmente, tiene un costo y solo está disponible en salas con cámara activa. Los cambios entre ambas perspectivas deberán ser:
 
 - Contextuales.
 - Predecibles.
 - Visualmente claros.
 - Funcionales para la acción que se está realizando.
 
-El cambio no debe desorientar al jugador ni modificar arbitrariamente las reglas de control.
+El cambio no debe desorientar al jugador ni modificar arbitrariamente las reglas de control. Cuando la vista de vigilancia se corta o se bloquea (al recibir daño o con algún enemigo en alerta), el jugador regresa a Over the Shoulder con el control completo del personaje.
 
 ### 6. La información debe ser legible:
 

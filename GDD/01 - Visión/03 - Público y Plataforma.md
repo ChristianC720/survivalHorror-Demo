@@ -52,8 +52,6 @@ El jugador deberá poder comprender estas mecánicas mediante un tutorial contex
 
 ## Restricciones de plataforma
 
-Documenta limitaciones de hardware, controles, memoria, almacenamiento, distribución o conectividad.
-
 ### Hardware:
 
 El videojuego deberá diseñarse considerando que no todos los usuarios dispondrán de hardware de gama alta y se buscará evitar que los principales sistemas jugables dependan de características gráficas excesivamente costosas.
@@ -81,7 +79,7 @@ Las acciones principales deberán poder realizarse sin combinaciones excesivamen
 - Interacción.
 - Ataque.
 - Apuntar, si la mecánica lo requiere.
-- Esquivar o realizar acciones defensivas, si son implementadas.
+- Realizar acciones defensivas (empujón / golpe de culata).
 - Acceso al inventario.
 - Uso de objetos.
 - Pausa.
@@ -117,8 +115,6 @@ No se requerirá conexión permanente a Internet para jugar.
 
 ## Modelo de distribución
 
-> Gratuito, pago único, educativo, prototipo académico, etc.
-
 Prototipo académico / Demo jugable.
 
 La versión desarrollada inicialmente tiene como propósito demostrar los principales sistemas, mecánicas y decisiones de diseño del videojuego.
@@ -127,7 +123,7 @@ Actualmente no se ha definido un modelo comercial para una hipotética versión 
 ## Consideraciones
 
 - [x] Controles adaptados a la plataforma
-- [x] Interfaz legible
+- [ ] Interfaz legible
 - [x] Rendimiento considerado
 - [x] Resoluciones consideradas
 - [x] Guardado compatible

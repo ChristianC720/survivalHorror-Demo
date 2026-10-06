@@ -37,7 +37,7 @@ El jugador no debe tener control ni conocimiento completo de lo que encontrará 
 - El conocimiento adquirido en intentos anteriores ayuda a comprender las reglas del juego, pero no permite memorizar completamente el escenario.
 - La generación procedural debe producir situaciones jugables coherentes y no aleatoriedad sin propósito.
 
-## Pilar 3 — Presión Constante
+## Pilar 3 — Decisiones con Consecuencias
 
 **Descripción:**
 La supervivencia debe depender principalmente de las decisiones del jugador. Cada recurso utilizado, objeto transportado, enfrentamiento iniciado o ruta explorada debe implicar una posible ventaja y un posible costo.
@@ -61,14 +61,6 @@ Antes de incorporar una característica importante, preguntar:
 - ¿Mejora la experiencia principal?
 - ¿Justifica el costo de desarrollo?
 - ¿Complica innecesariamente otro sistema?
-
-> [!warning] Evitar
-> Convertir los pilares en frases genéricas como “que sea divertido”. Deben describir decisiones concretas de diseño.
-
-
-> **Navegación:** [[00 - Índice]] · ← [[03 - Público y Plataforma]] · [[01 - Jugabilidad]] →
-
-
 ## Principios complementarios extra a considerar:
 
 Aunque los tres pilares anteriores tienen prioridad, existen principios que ayudan a mantener la identidad del proyecto.
@@ -78,7 +70,7 @@ El cambio entre perspectiva isométrica y Over the Shoulder no debe utilizarse �
 
 Cada cambio deberá responder a una necesidad jugable, narrativa o de presentación concreta.
 
-La cámara isométrica debe favorecer la percepción del entorno y la observación del espacio, mientras que la perspectiva sobre el hombro debe utilizarse cuando sea necesario aumentar la cercanía, precisión, tensión o participación directa del jugador.
+La perspectiva sobre el hombro es la vista por defecto y mantiene la cercanía, precisión, tensión y participación directa del jugador. La cámara isométrica favorece la percepción del entorno y la observación del espacio, pero es una acción manual de reconocimiento con costo: representa el acceso a las cámaras de seguridad de The Mother desde el terminal del brazo, solo existe en salas con cámara activa, muestra una imagen con ruido y retraso, obliga a permanecer quieto o caminar muy lento y se corta al recibir daño o cuando algún enemigo entra en alerta. Al usarla, el jugador ve por los ojos de la máquina.
 
 ### La muerte forma parte de la experiencia:
 
@@ -99,3 +91,6 @@ Debe construirse también mediante:
 - Amenazas impredecibles.
 - Exploración de espacios desconocidos.
 - Consecuencias de las decisiones.
+
+> **Navegación:** [[00 - Índice]] · ← [[03 - Público y Plataforma]] · [[01 - Jugabilidad]] →
+> 

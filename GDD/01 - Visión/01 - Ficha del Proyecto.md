@@ -10,47 +10,62 @@ Esta ficha identifica el proyecto de forma rápida. Debe permitir que alguien qu
 | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Nombre del proyecto**      | Por Definir <!-- Nombre oficial o nombre temporal -->                                                                                          |
 | **Nombre clave**             | Heartbeat                                                                                                                                      |
-| **Versión del GDD**          | 0.1.0                                                                                                                                          |
+| **Versión del GDD**          | 0.3.0                                                                                                                                          |
 | **Estado del proyecto**      | Concepto <!-- / Preproducción / Producción / Pruebas / Publicado -->                                                                           |
 | **Equipo**                   | Victor Gabriel Alvarado Chay<br>Christian Coronel Palma<br>Lenin Ramón López Córdoba<br>Brian Iván Navarrete Canché<br>Lian Daniel Sierra Sosa |
 | **Responsable del proyecto** | Christian Coronel Palma                                                                                                                        |
 | **Fecha de inicio**          | 2026-09-25                                                                                                                                     |
-| **Última actualización**     | 2026-09-28                                                                                                                                     |
+| **Última actualización**     | 2026-10-06                                                                                                                                     |
 | **Repositorio**              | [Repositorio Demo](https://github.com/ChristianC720/survivalHorror-Demo)                                                                       |
 
 ## Identidad del videojuego
 
-**Género principal:**  
-> Consulta [[01 - Géneros]] y elige el género que mejor describa la experiencia dominante.
+**Género principal:**  Survival Horror.
+**Justificación:**  El género principal del videojuego es la supervivencia, ya que el jugador tiene que gestionar recursos limitados, enfrentarse a amenazas más fuertes que el personaje principal, administrar un inventario 6-slots, y llegar en las mejores condiciones posibles hasta el final.
 
-**Subgéneros:**  
-> Consulta [[02 - Subgéneros y Combinaciones]] y selecciona solamente los que aporten información útil.
+**Géneros secundarios:**  Terror y Roguelite.
+**Justificación:** El Terror se toma como género secundario porque el juego tendrá una ambientación oscura, se enfrentará a monstruos, y la historia estará centrada en el terror y lo que le sucede al personaje dentro de este mundo. También se tomó el Roguelite porqué se implementará una generación procedural de cuartos a partir del punto inicial, y cada que el jugador pierda una partida al morir, el escenario cambiará por completo. Esto como parte de la narrativa y jugabilidad que se tienen contemplados.
 
-**Biblioteca de clasificación:** [[00 - Biblioteca de Clasificación]]
+**Subgéneros:** Survival Horror.
+**¿Por qué?:** Porque combina la supervivencia de los recursos limitados y los enemigos difíciles con el terror de la narrativa y el mundo que lo rodea.
 
-**Plataforma objetivo:**  
-> Consulta [[03 - Plataformas y Consolas]] antes de elegir.
+**Plataforma Objetivo:**  PC
+**¿Por qué?:** Por su versatilidad y rendimiento
 
-**Modo de juego:**  
-> Consulta [[05 - Modos de Juego]].
 
-**Perspectiva:**  
-> Consulta [[04 - Perspectivas y Cámaras]].
+**Modo principal:**  Un jugador
+**Jugadores simultáneos:**  No
+**Local / En línea:**  Local
+**Justificación:** El juego será de un solo jugador, ya que el tipo de juego y la historia que se quiere implementar fue pensado para este modo de juego y que el jugador se pueda enfocar ya sea en la narrativa o simplemente disfrutar de avanzar en el juego a su propio paso.
+
+**Perspectiva principal:**  Tercera Persona
+**Tipo de cámara:**  Cámara Dinámica
+**¿Puede cambiar durante el juego?:**  Sí. Over the Shoulder (Tercera persona) es la vista por defecto. El jugador puede activar manualmente una vista isométrica de reconocimiento, que corresponde a las cámaras de seguridad de The Mother y solo está disponible en salas con cámara activa (ver [[02 - Mecánicas]]).
+
+**Justificación de diseño:** El videojuego utiliza Over the Shoulder como perspectiva principal para preservar incertidumbre, escala y tensión durante la exploración y el combate. El jugador puede activar manualmente una vista isométrica secundaria de reconocimiento, accediendo desde el terminal de su brazo a las cámaras de seguridad de la instalación, para obtener una mejor comprensión espacial del entorno a cambio de un costo: debe permanecer quieto o caminar muy lento y la vista se corta al recibir daño o cuando algún enemigo entra en alerta. Esta vista no proporciona información omnisciente: enemigos y elementos relevantes solo son visibles dentro del campo de la cámara de seguridad, con ruido y retraso en la imagen. El modo isométrico no indica que una zona sea segura y las amenazas continúan activas mientras se utiliza.
 
 **Clasificaciones y etiquetas adicionales:**  
-> Consulta [[06 - Clasificaciones y Etiquetas]].
+- Salas clave fijas
+- Procedural
+- Generación aleatoria
+- Inventario
+- Jefes
+- Sigilo
+- Combate
+- Exploración
+- Exploración vertical
+- Local
 
-**Tecnología principal:**  
+
+**Tecnología principal:**  Unity, C#, FL Studio, Blender, Blockbench, Obsidian
 > Motor, lenguaje y herramientas principales.
 
 ## Elevator Pitch
 
-> [!example] ¿Qué es?
-> Describe el videojuego en **una o dos frases**. Debe explicar quién juega, qué hace y qué lo hace interesante.
-
 **Respuesta:**
+Survival Horror con elementos Roguelite en el que el jugador debe explorar escenarios generados proceduralmente, administrar recursos y sobrevivir a criaturas más fuertes que él. Combinando una cámara en tercera persona sobre el hombro con el acceso limitado a las cámaras de vigilancia isométricas de la instalación.
 
-Survival Horror con elementos Roguelite en el que el jugador debe explorar escenarios generados proceduralmente, administrar recursos y sobrevivir a criaturas más fuertes que él. Combinando una cámara dinámica entre perspectiva isométrica y tercera persona, haciendo que cada partida cambie en jugabilidad y narrativa.
+**Premisa:** Un hombre busca la última pista que su esposa fallecida le dejó, pero queda atrapado en un ciclo sin fin del que ahora debe salir.
 
 ## Estado actual
 
