@@ -45,13 +45,13 @@ La relación exacta entre The Mother, el laboratorio y la criatura todavía debe
 
 ---
 ---
-Premisa oficial. **(Decisión confirmada — D-13)**
+Premisa oficial. **(Decisión confirmada — D-13; modificada por D-40)**
 
-Un hombre busca la última pista que su esposa fallecida le dejó, pero queda atrapado en un ciclo sin fin del que ahora debe salir.
+Un hombre busca la última pista que su esposa desaparecida le dejó, pero queda atrapado en un ciclo sin fin del que ahora debe salir.
 
+- **D-40:** la esposa está desaparecida, no muerta. Qué le ocurrió y su relación con la instalación y The Mother siguen **Por definir**.
 - Esta premisa sustituye el lore de guerra entre humanos y clones del documento de ideas iniciales, que se conserva únicamente como inspiración visual y mecánica.
 - Los documentos de la esposa persisten en el terminal del brazo entre muertes.
-- La relación entre la esposa, la instalación y The Mother todavía debe definirse.
 
 ---
 ---
@@ -131,7 +131,7 @@ todavía deben resolverse, como mínimo:
     
 - Duración objetivo de la demo.
     
-- Estructura de una run.
+- Estructura de un intento.
     
 - Estructura de la primera experiencia del jugador.
     

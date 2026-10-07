@@ -134,6 +134,8 @@ Esta sección conserva las decisiones importantes del proyecto y el razonamiento
 
 **Consecuencias:** Se actualizan la [[01 - Ficha del Proyecto]], la [[02 - Visión del Juego]] y `Decisiones a Implementar.md`. La relación entre la esposa, la instalación y The Mother queda por definir.
 
+**Estado:** Modificada por D-40 (la esposa está desaparecida, no fallecida). Se conserva como histórico.
+
 **Responsable:** Christian Coronel Palma
 
 ## Decisión D-14 — Objeto defensivo consumible en lugar de la liberación de agarre
@@ -177,6 +179,8 @@ Esta sección conserva las decisiones importantes del proyecto y el razonamiento
 **Motivo:** Refuerza el pilar **Adaptación**: la ruta hacia cada sala clave cambia por intento, pero la estructura general sigue siendo comprensible.
 
 **Consecuencias:** Se crea M-15. El generador debe garantizar una ruta válida por piso. La vista de vigilancia muestra un piso a la vez.
+
+**Estado:** Modificada por D-33 (3 pisos, salas clave secundarias y finales). El reinicio del contador en cualquier sala clave queda sustituido por D-35.
 
 **Responsable:** Christian Coronel Palma
 
@@ -268,6 +272,195 @@ Esta sección conserva las decisiones importantes del proyecto y el razonamiento
 
 **Responsable:** Christian Coronel Palma
 
+## Decisión D-23 — Señal de vigilancia escalonada según el estado de alerta
+
+**Fecha:** 2026-10-07
+
+**Tema:** Cámara y percepción enemiga.
+
+**Problema:** M-10 dejaba **Por definir** el umbral de "en alerta" que usan M-02 y M-03 para cortar y bloquear la vista de vigilancia (búsqueda o caza). Cortar desde búsqueda volvía la vigilancia casi inútil; cortar solo en caza permitía observar sin costo mientras los enemigos ya buscaban al jugador.
+
+**Opciones consideradas:**
+
+1. "En alerta" = búsqueda: la señal se corta y se bloquea desde el estado de búsqueda.
+2. "En alerta" = caza: la señal se corta y se bloquea solo en caza, sin cambios en los estados anteriores.
+3. Señal escalonada: sin cambios en sospecha, degradada en búsqueda y cortada y bloqueada en caza.
+
+**Decisión tomada:** Opción 3. En **sospecha** la señal no cambia; en **búsqueda** se degrada (más ruido CRT y más retraso); en **caza** se corta y se bloquea (M-03). Para el corte y el bloqueo, "en alerta" equivale a caza. El alcance es el mismo que el de M-03: enemigos dentro de la sala o en el área cercana con ruta de persecución.
+
+**Motivo:** Refuerza **Vulnerabilidad Constante** (la información se deteriora antes de perderse y observar nunca es seguro) y **Adaptación** (el jugador interpreta la calidad de la señal como indicio del estado de los enemigos, sin indicadores en pantalla, D-02).
+
+**Consecuencias:** Se cierra el **Por definir** de M-10. M-01 (diagrama), M-02 y M-03 usan "caza" como umbral de corte y bloqueo en [[02 - Mecánicas]]. La degradación de la señal se implementa en [[03 - Sistemas]]. La magnitud de la degradación en búsqueda queda sujeta a balance.
+
+**Responsable:** Christian Coronel Palma
+
+## Decisión D-24 — Atención de The Mother
+
+**Fecha:** 2026-10-07
+
+**Tema:** Cámara y percepción enemiga.
+
+**Problema:** La vista de vigilancia solo costaba tiempo y exposición. El equipo quiere que, cuando el jugador usa las cámaras, los monstruos lo sepan y empiecen a buscarlo.
+
+**Opciones consideradas:**
+
+1. Sin consecuencia adicional: la vigilancia solo cuesta tiempo y exposición.
+2. Medidor de atención visible en pantalla que avisa cuándo The Mother detecta el uso de las cámaras.
+3. Medidor de atención oculto que, al llenarse, envía a los enemigos cercanos hacia el jugador; el jugador lo percibe por la degradación de la señal.
+
+**Decisión tomada:** Opción 3. Un medidor **oculto** (sin barra en pantalla) se llena mientras se usa la vigilancia (~5 s) y baja sin usarla (~15 s) (valores iniciales, sujetos a balance). Al llenarse, los enemigos cercanos pasan a sospecha y luego a búsqueda hacia la posición del jugador. El jugador lo percibe por la degradación de la señal (D-23).
+
+**Motivo:** Refuerza **Decisiones con Consecuencias** (observar más tiempo se paga con enemigos que acuden a buscar al jugador) y **Vulnerabilidad Constante** (la vigilancia nunca es un refugio).
+
+**Consecuencias:** M-02 y M-10 incorporan el medidor en [[02 - Mecánicas]]; [[03 - Sistemas]] implementa el medidor y el cambio de estado de los enemigos. No se añade interfaz nueva, en coherencia con D-02.
+
+**Responsable:** Christian Coronel Palma
+
+## Decisión D-30 — Autoguardado en la sala clave final
+
+**Fecha:** 2026-10-07
+
+**Tema:** Guardado.
+
+**Problema:** D-22 definía una suspensión al salir y la reanudación en el mismo punto. Con 3 pisos (D-33), el equipo quiere que la partida se guarde automáticamente al llegar a una sala clave, con un aviso discreto, sin guardado manual y con solo una opción de "Reiniciar". El autoguardado solo debe proteger el progreso si el jugador sale de la partida o el juego se cierra por un fallo.
+
+**Opciones consideradas:**
+
+1. Mantener la suspensión al salir de D-22.
+2. Guardado manual en puntos fijos.
+3. Autoguardado al llegar a la sala clave final de los pisos 1 y 2, sin guardado manual, útil solo para continuar después de salir del juego o de un fallo.
+
+**Decisión tomada:** Opción 3. Sin suspensión. Autoguardado al llegar a la **sala clave final** de los pisos 1 y 2 (no en salas clave secundarias ni en la sala del jefe), solo si no hay enemigos en caza; si el jugador llega perseguido, el guardado espera a que la caza termine. Guarda el estado al llegar, incluido el inventario. Aviso discreto y diegético en el terminal del brazo ("sincronizando…") que no interrumpe el juego. Solo sirve para continuar después de salir del juego o de un fallo; no existe guardado manual. El autoguardado se conserva hasta morir, reiniciar o llegar a otra sala final. Al cargar, gracia de 2–3 s (valor inicial, sujeto a balance) en la que los enemigos no atacan. El terminal del brazo y las fallas se siguen autoguardando al cambiar.
+
+**Motivo:** Refuerza **Decisiones con Consecuencias** (salir del juego no borra las decisiones tomadas, ver D-31) y **Vulnerabilidad Constante** (no se puede guardar ni salir para escapar de una caza).
+
+**Consecuencias:** Modifica D-22, que se conserva como histórico. Se elimina la suspensión en [[07 - Reglas y Estados del Juego]] y en [[03 - Sistemas]]. M-15 indica el autoguardado al llegar a la sala final y M-16 aclara que la muerte siempre regresa al inicio del ciclo. Se complementa con D-31 (salir del juego) y D-32 (Reiniciar y Nueva partida).
+
+**Responsable:** Christian Coronel Palma
+
+## Decisión D-31 — Costo de salir del juego
+
+**Fecha:** 2026-10-07
+
+**Tema:** Guardado y ciclo de muerte.
+
+**Problema:** Sin suspensión (D-30), salir del juego podía usarse para escapar de una amenaza o para evitar el costo de una muerte.
+
+**Opciones consideradas:**
+
+1. Salir no tiene costo: se continúa siempre desde el último autoguardado.
+2. Salir siempre cuenta como muerte completa.
+3. Costo según la situación en el momento de salir.
+
+**Decisión tomada:** Opción 3.
+
+- **Durante alerta o caza:** cuenta como muerte completa (regresa al inicio del ciclo y suma al contador y a la degradación).
+- **Con calma, fuera de una sala clave final ya guardada:** suma 1 al contador de muertes y a la degradación, pero al volver se continúa desde la sala final autoguardada.
+- **En una sala final ya guardada y sin alerta:** sin costo.
+- Un cierre inesperado o un fallo del juego no cuenta.
+- El diálogo de confirmación al salir avisa del costo.
+- En el primer intento se aplica la misma excepción de D-35: no suma al contador.
+
+**Motivo:** Refuerza **Vulnerabilidad Constante** (salir no es una vía de escape frente a una amenaza) y **Decisiones con Consecuencias** (abandonar la partida tiene un costo proporcional a la situación).
+
+**Consecuencias:** [[07 - Reglas y Estados del Juego]] documenta el diálogo de salida y los casos especiales. M-18 suma al contador y a la degradación las salidas con costo.
+
+**Responsable:** Christian Coronel Palma
+
+## Decisión D-33 — Estructura de 3 pisos y tipos de sala clave
+
+**Fecha:** 2026-10-07
+
+**Tema:** Estructura del escenario.
+
+**Problema:** D-15 fijaba 2 pisos + sala del jefe con un solo tipo de sala clave. El equipo quiere entre 8 y 12 salas generadas por piso, 2 a 3 salas clave con documentos, llaves y otros objetos (sin guardado) y 1 sala clave al final de cada piso (con guardado), en 3 pisos y con la sala del jefe en el último piso (sin guardado).
+
+**Opciones consideradas:**
+
+1. Mantener 2 pisos + sala del jefe (D-15).
+2. 3 pisos con un solo tipo de sala clave por piso.
+3. 3 pisos con salas clave secundarias y una sala clave final por piso.
+
+**Decisión tomada:** Opción 3. 3 pisos. Cada piso tiene 8–12 salas procedurales, 2–3 **salas clave secundarias** (documentos, llaves y otros objetos; sin guardado) y 1 **sala clave final** (escalera o elevador; autoguardado en los pisos 1 y 2, D-30). La sala de The Mother está en el piso 3 y no guarda. En total, ~10–15 salas por piso (valores iniciales, sujetos a balance).
+
+**Motivo:** Refuerza **Adaptación**: más salas procedurales y salas clave cuya posición cambia por intento, dentro de una estructura por pisos que sigue siendo comprensible.
+
+**Consecuencias:** Modifica D-15, que se conserva como histórico. Las escaleras y los elevadores existen solo en las salas clave finales. Se actualizan M-15 en [[02 - Mecánicas]], el generador en [[03 - Sistemas]], [[05 - Progresión]] y [[06 - Economía y Recursos]]. Se complementa con D-34 (configuraciones), D-35 (contador) y D-36 (llaves).
+
+**Responsable:** Christian Coronel Palma
+
+## Decisión D-35 — Reinicio del contador de 5 muertes
+
+**Fecha:** 2026-10-07
+
+**Tema:** Final secundario.
+
+**Problema:** D-08 reiniciaba el contador al llegar a cualquier sala clave. Con salas clave secundarias y finales en 3 pisos (D-33), el contador casi nunca avanzaría. Además, las muertes del tutorial castigarían a un jugador que aún está aprendiendo.
+
+**Opciones consideradas:**
+
+1. Reiniciar el contador en cualquier sala clave (D-08).
+2. Reiniciar el contador en cada sala clave final (pisos 1 y 2).
+3. Reiniciar el contador solo en la sala clave final del piso 2.
+
+**Decisión tomada:** Opción 3. Solo llegar a la **sala final del piso 2** reinicia el contador. Las muertes del primer intento (el del tutorial) no cuentan. Reiniciar (D-32) y salir con costo (D-31) suman al contador.
+
+**Motivo:** Refuerza **Vulnerabilidad Constante** (la amenaza de la "Disolución de identidad" se mantiene durante más tiempo) y **Adaptación** (el primer intento sirve para aprender las reglas sin castigo en el contador).
+
+**Consecuencias:** Modifica D-08, que se conserva como histórico. Se actualizan M-15 y M-18 en [[02 - Mecánicas]], [[05 - Progresión]] y [[07 - Reglas y Estados del Juego]].
+
+**Responsable:** Christian Coronel Palma
+
+## Decisión D-39 — Presentación: cinemáticas, transición de piso y menú principal
+
+**Fecha:** 2026-10-07
+
+**Tema:** Presentación.
+
+**Problema:** [[07 - Reglas y Estados del Juego]] dejaba **Por definir** la presentación de la reconstrucción, la pantalla de carga entre pisos, las opciones del menú principal y si los créditos se pueden saltar.
+
+**Opciones consideradas:**
+
+1. Reaparición directa sin cinemática y pantalla de carga entre pisos.
+2. Cinemática completa de reconstrucción en cada muerte y pantalla de carga entre pisos.
+3. Cinemática completa una sola vez, cinemática corta en cada muerte o reinicio, y transición de piso con cinemática que oculta la carga.
+
+**Decisión tomada:** Opción 3.
+
+- **Cinemática completa** de reconstrucción al terminar la introducción, una sola vez. Su contenido queda **Por definir** según el lore.
+- **Cinemática corta** en cada muerte o reinicio: el personaje cae del tanque, con sonido de maquinaria; refleja la degradación (M-18) y se puede saltar.
+- **Transición de piso:** cinemática de ascensor o escalera de **mínimo 5 s** que oculta la carga y muestra el aviso de autoguardado; se alarga si la carga tarda. No hay pantalla de carga.
+- **Menú principal:** Continuar, Nueva partida, Opciones, Créditos, Salir.
+- Los créditos se pueden saltar después de verlos una vez.
+
+**Motivo:** Refuerza **Adaptación**: la muerte se presenta como parte del ciclo, la cinemática corta muestra la degradación sin frenar el reintento y la transición de piso mantiene la continuidad del recorrido.
+
+**Consecuencias:** Se cierra el **Por definir** de presentación en [[07 - Reglas y Estados del Juego]]. M-15 y M-16 en [[02 - Mecánicas]] incorporan las cinemáticas y [[04 - Controles]] agrega la tecla para saltarlas. El contenido de las cinemáticas queda **Por definir** en `03 - Historia y Mundo`.
+
+**Responsable:** Christian Coronel Palma
+
+## Decisión D-40 — Esposa desaparecida, no fallecida
+
+**Fecha:** 2026-10-07
+
+**Tema:** Narrativa.
+
+**Problema:** La premisa oficial (D-13) describía a la esposa del protagonista como fallecida, mientras que el equipo confirma que en realidad está desaparecida. Además, la ficha de [[03 - Personajes]] ya la describe como desaparecida, por lo que el GDD era incoherente.
+
+**Opciones consideradas:**
+
+1. Mantener a la esposa como fallecida (D-13).
+2. Esposa desaparecida, con su destino y su relación con la instalación y The Mother **Por definir**.
+3. Esposa desaparecida, decidiendo ya qué le ocurrió y su relación con la instalación y The Mother.
+
+**Decisión tomada:** Opción 2. Nueva premisa oficial: "Un hombre busca la última pista que su esposa desaparecida le dejó, pero queda atrapado en un ciclo sin fin del que ahora debe salir." Qué le ocurrió a la esposa y su relación con la instalación y The Mother siguen **Por definir**. Los documentos de la esposa siguen persistiendo en el terminal del brazo (D-13).
+
+**Motivo:** Refuerza el pilar **Adaptación** y el horror cósmico por descubrimiento progresivo e información incompleta: no saber si la esposa vive mantiene abierta la búsqueda y obliga al jugador a reconstruir lo ocurrido a partir de los documentos que persisten entre muertes.
+
+**Consecuencias:** Modifica D-13, que se conserva como histórico. Se actualizan la [[01 - Ficha del Proyecto]], la [[02 - Visión del Juego]], `Decisiones a Implementar.md` y [[03 - Personajes]]. No se añade lore nuevo sobre la esposa.
+
+**Responsable:** Christian Coronel Palma
+
 ## Registro
 
 | Fecha | Tema | Decisión | Responsable |
@@ -279,21 +472,39 @@ Esta sección conserva las decisiones importantes del proyecto y el razonamiento
 | 2026-10-05 | D-05 Resistencia | Se elimina la Evasión Corta y se fusiona el ataque melee en "Empujón / Golpe de culata", sin invulnerabilidad | Christian Coronel Palma |
 | 2026-10-05 | D-06 Persistencia | Persisten en el terminal del brazo el conocimiento y las fallas de la máquina | Christian Coronel Palma |
 | 2026-10-05 | D-07 Salud | Salud fija sin regeneración con estados Bien, Herido y Crítico | Christian Coronel Palma |
-| 2026-10-05 | D-08 Final secundario | 5 muertes consecutivas sin llegar a una sala clave activan el final "Disolución de identidad"; degradación estética acumulativa por muerte | Christian Coronel Palma |
+| 2026-10-05 | D-08 Final secundario | 5 muertes consecutivas sin llegar a una sala clave activan el final "Disolución de identidad"; degradación estética acumulativa por muerte. **Modificada por D-35** | Christian Coronel Palma |
 | 2026-10-05 | D-09 Fallas de la máquina | The Mother parchea cada falla tras 1-2 usos o al morir; se descubren fallas nuevas en otros intentos | Christian Coronel Palma |
 | 2026-10-05 | D-10 Pilares | El Pilar 3 se renombra a "Decisiones con Consecuencias" | Christian Coronel Palma |
 | 2026-10-05 | D-11 Estructura | Salas clave fijas + salas procedurales (reemplaza la etiqueta "Lineal") | Christian Coronel Palma |
 | 2026-10-05 | D-12 Permadeath | Permadeath individual del clon; los datos persisten. **Modificada por D-18** | Christian Coronel Palma |
-| 2026-10-05 | D-13 Premisa | Premisa oficial del hombre que busca la última pista de su esposa fallecida | Christian Coronel Palma |
+| 2026-10-05 | D-13 Premisa | Premisa oficial del hombre que busca la última pista de su esposa fallecida. **Modificada por D-40** | Christian Coronel Palma |
 | 2026-10-05 | D-14 Agarre | La liberación de agarre se reemplaza por un objeto defensivo consumible | Christian Coronel Palma |
-| 2026-10-05 | D-15 Exploración vertical | Pisos conectados por escaleras o elevadores ubicados solo en salas clave | Christian Coronel Palma |
+| 2026-10-05 | D-15 Exploración vertical | Pisos conectados por escaleras o elevadores ubicados solo en salas clave. **Modificada por D-33** | Christian Coronel Palma |
 | 2026-10-05 | D-16 Jefe final | The Mother como jefe híbrido de 3 fases; derrotarla es la condición de victoria | Christian Coronel Palma |
 | 2026-10-06 | D-17 Recursos | Presupuesto garantizado por piso (mínimo y máximo de cada recurso); el generador decide la ubicación | Christian Coronel Palma |
 | 2026-10-06 | D-18 Muerte | El personaje se reconstruye, no se clona: siempre es el mismo hombre, recompuesto con piezas ajenas; se pierde todo el inventario. Modifica D-12 | Christian Coronel Palma |
 | 2026-10-06 | D-19 Etiquetas | Se elimina la etiqueta "Permadeath" y se usa "Ciclo de muerte y reconstrucción" | Christian Coronel Palma |
 | 2026-10-06 | D-20 Enemigos | Los enemigos eliminados siguen muertos durante el intento, pero The Mother puede reciclar cada uno una sola vez | Christian Coronel Palma |
 | 2026-10-06 | D-21 Remate | Dos formas de evitar el reciclaje: golpe en el suelo o consumible de remate | Christian Coronel Palma |
-| 2026-10-06 | D-22 Guardado | Suspensión al salir y reanudación en el mismo punto, sin guardado manual; el terminal y las fallas se autoguardan al cambiar | Christian Coronel Palma |
+| 2026-10-06 | D-22 Guardado | Suspensión al salir y reanudación en el mismo punto, sin guardado manual; el terminal y las fallas se autoguardan al cambiar. **Modificada por D-30** | Christian Coronel Palma |
+| 2026-10-07 | D-23 Señal de vigilancia | Señal escalonada según M-10: sin cambios en sospecha, degradada en búsqueda (más ruido CRT y retraso), cortada y bloqueada en caza; "en alerta" = caza, mismo alcance que M-03. Motivo: Vulnerabilidad Constante y Adaptación | Christian Coronel Palma |
+| 2026-10-07 | D-24 Atención de The Mother | Medidor oculto que se llena usando la vigilancia (~5 s) y baja sin usarla (~15 s); al llenarse, los enemigos cercanos pasan a sospecha y luego a búsqueda hacia el jugador. Motivo: Decisiones con Consecuencias y Vulnerabilidad Constante | Christian Coronel Palma |
+| 2026-10-07 | D-25 Cobertura de cámaras | Todas las salas clave (secundarias, finales y la del jefe) tienen cámara, más ~1 de cada 3 salas procedurales. Motivo: Adaptación (la cobertura procedural cambia por intento) | Christian Coronel Palma |
+| 2026-10-07 | D-26 Persecución entre pisos | Por escalera solo siguen los enemigos en caza, con un breve retraso; por elevador no siguen, pero los perseguidores esperan cerca del elevador si el jugador vuelve. Motivo: Vulnerabilidad Constante y Decisiones con Consecuencias (escalera o elevador cambian el riesgo) | Christian Coronel Palma |
+| 2026-10-07 | D-27 Remate | Disponible a ~1.5 m mirando un cuerpo no rematado, también en combate; si hay otro interactivo al lado, gana el que está al centro de la vista. Motivo: Decisiones con Consecuencias (rematar en combate es una elección arriesgada) | Christian Coronel Palma |
+| 2026-10-07 | D-28 Jefe | Fase 2 con cámaras hostiles (luz roja y sonido de motor; si una enfoca al jugador, los enemigos acuden a ese punto); sin reciclaje en la sala del jefe; la fase 3 tiene munición para todos los puntos débiles más 1–2 disparos de margen. Motivo: Vulnerabilidad Constante | Christian Coronel Palma |
+| 2026-10-07 | D-29 Degradación | La degradación estética solo se acumula y nunca se reinicia; ninguna capa tapa la interfaz crítica ni las señales de M-10. Motivo: Adaptación (el ciclo deja huella sin ocultar información) | Christian Coronel Palma |
+| 2026-10-07 | D-30 Guardado | Sin suspensión; autoguardado al llegar a la sala clave final de los pisos 1 y 2 sin enemigos en caza; aviso diegético "sincronizando…"; solo para continuar tras salir o un fallo; gracia de 2–3 s al cargar. Modifica D-22. Motivo: Decisiones con Consecuencias y Vulnerabilidad Constante | Christian Coronel Palma |
+| 2026-10-07 | D-31 Salir del juego | En alerta o caza cuenta como muerte completa; con calma fuera de una sala final guardada suma 1 al contador y a la degradación y se continúa desde la sala final; en una sala final guardada sin alerta, sin costo; un cierre inesperado no cuenta. Motivo: Vulnerabilidad Constante y Decisiones con Consecuencias | Christian Coronel Palma |
+| 2026-10-07 | D-32 Reiniciar y Nueva partida | "Reiniciar" (menú de pausa) regresa al inicio del ciclo, cuenta como muerte y conserva el terminal; "Nueva partida" (menú principal) borra todo, incluido el terminal, con confirmación. Motivo: Decisiones con Consecuencias (reiniciar no es gratuito) | Christian Coronel Palma |
+| 2026-10-07 | D-33 Estructura de pisos | 3 pisos; cada uno con 8–12 salas procedurales, 2–3 salas clave secundarias sin guardado y 1 sala clave final (escalera o elevador); sala de The Mother en el piso 3, sin guardado. Modifica D-15. Motivo: Adaptación | Christian Coronel Palma |
+| 2026-10-07 | D-34 Configuraciones | Completa: 8–12 procedurales + 2–3 secundarias + 1 final por piso (~45–60 min). Showcase: 6–8 procedurales + 2 secundarias + 1 final por piso (~30 min), con enemigos y recursos escalados en proporción. Motivo: Adaptación (misma estructura en ambas duraciones) | Christian Coronel Palma |
+| 2026-10-07 | D-35 Contador de 5 muertes | Solo lo reinicia llegar a la sala final del piso 2; las muertes del primer intento no cuentan; Reiniciar y salir con costo suman. Modifica D-08. Motivo: Vulnerabilidad Constante y Adaptación | Christian Coronel Palma |
+| 2026-10-07 | D-36 Llaves | 1 llave obligatoria por piso que abre la sala final y llaves opcionales para atajos o salas con recursos; objetos clave de 1 casilla que se consumen al usarse; la llave obligatoria siempre es alcanzable antes de la puerta de la sala final. Motivo: Adaptación y Decisiones con Consecuencias (la llave compite por espacio) | Christian Coronel Palma |
+| 2026-10-07 | D-37 Valores iniciales | Valores iniciales de munición, disparos, velocidad por salud, resistencia, máximos por casilla, enemigos por piso, atención, enemigo reciclado y gracia al cargar (ver [[02 - Mecánicas]] y [[06 - Economía y Recursos]]). Motivo: Vulnerabilidad Constante y Decisiones con Consecuencias (escasez medible) | Christian Coronel Palma |
+| 2026-10-07 | D-38 Tutorial | Integrado en las primeras salas del piso 1, fijas solo en el primer intento; desde el segundo intento esas salas son procedurales. Motivo: Adaptación (se aprende una vez y luego el escenario cambia) | Christian Coronel Palma |
+| 2026-10-07 | D-39 Presentación | Cinemática completa de reconstrucción una sola vez; cinemática corta saltable en cada muerte o reinicio; transición de piso de mínimo 5 s sin pantalla de carga; menú principal Continuar, Nueva partida, Opciones, Créditos, Salir; créditos saltables tras verlos una vez. Motivo: Adaptación | Christian Coronel Palma |
+| 2026-10-07 | D-40 Premisa | La esposa del protagonista está desaparecida, no muerta: "Un hombre busca la última pista que su esposa desaparecida le dejó, pero queda atrapado en un ciclo sin fin del que ahora debe salir."; qué le ocurrió y su relación con la instalación y The Mother siguen Por definir. Modifica D-13. Motivo: Adaptación (descubrimiento progresivo) y horror cósmico por información incompleta | Christian Coronel Palma |
 
 
 > **Navegación:** [[00 - Índice]] · ← [[02 - Referencias e Inspiración]] · [[04 - Historial de Versiones]] →

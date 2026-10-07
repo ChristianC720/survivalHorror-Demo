@@ -109,9 +109,11 @@ No se requerirá conexión permanente a Internet para jugar.
 
 ## Sesión de juego
 
-**Duración esperada de una sesión:** **Por definir.** Se busca ofrecer una experiencia mínima de 10 minutos por sesión con tutorial incluido.
+**Duración esperada de una sesión:** ~10 minutos como mínimo por sesión, con tutorial incluido (valor inicial, sujeto a balance). El autoguardado de la sala clave final de los pisos 1 y 2 permite cerrar el juego y continuar después (D-30).
 
-**Duración total estimada del juego:** **Por definir.** Se busca ofrecer una experiencia completa de al menos 30 minutos.
+**Duración total estimada del juego:** ~45–60 minutos en la configuración completa (3 pisos; D-33, D-34) (valor inicial, sujeto a balance).
+
+**Duración en la configuración de showcase:** ~30 minutos, con menos salas por piso y enemigos y recursos escalados en proporción, para eventos de presentación (D-34) (valor inicial, sujeto a balance). El detalle de ambas configuraciones se documenta en [[02 - Mecánicas]] (M-15).
 
 ## Modelo de distribución
 

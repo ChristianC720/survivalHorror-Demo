@@ -20,7 +20,7 @@ Heartbeat es una experiencia de Survival Horror centrada en la supervivencia, la
 
 ## Fantasía del jugador
 
-Le estamos permitiendo convertirse en un hombre que busca la última pista que le dejó su esposa fallecida y que, atrapado en un ciclo sin fin dentro de un entorno hostil que no termina de comprender del todo y que constantemente representa una amenaza, debe sobrevivir y encontrar la forma de salir.
+Le estamos permitiendo convertirse en un hombre que busca la última pista que le dejó su esposa desaparecida y que, atrapado en un ciclo sin fin dentro de un entorno hostil que no termina de comprender del todo y que constantemente representa una amenaza, debe sobrevivir y encontrar la forma de salir.
 ## Propuesta de valor
 
 El videojuego busca ofrecer una experiencia de Survival Horror en cada escenario, donde el jugador no pueda depender completamente de memorizarlo debido a la generación procedural y las constantes amenazas que lo rodean.

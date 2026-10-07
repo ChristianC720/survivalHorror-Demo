@@ -10,12 +10,12 @@ Esta ficha identifica el proyecto de forma rápida. Debe permitir que alguien qu
 | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Nombre del proyecto**      | Por Definir <!-- Nombre oficial o nombre temporal -->                                                                                          |
 | **Nombre clave**             | Heartbeat                                                                                                                                      |
-| **Versión del GDD**          | 0.3.0                                                                                                                                          |
+| **Versión del GDD**          | 0.4.1                                                                                                                                          |
 | **Estado del proyecto**      | Concepto <!-- / Preproducción / Producción / Pruebas / Publicado -->                                                                           |
 | **Equipo**                   | Victor Gabriel Alvarado Chay<br>Christian Coronel Palma<br>Lenin Ramón López Córdoba<br>Brian Iván Navarrete Canché<br>Lian Daniel Sierra Sosa |
 | **Responsable del proyecto** | Christian Coronel Palma                                                                                                                        |
 | **Fecha de inicio**          | 2026-09-25                                                                                                                                     |
-| **Última actualización**     | 2026-10-06                                                                                                                                     |
+| **Última actualización**     | 2026-10-07                                                                                                                                     |
 | **Repositorio**              | [Repositorio Demo](https://github.com/ChristianC720/survivalHorror-Demo)                                                                       |
 
 ## Identidad del videojuego
@@ -42,7 +42,7 @@ Esta ficha identifica el proyecto de forma rápida. Debe permitir que alguien qu
 **Tipo de cámara:**  Cámara Dinámica
 **¿Puede cambiar durante el juego?:**  Sí. Over the Shoulder (Tercera persona) es la vista por defecto. El jugador puede activar manualmente una vista isométrica de reconocimiento, que corresponde a las cámaras de seguridad de The Mother y solo está disponible en salas con cámara activa (ver [[02 - Mecánicas]]).
 
-**Justificación de diseño:** El videojuego utiliza Over the Shoulder como perspectiva principal para preservar incertidumbre, escala y tensión durante la exploración y el combate. El jugador puede activar manualmente una vista isométrica secundaria de reconocimiento, accediendo desde el terminal de su brazo a las cámaras de seguridad de la instalación, para obtener una mejor comprensión espacial del entorno a cambio de un costo: debe permanecer quieto o caminar muy lento y la vista se corta al recibir daño o cuando algún enemigo entra en alerta. Esta vista no proporciona información omnisciente: enemigos y elementos relevantes solo son visibles dentro del campo de la cámara de seguridad, con ruido y retraso en la imagen. El modo isométrico no indica que una zona sea segura y las amenazas continúan activas mientras se utiliza.
+**Justificación de diseño:** El videojuego utiliza Over the Shoulder como perspectiva principal para preservar incertidumbre, escala y tensión durante la exploración y el combate. El jugador puede activar manualmente una vista isométrica secundaria de reconocimiento, accediendo desde el terminal de su brazo a las cámaras de seguridad de la instalación, para obtener una mejor comprensión espacial del entorno a cambio de un costo: debe permanecer quieto o caminar muy lento y la imagen se degrada cuando algún enemigo cercano está en búsqueda y la vista se corta al recibir daño o cuando algún enemigo cercano entra en caza (D-23). Esta vista no proporciona información omnisciente: enemigos y elementos relevantes solo son visibles dentro del campo de la cámara de seguridad, con ruido y retraso en la imagen. El modo isométrico no indica que una zona sea segura y las amenazas continúan activas mientras se utiliza.
 
 **Clasificaciones y etiquetas adicionales:**  
 - Salas clave fijas
@@ -65,7 +65,7 @@ Esta ficha identifica el proyecto de forma rápida. Debe permitir que alguien qu
 **Respuesta:**
 Survival Horror con elementos Roguelite en el que el jugador debe explorar escenarios generados proceduralmente, administrar recursos y sobrevivir a criaturas más fuertes que él. Combinando una cámara en tercera persona sobre el hombro con el acceso limitado a las cámaras de vigilancia isométricas de la instalación.
 
-**Premisa:** Un hombre busca la última pista que su esposa fallecida le dejó, pero queda atrapado en un ciclo sin fin del que ahora debe salir.
+**Premisa:** Un hombre busca la última pista que su esposa desaparecida le dejó, pero queda atrapado en un ciclo sin fin del que ahora debe salir.
 
 ## Estado actual
 
@@ -96,5 +96,6 @@ Como criterio mínimo para la demo, el jugador deberá poder:
 - Morir, reiniciar la partida y obtener una distribución diferente del escenario.
 - Alcanzar un objetivo final claramente definido.
 - Comprender, aunque sea parcialmente, la relación entre la muerte, la generación procedural y la narrativa del juego.
+- En la configuración de showcase (evento de presentación), completar el recorrido de los 3 pisos hasta The Mother en ~30 minutos, con menos salas por piso y enemigos y recursos escalados en proporción (D-34, valor inicial, sujeto a balance). La configuración completa se estima en ~45–60 minutos (ver [[03 - Público y Plataforma]]).
 
 > **Navegación:** [[00 - Índice]] · ← [[00 - Índice]] · [[02 - Visión del Juego]] →

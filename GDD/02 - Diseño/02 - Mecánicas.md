@@ -17,9 +17,9 @@ Documenta cada mecánica con suficiente detalle para que otro integrante pueda i
 | M-01 Cámara Over the Shoulder y apuntado | Demo | V | Definida |
 | M-02 Vista de vigilancia (cámaras de The Mother) | Demo | V, A, DC | Definida |
 | M-03 Bloqueo de vigilancia por detección | Demo | V | Definida |
-| M-04 Combate a distancia | Demo | V, DC | Definida (valores por balancear) |
-| M-05 Salud y estados | Demo | V, DC | Definida |
-| M-06 Resistencia y empujón | Demo | V, DC | Definida (valores por balancear) |
+| M-04 Combate a distancia | Demo | V, DC | Definida (valores iniciales D-37, sujetos a balance) |
+| M-05 Salud y estados | Demo | V, DC | Definida (valores iniciales D-37, sujetos a balance) |
+| M-06 Resistencia y empujón | Demo | V, DC | Definida (valores iniciales D-37, sujetos a balance) |
 | M-07 Inventario de 6 casillas en tiempo real | Demo | DC | Definida |
 | M-08 Interacción, recolección e investigación de documentos | Demo | A | Definida |
 | M-09 Sigilo y ruido | Demo | V, A | Definida |
@@ -28,12 +28,12 @@ Documenta cada mecánica con suficiente detalle para que otro integrante pueda i
 | M-12 Linterna | Demo | V, DC | Definida (baterías: Deseable) |
 | M-13 Hackeo por secuencias | Demo | V, DC | Definida |
 | M-14 Escape de combate y retirada | Demo | DC | Definida (sellado con consumibles: Deseable) |
-| M-15 Exploración vertical por pisos | Demo | A | Definida |
+| M-15 Exploración vertical por pisos | Demo | A, DC | Definida (3 pisos, D-33) |
 | M-16 Reaparición por reconstrucción y terminal del brazo | Demo | A | Definida |
 | M-17 Fallas de la máquina | Deseable | A, DC | Definida |
 | M-18 Degradación por muerte y final de 5 muertes | Deseable | A | Definida |
 | M-19 Jefe final: The Mother | Demo | V, A, DC | Definida (duración por balancear) |
-| M-20 Reciclaje de enemigos y remate | Demo | V, DC | Definida (valores por balancear) |
+| M-20 Reciclaje de enemigos y remate | Demo | V, DC | Definida (valores iniciales D-37, sujetos a balance) |
 
 ## Mecánicas principales
 
@@ -82,30 +82,44 @@ stateDiagram-v2
     [*] --> OTS
     OTS --> Apuntando: apuntar
     Apuntando --> OTS: soltar apuntado
-    OTS --> Vigilancia: activar (solo sala con cámara y sin alerta)
+    OTS --> Vigilancia: activar (solo sala con cámara y sin enemigos en caza)
+    Vigilancia --> Vigilancia_Degradada: enemigo en búsqueda (D-23)
+    Vigilancia_Degradada --> Vigilancia: ningún enemigo en búsqueda
     Vigilancia --> OTS: salir / correr, apuntar o empujar / recibir daño
-    Vigilancia --> OTS_Bloqueado: enemigo en alerta (ver M-10)
-    OTS --> OTS_Bloqueado: detectado (enemigo en alerta)
-    OTS_Bloqueado --> OTS: perder alerta / matar / cruzar puerta
+    Vigilancia_Degradada --> OTS: salir / correr, apuntar o empujar / recibir daño
+    Vigilancia --> OTS_Bloqueado: enemigo en caza (D-23)
+    Vigilancia_Degradada --> OTS_Bloqueado: enemigo en caza (D-23)
+    OTS --> OTS_Bloqueado: detectado (enemigo en caza)
+    OTS_Bloqueado --> OTS: perder la caza / matar / cruzar puerta
 ```
 
 ### M-02: Vista de vigilancia (cámaras de The Mother)
 
 - **Propósito:** Ofrecer lectura táctica del entorno a cambio de un costo, representando que el jugador ve por los ojos de la máquina.
     
-- **Activación:** El jugador activa la vista desde el terminal de su brazo en una sala con cámara de seguridad activa y sin enemigos en alerta.
+- **Activación:** El jugador activa la vista desde el terminal de su brazo en una sala con cámara de seguridad activa y sin enemigos en caza (D-23).
     
 - **Reglas:**
     
-    - Solo está disponible en salas con cámara activa; algunas salas no tienen cámara. El generador garantiza un mínimo de salas con cámara por intento (cantidad por definir).
+    - Solo está disponible en salas con cámara activa; algunas salas no tienen cámara. **Cobertura (D-25):** todas las salas clave (secundarias, finales y la sala del jefe) tienen cámara, más ~1 de cada 3 salas procedurales (valor inicial, sujeto a balance). En la sala del jefe, las cámaras se vuelven hostiles durante la fase 2 (M-19).
         
     - La imagen se presenta en vista isométrica con ruido CRT y un retraso de ~0.3 s (valor inicial, sujeto a balance).
+        
+    - **Señal escalonada (D-23):** la calidad de la señal depende del estado de alerta más alto (M-10) de los enemigos dentro del alcance de M-03:
+        
+        | Estado de alerta | Señal |
+        |---|---|
+        | Sin alerta o **sospecha** | Sin cambios |
+        | **Búsqueda** | Degradada: más ruido CRT y más retraso que la señal base |
+        | **Caza** | Se corta y queda bloqueada (M-03) |
+        
+    - **Atención de The Mother (D-24):** mientras la vista está activa se llena un medidor **oculto** (sin barra en pantalla) en ~5 s de uso; sin usar la vista, baja en ~15 s (valores iniciales, sujetos a balance). Al llenarse, los enemigos cercanos pasan a sospecha y luego a búsqueda hacia la posición del jugador. El jugador lo percibe por la degradación de la señal.
         
     - Muestra únicamente lo que cubre la cámara de la sala y un solo piso a la vez.
         
     - Mientras está activa, el personaje solo puede permanecer quieto o caminar muy lento. Correr, apuntar o empujar devuelven la vista a OTS.
         
-    - Se corta al recibir daño o cuando un enemigo entra en alerta (umbral definido en M-10) con el mismo alcance que M-03: dentro de la sala o en el área cercana con ruta de persecución.
+    - Se corta al recibir daño o cuando un enemigo entra en caza (en alerta = caza, D-23) con el mismo alcance que M-03: dentro de la sala o en el área cercana con ruta de persecución.
         
     - No indica que una zona sea segura: las amenazas continúan activas mientras se utiliza.
         
@@ -121,41 +135,47 @@ stateDiagram-v2
     
 - **Recompensa:** Comprensión espacial de la sala, ubicación aproximada de enemigos y objetos visibles para la cámara, y planificación de rutas.
     
-- **Penalización:** El personaje queda casi inmóvil y expuesto; la información es parcial y retrasada.
+- **Penalización:** El personaje queda casi inmóvil y expuesto; la información es parcial y retrasada; el uso prolongado atrae a los enemigos cercanos (D-24).
     
-- **Interacciones con otras mecánicas:** Interactúa con M-01 Cámara OTS, M-03 Bloqueo de vigilancia, M-09 Sigilo, M-15 Exploración vertical (un piso a la vez), M-17 Fallas de la máquina y M-19 Jefe final (la vista queda hostil o inutilizable en la fase 2).
+- **Interacciones con otras mecánicas:** Interactúa con M-01 Cámara OTS, M-03 Bloqueo de vigilancia, M-09 Sigilo (la atención de The Mother cambia el estado de los enemigos cercanos), M-10 Señales diegéticas (la señal depende del estado de alerta), M-15 Exploración vertical (un piso a la vez; cobertura de las salas clave), M-17 Fallas de la máquina y M-19 Jefe final (cámaras hostiles en la fase 2, D-28).
     
 - **Casos límite:**
     
-    - Si el jugador activa la vista en el instante en que un enemigo entra en alerta, la activación se cancela y se mantiene la vista OTS.
+    - Si el jugador activa la vista en el instante en que un enemigo entra en caza, la activación se cancela y se mantiene la vista OTS.
+        
+    - Si la vista se activa con un enemigo ya en búsqueda, la señal empieza degradada.
+        
+    - Si el medidor de atención se llena mientras los enemigos cercanos ya están en búsqueda o caza, no baja su estado de alerta.
         
     - Si el personaje cruza a una sala sin cámara mientras camina lento, la señal se corta y regresa a OTS.
         
-- **Impacto en pilares:** Refuerza **Vulnerabilidad Constante** (observar deja al personaje expuesto), **Adaptación** (la cobertura cambia por intento) y **Decisiones con Consecuencias** (observar cuesta tiempo). Riesgo: si se usa con demasiada frecuencia puede eliminar la incertidumbre; se mitiga con el ruido, el retraso y las salas sin cámara.
+- **Impacto en pilares:** Refuerza **Vulnerabilidad Constante** (observar deja al personaje expuesto), **Adaptación** (la cobertura cambia por intento) y **Decisiones con Consecuencias** (observar cuesta tiempo). Riesgo: si se usa con demasiada frecuencia puede eliminar la incertidumbre; se mitiga con el ruido, el retraso, la degradación en búsqueda (D-23), la atención de The Mother (D-24) y las salas procedurales sin cámara.
 
 ### M-03: Bloqueo de vigilancia por detección
 
 - **Propósito:** Intensificar la vulnerabilidad y la claustrofobia en el momento exacto en que el jugador es descubierto, obligándolo a reaccionar desde la vista OTS.
     
-- **Activación:** Automática e inmediata cuando **al menos un enemigo** entra en alerta (umbral definido en M-10).
+- **Activación:** Automática e inmediata cuando **al menos un enemigo** entra en caza (en alerta = caza, D-23; ver M-10).
     
 - **Reglas:**
     
     - Si la vista de vigilancia está activa, se corta de inmediato y la cámara queda en OTS.
         
-    - La entrada para activar la vista de vigilancia queda inhabilitada mientras exista **al menos un enemigo en alerta** (umbral definido en M-10) dentro de la sala o área cercana.
+    - La entrada para activar la vista de vigilancia queda inhabilitada mientras exista **al menos un enemigo en caza** dentro de la sala o área cercana.
+        
+    - Los enemigos en sospecha o búsqueda no bloquean la vista; en búsqueda la señal se degrada (M-02, D-23).
         
     - El bloqueo se desactiva, y la vista de vigilancia vuelve a estar disponible, cuando:
         
         1. El jugador elimina a todos los enemigos que lo habían detectado.
             
-        2. El jugador rompe la línea de visión el tiempo suficiente para que los enemigos pierdan la alerta y vuelvan a patrulla.
+        2. El jugador rompe la línea de visión el tiempo suficiente para que los enemigos salgan de la caza.
             
         3. El jugador cruza una puerta hacia una sala adyacente.
             
 - **Entrada:** N/A.
     
-- **Estado inicial:** Vista OTS o vista de vigilancia, sin enemigos en alerta.
+- **Estado inicial:** Vista OTS o vista de vigilancia, sin enemigos en caza.
     
 - **Estado final:** Vista OTS con la vista de vigilancia bloqueada.
     
@@ -171,9 +191,11 @@ stateDiagram-v2
     
     - Si un enemigo detecta al jugador a través de una ventana o pasillo desde otra sala, el bloqueo solo se activa si ese enemigo tiene una ruta para perseguir al personaje.
         
-    - Si el jugador se libera de un agarre con el objeto defensivo (M-11), el bloqueo se mantiene mientras el enemigo siga en alerta tras el aturdimiento.
+    - Si el jugador se libera de un agarre con el objeto defensivo (M-11), el bloqueo se mantiene mientras el enemigo siga en caza tras el aturdimiento.
         
-- **Impacto en pilares:** Refuerza **Vulnerabilidad Constante** al retirar la información en el peor momento. Riesgo: si el desbloqueo es demasiado rápido, la detección pierde peso; los tiempos de pérdida de alerta deben balancearse.
+    - Si un enemigo pasa de caza a búsqueda, el bloqueo se levanta, pero si el jugador activa la vista de vigilancia, la señal aparece degradada (D-23).
+        
+- **Impacto en pilares:** Refuerza **Vulnerabilidad Constante** al retirar la información en el peor momento. Riesgo: si el desbloqueo es demasiado rápido, la detección pierde peso; los tiempos de salida de la caza deben balancearse.
 
 ### M-04: Combate a distancia
 
@@ -185,7 +207,9 @@ stateDiagram-v2
     
     - La demo incluye 1 arma de fuego con munición escasa.
         
-    - La munición ocupa casillas del inventario (M-07); el cargador y la cantidad por casilla son por definir.
+    - La munición ocupa casillas del inventario (M-07). **Cargador:** 6 balas. **Munición por casilla:** 12 balas (valores iniciales, sujetos a balance; D-37).
+        
+    - Eliminar a un enemigo requiere 3–4 disparos; a un enemigo reciclado (M-20), 2 disparos (valores iniciales, sujetos a balance; D-37).
         
     - Recargar requiere una animación durante la cual el personaje no puede disparar.
         
@@ -207,7 +231,7 @@ stateDiagram-v2
     
 - **Penalización:** Consumo de un recurso escaso y ruido que atrae a otros enemigos.
     
-- **Interacciones con otras mecánicas:** Interactúa con M-01 Cámara OTS, M-06 Resistencia, M-07 Inventario, M-09 Sigilo, M-12 Linterna y M-19 Jefe final (fase 3).
+- **Interacciones con otras mecánicas:** Interactúa con M-01 Cámara OTS, M-06 Resistencia, M-07 Inventario, M-09 Sigilo, M-12 Linterna, M-19 Jefe final (fase 3, D-28) y M-20 Reciclaje (el enemigo reciclado muere con menos disparos).
     
 - **Casos límite:**
     
@@ -227,7 +251,7 @@ stateDiagram-v2
     
     - Salud fija sin regeneración, con 3 estados visibles: **Bien**, **Herido** y **Crítico**.
         
-    - **Herido** y **Crítico** reducen la velocidad de movimiento (porcentaje por definir).
+    - **Herido** y **Crítico** reducen la velocidad de movimiento un 15% y un 30% respectivamente (valores iniciales, sujetos a balance; D-37).
         
     - Los enemigos matan en 3-4 golpes (valor inicial, sujeto a balance).
         
@@ -271,9 +295,11 @@ stateDiagram-v2
     
     - Una sola barra de resistencia se consume al correr, al empujar y al rematar con el golpe en el suelo (M-20), y se regenera automáticamente tras 3 segundos sin estas acciones (caminar no interrumpe la regeneración).
         
-    - **Correr** sirve para escapar de una mala situación, no para recorrer el mapa.
+    - **Correr** sirve para escapar de una mala situación, no para recorrer el mapa. Gasta ~10% de la resistencia por segundo (valor inicial, sujeto a balance; D-37).
         
-    - **Empujón / Golpe de culata:** aparta y aturde brevemente al enemigo, consume mucha resistencia (cantidad por definir) y no otorga protección contra el daño.
+    - **Empujón / Golpe de culata:** aparta y aturde brevemente al enemigo, consume el 35% de la resistencia (valor inicial, sujeto a balance; D-37) y no otorga protección contra el daño.
+        
+    - **Golpe en el suelo (remate, M-20):** consume el 25% de la resistencia (valor inicial, sujeto a balance; D-37).
         
     - Disparar no consume resistencia.
         
@@ -321,7 +347,13 @@ stateDiagram-v2
         
     - Equipar, usar o descartar un objeto consume un tiempo de animación de aproximadamente 1.5 segundos (valor inicial, sujeto a balance).
         
-    - El objeto defensivo (M-11), el consumible de remate (M-20), las curas y la munición ocupan casillas.
+    - El objeto defensivo (M-11), el consumible de remate (M-20), las curas, la munición y los objetos clave, incluidas las llaves (M-15), ocupan casillas.
+        
+    - **Máximo por casilla:** curas 1, objeto defensivo 1, consumible de remate 2, llave 1, munición 12 balas (valores iniciales, sujetos a balance; D-37). Los presupuestos por piso se documentan en [[06 - Economía y Recursos]].
+        
+    - **Llaves (D-36):** son objetos clave; cada llave ocupa 1 casilla y se consume al usarse en la puerta que abre (M-08).
+        
+    - Al llegar a una sala clave final de los pisos 1 y 2, el autoguardado conserva el inventario que se trae (D-30, ver [[07 - Reglas y Estados del Juego]]).
         
 - **Entrada:** `Tab` para abrir y cerrar; `Clic izquierdo` sobre una casilla para usar o equipar; `Clic derecho` sobre una casilla para descartar.
     
@@ -335,11 +367,13 @@ stateDiagram-v2
     
 - **Penalización:** Quedar indefenso a un ataque si se administra el inventario en un pasillo no despejado.
     
-- **Interacciones con otras mecánicas:** Interactúa con M-04 Combate, M-05 Salud, M-08 Interacción, M-11 Objeto defensivo, M-16 Reaparición por reconstrucción (el inventario se pierde al morir) y M-20 Reciclaje y remate (consumible de remate).
+- **Interacciones con otras mecánicas:** Interactúa con M-04 Combate, M-05 Salud, M-08 Interacción, M-11 Objeto defensivo, M-15 Exploración vertical (la llave obligatoria abre la sala final), M-16 Reaparición por reconstrucción (el inventario se pierde al morir o reiniciar) y M-20 Reciclaje y remate (consumible de remate).
     
 - **Casos límite:**
     
     - Si el inventario está lleno e intentas recoger un objeto clave, el sistema permite reemplazar un objeto del inventario por el objeto clave; si se decide no cambiar, el objeto permanece en el suelo.
+        
+    - Al morir o reiniciar se pierden las llaves junto con el resto del inventario; el piso se regenera con una llave obligatoria alcanzable nueva (D-36).
         
 - **Impacto en pilares:** Refuerza **Decisiones con Consecuencias**. Riesgo: si existen zonas totalmente seguras, el tiempo real pierde su efecto.
 
@@ -351,7 +385,11 @@ stateDiagram-v2
     
 - **Reglas:**
     
-    - Una indicación diegética o de interfaz mínima muestra que el elemento es interactivo.
+    - Una indicación diegética o de interfaz mínima muestra que el elemento es interactivo. Si un cuerpo no rematado está junto a otro elemento interactivo, gana el que está al centro de la vista (D-27, M-20).
+        
+    - **Llaves (D-36):** cada piso tiene 1 llave obligatoria que abre la puerta de la sala clave final y llaves opcionales que abren atajos o salas con recursos. Abrir una puerta con llave consume la llave (M-07). La llave obligatoria solo abre la puerta de la sala final.
+        
+    - Las salas clave secundarias contienen documentos, llaves u otros objetos clave (M-15). Los objetos clave concretos, distintos de las llaves, y el contenido de los documentos quedan **Por definir** según el lore.
         
     - Los objetos recogidos pasan al inventario si existe espacio (M-07).
         
@@ -371,11 +409,13 @@ stateDiagram-v2
     
 - **Penalización:** Exposición mientras se interactúa o se lee.
     
-- **Interacciones con otras mecánicas:** Interactúa con M-07 Inventario, M-13 Hackeo, M-15 Exploración vertical, M-16 Reaparición por reconstrucción y M-17 Fallas de la máquina.
+- **Interacciones con otras mecánicas:** Interactúa con M-07 Inventario, M-13 Hackeo, M-15 Exploración vertical (llaves y salas clave), M-16 Reaparición por reconstrucción, M-17 Fallas de la máquina y M-20 Reciclaje y remate (prioridad frente a un cuerpo).
     
 - **Casos límite:**
     
     - Si el jugador muere justo mientras lee un documento, la información se registra en el terminal del brazo antes de procesar la muerte.
+        
+    - Si el jugador intenta abrir una puerta con llave sin la llave correspondiente en el inventario, la puerta no se abre y se reproduce un sonido de cerradura bloqueada.
         
 - **Impacto en pilares:** Refuerza **Adaptación** al convertir la exploración en conocimiento. Riesgo: lecturas largas pueden romper el ritmo; los documentos deben ser breves.
 
@@ -409,7 +449,7 @@ stateDiagram-v2
     
 - **Penalización:** Avance significativamente más lento; riesgo de quedar acorralado en esquinas sin salida.
     
-- **Interacciones con otras mecánicas:** Interactúa con M-02 Vista de vigilancia (permite planificar rutas con información parcial), M-03 Bloqueo de vigilancia, M-06 Resistencia, M-10 Señales diegéticas, M-12 Linterna y M-20 Reciclaje y remate (el golpe en el suelo alerta a enemigos cercanos; el consumible de remate no).
+- **Interacciones con otras mecánicas:** Interactúa con M-02 Vista de vigilancia (permite planificar rutas con información parcial; su uso prolongado llena la atención de The Mother y pone a buscar a los enemigos cercanos, D-24), M-03 Bloqueo de vigilancia, M-06 Resistencia, M-10 Señales diegéticas, M-12 Linterna y M-20 Reciclaje y remate (el golpe en el suelo alerta a enemigos cercanos; el consumible de remate no).
     
 - **Casos límite:**
     
@@ -427,7 +467,13 @@ stateDiagram-v2
     
     - Los enemigos tienen tres estados de alerta audibles: **sospecha → búsqueda → caza**, cada uno con un sonido distinto.
         
-    - Un enemigo se considera **en alerta** (el término que usan M-02 y M-03 para cortar y bloquear la vista de vigilancia) a partir de un umbral dentro de estos estados: **Por definir** (búsqueda o caza).
+    - Un enemigo se considera **en alerta** (el término que usan M-02 y M-03 para cortar y bloquear la vista de vigilancia) cuando está en **caza** (D-23).
+        
+    - **Señal de vigilancia escalonada (D-23):** la propia señal de las cámaras es una señal diegética del estado de los enemigos: en sospecha no cambia, en búsqueda se degrada (más ruido CRT y más retraso) y en caza se corta y se bloquea (M-02, M-03).
+        
+    - **Atención de The Mother (D-24):** no tiene indicador en pantalla; el jugador la percibe porque los enemigos cercanos pasan a sospecha y búsqueda y la señal se degrada.
+        
+    - **Cámaras hostiles (D-28):** en la fase 2 del jefe, cada cámara de la sala muestra una luz roja y emite el sonido de su motor al girar (M-19).
         
     - La linterna o los ojos del enemigo indican hacia dónde mira.
         
@@ -447,7 +493,7 @@ stateDiagram-v2
     
 - **Penalización:** Interpretar mal una señal puede llevar al jugador hacia la amenaza.
     
-- **Interacciones con otras mecánicas:** Interactúa con M-03 Bloqueo de vigilancia, M-09 Sigilo, M-12 Linterna, M-18 Degradación (la distorsión no debe ocultar las señales) y M-20 Reciclaje (aviso de maquinaria antes de que un cuerpo desaparezca).
+- **Interacciones con otras mecánicas:** Interactúa con M-02 Vista de vigilancia (señal escalonada), M-03 Bloqueo de vigilancia, M-09 Sigilo, M-12 Linterna, M-15 Exploración vertical (solo los enemigos en caza siguen por la escalera, D-26), M-18 Degradación (ninguna capa de la degradación tapa estas señales, D-29), M-19 Jefe final (cámaras hostiles) y M-20 Reciclaje (aviso de maquinaria antes de que un cuerpo desaparezca).
     
 - **Casos límite:**
     
@@ -627,72 +673,115 @@ stateDiagram-v2
 
 - **Propósito:** Dar estructura al intento mediante pisos conectados sin perder la coherencia de la generación procedural.
     
-- **Activación:** Usar una escalera o un elevador dentro de una sala clave.
+- **Activación:** Usar una escalera o un elevador dentro de la sala clave final de un piso.
     
 - **Reglas:**
     
-    - Las escaleras y los elevadores existen **solo dentro de las salas clave**.
+    - **Estructura (D-33):** el intento tiene **3 pisos**. Cada piso se compone de:
         
-    - La posición de la sala clave dentro de cada piso varía por intento; el resto del piso se compone de salas procedurales.
+        | Tipo de sala | Cantidad por piso | Función | Autoguardado |
+        |---|---|---|---|
+        | Sala procedural | 8–12 | Exploración, amenazas y recursos | No |
+        | Sala clave secundaria | 2–3 | Documentos, llaves u otros objetos clave | No |
+        | Sala clave final | 1 | Escalera o elevador hacia el piso siguiente | Sí, en los pisos 1 y 2 (D-30) |
         
-    - Cada piso garantiza al menos una ruta válida hacia su sala clave.
+        En total, ~10–15 salas por piso (valores iniciales, sujetos a balance). En el piso 3, el lugar de la sala clave final lo ocupa la sala de The Mother (M-19), que no guarda la partida.
+        
+    - **Configuraciones (D-34):**
+        
+        | Configuración | Procedurales por piso | Secundarias por piso | Final por piso | Duración aproximada |
+        |---|---|---|---|---|
+        | Completa | 8–12 | 2–3 | 1 | ~45–60 min |
+        | Showcase (evento) | 6–8 | 2 | 1 | ~30 min |
+        
+        En el showcase, los enemigos y los recursos se escalan en proporción al número de salas (presupuestos en [[06 - Economía y Recursos]]).
+        
+    - **Enemigos por piso (configuración completa, D-37):** piso 1: 6–9; piso 2: 9–12; piso 3: 12–15 + The Mother. Máximo 2 enemigos activos por sala; ~1/3 de las salas quedan vacías a propósito (valores iniciales, sujetos a balance). La curva de dificultad se documenta en [[05 - Progresión]].
+        
+    - Las escaleras y los elevadores existen **solo dentro de las salas clave finales** (D-33).
+        
+    - La posición de las salas clave dentro de cada piso varía por intento; el resto del piso se compone de salas procedurales.
+        
+    - **Tutorial (D-38):** está integrado en las primeras salas del piso 1, que son fijas solo en el primer intento; desde el segundo intento esas salas son procedurales.
+        
+    - **Llaves (D-36):** la puerta de la sala clave final se abre con la llave obligatoria del piso (M-08). El generador garantiza que esa llave es alcanzable antes de la puerta de la sala final. Las llaves opcionales abren atajos o salas con recursos.
+        
+    - Cada piso garantiza al menos una ruta válida hacia su sala clave final.
         
     - El elevador puede requerir energía o hackeo (secuencia larga, M-13).
         
-    - Demo: 2 pisos + sala del jefe (valor inicial, sujeto a balance).
+    - **Autoguardado (D-30):** al llegar a la sala clave final de los pisos 1 y 2 sin enemigos en caza, la partida se autoguarda con un aviso discreto en el terminal del brazo. Si el jugador llega perseguido, el guardado espera a que la caza termine. Las salas clave secundarias y la sala de The Mother no guardan. Las reglas completas del guardado se documentan en [[07 - Reglas y Estados del Juego]].
         
-    - Llegar a una sala clave reinicia el contador de 5 muertes (M-18). Si M-18 (Deseable) no se implementa, la exploración vertical funciona igual sin contador.
+    - **Contador de muertes (D-35):** solo llegar a la sala clave final del piso 2 reinicia el contador de 5 muertes (M-18). Si M-18 (Deseable) no se implementa, la exploración vertical funciona igual sin contador.
+        
+    - **Persecución entre pisos (D-26):** por la escalera solo siguen al jugador los enemigos en caza (M-10), con un breve retraso. Por el elevador no siguen, pero los enemigos que lo perseguían esperan cerca del elevador si el jugador vuelve.
+        
+    - **Transición de piso (D-39):** usar la escalera o el elevador reproduce una cinemática de ascensor o escalera de **mínimo 5 s** que oculta la carga y muestra el aviso de autoguardado; se alarga si la carga tarda. No hay pantalla de carga.
         
     - Las pasarelas internas y los techos rotos quedan como Post-demo.
         
 - **Entrada:** `E` para usar la escalera o el elevador.
     
-- **Estado inicial:** Personaje en un piso sin haber alcanzado su sala clave.
+- **Estado inicial:** Personaje en un piso sin haber alcanzado su sala clave final.
     
 - **Estado final:** Personaje en el piso siguiente o en la sala del jefe.
     
-- **Recursos utilizados:** Tiempo; energía o hackeo para los elevadores.
+- **Recursos utilizados:** Tiempo, la llave obligatoria del piso y energía o hackeo para los elevadores.
     
-- **Recompensa:** Avance hacia el objetivo y reinicio del contador de muertes.
+- **Recompensa:** Avance hacia el objetivo, autoguardado en los pisos 1 y 2 y, en el piso 2, reinicio del contador de muertes.
     
-- **Penalización:** Las salas clave pueden exigir hackeos largos bajo amenaza.
+- **Penalización:** Las salas clave pueden exigir hackeos largos bajo amenaza; la llave obligatoria ocupa una casilla hasta usarse; la escalera no deja atrás a los enemigos en caza.
     
-- **Interacciones con otras mecánicas:** Interactúa con M-02 Vista de vigilancia (un piso a la vez), M-13 Hackeo, M-16 Reaparición por reconstrucción, M-18 Final de 5 muertes y M-19 Jefe final.
+- **Interacciones con otras mecánicas:** Interactúa con M-02 Vista de vigilancia (un piso a la vez; todas las salas clave tienen cámara, D-25), M-07 Inventario y M-08 Interacción (llaves), M-10 Señales diegéticas (estado de caza para la persecución), M-13 Hackeo, M-16 Reaparición por reconstrucción, M-18 Final de 5 muertes y M-19 Jefe final.
     
 - **Casos límite:**
     
-    - Si el jugador es perseguido al usar la escalera, el enemigo puede seguirlo (comportamiento por definir).
+    - Si el jugador es perseguido al usar la escalera, los enemigos en caza lo siguen al piso siguiente con un breve retraso; los que están en sospecha o búsqueda no lo siguen (D-26).
+        
+    - Si el jugador usa el elevador perseguido, los enemigos no lo siguen; si vuelve por el elevador, los que lo perseguían esperan cerca (D-26).
+        
+    - Si el jugador llega a la sala clave final con enemigos en caza, el autoguardado no se realiza hasta que la caza termina (D-30).
         
     - Si el elevador está sin energía y el jugador no puede hackearlo, debe existir una ruta alternativa a la fuente de energía en el mismo piso.
         
-- **Impacto en pilares:** Refuerza **Adaptación**: la ruta cambia por intento, pero la estructura es comprensible. Riesgo: si la sala clave queda siempre cerca del inicio, el piso pierde tensión; el generador debe imponer una distancia mínima (por definir).
+- **Impacto en pilares:** Refuerza **Adaptación** (la ruta y la posición de las salas clave cambian por intento, pero la estructura es comprensible) y **Decisiones con Consecuencias** (elegir escalera o elevador cambia quién sigue al jugador; las llaves compiten por espacio). Riesgo: si la sala clave final queda siempre cerca del inicio, el piso pierde tensión; el generador debe imponer una distancia mínima (**Por definir**, no cubierta por D-23 a D-39).
+
+**Estructura del intento:**
 
 ```mermaid
 flowchart TD
-    R[Reaparición] --> P1[Piso 1 procedural]
-    P1 --> K1[Sala clave 1: escalera / elevador]
-    K1 --> P2[Piso 2 procedural]
-    P2 --> K2[Sala clave 2: escalera / elevador]
-    K2 --> M[Sala de The Mother]
-    M --> V[Victoria: revelación de la criatura]
-    P1 -. muerte .-> R
-    P2 -. muerte .-> R
-    M -. muerte .-> R
+    I[Introducción + cinemática completa de reconstrucción] --> T[Piso 1: salas de tutorial fijas solo en el primer intento]
+    T --> P1[Piso 1: procedurales + secundarias + llave]
+    P1 --> F1[Sala final 1: autoguardado]
+    F1 -->|cinemática ≥5 s| P2[Piso 2]
+    P2 --> F2[Sala final 2: autoguardado + reinicia contador]
+    F2 -->|cinemática ≥5 s| P3[Piso 3]
+    P3 --> B[Sala de The Mother, sin guardado]
+    B --> V[Victoria: revelación]
+    P1 & P2 & P3 & B -. muerte o Reiniciar .-> R[Cinemática corta: caída del tanque] --> P1
 ```
 
 ### M-16: Reaparición por reconstrucción y terminal del brazo
 
 - **Propósito:** Convertir el fracaso del jugador en conocimiento útil, integrando la muerte al ciclo de juego y a la narrativa.
     
-- **Activación:** Automática al morir el personaje.
+- **Activación:** Automática al morir el personaje, o al elegir "Reiniciar" en el menú de pausa (D-32).
     
 - **Reglas:**
     
-    - Al morir, el personaje se reconstruye en el punto de reaparición (ciclo de muerte y reconstrucción).
+    - Al morir, el personaje se reconstruye en el punto de reaparición, al inicio del ciclo en el piso 1 (ciclo de muerte y reconstrucción). El autoguardado de la sala final (D-30) no cambia el punto de reaparición: solo sirve para continuar después de salir del juego o de un fallo (ver [[07 - Reglas y Estados del Juego]]).
+        
+    - **Cinemática completa de reconstrucción (D-39):** se reproduce una sola vez, al terminar la introducción, y muestra por primera vez todo el proceso de reconstrucción. Su contenido queda **Por definir** según el lore.
+        
+    - **Cinemática corta (D-39):** en cada muerte o reinicio, el personaje cae del tanque con sonido de maquinaria. Refleja la degradación acumulada (M-18) y se puede saltar (ver [[04 - Controles]]).
+        
+    - **Reiniciar (D-32):** opción del menú de pausa. Regresa al inicio del ciclo, cuenta como muerte (suma al contador y a la degradación, M-18) y conserva el terminal del brazo. El inventario se pierde igual que al morir.
+        
+    - **Nueva partida (D-32):** opción del menú principal. Borra todo el progreso, incluido el terminal del brazo, y pide confirmación.
         
     - La muerte elimina todos los objetos del inventario.
         
-    - Se regenera la distribución de las salas procedurales y de los recursos; las salas clave se mantienen pero cambian de posición.
+    - Se regenera la distribución de las salas procedurales y de los recursos; las salas clave se mantienen pero cambian de posición. Desde el segundo intento, las salas del tutorial también son procedurales (D-38).
         
     - El **terminal del brazo** es la base de datos persistente. Conserva entre muertes: bestiario, lore, documentos (incluidos los de la esposa) y reglas del sistema (por ejemplo, cómo se forma un código, no su valor), además de las fallas de la máquina (M-17).
         
@@ -702,9 +791,9 @@ flowchart TD
         
     - Lo que persiste no hace más fuerte al personaje, solo más informado.
         
-- **Entrada:** N/A (la base de datos se consulta con `Tab`, junto al inventario).
+- **Entrada:** N/A para la muerte. La base de datos se consulta con `Tab`, junto al inventario; "Reiniciar" se elige en el menú de pausa (`Esc`); la cinemática corta se salta con `Espacio` (ver [[04 - Controles]]).
     
-- **Estado inicial:** Personaje muerto.
+- **Estado inicial:** Personaje muerto o reinicio solicitado desde el menú de pausa.
     
 - **Estado final:** Personaje reconstruido en el punto de reaparición con el inventario vacío y la base de datos actualizada.
     
@@ -712,7 +801,7 @@ flowchart TD
     
 - **Recompensa:** Conocimiento persistente, consejos y avance en la historia.
     
-- **Penalización:** Pérdida del inventario y del progreso en el piso actual.
+- **Penalización:** Pérdida del inventario y del progreso del intento: se regresa al inicio del ciclo en el piso 1. Reiniciar tiene el mismo costo que morir.
     
 - **Interacciones con otras mecánicas:** Interactúa con M-05 Salud, M-07 Inventario, M-08 Documentos, M-15 Exploración vertical, M-17 Fallas de la máquina, M-18 Degradación y M-19 Jefe final.
     
@@ -721,6 +810,10 @@ flowchart TD
     - Si el jugador muere mientras se registra información, esta se guarda antes de procesar la muerte.
         
     - Morir en la sala de The Mother regresa al inicio del ciclo.
+        
+    - Reiniciar durante el primer intento regresa al inicio del ciclo, pero no suma al contador de muertes (D-35).
+        
+    - Al morir o reiniciar se descarta el autoguardado de la sala final; el siguiente se crea al llegar de nuevo a una sala clave final (D-30).
         
 - **Impacto en pilares:** Refuerza **Adaptación**. Riesgo: si la información persistente resuelve los pisos, se pierde la incertidumbre; solo persisten reglas, no valores.
 
@@ -766,17 +859,25 @@ flowchart TD
 
 - **Propósito:** Dar peso narrativo a cada muerte y establecer un final secundario de derrota.
     
-- **Activación:** Automática al morir.
+- **Activación:** Automática al morir, al elegir "Reiniciar" (D-32) o al salir del juego con costo (D-31).
     
 - **Reglas:**
     
-    - Cada muerte aumenta una degradación estética acumulativa: mayor corrupción CRT, distorsión de voz y deterioro de los diálogos del protagonista.
+    - Cada muerte aumenta una degradación estética acumulativa: mayor corrupción CRT, distorsión de voz y deterioro de los diálogos del protagonista. La cinemática corta de reconstrucción refleja la degradación acumulada (M-16, D-39).
+        
+    - **La degradación solo se acumula y nunca se reinicia (D-29)**, ni siquiera al llegar a una sala clave.
+        
+    - **Tope visual (D-29):** ninguna capa de la degradación tapa la interfaz crítica ni las señales diegéticas de M-10.
         
     - La degradación es solo estética y no afecta la jugabilidad.
         
-    - Si el jugador muere 5 veces consecutivas sin llegar a una sala clave, se activa el final de **"Disolución de identidad"**.
+    - Si el jugador acumula 5 muertes sin llegar a la sala clave final del piso 2, se activa el final de **"Disolución de identidad"** (D-35).
         
-    - Llegar a una sala clave reinicia el contador.
+    - **Reinicio del contador (D-35):** solo lo reinicia llegar a la sala clave final del piso 2. Las salas clave secundarias y la sala final del piso 1 no lo reinician.
+        
+    - **Qué suma al contador y a la degradación:** cada muerte, "Reiniciar" (D-32) y salir del juego con costo (D-31; ver [[07 - Reglas y Estados del Juego]]). Un cierre inesperado o un fallo del juego no cuenta.
+        
+    - **Primer intento (D-35):** las muertes del primer intento (el del tutorial) no suman al contador. La misma excepción se aplica a Reiniciar y a salir del juego durante el primer intento.
         
 - **Entrada:** N/A.
     
@@ -784,35 +885,43 @@ flowchart TD
     
 - **Estado final:** Degradación acumulada; final de "Disolución de identidad" si el contador llega a 5.
     
-- **Recursos utilizados:** Contador de muertes consecutivas.
+- **Recursos utilizados:** Contador de muertes desde el último reinicio del contador.
     
 - **Recompensa:** Ninguna mecánica; refuerza la narrativa del ciclo.
     
-- **Penalización:** Final de derrota al alcanzar 5 muertes consecutivas.
+- **Penalización:** Final de derrota al alcanzar 5 muertes sin llegar a la sala clave final del piso 2.
     
-- **Interacciones con otras mecánicas:** Interactúa con M-10 Señales diegéticas, M-15 Exploración vertical y M-16 Reaparición por reconstrucción.
+- **Interacciones con otras mecánicas:** Interactúa con M-10 Señales diegéticas (tope visual), M-15 Exploración vertical (sala final del piso 2) y M-16 Reaparición por reconstrucción (cinemática corta y Reiniciar).
     
 - **Casos límite:**
     
-    - Si la degradación se reinicia o no al llegar a una sala clave está **Por definir**.
+    - Llegar a la sala clave final del piso 2 reinicia el contador, pero no la degradación (D-29).
         
-- **Impacto en pilares:** Refuerza **Adaptación** y el terror basado en sistemas. Riesgo: la corrupción visual no debe ocultar información crítica ni las señales diegéticas.
+    - Si el jugador muere en el piso 3 o en la sala de The Mother después de reiniciar el contador, regresa al inicio del ciclo y esa muerte es la primera del contador reiniciado.
+        
+    - Si la quinta muerte se produce por "Reiniciar" o por salir con costo, también activa el final (D-31, D-32, D-35).
+        
+- **Impacto en pilares:** Refuerza **Adaptación** y el terror basado en sistemas; el contador mantiene la **Vulnerabilidad Constante** a lo largo de varios intentos (D-35). Riesgo: la corrupción visual no debe ocultar información crítica ni las señales diegéticas; se mitiga con el tope visual (D-29).
 
 ### M-19: Jefe final: The Mother
 
 - **Propósito:** Cerrar la demo con un encuentro que exige las herramientas aprendidas durante el ciclo, sin introducir sistemas nuevos.
     
-- **Activación:** Entrar a la sala de The Mother, que es una sala clave fija.
+- **Activación:** Entrar a la sala de The Mother, que es una sala clave fija del piso 3 (D-33).
     
 - **Reglas:**
+    
+    - Llegar a la sala de The Mother no autoguarda la partida (D-30).
     
     - El encuentro tiene 3 fases que reutilizan mecánicas existentes; cada fase dura 1-2 min (valor inicial, sujeto a balance):
         
         1. **Hackeo de nodos bajo presión** (M-13); las fallas descubiertas (M-17) acortan las secuencias. Si M-17 (Deseable) no se implementa, la fase funciona con las secuencias de longitud original.
             
-        2. **Supervivencia y huida**; la vista de vigilancia (M-02) queda hostil o inutilizable.
+        2. **Supervivencia y huida con cámaras hostiles (D-28):** las cámaras de la sala dejan de ser una herramienta del jugador (M-02, D-16) y pasan a vigilarlo. Cada cámara muestra una luz roja y emite el sonido de su motor al girar (M-10). Si una cámara enfoca al jugador, los enemigos de la sala acuden a ese punto. El jugador se mueve entre los puntos ciegos de las cámaras.
             
-        3. **Pocos disparos a puntos débiles expuestos** (M-04) con munición limitada disponible en la sala.
+        3. **Pocos disparos a puntos débiles expuestos** (M-04). La sala contiene munición suficiente para todos los puntos débiles más 1–2 disparos de margen (valor inicial, sujeto a balance; D-28).
+            
+    - **Sin reciclaje (D-28):** en la sala de The Mother no hay reciclaje de enemigos (M-20).
             
     - Derrotarla es la condición de victoria ([[01 - Jugabilidad]]).
         
@@ -832,13 +941,15 @@ flowchart TD
     
 - **Penalización:** Morir regresa al inicio del ciclo.
     
-- **Interacciones con otras mecánicas:** Interactúa con M-02, M-04, M-05, M-06, M-13, M-16, M-17 y M-20 (si existe reciclaje en la sala está **Por definir**).
+- **Interacciones con otras mecánicas:** Interactúa con M-02 (cámaras hostiles en la fase 2), M-04, M-05, M-06, M-10 (luz roja y sonido de motor de las cámaras), M-13, M-15 (sala del piso 3), M-16, M-17 y M-20 (sin reciclaje en la sala, D-28).
     
 - **Casos límite:**
     
-    - Si el jugador llega sin munición, la sala debe proporcionar la munición mínima para la fase 3.
+    - Si el jugador llega sin munición, la sala proporciona munición para todos los puntos débiles de la fase 3 más 1–2 disparos de margen (D-28).
         
-    - El comportamiento de The Mother en la fase 2 y la forma de la vista hostil están **Por definir**.
+    - Los enemigos eliminados en la sala no se reciclan, por lo que rematarlos no es necesario (D-28).
+        
+    - El número de puntos débiles de la fase 3 queda **Por definir** (no cubierto por D-23 a D-39).
         
 - **Impacto en pilares:** Refuerza **Vulnerabilidad Constante**, **Adaptación** y **Decisiones con Consecuencias**. Riesgo documentado: la fase 3 puede volver el juego de acción; debe mantenerse corta.
 
@@ -854,20 +965,24 @@ flowchart TD
         
 - **Reglas:**
     
-    - Los enemigos eliminados siguen muertos durante el intento, pero The Mother puede reciclar cada uno **una sola vez** (D-20). Qué proporción de cuerpos recicla y el tiempo entre la muerte y el aviso están **Por definir**.
+    - Los enemigos eliminados siguen muertos durante el intento, pero The Mother puede reciclar cada uno **una sola vez** (D-20). Qué proporción de cuerpos recicla y el tiempo entre la muerte y el aviso están **Por definir** (no cubiertos por D-23 a D-39).
+        
+    - **Sin reciclaje en la sala del jefe (D-28):** los enemigos eliminados en la sala de The Mother no se reciclan.
         
     - **Aviso:** antes de desaparecer, el cuerpo vibra y emite un sonido de maquinaria (señal diegética, M-10).
         
     - **Reaparición:** el enemigo reciclado reaparece cuando el jugador sale de la sala, en otra sala del mismo piso y nunca frente al jugador.
         
-    - **Enemigo reciclado:** es más rápido, pero muere con menos golpes (valores por definir, sujetos a balance). Al ser eliminado no vuelve a reciclarse.
+    - **Enemigo reciclado:** es un 25% más rápido, pero muere con 2 disparos en lugar de 3–4 (valores iniciales, sujetos a balance; D-37). Al ser eliminado no vuelve a reciclarse.
         
     - **Remate (D-21):** evita el reciclaje de un cuerpo. Solo puede hacerse mientras el cuerpo sigue en la sala. Hay dos formas:
         
         | Opción | Costo | Tiempo | Ruido | Entrada |
         |---|---|---|---|---|
-        | Golpe en el suelo | Resistencia (cantidad por definir, M-06) | ~2 s (valor inicial, sujeto a balance) | Alerta a enemigos cercanos (M-09) | `Clic izquierdo` sin apuntar sobre un cuerpo |
-        | Consumible de remate (p. ej. combustible para incinerar) | 1 casilla del inventario (M-07) | Rápido (duración por definir) | No alerta a enemigos | `E` sobre un cuerpo |
+        | Golpe en el suelo | 25% de la resistencia (valor inicial, sujeto a balance; M-06, D-37) | ~2 s (valor inicial, sujeto a balance) | Alerta a enemigos cercanos (M-09) | `Clic izquierdo` sin apuntar sobre un cuerpo |
+        | Consumible de remate (p. ej. combustible para incinerar) | 1 casilla del inventario (M-07; hasta 2 por casilla, D-37) | Rápido (duración **Por definir**, no cubierta por D-23 a D-39) | No alerta a enemigos | `E` sobre un cuerpo |
+        
+    - **Disponibilidad del remate (D-27):** el contexto "sobre un cuerpo" se activa a ~1.5 m (valor inicial, sujeto a balance) mirando un cuerpo no rematado, también durante el combate con enemigos vivos cerca. Si hay otro elemento interactivo al lado del cuerpo (puerta, panel, escalera, elevador u objeto), gana el que está al centro de la vista. Con un cuerpo ya rematado el contexto no se activa.
         
     - El golpe en el suelo no otorga protección contra el daño (D-05).
         
@@ -897,7 +1012,7 @@ flowchart TD
         
     - **No rematar:** un enemigo más rápido vuelve a aparecer en el piso.
         
-- **Interacciones con otras mecánicas:** Interactúa con M-06 Resistencia (costo del golpe en el suelo), M-07 Inventario (casilla del consumible), M-09 Sigilo (el golpe en el suelo hace ruido; el consumible no), M-10 Señales diegéticas (aviso de maquinaria), M-14 Escape de combate (la sala de la que se huyó sigue infestada, incluidos los reciclados) y M-19 Jefe final (si existe reciclaje en la sala de The Mother está **Por definir**).
+- **Interacciones con otras mecánicas:** Interactúa con M-06 Resistencia (costo del golpe en el suelo), M-07 Inventario (casilla del consumible), M-09 Sigilo (el golpe en el suelo hace ruido; el consumible no), M-10 Señales diegéticas (aviso de maquinaria), M-08 Interacción (prioridad por el centro de la vista, D-27), M-14 Escape de combate (la sala de la que se huyó sigue infestada, incluidos los reciclados) y M-19 Jefe final (sin reciclaje en la sala de The Mother, D-28).
     
 - **Casos límite:**
     
@@ -907,7 +1022,9 @@ flowchart TD
         
     - Sin consumible de remate en el inventario, `E` sobre un cuerpo no tiene efecto.
         
-    - Cuándo se entra en el contexto "sobre un cuerpo", si sigue activo con cuerpos rematados o reciclados y qué acción tiene prioridad si el cuerpo coincide con una puerta, un panel, una escalera, un elevador o un objeto: **Por definir** (ver [[04 - Controles]]). Un cuerpo no puede bloquear la ruta garantizada hacia la sala clave (D-15, principio 9 de [[01 - Jugabilidad]]).
+    - Si el cuerpo coincide con una puerta, un panel, una escalera, un elevador o un objeto, gana el elemento que está al centro de la vista (D-27, ver [[04 - Controles]]). Así, un cuerpo no puede bloquear la ruta garantizada hacia la sala clave final: basta con centrar la vista en el otro elemento (D-33, D-36, principio 9 de [[01 - Jugabilidad]]).
+        
+    - Si el contexto se activa con el cuerpo de un enemigo reciclado o con los cuerpos de la sala del jefe, que no pueden reciclarse: **Por definir** (no cubierto por D-23 a D-39).
         
     - Si el jugador sale de la sala durante el aviso, el cuerpo desaparece y el enemigo reciclado reaparece en otra sala del mismo piso.
         
@@ -942,25 +1059,25 @@ flowchart TD
 | Mecánica | Depende de | Afecta a |
 |---|---|---|
 | M-01 Cámara OTS | — | M-02, M-04, M-06, M-12 |
-| M-02 Vista de vigilancia | M-01, M-03, M-15 | M-09, M-19 |
+| M-02 Vista de vigilancia | M-01, M-03, M-10, M-15 | M-09, M-19 |
 | M-03 Bloqueo de vigilancia | M-09, M-10 | M-02, M-14 |
-| M-04 Combate a distancia | M-01, M-07 | M-09, M-19 |
+| M-04 Combate a distancia | M-01, M-07 | M-09, M-19, M-20 |
 | M-05 Salud y estados | M-07 | M-11, M-16 |
 | M-06 Resistencia y empujón | — | M-09, M-14, M-19, M-20 |
-| M-07 Inventario | — | M-04, M-05, M-11, M-16, M-20 |
-| M-08 Interacción y documentos | M-07 | M-16, M-17 |
-| M-09 Sigilo y ruido | M-06, M-12, M-20 | M-03, M-10 |
-| M-10 Señales diegéticas | M-09 | M-03, M-18, M-20 |
+| M-07 Inventario | — | M-04, M-05, M-11, M-15, M-16, M-20 |
+| M-08 Interacción y documentos | M-07 | M-15, M-16, M-17, M-20 |
+| M-09 Sigilo y ruido | M-02, M-06, M-12, M-20 | M-03, M-10 |
+| M-10 Señales diegéticas | M-09 | M-02, M-03, M-15, M-18, M-19, M-20 |
 | M-11 Objeto defensivo | M-07 | M-03, M-05 |
 | M-12 Linterna | M-01 | M-03, M-09 |
 | M-13 Hackeo | M-17 | M-14, M-15, M-19 |
 | M-14 Escape de combate | M-06, M-13, M-20 | M-03, M-07 |
-| M-15 Exploración vertical | M-13 | M-02, M-18, M-19 |
-| M-16 Reaparición por reconstrucción | M-05 | M-07, M-17, M-18 |
+| M-15 Exploración vertical | M-07, M-08, M-10, M-13 | M-02, M-18, M-19 |
+| M-16 Reaparición por reconstrucción | M-05, M-18 | M-07, M-17, M-18 |
 | M-17 Fallas de la máquina | M-08, M-16 | M-13, M-19 |
-| M-18 Degradación y final de 5 muertes | M-15, M-16 | M-10 |
-| M-19 Jefe final | M-02, M-04, M-06, M-13, M-17, M-20 | M-16 |
-| M-20 Reciclaje y remate | M-06, M-07, M-10 | M-09, M-14, M-19 |
+| M-18 Degradación y final de 5 muertes | M-15, M-16 | M-10, M-16 |
+| M-19 Jefe final | M-02, M-04, M-06, M-10, M-13, M-15, M-17, M-20 | M-16 |
+| M-20 Reciclaje y remate | M-04, M-06, M-07, M-08, M-10 | M-09, M-14, M-19 |
 
 
 > **Navegación:** [[00 - Índice]] · ← [[01 - Jugabilidad]] · [[03 - Sistemas]] →

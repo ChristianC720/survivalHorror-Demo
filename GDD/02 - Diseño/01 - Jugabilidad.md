@@ -127,7 +127,7 @@ La generación procedural deberá producir suficiente variación para evitar que
 
 A nivel de jugabilidad, un intento exitoso deberá requerir que el jugador alcance y complete un objetivo final después de sobrevivir al recorrido del escenario.
 
-La condición de victoria de la demo es **derrotar a The Mother**, el jefe final. Para llegar a ella, el jugador debe atravesar los pisos del escenario (2 pisos en la demo, valor inicial, sujeto a balance) y alcanzar su sala, que es una sala clave fija. El encuentro consta de 3 fases que reutilizan mecánicas existentes: hackeo de nodos bajo presión, supervivencia y huida, y pocos disparos a puntos débiles expuestos (ver [[02 - Mecánicas]]).
+La condición de victoria de la demo es **derrotar a The Mother**, el jefe final. Para llegar a ella, el jugador debe atravesar los 3 pisos del escenario y alcanzar su sala, que es una sala clave fija del piso 3 sin autoguardado (D-33). Cada piso combina salas procedurales, salas clave secundarias y una sala clave final con la escalera o el elevador al piso siguiente; su composición en la configuración completa y en la de showcase se documenta en [[02 - Mecánicas]] (M-15). El encuentro consta de 3 fases que reutilizan mecánicas existentes: hackeo de nodos bajo presión, supervivencia y huida, y pocos disparos a puntos débiles expuestos (ver [[02 - Mecánicas]]).
 
 Al ser derrotada, The Mother revela que existe algo más (la criatura lovecraftiana que es el laboratorio), pero no puede explicarlo.
 
@@ -152,7 +152,9 @@ Como consecuencia:
 
 Otras condiciones de fracaso podrán existir únicamente si aportan valor al diseño.
 
-Existe además un final secundario de derrota: si el jugador muere 5 veces consecutivas sin llegar a una sala clave, se activa el final de "Disolución de identidad". Llegar a una sala clave reinicia el contador. Cada muerte también provoca una degradación estética acumulativa (mayor corrupción CRT, distorsión de voz y deterioro de los diálogos del protagonista) que no afecta la jugabilidad. El detalle de estas reglas se documenta en [[02 - Mecánicas]].
+"Reiniciar" desde el menú de pausa también finaliza el intento y cuenta como muerte (D-32). Salir del juego durante una alerta o caza cuenta como muerte completa, y salir con calma fuera de una sala clave final ya guardada suma una muerte al contador y a la degradación, aunque al volver se continúa desde la sala clave final autoguardada (D-31). El detalle de estas reglas se documenta en [[07 - Reglas y Estados del Juego]].
+
+Existe además un final secundario de derrota: si el jugador acumula 5 muertes sin llegar a la sala clave final del piso 2, se activa el final de "Disolución de identidad". Solo llegar a la sala clave final del piso 2 reinicia el contador; las demás salas clave no lo reinician. Las muertes del primer intento (el del tutorial) no cuentan, y "Reiniciar" y salir con costo suman al contador (D-35). Cada muerte también provoca una degradación estética acumulativa (mayor corrupción CRT, distorsión de voz y deterioro de los diálogos del protagonista) que no afecta la jugabilidad, solo se acumula y nunca se reinicia (D-29). El detalle de estas reglas se documenta en [[02 - Mecánicas]].
 
 Los estados de muerte, reconstrucción, victoria y final de disolución, con sus transiciones, se documentan en [[07 - Reglas y Estados del Juego]].
 
@@ -296,7 +298,7 @@ La perspectiva Over the Shoulder es la vista por defecto. La vista isométrica d
 - Visualmente claros.
 - Funcionales para la acción que se está realizando.
 
-El cambio no debe desorientar al jugador ni modificar arbitrariamente las reglas de control. Cuando la vista de vigilancia se corta o se bloquea (al recibir daño o con algún enemigo en alerta), el jugador regresa a Over the Shoulder con el control completo del personaje.
+El cambio no debe desorientar al jugador ni modificar arbitrariamente las reglas de control. Cuando la vista de vigilancia se corta o se bloquea (al recibir daño o con algún enemigo cercano en caza; ver D-23 en [[02 - Mecánicas]]), el jugador regresa a Over the Shoulder con el control completo del personaje.
 
 ### 6. La información debe ser legible:
 

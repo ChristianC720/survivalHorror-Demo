@@ -1,31 +1,21 @@
-# Pendientes por definir — GDD v0.2.0
+# Pendientes por definir — GDD v0.4.0
 
-Puntos abiertos que quedaron en el GDD después de la corrección de Mecánicas. Ninguno bloquea la v0.2.0, pero varios afectan el balance o la implementación.
+Puntos abiertos después del Bloque 3 (v0.4.0, 2026-10-07). Los Bloques A a F quedaron cerrados con las decisiones D-23..D-39 (ver `10 - Referencia/03 - Registro de Decisiones.md`). Solo quedan el contenido y lore (Bloque G) y los controles.
 
-## Decisiones de diseño abiertas
+## Bloque G — Contenido y lore
+
+Fuera de alcance del Bloque 3. Se quedan "Por definir" para `03 - Historia y Mundo`.
 
 | Tema | Dónde | Pregunta | Impacto |
 |---|---|---|---|
-| Umbral de "en alerta" | M-10 (afecta M-02 y M-03) | ¿Se corta y bloquea la vigilancia en **búsqueda** o en **caza**? | Búsqueda: más Vulnerabilidad, vigilancia menos útil. Caza: vigilancia más útil |
-| Cobertura de cámaras | M-02 | Mínimo de salas con cámara por intento | Disponibilidad real de la vigilancia |
-| Distancia de la sala clave | M-15 | Distancia mínima desde la reaparición | Tensión de cada piso |
-| Persecución por escaleras | M-15 | ¿Los enemigos siguen al jugador entre pisos? | Seguridad de las salas clave |
-| Munición | M-04 | Tamaño del cargador y munición por casilla | Escasez y presión del inventario |
-| Velocidad herido | M-05 | % de reducción en Herido y Crítico | Castigo del daño |
-| Costo del empujón | M-06 | Resistencia que consume | Evitar que el melee sea la solución por defecto |
-| Degradación | M-18 | ¿Se reinicia al llegar a una sala clave? | Lectura narrativa del progreso |
-| The Mother, fase 2 | M-19 | Comportamiento y forma de la vista hostil | Diseño del jefe |
-| Salir durante una alerta | Reglas y Estados (Bloque 2) | ¿Hay periodo de gracia al reanudar? | Evitar abusar de la suspensión |
-| Lore | Visión, Historia | Relación entre la esposa, la instalación y The Mother | Narrativa completa |
-| Controles | `04 - Controles.md` | Reasignación y columna de control | Accesibilidad y soporte posterior |
+| Objetos clave concretos | M-08, Economía y Recursos | ¿Qué objetos clave existen además de las llaves (D-36)? | Contenido de las salas clave secundarias |
+| Documentos de la esposa | M-08, M-16 | Contenido y distribución de los documentos | Descubrimiento narrativo entre intentos |
+| Bestiario | M-16 (terminal del brazo), `04 - Contenido/03 - Enemigos y NPC.md` | Entradas y contenido del bestiario | Aprendizaje del jugador sobre los enemigos |
+| Relación esposa / instalación / The Mother | Visión, Historia | ¿Qué vincula a la esposa con la instalación y con The Mother? | Narrativa completa y revelación final (M-19) |
+| Contenido de las cinemáticas | M-16, Reglas y Estados (D-39) | Contenido de la cinemática completa de reconstrucción y de las transiciones de piso | Presentación del ciclo de muerte |
 
-## Observaciones no bloqueantes de la revisión de v0.2.0
+## Controles
 
-1. **Alcance de "en alerta":** M-02 corta la vigilancia con cualquier enemigo en alerta, pero M-03 solo la bloquea si el enemigo está en la sala o en el área cercana con ruta de persecución. Aclarar en M-02 que usa el mismo alcance que M-03, o marcarlo "Por definir".
-2. **Mecánicas Demo que dependen de Deseables:** M-19 usa M-17 para acortar la fase 1, y M-15 reinicia el contador de M-18. Agregar en M-19 y M-15 una línea que indique que funcionan sin la Deseable, como ya hacen M-12 y M-14.
-3. **Fichas faltantes en el Registro:** D-03, D-05 y D-08 a D-12 solo tienen fila en la tabla. Para uniformidad, agregarles ficha sin contenido nuevo.
-
-## Secciones del GDD sin empezar
-
-- Carpetas 03 a 09 (Historia y Mundo, Contenido, Arte y Audio, Experiencia, Tecnología, Producción, Calidad).
-- `03 - Público y Plataforma.md`: "Interfaz legible" desmarcada hasta que exista `06 - Experiencia/02 - UI y Menús.md`.
+| Tema | Dónde | Pregunta | Impacto |
+|---|---|---|---|
+| Reasignación y columna Control | `02 - Diseño/04 - Controles.md` | Reasignación de teclas y columna de control (gamepad) | Accesibilidad y soporte posterior |
