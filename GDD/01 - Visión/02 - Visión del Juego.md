@@ -8,8 +8,12 @@ Aquí se define la **idea central** del videojuego. Esta sección funciona como 
 
 **El videojuego trata sobre:**
 
-Heartbeat es una experiencia de Survival Horror centrada en la supervivencia, la incertidumbre y las decisiones bajo presión, el jugador explora un entorno peligroso en el que la información es limitada, los recursos son escasos y enfrentarse directamente a las amenazas no siempre representa la mejor opción.
+Identity Dissolution (nombre clave Heartbeat, D-41) es una experiencia de Survival Horror centrada en la supervivencia, la incertidumbre y las decisiones bajo presión, el jugador explora un entorno peligroso en el que la información es limitada, los recursos son escasos y enfrentarse directamente a las amenazas no siempre representa la mejor opción.
  Para avanzar, debe explorar, administrar recursos limitados, decidir cuándo combatir o evitar enfrentamientos y adaptarse a escenarios que cambian después de cada muerte. Combinando elementos de Survival Horror y Roguelite, utilizando la muerte, la generación procedural y el cambio dinámico de cámara como parte de la jugabilidad y de la narrativa.
+
+**Tema central (D-44):** *Identity Dissolution trata sobre buscar sentido dentro de algo que no puede darlo. Lukas lucha por recordar a quien ama, y el laboratorio le demuestra, intento tras intento, que eso nunca importó.*
+
+**Postura:** nihilismo puro frente al horror cósmico: lo incognoscible, la indiferencia y la insignificancia. El laboratorio de Vitalis Konzern es la criatura lovecraftiana (D-46) y qué es nunca se explica, ni siquiera The Mother puede explicarlo (D-16, D-47). El anillo es el ancla del personaje, no del universo. La motivación del jugador proviene del misterio y del descubrimiento, no de la esperanza, y ningún final ofrece salvación (D-51). Ver [[01 - Premisa y Trama]] y [[02 - Mundo]].
 
 ## Experiencia deseada
 
@@ -21,6 +25,9 @@ Heartbeat es una experiencia de Survival Horror centrada en la supervivencia, la
 ## Fantasía del jugador
 
 Le estamos permitiendo convertirse en un hombre que busca la última pista que le dejó su esposa desaparecida y que, atrapado en un ciclo sin fin dentro de un entorno hostil que no termina de comprender del todo y que constantemente representa una amenaza, debe sobrevivir y encontrar la forma de salir.
+
+El jugador es Lukas, técnico de mantenimiento de Vitalis Konzern, que entra con su acceso de técnico a una instalación sellada siguiendo un mensaje de Emilia (D-50). En la primera reconstrucción la olvida (D-45): sabe que busca algo o a alguien, se frustra por no recordar a quién y solo conserva el anillo, que sabe importante. El jugador y Lukas reconstruyen juntos la verdad con documentos, algunos corruptos, mientras cada reconstrucción lo deja un poco más asimilado por el laboratorio (D-43). La fantasía no es salvarse, sino seguir buscando dentro de algo que no puede dar sentido (D-44).
+
 ## Propuesta de valor
 
 El videojuego busca ofrecer una experiencia de Survival Horror en cada escenario, donde el jugador no pueda depender completamente de memorizarlo debido a la generación procedural y las constantes amenazas que lo rodean.

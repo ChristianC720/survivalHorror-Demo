@@ -6,21 +6,25 @@ Define las reglas globales y los estados que puede atravesar el videojuego.
 
 ## Estados principales
 
-Los estados de la plantilla se adaptan al ciclo de muerte y reconstrucción de Heartbeat: **Derrota** se divide en **Muerte → Reconstrucción corta** (la muerte no termina la partida, ver [[01 - Jugabilidad]]) y **Game Over** corresponde al **Final de disolución** (M-18, Deseable). La presentación agrega tres estados propios: **Cinemática de introducción**, **Reconstrucción corta** y **Transición de piso** (D-39). El guardado se rige por el autoguardado de D-30 (regla global 3). El detalle de cada regla está en [[02 - Mecánicas]].
+Los estados de la plantilla se adaptan al ciclo de muerte y reconstrucción de Heartbeat: **Derrota** se divide en **Muerte → Reconstrucción corta** (la muerte no termina la partida, ver [[01 - Jugabilidad]]) y **Game Over** corresponde al **Final: Asimilación** (M-18, Deseable). La presentación agrega tres estados propios: **Cinemática de introducción**, **Reconstrucción corta** y **Transición de piso** (D-39). **Victoria** se amplía con el estado **Decisión final** y las 3 cinemáticas de victoria, **Relevo básico**, **Relevo completo** y **Ambiguo**, según los documentos de Emilia acumulados y la elección del jugador (D-51, M-19). El guardado se rige por el autoguardado de D-30 (regla global 3). El detalle de cada regla está en [[02 - Mecánicas]].
 
 | Estado | Estado de la plantilla | Descripción | ¿El juego corre? |
 |---|---|---|---|
 | Menú principal | Menú principal | Opciones: Continuar, Nueva partida, Opciones, Créditos y Salir (D-39; ver [[#Menú principal]]) | No |
-| Cinemática de introducción | — (estado propio) | Introducción de la partida seguida de la **cinemática completa** de reconstrucción, que muestra por primera vez todo el proceso; se reproduce una sola vez (D-39, M-16). El formato y el contenido de la introducción y de la cinemática quedan **Por definir** según el lore (`03 - Historia y Mundo`). Si se puede saltar está **Por definir** ([[04 - Controles]]) | No |
+| Cinemática de introducción | — (estado propio) | Introducción de la partida seguida de la **cinemática completa** de reconstrucción, que muestra por primera vez todo el proceso; se reproduce una sola vez (D-39, M-16). La cinemática completa es el momento del olvido de Emilia (D-45); cómo muere Lukas al final de la introducción está **Por definir** (D-50). El resto del formato y del contenido de la introducción y de la cinemática queda **Por definir** según el lore (`03 - Historia y Mundo`). Si se puede saltar está **Por definir** ([[04 - Controles]]) | No |
 | Carga y Generación | Carga | Genera las salas procedurales y la distribución de recursos del intento (presupuesto por piso, D-17; estructura de D-33) o carga el autoguardado de la última sala clave final (D-30). Si al iniciar desde el menú se muestra una pantalla de carga está **Por definir** | No |
 | Jugando | Jugando | Recorrido en tiempo real. Tiene los subestados de la tabla siguiente | Sí |
 | Pausa | Pausa | Único estado que detiene el juego durante el recorrido. Muestra el menú de pausa ([[#Menú de pausa]]) | No |
 | Transición de piso | Carga | Cinemática de ascensor o escalera de **mínimo 5 s** que oculta la carga del piso siguiente y muestra el aviso de autoguardado; se alarga si la carga tarda. No hay pantalla de carga ni se puede saltar (D-39, M-15) | No |
 | Muerte | Derrota | Fin del intento por salud en 0, por un agarre en Crítico sin objeto defensivo, por "Reiniciar" (D-32) o por salir durante alerta o caza (D-31). Se registra la información pendiente, se pierde el inventario, se descarta el autoguardado y se suma una muerte al contador y a la degradación (M-16, M-18; excepción del primer intento en la regla global 8) | No |
 | Reconstrucción corta | Derrota (continuación) | **Cinemática corta**: el personaje cae del tanque, con sonido de maquinaria; refleja la degradación acumulada y se puede saltar con `Espacio` (D-39, M-16, [[04 - Controles]]). Siempre es el mismo hombre, recompuesto con piezas ajenas (D-18). Termina en el punto de reaparición, al inicio del ciclo en el piso 1 | No |
-| Victoria | Victoria | The Mother derrotada en su sala del piso 3 (D-16, D-33). Revela que existe algo más (la criatura lovecraftiana que es el laboratorio), pero no puede explicarlo (M-19) | No |
-| Final de disolución | Game Over | Final de "Disolución de identidad": 5 muertes sin llegar a la sala clave final del piso 2 (D-35, M-18, Deseable). Si M-18 no se implementa, este estado no existe | No |
-| Créditos | Créditos | Cierre tras la Victoria o el Final de disolución, o consulta desde el menú principal. Se pueden saltar después de haberlos visto una vez (D-39) | No |
+| Victoria | Victoria | The Mother derrotada en su sala del piso 3 (D-16, D-33). Revela que existe algo más (la criatura lovecraftiana que es el laboratorio), pero no puede explicarlo (M-19, D-47). Reproduce los pasos 1 a 3 de la secuencia común de victoria (D-51): cae The Mother; los documentos corruptos y el mensaje de Emilia se completan y Lukas recupera primero el nombre de Emilia y después el suyo (D-45); **Despertar**: el latido del laboratorio se acelera (M-10). Si se puede saltar está **Por definir** | No |
+| Decisión final | Victoria (continuación, estado propio) | Solo con los **6 documentos de Emilia** acumulados en el terminal del brazo, en cualquier intento (M-08, D-51). Tras el Despertar, la sala de The Mother presenta dos elementos interactivos: la **terminal central** y la **salida**, ambos con Interactuar (`E`). No hay menú de elección; si los dos están al alcance, gana el que está al centro de la vista (D-27, M-19). Sin los 6 documentos este estado no se presenta: Lukas examina la terminal central de forma automática. Si quedan amenazas activas en la sala y si el personaje puede morir durante este estado está **Por definir** (M-19) | Sí |
+| Relevo básico | Victoria (continuación) | Cinemática de victoria sin los 6 documentos: Lukas examina la terminal central de forma automática, algo ocurre y reemplaza automáticamente a The Mother; el terminal del brazo lo conecta, porque es el último con identidad (D-51, M-19). Termina con el gancho abierto (paso 5 de D-51): solo se escucha una nueva llegada y la voz (sonido) de The Mother iniciando el protocolo. Si se puede saltar está **Por definir** | No |
+| Relevo completo | Victoria (continuación) | Cinemática de victoria con los 6 documentos al examinar la terminal central: misma base que el Relevo básico con un par de detalles distintos, entre ellos el expediente R-H-01 a R-H-06 "estado desconocido" (D-49); los demás detalles están **Por definir**. Lukas reemplaza a The Mother sabiendo más (D-51, M-19). Termina con el gancho abierto. Si se puede saltar está **Por definir** | No |
+| Ambiguo | Victoria (continuación) | Cinemática de victoria con los 6 documentos al elegir la salida: al final solo se escucha el latido; no se sabe si Lukas fue asimilado, si se convirtió en The Mother o si ocurrió otra cosa (D-51, M-19). Termina con el gancho abierto. Si se puede saltar está **Por definir** | No |
+| Final: Asimilación | Game Over | Final "Asimilación" (D-42): el laboratorio termina de asimilar al protagonista tras 5 muertes sin llegar a la sala clave final del piso 2 (D-35, M-18, Deseable). Si M-18 no se implementa, este estado no existe | No |
+| Créditos | Créditos | Cierre tras una cinemática de victoria (Relevo básico, Relevo completo o Ambiguo) o el Final: Asimilación, o consulta desde el menú principal. Se pueden saltar después de haberlos visto una vez (D-39) | No |
 
 ### Subestados de Jugando
 
@@ -80,12 +84,16 @@ No existe una opción de guardado manual (D-30).
 | Pausa | Salir (confirmado) con calma | Menú principal | Costo según la regla global 4 (D-31) |
 | Jugando | La salud llega a 0 (o agarre en Crítico sin objeto defensivo) | Muerte | Desde cualquier subestado (M-05, M-11) |
 | Muerte | Contador menor que 5, o M-18 no implementada | Reconstrucción corta | La regeneración del intento se realiza durante la cinemática. Si al saltarla la generación no ha terminado, la presentación de la espera está **Por definir** |
-| Muerte | Quinta muerte sin llegar a la sala clave final del piso 2 | Final de disolución | Solo si M-18 (Deseable) se implementa (D-35) |
+| Muerte | Quinta muerte sin llegar a la sala clave final del piso 2 | Final: Asimilación | Solo si M-18 (Deseable) se implementa (D-35) |
 | Reconstrucción corta | Cinemática terminada o saltada (`Espacio`) | Jugando (Exploración) | Punto de reaparición al inicio del ciclo en el piso 1 (M-16) |
 | Jugando | The Mother derrotada | Victoria | Fase 3 de M-19 completada |
-| Victoria | Revelación terminada | Créditos | — |
-| Final de disolución | Final terminado | Créditos | — |
-| Créditos | Créditos terminados o saltados | Menú principal | Solo se pueden saltar después de haberlos visto una vez (D-39). Qué ofrece Continuar después de la Victoria o del Final de disolución está **Por definir** |
+| Victoria | Revelación, recuperación de los nombres y Despertar terminados | Relevo básico | Menos de 6 documentos de Emilia en el terminal del brazo: Lukas examina la terminal central de forma automática (D-51) |
+| Victoria | Revelación, recuperación de los nombres y Despertar terminados | Decisión final | Los 6 documentos de Emilia acumulados en el terminal del brazo, en cualquier intento, incluido el actual (M-19, D-51) |
+| Decisión final | `E` en la terminal central | Relevo completo | — |
+| Decisión final | `E` en la salida | Ambiguo | — |
+| Relevo básico, Relevo completo o Ambiguo | Cinemática y gancho abierto terminados | Créditos | — |
+| Final: Asimilación | Final terminado | Créditos | — |
+| Créditos | Créditos terminados o saltados | Menú principal | Solo se pueden saltar después de haberlos visto una vez (D-39). Qué ofrece Continuar después de la Victoria o del Final: Asimilación está **Por definir** |
 
 ```mermaid
 stateDiagram-v2
@@ -94,7 +102,11 @@ stateDiagram-v2
     state "Carga y Generación" as Carga
     state "Transición de piso" as Transicion
     state "Reconstrucción corta" as Reconstruccion
-    state "Final de disolución" as Disolucion
+    state "Final: Asimilación" as Asimilacion
+    state "Decisión final" as Decision
+    state "Relevo básico" as RelevoBasico
+    state "Relevo completo" as RelevoCompleto
+    state "Ambiguo" as Ambiguo
     state "Créditos" as Creditos
 
     [*] --> Menu
@@ -128,11 +140,17 @@ stateDiagram-v2
     Pausa --> Menu: salir con calma (costo D-31)
     Jugando --> Muerte: salud en 0
     Muerte --> Reconstruccion: menos de 5 muertes
-    Muerte --> Disolucion: 5 muertes sin sala final del piso 2 (M-18)
+    Muerte --> Asimilacion: 5 muertes sin sala final del piso 2 (M-18)
     Reconstruccion --> Jugando: inicio del ciclo (piso 1)
     Jugando --> Victoria: The Mother derrotada
-    Victoria --> Creditos
-    Disolucion --> Creditos
+    Victoria --> RelevoBasico: Despertar, sin los 6 documentos (examen automático)
+    Victoria --> Decision: Despertar, con los 6 documentos
+    Decision --> RelevoCompleto: E en la terminal central
+    Decision --> Ambiguo: E en la salida
+    RelevoBasico --> Creditos: gancho abierto
+    RelevoCompleto --> Creditos: gancho abierto
+    Ambiguo --> Creditos: gancho abierto
+    Asimilacion --> Creditos
     Creditos --> Menu
 ```
 
@@ -164,7 +182,8 @@ La salida durante alerta o caza pasa por Muerte para aplicar su costo y termina 
 7. **Muerte (D-18):** se pierde todo el inventario y se descarta el autoguardado. Persisten el terminal del brazo (bestiario, lore, documentos y reglas del sistema) y el registro de las fallas descubiertas. The Mother parchea cada falla tras 1-2 usos o al morir (D-09, M-17), así que ninguna falla sigue utilizable en el intento siguiente; lo que persiste es el registro.
 8. **Contador y degradación (D-29, D-35):** cada muerte, "Reiniciar" y salir con costo suman al contador de muertes y a la degradación. Solo llegar a la sala clave final del piso 2 reinicia el contador; la degradación solo se acumula y nunca se reinicia. En el primer intento (el del tutorial, D-38) las muertes, "Reiniciar" y las salidas con costo no suman al contador. Un cierre inesperado no cuenta. Detalle en [[02 - Mecánicas]] (M-18).
 9. **Intento:** un intento va de la reconstrucción a la muerte o la victoria. Los enemigos eliminados siguen muertos durante el intento, pero The Mother puede reciclar cada uno una sola vez (D-20, M-20), excepto en la sala de The Mother, donde no hay reciclaje (D-28).
-10. **Victoria única:** la única condición de victoria de la demo es derrotar a The Mother en su sala del piso 3, tras atravesar los 3 pisos (D-16, D-33, [[01 - Jugabilidad]]).
+10. **Victoria única:** la única condición de victoria de la demo es derrotar a The Mother en su sala del piso 3, tras atravesar los 3 pisos (D-16, D-33, [[01 - Jugabilidad]]). La victoria siempre incluye el Despertar y termina en una de las 3 cinemáticas de victoria (Relevo básico, Relevo completo o Ambiguo); cuál se reproduce depende solo de los documentos de Emilia acumulados y de la decisión final (D-51, M-19). "Asimilación" es el único final de derrota (D-42). No existe final de Renuncia; "Salida" y "Encuentro con Emilia" quedan fuera de la demo (D-51).
+11. **Documentos para la decisión final (D-51, D-52):** solo cuentan los 6 documentos de Emilia, acumulados en el terminal del brazo en cualquier intento; los documentos de Vitalis Konzern y de The Mother no cuentan. Como persisten entre muertes (regla global 7), la elección queda disponible en todos los intentos siguientes; "Nueva partida" la retira al borrar el terminal (D-32).
 
 ## Casos especiales
 
@@ -177,11 +196,14 @@ Documenta excepciones importantes para evitar interpretaciones diferentes durant
 | Cierre inesperado o fallo del juego | No cuenta como muerte ni suma al contador o a la degradación. Al elegir Continuar se carga el último autoguardado con su gracia; si no existe, se empieza desde el inicio del ciclo. El terminal del brazo y las fallas conservan lo autoguardado al cambiar. Cómo se distingue un fallo de un cierre forzado por el jugador está **Por definir** ([[03 - Sistemas]]) | D-30, D-31 |
 | Salir con calma a mitad de piso | Suma 1 al contador y a la degradación. En el primer intento no suma al contador (regla global 8); si suma a la degradación está **Por definir** (S-08 en [[03 - Sistemas]]). Al volver se continúa desde la última sala clave final autoguardada con el estado y el inventario que se tenían al llegar; lo obtenido después se pierde. El autoguardado se conserva. Si aún no existe autoguardado, se continúa desde el inicio del ciclo | D-30, D-31, D-35 |
 | Salir en una sala clave final ya guardada | Sin costo si no hay alerta. Al volver se restaura el estado guardado al llegar a la sala, no el del momento de salir | D-30, D-31 |
-| Quinta muerte por "Reiniciar" o por salir con costo | También activa el Final de disolución (si M-18 se implementa). Con "Reiniciar", el final se reproduce de inmediato. Al salir con costo, si el final se reproduce al salir o al elegir Continuar está **Por definir** | D-31, D-32, D-35, M-18 |
+| Quinta muerte por "Reiniciar" o por salir con costo | También activa el Final: Asimilación (si M-18 se implementa). Con "Reiniciar", el final se reproduce de inmediato. Al salir con costo, si el final se reproduce al salir o al elegir Continuar está **Por definir** | D-31, D-32, D-35, M-18 |
 | Carga lenta en la Transición de piso | La cinemática se alarga hasta que la carga termina; no aparece una pantalla de carga | D-39, M-15 |
 | Morir durante el hackeo | El hackeo se cancela y el panel queda sin activar. Si el golpe es un agarre, el hackeo se cancela antes de resolver el agarre. Al morir, The Mother parchea cada falla, incluida la que estuviera en uso; persiste el registro (D-09). El intento siguiente regenera las salas, así que el panel no conserva progreso | M-11, M-13, M-17 |
 | Morir al registrar información | La información se registra en el terminal del brazo y se autoguarda antes de procesar la muerte | M-08, M-16, D-30 |
 | Morir en la sala del jefe | El personaje regresa al inicio del ciclo en el piso 1 y pierde el inventario. La sala de The Mother no autoguarda y el autoguardado de la sala final del piso 2 se descarta al morir (D-30). El contador se había reiniciado en la sala final del piso 2, así que esta muerte es la primera del contador reiniciado (D-35). El progreso de fases no persiste. No hay reciclaje en la sala (D-28) | M-16, M-18, M-19, M-20 |
+| Obtener el sexto documento de Emilia en el mismo intento en que se derrota a The Mother | Cuenta para la decisión final, porque ya está acumulado en el terminal del brazo | D-51, M-08, M-19 |
+| Terminal central y salida al alcance a la vez en la Decisión final | `E` conserva una sola función (Interactuar); se usa el elemento que está al centro de la vista | D-27, D-51, M-19 |
+| Amenazas o muerte durante la Decisión final | Si quedan amenazas activas en la sala y si el personaje puede morir en ese estado: **Por definir**. Si la pausa (`Esc`) está disponible en la Decisión final: **Por definir** | M-19 |
 
 
 > **Navegación:** [[00 - Índice]] · ← [[06 - Economía y Recursos]] · [[01 - Premisa y Trama]] →

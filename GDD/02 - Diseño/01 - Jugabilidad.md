@@ -131,6 +131,16 @@ La condición de victoria de la demo es **derrotar a The Mother**, el jefe final
 
 Al ser derrotada, The Mother revela que existe algo más (la criatura lovecraftiana que es el laboratorio), pero no puede explicarlo.
 
+Toda victoria sigue la misma secuencia (D-51): cae The Mother; los documentos corruptos y el mensaje de Emilia se completan y Lukas recupera primero el nombre de Emilia y después el suyo (D-45); llega el **Despertar**, en el que el latido del laboratorio se acelera; se reproduce la cinemática de victoria; y todo cierra con un gancho abierto. La cinemática depende de los **6 documentos de Emilia** acumulados en el terminal del brazo en cualquier intento y, si se tienen, de la decisión final entre la terminal central y la salida, sin menú de elección (reglas en M-19 de [[02 - Mecánicas]]; estados en [[07 - Reglas y Estados del Juego]]):
+
+| Condición | Cinemática de victoria | Resultado |
+|---|---|---|
+| Victoria sin los 6 documentos de Emilia | **Relevo básico** | Lukas examina la terminal central de forma automática y reemplaza a The Mother |
+| Victoria con los 6 documentos; el jugador examina la terminal central | **Relevo completo** | Lukas reemplaza a The Mother sabiendo más; incluye el expediente R-H-01 a R-H-06 "estado desconocido" (D-49); demás detalles **Por definir** |
+| Victoria con los 6 documentos; el jugador elige la salida | **Ambiguo** | Al final solo se escucha el latido; no se sabe qué fue de Lukas |
+
+Ningún final ofrece salvación (D-44). No existe final de Renuncia, y "Salida" y "Encuentro con Emilia" quedan fuera de la demo (D-51). El único final de derrota es "Asimilación" ([[#Condición de derrota]]).
+
 La condición seleccionada permite demostrar el ciclo completo de juego sin ampliar innecesariamente el alcance de la demo, ya que el encuentro no introduce sistemas nuevos.
 
 ## Condición de derrota
@@ -154,9 +164,9 @@ Otras condiciones de fracaso podrán existir únicamente si aportan valor al dis
 
 "Reiniciar" desde el menú de pausa también finaliza el intento y cuenta como muerte (D-32). Salir del juego durante una alerta o caza cuenta como muerte completa, y salir con calma fuera de una sala clave final ya guardada suma una muerte al contador y a la degradación, aunque al volver se continúa desde la sala clave final autoguardada (D-31). El detalle de estas reglas se documenta en [[07 - Reglas y Estados del Juego]].
 
-Existe además un final secundario de derrota: si el jugador acumula 5 muertes sin llegar a la sala clave final del piso 2, se activa el final de "Disolución de identidad". Solo llegar a la sala clave final del piso 2 reinicia el contador; las demás salas clave no lo reinician. Las muertes del primer intento (el del tutorial) no cuentan, y "Reiniciar" y salir con costo suman al contador (D-35). Cada muerte también provoca una degradación estética acumulativa (mayor corrupción CRT, distorsión de voz y deterioro de los diálogos del protagonista) que no afecta la jugabilidad, solo se acumula y nunca se reinicia (D-29). El detalle de estas reglas se documenta en [[02 - Mecánicas]].
+Existe además un final secundario de derrota: si el jugador acumula 5 muertes sin llegar a la sala clave final del piso 2, se activa el final **"Asimilación"** (D-42): el laboratorio termina de asimilar al protagonista. Solo llegar a la sala clave final del piso 2 reinicia el contador; las demás salas clave no lo reinician. Las muertes del primer intento (el del tutorial) no cuentan, y "Reiniciar" y salir con costo suman al contador (D-35). Cada muerte también provoca una degradación estética acumulativa (mayor corrupción CRT, distorsión del sonido vocal y deterioro de los diálogos del protagonista) que no afecta la jugabilidad, solo se acumula y nunca se reinicia (D-29). El detalle de estas reglas se documenta en [[02 - Mecánicas]].
 
-Los estados de muerte, reconstrucción, victoria y final de disolución, con sus transiciones, se documentan en [[07 - Reglas y Estados del Juego]].
+Los estados de muerte, reconstrucción, victoria y "Final: Asimilación", con sus transiciones, se documentan en [[07 - Reglas y Estados del Juego]].
 
 ## Ritmo
 

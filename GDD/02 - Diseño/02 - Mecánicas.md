@@ -31,8 +31,8 @@ Documenta cada mecánica con suficiente detalle para que otro integrante pueda i
 | M-15 Exploración vertical por pisos | Demo | A, DC | Definida (3 pisos, D-33) |
 | M-16 Reaparición por reconstrucción y terminal del brazo | Demo | A | Definida |
 | M-17 Fallas de la máquina | Deseable | A, DC | Definida |
-| M-18 Degradación por muerte y final de 5 muertes | Deseable | A | Definida |
-| M-19 Jefe final: The Mother | Demo | V, A, DC | Definida (duración por balancear) |
+| M-18 Degradación por muerte y final de 5 muertes | Deseable | A | Definida (final: Asimilación, D-42) |
+| M-19 Jefe final: The Mother | Demo | V, A, DC | Definida (duración por balancear; decisión final y 3 cinemáticas de victoria, D-51) |
 | M-20 Reciclaje de enemigos y remate | Demo | V, DC | Definida (valores iniciales D-37, sujetos a balance) |
 
 ## Mecánicas principales
@@ -389,11 +389,19 @@ stateDiagram-v2
         
     - **Llaves (D-36):** cada piso tiene 1 llave obligatoria que abre la puerta de la sala clave final y llaves opcionales que abren atajos o salas con recursos. Abrir una puerta con llave consume la llave (M-07). La llave obligatoria solo abre la puerta de la sala final.
         
-    - Las salas clave secundarias contienen documentos, llaves u otros objetos clave (M-15). Los objetos clave concretos, distintos de las llaves, y el contenido de los documentos quedan **Por definir** según el lore.
+    - Las salas clave secundarias contienen documentos, llaves u otros objetos clave (M-15). Los objetos clave concretos, distintos de las llaves, quedan **Por definir**. El texto de cada documento se redacta en [[04 - Diálogos y Narrativa]].
+        
+    - **Documentos de Emilia (D-52):** hay **6**, 2 por piso, y siempre se ubican en salas clave secundarias (también en la configuración de showcase, que tiene 2 secundarias por piso, D-34). Son los únicos que cuentan para la decisión final (M-19): "todos los documentos" = los 6 documentos de Emilia acumulados en el terminal del brazo, en cualquier intento (D-51).
+        
+    - **Documentos de Vitalis Konzern y de The Mother (D-52):** se ubican en salas procedurales como contexto del mundo y no cuentan para la decisión final.
+        
+    - **Documentos corruptos (D-45):** algunos documentos se registran corruptos, con partes del texto ilegibles, sobre todo los relacionados con la memoria de Lukas. "Corrupto" es un término distinto de las fallas de la máquina (M-17). La corrupción nunca oculta información necesaria para avanzar (rutas, reglas) y solo se completa en el desenlace (M-19). Qué documentos concretos son corruptos queda **Por definir** en `03 - Historia y Mundo`.
         
     - Los objetos recogidos pasan al inventario si existe espacio (M-07).
         
-    - Los documentos leídos, incluidos los de la esposa del protagonista, se registran en el terminal del brazo y persisten entre muertes (M-16).
+    - Los documentos leídos, incluidos los de Emilia, se registran en el terminal del brazo y persisten entre muertes (M-16). El jugador y Lukas se informan juntos con ellos (D-45).
+        
+    - **Reacción de Lukas (D-52):** al encontrar un documento, Lukas puede reaccionar con una frase corta o un murmullo, representado con sonido más texto en pantalla (sin actuación de voz).
         
     - Leer un documento no pausa el juego.
         
@@ -409,7 +417,7 @@ stateDiagram-v2
     
 - **Penalización:** Exposición mientras se interactúa o se lee.
     
-- **Interacciones con otras mecánicas:** Interactúa con M-07 Inventario, M-13 Hackeo, M-15 Exploración vertical (llaves y salas clave), M-16 Reaparición por reconstrucción, M-17 Fallas de la máquina y M-20 Reciclaje y remate (prioridad frente a un cuerpo).
+- **Interacciones con otras mecánicas:** Interactúa con M-07 Inventario, M-13 Hackeo, M-15 Exploración vertical (llaves y salas clave), M-16 Reaparición por reconstrucción, M-17 Fallas de la máquina, M-19 Jefe final (los 6 documentos de Emilia desbloquean la elección final y los documentos corruptos se completan en el desenlace) y M-20 Reciclaje y remate (prioridad frente a un cuerpo).
     
 - **Casos límite:**
     
@@ -417,7 +425,11 @@ stateDiagram-v2
         
     - Si el jugador intenta abrir una puerta con llave sin la llave correspondiente en el inventario, la puerta no se abre y se reproduce un sonido de cerradura bloqueada.
         
-- **Impacto en pilares:** Refuerza **Adaptación** al convertir la exploración en conocimiento. Riesgo: lecturas largas pueden romper el ritmo; los documentos deben ser breves.
+    - Si un documento corrupto contiene una regla del sistema o una pista de ruta, esa parte siempre es legible; solo se corrompe el contenido narrativo (D-45).
+        
+    - Qué contiene una sala clave secundaria en un intento posterior, cuando su documento de Emilia ya está registrado en el terminal del brazo: **Por definir**.
+        
+- **Impacto en pilares:** Refuerza **Adaptación** al convertir la exploración en conocimiento. Riesgo: lecturas largas pueden romper el ritmo; los documentos deben ser breves. Riesgo: si la corrupción oculta información necesaria, el jugador queda bloqueado; se mitiga con la regla de D-45.
 
 ## Mecánicas Secundarias
 
@@ -481,6 +493,8 @@ stateDiagram-v2
         
     - El latido del protagonista sube con la proximidad de una amenaza.
         
+    - **Latido del laboratorio (D-46):** sonido ambiental propio del laboratorio, con un timbre grave distinto del latido del protagonista. Nunca varía con la cercanía de enemigos: solo crece con la degradación acumulada (M-18) y en el final, donde se acelera al caer The Mother (Despertar, M-19). Así no compite con la señal de proximidad, que sigue siendo el latido del protagonista.
+        
 - **Entrada:** N/A.
     
 - **Estado inicial:** Ambiente sin señales de amenaza.
@@ -493,7 +507,7 @@ stateDiagram-v2
     
 - **Penalización:** Interpretar mal una señal puede llevar al jugador hacia la amenaza.
     
-- **Interacciones con otras mecánicas:** Interactúa con M-02 Vista de vigilancia (señal escalonada), M-03 Bloqueo de vigilancia, M-09 Sigilo, M-12 Linterna, M-15 Exploración vertical (solo los enemigos en caza siguen por la escalera, D-26), M-18 Degradación (ninguna capa de la degradación tapa estas señales, D-29), M-19 Jefe final (cámaras hostiles) y M-20 Reciclaje (aviso de maquinaria antes de que un cuerpo desaparezca).
+- **Interacciones con otras mecánicas:** Interactúa con M-02 Vista de vigilancia (señal escalonada), M-03 Bloqueo de vigilancia, M-09 Sigilo, M-12 Linterna, M-15 Exploración vertical (solo los enemigos en caza siguen por la escalera, D-26), M-18 Degradación (ninguna capa de la degradación tapa estas señales, D-29; el latido del laboratorio crece con la degradación), M-19 Jefe final (cámaras hostiles; el latido del laboratorio se acelera en el Despertar) y M-20 Reciclaje (aviso de maquinaria antes de que un cuerpo desaparezca).
     
 - **Casos límite:**
     
@@ -501,7 +515,9 @@ stateDiagram-v2
         
     - El latido no debe activarse por enemigos al otro lado de una puerta sellada.
         
-- **Impacto en pilares:** Refuerza **Adaptación** y el terror basado en sistemas. Riesgo: un latido demasiado preciso puede funcionar como radar; su intensidad debe ser aproximada.
+    - Con una degradación alta, el latido del laboratorio crece, pero no tapa el latido del protagonista ni las demás señales de alerta (tope de D-29).
+        
+- **Impacto en pilares:** Refuerza **Adaptación** y el terror basado en sistemas. Riesgo: un latido demasiado preciso puede funcionar como radar; su intensidad debe ser aproximada. Riesgo: confundir el latido del laboratorio con el del protagonista; se mitiga con un timbre distinto y con que el del laboratorio nunca dependa de la cercanía de enemigos.
 
 ### M-11: Objeto defensivo consumible
 
@@ -771,9 +787,15 @@ flowchart TD
     
     - Al morir, el personaje se reconstruye en el punto de reaparición, al inicio del ciclo en el piso 1 (ciclo de muerte y reconstrucción). El autoguardado de la sala final (D-30) no cambia el punto de reaparición: solo sirve para continuar después de salir del juego o de un fallo (ver [[07 - Reglas y Estados del Juego]]).
         
-    - **Cinemática completa de reconstrucción (D-39):** se reproduce una sola vez, al terminar la introducción, y muestra por primera vez todo el proceso de reconstrucción. Su contenido queda **Por definir** según el lore.
+    - **Cinemática completa de reconstrucción (D-39, D-45):** se reproduce una sola vez, al terminar la introducción, y muestra por primera vez todo el proceso de reconstrucción. Es **el momento del olvido**: Lukas recuerda a Emilia durante la introducción y la olvida en esta primera reconstrucción. Despierta sabiendo que busca algo o a alguien, sin recordar a quién, y solo conserva el anillo, que sabe importante. Cómo muere Lukas al final de la introducción queda **Por definir** (D-50); el resto del contenido se documenta en [[01 - Premisa y Trama]].
         
-    - **Cinemática corta (D-39):** en cada muerte o reinicio, el personaje cae del tanque con sonido de maquinaria. Refleja la degradación acumulada (M-18) y se puede saltar (ver [[04 - Controles]]).
+    - **Cinemática corta (D-39):** en cada muerte o reinicio, el personaje cae del tanque con sonido de maquinaria. Refleja la degradación acumulada y la pieza ajena visible de la reconstrucción (M-18) y se puede saltar (ver [[04 - Controles]]).
+        
+    - **Código de sujeto (D-43, D-47, D-50):** The Mother identifica a Lukas con un código R-H, registrado en el mismo expediente que Emilia (R-H-01 a R-H-06, D-49). La primera reconstrucción lo registra como **R-H-07** y el código sube 1 en cada reconstrucción posterior (R-H-08, R-H-09…), incluidas las de "Reiniciar". El código se muestra en el terminal del brazo y es solo presentación: no tiene efecto mecánico. Si una salida con calma con costo (D-31) también sube el código queda **Por definir**.
+        
+    - **Mensaje de Emilia (D-50):** la última pista es un mensaje de audio de Emilia en una tablet o teléfono corporativo de Vitalis Konzern, presentado como transcripción con sonido vocal y forma de onda (sin actuación de voz, D-52). El dispositivo se pierde en la primera reconstrucción; el mensaje queda copiado en el terminal del brazo, corrupto (M-08), y se completa en el desenlace (M-19).
+        
+    - **Bestiario (D-48):** las entradas son informes clínicos de The Mother sobre sujetos asimilados, con su código de sujeto. Cada entrada se desbloquea en el primer encuentro y persiste entre muertes.
         
     - **Reiniciar (D-32):** opción del menú de pausa. Regresa al inicio del ciclo, cuenta como muerte (suma al contador y a la degradación, M-18) y conserva el terminal del brazo. El inventario se pierde igual que al morir.
         
@@ -814,6 +836,10 @@ flowchart TD
     - Reiniciar durante el primer intento regresa al inicio del ciclo, pero no suma al contador de muertes (D-35).
         
     - Al morir o reiniciar se descarta el autoguardado de la sala final; el siguiente se crea al llegar de nuevo a una sala clave final (D-30).
+        
+    - En el primer intento, las muertes y "Reiniciar" no suman al contador (D-35), pero sí suben el código de sujeto, porque cada una es una reconstrucción (D-43).
+        
+    - "Nueva partida" borra el terminal del brazo, incluido el código de sujeto: la primera reconstrucción de la nueva partida vuelve a ser R-H-07 (D-32).
         
 - **Impacto en pilares:** Refuerza **Adaptación**. Riesgo: si la información persistente resuelve los pisos, se pierde la incertidumbre; solo persisten reglas, no valores.
 
@@ -863,7 +889,9 @@ flowchart TD
     
 - **Reglas:**
     
-    - Cada muerte aumenta una degradación estética acumulativa: mayor corrupción CRT, distorsión de voz y deterioro de los diálogos del protagonista. La cinemática corta de reconstrucción refleja la degradación acumulada (M-16, D-39).
+    - Cada muerte aumenta una degradación estética acumulativa: mayor corrupción CRT, distorsión del sonido vocal (D-52) y deterioro de los diálogos del protagonista. La cinemática corta de reconstrucción refleja la degradación acumulada (M-16, D-39). El latido del laboratorio crece con la degradación acumulada (M-10).
+        
+    - **Cuerpo ajeno visible (D-43):** en cada reconstrucción se nota en el modelo de Lukas una pieza ajena más, que proviene del laboratorio. El modelo tiene 3–5 variantes (valor inicial, sujeto a balance); la mano del anillo puede acabar asimilada. Al llegar a la última variante, el modelo se mantiene en ella, porque la degradación solo se acumula (D-29). Es solo presentación: no tiene efecto mecánico.
         
     - **La degradación solo se acumula y nunca se reinicia (D-29)**, ni siquiera al llegar a una sala clave.
         
@@ -871,7 +899,7 @@ flowchart TD
         
     - La degradación es solo estética y no afecta la jugabilidad.
         
-    - Si el jugador acumula 5 muertes sin llegar a la sala clave final del piso 2, se activa el final de **"Disolución de identidad"** (D-35).
+    - Si el jugador acumula 5 muertes sin llegar a la sala clave final del piso 2, se activa el final **"Asimilación"** (D-35, D-42): el laboratorio termina de asimilar a Lukas y este se convierte en uno de los enemigos comunes que enfrentaba (D-48). Su estado se documenta como "Final: Asimilación" en [[07 - Reglas y Estados del Juego]].
         
     - **Reinicio del contador (D-35):** solo lo reinicia llegar a la sala clave final del piso 2. Las salas clave secundarias y la sala final del piso 1 no lo reinician.
         
@@ -883,7 +911,7 @@ flowchart TD
     
 - **Estado inicial:** Contador de muertes en 0 y sin degradación.
     
-- **Estado final:** Degradación acumulada; final de "Disolución de identidad" si el contador llega a 5.
+- **Estado final:** Degradación acumulada y variante del cuerpo ajeno correspondiente; final "Asimilación" si el contador llega a 5.
     
 - **Recursos utilizados:** Contador de muertes desde el último reinicio del contador.
     
@@ -891,7 +919,7 @@ flowchart TD
     
 - **Penalización:** Final de derrota al alcanzar 5 muertes sin llegar a la sala clave final del piso 2.
     
-- **Interacciones con otras mecánicas:** Interactúa con M-10 Señales diegéticas (tope visual), M-15 Exploración vertical (sala final del piso 2) y M-16 Reaparición por reconstrucción (cinemática corta y Reiniciar).
+- **Interacciones con otras mecánicas:** Interactúa con M-10 Señales diegéticas (tope visual; el latido del laboratorio crece con la degradación), M-15 Exploración vertical (sala final del piso 2) y M-16 Reaparición por reconstrucción (cinemática corta, cuerpo ajeno visible y Reiniciar).
     
 - **Casos límite:**
     
@@ -900,6 +928,8 @@ flowchart TD
     - Si el jugador muere en el piso 3 o en la sala de The Mother después de reiniciar el contador, regresa al inicio del ciclo y esa muerte es la primera del contador reiniciado.
         
     - Si la quinta muerte se produce por "Reiniciar" o por salir con costo, también activa el final (D-31, D-32, D-35).
+        
+    - Ninguna variante del cuerpo ajeno oculta el terminal del brazo ni la interfaz crítica (tope de D-29).
         
 - **Impacto en pilares:** Refuerza **Adaptación** y el terror basado en sistemas; el contador mantiene la **Vulnerabilidad Constante** a lo largo de varios intentos (D-35). Riesgo: la corrupción visual no debe ocultar información crítica ni las señales diegéticas; se mitiga con el tope visual (D-29).
 
@@ -925,23 +955,51 @@ flowchart TD
             
     - Derrotarla es la condición de victoria ([[01 - Jugabilidad]]).
         
-    - Al ser derrotada revela que existe algo más (la criatura lovecraftiana que es el laboratorio), pero no puede explicarlo.
+    - Al ser derrotada revela que existe algo más (la criatura lovecraftiana que es el laboratorio), pero no puede explicar qué es (D-16, D-47).
         
+    - **Secuencia común de victoria (D-51):**
+        
+        1. Cae The Mother.
+            
+        2. Los documentos corruptos y el mensaje de Emilia se completan (M-08, M-16) y Lukas recupera primero el nombre de Emilia y después el suyo (D-45).
+            
+        3. **Despertar:** el latido del laboratorio se acelera (M-10). Ocurre en todos los finales de victoria.
+            
+        4. Decisión final y cinemática de victoria, según la tabla siguiente.
+            
+        5. Gancho totalmente abierto: solo se escucha una nueva llegada y la voz (sonido) de The Mother iniciando el protocolo.
+            
+    - **Decisión final (D-51):** después de la fase 3 y del Despertar, la sala de The Mother presenta dos elementos interactivos: la **terminal central** y la **salida**. No hay menú de elección. Ambos se usan con Interactuar (`E`), la misma función de interacción de M-08, por lo que ninguna tecla tiene dos funciones en este contexto; si los dos están al alcance a la vez, gana el que está al centro de la vista (como en D-27).
+        
+        - **Sin los 6 documentos de Emilia:** no hay elección; Lukas examina la terminal central de forma automática.
+            
+        - **Con los 6 documentos de Emilia** (acumulados en el terminal del brazo en cualquier intento, M-08): el jugador elige entre examinar la terminal central o irse por la salida.
+            
+    - **Cinemáticas de victoria (D-51):**
+        
+        | Condición | Momento final | Cinemática | Resultado |
+        |---|---|---|---|
+        | Victoria sin los 6 documentos | Lukas examina la terminal central de forma automática | **Relevo básico** | Algo ocurre y Lukas reemplaza automáticamente a The Mother: el terminal del brazo lo conecta, porque es el último con identidad |
+        | Victoria con los 6 documentos, examinar la terminal | El jugador examina la terminal central (`E`) | **Relevo completo** | Misma base que el Relevo básico con un par de detalles distintos, entre ellos el expediente R-H-01 a R-H-06 "estado desconocido" (D-49); demás detalles **Por definir**. Lukas reemplaza a The Mother sabiendo más |
+        | Victoria con los 6 documentos, irse | El jugador elige la salida (`E`) | **Ambiguo** | Al final solo se escucha el latido. No se sabe si Lukas fue asimilado, si se convirtió en The Mother o si ocurrió otra cosa |
+        
+        El final de derrota "Asimilación" no forma parte de esta tabla: se activa por el contador de 5 muertes (M-18, D-42). Sin final de Renuncia; "Salida" y "Encuentro con Emilia" quedan fuera de la demo (D-51).
+            
     - Morir en la sala regresa al inicio del ciclo (M-16).
         
-- **Entrada:** Las mismas de M-02, M-04, M-06 y M-13.
+- **Entrada:** Las mismas de M-02, M-04, M-06 y M-13; `E` sobre la terminal central o la salida en la decisión final (M-08).
     
 - **Estado inicial:** Personaje en la sala de The Mother con el inventario que traía.
     
-- **Estado final:** The Mother derrotada (victoria) o muerte del personaje.
+- **Estado final:** The Mother derrotada y una de las 3 cinemáticas de victoria (Relevo básico, Relevo completo o Ambiguo), o muerte del personaje.
     
-- **Recursos utilizados:** Munición, curas, resistencia y fallas de la máquina.
+- **Recursos utilizados:** Munición, curas, resistencia, fallas de la máquina y los documentos de Emilia acumulados en el terminal del brazo.
     
-- **Recompensa:** Victoria y revelación narrativa.
+- **Recompensa:** Victoria, revelación narrativa y, con los 6 documentos de Emilia, la elección del final.
     
 - **Penalización:** Morir regresa al inicio del ciclo.
     
-- **Interacciones con otras mecánicas:** Interactúa con M-02 (cámaras hostiles en la fase 2), M-04, M-05, M-06, M-10 (luz roja y sonido de motor de las cámaras), M-13, M-15 (sala del piso 3), M-16, M-17 y M-20 (sin reciclaje en la sala, D-28).
+- **Interacciones con otras mecánicas:** Interactúa con M-02 (cámaras hostiles en la fase 2), M-04, M-05, M-06, M-08 (documentos de Emilia y documentos corruptos), M-10 (luz roja y sonido de motor de las cámaras; latido del laboratorio en el Despertar), M-13, M-15 (sala del piso 3), M-16 (terminal del brazo, mensaje de Emilia y código de sujeto), M-17 y M-20 (sin reciclaje en la sala, D-28).
     
 - **Casos límite:**
     
@@ -950,6 +1008,12 @@ flowchart TD
     - Los enemigos eliminados en la sala no se reciclan, por lo que rematarlos no es necesario (D-28).
         
     - El número de puntos débiles de la fase 3 queda **Por definir** (no cubierto por D-23 a D-39).
+        
+    - Si el sexto documento de Emilia se obtiene en el mismo intento en que se derrota a The Mother, cuenta para la decisión final, porque ya está acumulado en el terminal del brazo (D-51).
+        
+    - Los documentos de Vitalis Konzern y de The Mother no cuentan para la decisión final, aunque estén registrados (D-52).
+        
+    - Si quedan amenazas activas en la sala durante la decisión final y si el personaje puede morir en ese momento: **Por definir**.
         
 - **Impacto en pilares:** Refuerza **Vulnerabilidad Constante**, **Adaptación** y **Decisiones con Consecuencias**. Riesgo documentado: la fase 3 puede volver el juego de acción; debe mantenerse corta.
 
@@ -965,7 +1029,9 @@ flowchart TD
         
 - **Reglas:**
     
-    - Los enemigos eliminados siguen muertos durante el intento, pero The Mother puede reciclar cada uno **una sola vez** (D-20). Qué proporción de cuerpos recicla y el tiempo entre la muerte y el aviso están **Por definir** (no cubiertos por D-23 a D-39).
+    - Los enemigos eliminados siguen muertos durante el intento, pero The Mother puede reciclar cada uno **una sola vez** (D-20).
+        
+    - **Justificación del rastro de identidad (D-47, D-48):** los enemigos comunes son personas asimiladas por el laboratorio. Un enemigo eliminado conserva un último rastro de identidad y The Mother, que reconstruye a quien todavía conserva identidad, intenta reconstruirlo una vez más. Regresa más asimilado (más rápido, más frágil) y después ya no le queda identidad; por eso el reciclaje solo ocurre una vez. The Mother reconstruye; el laboratorio asimila. Qué proporción de cuerpos recicla y el tiempo entre la muerte y el aviso están **Por definir** (no cubiertos por D-23 a D-39).
         
     - **Sin reciclaje en la sala del jefe (D-28):** los enemigos eliminados en la sala de The Mother no se reciclan.
         
@@ -1065,18 +1131,18 @@ flowchart TD
 | M-05 Salud y estados | M-07 | M-11, M-16 |
 | M-06 Resistencia y empujón | — | M-09, M-14, M-19, M-20 |
 | M-07 Inventario | — | M-04, M-05, M-11, M-15, M-16, M-20 |
-| M-08 Interacción y documentos | M-07 | M-15, M-16, M-17, M-20 |
+| M-08 Interacción y documentos | M-07 | M-15, M-16, M-17, M-19, M-20 |
 | M-09 Sigilo y ruido | M-02, M-06, M-12, M-20 | M-03, M-10 |
-| M-10 Señales diegéticas | M-09 | M-02, M-03, M-15, M-18, M-19, M-20 |
+| M-10 Señales diegéticas | M-09, M-18, M-19 | M-02, M-03, M-15, M-18, M-19, M-20 |
 | M-11 Objeto defensivo | M-07 | M-03, M-05 |
 | M-12 Linterna | M-01 | M-03, M-09 |
 | M-13 Hackeo | M-17 | M-14, M-15, M-19 |
 | M-14 Escape de combate | M-06, M-13, M-20 | M-03, M-07 |
 | M-15 Exploración vertical | M-07, M-08, M-10, M-13 | M-02, M-18, M-19 |
-| M-16 Reaparición por reconstrucción | M-05, M-18 | M-07, M-17, M-18 |
+| M-16 Reaparición por reconstrucción | M-05, M-18 | M-07, M-17, M-18, M-19 |
 | M-17 Fallas de la máquina | M-08, M-16 | M-13, M-19 |
 | M-18 Degradación y final de 5 muertes | M-15, M-16 | M-10, M-16 |
-| M-19 Jefe final | M-02, M-04, M-06, M-10, M-13, M-15, M-17, M-20 | M-16 |
+| M-19 Jefe final | M-02, M-04, M-06, M-08, M-10, M-13, M-15, M-16, M-17, M-20 | M-10, M-16 |
 | M-20 Reciclaje y remate | M-04, M-06, M-07, M-08, M-10 | M-09, M-14, M-19 |
 
 

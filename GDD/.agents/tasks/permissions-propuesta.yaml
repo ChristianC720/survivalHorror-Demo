@@ -1,0 +1,114 @@
+# Propuesta para ~/.kiro/settings/permissions.yaml (ámbito de usuario)
+# Basada en los comandos que usaron los workflows del GDD (.agents/tasks/*-verificacion.md).
+# Precedencia: deny > ask > allow, sin importar el orden ni el ámbito.
+# Kiro divide los comandos compuestos (tuberías "|", ";") y evalúa cada segmento por separado,
+# por eso cada cmdlet de una tubería necesita su propia regla.
+
+rules:
+  # ---------------------------------------------------------------
+  # DENY: operaciones destructivas. Nada puede saltarse estas reglas.
+  # ---------------------------------------------------------------
+  - capability: shell
+    effect: deny
+    # El "*" inicial hace que coincidan también dentro de bloques como
+    # "ForEach-Object { Remove-Item $_ -Recurse }".
+    match:
+      - "*Remove-Item*-Recurse*"
+      - "*rm -r*"
+      - "*rmdir *"
+      - "*del /s*"
+      - "*git reset --hard*"
+      - "*git clean*"
+      - "*git branch -D*"
+      - "*git push --force*"
+      - "*git push -f*"
+      - "*Format-Volume*"
+      - "*Invoke-Expression*"
+      - "iex *"
+
+  - capability: fs_write
+    effect: deny
+    match:
+      - "**/.git/**"
+
+  # ---------------------------------------------------------------
+  # ASK: red y publicación. Siguen pidiendo confirmación.
+  # ---------------------------------------------------------------
+  - capability: shell
+    effect: ask
+    match:
+      - "git push*"
+      - "git commit*"
+      - "Invoke-WebRequest*"
+      - "Invoke-RestMethod*"
+      - "curl *"
+      - "wget *"
+
+  # ---------------------------------------------------------------
+  # ALLOW: escritura de archivos dentro de la bóveda del GDD
+  # ---------------------------------------------------------------
+  - capability: fs_write
+    effect: allow
+    match:
+      - "C:/Users/TCN400340/Documents/Codigos/GDD/**"
+
+  # ---------------------------------------------------------------
+  # ALLOW: comandos de solo lectura que usan los workflows del GDD
+  # ---------------------------------------------------------------
+  - capability: shell
+    effect: allow
+    match:
+      # Regla que ya tenías
+      - "$_.FullName *"
+
+      # Búsqueda y lectura
+      - "Get-ChildItem*"
+      - "Select-String*"
+      - "Get-Content*"
+      - "Get-Item *"
+      - "Get-ItemProperty*"
+      - "Test-Path*"
+      - "Resolve-Path*"
+      - "Join-Path*"
+      - "Split-Path*"
+      - "Get-FileHash*"
+      - "Get-Location*"
+
+      # Cmdlets de tubería
+      - "Where-Object*"
+      - "ForEach-Object*"
+      - "Select-Object*"
+      - "Sort-Object*"
+      - "Group-Object*"
+      - "Measure-Object*"
+      - "Compare-Object*"
+      - "Format-Table*"
+      - "Format-List*"
+      - "Out-String*"
+      - "Write-Output*"
+      - "Write-Host*"
+
+      # Asignaciones y conteos de solo lectura
+      - "$* = Get-Content *"
+      - "$* = Get-ChildItem *"
+      - "$* = Select-String *"
+      - "(Get-Content *"
+      - "(Get-ChildItem *"
+      - "(Select-String *"
+      - "[Console]::OutputEncoding*"
+
+      # Copias de respaldo dentro de .agents/tasks (antes de editar una nota)
+      - "Copy-Item *.agents*tasks*"
+
+      # Git de solo lectura
+      - "git status*"
+      - "git diff*"
+      - "git log*"
+      - "git show*"
+      - "git rev-parse*"
+      - "git hash-object*"
+      - "git ls-files*"
+      - "git blame*"
+      - "git --no-pager diff*"
+      - "git --no-pager log*"
+      - "git --no-pager show*"

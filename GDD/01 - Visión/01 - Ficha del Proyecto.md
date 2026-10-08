@@ -8,14 +8,14 @@ Esta ficha identifica el proyecto de forma rápida. Debe permitir que alguien qu
 
 | Campo                        | Información                                                                                                                                    |
 | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Nombre del proyecto**      | Por Definir <!-- Nombre oficial o nombre temporal -->                                                                                          |
+| **Nombre del proyecto**      | Identity Dissolution                                                                                          |
 | **Nombre clave**             | Heartbeat                                                                                                                                      |
-| **Versión del GDD**          | 0.4.1                                                                                                                                          |
+| **Versión del GDD**          | 0.5.0                                                                                                                                          |
 | **Estado del proyecto**      | Concepto <!-- / Preproducción / Producción / Pruebas / Publicado -->                                                                           |
 | **Equipo**                   | Victor Gabriel Alvarado Chay<br>Christian Coronel Palma<br>Lenin Ramón López Córdoba<br>Brian Iván Navarrete Canché<br>Lian Daniel Sierra Sosa |
 | **Responsable del proyecto** | Christian Coronel Palma                                                                                                                        |
 | **Fecha de inicio**          | 2026-09-25                                                                                                                                     |
-| **Última actualización**     | 2026-10-07                                                                                                                                     |
+| **Última actualización**     | 2026-10-08                                                                                                                                     |
 | **Repositorio**              | [Repositorio Demo](https://github.com/ChristianC720/survivalHorror-Demo)                                                                       |
 
 ## Identidad del videojuego

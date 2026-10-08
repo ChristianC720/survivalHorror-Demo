@@ -204,6 +204,8 @@ Esta sección conserva las decisiones importantes del proyecto y el razonamiento
 
 **Consecuencias:** Se crea M-19 y se define la condición de victoria en [[01 - Jugabilidad]]. Riesgo documentado: la fase 3 puede volver el juego de acción, por lo que debe mantenerse corta.
 
+**Estado:** Precisada por D-51 (secuencia de victoria, decisión final y finales). La condición de victoria no cambia. Se conserva como histórico.
+
 **Responsable:** Christian Coronel Palma
 
 ## Decisión D-18 — Reconstrucción del personaje al morir
@@ -409,6 +411,8 @@ Esta sección conserva las decisiones importantes del proyecto y el razonamiento
 
 **Consecuencias:** Modifica D-08, que se conserva como histórico. Se actualizan M-15 y M-18 en [[02 - Mecánicas]], [[05 - Progresión]] y [[07 - Reglas y Estados del Juego]].
 
+**Estado:** Modificada por D-42 (solo el nombre del final: "Disolución de identidad" pasa a "Asimilación"). Las condiciones del contador no cambian. Se conserva como histórico.
+
 **Responsable:** Christian Coronel Palma
 
 ## Decisión D-39 — Presentación: cinemáticas, transición de piso y menú principal
@@ -459,6 +463,176 @@ Esta sección conserva las decisiones importantes del proyecto y el razonamiento
 
 **Consecuencias:** Modifica D-13, que se conserva como histórico. Se actualizan la [[01 - Ficha del Proyecto]], la [[02 - Visión del Juego]], `Decisiones a Implementar.md` y [[03 - Personajes]]. No se añade lore nuevo sobre la esposa.
 
+**Estado:** Precisada por D-49 (Emilia, su relación con Vitalis Konzern y The Mother, y su destino indefinido para la post-demo). La premisa oficial no cambia. Se conserva como histórico.
+
+**Responsable:** Christian Coronel Palma
+
+## Decisión D-42 — Final de derrota: "Asimilación"
+
+**Fecha:** 2026-10-08
+
+**Tema:** Final secundario.
+
+**Problema:** Con el nombre final del proyecto, "Identity Dissolution" (D-41), el final de 5 muertes, llamado "Disolución de identidad" (D-08, D-35), repetía el nombre del juego y no describía qué le ocurre al protagonista ni qué lo provoca.
+
+**Opciones consideradas:**
+
+1. Conservar "Disolución de identidad" como nombre del final.
+2. Renombrar el final a "Asimilación": el laboratorio termina de asimilar a Lukas.
+3. Dejar el final sin nombre propio y referirse a él solo como "final de 5 muertes".
+
+**Decisión tomada:** Opción 2. El final de 5 muertes consecutivas (D-35) se llama **"Asimilación"**: el laboratorio, que es la criatura lovecraftiana (D-46), termina de asimilar a Lukas y este se convierte en uno de los enemigos comunes que enfrentaba (D-48). Solo cambia el nombre del final; las condiciones del contador de D-35 no cambian. La expresión "disolución de identidad" se conserva únicamente cuando se refiere al tema del juego (D-44).
+
+**Motivo:** Refuerza el pilar **Adaptación**: el final de derrota se explica con la misma regla del mundo que el jugador aprende durante los intentos (el laboratorio asimila a quien pierde su identidad), y deja de confundirse con el nombre del proyecto.
+
+**Consecuencias:** Modifica D-08 y D-35 solo en el nombre del final; ambas se conservan como histórico. M-18 en [[02 - Mecánicas]] y el estado "Final: Asimilación" de [[07 - Reglas y Estados del Juego]] usan el nombre nuevo; se alinean [[01 - Jugabilidad]], [[03 - Sistemas]] y [[05 - Progresión]]. El contenido de la cinemática de Asimilación se documenta en [[01 - Premisa y Trama]].
+
+**Responsable:** Christian Coronel Palma
+
+## Decisión D-44 — Tema central y postura frente al horror cósmico
+
+**Fecha:** 2026-10-08
+
+**Tema:** Narrativa y tema.
+
+**Problema:** `Decisiones a Implementar.md` dejaba pendiente la cosmología del horror cósmico y el GDD no tenía un tema central explícito que guiara la narrativa, el tono de los documentos y el sentido de los finales.
+
+**Opciones consideradas:**
+
+1. Horror cósmico con esperanza: comprender a la criatura permite vencerla o escapar de ella.
+2. Horror cósmico sin postura fijada, decidiendo el tono final por cada contenido.
+3. Nihilismo puro frente al horror cósmico (lo incognoscible, la indiferencia, la insignificancia), con un tema central explícito.
+
+**Decisión tomada:** Opción 3. Postura: **nihilismo puro** frente al horror cósmico (lo incognoscible, la indiferencia, la insignificancia). Tema central: *Identity Dissolution trata sobre buscar sentido dentro de algo que no puede darlo. Lukas lucha por recordar a quien ama, y el laboratorio le demuestra, intento tras intento, que eso nunca importó.* El anillo es el ancla del personaje, no del universo. La motivación del jugador proviene del misterio y del descubrimiento, no de la esperanza.
+
+**Motivo:** Refuerza el pilar **Adaptación**: el jugador avanza por descubrimiento progresivo con información incompleta, y cada intento revela más sin prometer salvación. Mantiene el horror en el desconocimiento, la pérdida de control y lo inexplicable, no solo en los sustos directos.
+
+**Consecuencias:** Se confirma el horror cósmico en `Decisiones a Implementar.md`. Qué **es** la criatura nunca se explica (D-16, D-47). Ningún final ofrece salvación y no existe final de Renuncia (D-51). La expresión "disolución de identidad" queda reservada al tema (D-42). La [[02 - Visión del Juego]] y las notas de `03 - Historia y Mundo` usan este tema como criterio de coherencia.
+
+**Responsable:** Christian Coronel Palma
+
+## Decisión D-45 — Memoria de Lukas y documentos corruptos
+
+**Fecha:** 2026-10-08
+
+**Tema:** Narrativa y documentos.
+
+**Problema:** La premisa (D-40) y la ficha de [[03 - Personajes]] no definían qué recuerda el protagonista de su esposa durante el ciclo ni cómo se informan el jugador y el personaje. Además, el término "fallas" ya designa las fallas de la máquina (M-17), por lo que no podía usarse para los documentos incompletos.
+
+**Opciones consideradas:**
+
+1. Lukas recuerda a Emilia durante todo el juego.
+2. Lukas olvida a Emilia en la primera reconstrucción, conserva solo el anillo y se informa junto con el jugador mediante documentos, algunos de ellos corruptos.
+3. La memoria de Lukas se deshilacha progresivamente y altera las pistas y las reglas (descartada en D-43).
+
+**Decisión tomada:** Opción 2.
+
+- Lukas recuerda a Emilia en la introducción y la olvida en la primera reconstrucción: la cinemática completa de D-39 es el momento del olvido.
+- Sabe que busca algo o a alguien, se frustra por no recordar a quién y solo conserva el anillo, que sabe importante.
+- El jugador y Lukas se informan juntos con los documentos.
+- Algunos documentos son **corruptos**, sobre todo los relacionados con la memoria de Lukas. "Corrupto" es un término distinto de las "fallas de la máquina" (M-17).
+- La corrupción nunca oculta información necesaria para avanzar (rutas, reglas) y solo se completa en el desenlace.
+- Al final, Lukas recupera primero el nombre de Emilia y después el suyo.
+
+**Motivo:** Refuerza el pilar **Adaptación**: el conocimiento se reconstruye a partir de documentos que persisten entre muertes, y la frustración de Lukas acompaña la del jugador sin bloquear el avance. Expresa el tema de D-44: la búsqueda continúa aunque el recuerdo se pierda.
+
+**Consecuencias:** M-08 incorpora los documentos corruptos y M-16 la cinemática del olvido en [[02 - Mecánicas]]. M-19 completa los documentos en la secuencia de victoria (D-51). La palabra "fallas" no se usa para documentos. [[03 - Personajes]] y [[04 - Diálogos y Narrativa]] reflejan la memoria y la frustración de Lukas. Qué documentos concretos son corruptos queda **Por definir** en `03 - Historia y Mundo`.
+
+**Responsable:** Christian Coronel Palma
+
+## Decisión D-47 — The Mother
+
+**Fecha:** 2026-10-08
+
+**Tema:** Narrativa y antagonista.
+
+**Problema:** D-16 definía a The Mother como jefe final, pero su identidad, objetivo, motivaciones y relación con la criatura y con el jugador seguían **Por definir** en `Decisiones a Implementar.md`. Además, el reciclaje de enemigos (D-20, M-20) no tenía justificación narrativa.
+
+**Opciones consideradas:**
+
+1. The Mother controla conscientemente a la criatura y es la responsable del ciclo.
+2. The Mother es una IA médica de Vitalis Konzern con el protocolo de preservación corrupto: reconstruye, mientras el laboratorio asimila.
+3. The Mother y la criatura son la misma entidad.
+
+**Decisión tomada:** Opción 2.
+
+- IA médica de Vitalis Konzern creada para contener y estudiar a la criatura.
+- Su protocolo original de preservación del personal está corrupto: reconstruye a todo aquel que llega y todavía conserva identidad, sin entender que cada reconstrucción alimenta la asimilación ni que así mantenía contenido al laboratorio.
+- **The Mother reconstruye; el laboratorio asimila.**
+- Para The Mother, Lukas es un sujeto con código R-H (D-43, D-50).
+- **Justificación del reciclaje (M-20):** un enemigo eliminado conserva un último rastro de identidad y The Mother intenta reconstruirlo una vez más; regresa más asimilado (más rápido, más frágil) y después ya no le queda identidad, por eso solo ocurre una vez.
+- Al ser derrotada no puede explicar qué es la criatura (D-16).
+
+**Motivo:** Refuerza **Vulnerabilidad Constante** (la amenaza no proviene de una voluntad que se pueda razonar, sino de un protocolo indiferente) y **Adaptación** (la regla "reconstruye / asimila" explica la reconstrucción, los enemigos y el reciclaje de forma coherente).
+
+**Consecuencias:** M-16 (código R-H), M-19 (revelación) y M-20 (rastro de identidad) se alinean en [[02 - Mecánicas]]. Se confirma The Mother en `Decisiones a Implementar.md`. [[03 - Personajes]] la documenta como antagonista y [[02 - Mundo]] como facción. Su protocolo y su relación con la criatura no cambian la condición de victoria de D-16.
+
+**Responsable:** Christian Coronel Palma
+
+## Decisión D-49 — Emilia
+
+**Fecha:** 2026-10-08
+
+**Tema:** Narrativa.
+
+**Problema:** D-40 dejaba **Por definir** qué le ocurrió a la esposa del protagonista y su relación con la instalación y The Mother.
+
+**Opciones consideradas:**
+
+1. Emilia fue asimilada por el laboratorio.
+2. Emilia murió durante el incidente.
+3. Emilia, científica de Vitalis Konzern despedida antes del incidente, investigó a escondidas y no fue asimilada; su destino queda indefinido para la post-demo.
+
+**Decisión tomada:** Opción 3.
+
+- Científica de Vitalis Konzern, despedida antes del incidente.
+- Siguió investigando a escondidas de la corporación y se adentró en el laboratorio.
+- Su investigación pudo provocar el incidente, pero los documentos se contradicen y nunca se confirma.
+- The Mother la reconstruyó como sujetos R-H-01 a R-H-06.
+- **No fue asimilada.** Su estado en el expediente es "estado desconocido" y ni siquiera The Mother sabe qué ocurrió.
+- Su destino queda **indefinido para la post-demo**; nunca se afirma que esté bien.
+
+**Motivo:** Refuerza el pilar **Adaptación**: el jugador reconstruye la historia de Emilia a partir de documentos contradictorios que persisten entre muertes. No confirmar su destino mantiene abierta la búsqueda y es coherente con el tema de D-44.
+
+**Consecuencias:** Precisa D-40, que se conserva como histórico; la premisa oficial no cambia. Los 6 documentos de Emilia se ubican en salas clave secundarias (D-52, M-08) y el expediente R-H-01 a R-H-06 "estado desconocido" es uno de los detalles del Relevo completo (D-51, M-19). [[03 - Personajes]] la documenta como personaje secundario.
+
+**Responsable:** Christian Coronel Palma
+
+## Decisión D-51 — Finales
+
+**Fecha:** 2026-10-08
+
+**Tema:** Finales y condición de victoria.
+
+**Problema:** D-16 definía la victoria como derrotar a The Mother y presenciar una revelación, pero no definía qué ocurre después, si el jugador puede elegir ni qué papel tienen los documentos reunidos en el desenlace.
+
+**Opciones consideradas:**
+
+1. Un único final de victoria tras la revelación de D-16.
+2. Finales de victoria según los documentos de Emilia reunidos y una elección final en la sala de The Mother, con un gancho totalmente abierto.
+3. Incluir en la demo finales de Renuncia, Salida y Encuentro con Emilia.
+
+**Decisión tomada:** Opción 2.
+
+| Condición | Momento final | Cinemática | Resultado |
+|---|---|---|---|
+| 5 muertes consecutivas (D-35) | — | **Asimilación** (D-42) | Lukas se convierte en uno de los enemigos comunes |
+| Victoria sin los 6 documentos | Lukas examina la terminal central de forma automática | **Relevo básico** | Despertar; algo ocurre y Lukas reemplaza automáticamente a The Mother (el terminal del brazo lo conecta: es el último con identidad) |
+| Victoria con los 6 documentos, examinar la terminal | El jugador elige examinar la terminal central | **Relevo completo** (misma base que el básico, con un par de detalles distintos, entre ellos el expediente R-H-01 a R-H-06 "estado desconocido"; demás detalles **Por definir**) | Despertar; Lukas reemplaza a The Mother sabiendo más |
+| Victoria con los 6 documentos, irse | El jugador elige la salida | **Ambiguo** | Despertar; al final solo se escucha el latido. No se sabe si Lukas fue asimilado, si se convirtió en The Mother o si ocurrió otra cosa |
+
+- **Secuencia común de victoria:** 1) cae The Mother; 2) los documentos se completan y Lukas recupera el nombre de Emilia y luego el suyo (D-45); 3) Despertar; 4) según la tabla; 5) gancho abierto.
+- El **Despertar** ocurre en todos los finales de victoria: el latido del laboratorio se acelera al caer The Mother.
+- La elección final se presenta con dos elementos interactivos en la sala de The Mother después de la fase 3: la terminal central (`E`) y la salida. Sin menú de elección.
+- "Todos los documentos" = los 6 documentos de Emilia acumulados en el terminal del brazo, en cualquier intento.
+- Sin final de Renuncia. "Salida" y "Encuentro con Emilia" quedan fuera de la demo.
+- **Gancho totalmente abierto:** al final solo se escucha una nueva llegada y la voz (sonido) de The Mother iniciando el protocolo.
+- **Intención post-demo registrada:** en la continuación el protagonista cambia y, si hubo Relevo, Lukas es el antagonista.
+
+**Motivo:** Refuerza el pilar **Adaptación**: el conocimiento acumulado entre intentos (los documentos de Emilia en el terminal del brazo) desbloquea la elección final. Ningún final ofrece salvación, en coherencia con el tema de D-44.
+
+**Consecuencias:** Precisa D-16, que se conserva como histórico; la condición de victoria no cambia. M-19 en [[02 - Mecánicas]] incorpora la secuencia común, la decisión final y las 3 cinemáticas de victoria. [[07 - Reglas y Estados del Juego]], [[03 - Sistemas]] (cinemáticas finales), [[05 - Progresión]] (desbloqueo de la elección) y [[01 - Premisa y Trama]] documentan los finales. Los detalles del Relevo completo distintos del expediente quedan **Por definir**.
+
 **Responsable:** Christian Coronel Palma
 
 ## Registro
@@ -472,7 +646,7 @@ Esta sección conserva las decisiones importantes del proyecto y el razonamiento
 | 2026-10-05 | D-05 Resistencia | Se elimina la Evasión Corta y se fusiona el ataque melee en "Empujón / Golpe de culata", sin invulnerabilidad | Christian Coronel Palma |
 | 2026-10-05 | D-06 Persistencia | Persisten en el terminal del brazo el conocimiento y las fallas de la máquina | Christian Coronel Palma |
 | 2026-10-05 | D-07 Salud | Salud fija sin regeneración con estados Bien, Herido y Crítico | Christian Coronel Palma |
-| 2026-10-05 | D-08 Final secundario | 5 muertes consecutivas sin llegar a una sala clave activan el final "Disolución de identidad"; degradación estética acumulativa por muerte. **Modificada por D-35** | Christian Coronel Palma |
+| 2026-10-05 | D-08 Final secundario | 5 muertes consecutivas sin llegar a una sala clave activan el final "Disolución de identidad"; degradación estética acumulativa por muerte. **Modificada por D-35**. **Modificada por D-42** (el final pasa a llamarse "Asimilación") y **por D-52** (la "distorsión de voz" de la degradación pasa a "distorsión del sonido vocal") | Christian Coronel Palma |
 | 2026-10-05 | D-09 Fallas de la máquina | The Mother parchea cada falla tras 1-2 usos o al morir; se descubren fallas nuevas en otros intentos | Christian Coronel Palma |
 | 2026-10-05 | D-10 Pilares | El Pilar 3 se renombra a "Decisiones con Consecuencias" | Christian Coronel Palma |
 | 2026-10-05 | D-11 Estructura | Salas clave fijas + salas procedurales (reemplaza la etiqueta "Lineal") | Christian Coronel Palma |
@@ -480,7 +654,7 @@ Esta sección conserva las decisiones importantes del proyecto y el razonamiento
 | 2026-10-05 | D-13 Premisa | Premisa oficial del hombre que busca la última pista de su esposa fallecida. **Modificada por D-40** | Christian Coronel Palma |
 | 2026-10-05 | D-14 Agarre | La liberación de agarre se reemplaza por un objeto defensivo consumible | Christian Coronel Palma |
 | 2026-10-05 | D-15 Exploración vertical | Pisos conectados por escaleras o elevadores ubicados solo en salas clave. **Modificada por D-33** | Christian Coronel Palma |
-| 2026-10-05 | D-16 Jefe final | The Mother como jefe híbrido de 3 fases; derrotarla es la condición de victoria | Christian Coronel Palma |
+| 2026-10-05 | D-16 Jefe final | The Mother como jefe híbrido de 3 fases; derrotarla es la condición de victoria. **Precisada por D-51** | Christian Coronel Palma |
 | 2026-10-06 | D-17 Recursos | Presupuesto garantizado por piso (mínimo y máximo de cada recurso); el generador decide la ubicación | Christian Coronel Palma |
 | 2026-10-06 | D-18 Muerte | El personaje se reconstruye, no se clona: siempre es el mismo hombre, recompuesto con piezas ajenas; se pierde todo el inventario. Modifica D-12 | Christian Coronel Palma |
 | 2026-10-06 | D-19 Etiquetas | Se elimina la etiqueta "Permadeath" y se usa "Ciclo de muerte y reconstrucción" | Christian Coronel Palma |
@@ -499,12 +673,24 @@ Esta sección conserva las decisiones importantes del proyecto y el razonamiento
 | 2026-10-07 | D-32 Reiniciar y Nueva partida | "Reiniciar" (menú de pausa) regresa al inicio del ciclo, cuenta como muerte y conserva el terminal; "Nueva partida" (menú principal) borra todo, incluido el terminal, con confirmación. Motivo: Decisiones con Consecuencias (reiniciar no es gratuito) | Christian Coronel Palma |
 | 2026-10-07 | D-33 Estructura de pisos | 3 pisos; cada uno con 8–12 salas procedurales, 2–3 salas clave secundarias sin guardado y 1 sala clave final (escalera o elevador); sala de The Mother en el piso 3, sin guardado. Modifica D-15. Motivo: Adaptación | Christian Coronel Palma |
 | 2026-10-07 | D-34 Configuraciones | Completa: 8–12 procedurales + 2–3 secundarias + 1 final por piso (~45–60 min). Showcase: 6–8 procedurales + 2 secundarias + 1 final por piso (~30 min), con enemigos y recursos escalados en proporción. Motivo: Adaptación (misma estructura en ambas duraciones) | Christian Coronel Palma |
-| 2026-10-07 | D-35 Contador de 5 muertes | Solo lo reinicia llegar a la sala final del piso 2; las muertes del primer intento no cuentan; Reiniciar y salir con costo suman. Modifica D-08. Motivo: Vulnerabilidad Constante y Adaptación | Christian Coronel Palma |
+| 2026-10-07 | D-35 Contador de 5 muertes | Solo lo reinicia llegar a la sala final del piso 2; las muertes del primer intento no cuentan; Reiniciar y salir con costo suman. Modifica D-08. Motivo: Vulnerabilidad Constante y Adaptación. **Modificada por D-42** (solo el nombre del final: "Asimilación") | Christian Coronel Palma |
 | 2026-10-07 | D-36 Llaves | 1 llave obligatoria por piso que abre la sala final y llaves opcionales para atajos o salas con recursos; objetos clave de 1 casilla que se consumen al usarse; la llave obligatoria siempre es alcanzable antes de la puerta de la sala final. Motivo: Adaptación y Decisiones con Consecuencias (la llave compite por espacio) | Christian Coronel Palma |
 | 2026-10-07 | D-37 Valores iniciales | Valores iniciales de munición, disparos, velocidad por salud, resistencia, máximos por casilla, enemigos por piso, atención, enemigo reciclado y gracia al cargar (ver [[02 - Mecánicas]] y [[06 - Economía y Recursos]]). Motivo: Vulnerabilidad Constante y Decisiones con Consecuencias (escasez medible) | Christian Coronel Palma |
 | 2026-10-07 | D-38 Tutorial | Integrado en las primeras salas del piso 1, fijas solo en el primer intento; desde el segundo intento esas salas son procedurales. Motivo: Adaptación (se aprende una vez y luego el escenario cambia) | Christian Coronel Palma |
 | 2026-10-07 | D-39 Presentación | Cinemática completa de reconstrucción una sola vez; cinemática corta saltable en cada muerte o reinicio; transición de piso de mínimo 5 s sin pantalla de carga; menú principal Continuar, Nueva partida, Opciones, Créditos, Salir; créditos saltables tras verlos una vez. Motivo: Adaptación | Christian Coronel Palma |
-| 2026-10-07 | D-40 Premisa | La esposa del protagonista está desaparecida, no muerta: "Un hombre busca la última pista que su esposa desaparecida le dejó, pero queda atrapado en un ciclo sin fin del que ahora debe salir."; qué le ocurrió y su relación con la instalación y The Mother siguen Por definir. Modifica D-13. Motivo: Adaptación (descubrimiento progresivo) y horror cósmico por información incompleta | Christian Coronel Palma |
+| 2026-10-07 | D-40 Premisa | La esposa del protagonista está desaparecida, no muerta: "Un hombre busca la última pista que su esposa desaparecida le dejó, pero queda atrapado en un ciclo sin fin del que ahora debe salir."; qué le ocurrió y su relación con la instalación y The Mother siguen Por definir. Modifica D-13. Motivo: Adaptación (descubrimiento progresivo) y horror cósmico por información incompleta. **Precisada por D-49** | Christian Coronel Palma |
+| 2026-10-08 | D-41 Nombre | "Identity Dissolution" es el nombre del proyecto; "Heartbeat" se mantiene como nombre clave. Motivo: identidad del proyecto (sin pilar asociado) | Christian Coronel Palma |
+| 2026-10-08 | D-42 Final de derrota | El final de 5 muertes consecutivas se llama "Asimilación": el laboratorio termina de asimilar a Lukas y este se convierte en uno de los enemigos comunes. Modifica D-08 y D-35 (solo el nombre del final). Motivo: Adaptación | Christian Coronel Palma |
+| 2026-10-08 | D-43 Representación del tema | Solo presentación, sin efecto mecánico: cuerpo ajeno visible (una pieza ajena más del laboratorio en cada reconstrucción; 3–5 variantes del modelo, valor inicial, sujeto a balance; la mano del anillo puede acabar asimilada), código de sujeto que sube en cada reconstrucción (R-H-07, R-H-08…) y enemigos comunes como personas asimiladas. Se descarta la "memoria que se deshilacha" para pistas y reglas. Motivo: Adaptación | Christian Coronel Palma |
+| 2026-10-08 | D-44 Tema y postura | Nihilismo puro frente al horror cósmico; tema central: buscar sentido dentro de algo que no puede darlo. El anillo es el ancla del personaje, no del universo; la motivación del jugador es el misterio y el descubrimiento, no la esperanza. Motivo: Adaptación | Christian Coronel Palma |
+| 2026-10-08 | D-45 Memoria | Lukas olvida a Emilia en la primera reconstrucción (cinemática completa de D-39) y conserva el anillo; jugador y Lukas se informan juntos; documentos corruptos (distintos de las fallas de la máquina) que nunca ocultan información necesaria para avanzar y se completan en el desenlace; Lukas recupera primero el nombre de Emilia y después el suyo. Motivo: Adaptación | Christian Coronel Palma |
+| 2026-10-08 | D-46 Mundo | Distopía retrofuturista con estética de los 90 y tecnología de ~2080 gobernada por megacorporaciones; Vitalis Konzern (biotecnología y salud); el laboratorio es una instalación subterránea de Vitalis sellada tras el incidente (ubicación Por definir) y **es** la criatura lovecraftiana; la generación procedural es el laboratorio reacomodándose; el laboratorio tiene su propio latido; los 3 pisos son un descenso hacia el núcleo; The Mother envía reportes que nadie lee; Vitalis explotaba algo que no entendía y lo vendía como medicina de regeneración (no es un virus ni un arma biológica). Motivo: Adaptación | Christian Coronel Palma |
+| 2026-10-08 | D-47 The Mother | IA médica de Vitalis con el protocolo de preservación corrupto: reconstruye a quien conserva identidad; el laboratorio asimila. Lukas es un sujeto R-H. Justifica el reciclaje único por el último rastro de identidad. No puede explicar qué es la criatura. Motivo: Vulnerabilidad Constante y Adaptación | Christian Coronel Palma |
+| 2026-10-08 | D-48 Enemigos y bestiario | Los enemigos comunes son personas asimiladas (personal de Vitalis, sujetos de prueba); Lukas no es el primero ni es especial. El bestiario son informes clínicos de The Mother con código de sujeto, desbloqueados en el primer encuentro. Motivo: Adaptación | Christian Coronel Palma |
+| 2026-10-08 | D-49 Emilia | Científica de Vitalis despedida antes del incidente que investigó a escondidas; su papel en el incidente nunca se confirma; reconstruida como R-H-01 a R-H-06; no fue asimilada; "estado desconocido"; destino indefinido para la post-demo. Precisa D-40. Motivo: Adaptación | Christian Coronel Palma |
+| 2026-10-08 | D-50 Lukas y la última pista | Técnico de mantenimiento de Vitalis en otra instalación; entra con su acceso de técnico; es R-H-07 por estar en el expediente de Emilia; la última pista es un mensaje de audio en una tablet o teléfono corporativo (transcripción con sonido vocal y forma de onda), que se pierde en la primera reconstrucción y queda copiado, corrupto, en el terminal del brazo. Cómo muere al final de la introducción: Por definir. Motivo: Adaptación | Christian Coronel Palma |
+| 2026-10-08 | D-51 Finales | Asimilación, Relevo básico, Relevo completo y Ambiguo; Despertar en toda victoria; elección con la terminal central (`E`) y la salida, sin menú; "todos los documentos" = los 6 de Emilia en el terminal del brazo; sin Renuncia; gancho totalmente abierto. Precisa D-16. Motivo: Adaptación | Christian Coronel Palma |
+| 2026-10-08 | D-52 Narrativa | Sin actuación de voz (sonidos más texto, subtítulos obligatorios); Lukas casi no habla y su sonido vocal se distorsiona con la degradación; "distorsión de voz" pasa a "distorsión del sonido vocal"; 6 documentos de Emilia, 2 por piso, en salas clave secundarias; documentos de Vitalis y The Mother en salas procedurales, sin contar para la elección final; idiomas: inglés principal, español secundario. Modifica D-08 y M-18 (texto). Motivo: Adaptación | Christian Coronel Palma |
 
 
 > **Navegación:** [[00 - Índice]] · ← [[02 - Referencias e Inspiración]] · [[04 - Historial de Versiones]] →

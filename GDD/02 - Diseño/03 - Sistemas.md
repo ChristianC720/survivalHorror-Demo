@@ -17,12 +17,12 @@ Cada sistema agrupa mecánicas de [[02 - Mecánicas]]. Las reglas de detalle viv
 | S-03 Salud y combate | Daño, estados de salud, disparo, empujón y defensa contra agarres (M-04, M-05, M-06, M-11). Pilares V, DC | S-02, S-04, S-05 | Definido (valores iniciales D-37, sujetos a balance) |
 | S-04 Resistencia | Barra única para correr, empujar y rematar con golpe en el suelo (M-06, M-20). Pilares V, DC | — | Definido (valores iniciales D-37, sujetos a balance) |
 | S-05 Inventario | 6 casillas en tiempo real para curas, munición, objeto defensivo, consumible de remate y objetos clave, incluidas las llaves (M-07, M-08; D-36, D-37). Pilar DC | S-06, S-08 | Definido |
-| S-06 Generación procedural por pisos | Construye los 3 pisos del intento con sus salas clave, sus llaves, su ruta garantizada, su cobertura de cámaras y su presupuesto de enemigos y recursos, según la configuración (M-15; D-11, D-17, D-25, D-33, D-34, D-36, D-38). Pilar A | S-07, S-08 | Definido (distancia mínima a la sala clave final por definir) |
-| S-07 Persistencia | Terminal del brazo, fallas de la máquina, autoguardado en la sala clave final y costo de salir del juego (M-16, M-17; D-30, D-31, D-32). Pilares A, DC | S-02, S-06, S-08 | Definido |
-| S-08 Ciclo de muerte y reconstrucción | Procesa la muerte y el reinicio, reconstruye al personaje, lleva el contador y la degradación y reproduce las cinemáticas de presentación (M-15, M-16, M-18; D-18, D-29, D-32, D-35, D-39). Pilar A | S-03, S-07 | Definido (degradación: Deseable) |
+| S-06 Generación procedural por pisos | Construye los 3 pisos del intento con sus salas clave, sus llaves, su ruta garantizada, su cobertura de cámaras, su presupuesto de enemigos y recursos y los documentos de Emilia en salas clave secundarias, según la configuración (M-08, M-15; D-11, D-17, D-25, D-33, D-34, D-36, D-38, D-52). Pilar A | S-07, S-08 | Definido (distancia mínima a la sala clave final por definir) |
+| S-07 Persistencia | Terminal del brazo, código de sujeto R-H, conteo de los 6 documentos de Emilia, fallas de la máquina, autoguardado en la sala clave final y costo de salir del juego (M-08, M-16, M-17; D-30, D-31, D-32, D-43, D-45, D-50, D-52). Pilares A, DC | S-02, S-06, S-08 | Definido |
+| S-08 Ciclo de muerte y reconstrucción | Procesa la muerte y el reinicio, reconstruye al personaje, lleva el contador y la degradación y reproduce las cinemáticas de presentación y las cinemáticas finales (Asimilación, Relevo básico, Relevo completo y Ambiguo) (M-15, M-16, M-18, M-19; D-18, D-29, D-32, D-35, D-39, D-42, D-51). Pilar A | S-03, S-07 | Definido (degradación: Deseable) |
 | S-09 Reciclaje de enemigos | The Mother recicla una vez a cada enemigo eliminado salvo que se remate; sin reciclaje en la sala del jefe (M-20; D-20, D-21, D-27, D-28). Pilares V, DC | S-02, S-04, S-05, S-11 | Definido (proporción de cuerpos y tiempo del aviso por definir) |
 | S-10 Jefe The Mother | Encuentro final de 3 fases en el piso 3 que reutiliza los demás sistemas; fase 2 con cámaras hostiles (M-19; D-16, D-28). Pilares V, A, DC | S-01, S-03, S-06, S-07 | Definido (número de puntos débiles por definir) |
-| S-11 Audio dinámico | Señales diegéticas de alerta, latido, pasos y avisos del sistema, coordinadas con la señal de vigilancia escalonada, las cámaras hostiles y el tope de la degradación (M-10; D-23, D-28, D-29). Pilar A | S-02, S-08, S-10 | Definido |
+| S-11 Audio dinámico | Señales diegéticas de alerta, latido del protagonista, pasos y avisos del sistema, coordinadas con la señal de vigilancia escalonada, las cámaras hostiles y el tope de la degradación; latido del laboratorio como capa ambiental (M-10; D-23, D-28, D-29, D-46). Pilar A | S-02, S-08, S-10 | Definido |
 
 ## Plantilla de sistema
 
@@ -236,7 +236,7 @@ Cada sistema agrupa mecánicas de [[02 - Mecánicas]]. Las reglas de detalle viv
 
 **Objetivo:** Construir los 3 pisos del intento con una estructura comprensible (salas clave + salas procedurales) que cambie entre intentos sin dejar pisos imposibles, en la configuración completa o en la showcase (D-11, D-33, D-34).
 
-**Entradas:** Configuración activa (completa o showcase), catálogo de salas procedurales y salas clave, número de intento (primero o posterior, D-38), presupuesto de enemigos y recursos por piso (D-17, D-37), cobertura de cámaras (D-25), evento de reconstrucción de S-08, estado guardado de S-07 al continuar.
+**Entradas:** Configuración activa (completa o showcase), catálogo de salas procedurales y salas clave, catálogo de documentos (de Emilia, de Vitalis Konzern y de The Mother; D-52), número de intento (primero o posterior, D-38), presupuesto de enemigos y recursos por piso (D-17, D-37), cobertura de cámaras (D-25), evento de reconstrucción de S-08, estado guardado de S-07 al continuar.
 
 **Procesamiento / reglas:**
 
@@ -257,21 +257,27 @@ Cada sistema agrupa mecánicas de [[02 - Mecánicas]]. Las reglas de detalle viv
 - **Llaves (D-36):** cada piso tiene 1 llave obligatoria que abre la puerta de la sala clave final y puede tener llaves opcionales para atajos o salas con recursos. La ruta desde la entrada del piso hasta la llave obligatoria no atraviesa la puerta de la sala final; como las puertas con llave opcional solo dan a atajos o salas con recursos, la llave obligatoria nunca queda detrás de ellas. En el piso 3, la llave obligatoria abre la puerta de la sala de The Mother, que ocupa el lugar de la sala clave final (M-15, D-36; ver [[06 - Economía y Recursos]]).
 - **Ruta garantizada:** cada piso tiene al menos una ruta válida entrada → llave obligatoria → sala clave final. Si el elevador puede quedar sin energía, el generador garantiza una ruta a la fuente de energía en el mismo piso.
 - **Cobertura de cámaras (D-25):** todas las salas clave (secundarias, finales y la de The Mother) tienen cámara, más ~1 de cada 3 salas procedurales (valor inicial, sujeto a balance).
+- **Documentos (D-52, M-08):**
+    - **Documentos de Emilia:** 6 en total, 2 por piso, siempre en salas clave secundarias y nunca en salas procedurales. Se aplica igual en la configuración completa (2–3 secundarias por piso) y en la showcase (2 secundarias por piso, D-34); no se escalan con el factor de D-34. Son los únicos que cuentan para la decisión final (M-19, S-07).
+    - **Documentos de Vitalis Konzern y de The Mother:** se colocan en salas procedurales como contexto del mundo y no cuentan para la decisión final. Cantidad por piso: **Por definir**.
+    - Como la posición de las salas clave cambia en cada intento (M-15), la posición de los documentos de Emilia dentro del piso también cambia.
+    - Si cada documento de Emilia pertenece siempre al mismo piso y cuáles son corruptos (D-45): **Por definir** (contenido en [[04 - Diálogos y Narrativa]]). Cuántos documentos de Emilia puede contener una misma sala clave secundaria: **Por definir**.
+    - Qué contiene una sala clave secundaria en un intento posterior, cuando su documento de Emilia ya está registrado en el terminal del brazo: **Por definir** (M-08).
 - **Tutorial (D-38):** en el primer intento, las primeras salas del piso 1 son fijas y contienen el tutorial; desde el segundo intento esas salas son procedurales. Número de salas del tutorial y si cuentan dentro de las salas procedurales del piso: **Por definir**.
 - Distancia mínima entre la reaparición (o la entrada del piso) y la sala clave final: **Por definir**.
 - La sala de The Mother es una sala clave fija del piso 3 y contiene munición para todos los puntos débiles de la fase 3 más 1–2 disparos de margen (D-28, S-10).
 - **Pisos visitados:** cada piso conserva su distribución y sus enemigos durante el intento, porque el jugador puede volver por el elevador y encontrar a los perseguidores esperando (D-26, S-02).
 - **Regeneración:** al morir o reiniciar se regeneran las salas procedurales, la posición de las salas clave, las llaves y la distribución de enemigos y recursos de todos los pisos (M-16). Al continuar desde un autoguardado, S-06 restaura el estado guardado por S-07 en lugar de generar uno nuevo (D-30).
 
-**Salidas:** Grafo de salas por piso, posición de las salas clave, posición de la llave obligatoria y de las opcionales, salas con cámara, posición de enemigos y recursos, puertas y paneles hackeables, distribución del piso para el autoguardado.
+**Salidas:** Grafo de salas por piso, posición de las salas clave, posición de la llave obligatoria y de las opcionales, salas con cámara, posición de enemigos y recursos, puertas y paneles hackeables, posición de los documentos de Emilia y de los de Vitalis Konzern y The Mother, distribución del piso para el autoguardado.
 
 **Estados posibles:** Sin generar, Generando, Piso válido, Piso inválido (se descarta y se vuelve a generar), Restaurado desde autoguardado.
 
 **Dependencias:** S-07 Persistencia (estado del intento al continuar), S-08 Ciclo de muerte (orden de regenerar).
 
-**Interacciones:** S-01 (salas con cámara), S-02 (rutas de patrulla, coberturas y elevadores), S-05 (recursos y llaves colocados), S-07 (distribución del piso para el autoguardado), S-08 (llegada a la sala clave final del piso 2), S-09 (salas válidas para reaparecer reciclados), S-10 (sala del jefe y su munición).
+**Interacciones:** S-01 (salas con cámara), S-02 (rutas de patrulla, coberturas y elevadores), S-05 (recursos y llaves colocados), S-07 (distribución del piso para el autoguardado; los documentos leídos se registran en el terminal del brazo), S-08 (llegada a la sala clave final del piso 2), S-09 (salas válidas para reaparecer reciclados), S-10 (sala del jefe y su munición).
 
-**Datos que necesita:** Configuración activa, catálogo de salas, reglas de conexión, parámetros por configuración, presupuesto por recurso, cobertura de cámaras, número de intento, distancia mínima a la sala clave final.
+**Datos que necesita:** Configuración activa, catálogo de salas, catálogo de documentos, reglas de conexión, parámetros por configuración, presupuesto por recurso, cobertura de cámaras, número de intento, distancia mínima a la sala clave final.
 
 **Datos que genera:** Distribución de los 3 pisos del intento actual.
 
@@ -295,6 +301,9 @@ Cada sistema agrupa mecánicas de [[02 - Mecánicas]]. Las reglas de detalle viv
 | Ambas | En el primer intento las salas del tutorial son idénticas en todas las partidas; desde el segundo intento son procedurales. |
 | Ambas | Cada piso respeta el mínimo y el máximo de cada recurso de su configuración. |
 | Ambas | Al continuar desde un autoguardado, la distribución del piso coincide con la guardada. |
+| Ambas | Ningún documento de Emilia aparece fuera de una sala clave secundaria. |
+| Ambas | En un intento sin documentos de Emilia registrados, cada piso contiene exactamente 2 documentos de Emilia (6 en el intento). |
+| Ambas | Ningún documento de Vitalis Konzern o de The Mother aparece en una sala clave. |
 | Completa | Cada piso tiene 8–12 salas procedurales y 2–3 salas clave secundarias. |
 | Completa | Enemigos generados: piso 1 entre 6 y 9; piso 2 entre 9 y 12; piso 3 entre 12 y 15, más The Mother. |
 | Completa | En pruebas de juego, una partida sin muertes dura ~45–60 min. |
@@ -306,11 +315,16 @@ Cada sistema agrupa mecánicas de [[02 - Mecánicas]]. Las reglas de detalle viv
 
 **Objetivo:** Conservar entre muertes y sesiones solo el conocimiento, nunca la fuerza del personaje, y permitir continuar el intento tras salir del juego o un fallo sin ofrecer un guardado manual.
 
-**Entradas:** Documentos leídos y reglas descubiertas (M-08), fallas descubiertas, usadas o parcheadas (M-17), contador de muertes y degradación (S-08), llegada a la sala clave final de los pisos 1 y 2 (S-06), estado de alerta de S-02, inventario de S-05, evento de salir del juego, "Nueva partida" (D-32), arranque del juego tras un cierre.
+**Entradas:** Documentos leídos y reglas descubiertas (M-08), fallas descubiertas, usadas o parcheadas (M-17), contador de muertes y degradación (S-08), evento de reconstrucción de S-08 (código de sujeto), victoria de S-10 (documentos completados), llegada a la sala clave final de los pisos 1 y 2 (S-06), estado de alerta de S-02, inventario de S-05, evento de salir del juego, "Nueva partida" (D-32), arranque del juego tras un cierre.
 
 **Procesamiento / reglas:**
 
-- El **terminal del brazo** conserva bestiario, lore, documentos (incluidos los de la esposa), reglas del sistema (cómo se forma un código, no su valor) y fallas de la máquina (M-16). Consultarlo no pausa la partida.
+- El **terminal del brazo** conserva bestiario, lore, documentos (incluidos los de la esposa, Emilia), reglas del sistema (cómo se forma un código, no su valor) y fallas de la máquina (M-16). Consultarlo no pausa la partida. Las entradas del bestiario son informes clínicos de The Mother sobre sujetos asimilados y se desbloquean en el primer encuentro (D-48).
+- **Código de sujeto (D-43, D-47, D-50):** S-07 guarda el código R-H con el que The Mother registra a Lukas y lo muestra en el terminal del brazo. La primera reconstrucción lo registra como **R-H-07**; cada evento de reconstrucción de S-08 lo sube 1 (R-H-08, R-H-09…), incluidas las de "Reiniciar" y las del primer intento, aunque estas no sumen al contador (D-35). Es solo presentación: no tiene efecto mecánico. "Nueva partida" lo devuelve a R-H-07 (D-32). Si una salida con calma con costo (D-31) también sube el código: **Por definir** (M-16).
+- **Documentos de Emilia (D-51, D-52):** S-07 lleva el conteo de documentos de Emilia registrados (0 a 6), acumulados en cualquier intento. Los documentos de Vitalis Konzern y de The Mother se registran, pero no suman al conteo. El conteo nunca disminuye al morir, reiniciar o salir; solo "Nueva partida" lo borra. Con 6, S-07 informa a S-10 y S-08 que la decisión final está disponible (M-19).
+- **Documentos corruptos (D-45):** algunos documentos se registran corruptos, con partes del texto ilegibles, sobre todo los relacionados con la memoria de Lukas. La corrupción nunca afecta a reglas del sistema ni a pistas de ruta, que siempre se registran legibles (M-08). "Corrupto" no equivale a una falla de la máquina (M-17).
+- **Mensaje de Emilia (D-50):** tras la primera reconstrucción, el mensaje de audio del dispositivo corporativo perdido queda copiado en el terminal del brazo, corrupto, como transcripción con sonido vocal y forma de onda (M-16).
+- **Desenlace (D-45, D-51):** al derrotar a The Mother, los documentos corruptos y el mensaje de Emilia se completan (paso 2 de la secuencia común de victoria, M-19). Si el terminal conserva los documentos completos después de los créditos: **Por definir**.
 - El terminal y las fallas se autoguardan cada vez que cambian. Si el personaje muere mientras se registra información, esta se guarda antes de procesar la muerte.
 - The Mother parchea cada falla tras 1-2 usos o al morir (valor inicial, sujeto a balance); el parche también persiste (M-17).
 - **Autoguardado del intento (D-30, modifica D-22):** no existe guardado manual y la partida no se conserva en el punto exacto de salida.
@@ -333,17 +347,17 @@ Cada sistema agrupa mecánicas de [[02 - Mecánicas]]. Las reglas de detalle viv
 - S-07 distingue una salida confirmada de un cierre inesperado registrando la salida confirmada en el archivo de guardado antes de cerrar.
 - **Nueva partida (D-32):** tras la confirmación, borra todo el archivo de guardado, incluido el terminal del brazo, las fallas, el contador y la degradación.
 
-**Salidas:** Archivo de guardado en disco, contenido del terminal del brazo, aviso "sincronizando…", estado del intento para S-06 al continuar, costo de salida para S-08.
+**Salidas:** Archivo de guardado en disco, contenido del terminal del brazo, código de sujeto actual, conteo de documentos de Emilia y disponibilidad de la decisión final para S-08 y S-10, aviso "sincronizando…", estado del intento para S-06 al continuar, costo de salida para S-08.
 
 **Estados posibles:** Sincronizado, Guardando (aviso "sincronizando…"), Autoguardado pendiente (esperando que termine la caza), Cargando (con gracia de 2–3 s).
 
 **Dependencias:** S-02 IA y percepción (enemigos en caza), S-06 Generación procedural (distribución del piso), S-08 Ciclo de muerte (orden de guardar antes de la muerte y descarte del autoguardado).
 
-**Interacciones:** S-05 (el terminal comparte la tecla `Tab` con el inventario; el inventario forma parte del autoguardado), S-06 (restaura el estado del intento al continuar), S-08 (salir con costo suma al contador y a la degradación), S-10 (fallas que acortan la fase 1; la sala del jefe no guarda).
+**Interacciones:** S-05 (el terminal comparte la tecla `Tab` con el inventario; el inventario forma parte del autoguardado), S-06 (restaura el estado del intento al continuar; coloca los documentos que se registran), S-08 (salir con costo suma al contador y a la degradación; cada reconstrucción sube el código de sujeto; el conteo de documentos decide la cinemática de victoria), S-10 (fallas que acortan la fase 1; la sala del jefe no guarda; conteo de documentos para la decisión final).
 
-**Datos que necesita:** Entradas del terminal, estado de cada falla, contador de muertes y nivel de degradación (si M-18 se implementa), marca de primer intento, estado del intento en la última sala clave final, estado de alerta al salir.
+**Datos que necesita:** Entradas del terminal, marca de corrupto y tipo (Emilia, Vitalis Konzern o The Mother) de cada documento, código de sujeto, estado de cada falla, contador de muertes y nivel de degradación (si M-18 se implementa), marca de primer intento, estado del intento en la última sala clave final, estado de alerta al salir.
 
-**Datos que genera:** Archivo de guardado (terminal, fallas, contador, degradación, autoguardado del intento y marca de salida confirmada).
+**Datos que genera:** Archivo de guardado (terminal, código de sujeto, conteo de documentos de Emilia, fallas, contador, degradación, autoguardado del intento y marca de salida confirmada).
 
 **Riesgos:**
 
@@ -363,12 +377,15 @@ Cada sistema agrupa mecánicas de [[02 - Mecánicas]]. Las reglas de detalle viv
 - "Nueva partida" no borra nada sin confirmación y, tras confirmarla, el terminal del brazo está vacío.
 - Ninguna entrada del terminal se pierde al morir, reiniciar ni cerrar el juego.
 - Ningún dato persistente mejora la salud, la resistencia o el daño del personaje.
+- En una partida nueva, la primera reconstrucción muestra R-H-07 en el terminal del brazo y cada reconstrucción posterior, incluidas las de "Reiniciar" y las del primer intento, muestra el código siguiente.
+- El conteo de documentos de Emilia solo suma documentos de Emilia, llega como máximo a 6 y no disminuye al morir, reiniciar ni cerrar el juego.
+- Ninguna parte corrupta de un documento oculta una regla del sistema ni una pista de ruta.
 
 ### S-08: Ciclo de muerte y reconstrucción
 
 **Objetivo:** Integrar la muerte al ciclo: el personaje se reconstruye, siempre es el mismo hombre recompuesto con piezas ajenas, y vuelve más informado, no más fuerte (D-18). También presenta el ciclo con las cinemáticas de D-39.
 
-**Entradas:** Evento de muerte de S-03 (incluido un agarre en Crítico), "Reiniciar" del menú de pausa (D-32), salida con costo de S-07 (D-31), llegada a la sala clave final del piso 2 (S-06, D-35), fin de la introducción, uso de una escalera o un elevador (M-15), `Espacio` en una cinemática saltable (ver [[04 - Controles]]).
+**Entradas:** Evento de muerte de S-03 (incluido un agarre en Crítico), "Reiniciar" del menú de pausa (D-32), salida con costo de S-07 (D-31), llegada a la sala clave final del piso 2 (S-06, D-35), fin de la introducción, uso de una escalera o un elevador (M-15), `Espacio` en una cinemática saltable (ver [[04 - Controles]]), victoria de S-10, conteo de documentos de Emilia de S-07, `E` sobre la terminal central o la salida en la decisión final (M-19).
 
 **Procesamiento / reglas:**
 
@@ -377,24 +394,37 @@ Cada sistema agrupa mecánicas de [[02 - Mecánicas]]. Las reglas de detalle viv
 
     | Cinemática | Cuándo | Contenido | Saltable |
     |---|---|---|---|
-    | Completa de reconstrucción | Una sola vez, al terminar la introducción | Todo el proceso de reconstrucción; detalle **Por definir** según el lore | **Por definir** (ver [[04 - Controles]]) |
-    | Corta de reconstrucción | En cada muerte o reinicio | El personaje cae del tanque con sonido de maquinaria; refleja la degradación acumulada | Sí, con `Espacio` |
+    | Completa de reconstrucción | Una sola vez, al terminar la introducción | Todo el proceso de reconstrucción; es el momento del olvido de Emilia (D-45). Cómo muere Lukas al final de la introducción: **Por definir** (D-50); resto del detalle en [[01 - Premisa y Trama]] | **Por definir** (ver [[04 - Controles]]) |
+    | Corta de reconstrucción | En cada muerte o reinicio | El personaje cae del tanque con sonido de maquinaria; refleja la degradación acumulada y la pieza ajena visible de la reconstrucción (M-18, D-43) | Sí, con `Espacio` |
     | Transición de piso | Al usar la escalera o el elevador | Ascensor o escalera; muestra el aviso de autoguardado | No |
 
 - **Transición de piso:** dura un **mínimo de 5 s** y oculta la carga del piso siguiente; si la carga tarda más, la cinemática se alarga. No existe pantalla de carga (D-39).
-- **Deseable (M-18), contador de 5 muertes (D-35):** suman cada muerte, "Reiniciar" y salir con costo. Las del primer intento (el del tutorial) no suman. Solo llegar a la sala clave final del piso 2 reinicia el contador. Al llegar a 5, se activa el final de "Disolución de identidad", también si la quinta se debe a "Reiniciar" o a salir con costo.
-- **Deseable (M-18), degradación (D-29):** cada muerte, reinicio o salida con costo suma degradación estética (corrupción CRT, distorsión de voz, deterioro de los diálogos) sin efecto en la jugabilidad. Solo se acumula y nunca se reinicia, ni siquiera al llegar a una sala clave; solo "Nueva partida" la borra (D-32). **Tope visual:** ninguna capa tapa la interfaz crítica ni las señales de M-10. Si la degradación suma durante el primer intento: **Por definir** (D-35 solo exime al contador).
-- El origen de las piezas ajenas y su relación con la instalación: **Por definir**.
+- **Deseable (M-18), contador de 5 muertes (D-35):** suman cada muerte, "Reiniciar" y salir con costo. Las del primer intento (el del tutorial) no suman. Solo llegar a la sala clave final del piso 2 reinicia el contador. Al llegar a 5, se activa el final "Asimilación" (D-42), también si la quinta se debe a "Reiniciar" o a salir con costo.
+- **Deseable (M-18), degradación (D-29):** cada muerte, reinicio o salida con costo suma degradación estética (corrupción CRT, distorsión del sonido vocal, deterioro de los diálogos) sin efecto en la jugabilidad. Solo se acumula y nunca se reinicia, ni siquiera al llegar a una sala clave; solo "Nueva partida" la borra (D-32). **Tope visual:** ninguna capa tapa la interfaz crítica ni las señales de M-10. Si la degradación suma durante el primer intento: **Por definir** (D-35 solo exime al contador).
+- **Piezas ajenas (D-43):** provienen del laboratorio. En cada reconstrucción se nota una pieza ajena más en el modelo de Lukas (3–5 variantes, valor inicial, sujeto a balance); al llegar a la última variante, el modelo se mantiene en ella. Es solo presentación (M-18).
+- **Código de sujeto (D-43):** cada reconstrucción, incluida la primera y las de "Reiniciar", envía a S-07 el evento que sube el código R-H (S-07).
+- **Cinemáticas finales (D-42, D-51):** S-08 reproduce el final de derrota y el cierre de la victoria que entrega S-10. Las reglas de la secuencia y de la decisión final están en M-19 y M-18 de [[02 - Mecánicas]]; los estados y transiciones, en [[07 - Reglas y Estados del Juego]].
 
-**Salidas:** Personaje reconstruido con el inventario vacío, orden de regenerar a S-06, orden de descartar el autoguardado a S-07, contador de muertes y nivel de degradación para S-01, S-07 y S-11, cinemática en curso, final de "Disolución de identidad".
+    | Cinemática | Cuándo | Contenido | Saltable |
+    |---|---|---|---|
+    | Asimilación (derrota) | Quinta muerte contada sin llegar a la sala clave final del piso 2 (D-35), si M-18 se implementa | El laboratorio termina de asimilar a Lukas y este se convierte en uno de los enemigos comunes que enfrentaba (D-42, D-48) | **Por definir** |
+    | Secuencia común de victoria (pasos 1 a 3) | Al derrotar a The Mother (S-10) | Cae The Mother y revela que existe algo más, sin poder explicarlo; los documentos corruptos y el mensaje de Emilia se completan; Lukas recupera primero el nombre de Emilia y después el suyo (D-45); **Despertar**: el latido del laboratorio se acelera (S-11) | **Por definir** |
+    | Relevo básico | Tras el Despertar, con menos de 6 documentos de Emilia (S-07): Lukas examina la terminal central de forma automática | Algo ocurre y Lukas reemplaza automáticamente a The Mother; el terminal del brazo lo conecta, porque es el último con identidad | **Por definir** |
+    | Relevo completo | Con los 6 documentos, el jugador usa `E` en la terminal central durante la decisión final | Misma base que el Relevo básico con un par de detalles distintos, entre ellos el expediente R-H-01 a R-H-06 "estado desconocido" (D-49); demás detalles **Por definir**. Lukas reemplaza a The Mother sabiendo más | **Por definir** |
+    | Ambiguo | Con los 6 documentos, el jugador usa `E` en la salida durante la decisión final | Al final solo se escucha el latido; no se sabe si Lukas fue asimilado, si se convirtió en The Mother o si ocurrió otra cosa | **Por definir** |
+    | Gancho abierto (paso 5) | Al terminar Relevo básico, Relevo completo o Ambiguo | Solo se escucha una nueva llegada y la voz (sonido) de The Mother iniciando el protocolo (D-51, D-52) | **Por definir** |
 
-**Estados posibles:** Cinemática de introducción, Vivo, Muerte, Cinemática corta, Reconstrucción, Transición de piso, Final de disolución.
+- **Decisión final (D-51):** con los 6 documentos de Emilia, tras el Despertar el jugador recupera el control en la sala de The Mother y elige con `E` entre la terminal central y la salida, sin menú; si ambos están al alcance, gana el que está al centro de la vista (D-27, M-19). Sin los 6 documentos no hay elección. Si quedan amenazas o si el personaje puede morir durante la decisión: **Por definir** (M-19).
+
+**Salidas:** Personaje reconstruido con el inventario vacío, orden de regenerar a S-06, orden de descartar el autoguardado a S-07, evento de reconstrucción para el código de sujeto de S-07, contador de muertes y nivel de degradación para S-01, S-07 y S-11, evento Despertar para S-11, cinemática en curso, final "Asimilación" (D-42), cinemática de victoria (Relevo básico, Relevo completo o Ambiguo, D-51).
+
+**Estados posibles:** Cinemática de introducción, Vivo, Muerte, Cinemática corta, Reconstrucción, Transición de piso, Final: Asimilación, Victoria, Decisión final, Relevo básico, Relevo completo, Ambiguo.
 
 **Dependencias:** S-03 Salud y combate, S-07 Persistencia.
 
-**Interacciones:** S-01 (la degradación no tapa la señal de vigilancia), S-05 (vacía el inventario), S-06 (regenera los pisos; carga del piso siguiente durante la transición), S-07 (descarta el autoguardado; aviso durante la transición; costo de salir), S-10 (muerte en la sala del jefe), S-11 (la degradación no oculta las señales).
+**Interacciones:** S-01 (la degradación no tapa la señal de vigilancia), S-05 (vacía el inventario), S-06 (regenera los pisos; carga del piso siguiente durante la transición), S-07 (descarta el autoguardado; aviso durante la transición; costo de salir; sube el código de sujeto; conteo de documentos de Emilia para elegir la cinemática de victoria), S-10 (muerte en la sala del jefe; victoria), S-11 (la degradación no oculta las señales; Despertar y latido del laboratorio en las cinemáticas finales).
 
-**Datos que necesita:** Punto de reaparición, contador de muertes, nivel de degradación, marca de primer intento, marca de cinemática completa ya vista, estado de la carga del piso siguiente.
+**Datos que necesita:** Punto de reaparición, contador de muertes, nivel de degradación, variante del cuerpo ajeno, marca de primer intento, marca de cinemática completa ya vista, estado de la carga del piso siguiente, conteo de documentos de Emilia.
 
 **Datos que genera:** Contador de muertes, nivel de degradación y marca de cinemática completa ya vista.
 
@@ -413,6 +443,10 @@ Cada sistema agrupa mecánicas de [[02 - Mecánicas]]. Las reglas de detalle viv
 - La transición de piso nunca dura menos de 5 s, nunca muestra una pantalla de carga y no termina antes de que el piso siguiente esté cargado.
 - Si M-18 se implementa: las muertes del primer intento no suman al contador; el contador solo se reinicia en la sala clave final del piso 2; el final se activa exactamente en la quinta muerte contada.
 - Si M-18 se implementa: el nivel de degradación nunca disminuye salvo con "Nueva partida" y, con la degradación máxima, la interfaz crítica y las señales de M-10 siguen visibles y audibles.
+- Toda victoria reproduce la secuencia común (revelación, documentos completados, recuperación de los nombres y Despertar) antes de su cinemática de victoria, y toda cinemática de victoria termina con el gancho abierto.
+- Con menos de 6 documentos de Emilia, la victoria reproduce el Relevo básico sin presentar la terminal central ni la salida como elección.
+- Con los 6 documentos de Emilia, `E` en la terminal central reproduce el Relevo completo y `E` en la salida reproduce el Ambiguo; no aparece ningún menú de elección.
+- El Relevo completo muestra el expediente R-H-01 a R-H-06 con "estado desconocido"; el Relevo básico no lo muestra.
 
 ### S-09: Reciclaje de enemigos
 
@@ -473,15 +507,16 @@ Cada sistema agrupa mecánicas de [[02 - Mecánicas]]. Las reglas de detalle viv
     3. **Pocos disparos a puntos débiles expuestos** (M-04). La sala contiene munición para todos los puntos débiles más 1–2 disparos de margen (valor inicial, sujeto a balance; D-28), aunque el jugador llegue sin munición. Número de puntos débiles: **Por definir**.
 - **Sin reciclaje (D-28):** los enemigos eliminados en la sala no se reciclan (S-09).
 - Morir en la sala regresa al inicio del ciclo (S-08).
-- Derrotarla es la condición de victoria. Al ser derrotada revela que existe algo más (la criatura lovecraftiana que es el laboratorio), pero no puede explicarlo ([[01 - Jugabilidad]]).
+- Derrotarla es la condición de victoria. Al ser derrotada revela que existe algo más (la criatura lovecraftiana que es el laboratorio), pero no puede explicarlo ([[01 - Jugabilidad]], D-47). S-10 entrega la victoria a S-08, que reproduce la secuencia común de victoria, la decisión final y la cinemática de victoria correspondiente (M-19, D-51).
+- **Decisión final (D-51):** tras el Despertar, la sala presenta la terminal central y la salida como elementos interactivos solo si S-07 informa los 6 documentos de Emilia (ver S-08).
 - D-34 no define diferencias del encuentro entre la configuración completa y la showcase.
-- La relación entre la esposa, la instalación y The Mother: **Por definir**.
+- La relación entre Emilia, la instalación y The Mother se documenta en D-47, D-49, [[02 - Mundo]] y [[03 - Personajes]].
 
-**Salidas:** Fase actual, puntos enfocados por las cámaras hostiles para S-02, estado de las cámaras para S-11, victoria y revelación narrativa, o muerte del personaje.
+**Salidas:** Fase actual, puntos enfocados por las cámaras hostiles para S-02, estado de las cámaras para S-11, victoria y revelación narrativa para S-08, terminal central y salida activas en la decisión final, o muerte del personaje.
 
 **Estados posibles:** Inactivo, Fase 1, Fase 2, Fase 3, Derrotada.
 
-**Dependencias:** S-01 Cámara y vigilancia, S-03 Salud y combate, S-06 Generación procedural (sala fija y su munición), S-07 Persistencia (fallas).
+**Dependencias:** S-01 Cámara y vigilancia, S-03 Salud y combate, S-06 Generación procedural (sala fija y su munición), S-07 Persistencia (fallas y conteo de documentos de Emilia).
 
 **Interacciones:** S-02 (los enemigos acuden al punto enfocado), S-04 (huida en la fase 2), S-08 (muerte en la sala), S-09 (sin reciclaje en la sala), S-11 (luz roja, motor de las cámaras y señales del encuentro).
 
@@ -508,27 +543,33 @@ Cada sistema agrupa mecánicas de [[02 - Mecánicas]]. Las reglas de detalle viv
 
 **Objetivo:** Comunicar la percepción y la cercanía de las amenazas sin indicadores en pantalla, de modo que los riesgos puedan interpretarse (principio 3 de [[01 - Jugabilidad]]).
 
-**Entradas:** Estado de alerta de S-02 (incluido el estado más alto dentro del alcance de M-03), distancia a la amenaza más cercana, superficie bajo los pies, estado de las cámaras hostiles de S-10, nivel de degradación de S-08, eventos de S-03, S-04, S-09 y M-13.
+**Entradas:** Estado de alerta de S-02 (incluido el estado más alto dentro del alcance de M-03), distancia a la amenaza más cercana, superficie bajo los pies, estado de las cámaras hostiles de S-10, nivel de degradación de S-08, evento Despertar y cinemáticas finales de S-08, eventos de S-03, S-04, S-09 y M-13.
 
 **Procesamiento / reglas:**
 
 - **Señales de alerta:** un sonido distinto para sospecha, búsqueda y caza; con varios enemigos se prioriza el estado más alto (M-10).
 - **Coherencia con la señal de vigilancia (D-23):** la degradación de la señal de las cámaras es una señal diegética de M-10 que presenta S-01. S-01 y S-11 usan el mismo estado de alerta más alto dentro del alcance de M-03, de modo que el sonido de alerta y la calidad de la señal nunca se contradicen (sospecha: señal sin cambios; búsqueda: señal degradada; caza: señal cortada). Así el jugador percibe la atención de The Mother (D-24) sin indicadores.
-- **Latido:** sube con la proximidad de una amenaza; su intensidad es aproximada para no funcionar como radar y no se activa por enemigos al otro lado de una puerta sellada.
+- **Latido (del protagonista):** sube con la proximidad de una amenaza; su intensidad es aproximada para no funcionar como radar y no se activa por enemigos al otro lado de una puerta sellada. Es la única señal de proximidad basada en un latido.
+- **Latido del laboratorio (D-46, M-10):** capa ambiental propia del laboratorio, con un timbre grave distinto del latido del protagonista.
+    - Nunca varía con la cercanía de enemigos ni con el estado de alerta; S-11 no le aplica la distancia a la amenaza ni las señales de S-02.
+    - Solo crece con el nivel de degradación acumulada de S-08 (M-18) y en el final: se acelera en el Despertar (paso 3 de la secuencia común de victoria, M-19). Al final de la cinemática Ambiguo solo se escucha el latido (D-51); si es el latido del laboratorio, el del protagonista o ambos: **Por definir**.
+    - Como la degradación solo se acumula (D-29), el latido del laboratorio nunca baja durante la partida; solo "Nueva partida" lo devuelve a su nivel base.
+    - Así no compite con la señal de proximidad: el jugador asocia el latido del protagonista con las amenazas y el del laboratorio con el ciclo.
+    - Nivel base sin degradación, curva de crecimiento por nivel de degradación y si se escucha en todas las salas o solo en algunas: **Por definir** (sujetos a balance).
 - **Pasos:** suenan distinto según la superficie (metal, agua, escombros).
 - **Avisos del sistema:** sonido de maquinaria antes del reciclaje (M-20), jadeo por resistencia insuficiente (M-06), chasquido del cargador vacío (M-04), pitido de error del hackeo (M-13).
 - **Cámaras hostiles (D-28):** en la fase 2 del jefe, cada cámara emite el sonido de su motor al girar, junto a su luz roja (M-10, S-10).
-- **Deseable (M-18), degradación (D-29):** la distorsión de voz y la corrupción CRT de la degradación se acumulan y nunca se reinician. Ninguna capa tapa las señales de M-10: las señales de alerta, el latido, los avisos del sistema y el motor de las cámaras se mantienen audibles, y la corrupción CRT de la degradación se mantiene distinguible de la señal de vigilancia degradada por búsqueda.
+- **Deseable (M-18), degradación (D-29):** la distorsión del sonido vocal y la corrupción CRT de la degradación se acumulan y nunca se reinician. Ninguna capa tapa las señales de M-10: las señales de alerta, el latido, los avisos del sistema y el motor de las cámaras se mantienen audibles, y la corrupción CRT de la degradación se mantiene distinguible de la señal de vigilancia degradada por búsqueda. El latido del laboratorio crece con la degradación, pero respeta el mismo tope: nunca tapa el latido del protagonista ni las señales de alerta.
 
 **Salidas:** Mezcla de audio en tiempo real; nivel de capa de degradación permitido para S-01 y la interfaz.
 
-**Estados posibles:** Ambiente sin amenaza, Sospecha, Búsqueda, Caza (con la intensidad del latido variando dentro de cada estado).
+**Estados posibles:** Ambiente sin amenaza, Sospecha, Búsqueda, Caza (con la intensidad del latido del protagonista variando dentro de cada estado). El latido del laboratorio es una capa ambiental independiente de estos estados: suena igual en todos ellos y solo cambia con la degradación y en el Despertar.
 
-**Dependencias:** S-02 IA y percepción, S-08 Ciclo de muerte (nivel de degradación), S-10 Jefe (estado de las cámaras hostiles).
+**Dependencias:** S-02 IA y percepción, S-08 Ciclo de muerte (nivel de degradación, Despertar y cinemáticas finales), S-10 Jefe (estado de las cámaras hostiles).
 
-**Interacciones:** S-01 (compensa la falta de visión periférica; misma prioridad de estado que la señal de vigilancia), S-08 (degradación con tope), S-09 (aviso de maquinaria), S-10 (cámaras hostiles y señales del encuentro final).
+**Interacciones:** S-01 (compensa la falta de visión periférica; misma prioridad de estado que la señal de vigilancia), S-08 (degradación con tope; latido del laboratorio en el Despertar y en las cinemáticas finales), S-09 (aviso de maquinaria), S-10 (cámaras hostiles y señales del encuentro final).
 
-**Datos que necesita:** Estado de alerta por enemigo, distancias, puertas selladas, tipo de superficie, estado de giro de cada cámara hostil, nivel de degradación.
+**Datos que necesita:** Estado de alerta por enemigo, distancias, puertas selladas, tipo de superficie, estado de giro de cada cámara hostil, nivel de degradación, evento Despertar.
 
 **Datos que genera:** Ninguno persistente.
 
@@ -537,10 +578,15 @@ Cada sistema agrupa mecánicas de [[02 - Mecánicas]]. Las reglas de detalle viv
 - Un latido demasiado preciso funciona como radar y elimina la incertidumbre (Pilar A).
 - Señales ambiguas hacen que la detección se sienta injusta.
 - Con mucha degradación, la corrupción CRT puede confundirse con la señal degradada por búsqueda; se mitiga con el tope de D-29.
+- Si el jugador confunde el latido del laboratorio con el del protagonista, interpreta mal la proximidad de las amenazas; se mitiga con el timbre grave distinto y con que el del laboratorio nunca dependa de la cercanía de enemigos (D-46).
 
 **Criterios de aceptación (ambas configuraciones):**
 
 - Cada estado de alerta tiene un sonido distinguible.
+- El latido del laboratorio tiene un timbre distinguible del latido del protagonista.
+- Con el mismo nivel de degradación, la intensidad del latido del laboratorio es la misma con o sin enemigos cerca y en cualquier estado de alerta.
+- El latido del laboratorio solo aumenta al subir el nivel de degradación y en el Despertar, y nunca disminuye salvo con "Nueva partida".
+- Con la degradación máxima, el latido del laboratorio no tapa el latido del protagonista ni las señales de alerta.
 - El sonido de alerta y la calidad de la señal de vigilancia corresponden siempre al mismo estado de alerta.
 - El latido no responde a enemigos detrás de una puerta sellada.
 - Todo cuerpo reproduce el aviso de maquinaria antes de desaparecer.
@@ -570,12 +616,15 @@ Describe qué sistemas dependen de otros y qué información intercambian.
 | S-09 Reciclaje | S-11 | Aviso de maquinaria |
 | S-08 Ciclo de muerte | S-05, S-06, S-07 | Vaciar inventario, regenerar los pisos, guardar antes de procesar la muerte y descartar el autoguardado |
 | S-08 Ciclo de muerte | S-01, S-11 | Nivel de degradación (con tope visual y sonoro) |
+| S-08 Ciclo de muerte | S-07 | Evento de reconstrucción (sube el código de sujeto R-H) |
+| S-08 Ciclo de muerte | S-11 | Despertar y cinemáticas finales (latido del laboratorio) |
+| S-06 Generación procedural | S-07 | Documentos colocados que el jugador lee y registra (de Emilia, de Vitalis Konzern y de The Mother) |
 | S-07 Persistencia | S-06 | Estado del intento al continuar |
-| S-07 Persistencia | S-08 | Salida con costo (suma al contador y a la degradación) |
-| S-07 Persistencia | S-10 | Fallas disponibles para la fase 1 |
+| S-07 Persistencia | S-08 | Salida con costo (suma al contador y a la degradación); conteo de documentos de Emilia (cinemática de victoria) |
+| S-07 Persistencia | S-10 | Fallas disponibles para la fase 1; conteo de documentos de Emilia (decisión final) |
 | S-10 Jefe | S-02 | Punto enfocado por una cámara hostil |
 | S-10 Jefe | S-11 | Giro de las cámaras hostiles |
-| S-10 Jefe | S-08 | Muerte en la sala; victoria al derrotarla |
+| S-10 Jefe | S-08 | Muerte en la sala; victoria al derrotarla (secuencia común, decisión final y cinemática de victoria) |
 
 ```mermaid
 flowchart LR
@@ -603,14 +652,16 @@ flowchart LR
     MUE -- vaciar --> INV
     MUE -- regenerar --> GEN
     MUE -- guardar / descartar --> PER
-    MUE -- degradación --> AUD
+    MUE -- degradación / Despertar --> AUD
     MUE -- degradación --> CAM
+    MUE -- reconstrucción / código de sujeto --> PER
+    GEN -- documentos --> PER
     PER -- estado al continuar --> GEN
-    PER -- salida con costo --> MUE
-    PER -- fallas --> JEFE
+    PER -- salida con costo / documentos de Emilia --> MUE
+    PER -- fallas / documentos de Emilia --> JEFE
     JEFE -- punto enfocado --> IA
     JEFE -- cámaras hostiles --> AUD
-    JEFE -- muerte --> MUE
+    JEFE -- muerte / victoria --> MUE
     CAM --> JEFE
     COM --> JEFE
 ```
