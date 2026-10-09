@@ -4,9 +4,9 @@
 
 Define cómo se presenta la historia al jugador y cómo funcionan los diálogos.
 
-> **Principio general (D-52):** *Identity Dissolution* no tiene actuación de voz. Todas las voces (Emilia, The Mother y Lukas) se representan con **sonidos más texto**, y los subtítulos o el texto en pantalla son **obligatorios**. La historia se cuenta sobre todo mediante documentos, objetos, audio y cinemáticas; el jugador y Lukas se informan juntos (D-45). La trama completa se documenta en [[01 - Premisa y Trama]], el mundo en [[02 - Mundo]] y los personajes en [[03 - Personajes]]; las reglas de juego asociadas están en [[02 - Mecánicas]].
-
 ## Métodos narrativos
+
+> **Principio general (D-52):** *Identity Dissolution* no tiene actuación de voz. Todas las voces (Emilia, The Mother y Lukas) se representan con **sonidos más texto**, y los subtítulos o el texto en pantalla son **obligatorios**. La historia se cuenta sobre todo mediante documentos, objetos, audio y cinemáticas; el jugador y Lukas se informan juntos (D-45). La trama completa se documenta en [[01 - Premisa y Trama]], el mundo en [[02 - Mundo]] y los personajes en [[03 - Personajes]]; las reglas de juego asociadas están en [[02 - Mecánicas]].
 
 - Diálogo
     - No hay conversaciones con opciones ni NPC con diálogo; los enemigos comunes son personas asimiladas (D-48, ver [[03 - Personajes]]).

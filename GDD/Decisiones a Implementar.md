@@ -43,7 +43,7 @@ Existe una entidad o criatura asociada al laboratorio.
 
 También existe una figura denominada **The Mother**, relacionada con el intento de controlar dicha entidad.
 
-La relación exacta entre The Mother, el laboratorio y la criatura todavía debe definirse.
+La relación exacta entre The Mother, el laboratorio y la criatura todavía debe definirse. **(Confirmado — D-46, D-47)**
 
 - **D-46:** el laboratorio es una instalación subterránea de Vitalis Konzern (biotecnología y salud), sellada tras el incidente, en una distopía retrofuturista con estética de los 90 y tecnología de ~2080. El laboratorio **es** la criatura lovecraftiana.
 - **D-47:** The Mother es una IA médica de Vitalis creada para contener y estudiar a la criatura. **The Mother reconstruye; el laboratorio asimila.**
@@ -85,7 +85,7 @@ El horror debe surgir también de:
 - naturaleza inexplicable de determinados acontecimientos.
     
 
-La cosmología concreta del mundo todavía está pendiente.
+La cosmología concreta del mundo todavía está pendiente. **(Confirmado — D-44, D-46)**
 
 **Decisión confirmada (D-44):** postura de nihilismo puro frente al horror cósmico (lo incognoscible, la indiferencia, la insignificancia). Tema central: *Identity Dissolution trata sobre buscar sentido dentro de algo que no puede darlo. Lukas lucha por recordar a quien ama, y el laboratorio le demuestra, intento tras intento, que eso nunca importó.* Qué **es** la criatura nunca se explica (D-16, D-47).
 
@@ -127,7 +127,7 @@ Todavía deben definirse:
     
 - desenlace.
 
-**Decisión confirmada (D-16):** The Mother es el jefe final de la demo. Al ser derrotada revela que existe algo más (la criatura lovecraftiana que es el laboratorio), pero no puede explicarlo. Su identidad, objetivo, motivaciones y relación con el jugador, con la esposa del protagonista y con la criatura siguen por definir.
+**Decisión confirmada (D-16):** The Mother es el jefe final de la demo. Al ser derrotada revela que existe algo más (la criatura lovecraftiana que es el laboratorio), pero no puede explicarlo. Su identidad, objetivo, motivaciones y relación con el jugador, con la esposa del protagonista y con la criatura siguen por definir. **(Confirmado — D-47, D-49, D-51)**
 
 **Decisión confirmada (D-47, D-51):** IA médica de Vitalis Konzern creada para contener y estudiar a la criatura. Su protocolo de preservación del personal está corrupto: reconstruye a todo aquel que llega y todavía conserva identidad, sin entender que cada reconstrucción alimenta la asimilación ni que así mantenía contenido al laboratorio. Para ella, Lukas es un sujeto con código R-H, en el mismo expediente que Emilia (R-H-01 a R-H-06). Al ser derrotada no puede explicar qué es la criatura. El desenlace se resuelve con los finales de D-51 (Relevo básico, Relevo completo o Ambiguo).
 
@@ -202,23 +202,23 @@ todavía deben resolverse, como mínimo:
 
 ## Narrativa
 
-- Protagonista.
+- Protagonista. **(Confirmado — D-45, D-50)**
     
 - The Mother. **(Confirmada — D-47)**
     
 - Criatura. **(Confirmada — D-46: el laboratorio es la criatura)**
     
-- Laboratorio.
+- Laboratorio. **(Confirmado — D-46)**
     
-- Experimentos.
+- Experimentos. **(Confirmados — D-46)**
     
-- Motivo de las muertes.
+- Motivo de las muertes. **(Confirmado — D-47)**
     
 - Relación entre muerte y experimento.
     
-- Estructura narrativa.
+- Estructura narrativa. **(Confirmada — D-45, D-50, D-51)**
     
-- Final.
+- Final. **(Confirmado — D-51)**
     
 
 ## Recursos

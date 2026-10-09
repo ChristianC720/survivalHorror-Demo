@@ -190,10 +190,71 @@ Documenta qué NPC existen, qué hacen y cómo interactúan con el jugador.
 
 No hay NPC con diálogo en la demo. Las voces que aparecen (Emilia, The Mother, Lukas) se representan con sonidos más texto en pantalla (D-52; ver [[04 - Diálogos y Narrativa]]).
 
-| NPC | Qué son | Qué hacen | Interacción con el jugador |
-|---|---|---|---|
-| Enemigos comunes | Personas que llegaron antes (personal de Vitalis Konzern, sujetos de prueba) y fueron asimiladas por el laboratorio (D-48). Lukas no es el primero ni es especial | Amenazas del ciclo; ver [[02 - Mecánicas]] | Sin diálogo. Evasión, sigilo o combate en desventaja; el bestiario del terminal del brazo registra un informe clínico de The Mother con su código de sujeto, que se desbloquea en el primer encuentro y persiste entre muertes (M-16, D-48) |
-| Enemigos reciclados | Enemigos eliminados que conservaban un último rastro de identidad y que The Mother reconstruye una vez más (D-47) | Regresan más asimilados: más rápidos y más frágiles; solo ocurre una vez (M-20) | Sin diálogo. El jugador puede evitar el reciclaje con el remate (M-20, D-21) |
+### Enemigos comunes
+
+**Rol:** Enemigos comunes de la demo. Personas que llegaron antes (personal de Vitalis Konzern, sujetos de prueba) y fueron asimiladas por el laboratorio (D-48). Lukas no es el primero ni es especial.
+
+**Función jugable:** Amenazas del ciclo; el jugador los evita, usa el sigilo o combate en desventaja (ver [[02 - Mecánicas]]). Sin diálogo.
+
+**Función narrativa:** Muestran lo que ocurre a quien pierde su identidad: **The Mother reconstruye; el laboratorio asimila** (D-47). En el final "Asimilación", Lukas se convierte en uno de ellos (D-42).
+
+**Descripción física:** `Por definir`.
+
+**Personalidad:** Sin personalidad propia: han perdido su identidad (D-48).
+
+**Motivaciones:** Sin objetivo propio: han perdido su identidad (D-48).
+
+**Objetivos:** Sin objetivo propio (D-48).
+
+**Conflicto:** `Por definir`.
+
+**Relaciones:**
+
+- El laboratorio: los asimiló (D-48).
+- The Mother: los registra en el bestiario del terminal del brazo como informes clínicos con su código de sujeto; cada entrada se desbloquea en el primer encuentro y persiste entre muertes (M-16, D-48).
+
+**Arco del personaje:** Al ser eliminados conservan un último rastro de identidad; The Mother los reconstruye una vez más y regresan como enemigos reciclados (D-47, M-20).
+
+**Habilidades:** `Por definir`.
+
+**Debilidades:** `Por definir`.
+
+**Frases o tono de diálogo:** Sin diálogo.
+
+**Referencias visuales:** `Por definir`.
+
+### Enemigos reciclados
+
+**Rol:** Enemigos eliminados que conservaban un último rastro de identidad y que The Mother reconstruye una vez más (D-47).
+
+**Función jugable:** Regresan más asimilados: más rápidos y más frágiles; solo ocurre una vez por enemigo (M-20). El jugador puede evitar el reciclaje con el remate (M-20, D-21). Sin diálogo.
+
+**Función narrativa:** Materializan el rastro de identidad: después del reciclaje ya no les queda identidad, por eso solo ocurre una vez (D-47, M-20).
+
+**Descripción física:** `Por definir`.
+
+**Personalidad:** Sin personalidad propia: han perdido su identidad (D-48).
+
+**Motivaciones:** Sin objetivo propio (D-48).
+
+**Objetivos:** Sin objetivo propio (D-48).
+
+**Conflicto:** `Por definir`.
+
+**Relaciones:**
+
+- The Mother: los reconstruye una sola vez con su último rastro de identidad (D-47, M-20).
+- El laboratorio: regresan más asimilados (M-20).
+
+**Arco del personaje:** Enemigo común eliminado, reconstruido una vez más asimilado y, después, sin identidad; no vuelve a reciclarse (M-20).
+
+**Habilidades:** Más rápidos que su versión común (M-20).
+
+**Debilidades:** Más frágiles que su versión común (M-20).
+
+**Frases o tono de diálogo:** Sin diálogo.
+
+**Referencias visuales:** `Por definir`.
 
 En el final "Asimilación", Lukas se convierte en uno de estos enemigos comunes (D-42). La cantidad de enemigos por piso se documenta en [[02 - Mecánicas]] (M-15); su lugar en el mundo, en [[02 - Mundo]]. Los tipos concretos de enemigos y sus entradas de bestiario quedan `Por definir`.
 

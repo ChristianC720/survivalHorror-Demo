@@ -64,7 +64,7 @@ La estructura sigue los 3 pisos de la instalación (D-33, M-15). La distribució
 
 | Orden | Evento | Participación del jugador | Consecuencia |
 |---|---|---|---|
-| 1 | Entrada a la instalación sellada (introducción) | Recorre la introducción y recibe el mensaje de audio de Emilia como transcripción con sonido vocal y forma de onda (D-50, D-52) | Se establece la motivación: Lukas recuerda a Emilia y busca su última pista |
+| 1 | Entrada a la instalación sellada (introducción) | Recorre la introducción y escucha el mensaje de audio de Emilia como transcripción con sonido vocal y forma de onda (D-50, D-52) | Se establece la motivación: Lukas recuerda a Emilia y busca su última pista |
 | 2 | Muerte de Lukas al final de la introducción | **Por definir** (D-50) | Inicia el ciclo de muerte y reconstrucción |
 | 3 | Cinemática completa de reconstrucción: el olvido | Observa (D-39) | Lukas olvida a Emilia y conserva el anillo; queda registrado como R-H-07; el mensaje queda copiado, corrupto, en el terminal del brazo (M-16) |
 | 4 | Tutorial del piso 1 | Aprende las reglas en las salas fijas del primer intento (D-38) | Las muertes del primer intento no suman al contador (D-35) |

@@ -71,3 +71,31 @@ Lista completa en `.agents/tasks/gdd-pendientes-por-definir.md`. Resumen:
 - **Finales y cinemáticas:** detalles del Relevo completo además del expediente; latido final del Ambiguo y su encadenado con el gancho; contenido visual de la Asimilación; qué cinemáticas se pueden saltar; amenazas, muerte y pausa durante la decisión final; qué ofrece Continuar tras un final.
 - **Diseño, reglas y balance:** si la salida con calma sube el código R-H; degradación en el primer intento; curva del latido del laboratorio; puntos débiles y cámaras hostiles del jefe; reciclaje y remate; distancia mínima y salas del tutorial; alcance de vigilancia y alerta; casos de guardado y salida; munición por recogida, baterías, fusibles y máximos por casilla; contenido de Opciones.
 - **Controles:** reasignación de teclas y columna de gamepad.
+
+## Iteración 2: correcciones de la revisión (CHANGES_REQUESTED)
+
+Se corrigieron los 5 hallazgos de `gdd-bloque4-review.json`. No se tocó nada fuera de ellos; la ficha de Lukas (`#### Lukas Reiner-Hellen` hasta `### Antagonista`) no se editó.
+
+| Hallazgo | Archivo | Corrección |
+|---|---|---|
+| 1 (bloqueante) | `03 - Historia y Mundo/02 - Mundo.md` | L11: "El juego transcurre por completo dentro de la instalación; el exterior no se visita en la demo" pasa a "Si la introducción muestra el exterior: **Por definir**". L76, fila "Exterior": se quita "no se visita en la demo (D-46)" y se pone la misma frase "Por definir"; la columna "Función jugable" pasa de "Ninguna en la demo" a "Por definir", porque también fijaba de antemano el formato de la introducción |
+| 2 | `03 - Historia y Mundo/01 - Premisa y Trama.md` | L67, evento 1: "recibe el mensaje" pasa a "escucha el mensaje" |
+| 3 | `03 - Historia y Mundo/03 - Personajes.md` | `## NPC`: la tabla se sustituye por dos fichas con la Plantilla de personaje (`### Enemigos comunes`, `### Enemigos reciclados`), con los 14 campos. Solo se usa contenido que ya estaba en la tabla, en Mundo o en D-42/D-47/D-48/M-16/M-20; lo demás queda `Por definir`. Se conservan la descripción de la sección, el párrafo inicial y el párrafo final |
+| 4 | `Decisiones a Implementar.md` | Se añade "(Confirmado — D-xx)" a L46 (D-46, D-47), L88 (D-44, D-46) y L130 (D-47, D-49, D-51), y en la lista "Narrativa" a Protagonista (D-45, D-50), Laboratorio (D-46), Experimentos (D-46), Motivo de las muertes (D-47), Estructura narrativa (D-45, D-50, D-51) y Final (D-51). El formato no cambia. "Relación entre muerte y experimento" no estaba en el hallazgo y no se marca |
+| 5 | `03 - Historia y Mundo/04 - Diálogos y Narrativa.md` | El callout "Principio general (D-52)" se mueve de "Descripción de la sección" al inicio de "Métodos narrativos" (L9), sin cambiar el texto |
+
+El hallazgo 4 resuelve la observación de 03.4 que la sección "Observaciones sin corregir" dejaba como histórico.
+
+### Evidencia (Select-String, solo lectura)
+
+- `no se visita` en `03 - Historia y Mundo\*.md`: 0 coincidencias.
+- `^\| Exterior.*D-46` en `02 - Mundo.md`: 0 coincidencias. Apariciones de "exterior": L11 y L76 ("Si la introducción muestra el exterior: **Por definir**") y L59 ("Estado del mundo exterior tras la demo: **Por definir**", sin cambios).
+- `recibe el mensaje|escucha el mensaje` en `01 - Premisa y Trama.md`: solo L67, "escucha el mensaje".
+- Encabezados de `03 - Personajes.md`: `## NPC` (L187), `### Enemigos comunes` (L193), `### Enemigos reciclados` (L226); `^\| NPC`: 0 coincidencias.
+- `04 - Diálogos y Narrativa.md`: `## Descripción de la sección` (L3), `## Métodos narrativos` (L7), callout "Principio general" (L9).
+- `Confirmad` en `Decisiones a Implementar.md`: L46, L88, L205, L211, L213, L215, L219 y L221 con la nueva marca; L130 con "(Confirmado — D-47, D-49, D-51)".
+- Términos prohibidos (`Final de disoluci|GesundHealth|distorsi.n de voz|fallas.{0,20}documento|documentos? con fallas`) en los 5 archivos editados: 0 coincidencias.
+- Inversión de la regla (`The Mother asimila|laboratorio reconstruye`): 0 coincidencias.
+- Líneas con un número impar de `**` en los 5 archivos: ninguna.
+- Navegación final (`^> \*\*Navegaci`) en las 4 notas de `03 - Historia y Mundo`: 1 por nota.
+- No se usó ningún comando git, no se crearon, borraron ni renombraron notas y solo se escribió con las herramientas de edición.

@@ -1,8 +1,21 @@
 # Propuesta para ~/.kiro/settings/permissions.yaml (ámbito de usuario)
-# Basada en los comandos que usaron los workflows del GDD (.agents/tasks/*-verificacion.md).
-# Precedencia: deny > ask > allow, sin importar el orden ni el ámbito.
-# Kiro divide los comandos compuestos (tuberías "|", ";") y evalúa cada segmento por separado,
-# por eso cada cmdlet de una tubería necesita su propia regla.
+# Versión 2 (2026-10-08). Basada en los comandos que usaron los workflows del GDD
+# (.agents/tasks/*-verificacion.md) y en la revisión de la versión 1.
+#
+# Cómo aplicarla: copia este contenido a C:\Users\TCN400340\.kiro\settings\permissions.yaml
+# (reemplaza el archivo actual; la regla "$_.FullName *" que ya tenías está incluida abajo).
+# Los agentes no pueden escribir en ~/.kiro/settings, así que la copia es manual.
+#
+# Reglas generales:
+# - Precedencia: deny > ask > allow, sin importar el orden ni el ámbito.
+# - Kiro divide los comandos compuestos ("|", ";") y evalúa cada segmento por separado.
+#   Los bloques { } y las subexpresiones $( ) NO se dividen: por eso los patrones de
+#   escritura y borrado empiezan con "*", para detectarlos dentro de esos bloques.
+# - Lo que no coincide con ninguna regla pide confirmación.
+# - Los patrones protegen contra accidentes de los agentes, no contra un comando escrito
+#   a propósito para saltarlos. La protección real es el control de versiones (git).
+# - Pendiente de comprobar: si los patrones distinguen mayúsculas y minúsculas
+#   (PowerShell no las distingue) y si fs_read/fs_write normalizan "/" y "\".
 
 rules:
   # ---------------------------------------------------------------
@@ -10,21 +23,37 @@ rules:
   # ---------------------------------------------------------------
   - capability: shell
     effect: deny
-    # El "*" inicial hace que coincidan también dentro de bloques como
-    # "ForEach-Object { Remove-Item $_ -Recurse }".
     match:
+      # Borrado recursivo (cmdlet y alias de PowerShell, y cmd)
       - "*Remove-Item*-Recurse*"
       - "*rm -r*"
-      - "*rmdir *"
+      - "*rm *-Recurse*"
+      - "*ri *-Recurse*"
+      - "*del *-Recurse*"
       - "*del /s*"
+      - "rd *"
+      - "*{ rd *"
+      - "rmdir *"
+      - "*{ rmdir *"
+      - "erase *"
+      - "*{ erase *"
+      - "*Format-Volume*"
+      # Git destructivo (el GDD está dentro del repo C:\Users\TCN400340\Documents\Codigos)
       - "*git reset --hard*"
       - "*git clean*"
       - "*git branch -D*"
       - "*git push --force*"
       - "*git push -f*"
-      - "*Format-Volume*"
+      - "*git push * --force*"
+      - "*git checkout -- *"
+      - "*git restore *"
+      - "*git stash drop*"
+      - "*git stash clear*"
+      # Ejecución de código arbitrario
       - "*Invoke-Expression*"
+      - "iex"
       - "iex *"
+      - "*-EncodedCommand*"
 
   - capability: fs_write
     effect: deny
@@ -32,28 +61,100 @@ rules:
       - "**/.git/**"
 
   # ---------------------------------------------------------------
-  # ASK: red y publicación. Siguen pidiendo confirmación.
+  # ASK: siguen pidiendo confirmación.
   # ---------------------------------------------------------------
+
+  # Git que modifica el repositorio. Los workflows del GDD tienen prohibido hacer commits;
+  # si un agente lo intenta, te enterarás.
   - capability: shell
     effect: ask
     match:
-      - "git push*"
+      - "git add*"
       - "git commit*"
-      - "Invoke-WebRequest*"
-      - "Invoke-RestMethod*"
+      - "git push*"
+      - "git stash*"
+      - "git checkout*"
+      - "git switch*"
+      - "git merge*"
+      - "git rebase*"
+
+  # Red y publicación
+  - capability: shell
+    effect: ask
+    match:
+      - "*Invoke-WebRequest*"
+      - "*Invoke-RestMethod*"
+      - "*Start-BitsTransfer*"
+      - "iwr *"
+      - "irm *"
       - "curl *"
       - "wget *"
 
+  # Escritura, borrado y movimiento desde la terminal, en cualquier parte del comando.
+  # Los agentes deben escribir con las herramientas de archivos (fs_write), no con la shell.
+  # Incluye Copy-Item: la copia de respaldo se hace leyendo el archivo y escribiéndolo con fs_write.
+  - capability: shell
+    effect: ask
+    match:
+      - "*Set-Content*"
+      - "*Add-Content*"
+      - "*Clear-Content*"
+      - "*Out-File*"
+      - "*Tee-Object*"
+      - "*Remove-Item*"
+      - "*Move-Item*"
+      - "*Rename-Item*"
+      - "*Copy-Item*"
+      - "*New-Item*"
+      - "*Set-ItemProperty*"
+      - "*[System.IO.File]::Write*"
+      - "*[IO.File]::Write*"
+      - "*[System.IO.File]::Delete*"
+      - "*[IO.File]::Delete*"
+      - "*.Delete()*"
+      - "* > *"
+      - "* >> *"
+
+  # Shells anidadas y procesos externos (permitirían saltarse todo lo anterior)
+  - capability: shell
+    effect: ask
+    match:
+      - "*Start-Process*"
+      - "pwsh *"
+      - "powershell *"
+      - "cmd *"
+      - "& *"
+
+  # Archivos de la bóveda que los workflows no deben tocar
+  - capability: fs_write
+    effect: ask
+    match:
+      - "**/Christian Decisions.md"
+      - "**/README.md"
+      - "**/.obsidian/**"
+      - "**/snippets/**"
+
   # ---------------------------------------------------------------
-  # ALLOW: escritura de archivos dentro de la bóveda del GDD
+  # ALLOW: lectura y escritura de archivos dentro de la bóveda del GDD
+  # (se incluyen las dos formas de ruta porque no está confirmado si se normalizan)
   # ---------------------------------------------------------------
+  - capability: fs_read
+    effect: allow
+    match:
+      - "./**"
+      - "C:/Users/TCN400340/Documents/Codigos/GDD/**"
+      - 'C:\Users\TCN400340\Documents\Codigos\GDD\**'
+
   - capability: fs_write
     effect: allow
     match:
+      - "./**"
       - "C:/Users/TCN400340/Documents/Codigos/GDD/**"
+      - 'C:\Users\TCN400340\Documents\Codigos\GDD\**'
 
   # ---------------------------------------------------------------
   # ALLOW: comandos de solo lectura que usan los workflows del GDD
+  # (las reglas ask de arriba siguen ganando si el comando contiene escritura)
   # ---------------------------------------------------------------
   - capability: shell
     effect: allow
@@ -73,6 +174,9 @@ rules:
       - "Split-Path*"
       - "Get-FileHash*"
       - "Get-Location*"
+      - "Get-Date*"
+      - "[System.IO.File]::ReadAllLines*"
+      - "[System.IO.File]::ReadAllText*"
 
       # Cmdlets de tubería
       - "Where-Object*"
@@ -88,7 +192,7 @@ rules:
       - "Write-Output*"
       - "Write-Host*"
 
-      # Asignaciones y conteos de solo lectura
+      # Asignaciones, conteos y control de flujo usados en las verificaciones
       - "$* = Get-Content *"
       - "$* = Get-ChildItem *"
       - "$* = Select-String *"
@@ -96,9 +200,13 @@ rules:
       - "(Get-ChildItem *"
       - "(Select-String *"
       - "[Console]::OutputEncoding*"
-
-      # Copias de respaldo dentro de .agents/tasks (antes de editar una nota)
-      - "Copy-Item *.agents*tasks*"
+      - "for (*"
+      - "for(*"
+      - "foreach (*"
+      - "foreach(*"
+      - "if (*"
+      - "if(*"
+      - "Start-Sleep*"
 
       # Git de solo lectura
       - "git status*"

@@ -8,7 +8,7 @@ Define el contexto donde ocurre el videojuego: lugares, culturas, reglas, histor
 
 **Época:** Distopía retrofuturista con estética de los años 90 y tecnología de ~2080 (D-46). Año exacto dentro del juego: **Por definir**.
 
-**Lugar:** El laboratorio, una instalación subterránea de **Vitalis Konzern**, sellada y dada de baja tras el incidente (D-46). Ubicación geográfica: **Por definir**. El juego transcurre por completo dentro de la instalación; el exterior no se visita en la demo.
+**Lugar:** El laboratorio, una instalación subterránea de **Vitalis Konzern**, sellada y dada de baja tras el incidente (D-46). Ubicación geográfica: **Por definir**. Si la introducción muestra el exterior: **Por definir**.
 
 **Contexto:** El mundo está gobernado por megacorporaciones. Vitalis Konzern, corporación de biotecnología y salud, explotaba en el laboratorio algo que no entendía y lo vendía como medicina de regeneración; no es un virus ni un arma biológica (D-46). Tras el incidente, la empresa selló la instalación y la dio de baja. Dentro solo permanece activa The Mother, la IA médica de Vitalis, que sigue reconstruyendo a quien llega y enviando reportes a servidores de la empresa que nadie lee (D-46, D-47). Lukas Reiner-Hellen, técnico de mantenimiento de Vitalis en otra instalación, entra con su acceso de técnico siguiendo el último mensaje de su esposa desaparecida, Emilia (D-49, D-50; ver [[01 - Premisa y Trama]] y [[03 - Personajes]]).
 
@@ -73,7 +73,7 @@ La instalación se recorre como un descenso hacia el núcleo del laboratorio (D-
 | Salas clave secundarias | Salas fijas cuya posición cambia por intento (2–3 por piso; D-33) | Documentos, llaves u otros objetos clave (M-08); todas con cámara (D-25) | Contienen los 6 documentos de Emilia, 2 por piso, también en el showcase (D-52) |
 | Salas clave finales (pisos 1 y 2) | Salas fijas con la escalera o el elevador hacia el piso siguiente (D-33) | Avance de piso con la llave obligatoria (D-36), autoguardado (D-30) y transición de piso (D-39) | Marcan cada etapa del descenso hacia el núcleo |
 | Sala de The Mother | Sala clave fija del piso 3, en el lugar de la sala clave final (D-16, M-15). Contiene la terminal central y la salida (D-51). Aspecto: **Por definir** | Jefe final de 3 fases; sin autoguardado; cámaras hostiles en la fase 2 (M-19). Tras la fase 3, decisión final con la terminal central y la salida (`E`) | Lugar de la revelación, del Despertar y de los finales de victoria (D-51) |
-| Exterior (mundo corporativo) | Distopía de megacorporaciones; no se visita en la demo (D-46). Ciudad, región y otras instalaciones de Vitalis: **Por definir** | Ninguna en la demo | Contexto: la instalación donde trabaja Lukas y los servidores de Vitalis que reciben los reportes que nadie lee |
+| Exterior (mundo corporativo) | Distopía de megacorporaciones. Si la introducción muestra el exterior: **Por definir**. Ciudad, región y otras instalaciones de Vitalis: **Por definir** | **Por definir** | Contexto: la instalación donde trabaja Lukas y los servidores de Vitalis que reciben los reportes que nadie lee |
 
 ## Facciones
 
