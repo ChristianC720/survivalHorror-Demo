@@ -209,7 +209,7 @@ stateDiagram-v2
         
     - La munición ocupa casillas del inventario (M-07). **Cargador:** 6 balas. **Munición por casilla:** 12 balas (valores iniciales, sujetos a balance; D-37).
         
-    - Eliminar a un enemigo requiere 3–4 disparos; a un enemigo reciclado (M-20), 2 disparos (valores iniciales, sujetos a balance; D-37).
+    - Eliminar a un enemigo requiere 2–4 disparos según su tipo: el Alto 4, la Boca 3, el Rastrero 2 y el Mudo 3; a un enemigo reciclado (M-20), 2 disparos, o 1 si es un Rastrero (valores iniciales, sujetos a balance; D-37, D-66).
         
     - Recargar requiere una animación durante la cual el personaje no puede disparar.
         
@@ -253,7 +253,7 @@ stateDiagram-v2
         
     - **Herido** y **Crítico** reducen la velocidad de movimiento un 15% y un 30% respectivamente (valores iniciales, sujetos a balance; D-37).
         
-    - Los enemigos matan en 3-4 golpes (valor inicial, sujeto a balance).
+    - Los enemigos matan en 2-4 golpes según su tipo: el Alto y el Mudo en 2, la Boca en 3 y el Rastrero en 4 (valores iniciales, sujetos a balance; D-66, modifica D-07).
         
     - Las curas son escasas, ocupan casillas del inventario y su uso consume el tiempo de animación de M-07.
         
@@ -395,7 +395,8 @@ stateDiagram-v2
         
     - **Documentos de Vitalis Konzern y de The Mother (D-52):** se ubican en salas procedurales como contexto del mundo y no cuentan para la decisión final.
         
-    - **Documentos corruptos (D-45):** algunos documentos se registran corruptos, con partes del texto ilegibles, sobre todo los relacionados con la memoria de Lukas. "Corrupto" es un término distinto de las fallas de la máquina (M-17). La corrupción nunca oculta información necesaria para avanzar (rutas, reglas) y solo se completa en el desenlace (M-19). Qué documentos concretos son corruptos queda **Por definir** en `03 - Historia y Mundo`.
+    - **Documentos corruptos (D-45):** algunos documentos se registran corruptos, con partes del texto ilegibles, sobre todo los relacionados con la memoria de Lukas. "Corrupto" es un término distinto de las fallas de la máquina (M-17). La corrupción es un glitch de realidad provocado por el laboratorio o el latido, no una censura (D-58). Nunca oculta información necesaria para avanzar (rutas, reglas) y solo se completa en el desenlace si Lukas reunió los 6 documentos de Emilia (M-19, D-55). Qué documentos concretos son corruptos queda **Por definir** en `03 - Historia y Mundo`.
+    - **Estilo de los documentos (D-58):** referencia *Signalis*. Burocracia de Vitalis Konzern y The Mother frente al diario de Emilia; fragmentos en alemán que nunca se traducen ni contienen información necesaria; frase clave "Escucha el latido".
         
     - Los objetos recogidos pasan al inventario si existe espacio (M-07).
         
@@ -417,7 +418,7 @@ stateDiagram-v2
     
 - **Penalización:** Exposición mientras se interactúa o se lee.
     
-- **Interacciones con otras mecánicas:** Interactúa con M-07 Inventario, M-13 Hackeo, M-15 Exploración vertical (llaves y salas clave), M-16 Reaparición por reconstrucción, M-17 Fallas de la máquina, M-19 Jefe final (los 6 documentos de Emilia desbloquean la elección final y los documentos corruptos se completan en el desenlace) y M-20 Reciclaje y remate (prioridad frente a un cuerpo).
+- **Interacciones con otras mecánicas:** Interactúa con M-07 Inventario, M-13 Hackeo, M-15 Exploración vertical (llaves y salas clave), M-16 Reaparición por reconstrucción, M-17 Fallas de la máquina, M-19 Jefe final (los 6 documentos de Emilia desbloquean la elección final y, solo con ellos, los documentos corruptos se completan en el desenlace, D-55) y M-20 Reciclaje y remate (prioridad frente a un cuerpo).
     
 - **Casos límite:**
     
@@ -427,7 +428,7 @@ stateDiagram-v2
         
     - Si un documento corrupto contiene una regla del sistema o una pista de ruta, esa parte siempre es legible; solo se corrompe el contenido narrativo (D-45).
         
-    - Qué contiene una sala clave secundaria en un intento posterior, cuando su documento de Emilia ya está registrado en el terminal del brazo: **Por definir**.
+    - Si el documento de Emilia de una sala clave secundaria ya está registrado en el terminal del brazo, la sala contiene recursos en su lugar (D-58). Tipo y cantidad: **Por definir** en [[06 - Economía y Recursos]].
         
 - **Impacto en pilares:** Refuerza **Adaptación** al convertir la exploración en conocimiento. Riesgo: lecturas largas pueden romper el ritmo; los documentos deben ser breves. Riesgo: si la corrupción oculta información necesaria, el jugador queda bloqueado; se mitiga con la regla de D-45.
 
@@ -448,6 +449,8 @@ stateDiagram-v2
     - **Nivel de ruido:** ir agachado genera 0% de ruido. Caminar produce ruido bajo. Correr emite un pulso de sonido en área que alerta a los enemigos cercanos. Disparar también genera ruido.
         
     - **Uso de linterna:** iluminar a un enemigo incrementa su alerta al doble de velocidad (M-12).
+        
+    - **Tipos de enemigo (D-66):** el grito de la Boca pone a los enemigos cercanos en búsqueda hacia su posición. El Mudo no patrulla: se activa a ~3 m o al ser iluminado (valor inicial, sujeto a balance).
         
 - **Entrada:** `Ctrl izquierdo` para agacharse (alternar).
     
@@ -491,9 +494,11 @@ stateDiagram-v2
         
     - Los pasos suenan distinto según la superficie (metal, agua, escombros).
         
+    - **Grito de la Boca (D-64, D-66):** sonido propio, distinto del latido del laboratorio y de las señales de alerta; avisa que los enemigos cercanos van hacia ella.
+        
     - El latido del protagonista sube con la proximidad de una amenaza.
         
-    - **Latido del laboratorio (D-46):** sonido ambiental propio del laboratorio, con un timbre grave distinto del latido del protagonista. Nunca varía con la cercanía de enemigos: solo crece con la degradación acumulada (M-18) y en el final, donde se acelera al caer The Mother (Despertar, M-19). Así no compite con la señal de proximidad, que sigue siendo el latido del protagonista.
+    - **Latido del laboratorio (D-46):** sonido ambiental propio del laboratorio, con un timbre grave distinto del latido del protagonista. Nunca varía con la cercanía de enemigos: solo crece con la degradación acumulada (M-18) y en el final, donde se acelera al caer The Mother (Despertar, M-19). Así no compite con la señal de proximidad, que sigue siendo el latido del protagonista. Es el primer acto del texto: inquieta, pero no asimila, y ningún enemigo lo emite (D-64).
         
 - **Entrada:** N/A.
     
@@ -532,6 +537,8 @@ stateDiagram-v2
     - Al ser agarrado, el objeto se usa automáticamente, se consume y aturde al enemigo 2 segundos (valor inicial, sujeto a balance).
         
     - Sin el objeto, el agarre baja un estado de salud (o mata si el personaje ya estaba en Crítico).
+        
+    - Agarran el Alto, el Mudo y el brazo recolector de The Mother (D-65, D-66); el Rastrero y la Boca no agarran.
         
 - **Entrada:** N/A (automático).
     
@@ -605,7 +612,7 @@ stateDiagram-v2
     
     - El personaje queda **inmóvil en vista OTS** durante toda la secuencia.
         
-    - Se muestra en la interfaz del terminal del brazo una cadena de entradas direccionales.
+    - Se muestra en la interfaz del terminal del brazo una cadena de entradas direccionales. En la introducción, antes de tener el terminal, la secuencia se muestra en la pantalla del teléfono personal de Lukas, con las mismas reglas (D-63).
         
     - Longitud según la acción (valores iniciales, sujetos a balance): sellado rápido de puerta 2-3 entradas, puerta estándar 4-5, elevador o terminal principal 7-8.
         
@@ -774,7 +781,7 @@ flowchart TD
     F2 -->|cinemática ≥5 s| P3[Piso 3]
     P3 --> B[Sala de The Mother, sin guardado]
     B --> V[Victoria: revelación]
-    P1 & P2 & P3 & B -. muerte o Reiniciar .-> R[Cinemática corta: caída del tanque] --> P1
+    P1 & P2 & P3 & B -. muerte o Reiniciar .-> R[Cinemática corta: caída de la cápsula] --> P1
 ```
 
 ### M-16: Reaparición por reconstrucción y terminal del brazo
@@ -787,13 +794,13 @@ flowchart TD
     
     - Al morir, el personaje se reconstruye en el punto de reaparición, al inicio del ciclo en el piso 1 (ciclo de muerte y reconstrucción). El autoguardado de la sala final (D-30) no cambia el punto de reaparición: solo sirve para continuar después de salir del juego o de un fallo (ver [[07 - Reglas y Estados del Juego]]).
         
-    - **Cinemática completa de reconstrucción (D-39, D-45):** se reproduce una sola vez, al terminar la introducción, y muestra por primera vez todo el proceso de reconstrucción. Es **el momento del olvido**: Lukas recuerda a Emilia durante la introducción y la olvida en esta primera reconstrucción. Despierta sabiendo que busca algo o a alguien, sin recordar a quién, y solo conserva el anillo, que sabe importante. Cómo muere Lukas al final de la introducción queda **Por definir** (D-50); el resto del contenido se documenta en [[01 - Premisa y Trama]].
+    - **Cinemática completa de reconstrucción (D-39, D-45, D-53):** se reproduce una sola vez, al terminar la introducción, y muestra por primera vez todo el proceso de reconstrucción en imágenes fugaces de 1–2 s con cortes a negro. Es **el momento del olvido**: Lukas recuerda a Emilia durante la introducción y la olvida de golpe en esta primera reconstrucción. Sale de su cápsula sabiendo que busca algo o a alguien, sin recordar a quién, y recoge del suelo un anillo que sabe importante; nunca se sabe si es el suyo o el de Emilia (D-54). Lukas muere al final de la introducción atacado por la espalda en un piso que no existe (D-53); el resto del contenido se documenta en [[01 - Premisa y Trama]].
         
-    - **Cinemática corta (D-39):** en cada muerte o reinicio, el personaje cae del tanque con sonido de maquinaria. Refleja la degradación acumulada y la pieza ajena visible de la reconstrucción (M-18) y se puede saltar (ver [[04 - Controles]]).
+    - **Cinemática corta (D-39):** en cada muerte o reinicio, el personaje cae de su cápsula, en la fila de cápsulas del piso 1 (D-59), con sonido de maquinaria. Refleja la degradación acumulada y la pieza ajena visible de la reconstrucción (M-18) y se puede saltar (ver [[04 - Controles]]).
         
     - **Código de sujeto (D-43, D-47, D-50):** The Mother identifica a Lukas con un código R-H, registrado en el mismo expediente que Emilia (R-H-01 a R-H-06, D-49). La primera reconstrucción lo registra como **R-H-07** y el código sube 1 en cada reconstrucción posterior (R-H-08, R-H-09…), incluidas las de "Reiniciar". El código se muestra en el terminal del brazo y es solo presentación: no tiene efecto mecánico. Si una salida con calma con costo (D-31) también sube el código queda **Por definir**.
         
-    - **Mensaje de Emilia (D-50):** la última pista es un mensaje de audio de Emilia en una tablet o teléfono corporativo de Vitalis Konzern, presentado como transcripción con sonido vocal y forma de onda (sin actuación de voz, D-52). El dispositivo se pierde en la primera reconstrucción; el mensaje queda copiado en el terminal del brazo, corrupto (M-08), y se completa en el desenlace (M-19).
+    - **Mensaje de Emilia (D-50, D-53):** la última pista es una nota de voz programada de Emilia que llega al teléfono personal de Lukas, presentada como transcripción con sonido vocal y forma de onda (sin actuación de voz, D-52). El teléfono se pierde en la primera reconstrucción; The Mother copia su contenido al terminal del brazo como "efectos personales del sujeto". El mensaje queda corrupto (M-08) y solo se completa en el desenlace si Lukas reunió los 6 documentos de Emilia (M-19, D-55).
         
     - **Bestiario (D-48):** las entradas son informes clínicos de The Mother sobre sujetos asimilados, con su código de sujeto. Cada entrada se desbloquea en el primer encuentro y persiste entre muertes.
         
@@ -889,7 +896,7 @@ flowchart TD
     
 - **Reglas:**
     
-    - Cada muerte aumenta una degradación estética acumulativa: mayor corrupción CRT, distorsión del sonido vocal (D-52) y deterioro de los diálogos del protagonista. La cinemática corta de reconstrucción refleja la degradación acumulada (M-16, D-39). El latido del laboratorio crece con la degradación acumulada (M-10).
+    - Cada muerte aumenta una degradación estética acumulativa: mayor corrupción CRT y distorsión del sonido vocal (D-52). El texto en pantalla de las líneas del protagonista solo se degrada en la cinemática de Asimilación (D-62). La cinemática corta de reconstrucción refleja la degradación acumulada (M-16, D-39). El latido del laboratorio crece con la degradación acumulada (M-10).
         
     - **Cuerpo ajeno visible (D-43):** en cada reconstrucción se nota en el modelo de Lukas una pieza ajena más, que proviene del laboratorio. El modelo tiene 3–5 variantes (valor inicial, sujeto a balance); la mano del anillo puede acabar asimilada. Al llegar a la última variante, el modelo se mantiene en ella, porque la degradación solo se acumula (D-29). Es solo presentación: no tiene efecto mecánico.
         
@@ -899,9 +906,9 @@ flowchart TD
         
     - La degradación es solo estética y no afecta la jugabilidad.
         
-    - Si el jugador acumula 5 muertes sin llegar a la sala clave final del piso 2, se activa el final **"Asimilación"** (D-35, D-42): el laboratorio termina de asimilar a Lukas y este se convierte en uno de los enemigos comunes que enfrentaba (D-48). Su estado se documenta como "Final: Asimilación" en [[07 - Reglas y Estados del Juego]].
+    - Si el jugador acumula 5 muertes consecutivas desde el último reinicio del contador, se activa el final **"Asimilación"** (D-35, D-42, D-56): el laboratorio termina de asimilar a Lukas y este se convierte en uno de los enemigos comunes que enfrentaba (D-48). Su estado se documenta como "Final: Asimilación" en [[07 - Reglas y Estados del Juego]].
         
-    - **Reinicio del contador (D-35):** solo lo reinicia llegar a la sala clave final del piso 2. Las salas clave secundarias y la sala final del piso 1 no lo reinician.
+    - **Reinicio del contador (D-35, D-56):** solo lo reinicia llegar a la sala clave final del piso 2. Las salas clave secundarias y la sala final del piso 1 no lo reinician. La primera vez se reproduce la cinemática corta del hallazgo de la foto (D-56); después el reinicio es silencioso. Tras el reinicio el contador sigue contando: 5 muertes consecutivas en el piso 3 o en la sala de The Mother también activan la Asimilación.
         
     - **Qué suma al contador y a la degradación:** cada muerte, "Reiniciar" (D-32) y salir del juego con costo (D-31; ver [[07 - Reglas y Estados del Juego]]). Un cierre inesperado o un fallo del juego no cuenta.
         
@@ -917,7 +924,7 @@ flowchart TD
     
 - **Recompensa:** Ninguna mecánica; refuerza la narrativa del ciclo.
     
-- **Penalización:** Final de derrota al alcanzar 5 muertes sin llegar a la sala clave final del piso 2.
+- **Penalización:** Final de derrota al alcanzar 5 muertes consecutivas desde el último reinicio del contador (D-56).
     
 - **Interacciones con otras mecánicas:** Interactúa con M-10 Señales diegéticas (tope visual; el latido del laboratorio crece con la degradación), M-15 Exploración vertical (sala final del piso 2) y M-16 Reaparición por reconstrucción (cinemática corta, cuerpo ajeno visible y Reiniciar).
     
@@ -937,19 +944,23 @@ flowchart TD
 
 - **Propósito:** Cerrar la demo con un encuentro que exige las herramientas aprendidas durante el ciclo, sin introducir sistemas nuevos.
     
-- **Activación:** Entrar a la sala de The Mother, que es una sala clave fija del piso 3 (D-33).
+- **Activación:** Entrar a la sala de The Mother, que es una sala clave fija al final del piso 3 (D-33).
+    
+- **Sala (D-59):** la central de megafonía desde donde se emitió el latido en el incidente. Es una sola sala grande que se transforma en cada fase: mesas de mezcla y racks de cinta como nodos (fase 1), altavoces que emiten el latido y cámaras hostiles (fase 2), y transformadores de alto voltaje expuestos al caer las placas de los altavoces (fase 3). Sin carne: The Mother no es la criatura. The Mother es un archivo de muestras criogénicas montado en una grúa, con un brazo recolector y un núcleo criogénico (D-65). La terminal central es la consola de emisión.
+    
+- **Ataque de The Mother (D-65):** fiel a su protocolo, trata a Lukas como un espécimen no conforme que debe recolectar y archivar. Su brazo recolector recorre la sala en las 3 fases y, si alcanza al jugador, lo agarra con las reglas de M-11: el objeto defensivo lo aturde 2 s; sin objeto, baja un estado de salud o mata en Crítico. Lukas puede morir en cualquier fase.
     
 - **Reglas:**
     
     - Llegar a la sala de The Mother no autoguarda la partida (D-30).
     
-    - El encuentro tiene 3 fases que reutilizan mecánicas existentes; cada fase dura 1-2 min (valor inicial, sujeto a balance):
+    - El encuentro tiene 3 fases que reutilizan mecánicas existentes; cada fase dura 1-2 min (valor inicial, sujeto a balance). The Mother emite una línea de protocolo al inicio de cada fase (D-62):
         
-        1. **Hackeo de nodos bajo presión** (M-13); las fallas descubiertas (M-17) acortan las secuencias. Si M-17 (Deseable) no se implementa, la fase funciona con las secuencias de longitud original.
+        1. **Hackeo de nodos bajo presión** (M-13) en las mesas de mezcla, mientras el brazo recolector patrulla los nodos (D-65); las fallas descubiertas (M-17) acortan las secuencias. Si M-17 (Deseable) no se implementa, la fase funciona con las secuencias de longitud original.
             
-        2. **Supervivencia y huida con cámaras hostiles (D-28):** las cámaras de la sala dejan de ser una herramienta del jugador (M-02, D-16) y pasan a vigilarlo. Cada cámara muestra una luz roja y emite el sonido de su motor al girar (M-10). Si una cámara enfoca al jugador, los enemigos de la sala acuden a ese punto. El jugador se mueve entre los puntos ciegos de las cámaras.
+        2. **Supervivencia y huida con cámaras hostiles (D-28):** las cámaras de la sala dejan de ser una herramienta del jugador (M-02, D-16) y pasan a vigilarlo. Cada cámara muestra una luz roja y emite el sonido de su motor al girar (M-10). Cada vez que una cámara enfoca al jugador, The Mother libera un asimilado desde una cápsula de su archivo, que acude a ese punto (máximo 2 activos a la vez; total por fase **Por definir**, sujeto a balance; D-65). Una niebla criogénica reduce la visibilidad, sin ralentizar ni tapar las señales de M-10 (D-65). El jugador se mueve entre los puntos ciegos de las cámaras.
             
-        3. **Pocos disparos a puntos débiles expuestos** (M-04). La sala contiene munición suficiente para todos los puntos débiles más 1–2 disparos de margen (valor inicial, sujeto a balance; D-28).
+        3. **Pocos disparos a puntos débiles expuestos** (M-04): The Mother abre su núcleo criogénico y expone los transformadores de alto voltaje que la alimentan (D-59, D-65). Al destruir el último, la estantería se apaga y The Mother cae. La sala contiene munición suficiente para todos los puntos débiles más 1–2 disparos de margen (valor inicial, sujeto a balance; D-28).
             
     - **Sin reciclaje (D-28):** en la sala de The Mother no hay reciclaje de enemigos (M-20).
             
@@ -961,7 +972,7 @@ flowchart TD
         
         1. Cae The Mother.
             
-        2. Los documentos corruptos y el mensaje de Emilia se completan (M-08, M-16) y Lukas recupera primero el nombre de Emilia y después el suyo (D-45).
+        2. Solo con los 6 documentos de Emilia: los documentos corruptos y el mensaje de Emilia se completan (M-08, M-16) y Lukas recupera primero el nombre de Emilia y después el suyo (D-45, D-55). Sin ellos, todo sigue corrupto y Lukas no recupera ningún nombre.
             
         3. **Despertar:** el latido del laboratorio se acelera (M-10). Ocurre en todos los finales de victoria.
             
@@ -980,8 +991,8 @@ flowchart TD
         | Condición | Momento final | Cinemática | Resultado |
         |---|---|---|---|
         | Victoria sin los 6 documentos | Lukas examina la terminal central de forma automática | **Relevo básico** | Algo ocurre y Lukas reemplaza automáticamente a The Mother: el terminal del brazo lo conecta, porque es el último con identidad |
-        | Victoria con los 6 documentos, examinar la terminal | El jugador examina la terminal central (`E`) | **Relevo completo** | Misma base que el Relevo básico con un par de detalles distintos, entre ellos el expediente R-H-01 a R-H-06 "estado desconocido" (D-49); demás detalles **Por definir**. Lukas reemplaza a The Mother sabiendo más |
-        | Victoria con los 6 documentos, irse | El jugador elige la salida (`E`) | **Ambiguo** | Al final solo se escucha el latido. No se sabe si Lukas fue asimilado, si se convirtió en The Mother o si ocurrió otra cosa |
+        | Victoria con los 6 documentos, examinar la terminal | El jugador examina la terminal central (`E`) | **Relevo completo** | Misma base que el Relevo básico, con el expediente R-H-01 a R-H-06 "estado desconocido" (D-49) y el segundo acto: al conectarse, Lukas oye el latido y lo entiende; el jugador solo ve un glitch ilegible (D-61). Lukas reemplaza a The Mother sabiendo más |
+        | Victoria con los 6 documentos, irse | El jugador elige la salida (`E`) | **Ambiguo** | En negro, el latido de Lukas y el del laboratorio se sincronizan en uno; silencio (D-61). No se sabe si Lukas fue asimilado, si se convirtió en The Mother o si ocurrió otra cosa |
         
         El final de derrota "Asimilación" no forma parte de esta tabla: se activa por el contador de 5 muertes (M-18, D-42). Sin final de Renuncia; "Salida" y "Encuentro con Emilia" quedan fuera de la demo (D-51).
             
@@ -1013,7 +1024,7 @@ flowchart TD
         
     - Los documentos de Vitalis Konzern y de The Mother no cuentan para la decisión final, aunque estén registrados (D-52).
         
-    - Si quedan amenazas activas en la sala durante la decisión final y si el personaje puede morir en ese momento: **Por definir**.
+    - Durante la decisión final hay presión sin muerte (D-61): los altavoces y el latido suben, la sala tiembla y las luces fallan, pero no hay daño ni enemigos.
         
 - **Impacto en pilares:** Refuerza **Vulnerabilidad Constante**, **Adaptación** y **Decisiones con Consecuencias**. Riesgo documentado: la fase 3 puede volver el juego de acción; debe mantenerse corta.
 
@@ -1039,7 +1050,7 @@ flowchart TD
         
     - **Reaparición:** el enemigo reciclado reaparece cuando el jugador sale de la sala, en otra sala del mismo piso y nunca frente al jugador.
         
-    - **Enemigo reciclado:** es un 25% más rápido, pero muere con 2 disparos en lugar de 3–4 (valores iniciales, sujetos a balance; D-37). Al ser eliminado no vuelve a reciclarse.
+    - **Enemigo reciclado:** es un 25% más rápido, pero muere con 2 disparos en lugar de los de su tipo, o con 1 si es un Rastrero (valores iniciales, sujetos a balance; D-37, D-66). Al ser eliminado no vuelve a reciclarse.
         
     - **Remate (D-21):** evita el reciclaje de un cuerpo. Solo puede hacerse mientras el cuerpo sigue en la sala. Hay dos formas:
         
@@ -1107,7 +1118,7 @@ flowchart TD
 | Pasarelas internas | Complica la generación vertical | A |
 | Techos rotos (descenso entre pisos) | Complica la garantía de rutas válidas | A |
 | Detección por rejillas o ventanas entre salas | Requiere percepción entre salas | V |
-| Cámaras que "mienten" (horror cósmico) | Depende de lore por definir | A |
+| Cámaras que "mienten" (horror cósmico) | Aumenta el alcance y complica la legibilidad de la vigilancia (principio 3 de [[01 - Jugabilidad]]) | A |
 | Soporte completo de control | Se prioriza teclado y mouse en la demo | — |
 
 ## Mecánicas descartadas

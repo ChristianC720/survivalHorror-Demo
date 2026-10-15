@@ -6,15 +6,65 @@ Registra juegos, películas, libros, fotografías, artículos, diseños o cualqu
 
 ## Referencia
 
-**Nombre:**
+**Nombre:** *Signalis* (rose-engine, 2022)
 
-**Tipo:**
+**Tipo:** Videojuego (survival horror).
 
-**Enlace:**
+**Enlace:** [Signalis en Steam](https://store.steampowered.com/app/1262350/SIGNALIS/)
 
-**Qué nos interesa:**
+**Qué nos interesa:** Referencia principal (D-58). Estética retrofuturista, low-poly y con texturas crudas. Atmósfera fría y burocrática. Documentos en dos voces (burocracia y diario íntimo), texto con glitch e idioma sin traducir. Frases clave repetidas entre fuentes. Inventario de 6 casillas y escasez de recursos.
 
-**Qué NO queremos copiar:**
+**Qué NO queremos copiar:** Su lore (replicantes, Eusan Nation), su estética comunista, su paleta concreta, sus personajes ni sus textos. No copiar la vista cenital como cámara principal: usamos OTS (D-01).
+
+---
+
+**Nombre:** *Silent Hill* (Konami, saga)
+
+**Tipo:** Videojuego (survival horror).
+
+**Qué nos interesa:** Protagonista civil roto, fuera de lugar. Monstruos grotescos que mezclan terror físico y psicológico (D-60). Terror basado en la atmósfera y el sonido.
+
+**Qué NO queremos copiar:** Su pueblo y su simbolismo religioso, sus criaturas concretas (Pyramid Head, enfermeras) y la niebla como recurso principal.
+
+---
+
+**Nombre:** *Resident Evil* (Capcom, saga)
+
+**Tipo:** Videojuego (survival horror).
+
+**Qué nos interesa:** Corporación farmacéutica que experimenta con humanos. Gestión de inventario y munición escasa. Laboratorios subterráneos.
+
+**Qué NO queremos copiar:** El virus como explicación del horror: nuestro laboratorio no es un virus ni un arma biológica (D-46). Tampoco la acción ni la abundancia de armas.
+
+---
+
+**Nombre:** *Alan Wake* (Remedy, saga)
+
+**Tipo:** Videojuego (thriller de terror).
+
+**Qué nos interesa:** Protagonista corriente que busca a su esposa desaparecida. Narrativa por fragmentos que se recuperan. Ambigüedad sobre lo real.
+
+**Qué NO queremos copiar:** El combate con luz como mecánica central y la estructura episódica.
+
+---
+
+**Nombre:** *The King in Yellow* (Robert W. Chambers, 1895)
+
+**Tipo:** Libro (relatos de horror sobrenatural).
+
+**Qué nos interesa:** Un texto que destruye a quien lo lee completo: inspira el latido como texto, con un primer acto y un segundo acto (D-57, D-64). La identidad como máscara.
+
+**Qué NO queremos copiar:** Sus nombres y símbolos (Carcosa, Hastur, el Signo Amarillo) ni su obra de teatro.
+
+---
+
+**Nombre:** H. P. Lovecraft (obra)
+
+**Tipo:** Libros (horror cósmico).
+
+**Qué nos interesa:** Horror cósmico: lo incognoscible, la indiferencia y la insignificancia humana (D-44). La criatura nunca se explica (D-16, D-47).
+
+**Qué NO queremos copiar:** Sus entidades concretas (Cthulhu y otras), sus tentáculos como cliché visual y su racismo.
 
 ## Referencias visuales
 
@@ -23,6 +73,8 @@ Añade imágenes utilizando la sintaxis de Obsidian:
 ```markdown
 ![[imagen.png]]
 ```
+
+**Por definir:** imágenes de referencia de Lukas, Emilia, The Mother, los asimilados y los pisos (ver [[02 - Personajes y Animación]] y [[03 - Entornos]]).
 
 ## Referencias externas
 

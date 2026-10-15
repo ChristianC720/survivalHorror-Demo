@@ -112,6 +112,8 @@ Esta sección conserva las decisiones importantes del proyecto y el razonamiento
 
 **Consecuencias:** Se crean M-04 Combate a distancia y M-05 Salud y estados. Se descarta la regeneración de salud.
 
+**Estado:** Modificada por D-66 (los enemigos matan en 2-4 golpes según su tipo). Se conserva como histórico.
+
 **Responsable:** Christian Coronel Palma
 
 ## Decisión D-13 — Premisa oficial
@@ -411,7 +413,7 @@ Esta sección conserva las decisiones importantes del proyecto y el razonamiento
 
 **Consecuencias:** Modifica D-08, que se conserva como histórico. Se actualizan M-15 y M-18 en [[02 - Mecánicas]], [[05 - Progresión]] y [[07 - Reglas y Estados del Juego]].
 
-**Estado:** Modificada por D-42 (solo el nombre del final: "Disolución de identidad" pasa a "Asimilación"). Las condiciones del contador no cambian. Se conserva como histórico.
+**Estado:** Modificada por D-42 (solo el nombre del final: "Disolución de identidad" pasa a "Asimilación"). Las condiciones del contador no cambian. Precisada por D-56 (hallazgo del piso 2 como evento narrativo; el contador sigue contando después del reinicio). Se conserva como histórico.
 
 **Responsable:** Christian Coronel Palma
 
@@ -538,6 +540,8 @@ Esta sección conserva las decisiones importantes del proyecto y el razonamiento
 
 **Consecuencias:** M-08 incorpora los documentos corruptos y M-16 la cinemática del olvido en [[02 - Mecánicas]]. M-19 completa los documentos en la secuencia de victoria (D-51). La palabra "fallas" no se usa para documentos. [[03 - Personajes]] y [[04 - Diálogos y Narrativa]] reflejan la memoria y la frustración de Lukas. Qué documentos concretos son corruptos queda **Por definir** en `03 - Historia y Mundo`.
 
+**Estado:** Modificada por D-55 (la recuperación de los nombres y la compleción de los documentos solo ocurren con los 6 documentos de Emilia) y precisada por D-58 (la corrupción es un glitch provocado por el laboratorio o el latido). Se conserva como histórico.
+
 **Responsable:** Christian Coronel Palma
 
 ## Decisión D-47 — The Mother
@@ -596,6 +600,8 @@ Esta sección conserva las decisiones importantes del proyecto y el razonamiento
 
 **Consecuencias:** Precisa D-40, que se conserva como histórico; la premisa oficial no cambia. Los 6 documentos de Emilia se ubican en salas clave secundarias (D-52, M-08) y el expediente R-H-01 a R-H-06 "estado desconocido" es uno de los detalles del Relevo completo (D-51, M-19). [[03 - Personajes]] la documenta como personaje secundario.
 
+**Estado:** Modificada por D-57 (Emilia estaba dentro durante el incidente, fue reconstruida como R-H-01 y la despidieron después). Su destino sigue indefinido. Se conserva como histórico.
+
 **Responsable:** Christian Coronel Palma
 
 ## Decisión D-51 — Finales
@@ -633,6 +639,289 @@ Esta sección conserva las decisiones importantes del proyecto y el razonamiento
 
 **Consecuencias:** Precisa D-16, que se conserva como histórico; la condición de victoria no cambia. M-19 en [[02 - Mecánicas]] incorpora la secuencia común, la decisión final y las 3 cinemáticas de victoria. [[07 - Reglas y Estados del Juego]], [[03 - Sistemas]] (cinemáticas finales), [[05 - Progresión]] (desbloqueo de la elección) y [[01 - Premisa y Trama]] documentan los finales. Los detalles del Relevo completo distintos del expediente quedan **Por definir**.
 
+**Estado:** Modificada por D-55 (la recuperación de los nombres deja de ser común a toda victoria) y precisada por D-61 (Relevo completo, Asimilación, Ambiguo y decisión final). Se conserva como histórico.
+
+**Responsable:** Christian Coronel Palma
+
+## Decisión D-53 — Introducción y muerte inicial
+
+**Fecha:** 2026-10-15
+
+**Tema:** Narrativa y presentación.
+
+**Problema:** D-50 dejaba **Por definir** cómo muere Lukas al final de la introducción, el formato de la introducción y cómo y cuándo recibe el mensaje de Emilia. Además, un mensaje de una esposa desaparecida necesitaba una explicación para llegar en ese momento.
+
+**Opciones consideradas:**
+
+1. Introducción completamente cinemática hasta la primera reconstrucción.
+2. Introducción mixta (cinemática y jugable), con mensaje programado al teléfono personal de Lukas y muerte en juego en un piso que no existe.
+3. Introducción con la casa explorable, además de las partes jugables de la opción 2.
+
+**Decisión tomada:** Opción 2.
+
+- **Casa (cinemática corta):** una casa sencilla y descuidada. Lukas, solo y deprimido, observa una foto familiar con Emilia y piensa que ella debe seguir con vida.
+- **Mensaje:** llega al **teléfono personal** de Lukas con el sonido personalizado de los mensajes de Emilia. Es un **envío programado**: Emilia lo dejó preparado para enviarse si no volvía. Es una nota de voz de su diario, sin número de entrada.
+- **Contenido del mensaje:** Emilia cuenta que está investigando lo que sucedió en Vitalis Konzern, que algo salió mal durante su investigación y que Lukas no debe ir a buscarla. Termina con un cliffhanger: Emilia suspira con miedo y se la oye correr de algo. El texto concreto queda **Por definir**.
+- Lukas va igual, por obstinación.
+- **Compuerta (jugable):** Lukas hackea la compuerta con su acceso de técnico (hackeo simple).
+- **Elevador:** jugable hasta que falla. Lukas intenta arreglarlo, el elevador se distorsiona, cae de golpe y se detiene en un piso concreto (cinemática).
+- **Piso que no existe:** el elevador se detiene en un nivel que no aparece en ningún plano ni botón. Es un espacio único que no vuelve a aparecer en el juego jugable (solo vuelve en la cinemática de Asimilación, D-61). Es un pasillo único: el elevador se cierra y sube solo.
+- **Muerte (jugable):** Lukas ve a lo lejos a una persona: un asimilado **Mudo** que sirve de señuelo (D-60). Al acercarse, otro asimilado lo ataca por la espalda; no se muestra quién ataca (corte a negro). El ataque se dispara con un trigger en el pasillo, con un temporizador de respaldo.
+- **Cinemática completa de reconstrucción (D-39):** imágenes fugaces de 1–2 s con cortes a negro muestran cómo lo reconstruyen poco a poco. Lukas sale de su cápsula, en la fila de cápsulas (D-59), confundido y sin poder recordar, con el terminal integrado en el antebrazo izquierdo. En el suelo hay un anillo (D-54); lo recoge e intenta recordar, sin lograrlo.
+- Lukas pierde la memoria de golpe por el trauma de la introducción (a diferencia de Emilia, D-57).
+- **Dispositivo:** el teléfono personal se pierde en la primera reconstrucción. The Mother copia su contenido al terminal del brazo como "efectos personales del sujeto"; la copia del mensaje queda corrupta (D-58).
+
+**Motivo:** Refuerza el pilar **Vulnerabilidad Constante**: la primera muerte ocurre en juego y la provoca el jugador al acercarse. Refuerza **Adaptación**: el señuelo y el ataque por la espalda anticipan el sigilo y que los enemigos fueron personas (D-48). El elevador que se distorsiona muestra desde el inicio que el laboratorio es la criatura (D-46).
+
+**Consecuencias:** Modifica D-50 (dispositivo: teléfono personal en lugar de tablet o teléfono corporativo; muerte y formato de la introducción definidos). M-16 en [[02 - Mecánicas]] incorpora la copia del teléfono personal. [[01 - Premisa y Trama]], [[02 - Mundo]], [[03 - Personajes]] y [[04 - Diálogos y Narrativa]] documentan la introducción.
+
+**Estado:** Precisada por D-63 (hackeo con el teléfono, HUD mínimo y elevador en cinemática).
+
+**Responsable:** Christian Coronel Palma
+
+## Decisión D-55 — Recuperación de la memoria condicionada a los 6 documentos
+
+**Fecha:** 2026-10-15
+
+**Tema:** Finales y memoria.
+
+**Problema:** La secuencia común de victoria (D-45, D-51) devolvía a Lukas el nombre de Emilia y el suyo en toda victoria, sin causa narrativa y sin relación con la exploración.
+
+**Opciones consideradas:**
+
+1. Mantener la recuperación en toda victoria.
+2. Lukas nunca recupera la memoria.
+3. La recuperación ocurre al caer The Mother, solo si el jugador reunió los 6 documentos de Emilia.
+4. Recuperación gradual por documento.
+
+**Decisión tomada:** Opción 3.
+
+- Con los 6 documentos de Emilia en el terminal del brazo, al caer The Mother los documentos corruptos y el mensaje de Emilia se completan y Lukas recupera primero el nombre de Emilia y después el suyo.
+- Sin los 6 documentos, los documentos y el mensaje siguen corruptos y Lukas no recupera ningún nombre. El Relevo básico ocurre sin nombres.
+- El Despertar sigue ocurriendo en toda victoria.
+
+**Motivo:** Refuerza el pilar **Adaptación**: la exploración acumulada entre intentos se convierte en memoria. Sin documentos, la búsqueda de Lukas termina sin sentido, en coherencia con D-44.
+
+**Consecuencias:** Modifica D-45 (la recuperación ya no es incondicional) y la secuencia común de D-51. M-19 en [[02 - Mecánicas]], [[01 - Premisa y Trama]] y [[03 - Personajes]] se alinean.
+
+**Responsable:** Christian Coronel Palma
+
+## Decisión D-56 — Hallazgo del piso 2 y contador de muertes
+
+**Fecha:** 2026-10-15
+
+**Tema:** Narrativa y ciclo.
+
+**Problema:** El reinicio del contador de 5 muertes en la sala clave final del piso 2 (D-35) era solo una regla, sin evento en la historia. Además, no quedaba claro si el contador seguía contando después de ese reinicio.
+
+**Opciones consideradas:**
+
+1. Mantener el reinicio como regla silenciosa.
+2. Un objeto usable que reinicia el contador.
+3. Una cinemática corta, una sola vez, con un hallazgo que provoca la obstinación de Lukas.
+
+**Decisión tomada:** Opción 3.
+
+- La primera vez que Lukas llega a la sala clave final del piso 2 se reproduce una cinemática corta: encuentra la **misma foto familiar de la casa** (D-53), con la cara de Emilia borrosa.
+- La foto no debería estar ahí y nunca se explica: el laboratorio la tomó de la memoria de Lukas.
+- El hallazgo no da esperanza, sino **obstinación**: Lukas se niega a soltar algo que no entiende. Esto frena la asimilación y reinicia el contador.
+- En los intentos siguientes, el reinicio en esa sala es silencioso.
+- Después del reinicio el contador sigue contando: 5 muertes consecutivas en el piso 3 o en la sala de The Mother también activan el final "Asimilación".
+
+**Motivo:** Refuerza **Vulnerabilidad Constante** (el piso 3 mantiene el riesgo de Asimilación) y es coherente con D-44 y D-47: la motivación no viene de la esperanza y cada reconstrucción sigue asimilando.
+
+**Consecuencias:** Precisa D-35. M-18 en [[02 - Mecánicas]] aclara que el contador sigue contando tras el reinicio. [[01 - Premisa y Trama]] y [[02 - Mundo]] documentan el hallazgo.
+
+**Estado:** Precisada por D-67 (la cinemática espera a que termine la caza y no se puede saltar).
+
+**Responsable:** Christian Coronel Palma
+
+## Decisión D-57 — Emilia, el latido y el incidente
+
+**Fecha:** 2026-10-15
+
+**Tema:** Narrativa y lore.
+
+**Problema:** D-49 dejaba **Por definir** la personalidad, la motivación, el físico y la investigación de Emilia, la naturaleza del incidente y el orden de los hechos. Además, Emilia fue reconstruida varias veces pero recordaba a Lukas, mientras que Lukas olvida en su primera reconstrucción.
+
+**Opciones consideradas:**
+
+1. Motivación por culpa, obsesión científica, denuncia o rescate.
+2. Motivación lovecraftiana clásica (la llamada, el conocimiento prohibido).
+3. Motivación inspirada en *The King in Yellow*: el latido del laboratorio es un texto y Emilia busca su segundo acto.
+
+**Decisión tomada:** Opción 3.
+
+- **El latido es el texto.** El latido del laboratorio (D-46) tiene un patrón que funciona como un lenguaje. Qué dice nunca se explica (D-16).
+- **El incidente:** alguien transmitió el latido por la megafonía de la instalación. Quien lo escuchó completo fue asimilado. Los documentos se contradicen sobre quién hizo la transmisión.
+- **Cronología:**
+  1. Emilia, científica de Vitalis, está dentro durante la transmisión y solo oye una parte: el **primer acto**.
+  2. Muere y The Mother la reconstruye como **R-H-01**, con la identidad conservada.
+  3. Vitalis Konzern la saca de la instalación y la despide.
+  4. Vitalis sella la instalación.
+  5. Emilia vuelve a escondidas a la instalación sellada para escuchar el **segundo acto**. En sus visitas suma R-H-02 a R-H-06.
+- **Memoria de Emilia:** olvida poco a poco; cada reconstrucción le quita algo. Su diario lo muestra, de R-H-01 a R-H-06. Lukas, en cambio, olvida de golpe por el trauma de la introducción (D-53).
+- **Personalidad:** brillante y fría; escribe como científica. Su diario empieza técnico y se va quebrando.
+- **Físico:** ~28 años aparentes, 168 cm, complexión media. Cara redonda, tez trigueña, ojos miel, pecas. Cabello castaño claro largo, suelto y ondulado. Anillo en la mano derecha. En la foto familiar lleva un vestido sencillo, está abrazada a Lukas y se ríe: es la única imagen feliz del juego.
+- Sigue sin confirmarse si su investigación provocó el incidente, y su destino sigue indefinido (D-49).
+
+**Motivo:** Refuerza el pilar **Adaptación**: el jugador oye el latido durante todo el juego sin saber que es el texto que Emilia buscaba. Mantiene el horror cósmico de D-44: el texto tiene efectos, nunca un significado explicado.
+
+**Consecuencias:** Modifica D-49 (Emilia ya no fue despedida antes del incidente: estaba dentro y la despidieron después). [[02 - Mundo]] documenta el incidente y la cronología; [[03 - Personajes]] completa la ficha de Emilia; [[04 - Diálogos y Narrativa]] usa la personalidad para el tono de su diario.
+
+**Estado:** Precisada por D-64 (el latido de fondo es el primer acto) y D-68 (Vitalis no sabe que Emilia fue reconstruida).
+
+**Responsable:** Christian Coronel Palma
+
+## Decisión D-58 — Documentos al estilo de Signalis
+
+**Fecha:** 2026-10-15
+
+**Tema:** Documentos y narrativa.
+
+**Problema:** D-45 y D-52 no definían el estilo de los documentos, la causa de la corrupción, el uso del expediente R-H en los documentos ni el contenido de una sala clave secundaria cuyo documento ya está registrado.
+
+**Opciones consideradas:**
+
+1. Corrupción por censura de Emilia o por un filtro de The Mother.
+2. Documentos al estilo de *Signalis*: glitch de realidad, idioma sin traducir y dos voces (burocracia y diario).
+3. Documentos que cambian al releerlos.
+
+**Decisión tomada:** Opción 2 (se descartan los documentos que cambian).
+
+- **Glitch de realidad:** la corrupción la provoca el laboratorio o el latido, no una censura. El texto se distorsiona con símbolos y letras corruptas. La regla de D-45 se mantiene: nunca oculta información necesaria para avanzar.
+- **Alemán sin traducir:** carteles, sellos y fragmentos de Vitalis Konzern en alemán. Nunca se traducen, en ningún idioma, y nunca contienen información necesaria. Son solo atmósfera.
+- **Dos voces:** burocracia fría (memos, carteles y propaganda de Vitalis; informes y protocolos de The Mother) frente al diario íntimo y fragmentado de Emilia.
+- **Frase clave compartida:** **"Escucha el latido"**. Cambia de sentido según quién la dice: indicación médica de calma (Vitalis), dato clínico (The Mother) u obsesión (Emilia).
+- **Expediente R-H:** los documentos de Emilia nunca usan el código R-H. Los documentos de The Mother del piso 2 muestran R-H-01 a R-H-06 con código, fecha y causa, sin nombre ni estado. El jugador puede cruzar las fechas con el diario de Emilia. El "estado desconocido" sigue reservado para el Relevo completo (D-61).
+- **Sala clave secundaria ya registrada:** si su documento de Emilia ya está en el terminal del brazo, la sala contiene recursos en su lugar.
+
+**Motivo:** Refuerza el pilar **Adaptación**: el jugador cruza fuentes de distinto tono para reconstruir la historia. La corrupción como efecto del latido une los documentos con la regla del mundo.
+
+**Consecuencias:** Precisa D-45 y D-52. M-08 en [[02 - Mecánicas]] y [[04 - Diálogos y Narrativa]] documentan el estilo y la sala ya registrada. [[06 - Economía y Recursos]] debe contemplar los recursos de sustitución.
+
+**Responsable:** Christian Coronel Palma
+
+## Decisión D-59 — Lugares: Sektor V-7, pisos y sala de The Mother
+
+**Fecha:** 2026-10-15
+
+**Tema:** Mundo y escenarios.
+
+**Problema:** D-46 dejaba **Por definir** el año, la ubicación, la identidad de los 3 pisos, la sala de reconstrucción, la sala de The Mother y la forma física de The Mother.
+
+**Opciones consideradas:**
+
+1. Ubicación real (Alemania) o sin ubicación.
+2. Ciudad ficticia con código administrativo corporativo, pisos crudos e industriales y una sala del jefe que se transforma en cada fase.
+3. Sala del jefe en anillos concéntricos o en un pozo vertical.
+
+**Decisión tomada:** Opción 2.
+
+- **Ubicación:** **Sektor V-7**, código administrativo corporativo de una ciudad ficticia. **Año:** 2083.
+- **Estética:** aunque es un laboratorio "clínico", su aspecto es crudo e industrial. Dentro se realizaban experimentos ilegales e inhumanos, reflejo de lo corporativo.
+- **Pisos:** piso 1, mantenimiento (calderas, tuberías y talleres; el terreno de Lukas). Piso 2, clínica ilegal improvisada en espacios industriales. Piso 3, núcleo, con la maquinaria de contención de The Mother.
+- **Sala de reconstrucción:** en el piso 1, una fila de 7 o más cápsulas. Algunas tienen restos y otras están vacías. Lukas sale de la suya y ve las demás (D-48: no es el primero).
+- **Sala de The Mother:** al final del piso 3. Es la **central de megafonía** desde donde se emitió la transmisión del incidente (D-57): bobinas de cinta, mesas de mezcla y altavoces industriales del tamaño de una pared. Es una sola sala grande que se transforma en cada fase de M-19:
+  - Fase 1: las mesas de mezcla y los racks de cinta son los nodos de hackeo.
+  - Fase 2: los altavoces emiten el latido y las cámaras hostiles siguen al jugador.
+  - Fase 3: las placas de los altavoces caen y exponen **transformadores** de alto voltaje, que son los puntos débiles.
+  - La terminal central es la consola de emisión.
+- **Sin carne en la sala de The Mother:** The Mother no es la criatura; su sala es solo máquina.
+- **The Mother:** un **maniquí robótico de enfermera** de Vitalis colgado de rieles en el techo: la interfaz "humana" que diseñó la corporación.
+
+**Motivo:** Refuerza **Vulnerabilidad Constante** (espacios industriales hostiles) y **Adaptación**: el lugar del incidente es el lugar del jefe, y la sala que se transforma reutiliza un solo espacio para las 3 fases.
+
+**Consecuencias:** Precisa D-46 y D-16. [[02 - Mundo]] y [[03 - Personajes]] documentan los lugares y The Mother. M-19 en [[02 - Mecánicas]] incorpora la sala y los transformadores. La disposición de las salas de los pisos se detalla en `04 - Contenido`.
+
+**Estado:** Modificada por D-65 (The Mother pasa de maniquí de enfermera a archivo de muestras criogénicas). Se conserva como histórico.
+
+**Responsable:** Christian Coronel Palma
+
+## Decisión D-61 — Detalles de los finales
+
+**Fecha:** 2026-10-15
+
+**Tema:** Finales y cinemáticas.
+
+**Problema:** D-51 dejaba **Por definir** los detalles del Relevo completo distintos del expediente, el contenido visual de la Asimilación, cómo se encadena el latido del Ambiguo con el gancho y si hay amenazas durante la decisión final.
+
+**Opciones consideradas:**
+
+1. Detalles mínimos y cinemáticas sin relación con la introducción.
+2. Detalles que cierran los motivos de la demo: el segundo acto (D-57), el piso inexistente y el señuelo (D-53), y los dos latidos.
+
+**Decisión tomada:** Opción 2.
+
+- **Relevo completo:** además del expediente R-H-01 a R-H-06 "estado desconocido", al conectarse Lukas **oye el segundo acto**: el latido deja de ser ruido y él lo entiende. El texto en pantalla aparece con glitch total, ilegible para el jugador; el jugador nunca lo lee (D-16).
+- **Asimilación:**
+  1. Imágenes fugaces deformadas de la cápsula, con el montaje de la reconstrucción (D-53).
+  2. El informe de The Mother que reclasifica al sujeto.
+  3. Lukas, ya convertido en un Mudo, aparece de pie a lo lejos en el **piso que no existe**, como señuelo para el siguiente que llegue. Es la única vez que ese piso vuelve.
+- **Ambiguo:** en negro, el latido de Lukas y el del laboratorio suenan desfasados y luego se sincronizan en uno. Silencio. Después, el gancho.
+- **Decisión final:** hay presión sin muerte. Los altavoces y el latido suben, la sala tiembla y las luces fallan, pero no hay daño ni enemigos.
+
+**Motivo:** Refuerza el pilar **Adaptación**: los finales cierran los motivos que el jugador conoció durante el ciclo. Ningún final ofrece salvación (D-44).
+
+**Consecuencias:** Precisa D-51 y D-42. M-19 en [[02 - Mecánicas]], [[01 - Premisa y Trama]] y [[04 - Diálogos y Narrativa]] se alinean.
+
+**Responsable:** Christian Coronel Palma
+
+## Decisión D-64 — El latido de fondo es el primer acto
+
+**Fecha:** 2026-10-15
+
+**Tema:** Lore y audio.
+
+**Problema:** D-57 establece que quien escucha el latido completo es asimilado, pero Lukas oye el latido del laboratorio durante todo el juego y en el Relevo completo oye el segundo acto sin ser asimilado. Además, D-60 decía que la Boca "emite el latido", lo que contradice la regla de M-10: el latido del laboratorio nunca depende de la cercanía de enemigos.
+
+**Opciones consideradas:**
+
+1. El latido de fondo es solo el primer acto y no asimila; el segundo acto solo suena completo en el incidente y en el Relevo completo.
+2. El latido de fondo es el texto completo y asimila poco a poco (la degradación).
+3. Solo asimila el latido amplificado por la megafonía.
+
+**Decisión tomada:** Opción 1.
+
+- El latido que se oye en la instalación solo repite el **primer acto**: inquieta, pero no asimila.
+- Crece con la degradación porque cada reconstrucción acerca a Lukas al texto.
+- El **segundo acto** solo sonó completo en el incidente, amplificado por la megafonía, y vuelve a sonar en el Relevo completo. Allí Lukas no es asimilado porque el terminal del brazo lo conecta y lo protege, como a The Mother.
+- Ningún enemigo emite el latido. La Boca usa un **grito propio**, distinto del latido y de las señales de alerta.
+
+**Motivo:** Refuerza el pilar **Adaptación** y mantiene la legibilidad de las señales (principio 3 de [[01 - Jugabilidad]]): el latido del laboratorio sigue sin depender de la cercanía de enemigos y no compite con el latido del protagonista.
+
+**Consecuencias:** Precisa D-57 y D-60. M-10 y S-11 en [[02 - Mecánicas]] y [[03 - Sistemas]] incorporan el primer acto y el grito de la Boca. [[02 - Mundo]] agrega la regla y [[03 - Personajes]] corrige a la Boca.
+
+**Responsable:** Christian Coronel Palma
+
+## Decisión D-65 — The Mother: archivo de muestras criogénicas
+
+**Fecha:** 2026-10-15
+
+**Tema:** Jefe final.
+
+**Problema:** D-59 definía a The Mother como un maniquí robótico de enfermera colgado de rieles, sin papel en el combate. Ninguna fase interactuaba con su cuerpo, el jugador no podía morir por ella y no estaba claro qué significaba "derrotarla". La fase 2 decía que "los enemigos de la sala acuden", sin definir cuáles.
+
+**Opciones consideradas:**
+
+1. Mantener el maniquí como observador que cae al final.
+2. Sistema quirúrgico, mascota corporativa o sistema de megafonía como forma de The Mother.
+3. Una versión científica de la "recepcionista de pacientes": un archivo de muestras criogénicas que trata a Lukas como un espécimen.
+
+**Decisión tomada:** Opción 3.
+
+- **Forma:** un archivo de muestras criogénicas de Vitalis Konzern montado en una grúa: estantería refrigerada de viales sellados, brazo recolector de especímenes y núcleo criogénico que la alimenta. Sin carne: The Mother no es la criatura.
+- **Principios (D-47):** no ataca por hostilidad. Su protocolo de preservación trata a Lukas como un espécimen no conforme que debe recolectar y archivar.
+- **Ataque:** el brazo recolector recorre la sala en las 3 fases y, si alcanza al jugador, lo agarra con las reglas de M-11 (el objeto defensivo lo aturde 2 s; sin objeto, baja un estado de salud o mata en Crítico). Lukas puede morir en cualquier fase.
+- **Fase 1:** el brazo patrulla los nodos de las mesas de mezcla.
+- **Fase 2:** cada vez que una cámara enfoca al jugador, The Mother libera un asimilado desde una cápsula de su archivo, que acude a ese punto. Nunca hay más de 2 activos (D-37); el total por fase queda **Por definir** (balance). Una niebla criogénica reduce la visibilidad, sin ralentizar ni tapar las señales de M-10.
+- **Fase 3:** abre su núcleo criogénico y expone los transformadores de alto voltaje que la alimentan. Al destruir el último, la estantería se apaga y The Mother cae.
+- Línea de protocolo por fase (D-62), por ejemplo: "Espécimen R-H-14: no conforme. Iniciando recolección."
+
+**Motivo:** Refuerza **Vulnerabilidad Constante** (el jefe puede matar al jugador) sin introducir sistemas nuevos: reutiliza el agarre de M-11, las cámaras hostiles de D-28 y los disparos de M-04. El terror corporativo y científico refleja los experimentos de Vitalis.
+
+**Consecuencias:** Modifica D-59 (forma de The Mother) y precisa D-28 (enemigos de la fase 2). M-11, M-19, S-02, S-03 y S-10 se alinean; [[03 - Personajes]], [[02 - Mundo]] y [[01 - Premisa y Trama]] documentan la nueva forma.
+
 **Responsable:** Christian Coronel Palma
 
 ## Registro
@@ -645,7 +934,7 @@ Esta sección conserva las decisiones importantes del proyecto y el razonamiento
 | 2026-10-05 | D-04 Vista de vigilancia | La isométrica es el acceso a las cámaras de seguridad de The Mother desde el terminal del brazo, con restricciones | Christian Coronel Palma |
 | 2026-10-05 | D-05 Resistencia | Se elimina la Evasión Corta y se fusiona el ataque melee en "Empujón / Golpe de culata", sin invulnerabilidad | Christian Coronel Palma |
 | 2026-10-05 | D-06 Persistencia | Persisten en el terminal del brazo el conocimiento y las fallas de la máquina | Christian Coronel Palma |
-| 2026-10-05 | D-07 Salud | Salud fija sin regeneración con estados Bien, Herido y Crítico | Christian Coronel Palma |
+| 2026-10-05 | D-07 Salud | Salud fija sin regeneración con estados Bien, Herido y Crítico. **Modificada por D-66** | Christian Coronel Palma |
 | 2026-10-05 | D-08 Final secundario | 5 muertes consecutivas sin llegar a una sala clave activan el final "Disolución de identidad"; degradación estética acumulativa por muerte. **Modificada por D-35**. **Modificada por D-42** (el final pasa a llamarse "Asimilación") y **por D-52** (la "distorsión de voz" de la degradación pasa a "distorsión del sonido vocal") | Christian Coronel Palma |
 | 2026-10-05 | D-09 Fallas de la máquina | The Mother parchea cada falla tras 1-2 usos o al morir; se descubren fallas nuevas en otros intentos | Christian Coronel Palma |
 | 2026-10-05 | D-10 Pilares | El Pilar 3 se renombra a "Decisiones con Consecuencias" | Christian Coronel Palma |
@@ -654,7 +943,7 @@ Esta sección conserva las decisiones importantes del proyecto y el razonamiento
 | 2026-10-05 | D-13 Premisa | Premisa oficial del hombre que busca la última pista de su esposa fallecida. **Modificada por D-40** | Christian Coronel Palma |
 | 2026-10-05 | D-14 Agarre | La liberación de agarre se reemplaza por un objeto defensivo consumible | Christian Coronel Palma |
 | 2026-10-05 | D-15 Exploración vertical | Pisos conectados por escaleras o elevadores ubicados solo en salas clave. **Modificada por D-33** | Christian Coronel Palma |
-| 2026-10-05 | D-16 Jefe final | The Mother como jefe híbrido de 3 fases; derrotarla es la condición de victoria. **Precisada por D-51** | Christian Coronel Palma |
+| 2026-10-05 | D-16 Jefe final | The Mother como jefe híbrido de 3 fases; derrotarla es la condición de victoria. **Precisada por D-51 y D-59** (sala y forma de The Mother) | Christian Coronel Palma |
 | 2026-10-06 | D-17 Recursos | Presupuesto garantizado por piso (mínimo y máximo de cada recurso); el generador decide la ubicación | Christian Coronel Palma |
 | 2026-10-06 | D-18 Muerte | El personaje se reconstruye, no se clona: siempre es el mismo hombre, recompuesto con piezas ajenas; se pierde todo el inventario. Modifica D-12 | Christian Coronel Palma |
 | 2026-10-06 | D-19 Etiquetas | Se elimina la etiqueta "Permadeath" y se usa "Ciclo de muerte y reconstrucción" | Christian Coronel Palma |
@@ -673,7 +962,7 @@ Esta sección conserva las decisiones importantes del proyecto y el razonamiento
 | 2026-10-07 | D-32 Reiniciar y Nueva partida | "Reiniciar" (menú de pausa) regresa al inicio del ciclo, cuenta como muerte y conserva el terminal; "Nueva partida" (menú principal) borra todo, incluido el terminal, con confirmación. Motivo: Decisiones con Consecuencias (reiniciar no es gratuito) | Christian Coronel Palma |
 | 2026-10-07 | D-33 Estructura de pisos | 3 pisos; cada uno con 8–12 salas procedurales, 2–3 salas clave secundarias sin guardado y 1 sala clave final (escalera o elevador); sala de The Mother en el piso 3, sin guardado. Modifica D-15. Motivo: Adaptación | Christian Coronel Palma |
 | 2026-10-07 | D-34 Configuraciones | Completa: 8–12 procedurales + 2–3 secundarias + 1 final por piso (~45–60 min). Showcase: 6–8 procedurales + 2 secundarias + 1 final por piso (~30 min), con enemigos y recursos escalados en proporción. Motivo: Adaptación (misma estructura en ambas duraciones) | Christian Coronel Palma |
-| 2026-10-07 | D-35 Contador de 5 muertes | Solo lo reinicia llegar a la sala final del piso 2; las muertes del primer intento no cuentan; Reiniciar y salir con costo suman. Modifica D-08. Motivo: Vulnerabilidad Constante y Adaptación. **Modificada por D-42** (solo el nombre del final: "Asimilación") | Christian Coronel Palma |
+| 2026-10-07 | D-35 Contador de 5 muertes | Solo lo reinicia llegar a la sala final del piso 2; las muertes del primer intento no cuentan; Reiniciar y salir con costo suman. Modifica D-08. Motivo: Vulnerabilidad Constante y Adaptación. **Modificada por D-42** (solo el nombre del final: "Asimilación"). **Precisada por D-56** | Christian Coronel Palma |
 | 2026-10-07 | D-36 Llaves | 1 llave obligatoria por piso que abre la sala final y llaves opcionales para atajos o salas con recursos; objetos clave de 1 casilla que se consumen al usarse; la llave obligatoria siempre es alcanzable antes de la puerta de la sala final. Motivo: Adaptación y Decisiones con Consecuencias (la llave compite por espacio) | Christian Coronel Palma |
 | 2026-10-07 | D-37 Valores iniciales | Valores iniciales de munición, disparos, velocidad por salud, resistencia, máximos por casilla, enemigos por piso, atención, enemigo reciclado y gracia al cargar (ver [[02 - Mecánicas]] y [[06 - Economía y Recursos]]). Motivo: Vulnerabilidad Constante y Decisiones con Consecuencias (escasez medible) | Christian Coronel Palma |
 | 2026-10-07 | D-38 Tutorial | Integrado en las primeras salas del piso 1, fijas solo en el primer intento; desde el segundo intento esas salas son procedurales. Motivo: Adaptación (se aprende una vez y luego el escenario cambia) | Christian Coronel Palma |
@@ -683,14 +972,30 @@ Esta sección conserva las decisiones importantes del proyecto y el razonamiento
 | 2026-10-08 | D-42 Final de derrota | El final de 5 muertes consecutivas se llama "Asimilación": el laboratorio termina de asimilar a Lukas y este se convierte en uno de los enemigos comunes. Modifica D-08 y D-35 (solo el nombre del final). Motivo: Adaptación | Christian Coronel Palma |
 | 2026-10-08 | D-43 Representación del tema | Solo presentación, sin efecto mecánico: cuerpo ajeno visible (una pieza ajena más del laboratorio en cada reconstrucción; 3–5 variantes del modelo, valor inicial, sujeto a balance; la mano del anillo puede acabar asimilada), código de sujeto que sube en cada reconstrucción (R-H-07, R-H-08…) y enemigos comunes como personas asimiladas. Se descarta la "memoria que se deshilacha" para pistas y reglas. Motivo: Adaptación | Christian Coronel Palma |
 | 2026-10-08 | D-44 Tema y postura | Nihilismo puro frente al horror cósmico; tema central: buscar sentido dentro de algo que no puede darlo. El anillo es el ancla del personaje, no del universo; la motivación del jugador es el misterio y el descubrimiento, no la esperanza. Motivo: Adaptación | Christian Coronel Palma |
-| 2026-10-08 | D-45 Memoria | Lukas olvida a Emilia en la primera reconstrucción (cinemática completa de D-39) y conserva el anillo; jugador y Lukas se informan juntos; documentos corruptos (distintos de las fallas de la máquina) que nunca ocultan información necesaria para avanzar y se completan en el desenlace; Lukas recupera primero el nombre de Emilia y después el suyo. Motivo: Adaptación | Christian Coronel Palma |
-| 2026-10-08 | D-46 Mundo | Distopía retrofuturista con estética de los 90 y tecnología de ~2080 gobernada por megacorporaciones; Vitalis Konzern (biotecnología y salud); el laboratorio es una instalación subterránea de Vitalis sellada tras el incidente (ubicación Por definir) y **es** la criatura lovecraftiana; la generación procedural es el laboratorio reacomodándose; el laboratorio tiene su propio latido; los 3 pisos son un descenso hacia el núcleo; The Mother envía reportes que nadie lee; Vitalis explotaba algo que no entendía y lo vendía como medicina de regeneración (no es un virus ni un arma biológica). Motivo: Adaptación | Christian Coronel Palma |
+| 2026-10-08 | D-45 Memoria | Lukas olvida a Emilia en la primera reconstrucción (cinemática completa de D-39) y conserva el anillo; jugador y Lukas se informan juntos; documentos corruptos (distintos de las fallas de la máquina) que nunca ocultan información necesaria para avanzar y se completan en el desenlace; Lukas recupera primero el nombre de Emilia y después el suyo. Motivo: Adaptación. **Modificada por D-55**; **precisada por D-58** | Christian Coronel Palma |
+| 2026-10-08 | D-46 Mundo | Distopía retrofuturista con estética de los 90 y tecnología de ~2080 gobernada por megacorporaciones; Vitalis Konzern (biotecnología y salud); el laboratorio es una instalación subterránea de Vitalis sellada tras el incidente (ubicación Por definir) y **es** la criatura lovecraftiana; la generación procedural es el laboratorio reacomodándose; el laboratorio tiene su propio latido; los 3 pisos son un descenso hacia el núcleo; The Mother envía reportes que nadie lee; Vitalis explotaba algo que no entendía y lo vendía como medicina de regeneración (no es un virus ni un arma biológica). Motivo: Adaptación. **Precisada por D-59** | Christian Coronel Palma |
 | 2026-10-08 | D-47 The Mother | IA médica de Vitalis con el protocolo de preservación corrupto: reconstruye a quien conserva identidad; el laboratorio asimila. Lukas es un sujeto R-H. Justifica el reciclaje único por el último rastro de identidad. No puede explicar qué es la criatura. Motivo: Vulnerabilidad Constante y Adaptación | Christian Coronel Palma |
-| 2026-10-08 | D-48 Enemigos y bestiario | Los enemigos comunes son personas asimiladas (personal de Vitalis, sujetos de prueba); Lukas no es el primero ni es especial. El bestiario son informes clínicos de The Mother con código de sujeto, desbloqueados en el primer encuentro. Motivo: Adaptación | Christian Coronel Palma |
-| 2026-10-08 | D-49 Emilia | Científica de Vitalis despedida antes del incidente que investigó a escondidas; su papel en el incidente nunca se confirma; reconstruida como R-H-01 a R-H-06; no fue asimilada; "estado desconocido"; destino indefinido para la post-demo. Precisa D-40. Motivo: Adaptación | Christian Coronel Palma |
-| 2026-10-08 | D-50 Lukas y la última pista | Técnico de mantenimiento de Vitalis en otra instalación; entra con su acceso de técnico; es R-H-07 por estar en el expediente de Emilia; la última pista es un mensaje de audio en una tablet o teléfono corporativo (transcripción con sonido vocal y forma de onda), que se pierde en la primera reconstrucción y queda copiado, corrupto, en el terminal del brazo. Cómo muere al final de la introducción: Por definir. Motivo: Adaptación | Christian Coronel Palma |
-| 2026-10-08 | D-51 Finales | Asimilación, Relevo básico, Relevo completo y Ambiguo; Despertar en toda victoria; elección con la terminal central (`E`) y la salida, sin menú; "todos los documentos" = los 6 de Emilia en el terminal del brazo; sin Renuncia; gancho totalmente abierto. Precisa D-16. Motivo: Adaptación | Christian Coronel Palma |
-| 2026-10-08 | D-52 Narrativa | Sin actuación de voz (sonidos más texto, subtítulos obligatorios); Lukas casi no habla y su sonido vocal se distorsiona con la degradación; "distorsión de voz" pasa a "distorsión del sonido vocal"; 6 documentos de Emilia, 2 por piso, en salas clave secundarias; documentos de Vitalis y The Mother en salas procedurales, sin contar para la elección final; idiomas: inglés principal, español secundario. Modifica D-08 y M-18 (texto). Motivo: Adaptación | Christian Coronel Palma |
+| 2026-10-08 | D-48 Enemigos y bestiario | Los enemigos comunes son personas asimiladas (personal de Vitalis, sujetos de prueba); Lukas no es el primero ni es especial. El bestiario son informes clínicos de The Mother con código de sujeto, desbloqueados en el primer encuentro. Motivo: Adaptación. **Precisada por D-60** | Christian Coronel Palma |
+| 2026-10-08 | D-49 Emilia | Científica de Vitalis despedida antes del incidente que investigó a escondidas; su papel en el incidente nunca se confirma; reconstruida como R-H-01 a R-H-06; no fue asimilada; "estado desconocido"; destino indefinido para la post-demo. Precisa D-40. Motivo: Adaptación. **Modificada por D-57** | Christian Coronel Palma |
+| 2026-10-08 | D-50 Lukas y la última pista | Técnico de mantenimiento de Vitalis en otra instalación; entra con su acceso de técnico; es R-H-07 por estar en el expediente de Emilia; la última pista es un mensaje de audio en una tablet o teléfono corporativo (transcripción con sonido vocal y forma de onda), que se pierde en la primera reconstrucción y queda copiado, corrupto, en el terminal del brazo. Cómo muere al final de la introducción: Por definir. Motivo: Adaptación. **Modificada por D-53** | Christian Coronel Palma |
+| 2026-10-08 | D-51 Finales | Asimilación, Relevo básico, Relevo completo y Ambiguo; Despertar en toda victoria; elección con la terminal central (`E`) y la salida, sin menú; "todos los documentos" = los 6 de Emilia en el terminal del brazo; sin Renuncia; gancho totalmente abierto. Precisa D-16. Motivo: Adaptación. **Modificada por D-55**; **precisada por D-61** | Christian Coronel Palma |
+| 2026-10-08 | D-52 Narrativa | Sin actuación de voz (sonidos más texto, subtítulos obligatorios); Lukas casi no habla y su sonido vocal se distorsiona con la degradación; "distorsión de voz" pasa a "distorsión del sonido vocal"; 6 documentos de Emilia, 2 por piso, en salas clave secundarias; documentos de Vitalis y The Mother en salas procedurales, sin contar para la elección final; idiomas: inglés principal, español secundario. Modifica D-08 y M-18 (texto). Motivo: Adaptación. **Precisada por D-58 y D-62** | Christian Coronel Palma |
+| 2026-10-15 | D-53 Introducción | Casa (cinemática), mensaje programado de Emilia al teléfono personal de Lukas (advertencia de no ir; termina con Emilia corriendo de algo), compuerta y elevador jugables, caída al piso que no existe, señuelo (Mudo) y ataque por la espalda sin mostrar (trigger y temporizador de respaldo); reconstrucción en imágenes fugaces; The Mother copia el teléfono al terminal como "efectos personales del sujeto". Modifica D-50. Motivo: Vulnerabilidad Constante y Adaptación. **Precisada por D-63** | Christian Coronel Palma |
+| 2026-10-15 | D-54 Anillo | Tras la primera reconstrucción, Lukas encuentra un anillo en el suelo; nunca se sabe si es el suyo o el de Emilia. Motivo: Adaptación (disolución de identidad, D-44) | Christian Coronel Palma |
+| 2026-10-15 | D-55 Memoria final | Los documentos y el mensaje se completan y Lukas recupera los nombres al caer The Mother solo con los 6 documentos de Emilia; sin ellos todo sigue corrupto y el Relevo básico ocurre sin nombres. Modifica D-45 y D-51. Motivo: Adaptación | Christian Coronel Palma |
+| 2026-10-15 | D-56 Hallazgo del piso 2 | Cinemática corta, una vez: la foto familiar de la casa, imposible y sin explicar, con la cara de Emilia borrosa; provoca obstinación (no esperanza) y reinicia el contador; después el contador sigue contando en el piso 3 y en la sala de The Mother. Precisa D-35. Motivo: Vulnerabilidad Constante. **Precisada por D-67** | Christian Coronel Palma |
+| 2026-10-15 | D-57 Emilia y el incidente | El latido es un texto (inspiración: *The King in Yellow*); el incidente fue su transmisión por megafonía; Emilia oyó el primer acto, fue reconstruida como R-H-01, la despidieron y volvió por el segundo acto (R-H-02 a R-H-06); olvida poco a poco; brillante y fría; ficha física. Modifica D-49. Motivo: Adaptación. **Precisada por D-64 y D-68** | Christian Coronel Palma |
+| 2026-10-15 | D-58 Documentos | Estilo *Signalis*: glitch provocado por el laboratorio o el latido, alemán sin traducir, burocracia frente a diario, frase clave "Escucha el latido"; los documentos de Emilia no usan R-H; The Mother muestra R-H-01 a R-H-06 en el piso 2 con código, fecha y causa; una sala secundaria ya registrada da recursos. Precisa D-45 y D-52. Motivo: Adaptación | Christian Coronel Palma |
+| 2026-10-15 | D-59 Lugares | Sektor V-7, 2083; estética cruda e industrial con experimentos inhumanos; pisos de mantenimiento, clínica ilegal y núcleo; fila de cápsulas; sala de The Mother = central de megafonía que se transforma por fase (transformadores como puntos débiles, sin carne); The Mother = maniquí robótico de enfermera en rieles. Precisa D-16 y D-46. Motivo: Vulnerabilidad Constante y Adaptación. **Modificada por D-65** | Christian Coronel Palma |
+| 2026-10-15 | D-60 Enemigos | Asimilados grotescos (terror físico y cósmico): el Alto, la Boca, el Rastrero y el Mudo, cada uno con su versión reciclada. Precisa D-48. Motivo: Vulnerabilidad Constante. **Precisada por D-64 y D-66** | Christian Coronel Palma |
+| 2026-10-15 | D-61 Finales | Relevo completo: Lukas oye el segundo acto (glitch ilegible para el jugador); Asimilación: imágenes deformadas, informe de The Mother y Lukas como señuelo en el piso que no existe; Ambiguo: los dos latidos se sincronizan, silencio y gancho; decisión final con presión sin muerte. Precisa D-42 y D-51. Motivo: Adaptación | Christian Coronel Palma |
+| 2026-10-15 | D-62 Texto | Sin narrador; solo humor negro corporativo; textos redactados en inglés y nombres propios sin traducir; The Mother emite una línea de protocolo al inicio de cada fase del jefe; el texto de Lukas solo se degrada en la Asimilación. Precisa D-52. Motivo: Adaptación | Christian Coronel Palma |
+| 2026-10-15 | D-63 Introducción jugable | Lukas hackea la compuerta con su teléfono personal (reglas de M-13, sin terminal); HUD mínimo: moverse, mirar e interactuar, pausa sin "Reiniciar"; el elevador es cinemática; la muerte final está guionizada y no suma al contador ni a la degradación. Precisa D-53. Motivo: Adaptación | Christian Coronel Palma |
+| 2026-10-15 | D-64 Latido | El latido de fondo es el primer acto y no asimila; crece con la degradación; el segundo acto solo suena completo en el incidente y en el Relevo completo, donde el terminal protege a Lukas; ningún enemigo emite el latido y la Boca usa un grito propio. Precisa D-57 y D-60. Motivo: Adaptación | Christian Coronel Palma |
+| 2026-10-15 | D-65 The Mother | Archivo de muestras criogénicas en una grúa: el brazo recolector agarra a Lukas (M-11) en las 3 fases y puede matarlo; fase 2: cada enfoque de cámara libera un asimilado (máximo 2 activos) y niebla criogénica solo visual; fase 3: el núcleo criogénico expone los transformadores. Modifica D-59; precisa D-28. Motivo: Vulnerabilidad Constante | Christian Coronel Palma |
+| 2026-10-15 | D-66 Valores por tipo de enemigo | Disparos: Alto 4, Boca 3, Rastrero 2, Mudo 3; golpes para matar: Alto 2, Boca 3, Rastrero 4, Mudo 2; agarran el Alto y el Mudo; el Mudo se activa a ~3 m o al ser iluminado; reciclados: 2 disparos (Rastrero 1). Precisa D-60 y D-37; modifica D-07 (2-4 golpes). Motivo: Vulnerabilidad Constante | Christian Coronel Palma |
+| 2026-10-15 | D-67 Hallazgo del piso 2 | La cinemática espera a que termine la caza, igual que el autoguardado, y no se puede saltar. Precisa D-56. Motivo: Adaptación | Christian Coronel Palma |
+| 2026-10-15 | D-68 Despido de Emilia | Vitalis no sabe que Emilia fue reconstruida porque nunca lee los reportes de The Mother; la considera una superviviente inestable y la despide para limpiar responsabilidades. Precisa D-57. Motivo: Adaptación | Christian Coronel Palma |
 
 
 > **Navegación:** [[00 - Índice]] · ← [[02 - Referencias e Inspiración]] · [[04 - Historial de Versiones]] →

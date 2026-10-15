@@ -8,23 +8,23 @@ Esta ficha identifica el proyecto de forma rápida. Debe permitir que alguien qu
 
 | Campo                        | Información                                                                                                                                    |
 | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Nombre del proyecto**      | Identity Dissolution                                                                                          |
+| **Nombre del proyecto**      | Identity Dissolution                                                                                                                           |
 | **Nombre clave**             | Heartbeat                                                                                                                                      |
-| **Versión del GDD**          | 0.5.0                                                                                                                                          |
+| **Versión del GDD**          | 0.7.0                                                                                                                                          |
 | **Estado del proyecto**      | Concepto <!-- / Preproducción / Producción / Pruebas / Publicado -->                                                                           |
 | **Equipo**                   | Victor Gabriel Alvarado Chay<br>Christian Coronel Palma<br>Lenin Ramón López Córdoba<br>Brian Iván Navarrete Canché<br>Lian Daniel Sierra Sosa |
 | **Responsable del proyecto** | Christian Coronel Palma                                                                                                                        |
 | **Fecha de inicio**          | 2026-09-25                                                                                                                                     |
-| **Última actualización**     | 2026-10-08                                                                                                                                     |
+| **Última actualización**     | 2026-10-15                                                                                                                                     |
 | **Repositorio**              | [Repositorio Demo](https://github.com/ChristianC720/survivalHorror-Demo)                                                                       |
 
 ## Identidad del videojuego
 
-**Género principal:**  Survival Horror.
+**Género principal:**  Supervivencia.
 **Justificación:**  El género principal del videojuego es la supervivencia, ya que el jugador tiene que gestionar recursos limitados, enfrentarse a amenazas más fuertes que el personaje principal, administrar un inventario 6-slots, y llegar en las mejores condiciones posibles hasta el final.
 
 **Géneros secundarios:**  Terror y Roguelite.
-**Justificación:** El Terror se toma como género secundario porque el juego tendrá una ambientación oscura, se enfrentará a monstruos, y la historia estará centrada en el terror y lo que le sucede al personaje dentro de este mundo. También se tomó el Roguelite porqué se implementará una generación procedural de cuartos a partir del punto inicial, y cada que el jugador pierda una partida al morir, el escenario cambiará por completo. Esto como parte de la narrativa y jugabilidad que se tienen contemplados.
+**Justificación:** El Terror se toma como género secundario porque el juego tendrá una ambientación oscura, se enfrentará a monstruos, y la historia estará centrada en el terror y lo que le sucede al personaje dentro de este mundo. También se tomó el Roguelite porqué se implementará una generación procedural de cuartos a partir del punto inicial, y cada que el jugador pierda una partida al morir, las salas procedurales y la posición de las salas clave cambiarán. Esto como parte de la narrativa y jugabilidad que se tienen contemplados.
 
 **Subgéneros:** Survival Horror.
 **¿Por qué?:** Porque combina la supervivencia de los recursos limitados y los enemigos difíciles con el terror de la narrativa y el mundo que lo rodea.
@@ -96,6 +96,6 @@ Como criterio mínimo para la demo, el jugador deberá poder:
 - Morir, reiniciar la partida y obtener una distribución diferente del escenario.
 - Alcanzar un objetivo final claramente definido.
 - Comprender, aunque sea parcialmente, la relación entre la muerte, la generación procedural y la narrativa del juego.
-- En la configuración de showcase (evento de presentación), completar el recorrido de los 3 pisos hasta The Mother en ~30 minutos, con menos salas por piso y enemigos y recursos escalados en proporción (D-34, valor inicial, sujeto a balance). La configuración completa se estima en ~45–60 minutos (ver [[03 - Público y Plataforma]]).
+- En la configuración de showcase (evento de presentación), completar el recorrido de los 3 pisos hasta The Mother en ~15 minutos, con menos salas por piso y enemigos y recursos escalados en proporción (D-34, valor inicial, sujeto a balance). La configuración completa se estima en ~45–60 minutos (ver [[03 - Público y Plataforma]]).
 
 > **Navegación:** [[00 - Índice]] · ← [[00 - Índice]] · [[02 - Visión del Juego]] →
