@@ -60,7 +60,7 @@ La demo tiene **5 misiones principales** y **2 secundarias persistentes**; no ha
 
 **Recompensa:** Autoguardado (D-30).
 
-**Consecuencias:** Por la escalera siguen los enemigos en caza (D-26).
+**Consecuencias:** Durante una caza, la escalera y el elevador quedan en cierre hasta que termina (D-96).
 
 **Personajes relacionados:** The Mother.
 

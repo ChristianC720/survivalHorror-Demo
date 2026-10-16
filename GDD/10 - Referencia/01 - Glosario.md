@@ -29,7 +29,7 @@ Centraliza términos técnicos, de diseño y propios del universo del videojuego
 | Código de sujeto (R-H) | Registro de The Mother para los sujetos del expediente Reiner-Hellen: R-H-01 a R-H-06 (Emilia) y R-H-07 en adelante (Lukas) (D-43, D-50). |
 | Falla de la máquina | Ventaja de conocimiento temporal sobre el sistema de The Mother, que ella parchea tras 1-2 usos o al morir (M-17). |
 | Documento corrupto | Documento con partes ilegibles por un glitch del laboratorio o del latido. Distinto de una falla de la máquina (D-45, D-58). |
-| Reciclaje | Reconstrucción única de un enemigo eliminado por The Mother; regresa más rápido y más frágil (M-20, D-20). |
+| Reciclaje | El laboratorio termina de asimilar a un enemigo eliminado y no rematado, que se levanta una sola vez, más rápido y más frágil (M-20, D-20, D-99). |
 | Remate | Acción que evita el reciclaje: golpe en el suelo o punzón de descarga (M-20, D-21, D-71). |
 | Contador de 5 muertes | Contador que activa el final Asimilación; solo lo reinicia la sala clave final del piso 2 (D-35, D-56). |
 | Degradación | Deterioro estético acumulativo por muerte: corrupción CRT, distorsión del sonido vocal y cuerpo ajeno (M-18, D-29). |
@@ -37,7 +37,7 @@ Centraliza términos técnicos, de diseño y propios del universo del videojuego
 | Despertar | Aceleración del latido del laboratorio al caer The Mother, en toda victoria (D-51). |
 | Relevo básico / completo | Finales de victoria en los que Lukas reemplaza a The Mother, sin / con los 6 documentos de Emilia (D-51, D-61). |
 | Ambiguo | Final de victoria en el que Lukas elige la salida; su destino no se aclara (D-51, D-61). |
-| Latido del laboratorio | Sonido ambiental grave del laboratorio, distinto del latido de Lukas; es el primer acto del texto (D-46, D-64). |
+| Latido del laboratorio | Sonido ambiental grave del laboratorio, distinto del latido de Lukas; es el primer acto del texto (D-46, D-64). Se oye de fondo en la nota de voz de Emilia; crece con cada muerte y con la salud en Crítico (D-95). |
 | Primer acto / segundo acto | Partes del texto que es el latido. El primer acto suena de fondo y no asimila; el segundo acto solo suena completo en el incidente y en el Relevo completo (D-57, D-64). |
 | El incidente | Transmisión del latido por la megafonía de la instalación, que asimiló a quienes lo oyeron completo (D-57). |
 | El Alto / la Boca / el Rastrero / el Mudo | Los 4 tipos de asimilados (enemigos comunes) de la demo (D-60, D-66). |

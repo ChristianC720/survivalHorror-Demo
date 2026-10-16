@@ -113,7 +113,7 @@ stateDiagram-v2
 | **Búsqueda** | Degradada: más ruido CRT y más retraso que la señal base |
 | **Caza** | Se corta y queda bloqueada (M-03) |
 
-- **Atención de The Mother (D-24):** mientras la vista está activa se llena un medidor **oculto** (sin barra en pantalla) en ~5 s de uso; sin usar la vista, baja en ~15 s (valores iniciales, sujetos a balance). Al llenarse, los enemigos cercanos pasan a sospecha y luego a búsqueda hacia la posición del jugador. El jugador lo percibe por la degradación de la señal.
+- **Atención de The Mother (D-24):** mientras la vista está activa se llena un medidor **oculto** (sin barra en pantalla) en ~5 s de uso; sin usar la vista, baja en ~15 s (valores iniciales, sujetos a balance). Al llenarse, los enemigos cercanos pasan a sospecha y luego a búsqueda hacia la posición del jugador. El jugador lo percibe por la degradación de la señal. El medidor es único por piso y no se vacía al cambiar de sala; "enemigos cercanos" son los de la sala de Lukas y los de las salas conectadas a ella (D-98).
         
     - Muestra únicamente lo que cubre la cámara de la sala y un solo piso a la vez.
         
@@ -215,7 +215,7 @@ stateDiagram-v2
         
     - **Recarga bala a bala (D-74):** ~0.7 s por bala; mientras recarga no puede disparar. Se puede cancelar en cualquier momento y se conservan las balas ya cargadas.
         
-    - **Cadencia y precisión (D-74):** ~0.8 s entre disparos por el retroceso. La dispersión se cierra en ~1 s con Lukas quieto; moverse, correr o recibir un golpe la abre. No hay auto-apuntado.
+    - **Cadencia y precisión (D-74):** ~0.8 s entre disparos por el retroceso. La dispersión se cierra en ~1 s con Lukas quieto; moverse, correr o recibir un golpe la abre. No hay auto-apuntado; la asistencia de apuntado es una opción de accesibilidad, desactivada por defecto con teclado y ratón y activada por defecto con mando (D-104).
         
     - **Puntos débiles (D-74):** cada tipo de enemigo tiene uno. Acertarle interrumpe el ataque o el agarre en curso, pero no reduce los disparos necesarios (ver [[03 - Enemigos y NPC]]).
         
@@ -508,7 +508,7 @@ stateDiagram-v2
         
     - El latido del protagonista sube con la proximidad de una amenaza.
         
-    - **Latido del laboratorio (D-46):** sonido ambiental propio del laboratorio, con un timbre grave distinto del latido del protagonista. Nunca varía con la cercanía de enemigos: solo crece con la degradación acumulada (M-18) y en el final, donde se acelera al caer The Mother (Despertar, M-19). Así no compite con la señal de proximidad, que sigue siendo el latido del protagonista. Es el primer acto del texto: inquieta, pero no asimila, y ningún enemigo lo emite (D-64).
+    - **Latido del laboratorio (D-46):** sonido ambiental propio del laboratorio, con un timbre grave distinto del latido del protagonista. Nunca varía con la cercanía de enemigos: crece con la degradación acumulada (M-18), sube mientras la salud de Lukas está en Crítico (M-05) y se acelera en el final, al caer The Mother (Despertar, M-19). Se oye por primera vez de fondo en la nota de voz de Emilia y, desde la primera reconstrucción, en todas las salas (D-95). Así no compite con la señal de proximidad, que sigue siendo el latido del protagonista. Es el primer acto del texto: inquieta, pero no asimila, y ningún enemigo lo emite (D-64).
         
 - **Entrada:** N/A.
     
@@ -522,7 +522,7 @@ stateDiagram-v2
     
 - **Penalización:** Interpretar mal una señal puede llevar al jugador hacia la amenaza.
     
-- **Interacciones con otras mecánicas:** Interactúa con M-02 Vista de vigilancia (señal escalonada), M-03 Bloqueo de vigilancia, M-09 Sigilo, M-12 Linterna, M-15 Exploración vertical (solo los enemigos en caza siguen por la escalera, D-26), M-18 Degradación (ninguna capa de la degradación tapa estas señales, D-29; el latido del laboratorio crece con la degradación), M-19 Jefe final (cámaras hostiles; el latido del laboratorio se acelera en el Despertar) y M-20 Reciclaje (aviso de maquinaria antes de que un cuerpo desaparezca).
+- **Interacciones con otras mecánicas:** Interactúa con M-02 Vista de vigilancia (señal escalonada), M-03 Bloqueo de vigilancia, M-09 Sigilo, M-12 Linterna, M-15 Exploración vertical (cierre de tránsito durante la caza, D-96), M-18 Degradación (ninguna capa de la degradación tapa estas señales, D-29; el latido del laboratorio crece con la degradación), M-19 Jefe final (cámaras hostiles; el latido del laboratorio se acelera en el Despertar) y M-20 Reciclaje (aviso orgánico antes de que un cuerpo desaparezca).
     
 - **Casos límite:**
     
@@ -546,7 +546,7 @@ stateDiagram-v2
 
     - **Defensa:** al ser agarrado, Lukas clava el punzón de forma automática; se consume y la descarga aturde al enemigo 2 segundos (valor inicial, sujeto a balance).
 
-    - **Remate:** con `E` sobre un cuerpo, la descarga quema su último rastro de identidad y The Mother ya no puede reciclarlo, sin alertar a enemigos (M-20).
+    - **Remate:** con `E` sobre un cuerpo, la descarga quema su último rastro de identidad y el laboratorio ya no puede reciclarlo, sin alertar a enemigos (M-20).
 
     - Gastarlo en un remate deja a Lukas sin defensa ante el próximo agarre: es una decisión con consecuencias.
 
@@ -676,7 +676,7 @@ stateDiagram-v2
         
     - Los enemigos persiguen brevemente o golpean la puerta antes de regresar a su patrulla.
         
-    - El sellado rápido de puerta mediante hackeo (M-13, 2-3 entradas) corta la persecución.
+    - El sellado rápido de puerta mediante hackeo (M-13, 2-3 entradas) corta la persecución. Un enemigo tarda ~30 s en romper un sellado; también se rompe si Lukas cruza la puerta (D-97).
         
 - **Entrada:** Moverse hacia la salida con `W` `A` `S` `D`; `E` para cerrar o sellar la puerta.
     
@@ -753,7 +753,7 @@ stateDiagram-v2
         
     - **Contador de muertes (D-35):** solo llegar a la sala clave final del piso 2 reinicia el contador de 5 muertes (M-18). Si M-18 (Deseable) no se implementa, la exploración vertical funciona igual sin contador.
         
-    - **Persecución entre pisos (D-26):** por la escalera solo siguen al jugador los enemigos en caza (M-10), con un breve retraso. Por el elevador no siguen, pero los enemigos que lo perseguían esperan cerca del elevador si el jugador vuelve.
+    - **Cierre de tránsito (D-96, elimina D-26):** mientras haya enemigos en caza, la escalera y el elevador de la sala final quedan en cierre (panel rojo `LOCKDOWN` y línea de protocolo de The Mother, por ejemplo "Containment breach. Transit suspended."); al terminar la caza se crea el autoguardado y se abren. Ningún enemigo cambia de piso.
         
     - **Transición de piso (D-39):** usar la escalera o el elevador reproduce una cinemática de ascensor o escalera de **mínimo 5 s** que oculta la carga y muestra el aviso de autoguardado; se alarga si la carga tarda. No hay pantalla de carga.
         
@@ -775,15 +775,15 @@ stateDiagram-v2
     
 - **Casos límite:**
     
-    - Si el jugador es perseguido al usar la escalera, los enemigos en caza lo siguen al piso siguiente con un breve retraso; los que están en sospecha o búsqueda no lo siguen (D-26).
+    - Si el jugador llega perseguido a la sala final, no puede cambiar de piso hasta que termina la caza; puede sellar la sala con el hackeo (M-13, D-97).
         
-    - Si el jugador usa el elevador perseguido, los enemigos no lo siguen; si vuelve por el elevador, los que lo perseguían esperan cerca (D-26).
+    - Al terminar la caza, el autoguardado y la apertura de la escalera o el elevador ocurren a la vez (D-30, D-96).
         
     - Si el jugador llega a la sala clave final con enemigos en caza, el autoguardado no se realiza hasta que la caza termina (D-30).
         
     - Si la sala clave final está sin energía, el generador garantiza una ruta válida hasta el interruptor de la sala clave secundaria del mismo piso (D-72).
         
-- **Impacto en pilares:** Refuerza **Adaptación** (la ruta y la posición de las salas clave cambian por intento, pero la estructura es comprensible) y **Decisiones con Consecuencias** (elegir escalera o elevador cambia quién sigue al jugador; las llaves compiten por espacio). Riesgo: si la sala clave final queda siempre cerca del inicio, el piso pierde tensión; el generador debe imponer una distancia mínima (**Por definir**, no cubierta por D-23 a D-39).
+- **Impacto en pilares:** Refuerza **Adaptación** (la ruta y la posición de las salas clave cambian por intento, pero la estructura es comprensible) y **Decisiones con Consecuencias** (elegir escalera o elevador cambia quién sigue al jugador; las llaves compiten por espacio). Riesgo: si la sala clave final queda siempre cerca del inicio, el piso pierde tensión; el generador impone una distancia mínima de ≥ 4 salas (≥ 3 en showcase; D-100).
 
 **Estructura del intento:**
 
@@ -814,7 +814,7 @@ flowchart TD
         
     - **Cinemática corta (D-39):** en cada muerte o reinicio, el personaje cae de su cápsula, en la fila de cápsulas del piso 1 (D-59), con sonido de maquinaria. Refleja la degradación acumulada y la pieza ajena visible de la reconstrucción (M-18) y se puede saltar (ver [[04 - Controles]]). Junto a la cápsula, The Mother deja el revólver descargado en una bandeja de efectos personales: "Efectos personales R-H-09: 1 revólver (descargado)" (D-74).
         
-    - **Código de sujeto (D-43, D-47, D-50):** The Mother identifica a Lukas con un código R-H, registrado en el mismo expediente que Emilia (R-H-01 a R-H-06, D-49). La primera reconstrucción lo registra como **R-H-07** y el código sube 1 en cada reconstrucción posterior (R-H-08, R-H-09…), incluidas las de "Reiniciar". El código se muestra en el terminal del brazo y es solo presentación: no tiene efecto mecánico. Si una salida con calma con costo (D-31) también sube el código queda **Por definir**.
+    - **Código de sujeto (D-43, D-47, D-50):** The Mother identifica a Lukas con un código R-H, registrado en el mismo expediente que Emilia (R-H-01 a R-H-06, D-49). La primera reconstrucción lo registra como **R-H-07** y el código sube 1 en cada reconstrucción posterior (R-H-08, R-H-09…), incluidas las de "Reiniciar". El código se muestra en el terminal del brazo y es solo presentación: no tiene efecto mecánico. Una salida con calma con costo (D-31) también sube el código (D-94). Tras un final, el ciclo nuevo conserva el código (D-93).
         
     - **Mensaje de Emilia (D-50, D-53):** la última pista es una nota de voz programada de Emilia que llega al teléfono personal de Lukas, presentada como transcripción con sonido vocal y forma de onda (sin actuación de voz, D-52). El teléfono se pierde en la primera reconstrucción; The Mother copia su contenido al terminal del brazo como "efectos personales del sujeto". El mensaje queda corrupto (M-08) y solo se completa en el desenlace si Lukas reunió los 6 documentos de Emilia (M-19, D-55).
         
@@ -916,7 +916,7 @@ flowchart TD
         
     - **Cuerpo ajeno visible (D-43):** en cada reconstrucción se nota en el modelo de Lukas una pieza ajena más, que proviene del laboratorio. El modelo tiene 3–5 variantes (valor inicial, sujeto a balance); la mano del anillo puede acabar asimilada. Al llegar a la última variante, el modelo se mantiene en ella, porque la degradación solo se acumula (D-29). Es solo presentación: no tiene efecto mecánico.
         
-    - **La degradación solo se acumula y nunca se reinicia (D-29)**, ni siquiera al llegar a una sala clave.
+    - **La degradación solo se acumula (D-29)**, ni siquiera se reinicia al llegar a una sala clave. Solo se reinicia con el ciclo nuevo tras un final (D-93) o con "Nueva partida".
         
     - **Tope visual (D-29):** ninguna capa de la degradación tapa la interfaz crítica ni las señales diegéticas de M-10.
         
@@ -928,7 +928,7 @@ flowchart TD
         
     - **Qué suma al contador y a la degradación:** cada muerte, "Reiniciar" (D-32) y salir del juego con costo (D-31; ver [[07 - Reglas y Estados del Juego]]). Un cierre inesperado o un fallo del juego no cuenta.
         
-    - **Primer intento (D-35):** las muertes del primer intento (el del tutorial) no suman al contador. La misma excepción se aplica a Reiniciar y a salir del juego durante el primer intento.
+    - **Primer intento (D-35):** las muertes del primer intento (el del tutorial) no suman al contador. La misma excepción se aplica a Reiniciar y a salir del juego durante el primer intento. La degradación sí suma en el primer intento (D-94).
         
 - **Entrada:** N/A.
     
@@ -978,7 +978,9 @@ flowchart TD
             
         3. **Pocos disparos a puntos débiles expuestos** (M-04): The Mother abre su núcleo criogénico y expone los **3 transformadores** de alto voltaje que la alimentan, de 2 disparos cada uno (D-59, D-65, D-80). Al destruir el último, la estantería se apaga y The Mother cae. La sala contiene 8 balas: 6 para los transformadores y 2 de margen (valores iniciales, sujetos a balance; D-28, D-80).
             
-    - **Sin reciclaje (D-28):** en la sala de The Mother no hay reciclaje de enemigos (M-20).
+    - **Sin reciclaje (D-28):** en la sala de The Mother no hay reciclaje de enemigos (M-20): la sala es solo máquina, sin carne, y el laboratorio no levanta cuerpos en ella (D-99).
+        
+    - **Valores iniciales (D-98, sujetos a balance):** 3 cámaras hostiles que barren a ~20°/s con un cono de ~12 m; tras ~1 s enfocando a Lukas fijan su luz roja y liberan un asimilado. La grúa recorre sus rieles a ~2.5 m/s (Lukas corriendo la supera); el brazo recolector alcanza ~3 m y avisa ~1 s antes de agarrar con luz y sonido hidráulico.
             
     - Derrotarla es la condición de victoria ([[01 - Jugabilidad]]).
         
@@ -1045,7 +1047,7 @@ flowchart TD
 
 ### M-20: Reciclaje de enemigos y remate
 
-- **Propósito:** Evitar que eliminar a un enemigo sea una solución definitiva y gratuita, obligando al jugador a decidir si invierte tiempo, ruido o una casilla del inventario para impedir que The Mother lo recicle.
+- **Propósito:** Evitar que eliminar a un enemigo sea una solución definitiva y gratuita, obligando al jugador a decidir si invierte tiempo, ruido o una casilla del inventario para impedir que el laboratorio lo recicle.
     
 - **Activación:**
     
@@ -1055,13 +1057,13 @@ flowchart TD
         
 - **Reglas:**
     
-    - Los enemigos eliminados siguen muertos durante el intento, pero The Mother puede reciclar cada uno **una sola vez** (D-20).
+    - Los enemigos eliminados siguen muertos durante el intento, pero el laboratorio recicla **todos** los cuerpos no rematados, cada uno **una sola vez** (D-20, D-99).
         
-    - **Justificación del rastro de identidad (D-47, D-48):** los enemigos comunes son personas asimiladas por el laboratorio. Un enemigo eliminado conserva un último rastro de identidad y The Mother, que reconstruye a quien todavía conserva identidad, intenta reconstruirlo una vez más. Regresa más asimilado (más rápido, más frágil) y después ya no le queda identidad; por eso el reciclaje solo ocurre una vez. The Mother reconstruye; el laboratorio asimila. Qué proporción de cuerpos recicla y el tiempo entre la muerte y el aviso están **Por definir** (no cubiertos por D-23 a D-39).
+    - **Justificación del rastro de identidad (D-47, D-48, D-99):** los enemigos comunes son personas asimiladas por el laboratorio. Un enemigo eliminado conserva un último rastro de identidad; el laboratorio lo consume y termina de asimilar el cuerpo, que se levanta más asimilado (más rápido, más frágil). Después ya no le queda identidad; por eso el reciclaje solo ocurre una vez. The Mother no interviene: reconstruye a quien conserva identidad; el laboratorio asimila.
         
     - **Sin reciclaje en la sala del jefe (D-28):** los enemigos eliminados en la sala de The Mother no se reciclan.
         
-    - **Aviso:** antes de desaparecer, el cuerpo vibra y emite un sonido de maquinaria (señal diegética, M-10).
+    - **Aviso (D-99):** ~40 s después de la muerte, el cuerpo se convulsiona y emite crujidos de hueso y carne durante ~3 s antes de desaparecer (señal diegética, M-10; valores iniciales, sujetos a balance).
         
     - **Reaparición:** el enemigo reciclado reaparece cuando el jugador sale de la sala, en otra sala del mismo piso y nunca frente al jugador.
         
@@ -1072,13 +1074,13 @@ flowchart TD
 | Opción                    | Costo                                                                                            | Tiempo                                 | Ruido                             | Entrada                                      |
 | ------------------------- | ------------------------------------------------------------------------------------------------ | -------------------------------------- | --------------------------------- | -------------------------------------------- |
 | Golpe en el suelo         | 25% de la resistencia (valor inicial, sujeto a balance; M-06, D-37)                              | ~2 s (valor inicial, sujeto a balance) | Alerta a enemigos cercanos (M-09) | `Clic izquierdo` sin apuntar sobre un cuerpo |
-| Punzón de descarga (M-11) | El punzón, de un solo uso: deja a Lukas sin defensa ante el próximo agarre (1 por casilla, D-71) | Rápido (duración **Por definir**)      | No alerta a enemigos              | `E` sobre un cuerpo                          |
+| Punzón de descarga (M-11) | El punzón, de un solo uso: deja a Lukas sin defensa ante el próximo agarre (1 por casilla, D-71) | ~1.5 s (valor inicial, sujeto a balance) | No alerta a enemigos              | `E` sobre un cuerpo                          |
         
 - **Disponibilidad del remate (D-27):** el contexto "sobre un cuerpo" se activa a ~1.5 m (valor inicial, sujeto a balance) mirando un cuerpo no rematado, también durante el combate con enemigos vivos cerca. Si hay otro elemento interactivo al lado del cuerpo (puerta, panel, escalera, elevador u objeto), gana el que está al centro de la vista. Con un cuerpo ya rematado el contexto no se activa.
         
     - El golpe en el suelo no otorga protección contra el daño (D-05).
         
-    - **Objeto único (D-71):** el remate silencioso y la defensa contra agarres usan el mismo punzón de descarga (M-11). Clavado en un cuerpo, la descarga quema su último rastro de identidad y The Mother ya no puede reconstruirlo.
+    - **Objeto único (D-71):** el remate silencioso y la defensa contra agarres usan el mismo punzón de descarga (M-11). Clavado en un cuerpo, la descarga quema su último rastro de identidad y el laboratorio ya no puede tomarlo.
         
     - La disponibilidad del punzón de descarga es baja (presupuesto por piso, ver [[06 - Economía y Recursos]]).
         
@@ -1104,7 +1106,7 @@ flowchart TD
         
     - **No rematar:** un enemigo más rápido vuelve a aparecer en el piso.
         
-- **Interacciones con otras mecánicas:** Interactúa con M-06 Resistencia (costo del golpe en el suelo), M-07 Inventario (casilla del punzón), M-09 Sigilo (el golpe en el suelo hace ruido; el punzón no), M-11 Punzón de descarga (mismo objeto), M-10 Señales diegéticas (aviso de maquinaria), M-08 Interacción (prioridad por el centro de la vista, D-27), M-14 Escape de combate (la sala de la que se huyó sigue infestada, incluidos los reciclados) y M-19 Jefe final (sin reciclaje en la sala de The Mother, D-28).
+- **Interacciones con otras mecánicas:** Interactúa con M-06 Resistencia (costo del golpe en el suelo), M-07 Inventario (casilla del punzón), M-09 Sigilo (el golpe en el suelo hace ruido; el punzón no), M-11 Punzón de descarga (mismo objeto), M-10 Señales diegéticas (aviso orgánico), M-08 Interacción (prioridad por el centro de la vista, D-27), M-14 Escape de combate (la sala de la que se huyó sigue infestada, incluidos los reciclados) y M-19 Jefe final (sin reciclaje en la sala de The Mother, D-28).
     
 - **Casos límite:**
     

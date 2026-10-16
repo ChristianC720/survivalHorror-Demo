@@ -10,7 +10,7 @@ Esta ficha identifica el proyecto de forma rápida. Debe permitir que alguien qu
 | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Nombre del proyecto**      | Identity Dissolution                                                                                                                           |
 | **Nombre clave**             | Heartbeat                                                                                                                                      |
-| **Versión del GDD**          | 0.9.0                                                                                                                                          |
+| **Versión del GDD**          | 0.10.0                                                                                                                                         |
 | **Estado del proyecto**      | Concepto <!-- / Preproducción / Producción / Pruebas / Publicado -->                                                                           |
 | **Equipo**                   | Victor Gabriel Alvarado Chay<br>Christian Coronel Palma<br>Lenin Ramón López Córdoba<br>Brian Iván Navarrete Canché<br>Lian Daniel Sierra Sosa |
 | **Responsable del proyecto** | Christian Coronel Palma                                                                                                                        |

@@ -18,7 +18,7 @@ Las reglas de las señales jugables están en S-11 Audio dinámico ([[03 - Siste
 
 **Temas principales (leitmotivs, D-87):**
 
-- **Emilia:** piano y guitarra acústica frágiles. Menú principal, nota de voz de la introducción y finales Relevo.
+- **Emilia:** piano y guitarra acústica frágiles. Menú principal, nota de voz de la introducción y finales Relevo. La pantalla de título solo tiene el latido (D-90).
 - **The Mother:** industrial, con máquinas, engranajes, estática y zumbidos. Encuentro con el jefe, en un loop por fase.
 - **El latido:** bajos y subgraves con el ritmo del latido del laboratorio. Se cuela en los otros dos y domina en el Despertar y en la Asimilación.
 - Los finales combinan los motivos (por ejemplo, en Ambiguo, Emilia sobre el latido).
@@ -35,10 +35,10 @@ Las reglas de las señales jugables están en S-11 Audio dinámico ([[03 - Siste
 |---|---|---|
 | Estados de alerta (sospecha, búsqueda, caza) | Un sonido distinto por estado; prioridad al más alto | Leer la percepción enemiga sin indicadores (M-10, D-23) |
 | Latido del protagonista | Latido que sube con la proximidad; aproximado | Proximidad de amenazas sin radar (S-11) |
-| Latido del laboratorio | Latido grave, de timbre distinto; solo crece con la degradación | Capa del ciclo; primer acto del texto (D-64) |
+| Latido del laboratorio | Latido grave, de timbre distinto; de fondo en la nota de voz de Emilia y en todas las salas desde la primera reconstrucción; crece con cada muerte y con la salud en Crítico | Capa del ciclo; primer acto del texto (D-64, D-95) |
 | Grito de la Boca | Grito propio | Avisa que los enemigos cercanos van hacia ella (D-64) |
 | Pasos | Según superficie: metal, agua, escombros | Ruido propio y de los enemigos (M-10) |
-| Maquinaria antes del reciclaje | Motor y engranajes | Aviso de que un cuerpo va a reciclarse (M-20) |
+| Aviso de reciclaje | Crujidos de hueso y carne del cuerpo que se convulsiona (~3 s, a los ~40 s de la muerte) | Aviso de que el laboratorio va a levantar un cuerpo (M-20, D-99) |
 | Jadeo | Respiración de Lukas | Resistencia insuficiente (M-06) |
 | Revólver | Disparo seco y moderno, recarga bala a bala, chasquido de tambor vacío | Combate y ruido a ~20 m (M-04, D-74) |
 | Punzón de descarga | Zumbido eléctrico y descarga | Defensa y remate (M-11, M-20) |
@@ -47,6 +47,7 @@ Las reglas de las señales jugables están en S-11 Audio dinámico ([[03 - Siste
 | Cámaras hostiles | Motor al girar | Leer los puntos ciegos en la fase 2 (D-28) |
 | Terminal del brazo | Encendido CRT y pitido de registro | Confirmar registro de documentos y objetos |
 | Reconstrucción | Maquinaria de la cápsula | Inicio del ciclo (D-39) |
+| Cierre de tránsito | Cierre metálico y alarma corta | Escalera o elevador bloqueados durante una caza (D-96) |
 | Autoguardado | Señal suave de "sincronizando…" | Confirmar el guardado (D-30) |
 
 ## Audio espacial

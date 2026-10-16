@@ -33,9 +33,9 @@ Define cómo se presenta la historia al jugador y cómo funcionan los diálogos.
     - La generación procedural es el laboratorio reacomodándose (D-46): la narrativa se descubre de forma progresiva, intento tras intento, con información incompleta.
     - Los documentos leídos persisten entre muertes, por lo que el conocimiento narrativo se acumula aunque el escenario cambie (M-08, M-16).
 - Audio
-    - **Latido del laboratorio (D-46):** timbre grave distinto del latido de Lukas; solo crece con la degradación acumulada y se acelera en el Despertar (M-10). Es un texto: el latido de fondo es el primer acto y no asimila; quien escucha el texto completo es asimilado (D-57, D-64).
+    - **Latido del laboratorio (D-46):** timbre grave distinto del latido de Lukas; se oye de fondo en la nota de voz de Emilia; desde la primera reconstrucción suena en todas las salas, crece con cada muerte y con la salud en Crítico, y se acelera en el Despertar (M-10, D-95). Es un texto: el latido de fondo es el primer acto y no asimila; quien escucha el texto completo es asimilado (D-57, D-64).
     - **Sonidos vocales:** sustituyen a la actuación de voz en Emilia, The Mother y Lukas (D-52). El sonido vocal de Lukas sufre **distorsión del sonido vocal** con la degradación (M-18).
-    - **Maquinaria:** acompaña la reconstrucción (cinemática corta) y el reciclaje de enemigos (M-20).
+    - **Maquinaria:** acompaña la reconstrucción (cinemática corta). El reciclaje de enemigos suena orgánico, a hueso y carne (M-20, D-99).
 - Narración
     - No hay narrador, ni con voz ni en texto (D-52, D-62).
 

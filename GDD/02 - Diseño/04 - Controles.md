@@ -26,10 +26,10 @@ Define la relación entre las acciones del jugador y las entradas físicas del d
 | Abandonar hackeo | `E` | — | Por definir (soporte posterior) |
 | Punzón de descarga (defensa) | Automático al ser agarrado (sin entrada) | — | Automático |
 | Remate con golpe en el suelo (a ~1.5 m mirando un cuerpo no rematado) | — | `Clic izquierdo` sin apuntar | Por definir (soporte posterior) |
-| Remate con consumible (a ~1.5 m mirando un cuerpo no rematado) | `E` | — | Por definir (soporte posterior) |
+| Remate con punzón de descarga (a ~1.5 m mirando un cuerpo no rematado) | `E` | — | Por definir (soporte posterior) |
 | Menú (pausa) abrir / cerrar | `Esc` | — | Por definir (soporte posterior) |
 | Seleccionar opción de menú (incluye "Reiniciar" en el menú de pausa) | — | `Clic izquierdo` sobre la opción | Por definir (soporte posterior) |
-| Saltar cinemática (cinemática corta de reconstrucción) o créditos ya vistos | `Espacio` | — | Por definir (soporte posterior) |
+| Saltar cinemática (corta de reconstrucción: pulsar; narrativas ya vistas: mantener ~1 s, D-91) o créditos ya vistos | `Espacio` | — | Por definir (soporte posterior) |
 
 **Contextos de entrada:** algunas teclas cambian de función según el contexto, pero ninguna tiene dos funciones dentro del mismo contexto.
 
@@ -41,7 +41,7 @@ Define la relación entre las acciones del jugador y las entradas físicas del d
 - **Sobre un cuerpo (sin apuntar):** acción contextual de remate ([[02 - Mecánicas]], M-20). `Clic izquierdo` ejecuta el golpe en el suelo en lugar del empujón y `E` clava el punzón de descarga en lugar de interactuar (solo en cuerpos que pueden reciclarse). Al apuntar, `Clic izquierdo` vuelve a disparar.
     - **Frontera del contexto (D-27):** se entra en el contexto a ~1.5 m (valor inicial, sujeto a balance) mirando un cuerpo no rematado, también durante el combate con enemigos vivos cerca. Con un cuerpo ya rematado el contexto no se activa y `Clic izquierdo` y `E` recuperan el empujón y la interacción. Si hay otro elemento interactivo al lado del cuerpo (puerta, panel, escalera, elevador u objeto), gana el que está al centro de la vista; así el jugador siempre puede interactuar con la ruta garantizada hacia la sala clave final (D-33, D-36, principio 9 de [[01 - Jugabilidad]]). El caso de los cuerpos que no pueden reciclarse (enemigos reciclados y sala del jefe) se documenta en M-20.
 - **Menús (pausa y principal):** el mouse controla la interfaz y `Clic izquierdo` selecciona una opción. `Esc` abre y cierra el menú de pausa, que incluye "Reiniciar" ([[02 - Mecánicas]], M-16; D-32). Las opciones del menú principal y el diálogo de salida se documentan en [[07 - Reglas y Estados del Juego]].
-- **Cinemática:** las acciones del personaje no están disponibles. `Espacio` salta la cinemática corta de reconstrucción (D-39). La cinemática de transición de piso no se puede saltar porque dura un mínimo de 5 s y oculta la carga (M-15). Si la cinemática completa de reconstrucción de la introducción se puede saltar: **Por definir**. La cinemática del hallazgo del piso 2 no se puede saltar (D-67).
+- **Cinemática:** las acciones del personaje no están disponibles. `Espacio` salta la cinemática corta de reconstrucción (D-39). La cinemática de transición de piso no se puede saltar porque dura un mínimo de 5 s y oculta la carga (M-15). Las cinemáticas narrativas (reconstrucción completa, Asimilación, secuencia de victoria, Relevos, Ambiguo y gancho) se saltan manteniendo `Espacio` ~1 s, solo si ya se vieron una vez (D-91). La cinemática del hallazgo del piso 2 no se puede saltar (D-67).
 - **Créditos:** `Espacio` los salta solo después de haberlos visto una vez (D-39).
 - **Introducción jugable (D-63):** solo moverse, mirar e interactuar (`E`); sin inventario, linterna, armas ni vigilancia. `Esc` abre la pausa sin "Reiniciar". El hackeo de la compuerta usa la pantalla del teléfono de Lukas con las mismas entradas que el hackeo (`W` `A` `S` `D` / `Flechas`).
 
@@ -56,7 +56,7 @@ Define la relación entre las acciones del jugador y las entradas físicas del d
 
 ¿El jugador puede cambiar los controles?
 
-**Por definir.** Se recomienda permitir la reasignación de todas las acciones de teclado y mouse desde el menú de configuración, validando que ninguna tecla quede asignada a dos acciones dentro del mismo contexto. El soporte completo para control se definirá posteriormente.
+Sí. Todas las acciones de teclado y ratón se pueden reasignar desde Opciones > Controles; el juego valida que ninguna tecla quede asignada a dos acciones dentro del mismo contexto. También se ajustan la sensibilidad (mirar y apuntar por separado), el eje vertical invertido, agacharse en modo alternar o mantener y la asistencia de apuntado (D-104). Los carteles del tutorial muestran la tecla asignada (D-89). El soporte completo para mando se definirá posteriormente ([[04 - Guardado y Configuración]]).
 
 ## Entrada y retroalimentación
 

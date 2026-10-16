@@ -10,9 +10,9 @@ Los enemigos comunes son personas asimiladas por el laboratorio: personal de Vit
 
 ## Reglas comunes
 
-- **Estados de IA:** patrulla, sospecha, búsqueda y caza, con un sonido distinto por estado (M-10, D-23). Los enemigos en caza siguen a Lukas por la escalera (D-26).
+- **Estados de IA:** patrulla, sospecha, búsqueda y caza, con un sonido distinto por estado (M-10, D-23). Ningún enemigo cambia de piso: durante una caza, la escalera y el elevador quedan en cierre (D-96).
 - **Recompensa:** ninguna. Los enemigos no sueltan objetos; el saqueo de cadáveres es Post-demo (M-20).
-- **Reciclaje:** The Mother recicla cada cuerpo no rematado una sola vez; el reciclado es un 25% más rápido y muere con 2 disparos, o con 1 si es un Rastrero (M-20, D-66).
+- **Reciclaje:** el laboratorio recicla cada cuerpo no rematado una sola vez, con un aviso orgánico ~40 s después de la muerte (D-99); el reciclado es un 25% más rápido y muere con 2 disparos, o con 1 si es un Rastrero (M-20, D-66).
 - **Puntos débiles:** cada tipo tiene uno. Acertarle interrumpe el ataque o el agarre en curso, pero no reduce los disparos necesarios (D-74).
 - **Densidad:** máximo 2 enemigos activos por sala; ~1/3 de las salas vacías (D-37).
 - **Aparición por piso (D-76):** piso 1, el Alto y el Rastrero; piso 2, se suma la Boca; piso 3, se suma el Mudo. El Mudo de la introducción es un señuelo guionizado (D-53).
@@ -143,7 +143,7 @@ Inmóvil → (Lukas a ~3 m o luz) → Estallido → Agarrar → Pausa → Estall
 
 **Rol de combate:** Jefe final de 3 fases (M-19).
 
-**Comportamiento:** Archivo de muestras criogénicas en una grúa; trata a Lukas como un espécimen no conforme que debe recolectar (D-65).
+**Comportamiento:** Archivo de muestras criogénicas en una grúa; trata a Lukas como un espécimen no conforme que debe recolectar (D-65). 3 cámaras hostiles en la fase 2 (D-98).
 
 **Vida:** 3 transformadores de 2 disparos cada uno (D-80).
 
@@ -151,7 +151,7 @@ Inmóvil → (Lukas a ~3 m o luz) → Estallido → Agarrar → Pausa → Estall
 
 **Defensas:** Solo es vulnerable en la fase 3, con el núcleo abierto.
 
-**Velocidad:** Velocidad y alcance del brazo recolector: **Por definir** (balance).
+**Velocidad:** La grúa recorre sus rieles a ~2.5 m/s; el brazo recolector alcanza ~3 m y avisa ~1 s antes de agarrar (D-98).
 
 **Rango de detección:** Las cámaras de la sala (fase 2, D-28).
 

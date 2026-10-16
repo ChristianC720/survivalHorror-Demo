@@ -86,6 +86,10 @@ Define límites, regeneración, acumulación, intercambio y condiciones especial
 - Las salas fijas del tutorial en el primer intento contienen 1 cura y 1 blíster de munición, que cuentan dentro del presupuesto del piso 1 (D-38, D-70).
 - El mínimo garantizado de cada recurso nunca queda detrás de una puerta con llave opcional; detrás de ellas solo va lo que excede el mínimo, hasta el máximo (D-79).
 
+### Modo Historia (D-103)
+
+- En el Modo Historia, el mínimo garantizado de cada recurso sube en 1 por piso; el máximo no cambia. El Modo Supervivencia usa los presupuestos de esta sección sin cambios.
+
 ### Presupuesto del showcase (D-34)
 
 - El showcase usa 6–8 salas procedurales, 2 secundarias y 1 final por piso (~30 min) frente a las 8–12, 2–3 y 1 de la configuración completa (~45–60 min). Los enemigos y los recursos se escalan en proporción al número de salas (factor aproximado de 0.75, valor inicial, sujeto a balance). Los enemigos por piso del showcase se documentan en [[05 - Progresión]].

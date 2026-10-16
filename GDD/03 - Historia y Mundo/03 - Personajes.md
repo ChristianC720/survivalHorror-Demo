@@ -48,7 +48,7 @@ Cada personaje importante debe tener una función clara dentro de la historia y/
 
 **Función narrativa:** Hilo conductor de la historia. Su búsqueda personal motiva el avance aunque, desde la primera reconstrucción, no recuerda a quién busca; el jugador y Lukas se informan juntos con los documentos (D-45). El ciclo de muerte y reconstrucción funciona como forma de investigación: cada intento deja rastro que el siguiente intento puede retomar.
 
-**Descripción física:** Hombre de ~30 años aparentes, 178 cm, complexión delgada. Cara ovalada, tez morena, ojos café caídos de mirada cansada, nariz recta, labios finos, cejas semipobladas y barba de tres días. Cabello lacio castaño, largo medio, corte cortina. Manos gruesas, acostumbradas al trabajo. Voz grave y rasposa. En la introducción lleva su anillo de bodas en la mano derecha. Tras la primera reconstrucción lleva el anillo que encontró en el suelo; nunca se sabe si es el suyo o el de Emilia (D-54).
+**Descripción física:** Hombre de ~30 años aparentes, 178 cm, complexión delgada. Cara ovalada, tez clara (D-83), ojos café caídos de mirada cansada, nariz recta, labios finos, cejas semipobladas y barba de tres días. Cabello lacio castaño, largo medio, corte cortina. Manos gruesas, acostumbradas al trabajo. Voz grave y rasposa. En la introducción lleva su anillo de bodas en la mano derecha. Tras la primera reconstrucción lleva el anillo que encontró en el suelo; nunca se sabe si es el suyo o el de Emilia (D-54).
 
 Presenta dos estados visuales:
 
@@ -57,7 +57,7 @@ Presenta dos estados visuales:
 
 **Personalidad:** Hombre común, desgastado y obstinado. Entereza cansada antes que heroísmo. No es un combatiente; su fortaleza es el conocimiento técnico, la improvisación y la capacidad de leer su entorno. Desde la primera reconstrucción vive frustrado por no recordar a quién busca (D-45). Tono emocional al estilo Silent Hill / Resident Evil / Alan Wake: una persona corriente fuera de lugar en un entorno frío y hostil.
 
-**Motivaciones:** En la introducción, seguir la última pista que le dejó su esposa, Emilia Reiner-Hellen, desaparecida: una nota de voz de su diario, de envío programado, que llega a su teléfono personal. Emilia le pide que no vaya a buscarla, y él va igual, por obstinación (D-53). En la primera reconstrucción la olvida de golpe, por el trauma de la introducción: sabe que busca algo o a alguien, no logra recordar a quién y solo tiene un anillo que encontró en el suelo y sabe importante (D-45, D-54). El anillo es el ancla del personaje, no del universo (D-44); tras cada reconstrucción, la búsqueda persiste aunque el recuerdo se haya perdido.
+**Motivaciones:** En la introducción, seguir la última pista que le dejó su esposa, Emilia Reiner-Hellen, desaparecida: una nota de voz de su diario, de envío programado, que llega a su teléfono personal. Emilia le pide que no vaya a buscarla, y él va igual, por obstinación (D-53). En la primera reconstrucción la olvida de golpe, por el trauma de la introducción: sabe que busca algo o a alguien, no logra recordar a quién y solo tiene un anillo que encontró en el suelo y sabe importante (D-45, D-54). El anillo es el ancla del personaje, no del universo (D-44); tras cada reconstrucción, la búsqueda persiste aunque el recuerdo se haya perdido. Sin saberlo, también lo atrae el latido: lo oyó de fondo en la nota de voz de Emilia (D-95).
 
 **Objetivos:**
 
@@ -106,7 +106,7 @@ Presenta dos estados visuales:
 
 **Rol:** Antagonista y jefe final de la demo (D-16). IA médica de Vitalis Konzern creada para contener y estudiar a la criatura, es decir, al laboratorio (D-46, D-47).
 
-**Función jugable:** Jefe híbrido de 3 fases; derrotarla es la condición de victoria (M-19 en [[02 - Mecánicas]]). En su sala, su brazo recolector trata a Lukas como un espécimen no conforme y puede agarrarlo y matarlo (D-65). Durante el ciclo es la responsable de la reconstrucción de Lukas (M-16), de las cámaras de seguridad que el jugador usa desde el terminal del brazo (D-04, D-24), del parche de las fallas de la máquina (M-17, D-09) y del reciclaje de enemigos, una sola vez por enemigo (M-20).
+**Función jugable:** Jefe híbrido de 3 fases; derrotarla es la condición de victoria (M-19 en [[02 - Mecánicas]]). En su sala, su brazo recolector trata a Lukas como un espécimen no conforme y puede agarrarlo y matarlo (D-65). Durante el ciclo es la responsable de la reconstrucción de Lukas (M-16), de las cámaras de seguridad que el jugador usa desde el terminal del brazo (D-04, D-24) y del parche de las fallas de la máquina (M-17, D-09). El reciclaje de enemigos no es obra suya, sino del laboratorio (D-99).
 
 **Función narrativa:** Explica por qué Lukas vuelve tras cada muerte y por qué existen los enemigos comunes: **The Mother reconstruye; el laboratorio asimila** (D-47). Sus informes clínicos y documentos dan el contexto corporativo del incidente. Al ser derrotada revela que existe algo más, pero no puede explicar qué es la criatura (D-16, D-47). Ver [[01 - Premisa y Trama]] y [[02 - Mundo]].
 
@@ -137,7 +137,6 @@ Presenta dos estados visuales:
 - Reconstrucción de sujetos que conservan identidad (M-16).
 - Vigilancia mediante cámaras de seguridad y medidor oculto de atención (D-04, D-24).
 - Parche de las fallas de la máquina tras 1-2 usos o al morir el jugador (D-09, M-17).
-- Reciclaje de cada enemigo eliminado una sola vez, porque aún conserva un último rastro de identidad (M-20, D-47).
 - **Recolección de especímenes (D-65):** en su sala, su brazo recolector agarra a Lukas para "archivarlo" (agarre de M-11). Cuando una cámara lo enfoca, libera asimilados desde las cápsulas de su archivo. No es hostilidad: es su protocolo de preservación.
 
 **Debilidades:**
@@ -241,7 +240,7 @@ Los reciclados mueren con 2 disparos, o con 1 si son un Rastrero (M-20). Detecci
 - El laboratorio: los asimiló (D-48).
 - The Mother: los registra en el bestiario del terminal del brazo como informes clínicos con su código de sujeto; cada entrada se desbloquea en el primer encuentro y persiste entre muertes (M-16, D-48).
 
-**Arco del personaje:** Al ser eliminados conservan un último rastro de identidad; The Mother los reconstruye una vez más y regresan como enemigos reciclados (D-47, M-20).
+**Arco del personaje:** Al ser eliminados conservan un último rastro de identidad; el laboratorio lo consume y regresan como enemigos reciclados (D-99, M-20).
 
 **Habilidades:** Según su tipo: alcance largo (el Alto), alerta a otros enemigos (la Boca), velocidad y flanqueo (el Rastrero), emboscada (el Mudo) (D-60). Valores iniciales en la tabla de tipos (D-66).
 
@@ -253,7 +252,7 @@ Los reciclados mueren con 2 disparos, o con 1 si son un Rastrero (M-20). Detecci
 
 ### Enemigos reciclados
 
-**Rol:** Enemigos eliminados que conservaban un último rastro de identidad y que The Mother reconstruye una vez más (D-47).
+**Rol:** Enemigos eliminados que conservaban un último rastro de identidad y que el laboratorio termina de asimilar (D-99).
 
 **Función jugable:** Regresan más asimilados: más rápidos y más frágiles; solo ocurre una vez por enemigo (M-20). El jugador puede evitar el reciclaje con el remate (M-20, D-21). Sin diálogo.
 
@@ -271,10 +270,10 @@ Los reciclados mueren con 2 disparos, o con 1 si son un Rastrero (M-20). Detecci
 
 **Relaciones:**
 
-- The Mother: los reconstruye una sola vez con su último rastro de identidad (D-47, M-20).
+- The Mother: no interviene; el reciclaje es obra del laboratorio (D-99).
 - El laboratorio: regresan más asimilados (M-20).
 
-**Arco del personaje:** Enemigo común eliminado, reconstruido una vez más asimilado y, después, sin identidad; no vuelve a reciclarse (M-20).
+**Arco del personaje:** Enemigo común eliminado, levantado una vez más asimilado por el laboratorio y, después, sin identidad; no vuelve a reciclarse (M-20).
 
 **Habilidades:** Más rápidos que su versión común (M-20).
 

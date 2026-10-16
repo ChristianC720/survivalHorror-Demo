@@ -74,7 +74,7 @@ El jugador aprende las mecánicas en el siguiente orden. La etapa indica dónde 
 | 9 | Llaves y salas clave | M-07, M-08, M-15 (D-36) | Piso 1 (salas clave secundarias) |
 | 10 | Muerte y reconstrucción | M-16, M-18 | Primera muerte o Reiniciar (cualquier etapa) |
 | 11 | Reciclaje y remate | M-20 | Piso 1 |
-| 12 | Transición de piso y persecución entre pisos | M-15 (D-26, D-39) | Sala clave final del piso 1 |
+| 12 | Transición de piso y cierre durante la caza | M-15 (D-39, D-96) | Sala clave final del piso 1 |
 | 13 | Fallas de la máquina | M-17 | Intentos posteriores, al descubrir una falla |
 | 14 | Jefe | M-19 | Sala de The Mother (piso 3) |
 | 15 | Decisión final | M-08, M-19 (D-51) | Tras derrotar a The Mother con los 6 documentos de Emilia acumulados |
@@ -118,8 +118,8 @@ Las cantidades de enemigos de la tabla corresponden a la configuración completa
 | Etapa | Amenazas | Recursos | Elemento nuevo |
 |---|---|---|---|
 | Tutorial (primer intento) | 1 Rastrero en la sala 4 (D-70) | 1 cura y 1 blíster de munición, dentro del presupuesto del piso 1 (D-70) | Controles básicos y revólver; las muertes no suman al contador (D-35) |
-| Piso 1 | 6–9 enemigos: el Alto y el Rastrero (D-76) | Presupuesto del piso 1 (D-17) | Reciclaje de enemigos con aviso de maquinaria (M-20); llaves y salas clave secundarias (D-36) |
-| Sala clave final del piso 1 | Hackeo largo bajo amenaza (M-13, M-15) | — | Escalera o elevador, autoguardado (D-30) y persecución entre pisos (D-26) |
+| Piso 1 | 6–9 enemigos: el Alto y el Rastrero (D-76) | Presupuesto del piso 1 (D-17) | Reciclaje de enemigos con aviso orgánico (M-20, D-99); llaves y salas clave secundarias (D-36) |
+| Sala clave final del piso 1 | Hackeo largo bajo amenaza (M-13, M-15) | — | Escalera o elevador, autoguardado (D-30) y cierre durante la caza (D-96) |
 | Piso 2 | 9–12 enemigos: se suma la Boca (D-76) | Menos presupuesto que el piso 1 (D-17) | Mayor presión sobre el inventario y el remate |
 | Sala clave final del piso 2 | Hackeo largo bajo amenaza (M-13, M-15) | — | Reinicio del contador de muertes (D-35) |
 | Piso 3 | 12–15 enemigos: se suma el Mudo (D-76) | Menos presupuesto que el piso 2 (D-17) | Mayor densidad de enemigos antes del jefe |
@@ -146,7 +146,7 @@ Las cantidades de enemigos de la tabla corresponden a la configuración completa
 | Llaves y salas clave | Interacción e inventario | La llave obligatoria ocupa una casilla hasta abrir la sala clave final (M-07, M-08, D-36) |
 | Muerte y reconstrucción | Uso del terminal del brazo | Lo que persiste es el conocimiento registrado (M-16) |
 | Reciclaje y remate | Combate, resistencia e inventario | El remate cuesta resistencia o una casilla del inventario (M-20) |
-| Transición de piso | Hackeo, llaves y señales de persecución | La sala clave final exige la llave y puede exigir un hackeo; por la escalera siguen los enemigos en caza (M-15, D-26) |
+| Transición de piso | Hackeo, llaves y señales de persecución | La sala clave final exige la llave y puede exigir un hackeo; durante una caza, la escalera y el elevador quedan en cierre (M-15, D-96) |
 | Fallas de la máquina | Hackeo y muerte y reconstrucción | Las fallas acortan hackeos y se conservan en el terminal hasta su parche (M-17) |
 | Jefe | Hackeo, vigilancia, señales, huida y combate | Las 3 fases reutilizan esas mecánicas sin introducir sistemas nuevos; la fase 2 invierte la vigilancia con cámaras hostiles (M-19, D-28) |
 

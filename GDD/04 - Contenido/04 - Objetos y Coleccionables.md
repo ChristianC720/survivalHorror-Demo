@@ -126,7 +126,7 @@ En la demo no se vende ni se intercambia nada. El inventario tiene 6 casillas y 
 
 **Cómo se obtiene:** Presupuesto del piso (D-17).
 
-**Cómo se utiliza:** Se activa solo al ser agarrado y aturde al enemigo 2 s. Con `E` sobre un cuerpo, quema su último rastro de identidad y The Mother ya no puede reciclarlo.
+**Cómo se utiliza:** Se activa solo al ser agarrado y aturde al enemigo 2 s. Con `E` sobre un cuerpo, quema su último rastro de identidad y el laboratorio ya no puede reciclarlo (~1.5 s).
 
 **Cantidad máxima:** 1 por casilla.
 

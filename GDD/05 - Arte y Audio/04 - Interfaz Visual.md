@@ -24,7 +24,7 @@ No hay HUD permanente. Dónde se lee cada elemento:
   - Subtítulos y líneas de texto (D-52, D-62).
   - Aviso "sincronizando…" del autoguardado (D-30).
 
-**Ayudas del tutorial:** la primera vez que se usa cada mecánica (D-70), una línea de instrucción de The Mother aparece en el canal de texto de sus líneas de protocolo, con la tecla (por ejemplo `Subject R-H-07: illumination protocol [F]`). Es el mismo canal de texto de D-62, no un indicador nuevo.
+**Ayudas del tutorial (D-89):** no hay avisos en pantalla. Las 4 salas del tutorial (D-70) tienen carteles de seguridad de Vitalis en las paredes, en inglés y con humor corporativo, que muestran la tecla de cada acción (por ejemplo `IN CASE OF DARKNESS: PRESS [F]`). La tecla del cartel sigue la asignación actual de controles. Los carteles solo existen en las salas fijas del primer intento.
 
 **Introducción (D-63):** sin terminal; solo el aviso `E`, los subtítulos y la pantalla del teléfono para el hackeo.
 
@@ -43,7 +43,7 @@ No hay HUD permanente. Dónde se lee cada elemento:
 | Daño | Vibración de cámara, sonido de impacto, cambio de postura y electrocardiograma (M-05); sin manchas que tapen la pantalla |
 | Éxito | Pitido corto y texto `REGISTERED` (documento, objeto confiscado, bestiario) o `ACCESS GRANTED` (hackeo) |
 | Error | Pitido de error y texto rojo `ACCESS DENIED` (hackeo fallido, M-13) |
-| Bloqueo | Puerta sin llave o sin energía: panel con `LOCKED` / `NO POWER` y línea de protocolo (D-72, D-78); vigilancia cortada en caza (D-23) |
+| Bloqueo | Puerta sin llave o sin energía: panel con `LOCKED` / `NO POWER` y línea de protocolo (D-72, D-78); escalera o elevador durante una caza: `LOCKDOWN` (D-96); vigilancia cortada en caza (D-23) |
 | Crítico | Electrocardiograma errático, etiqueta roja `CRITICAL` y postura arrastrada |
 
 Todos los estados combinan color con texto, forma o sonido (regla visual 1 de [[01 - Dirección de Arte]]).
@@ -72,11 +72,15 @@ Todos los estados combinan color con texto, forma o sonido (regla visual 1 de [[
 
 ## Pantallas
 
-- **Menú principal:** Continuar, Nueva partida, Opciones, Créditos y Salir (D-39), con el estilo de una consola de Vitalis. Fondo en tiempo real de la fila de cápsulas.
+- **Calibración de brillo (D-106):** solo en el primer inicio; símbolos sobre negro y barra de brillo.
+- **Pantalla de título (D-90):** fondo negro con el logotipo y el latido del laboratorio. Al pulsar cualquier tecla o botón se pasa al menú principal.
+- **Menú principal (D-90):** Continuar, Nueva partida, Cargar partida, Opciones, Créditos y Salir (D-39, D-105), mostrado en un terminal verde de la instalación dentro de la sala de la fila de cápsulas, junto a la cápsula de Lukas.
 - **Pausa:** menú de pausa sobre la imagen oscurecida. En la introducción, sin "Reiniciar" (D-63).
-- **Configuración:** opciones **por definir** ([[02 - UI y Menús]]); incluye la escala de texto.
+- **Configuración:** Audio, Video, Controles, Accesibilidad y Juego ([[04 - Guardado y Configuración]]).
 - **Inventario:** sección del terminal del brazo. Las demás secciones son Estado (salud y linterna) y Registros (documentos, expediente de Emilia, bestiario, objetos confiscados, fallas y anillo).
 - **Mapa:** no existe en la demo.
+- **Carga (D-96):** cuando hay que esperar fuera de una cinemática, pantalla negra con texto de arranque del terminal en teal (por ejemplo `SYNCHRONIZING SUBJECT R-H-09…`) y el latido; sin barra de progreso.
+- **Confirmaciones (D-96):** Reiniciar, Salir durante el recorrido (con el costo), Nueva partida y Salir desde el menú principal.
 - **Victoria:** no hay pantalla; cinemática en el motor y créditos (D-51).
 - **Derrota:**
   - Muerte: cinemática corta de reconstrucción, sin pantalla de "Game Over" (D-39).

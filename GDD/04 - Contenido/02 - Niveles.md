@@ -91,7 +91,7 @@ Cápsula → [Tutorial: 4 salas, solo el primer intento] → Salas procedurales 
 
 #### Tutorial (primer intento, D-70)
 
-Las 4 salas son fijas solo en el primer intento y forman parte de las salas procedurales del piso 1; desde el segundo intento son procedurales (D-38). Sus recursos cuentan dentro del presupuesto del piso 1.
+Las 4 salas son fijas solo en el primer intento y forman parte de las salas procedurales del piso 1; desde el segundo intento son procedurales (D-38). Sus recursos cuentan dentro del presupuesto del piso 1. Los controles se enseñan con carteles de seguridad de Vitalis en las paredes de estas salas, que incluyen la tecla de cada acción (D-89; ver [[04 - Interfaz Visual]]).
 
 | Sala | Arquetipo | Enseña | Contenido |
 |---|---|---|---|
