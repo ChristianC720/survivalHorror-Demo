@@ -1,8 +1,0 @@
-{
-  "verdict": "APPROVED",
-  "findings": [
-    "No bloqueante (confirmed) — Alcance de 'cualquier enemigo en alerta': M-02 y D-04 cortan la vigilancia con cualquier enemigo en alerta, pero M-03 solo la bloquea si el enemigo está en la sala o área cercana con ruta de persecución. Aclarar en M-02 que el corte usa el mismo alcance que M-03, o marcar el alcance como Por definir.",
-    "No bloqueante (confirmed) — Dependencias Demo → Deseable: M-19 (Demo) usa M-17 (Deseable) para acortar la fase 1 y M-15 (Demo) reinicia el contador de M-18 (Deseable). Añadir en M-19 y M-15 una línea que indique que la mecánica funciona sin la Deseable, como ya hacen M-12 y M-14."
-  ],
-  "reviewDoc": "c:\\Users\\TCN400340\\Documents\\Codigos\\GDD/.agents/tasks/gdd-review.md"
-}

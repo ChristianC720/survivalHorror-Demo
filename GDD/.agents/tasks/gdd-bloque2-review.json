@@ -1,8 +1,0 @@
-{
-  "verdict": "APPROVED",
-  "findings": [
-    "No bloqueante (likely) — Momento del reinicio del contador: en '07 - Reglas y Estados del Juego.md', la fila de transición 'Usar una escalera o un elevador en una sala clave' dice 'Reinicia el contador de muertes', mientras que la regla global 5, M-15, M-18 y el caso 'Morir en la sala del jefe' lo reinician al llegar a la sala clave. Cambiar la condición de la fila por 'El contador ya se reinició al llegar a la sala clave (regla 5)'.",
-    "No bloqueante (confirmed) — Alcance del corte de vigilancia frente a D-04: M-02 corta la vista solo con enemigos en alerta 'dentro de la sala o en el área cercana con ruta de persecución' (mismo alcance que M-03), pero la ficha de D-04 en el Registro dice 'con cualquier enemigo en alerta'. Anotar la precisión en el Registro (p. ej. 'Precisada en v0.3.0: mismo alcance que M-03') o confirmarla con el equipo."
-  ],
-  "reviewDoc": "c:\\Users\\TCN400340\\Documents\\Codigos\\GDD\\.agents\\tasks\\gdd-bloque2-review.md"
-}
