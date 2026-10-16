@@ -16,7 +16,7 @@ Cada sistema agrupa mecánicas de [[02 - Mecánicas]]. Las reglas de detalle viv
 | S-02 IA y percepción | Patrulla, detección por vista, luz y ruido, estados de alerta, respuesta a la atención de The Mother y persecución, también entre pisos (M-09, M-12, M-14, M-15; D-23, D-24, D-26). Pilares V, A | S-01, S-06, S-11 | Definido |
 | S-03 Salud y combate | Daño, estados de salud, disparo, empujón y defensa contra agarres (M-04, M-05, M-06, M-11). Pilares V, DC | S-02, S-04, S-05 | Definido (valores iniciales D-37, sujetos a balance) |
 | S-04 Resistencia | Barra única para correr, empujar y rematar con golpe en el suelo (M-06, M-20). Pilares V, DC | — | Definido (valores iniciales D-37, sujetos a balance) |
-| S-05 Inventario | 6 casillas en tiempo real para curas, munición, objeto defensivo, consumible de remate y objetos clave, incluidas las llaves (M-07, M-08; D-36, D-37). Pilar DC | S-06, S-08 | Definido |
+| S-05 Inventario | 6 casillas en tiempo real para curas, munición, punzón de descarga y llaves (M-07, M-08; D-36, D-37, D-71). Pilar DC | S-06, S-08 | Definido |
 | S-06 Generación procedural por pisos | Construye los 3 pisos del intento con sus salas clave, sus llaves, su ruta garantizada, su cobertura de cámaras, su presupuesto de enemigos y recursos y los documentos de Emilia en salas clave secundarias, según la configuración (M-08, M-15; D-11, D-17, D-25, D-33, D-34, D-36, D-38, D-52). Pilar A | S-07, S-08 | Definido (distancia mínima a la sala clave final por definir) |
 | S-07 Persistencia | Terminal del brazo, código de sujeto R-H, conteo de los 6 documentos de Emilia, fallas de la máquina, autoguardado en la sala clave final y costo de salir del juego (M-08, M-16, M-17; D-30, D-31, D-32, D-43, D-45, D-50, D-52). Pilares A, DC | S-02, S-06, S-08 | Definido |
 | S-08 Ciclo de muerte y reconstrucción | Procesa la muerte y el reinicio, reconstruye al personaje, lleva el contador y la degradación y reproduce las cinemáticas de presentación y las cinemáticas finales (Asimilación, Relevo básico, Relevo completo y Ambiguo) (M-15, M-16, M-18, M-19; D-18, D-29, D-32, D-35, D-39, D-42, D-51). Pilar A | S-03, S-07 | Definido (degradación: Deseable) |
@@ -85,7 +85,7 @@ Cada sistema agrupa mecánicas de [[02 - Mecánicas]]. Las reglas de detalle viv
 **Procesamiento / reglas:**
 
 - La visión no atraviesa objetos sólidos (M-09).
-- Ir agachado genera 0% de ruido, caminar ruido bajo; correr, disparar y el golpe en el suelo alertan a los enemigos cercanos (M-09, M-20). El consumible de remate no alerta.
+- Ir agachado genera 0% de ruido, caminar ruido bajo; correr, disparar y el golpe en el suelo alertan a los enemigos cercanos (M-09, M-20). El remate con punzón de descarga no alerta.
 - Iluminar a un enemigo duplica la velocidad a la que sube su alerta (M-12).
 - Estados de alerta: **sospecha → búsqueda → caza** (M-10). Un enemigo cuenta como "en alerta" para el corte y el bloqueo de la vigilancia cuando está en **caza** (D-23). S-02 informa a S-01 y a S-11 del estado más alto dentro del alcance de M-03.
 - **Atención de The Mother (D-24):** al recibir "atención llena", los enemigos cercanos que están en patrulla pasan a sospecha y luego a búsqueda hacia la posición del jugador. No baja el estado de los que ya están en búsqueda o caza (M-02).
@@ -97,7 +97,7 @@ Cada sistema agrupa mecánicas de [[02 - Mecánicas]]. Las reglas de detalle viv
 
 **Salidas:** Estado de alerta de cada enemigo, estado de alerta más alto dentro del alcance de M-03, eventos "entra en caza" y "sale de la caza", enemigos que siguen al jugador por la escalera, enemigos en espera junto al elevador, ataques y agarres.
 
-**Estados posibles:** Patrulla, Sospecha, Búsqueda, Caza, Espera junto al elevador, Aturdido (empujón u objeto defensivo), Muerto.
+**Estados posibles:** Patrulla, Sospecha, Búsqueda, Caza, Espera junto al elevador, Aturdido (empujón, punzón de descarga o punto débil), Muerto.
 
 **Dependencias:** S-01 Cámara y vigilancia (atención de The Mother), S-06 Generación procedural (salas, rutas y coberturas), S-11 Audio dinámico (cada cambio de estado debe tener su señal).
 
@@ -132,15 +132,15 @@ Cada sistema agrupa mecánicas de [[02 - Mecánicas]]. Las reglas de detalle viv
 
 - Salud fija sin regeneración con 3 estados: **Bien**, **Herido** y **Crítico**. Herido y Crítico reducen la velocidad un 15% y un 30% (valores iniciales, sujetos a balance; D-37) (M-05).
 - Los enemigos matan en 2-4 golpes según su tipo (valores iniciales, sujetos a balance; D-66).
-- 1 arma de fuego con munición escasa: cargador de 6 balas, 12 balas por casilla, 2–4 disparos para eliminar a un enemigo según su tipo y 2 para un reciclado, o 1 para un Rastrero reciclado (D-66), (valores iniciales, sujetos a balance; D-37). Recargar impide disparar y un golpe la cancela sin perder munición (M-04).
+- 1 arma, el revólver de Kessler (D-74), con munición escasa: tambor de 6 balas, recarga bala a bala, blísteres de 3 cartuchos, 12 balas por casilla, 2–4 disparos para eliminar a un enemigo según su tipo y 2 para un reciclado, o 1 para un Rastrero reciclado (D-66), (valores iniciales, sujetos a balance; D-37). Recargar impide disparar y un golpe la cancela sin perder munición; acertar a un punto débil interrumpe el ataque (M-04, D-74).
 - El empujón aparta y aturde brevemente, consume resistencia de S-04 y no protege contra el daño (M-06, D-05).
-- Un agarre consume automáticamente el objeto defensivo y aturde al enemigo 2 s (valor inicial, sujeto a balance); sin objeto, el personaje baja un estado de salud o muere si estaba en Crítico (M-11). Agarran el Alto, el Mudo y el brazo recolector de The Mother (D-65, D-66).
+- Un agarre consume automáticamente el punzón de descarga y aturde al enemigo 2 s (valor inicial, sujeto a balance); sin objeto, el personaje baja un estado de salud o muere si estaba en Crítico (M-11). Agarran el Alto, el Mudo y el brazo recolector de The Mother (D-65, D-66).
 
 **Salidas:** Estado de salud, munición restante, enemigos heridos, aturdidos o eliminados, evento de muerte del personaje para S-08.
 
 **Estados posibles:** Bien, Herido, Crítico, Muerto.
 
-**Dependencias:** S-02 IA y percepción, S-04 Resistencia, S-05 Inventario (curas, munición y objeto defensivo).
+**Dependencias:** S-02 IA y percepción, S-04 Resistencia, S-05 Inventario (curas, munición y punzón de descarga).
 
 **Interacciones:** S-01 (el daño corta la vigilancia), S-08 (la muerte inicia el ciclo), S-09 (los enemigos eliminados pueden reciclarse), S-10 (fase 3 con disparos a puntos débiles), S-11 (chasquido del cargador vacío, jadeos).
 
@@ -157,7 +157,7 @@ Cada sistema agrupa mecánicas de [[02 - Mecánicas]]. Las reglas de detalle viv
 
 - La salud no se regenera sola en ningún estado.
 - Usar una cura en Bien no está permitido; recibir daño durante la cura la cancela sin consumirla.
-- El objeto defensivo se consume solo al ser agarrado y solo uno por agarre.
+- El punzón de descarga se consume al ser agarrado (uno por agarre) o al rematar un cuerpo (D-71).
 - Con los valores iniciales, cada tipo cae con sus disparos de D-66 y un reciclado con 2 (1 si es un Rastrero).
 
 ### S-04: Resistencia
@@ -204,8 +204,8 @@ Cada sistema agrupa mecánicas de [[02 - Mecánicas]]. Las reglas de detalle viv
 - **6 casillas fijas**; los objetos no se apilan infinitamente (M-07).
 - Abrir el inventario no pausa el juego.
 - Equipar, usar o descartar consume ~1.5 s (valor inicial, sujeto a balance).
-- Ocupan casilla: curas, munición, objeto defensivo, consumible de remate y objetos clave, incluidas las llaves.
-- **Máximo por casilla (D-37):** curas 1, objeto defensivo 1, consumible de remate 2, llave 1, munición 12 balas (valores iniciales, sujetos a balance).
+- Ocupan casilla: curas, munición, punzón de descarga y llaves. El revólver, la linterna y el anillo no ocupan casilla (D-71).
+- **Máximo por casilla (D-37):** curas 1, punzón de descarga 1, llave 1, munición 12 balas (valores iniciales, sujetos a balance).
 - **Llaves (D-36):** cada llave ocupa 1 casilla y se consume al abrir su puerta (M-07, M-08).
 - Con el inventario lleno, un objeto clave puede reemplazar a otro; si no se cambia, permanece en el suelo.
 - El autoguardado de la sala clave final incluye el inventario que se trae (D-30, S-07).
@@ -217,13 +217,13 @@ Cada sistema agrupa mecánicas de [[02 - Mecánicas]]. Las reglas de detalle viv
 
 **Dependencias:** S-06 Generación procedural (recursos y llaves colocados), S-08 Ciclo de muerte (vacía el inventario).
 
-**Interacciones:** S-03 (curas, munición, objeto defensivo), S-09 (consumible de remate), S-07 (el terminal del brazo se consulta junto al inventario con `Tab`; el inventario forma parte del autoguardado).
+**Interacciones:** S-03 (curas, munición, punzón de descarga), S-09 (punzón de descarga como remate), S-07 (el terminal del brazo se consulta junto al inventario con `Tab`; el inventario forma parte del autoguardado).
 
 **Datos que necesita:** Tipos de objeto, cantidad máxima por casilla, duración de las animaciones.
 
 **Datos que genera:** Contenido de las 6 casillas.
 
-**Riesgos:** Si existen zonas totalmente seguras, el tiempo real pierde su efecto; si el consumible de remate abunda, satura el inventario (mitigado por el presupuesto de S-06); la llave obligatoria resta una casilla hasta usarse (intencional, Pilar DC).
+**Riesgos:** Si existen zonas totalmente seguras, el tiempo real pierde su efecto; si el punzón de descarga abunda, el agarre y el reciclaje pierden peso (mitigado por el presupuesto de S-06); la llave obligatoria resta una casilla hasta usarse (intencional, Pilar DC).
 
 **Criterios de aceptación (ambas configuraciones):**
 
@@ -241,22 +241,22 @@ Cada sistema agrupa mecánicas de [[02 - Mecánicas]]. Las reglas de detalle viv
 
 **Procesamiento / reglas:**
 
-- **Estructura (D-33):** 3 pisos. Cada piso tiene salas procedurales, salas clave secundarias (documentos, llaves u otros objetos clave; sin guardado) y 1 sala clave final con escalera o elevador. En el piso 3, la sala de The Mother ocupa el lugar de la sala clave final y no guarda (M-15, M-19).
+- **Estructura (D-33):** 3 pisos. Cada piso tiene salas procedurales, salas clave secundarias (documentos, llaves y, a veces, el interruptor de energía; sin guardado; D-72) y 1 sala clave final con escalera o elevador. En el piso 3, la sala de The Mother ocupa el lugar de la sala clave final y no guarda (M-15, M-19).
 - **Parámetros por configuración (D-33, D-34, D-37):** valores iniciales, sujetos a balance.
 
-    | Parámetro | Completa | Showcase |
-    |---|---|---|
-    | Salas procedurales por piso | 8–12 | 6–8 |
-    | Salas clave secundarias por piso | 2–3 | 2 |
-    | Sala clave final por piso | 1 (en el piso 3, la sala de The Mother) | 1 (en el piso 3, la sala de The Mother) |
-    | Enemigos por piso | Piso 1: 6–9; piso 2: 9–12; piso 3: 12–15 + The Mother | Escalados en proporción al número de salas (D-34) |
-    | Recursos por piso | Presupuesto de [[06 - Economía y Recursos]] | Escalados en proporción al número de salas (ver [[06 - Economía y Recursos]]) |
-    | Duración aproximada | ~45–60 min | ~30 min |
+| Parámetro | Completa | Showcase |
+|---|---|---|
+| Salas procedurales por piso | 8–12 | 6–8 |
+| Salas clave secundarias por piso | 2–3 | 2 |
+| Sala clave final por piso | 1 (en el piso 3, la sala de The Mother) | 1 (en el piso 3, la sala de The Mother) |
+| Enemigos por piso | Piso 1: 6–9; piso 2: 9–12; piso 3: 12–15 + The Mother | Escalados en proporción al número de salas (D-34) |
+| Recursos por piso | Presupuesto de [[06 - Economía y Recursos]] | Escalados en proporción al número de salas (ver [[06 - Economía y Recursos]]) |
+| Duración aproximada | ~45–60 min | ~30 min |
 
 - **Densidad de enemigos (D-37):** máximo 2 enemigos activos por sala y ~1/3 de las salas vacías a propósito. Como el showcase escala en proporción, conserva la misma densidad por sala que la configuración completa en cada piso. La curva de dificultad se documenta en [[05 - Progresión]].
 - Las escaleras y los elevadores existen solo dentro de las salas clave finales. La posición de todas las salas clave cambia en cada intento (M-15).
 - **Llaves (D-36):** cada piso tiene 1 llave obligatoria que abre la puerta de la sala clave final y puede tener llaves opcionales para atajos o salas con recursos. La ruta desde la entrada del piso hasta la llave obligatoria no atraviesa la puerta de la sala final; como las puertas con llave opcional solo dan a atajos o salas con recursos, la llave obligatoria nunca queda detrás de ellas. En el piso 3, la llave obligatoria abre la puerta de la sala de The Mother, que ocupa el lugar de la sala clave final (M-15, D-36; ver [[06 - Economía y Recursos]]).
-- **Ruta garantizada:** cada piso tiene al menos una ruta válida entrada → llave obligatoria → sala clave final. Si el elevador puede quedar sin energía, el generador garantiza una ruta a la fuente de energía en el mismo piso.
+- **Ruta garantizada:** cada piso tiene al menos una ruta válida entrada → llave obligatoria → sala clave final. Si la sala clave final empieza sin energía (~1 de cada 3 en los pisos 1 y 2), el generador garantiza una ruta al interruptor de una sala clave secundaria del mismo piso (D-72). Las salas procedurales combinan 6 arquetipos con el tema del piso (D-69, ver [[02 - Niveles]]).
 - **Cobertura de cámaras (D-25):** todas las salas clave (secundarias, finales y la de The Mother) tienen cámara, más ~1 de cada 3 salas procedurales (valor inicial, sujeto a balance).
 - **Documentos (D-52, M-08):**
     - **Documentos de Emilia:** 6 en total, 2 por piso, siempre en salas clave secundarias y nunca en salas procedurales. Se aplica igual en la configuración completa (2–3 secundarias por piso) y en la showcase (2 secundarias por piso, D-34); no se escalan con el factor de D-34. Son los únicos que cuentan para la decisión final (M-19, S-07).
@@ -337,12 +337,12 @@ Cada sistema agrupa mecánicas de [[02 - Mecánicas]]. Las reglas de detalle viv
     - Al cargarlo, los enemigos no atacan durante una gracia de 2–3 s (valor inicial, sujeto a balance; D-37).
 - **Salir del juego (D-31):** el diálogo de confirmación avisa del costo antes de salir. Las reglas completas y los casos especiales están en [[07 - Reglas y Estados del Juego]].
 
-    | Situación al salir | Costo | Al volver |
-    |---|---|---|
-    | Durante alerta o caza | Muerte completa: suma al contador y a la degradación | Inicio del ciclo en el piso 1 |
-    | Con calma, fuera de una sala clave final ya guardada | Suma 1 al contador y a la degradación | Desde la sala clave final autoguardada o, si no existe, inicio del ciclo |
-    | En una sala clave final ya guardada y sin alerta | Ninguno | Desde la sala clave final autoguardada |
-    | Cierre inesperado o fallo del juego | Ninguno | Desde el último autoguardado o, si no existe, inicio del ciclo |
+| Situación al salir | Costo | Al volver |
+|---|---|---|
+| Durante alerta o caza | Muerte completa: suma al contador y a la degradación | Inicio del ciclo en el piso 1 |
+| Con calma, fuera de una sala clave final ya guardada | Suma 1 al contador y a la degradación | Desde la sala clave final autoguardada o, si no existe, inicio del ciclo |
+| En una sala clave final ya guardada y sin alerta | Ninguno | Desde la sala clave final autoguardada |
+| Cierre inesperado o fallo del juego | Ninguno | Desde el último autoguardado o, si no existe, inicio del ciclo |
 
     En el primer intento, salir no suma al contador (misma excepción de D-35). Si se sale con calma o hay un fallo antes de existir un autoguardado, se continúa desde el inicio del ciclo, porque no hay otro punto guardado (regla global 4 de [[07 - Reglas y Estados del Juego]]). Con D-23, "en alerta" equivale a caza para la vista de vigilancia; qué estados de M-10, además de la caza, cuentan como "alerta" para el costo de salir (sospecha o búsqueda) está **Por definir**.
 - S-07 distingue una salida confirmada de un cierre inesperado registrando la salida confirmada en el archivo de guardado antes de cerrar.
@@ -393,12 +393,12 @@ Cada sistema agrupa mecánicas de [[02 - Mecánicas]]. Las reglas de detalle viv
 - **Muerte y Reiniciar (D-32):** ambos siguen el mismo proceso: S-07 guarda primero cualquier registro pendiente, se pierde todo el inventario (D-18), se descarta el autoguardado del intento, S-06 regenera los pisos y el personaje reaparece al inicio del ciclo en el piso 1 (M-16). Morir en la sala de The Mother también regresa al inicio del ciclo.
 - **Cinemáticas (D-39):**
 
-    | Cinemática | Cuándo | Contenido | Saltable |
-    |---|---|---|---|
-    | Completa de reconstrucción | Una sola vez, al terminar la introducción | Todo el proceso de reconstrucción en imágenes fugaces con cortes a negro; es el momento del olvido de Emilia (D-45, D-53). Lukas muere al final de la introducción atacado por la espalda en un piso que no existe (D-53); resto del detalle en [[01 - Premisa y Trama]] | **Por definir** (ver [[04 - Controles]]) |
-    | Corta de reconstrucción | En cada muerte o reinicio | El personaje cae de su cápsula, en la fila de cápsulas del piso 1 (D-59), con sonido de maquinaria; refleja la degradación acumulada y la pieza ajena visible de la reconstrucción (M-18, D-43) | Sí, con `Espacio` |
-    | Hallazgo del piso 2 | Una sola vez, la primera vez que se llega a la sala clave final del piso 2 sin enemigos en caza; si los hay, espera a que la caza termine (D-67) | La foto familiar imposible, con la cara de Emilia borrosa; provoca obstinación y acompaña el reinicio del contador (D-56) | No (D-67) |
-    | Transición de piso | Al usar la escalera o el elevador | Ascensor o escalera; muestra el aviso de autoguardado | No |
+| Cinemática | Cuándo | Contenido | Saltable |
+|---|---|---|---|
+| Completa de reconstrucción | Una sola vez, al terminar la introducción | Todo el proceso de reconstrucción en imágenes fugaces con cortes a negro; es el momento del olvido de Emilia (D-45, D-53). Lukas muere al final de la introducción atacado por la espalda en un piso que no existe (D-53); resto del detalle en [[01 - Premisa y Trama]] | **Por definir** (ver [[04 - Controles]]) |
+| Corta de reconstrucción | En cada muerte o reinicio | El personaje cae de su cápsula, en la fila de cápsulas del piso 1 (D-59), con sonido de maquinaria; refleja la degradación acumulada y la pieza ajena visible de la reconstrucción (M-18, D-43) | Sí, con `Espacio` |
+| Hallazgo del piso 2 | Una sola vez, la primera vez que se llega a la sala clave final del piso 2 sin enemigos en caza; si los hay, espera a que la caza termine (D-67) | La foto familiar imposible, con la cara de Emilia borrosa; provoca obstinación y acompaña el reinicio del contador (D-56) | No (D-67) |
+| Transición de piso | Al usar la escalera o el elevador | Ascensor o escalera; muestra el aviso de autoguardado | No |
 
 - **Introducción (D-53, D-63):** las partes jugables (compuerta y piso que no existe) usan un HUD mínimo: moverse, mirar e interactuar, sin inventario, salud visible, linterna, armas ni vigilancia. La compuerta se hackea en el teléfono de Lukas con las reglas de M-13. El elevador es cinemática. La muerte final está guionizada (trigger con temporizador de respaldo) y no suma al contador ni a la degradación.
 - **Transición de piso:** dura un **mínimo de 5 s** y oculta la carga del piso siguiente; si la carga tarda más, la cinemática se alarga. No existe pantalla de carga (D-39).
@@ -408,14 +408,14 @@ Cada sistema agrupa mecánicas de [[02 - Mecánicas]]. Las reglas de detalle viv
 - **Código de sujeto (D-43):** cada reconstrucción, incluida la primera y las de "Reiniciar", envía a S-07 el evento que sube el código R-H (S-07).
 - **Cinemáticas finales (D-42, D-51):** S-08 reproduce el final de derrota y el cierre de la victoria que entrega S-10. Las reglas de la secuencia y de la decisión final están en M-19 y M-18 de [[02 - Mecánicas]]; los estados y transiciones, en [[07 - Reglas y Estados del Juego]].
 
-    | Cinemática | Cuándo | Contenido | Saltable |
-    |---|---|---|---|
-    | Asimilación (derrota) | Quinta muerte contada desde el último reinicio del contador (D-35, D-56), si M-18 se implementa | El laboratorio termina de asimilar a Lukas y este se convierte en uno de los enemigos comunes que enfrentaba (D-42, D-48): imágenes deformadas de la cápsula, informe de The Mother y Lukas como señuelo en el piso que no existe (D-61) | **Por definir** |
-    | Secuencia común de victoria (pasos 1 a 3) | Al derrotar a The Mother (S-10) | Cae The Mother y revela que existe algo más, sin poder explicarlo; solo con los 6 documentos de Emilia, los documentos corruptos y el mensaje de Emilia se completan y Lukas recupera primero el nombre de Emilia y después el suyo (D-45, D-55); **Despertar**: el latido del laboratorio se acelera (S-11) | **Por definir** |
-    | Relevo básico | Tras el Despertar, con menos de 6 documentos de Emilia (S-07): Lukas examina la terminal central de forma automática | Algo ocurre y Lukas reemplaza automáticamente a The Mother, sin recordar ningún nombre (D-55); el terminal del brazo lo conecta, porque es el último con identidad | **Por definir** |
-    | Relevo completo | Con los 6 documentos, el jugador usa `E` en la terminal central durante la decisión final | Misma base que el Relevo básico, con el expediente R-H-01 a R-H-06 "estado desconocido" (D-49) y el segundo acto: Lukas oye el latido y lo entiende; el jugador solo ve un glitch ilegible (D-61). Lukas reemplaza a The Mother sabiendo más | **Por definir** |
-    | Ambiguo | Con los 6 documentos, el jugador usa `E` en la salida durante la decisión final | En negro, el latido de Lukas y el del laboratorio suenan desfasados y se sincronizan en uno; silencio; después, el gancho (D-61). No se sabe si Lukas fue asimilado, si se convirtió en The Mother o si ocurrió otra cosa | **Por definir** |
-    | Gancho abierto (paso 5) | Al terminar Relevo básico, Relevo completo o Ambiguo | Solo se escucha una nueva llegada y la voz (sonido) de The Mother iniciando el protocolo (D-51, D-52) | **Por definir** |
+| Cinemática | Cuándo | Contenido | Saltable |
+|---|---|---|---|
+| Asimilación (derrota) | Quinta muerte contada desde el último reinicio del contador (D-35, D-56), si M-18 se implementa | El laboratorio termina de asimilar a Lukas y este se convierte en uno de los enemigos comunes que enfrentaba (D-42, D-48): imágenes deformadas de la cápsula, informe de The Mother y Lukas como señuelo en el piso que no existe (D-61) | **Por definir** |
+| Secuencia común de victoria (pasos 1 a 3) | Al derrotar a The Mother (S-10) | Cae The Mother y revela que existe algo más, sin poder explicarlo; solo con los 6 documentos de Emilia, los documentos corruptos y el mensaje de Emilia se completan y Lukas recupera primero el nombre de Emilia y después el suyo (D-45, D-55); **Despertar**: el latido del laboratorio se acelera (S-11) | **Por definir** |
+| Relevo básico | Tras el Despertar, con menos de 6 documentos de Emilia (S-07): Lukas examina la terminal central de forma automática | Algo ocurre y Lukas reemplaza automáticamente a The Mother, sin recordar ningún nombre (D-55); el terminal del brazo lo conecta, porque es el último con identidad | **Por definir** |
+| Relevo completo | Con los 6 documentos, el jugador usa `E` en la terminal central durante la decisión final | Misma base que el Relevo básico, con el expediente R-H-01 a R-H-06 "estado desconocido" (D-49) y el segundo acto: Lukas oye el latido y lo entiende; el jugador solo ve un glitch ilegible (D-61). Lukas reemplaza a The Mother sabiendo más | **Por definir** |
+| Ambiguo | Con los 6 documentos, el jugador usa `E` en la salida durante la decisión final | En negro, el latido de Lukas y el del laboratorio suenan desfasados y se sincronizan en uno; silencio; después, el gancho (D-61). No se sabe si Lukas fue asimilado, si se convirtió en The Mother o si ocurrió otra cosa | **Por definir** |
+| Gancho abierto (paso 5) | Al terminar Relevo básico, Relevo completo o Ambiguo | Solo se escucha una nueva llegada y la voz (sonido) de The Mother iniciando el protocolo (D-51, D-52) | **Por definir** |
 
 - **Decisión final (D-51):** con los 6 documentos de Emilia, tras el Despertar el jugador recupera el control en la sala de The Mother y elige con `E` entre la terminal central y la salida, sin menú; si ambos están al alcance, gana el que está al centro de la vista (D-27, M-19). Sin los 6 documentos no hay elección. Durante la decisión hay presión sin muerte: los altavoces y el latido suben, la sala tiembla y las luces fallan, pero no hay daño ni enemigos (D-61, M-19).
 
@@ -456,7 +456,7 @@ Cada sistema agrupa mecánicas de [[02 - Mecánicas]]. Las reglas de detalle viv
 
 **Objetivo:** Evitar que eliminar a un enemigo sea definitivo y gratuito, obligando a decidir entre rematar o asumir que volverá (D-20, D-21).
 
-**Entradas:** Enemigo eliminado por S-03, remate con golpe en el suelo (`Clic izquierdo` sin apuntar sobre un cuerpo) o con consumible de remate (`E` sobre un cuerpo), salida del jugador de la sala, sala actual (sala del jefe o no).
+**Entradas:** Enemigo eliminado por S-03, remate con golpe en el suelo (`Clic izquierdo` sin apuntar sobre un cuerpo) o con punzón de descarga (`E` sobre un cuerpo), salida del jugador de la sala, sala actual (sala del jefe o no).
 
 **Procesamiento / reglas:**
 
@@ -465,7 +465,7 @@ Cada sistema agrupa mecánicas de [[02 - Mecánicas]]. Las reglas de detalle viv
 - **Aviso:** el cuerpo vibra y emite un sonido de maquinaria (S-11).
 - **Reaparición:** cuando el jugador sale de la sala, en otra sala del mismo piso, nunca frente al jugador.
 - **Enemigo reciclado:** un 25% más rápido y muere con 2 disparos (valores iniciales, sujetos a balance; D-37). No vuelve a reciclarse.
-- **Remate:** golpe en el suelo (25% de la resistencia, ~2 s, alerta a enemigos cercanos) o consumible de remate (1 casilla, rápido, no alerta) (valores iniciales, sujetos a balance). Solo mientras el cuerpo sigue en la sala.
+- **Remate:** golpe en el suelo (25% de la resistencia, ~2 s, alerta a enemigos cercanos) o punzón de descarga (1 casilla, rápido, no alerta; gasta la defensa contra agarres, D-71) (valores iniciales, sujetos a balance). Solo mientras el cuerpo sigue en la sala.
 - **Disponibilidad del remate (D-27):** a ~1.5 m (valor inicial, sujeto a balance) mirando un cuerpo no rematado, también durante el combate; si hay otro elemento interactivo al lado, gana el que está al centro de la vista (M-20). Si el contexto se activa con cuerpos que no pueden reciclarse: **Por definir** (M-20).
 - Recibir un golpe durante el golpe en el suelo lo cancela.
 - La sala de la que se huyó sigue infestada, incluidos los reciclados (M-14).
@@ -492,7 +492,7 @@ Cada sistema agrupa mecánicas de [[02 - Mecánicas]]. Las reglas de detalle viv
 - Ningún enemigo se recicla más de una vez.
 - Ningún enemigo eliminado en la sala de The Mother se recicla.
 - Un reciclado nunca reaparece en la sala del jugador ni en su campo de visión.
-- El golpe en el suelo alerta a los enemigos cercanos y el consumible de remate no.
+- El golpe en el suelo alerta a los enemigos cercanos y el punzón de descarga no.
 - Con un cuerpo ya rematado, `Clic izquierdo` y `E` recuperan el empujón y la interacción.
 - Ninguna tecla tiene dos funciones en el contexto "sobre un cuerpo" (ver [[04 - Controles]]).
 
@@ -616,7 +616,7 @@ Describe qué sistemas dependen de otros y qué información intercambian.
 | S-02 IA y percepción | S-07 | Enemigos en caza (autoguardado pendiente y costo de salir) |
 | S-02 IA y percepción | S-11 | Estado de alerta y distancia de cada enemigo |
 | S-04 Resistencia | S-03, S-09 | Permiso para empujar y para el golpe en el suelo |
-| S-05 Inventario | S-03, S-09 | Curas, munición, objeto defensivo y consumible de remate |
+| S-05 Inventario | S-03, S-09 | Curas, munición y punzón de descarga |
 | S-05 Inventario | S-07 | Inventario para el autoguardado |
 | S-03 Salud y combate | S-09 | Enemigo eliminado y posición del cuerpo |
 | S-03 Salud y combate | S-08 | Evento de muerte del personaje |

@@ -58,6 +58,16 @@ Registra juegos, películas, libros, fotografías, artículos, diseños o cualqu
 
 ---
 
+**Nombre:** Lustmord, John Carpenter, Trent Reznor y Atticus Ross, Hildur Guðnadóttir, Akira Yamaoka y Petri Alanko
+
+**Tipo:** Música (bandas sonoras y dark ambient).
+
+**Qué nos interesa:** Música cruda, oscura e industrial, con melancolía y minimalismo; contraste entre instrumentos frágiles (piano, guitarra acústica) y sonidos de máquinas; loops para eventos sin duración fija (D-87). Ver [[05 - Audio y Música]].
+
+**Qué NO queremos copiar:** Sus temas, melodías ni samples.
+
+---
+
 **Nombre:** H. P. Lovecraft (obra)
 
 **Tipo:** Libros (horror cósmico).
@@ -74,7 +84,13 @@ Añade imágenes utilizando la sintaxis de Obsidian:
 ![[imagen.png]]
 ```
 
-**Por definir:** imágenes de referencia de Lukas, Emilia, The Mother, los asimilados y los pisos (ver [[02 - Personajes y Animación]] y [[03 - Entornos]]).
+Imágenes guardadas en `10 - Referencia` (D-82, D-83):
+
+- Paletas: ![[PaletaBase.png]] ![[PaletaCarmesi.png]] ![[PaletaMorados.png]] ![[PaletaVerde.png]]
+- Ambientación (solo como guía de color): ![[ReferenciaConColoresOscurosFrios.jpg]]
+- Lukas civil y R-H-07: ![[Lukas-Reiner-Hellen.jpg]] ![[Lukas-R-H-07.jpg]]
+
+Uso de cada paleta en [[01 - Dirección de Arte]]. **Por definir:** imágenes de referencia de Emilia (foto), The Mother, los asimilados y los pisos.
 
 ## Referencias externas
 

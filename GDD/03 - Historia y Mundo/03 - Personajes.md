@@ -98,6 +98,7 @@ Presenta dos estados visuales:
 
 - Estética general: Signalis (color, atmósfera, low-poly / texturas raw).
 - Tono de personaje: protagonistas civiles rotos de Silent Hill, Resident Evil y Alan Wake.
+- Diseño de referencia (D-83): ![[Lukas-Reiner-Hellen.jpg]] (introducción) y ![[Lukas-R-H-07.jpg]] (reconstrucción). La imagen civil muestra el anillo en la mano izquierda; vale el texto: mano derecha. Paleta y animación en [[01 - Dirección de Arte]] y [[02 - Personajes y Animación]].
 
 ### Antagonista
 
@@ -205,27 +206,27 @@ No hay NPC con diálogo en la demo. Las voces que aparecen (Emilia, The Mother, 
 
 **Función narrativa:** Muestran lo que ocurre a quien pierde su identidad: **The Mother reconstruye; el laboratorio asimila** (D-47). En el final "Asimilación", Lukas se convierte en uno de ellos (D-42).
 
-**Descripción física:** Seres grotescos que combinan el terror físico con el horror lovecraftiano (D-60): figuras altas y encorvadas, brazos largos, caras deformadas o bocas abiertas. Conservan restos de uniformes de Vitalis o batas de sujeto de prueba. 4 tipos:
+**Descripción física:** Seres grotescos que combinan el terror físico con el horror lovecraftiano (D-60): figuras altas y encorvadas, brazos largos, caras deformadas o bocas abiertas. Conservan restos de uniformes de Vitalis, uniformes del Werkschutz de Kessler Sicherheit AG o batas de sujeto de prueba (D-75). 4 tipos:
 
 | Tipo | Aspecto | Comportamiento | Pisos |
 |---|---|---|---|
 | El Alto | ~2.5 m, encorvado, brazos que llegan al suelo | Lento; golpe de alcance largo; vigila pasillos | 1–3 |
-| La Boca | Cara partida, boca abierta en vertical | Lenta; su grito propio (no el latido) pone a los enemigos cercanos en búsqueda hacia ella (D-64) | 2–3 |
-| El Rastrero | En cuatro patas, cara invertida | Rápido; flanquea | 2–3 |
-| El Mudo | Inmóvil y sin cara; parece un cadáver o una persona quieta | Se activa cuando el jugador se acerca; sirve de señuelo (D-53) | 1–3 |
+| La Boca | Cara partida, boca abierta en vertical | Lenta y ciega; su grito propio (no el latido) pone a los enemigos cercanos en búsqueda hacia ella (D-64) | 2–3 |
+| El Rastrero | En cuatro patas, cara invertida | Rápido; flanquea | 1–3 |
+| El Mudo | Inmóvil y sin cara; parece un cadáver o una persona quieta | Se activa cuando el jugador se acerca; sirve de señuelo (D-53) | 3 |
 
-La distribución por piso es un valor inicial, sujeto a balance.
+La distribución por piso es un valor inicial, sujeto a balance (D-76): el piso 1 tiene el Alto y el Rastrero, el piso 2 suma la Boca y el piso 3 suma el Mudo. El Mudo de la introducción es un señuelo guionizado (D-53).
 
 **Valores iniciales por tipo (D-66; sujetos a balance):**
 
-| Tipo | Disparos para eliminarlo | Golpes para matar a Lukas | Velocidad | Agarra (M-11) | Regla propia |
+| Tipo | Disparos para eliminarlo | Golpes para matar a Lukas | Velocidad (patrulla / caza, D-76) | Agarra (M-11) | Regla propia |
 |---|---|---|---|---|---|
-| El Alto | 4 | 2 (alcance largo) | Lenta | Sí | Vigila pasillos |
-| La Boca | 3 | 3 | Lenta | No | Su grito pone a los enemigos cercanos en búsqueda hacia ella; no usa el latido (D-64) |
-| El Rastrero | 2 | 4 | Rápida | No | Flanquea |
-| El Mudo | 3 | 2 (emboscada) | Inmóvil, luego normal | Sí | No patrulla; se activa a ~3 m o al ser iluminado |
+| El Alto | 4 | 2 (alcance largo) | 1.2 / 3 m/s | Sí | Vigila pasillos |
+| La Boca | 3 | 3 | 1 / 2.5 m/s | No | Su grito pone a los enemigos cercanos en búsqueda hacia ella; no usa el latido (D-64) |
+| El Rastrero | 2 | 4 | 1.8 / 4.2 m/s | No | Flanquea |
+| El Mudo | 3 | 2 (emboscada) | Inmóvil; estallidos de 4.5 m/s | Sí | No patrulla; se activa a ~3 m o al ser iluminado |
 
-Los reciclados mueren con 2 disparos, o con 1 si son un Rastrero (M-20). Modelos y animación: [[02 - Personajes y Animación]].
+Los reciclados mueren con 2 disparos, o con 1 si son un Rastrero (M-20). Detección, puntos débiles y estados de IA en [[03 - Enemigos y NPC]]. Modelos y animación: [[02 - Personajes y Animación]].
 
 **Personalidad:** Sin personalidad propia: han perdido su identidad (D-48).
 
@@ -246,7 +247,7 @@ Los reciclados mueren con 2 disparos, o con 1 si son un Rastrero (M-20). Modelos
 
 **Debilidades:** Según su tipo: lentitud (el Alto), ruido que delata su posición (la Boca), fragilidad (el Rastrero), inmovilidad hasta activarse (el Mudo). Valores iniciales en la tabla de tipos (D-66).
 
-**Frases o tono de diálogo:** Sin diálogo.
+**Frases o tono de diálogo:** Sin diálogo. Solo sonidos de dolor que los representan.
 
 **Referencias visuales:** Estética de *Signalis* con terror físico de *Silent Hill*. Referencias concretas: `Por definir`.
 

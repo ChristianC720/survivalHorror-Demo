@@ -39,8 +39,8 @@ El roadmap organiza el desarrollo en etapas y entregables.
 ## Hitos
 
 | Hito | Entregable | Criterio de finalización | Estado |
-|---|---|---|---|
-| | | | |
+| ---- | ---------- | ------------------------ | ------ |
+|      |            |                          |        |
 
 
 > **Navegación:** [[00 - Índice]] · ← [[02 - Roles y Responsabilidades]] · [[04 - Backlog del Proyecto]] →

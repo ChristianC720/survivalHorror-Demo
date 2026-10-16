@@ -16,7 +16,7 @@ Los estados de la plantilla se adaptan al ciclo de muerte y reconstrucción de I
 | Jugando | Jugando | Recorrido en tiempo real. Tiene los subestados de la tabla siguiente | Sí |
 | Pausa | Pausa | Único estado que detiene el juego durante el recorrido. Muestra el menú de pausa ([[#Menú de pausa]]) | No |
 | Transición de piso | Carga | Cinemática de ascensor o escalera de **mínimo 5 s** que oculta la carga del piso siguiente y muestra el aviso de autoguardado; se alarga si la carga tarda. No hay pantalla de carga ni se puede saltar (D-39, M-15) | No |
-| Muerte | Derrota | Fin del intento por salud en 0, por un agarre en Crítico sin objeto defensivo, por "Reiniciar" (D-32) o por salir durante alerta o caza (D-31). Se registra la información pendiente, se pierde el inventario, se descarta el autoguardado y se suma una muerte al contador y a la degradación (M-16, M-18; excepción del primer intento en la regla global 8) | No |
+| Muerte | Derrota | Fin del intento por salud en 0, por un agarre en Crítico sin punzón de descarga, por "Reiniciar" (D-32) o por salir durante alerta o caza (D-31). Se registra la información pendiente, se pierde el inventario, se descarta el autoguardado y se suma una muerte al contador y a la degradación (M-16, M-18; excepción del primer intento en la regla global 8) | No |
 | Reconstrucción corta | Derrota (continuación) | **Cinemática corta**: el personaje cae de su cápsula, en la fila de cápsulas del piso 1 (D-59), con sonido de maquinaria; refleja la degradación acumulada y se puede saltar con `Espacio` (D-39, M-16, [[04 - Controles]]). Siempre es el mismo hombre, recompuesto con piezas ajenas (D-18). Termina en el punto de reaparición, al inicio del ciclo en el piso 1 | No |
 | Victoria | Victoria | The Mother derrotada en su sala del piso 3 (D-16, D-33). Revela que existe algo más (la criatura lovecraftiana que es el laboratorio), pero no puede explicarlo (M-19, D-47). Reproduce los pasos 1 a 3 de la secuencia común de victoria (D-51): cae The Mother; solo con los 6 documentos de Emilia, los documentos corruptos y el mensaje de Emilia se completan y Lukas recupera primero el nombre de Emilia y después el suyo (D-45, D-55); **Despertar**: el latido del laboratorio se acelera (M-10). Si se puede saltar está **Por definir** | No |
 | Decisión final | Victoria (continuación, estado propio) | Solo con los **6 documentos de Emilia** acumulados en el terminal del brazo, en cualquier intento (M-08, D-51). Tras el Despertar, la sala de The Mother presenta dos elementos interactivos: la **terminal central** y la **salida**, ambos con Interactuar (`E`). No hay menú de elección; si los dos están al alcance, gana el que está al centro de la vista (D-27, M-19). Sin los 6 documentos este estado no se presenta: Lukas examina la terminal central de forma automática. Hay presión sin muerte: los altavoces y el latido suben, la sala tiembla y las luces fallan, pero no hay daño ni enemigos (D-61, M-19) | Sí |
@@ -75,14 +75,14 @@ No existe una opción de guardado manual (D-30).
 | Exploración o Alerta/Combate | `E` en un panel o terminal de sala | Hackeo | — |
 | Hackeo | Éxito, abandono (`E`) o recibir un golpe | Exploración o Alerta/Combate | Según haya enemigos en caza. Si un enemigo entra en caza durante la secuencia, el hackeo continúa (M-13) |
 | Jugando | Llegar a la sala clave final de los pisos 1 o 2 | Jugando | Se crea el autoguardado si no hay enemigos en caza; si los hay, espera a que la caza termine (D-30). En la sala final del piso 2 se reinicia el contador (D-35); la primera vez se reproduce la cinemática no saltable del hallazgo, que también espera a que termine la caza (D-56, D-67) |
-| Jugando | `E` en la escalera o el elevador de la sala clave final | Transición de piso | Pisos 1 y 2; puerta de la sala final abierta con la llave obligatoria (D-36); el elevador puede requerir energía o hackeo (M-15) |
+| Jugando | `E` en la escalera o el elevador de la sala clave final | Transición de piso | Pisos 1 y 2; puerta de la sala final abierta con la llave obligatoria (D-36); la sala final puede estar sin energía (D-72) y el elevador puede requerir hackeo (M-15) |
 | Transición de piso | Cinemática (mínimo 5 s) y carga terminadas | Jugando (Exploración) en el piso siguiente | Por la escalera, los enemigos en caza siguen al jugador con un breve retraso; por el elevador no siguen (D-26, M-15) |
 | Jugando | `Esc` | Pausa | Desde cualquier subestado |
 | Pausa | `Esc` | Jugando | Se vuelve al mismo subestado |
 | Pausa | Reiniciar | Muerte | Cuenta como muerte (D-32) |
 | Pausa | Salir (confirmado) durante alerta o caza | Muerte y después Menú principal | Muerte completa (D-31); al elegir Continuar se inicia desde el inicio del ciclo |
 | Pausa | Salir (confirmado) con calma | Menú principal | Costo según la regla global 4 (D-31) |
-| Jugando | La salud llega a 0 (o agarre en Crítico sin objeto defensivo) | Muerte | Desde cualquier subestado (M-05, M-11) |
+| Jugando | La salud llega a 0 (o agarre en Crítico sin punzón de descarga) | Muerte | Desde cualquier subestado (M-05, M-11) |
 | Muerte | Contador menor que 5, o M-18 no implementada | Reconstrucción corta | La regeneración del intento se realiza durante la cinemática. Si al saltarla la generación no ha terminado, la presentación de la espera está **Por definir** |
 | Muerte | Quinta muerte consecutiva desde el último reinicio del contador | Final: Asimilación | Solo si M-18 (Deseable) se implementa (D-35, D-56) |
 | Reconstrucción corta | Cinemática terminada o saltada (`Espacio`) | Jugando (Exploración) | Punto de reaparición al inicio del ciclo en el piso 1 (M-16) |
@@ -169,13 +169,12 @@ La salida durante alerta o caza pasa por Muerte para aplicar su costo y termina 
     - El terminal del brazo y el registro de las fallas de la máquina se siguen autoguardando cada vez que cambian.
 4. **Salir del juego (D-31):** se sale desde el menú de pausa. La pausa congela la situación, así que el costo depende del estado en el momento de pausar. El diálogo de confirmación avisa del costo antes de salir.
 
-    | Situación al salir | Costo | Al elegir Continuar |
-    |---|---|---|
-    | Durante alerta o caza | Muerte completa: pierde el inventario, descarta el autoguardado y suma al contador y a la degradación | Inicio del ciclo en el piso 1 |
-    | Con calma, fuera de una sala clave final ya guardada | Suma 1 al contador de muertes y a la degradación | Sala clave final autoguardada, con el estado al llegar. Si aún no existe autoguardado, inicio del ciclo, porque no hay otro punto guardado |
-    | En una sala clave final ya guardada y sin alerta | Sin costo | Sala clave final autoguardada |
-    | Cierre inesperado o fallo del juego | Sin costo | Último autoguardado o, si no existe, inicio del ciclo |
-
+| Situación al salir | Costo | Al elegir Continuar |
+|---|---|---|
+| Durante alerta o caza | Muerte completa: pierde el inventario, descarta el autoguardado y suma al contador y a la degradación | Inicio del ciclo en el piso 1 |
+| Con calma, fuera de una sala clave final ya guardada | Suma 1 al contador de muertes y a la degradación | Sala clave final autoguardada, con el estado al llegar. Si aún no existe autoguardado, inicio del ciclo, porque no hay otro punto guardado |
+| En una sala clave final ya guardada y sin alerta | Sin costo | Sala clave final autoguardada |
+| Cierre inesperado o fallo del juego | Sin costo | Último autoguardado o, si no existe, inicio del ciclo |
     Con D-23, "en alerta" equivale a caza para la vista de vigilancia. Qué estados de M-10, además de la caza, cuentan como "alerta" para el costo de salir (sospecha o búsqueda) está **Por definir**.
 5. **Reiniciar y Nueva partida (D-32):** "Reiniciar" (menú de pausa) regresa al inicio del ciclo, cuenta como muerte (contador y degradación) y conserva el terminal del brazo. "Nueva partida" (menú principal) borra todo, incluido el terminal, y pide confirmación.
 6. **Gracia al cargar (D-30, D-37):** al cargar una partida con Continuar, los enemigos no atacan durante 2–3 s (valor inicial, sujeto a balance). Si durante la gracia los enemigos pueden detectar al jugador o cambiar de estado de alerta está **Por definir**.

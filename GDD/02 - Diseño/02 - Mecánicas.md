@@ -12,28 +12,28 @@ Documenta cada mecánica con suficiente detalle para que otro integrante pueda i
 **Pilares:** V = Vulnerabilidad Constante, A = Adaptación, DC = Decisiones con Consecuencias (ver [[04 - Pilares de Diseño]]).
 **Relación con otras secciones:** las mecánicas se agrupan en sistemas en [[03 - Sistemas]]; la obtención, los límites y la pérdida de los recursos que consumen se documentan en [[06 - Economía y Recursos]].
 
-| Mecánica | Prioridad | Pilares | Estado |
-|---|---|---|---|
-| M-01 Cámara Over the Shoulder y apuntado | Demo | V | Definida |
-| M-02 Vista de vigilancia (cámaras de The Mother) | Demo | V, A, DC | Definida |
-| M-03 Bloqueo de vigilancia por detección | Demo | V | Definida |
-| M-04 Combate a distancia | Demo | V, DC | Definida (valores iniciales D-37, sujetos a balance) |
-| M-05 Salud y estados | Demo | V, DC | Definida (valores iniciales D-37, sujetos a balance) |
-| M-06 Resistencia y empujón | Demo | V, DC | Definida (valores iniciales D-37, sujetos a balance) |
-| M-07 Inventario de 6 casillas en tiempo real | Demo | DC | Definida |
-| M-08 Interacción, recolección e investigación de documentos | Demo | A | Definida |
-| M-09 Sigilo y ruido | Demo | V, A | Definida |
-| M-10 Señales diegéticas | Demo | A | Definida |
-| M-11 Objeto defensivo consumible | Demo | V, DC | Definida |
-| M-12 Linterna | Demo | V, DC | Definida (baterías: Deseable) |
-| M-13 Hackeo por secuencias | Demo | V, DC | Definida |
-| M-14 Escape de combate y retirada | Demo | DC | Definida (sellado con consumibles: Deseable) |
-| M-15 Exploración vertical por pisos | Demo | A, DC | Definida (3 pisos, D-33) |
-| M-16 Reaparición por reconstrucción y terminal del brazo | Demo | A | Definida |
-| M-17 Fallas de la máquina | Deseable | A, DC | Definida |
-| M-18 Degradación por muerte y final de 5 muertes | Deseable | A | Definida (final: Asimilación, D-42) |
-| M-19 Jefe final: The Mother | Demo | V, A, DC | Definida (duración por balancear; decisión final y 3 cinemáticas de victoria, D-51) |
-| M-20 Reciclaje de enemigos y remate | Demo | V, DC | Definida (valores iniciales D-37, sujetos a balance) |
+| Mecánica                                                    | Prioridad | Pilares  | Estado                                                                              |
+| ----------------------------------------------------------- | --------- | -------- | ----------------------------------------------------------------------------------- |
+| M-01 Cámara Over the Shoulder y apuntado                    | Demo      | V        | Definida                                                                            |
+| M-02 Vista de vigilancia (cámaras de The Mother)            | Demo      | V, A, DC | Definida                                                                            |
+| M-03 Bloqueo de vigilancia por detección                    | Demo      | V        | Definida                                                                            |
+| M-04 Combate a distancia                                    | Demo      | V, DC    | Definida (valores iniciales D-37, sujetos a balance)                                |
+| M-05 Salud y estados                                        | Demo      | V, DC    | Definida (valores iniciales D-37, sujetos a balance)                                |
+| M-06 Resistencia y empujón                                  | Demo      | V, DC    | Definida (valores iniciales D-37, sujetos a balance)                                |
+| M-07 Inventario de 6 casillas en tiempo real                | Demo      | DC       | Definida                                                                            |
+| M-08 Interacción, recolección e investigación de documentos | Demo      | A        | Definida                                                                            |
+| M-09 Sigilo y ruido                                         | Demo      | V, A     | Definida                                                                            |
+| M-10 Señales diegéticas                                     | Demo      | A        | Definida                                                                            |
+| M-11 Punzón de descarga (defensa y remate)                            | Demo      | V, DC    | Definida                                                                            |
+| M-12 Linterna                                               | Demo      | V, DC    | Definida (barra de carga, D-71)                                                       |
+| M-13 Hackeo por secuencias                                  | Demo      | V, DC    | Definida                                                                            |
+| M-14 Escape de combate y retirada                           | Demo      | DC       | Definida                                        |
+| M-15 Exploración vertical por pisos                         | Demo      | A, DC    | Definida (3 pisos, D-33)                                                            |
+| M-16 Reaparición por reconstrucción y terminal del brazo    | Demo      | A        | Definida                                                                            |
+| M-17 Fallas de la máquina                                   | Deseable  | A, DC    | Definida                                                                            |
+| M-18 Degradación por muerte y final de 5 muertes            | Deseable  | A        | Definida (final: Asimilación, D-42)                                                 |
+| M-19 Jefe final: The Mother                                 | Demo      | V, A, DC | Definida (duración por balancear; decisión final y 3 cinemáticas de victoria, D-51) |
+| M-20 Reciclaje de enemigos y remate                         | Demo      | V, DC    | Definida (valores iniciales D-37, sujetos a balance)                                |
 
 ## Mecánicas principales
 
@@ -47,7 +47,7 @@ Documenta cada mecánica con suficiente detalle para que otro integrante pueda i
     
     - La **vista sobre el hombro (OTS)** es la cámara por defecto en todo momento; el campo de visión es reducido y se pierde la visión periférica y trasera.
         
-    - Al apuntar, la cámara se acerca al hombro, aparece la retícula, la linterna concentra su haz (ver M-12) y la velocidad de movimiento se reduce un 30% (valor inicial, sujeto a balance).
+    - Al apuntar, la cámara se acerca al hombro, aparece la retícula (un punto pequeño cuya dispersión se cierra en ~1 s con Lukas quieto, M-04), la linterna concentra su haz (ver M-12) y la velocidad de movimiento se reduce un 30% (valor inicial, sujeto a balance).
         
     - Mientras se apunta no es posible correr.
         
@@ -106,14 +106,14 @@ stateDiagram-v2
     - La imagen se presenta en vista isométrica con ruido CRT y un retraso de ~0.3 s (valor inicial, sujeto a balance).
         
     - **Señal escalonada (D-23):** la calidad de la señal depende del estado de alerta más alto (M-10) de los enemigos dentro del alcance de M-03:
-        
-        | Estado de alerta | Señal |
-        |---|---|
-        | Sin alerta o **sospecha** | Sin cambios |
-        | **Búsqueda** | Degradada: más ruido CRT y más retraso que la señal base |
-        | **Caza** | Se corta y queda bloqueada (M-03) |
-        
-    - **Atención de The Mother (D-24):** mientras la vista está activa se llena un medidor **oculto** (sin barra en pantalla) en ~5 s de uso; sin usar la vista, baja en ~15 s (valores iniciales, sujetos a balance). Al llenarse, los enemigos cercanos pasan a sospecha y luego a búsqueda hacia la posición del jugador. El jugador lo percibe por la degradación de la señal.
+
+| Estado de alerta | Señal |
+|---|---|
+| Sin alerta o **sospecha** | Sin cambios |
+| **Búsqueda** | Degradada: más ruido CRT y más retraso que la señal base |
+| **Caza** | Se corta y queda bloqueada (M-03) |
+
+- **Atención de The Mother (D-24):** mientras la vista está activa se llena un medidor **oculto** (sin barra en pantalla) en ~5 s de uso; sin usar la vista, baja en ~15 s (valores iniciales, sujetos a balance). Al llenarse, los enemigos cercanos pasan a sospecha y luego a búsqueda hacia la posición del jugador. El jugador lo percibe por la degradación de la señal.
         
     - Muestra únicamente lo que cubre la cámara de la sala y un solo piso a la vez.
         
@@ -185,13 +185,13 @@ stateDiagram-v2
     
 - **Penalización:** La pérdida del sigilo elimina de golpe la información amplia justo cuando los enemigos comienzan a acorralarlo.
     
-- **Interacciones con otras mecánicas:** Interactúa con M-02 Vista de vigilancia, M-09 Sigilo, M-10 Señales diegéticas, M-11 Objeto defensivo y M-14 Escape de combate.
+- **Interacciones con otras mecánicas:** Interactúa con M-02 Vista de vigilancia, M-09 Sigilo, M-10 Señales diegéticas, M-11 Punzón de descarga y M-14 Escape de combate.
     
 - **Casos límite:**
     
     - Si un enemigo detecta al jugador a través de una ventana o pasillo desde otra sala, el bloqueo solo se activa si ese enemigo tiene una ruta para perseguir al personaje.
         
-    - Si el jugador se libera de un agarre con el objeto defensivo (M-11), el bloqueo se mantiene mientras el enemigo siga en caza tras el aturdimiento.
+    - Si el jugador se libera de un agarre con el punzón de descarga (M-11), el bloqueo se mantiene mientras el enemigo siga en caza tras el aturdimiento.
         
     - Si un enemigo pasa de caza a búsqueda, el bloqueo se levanta, pero si el jugador activa la vista de vigilancia, la señal aparece degradada (D-23).
         
@@ -205,23 +205,29 @@ stateDiagram-v2
     
 - **Reglas:**
     
-    - La demo incluye 1 arma de fuego con munición escasa.
+    - **Arma (D-74, D-75):** la demo incluye 1 arma, el revólver de servicio del Werkschutz de Kessler Sicherheit AG: diseño de 2080 y gama alta (armazón cerámico y polímero, cañón alineado con la recámara inferior), seguro biométrico que reconoce a Lukas como activo de Vitalis por el terminal del brazo y contador de balas en el armazón, que sustituye al indicador de munición del HUD. No ocupa casilla.
         
-    - La munición ocupa casillas del inventario (M-07). **Cargador:** 6 balas. **Munición por casilla:** 12 balas (valores iniciales, sujetos a balance; D-37).
+    - **Obtención (D-74):** la primera vez está en el cadáver asimilado de un guardia de Kessler, en el tutorial. Desde entonces, The Mother lo deja **descargado** en una bandeja de efectos personales junto a la cápsula en cada reconstrucción, también si Lukas murió antes de recogerlo.
+        
+    - La munición ocupa casillas del inventario (M-07). **Tambor:** 6 balas. **Munición por casilla:** 12 balas. Cada recogida es un blíster de 3 cartuchos (valores iniciales, sujetos a balance; D-37, D-74).
         
     - Eliminar a un enemigo requiere 2–4 disparos según su tipo: el Alto 4, la Boca 3, el Rastrero 2 y el Mudo 3; a un enemigo reciclado (M-20), 2 disparos, o 1 si es un Rastrero (valores iniciales, sujetos a balance; D-37, D-66).
         
-    - Recargar requiere una animación durante la cual el personaje no puede disparar.
+    - **Recarga bala a bala (D-74):** ~0.7 s por bala; mientras recarga no puede disparar. Se puede cancelar en cualquier momento y se conservan las balas ya cargadas.
+        
+    - **Cadencia y precisión (D-74):** ~0.8 s entre disparos por el retroceso. La dispersión se cierra en ~1 s con Lukas quieto; moverse, correr o recibir un golpe la abre. No hay auto-apuntado.
+        
+    - **Puntos débiles (D-74):** cada tipo de enemigo tiene uno. Acertarle interrumpe el ataque o el agarre en curso, pero no reduce los disparos necesarios (ver [[03 - Enemigos y NPC]]).
         
     - Disparar no consume resistencia (M-06).
         
     - Los enemigos son lentos pero letales; enfrentar a más de dos a la vez es casi muerte segura.
         
-    - Los disparos hacen ruido y alertan a los enemigos cercanos (M-09).
+    - Los disparos hacen ruido: alertan a los enemigos en un radio de ~20 m y llenan un poco la atención de The Mother (valores iniciales, sujetos a balance; M-09, D-24, D-74).
         
 - **Entrada:** `Clic izquierdo` mientras se apunta para disparar; `R` para recargar.
     
-- **Estado inicial:** Arma equipada con la munición disponible.
+- **Estado inicial:** Revólver equipado con la munición disponible; tras cada reconstrucción, descargado (D-74).
     
 - **Estado final:** Munición reducida; enemigo herido, aturdido o eliminado.
     
@@ -237,7 +243,7 @@ stateDiagram-v2
     
     - Disparar con el cargador vacío reproduce un chasquido y no inicia la recarga automáticamente.
         
-    - Recibir un golpe durante la recarga la cancela sin perder la munición.
+    - Recibir un golpe durante la recarga la cancela sin perder la munición; las balas ya cargadas se conservan.
         
 - **Impacto en pilares:** Refuerza **Vulnerabilidad Constante** y **Decisiones con Consecuencias** porque cada disparo es una decisión de gasto. Riesgo: si la munición es abundante el juego se vuelve de acción; la escasez es obligatoria.
 
@@ -271,7 +277,7 @@ stateDiagram-v2
     
 - **Penalización:** Movimiento más lento y menor margen de error en Herido y Crítico.
     
-- **Interacciones con otras mecánicas:** Interactúa con M-04 Combate, M-06 Resistencia, M-07 Inventario, M-11 Objeto defensivo y M-16 Reaparición por reconstrucción.
+- **Interacciones con otras mecánicas:** Interactúa con M-04 Combate, M-06 Resistencia, M-07 Inventario, M-11 Punzón de descarga y M-16 Reaparición por reconstrucción.
     
 - **Casos límite:**
     
@@ -294,6 +300,8 @@ stateDiagram-v2
 - **Reglas:**
     
     - Una sola barra de resistencia se consume al correr, al empujar y al rematar con el golpe en el suelo (M-20), y se regenera automáticamente tras 3 segundos sin estas acciones (caminar no interrumpe la regeneración).
+        
+    - **Velocidades de Lukas (D-76):** agachado ~0.8 m/s, caminando ~1.5 m/s y corriendo ~4 m/s (valores iniciales, sujetos a balance). Corriendo deja atrás al Alto y a la Boca, pero no al Rastrero ni a los estallidos del Mudo.
         
     - **Correr** sirve para escapar de una mala situación, no para recorrer el mapa. Gasta ~10% de la resistencia por segundo (valor inicial, sujeto a balance; D-37).
         
@@ -347,9 +355,9 @@ stateDiagram-v2
         
     - Equipar, usar o descartar un objeto consume un tiempo de animación de aproximadamente 1.5 segundos (valor inicial, sujeto a balance).
         
-    - El objeto defensivo (M-11), el consumible de remate (M-20), las curas, la munición y los objetos clave, incluidas las llaves (M-15), ocupan casillas.
+    - Ocupan casillas 5 tipos de objeto: curas, munición, punzón de descarga (M-11, M-20), llave obligatoria y llave opcional (M-15). El revólver (M-04), la linterna (M-12) y el anillo no ocupan casilla (D-71).
         
-    - **Máximo por casilla:** curas 1, objeto defensivo 1, consumible de remate 2, llave 1, munición 12 balas (valores iniciales, sujetos a balance; D-37). Los presupuestos por piso se documentan en [[06 - Economía y Recursos]].
+    - **Máximo por casilla:** curas 1, punzón de descarga 1, llave 1, munición 12 balas (valores iniciales, sujetos a balance; D-37, D-71). Los presupuestos por piso se documentan en [[06 - Economía y Recursos]].
         
     - **Llaves (D-36):** son objetos clave; cada llave ocupa 1 casilla y se consume al usarse en la puerta que abre (M-08).
         
@@ -367,7 +375,7 @@ stateDiagram-v2
     
 - **Penalización:** Quedar indefenso a un ataque si se administra el inventario en un pasillo no despejado.
     
-- **Interacciones con otras mecánicas:** Interactúa con M-04 Combate, M-05 Salud, M-08 Interacción, M-11 Objeto defensivo, M-15 Exploración vertical (la llave obligatoria abre la sala final), M-16 Reaparición por reconstrucción (el inventario se pierde al morir o reiniciar) y M-20 Reciclaje y remate (consumible de remate).
+- **Interacciones con otras mecánicas:** Interactúa con M-04 Combate, M-05 Salud, M-08 Interacción, M-11 Punzón de descarga, M-15 Exploración vertical (la llave obligatoria abre la sala final), M-16 Reaparición por reconstrucción (el inventario se pierde al morir o reiniciar) y M-20 Reciclaje y remate (punzón de descarga).
     
 - **Casos límite:**
     
@@ -389,11 +397,13 @@ stateDiagram-v2
         
     - **Llaves (D-36):** cada piso tiene 1 llave obligatoria que abre la puerta de la sala clave final y llaves opcionales que abren atajos o salas con recursos. Abrir una puerta con llave consume la llave (M-07). La llave obligatoria solo abre la puerta de la sala final.
         
-    - Las salas clave secundarias contienen documentos, llaves u otros objetos clave (M-15). Los objetos clave concretos, distintos de las llaves, quedan **Por definir**. El texto de cada documento se redacta en [[04 - Diálogos y Narrativa]].
+    - Las salas clave secundarias contienen documentos, llaves y, a veces, el interruptor de energía de la sala final (M-15, D-72). No existen otros objetos clave distintos de las llaves (D-73). El texto de cada documento se redacta en [[04 - Diálogos y Narrativa]].
         
     - **Documentos de Emilia (D-52):** hay **6**, 2 por piso, y siempre se ubican en salas clave secundarias (también en la configuración de showcase, que tiene 2 secundarias por piso, D-34). Son los únicos que cuentan para la decisión final (M-19): "todos los documentos" = los 6 documentos de Emilia acumulados en el terminal del brazo, en cualquier intento (D-51).
         
-    - **Documentos de Vitalis Konzern y de The Mother (D-52):** se ubican en salas procedurales como contexto del mundo y no cuentan para la decisión final.
+    - **Otros documentos (D-52, D-79):** 12 documentos de Vitalis Konzern, Kessler Sicherheit AG y The Mother, 4 por piso, se ubican en salas procedurales (aparecen 1–2 por intento, con prioridad para los no registrados) como contexto del mundo y no cuentan para la decisión final.
+        
+    - **Objetos confiscados (D-73):** 12 objetos de narrativa escénica, 4 por piso: pertenencias del personal (piso 1), objetos confiscados a los sujetos, incluidos niños (piso 2), y restos del incidente (piso 3). Aparecen 1–2 por intento en salas procedurales. Se examinan con `E`, no se recogen ni ocupan casilla y se registran en la sección "Objetos confiscados" del terminal del brazo. No cuentan para ningún final.
         
     - **Documentos corruptos (D-45):** algunos documentos se registran corruptos, con partes del texto ilegibles, sobre todo los relacionados con la memoria de Lukas. "Corrupto" es un término distinto de las fallas de la máquina (M-17). La corrupción es un glitch de realidad provocado por el laboratorio o el latido, no una censura (D-58). Nunca oculta información necesaria para avanzar (rutas, reglas) y solo se completa en el desenlace si Lukas reunió los 6 documentos de Emilia (M-19, D-55). Qué documentos concretos son corruptos queda **Por definir** en `03 - Historia y Mundo`.
     - **Estilo de los documentos (D-58):** referencia *Signalis*. Burocracia de Vitalis Konzern y The Mother frente al diario de Emilia; fragmentos en alemán que nunca se traducen ni contienen información necesaria; frase clave "Escucha el latido".
@@ -428,7 +438,7 @@ stateDiagram-v2
         
     - Si un documento corrupto contiene una regla del sistema o una pista de ruta, esa parte siempre es legible; solo se corrompe el contenido narrativo (D-45).
         
-    - Si el documento de Emilia de una sala clave secundaria ya está registrado en el terminal del brazo, la sala contiene recursos en su lugar (D-58). Tipo y cantidad: **Por definir** en [[06 - Economía y Recursos]].
+    - Si el documento de Emilia de una sala clave secundaria ya está registrado en el terminal del brazo, la sala contiene en su lugar 1 recurso extra del tipo más escaso del piso en ese intento, por encima del presupuesto (D-58, D-79; ver [[06 - Economía y Recursos]]).
         
 - **Impacto en pilares:** Refuerza **Adaptación** al convertir la exploración en conocimiento. Riesgo: lecturas largas pueden romper el ritmo; los documentos deben ser breves. Riesgo: si la corrupción oculta información necesaria, el jugador queda bloqueado; se mitiga con la regla de D-45.
 
@@ -448,9 +458,9 @@ stateDiagram-v2
         
     - **Nivel de ruido:** ir agachado genera 0% de ruido. Caminar produce ruido bajo. Correr emite un pulso de sonido en área que alerta a los enemigos cercanos. Disparar también genera ruido.
         
-    - **Uso de linterna:** iluminar a un enemigo incrementa su alerta al doble de velocidad (M-12).
+    - **Uso de linterna:** iluminar a un enemigo incrementa su alerta al doble de velocidad (M-12). La Boca es ciega y no reacciona a la luz (D-76).
         
-    - **Tipos de enemigo (D-66):** el grito de la Boca pone a los enemigos cercanos en búsqueda hacia su posición. El Mudo no patrulla: se activa a ~3 m o al ser iluminado (valor inicial, sujeto a balance).
+    - **Tipos de enemigo (D-66):** el grito de la Boca pone a los enemigos cercanos en búsqueda hacia su posición. El Mudo no patrulla: se activa a ~3 m o al ser iluminado (valor inicial, sujeto a balance). Velocidades y rangos de detección por tipo en [[03 - Enemigos y NPC]] (D-76).
         
 - **Entrada:** `Ctrl izquierdo` para agacharse (alternar).
     
@@ -464,7 +474,7 @@ stateDiagram-v2
     
 - **Penalización:** Avance significativamente más lento; riesgo de quedar acorralado en esquinas sin salida.
     
-- **Interacciones con otras mecánicas:** Interactúa con M-02 Vista de vigilancia (permite planificar rutas con información parcial; su uso prolongado llena la atención de The Mother y pone a buscar a los enemigos cercanos, D-24), M-03 Bloqueo de vigilancia, M-06 Resistencia, M-10 Señales diegéticas, M-12 Linterna y M-20 Reciclaje y remate (el golpe en el suelo alerta a enemigos cercanos; el consumible de remate no).
+- **Interacciones con otras mecánicas:** Interactúa con M-02 Vista de vigilancia (permite planificar rutas con información parcial; su uso prolongado llena la atención de The Mother y pone a buscar a los enemigos cercanos, D-24), M-03 Bloqueo de vigilancia, M-06 Resistencia, M-10 Señales diegéticas, M-12 Linterna y M-20 Reciclaje y remate (el golpe en el suelo alerta a enemigos cercanos; el punzón de descarga no).
     
 - **Casos límite:**
     
@@ -524,47 +534,53 @@ stateDiagram-v2
         
 - **Impacto en pilares:** Refuerza **Adaptación** y el terror basado en sistemas. Riesgo: un latido demasiado preciso puede funcionar como radar; su intensidad debe ser aproximada. Riesgo: confundir el latido del laboratorio con el del protagonista; se mitiga con un timbre distinto y con que el del laboratorio nunca dependa de la cercanía de enemigos.
 
-### M-11: Objeto defensivo consumible
+### M-11: Punzón de descarga (defensa y remate)
 
-- **Propósito:** Ofrecer una defensa ante los agarres que compita por espacio en el inventario, en lugar de depender de habilidad manual.
-    
-- **Activación:** Automática e inmediata cuando un enemigo agarra al personaje y existe un objeto defensivo en el inventario.
-    
+- **Propósito:** Ofrecer una defensa ante los agarres que compita por espacio en el inventario y con el remate silencioso, en lugar de depender de habilidad manual.
+
+- **Activación:** Automática e inmediata cuando un enemigo agarra al personaje y hay un punzón de descarga en el inventario; o `E` sobre un cuerpo para rematarlo (M-20).
+
 - **Reglas:**
-    
-    - El objeto defensivo (por ejemplo, descarga eléctrica o navaja) ocupa 1 casilla del inventario.
-        
-    - Al ser agarrado, el objeto se usa automáticamente, se consume y aturde al enemigo 2 segundos (valor inicial, sujeto a balance).
-        
-    - Sin el objeto, el agarre baja un estado de salud (o mata si el personaje ya estaba en Crítico).
-        
+
+    - El punzón de descarga es equipo de contención de sujetos de Kessler Sicherheit AG (D-71, D-75): un solo objeto de **un solo uso** con 2 funciones. Ocupa 1 casilla (1 por casilla).
+
+    - **Defensa:** al ser agarrado, Lukas clava el punzón de forma automática; se consume y la descarga aturde al enemigo 2 segundos (valor inicial, sujeto a balance).
+
+    - **Remate:** con `E` sobre un cuerpo, la descarga quema su último rastro de identidad y The Mother ya no puede reciclarlo, sin alertar a enemigos (M-20).
+
+    - Gastarlo en un remate deja a Lukas sin defensa ante el próximo agarre: es una decisión con consecuencias.
+
+    - Sin el punzón, el agarre baja un estado de salud (o mata si el personaje ya estaba en Crítico).
+
     - Agarran el Alto, el Mudo y el brazo recolector de The Mother (D-65, D-66); el Rastrero y la Boca no agarran.
-        
-- **Entrada:** N/A (automático).
-    
-- **Estado inicial:** Personaje agarrado por un enemigo.
-    
+
+- **Entrada:** N/A para la defensa (automática); `E` sobre un cuerpo para el remate (ver [[04 - Controles]]).
+
+- **Estado inicial:** Personaje agarrado, o frente a un cuerpo no rematado, con un punzón en el inventario.
+
 - **Estado final:**
-    
-    - **Con objeto:** enemigo aturdido 2 s (valor inicial, sujeto a balance) y objeto consumido.
-        
-    - **Sin objeto:** el personaje baja un estado de salud o muere.
-        
-- **Recursos utilizados:** Objeto defensivo y una casilla del inventario.
-    
-- **Recompensa:** Evitar daño y ganar 2 segundos (valor inicial, sujeto a balance) para reposicionarse.
-    
-- **Penalización:** Pérdida del objeto y de la casilla que ocupaba frente a curas o munición.
-    
-- **Interacciones con otras mecánicas:** Interactúa con M-03 Bloqueo de vigilancia, M-05 Salud, M-07 Inventario y M-14 Escape de combate.
-    
+
+    - **Con punzón:** enemigo aturdido 2 s (valor inicial, sujeto a balance) o cuerpo rematado; punzón consumido.
+
+    - **Sin punzón:** el agarre baja un estado de salud o mata.
+
+- **Recursos utilizados:** Punzón de descarga y una casilla del inventario.
+
+- **Recompensa:** Evitar daño y ganar 2 segundos (valor inicial, sujeto a balance) para reposicionarse, o una amenaza menos en el piso.
+
+- **Penalización:** Pérdida del punzón y de la casilla que ocupaba frente a curas o munición; usado como remate, ya no protege del próximo agarre.
+
+- **Interacciones con otras mecánicas:** Interactúa con M-03 Bloqueo de vigilancia, M-05 Salud, M-07 Inventario, M-14 Escape de combate y M-20 Reciclaje y remate (mismo objeto).
+
 - **Casos límite:**
-    
-    - Si hay varios objetos defensivos, solo se consume uno por agarre.
-        
+
+    - Si hay varios punzones, solo se consume uno por agarre.
+
     - Si el agarre ocurre durante el hackeo, el hackeo se cancela antes de resolver el agarre.
-        
-- **Impacto en pilares:** Refuerza **Vulnerabilidad Constante** y **Decisiones con Consecuencias**. Riesgo: si el objeto es abundante, el agarre deja de dar miedo; su distribución debe ser escasa.
+
+    - El contexto de remate no se activa sobre cuerpos que no pueden reciclarse (reciclados y sala del jefe), para no gastar el punzón (M-20).
+
+- **Impacto en pilares:** Refuerza **Vulnerabilidad Constante** y **Decisiones con Consecuencias**. Riesgo: si el punzón es abundante, el agarre deja de dar miedo y el reciclaje pierde peso; su distribución debe ser escasa.
 
 ### M-12: Linterna
 
@@ -580,7 +596,7 @@ stateDiagram-v2
         
     - Si el haz de luz ilumina directamente a un enemigo mientras el jugador está en sigilo, su alerta sube el doble de rápido.
         
-    - Las baterías son **Deseable**; en la demo base la linterna no consume energía.
+    - **Barra de carga (D-71):** ~60 s de uso continuo; se recarga sola tras ~3 s apagada. En 0, la linterna parpadea y se apaga hasta recuperar un mínimo de carga. No usa baterías ni ocupa casilla; el indicador está en el terminal del brazo (valores iniciales, sujetos a balance).
         
 - **Entrada:** `F` para encender y apagar.
     
@@ -588,7 +604,7 @@ stateDiagram-v2
     
 - **Estado final:** Linterna encendida proyectando luz o apagada para ocultarse en las sombras.
     
-- **Recursos utilizados:** Visibilidad del jugador y nivel de exposición ante la IA enemiga; baterías si se implementan (Deseable).
+- **Recursos utilizados:** Visibilidad del jugador y nivel de exposición ante la IA enemiga; barra de carga (D-71).
     
 - **Recompensa:** Revelar pistas en paredes, elementos ocultos en la oscuridad y enemigos al acecho antes de que se acerquen.
     
@@ -662,15 +678,13 @@ stateDiagram-v2
         
     - El sellado rápido de puerta mediante hackeo (M-13, 2-3 entradas) corta la persecución.
         
-    - Sellar una puerta con fusibles o tarjetas es **Deseable**.
-        
 - **Entrada:** Moverse hacia la salida con `W` `A` `S` `D`; `E` para cerrar o sellar la puerta.
     
 - **Estado inicial:** Estado de alerta o combate activo.
     
 - **Estado final:** Estado de reagrupación o sigilo en la sala adyacente.
     
-- **Recursos utilizados:** Resistencia para huir; consumibles para sellar puertas (Deseable).
+- **Recursos utilizados:** Resistencia para huir y tiempo para el sellado rápido (M-13).
     
 - **Recompensa:** Sobrevivir a combates desfavorables sin perder salud ni recursos.
     
@@ -702,36 +716,38 @@ stateDiagram-v2
     
     - **Estructura (D-33):** el intento tiene **3 pisos**. Cada piso se compone de:
         
-        | Tipo de sala | Cantidad por piso | Función | Autoguardado |
-        |---|---|---|---|
-        | Sala procedural | 8–12 | Exploración, amenazas y recursos | No |
-        | Sala clave secundaria | 2–3 | Documentos, llaves u otros objetos clave | No |
-        | Sala clave final | 1 | Escalera o elevador hacia el piso siguiente | Sí, en los pisos 1 y 2 (D-30) |
+| Tipo de sala | Cantidad por piso | Función | Autoguardado |
+|---|---|---|---|
+| Sala procedural | 8–12 | Exploración, amenazas y recursos | No |
+| Sala clave secundaria | 2–3 | Documentos, llaves y, a veces, el interruptor de energía (D-72) | No |
+| Sala clave final | 1 | Escalera o elevador hacia el piso siguiente | Sí, en los pisos 1 y 2 (D-30) |
+	En total, ~10–15 salas por piso (valores iniciales, sujetos a balance). En el piso 3, el lugar de la sala clave final lo ocupa la sala de The Mother (M-19), que no guarda la partida.
         
-        En total, ~10–15 salas por piso (valores iniciales, sujetos a balance). En el piso 3, el lugar de la sala clave final lo ocupa la sala de The Mother (M-19), que no guarda la partida.
+- **Configuraciones (D-34):**
         
-    - **Configuraciones (D-34):**
+| Configuración     | Procedurales por piso | Secundarias por piso | Final por piso | Duración aproximada |
+| ----------------- | --------------------- | -------------------- | -------------- | ------------------- |
+| Completa          | 8–12                  | 2–3                  | 1              | ~45–60 min          |
+| Showcase (evento) | 6–8                   | 2                    | 1              | ~30 min             |
+	En el showcase, los enemigos y los recursos se escalan en proporción al número de salas (presupuestos en [[06 - Economía y Recursos]]).
         
-        | Configuración | Procedurales por piso | Secundarias por piso | Final por piso | Duración aproximada |
-        |---|---|---|---|---|
-        | Completa | 8–12 | 2–3 | 1 | ~45–60 min |
-        | Showcase (evento) | 6–8 | 2 | 1 | ~30 min |
-        
-        En el showcase, los enemigos y los recursos se escalan en proporción al número de salas (presupuestos en [[06 - Economía y Recursos]]).
-        
-    - **Enemigos por piso (configuración completa, D-37):** piso 1: 6–9; piso 2: 9–12; piso 3: 12–15 + The Mother. Máximo 2 enemigos activos por sala; ~1/3 de las salas quedan vacías a propósito (valores iniciales, sujetos a balance). La curva de dificultad se documenta en [[05 - Progresión]].
+- **Enemigos por piso (configuración completa, D-37):** piso 1: 6–9; piso 2: 9–12; piso 3: 12–15 + The Mother. Máximo 2 enemigos activos por sala; ~1/3 de las salas quedan vacías a propósito (valores iniciales, sujetos a balance). La curva de dificultad se documenta en [[05 - Progresión]].
         
     - Las escaleras y los elevadores existen **solo dentro de las salas clave finales** (D-33).
         
     - La posición de las salas clave dentro de cada piso varía por intento; el resto del piso se compone de salas procedurales.
         
-    - **Tutorial (D-38):** está integrado en las primeras salas del piso 1, que son fijas solo en el primer intento; desde el segundo intento esas salas son procedurales.
+    - **Tutorial (D-38):** está integrado en las primeras salas del piso 1, que son fijas solo en el primer intento; desde el segundo intento esas salas son procedurales. Son 4 salas: fila de cápsulas, depósito a oscuras, túnel y sala de calderas con 1 Rastrero (D-70, ver [[02 - Niveles]]).
+        
+    - **Salas procedurales (D-69):** combinan 6 arquetipos jugables (pasillo, almacén, sala abierta, sala de vigilancia, sala de hackeo y sala vertical) con el tema de cada piso: mantenimiento, clínica ilegal y núcleo (ver [[02 - Niveles]]).
         
     - **Llaves (D-36):** la puerta de la sala clave final se abre con la llave obligatoria del piso (M-08). El generador garantiza que esa llave es alcanzable antes de la puerta de la sala final. Las llaves opcionales abren atajos o salas con recursos.
         
     - Cada piso garantiza al menos una ruta válida hacia su sala clave final.
         
-    - El elevador puede requerir energía o hackeo (secuencia larga, M-13).
+    - El elevador puede requerir hackeo (secuencia larga, M-13).
+        
+    - **Energía (D-72):** los pisos 1 y 2 tienen ~1 de cada 3 probabilidades de empezar con la sala clave final sin energía (nunca en el primer intento del piso 1 ni en el piso 3). El interruptor está en una sala clave secundaria; restaurarlo (`E`) emite un aviso de maquinaria que alerta a los enemigos cercanos. Entre pisos solo se pasa por la sala clave final: no hay rutas alternativas.
         
     - **Autoguardado (D-30):** al llegar a la sala clave final de los pisos 1 y 2 sin enemigos en caza, la partida se autoguarda con un aviso discreto en el terminal del brazo. Si el jugador llega perseguido, el guardado espera a que la caza termine. Las salas clave secundarias y la sala de The Mother no guardan. Las reglas completas del guardado se documentan en [[07 - Reglas y Estados del Juego]].
         
@@ -765,7 +781,7 @@ stateDiagram-v2
         
     - Si el jugador llega a la sala clave final con enemigos en caza, el autoguardado no se realiza hasta que la caza termina (D-30).
         
-    - Si el elevador está sin energía y el jugador no puede hackearlo, debe existir una ruta alternativa a la fuente de energía en el mismo piso.
+    - Si la sala clave final está sin energía, el generador garantiza una ruta válida hasta el interruptor de la sala clave secundaria del mismo piso (D-72).
         
 - **Impacto en pilares:** Refuerza **Adaptación** (la ruta y la posición de las salas clave cambian por intento, pero la estructura es comprensible) y **Decisiones con Consecuencias** (elegir escalera o elevador cambia quién sigue al jugador; las llaves compiten por espacio). Riesgo: si la sala clave final queda siempre cerca del inicio, el piso pierde tensión; el generador debe imponer una distancia mínima (**Por definir**, no cubierta por D-23 a D-39).
 
@@ -796,7 +812,7 @@ flowchart TD
         
     - **Cinemática completa de reconstrucción (D-39, D-45, D-53):** se reproduce una sola vez, al terminar la introducción, y muestra por primera vez todo el proceso de reconstrucción en imágenes fugaces de 1–2 s con cortes a negro. Es **el momento del olvido**: Lukas recuerda a Emilia durante la introducción y la olvida de golpe en esta primera reconstrucción. Sale de su cápsula sabiendo que busca algo o a alguien, sin recordar a quién, y recoge del suelo un anillo que sabe importante; nunca se sabe si es el suyo o el de Emilia (D-54). Lukas muere al final de la introducción atacado por la espalda en un piso que no existe (D-53); el resto del contenido se documenta en [[01 - Premisa y Trama]].
         
-    - **Cinemática corta (D-39):** en cada muerte o reinicio, el personaje cae de su cápsula, en la fila de cápsulas del piso 1 (D-59), con sonido de maquinaria. Refleja la degradación acumulada y la pieza ajena visible de la reconstrucción (M-18) y se puede saltar (ver [[04 - Controles]]).
+    - **Cinemática corta (D-39):** en cada muerte o reinicio, el personaje cae de su cápsula, en la fila de cápsulas del piso 1 (D-59), con sonido de maquinaria. Refleja la degradación acumulada y la pieza ajena visible de la reconstrucción (M-18) y se puede saltar (ver [[04 - Controles]]). Junto a la cápsula, The Mother deja el revólver descargado en una bandeja de efectos personales: "Efectos personales R-H-09: 1 revólver (descargado)" (D-74).
         
     - **Código de sujeto (D-43, D-47, D-50):** The Mother identifica a Lukas con un código R-H, registrado en el mismo expediente que Emilia (R-H-01 a R-H-06, D-49). La primera reconstrucción lo registra como **R-H-07** y el código sube 1 en cada reconstrucción posterior (R-H-08, R-H-09…), incluidas las de "Reiniciar". El código se muestra en el terminal del brazo y es solo presentación: no tiene efecto mecánico. Si una salida con calma con costo (D-31) también sube el código queda **Por definir**.
         
@@ -876,7 +892,7 @@ flowchart TD
     
 - **Recursos utilizados:** Conocimiento registrado y usos disponibles.
     
-- **Recompensa:** Secuencias más cortas o accesos alternativos.
+- **Recompensa:** Secuencias más cortas o accesos alternativos dentro del mismo piso (D-72).
     
 - **Penalización:** Usar una falla en el momento equivocado la desperdicia.
     
@@ -948,7 +964,7 @@ flowchart TD
     
 - **Sala (D-59):** la central de megafonía desde donde se emitió el latido en el incidente. Es una sola sala grande que se transforma en cada fase: mesas de mezcla y racks de cinta como nodos (fase 1), altavoces que emiten el latido y cámaras hostiles (fase 2), y transformadores de alto voltaje expuestos al caer las placas de los altavoces (fase 3). Sin carne: The Mother no es la criatura. The Mother es un archivo de muestras criogénicas montado en una grúa, con un brazo recolector y un núcleo criogénico (D-65). La terminal central es la consola de emisión.
     
-- **Ataque de The Mother (D-65):** fiel a su protocolo, trata a Lukas como un espécimen no conforme que debe recolectar y archivar. Su brazo recolector recorre la sala en las 3 fases y, si alcanza al jugador, lo agarra con las reglas de M-11: el objeto defensivo lo aturde 2 s; sin objeto, baja un estado de salud o mata en Crítico. Lukas puede morir en cualquier fase.
+- **Ataque de The Mother (D-65):** fiel a su protocolo, trata a Lukas como un espécimen no conforme que debe recolectar y archivar. Su brazo recolector recorre la sala en las 3 fases y, si alcanza al jugador, lo agarra con las reglas de M-11: el punzón de descarga lo aturde 2 s; sin punzón, baja un estado de salud o mata en Crítico. Lukas puede morir en cualquier fase.
     
 - **Reglas:**
     
@@ -958,9 +974,9 @@ flowchart TD
         
         1. **Hackeo de nodos bajo presión** (M-13) en las mesas de mezcla, mientras el brazo recolector patrulla los nodos (D-65); las fallas descubiertas (M-17) acortan las secuencias. Si M-17 (Deseable) no se implementa, la fase funciona con las secuencias de longitud original.
             
-        2. **Supervivencia y huida con cámaras hostiles (D-28):** las cámaras de la sala dejan de ser una herramienta del jugador (M-02, D-16) y pasan a vigilarlo. Cada cámara muestra una luz roja y emite el sonido de su motor al girar (M-10). Cada vez que una cámara enfoca al jugador, The Mother libera un asimilado desde una cápsula de su archivo, que acude a ese punto (máximo 2 activos a la vez; total por fase **Por definir**, sujeto a balance; D-65). Una niebla criogénica reduce la visibilidad, sin ralentizar ni tapar las señales de M-10 (D-65). El jugador se mueve entre los puntos ciegos de las cámaras.
+        2. **Supervivencia y huida con cámaras hostiles (D-28):** las cámaras de la sala dejan de ser una herramienta del jugador (M-02, D-16) y pasan a vigilarlo. Cada cámara muestra una luz roja y emite el sonido de su motor al girar (M-10). Cada vez que una cámara enfoca al jugador, The Mother libera un asimilado desde una cápsula de su archivo, que acude a ese punto (4 en total, Altos o Rastreros, con un máximo de 2 activos a la vez; valores iniciales, sujetos a balance; D-65, D-80). Una niebla criogénica reduce la visibilidad, sin ralentizar ni tapar las señales de M-10 (D-65). El jugador se mueve entre los puntos ciegos de las cámaras.
             
-        3. **Pocos disparos a puntos débiles expuestos** (M-04): The Mother abre su núcleo criogénico y expone los transformadores de alto voltaje que la alimentan (D-59, D-65). Al destruir el último, la estantería se apaga y The Mother cae. La sala contiene munición suficiente para todos los puntos débiles más 1–2 disparos de margen (valor inicial, sujeto a balance; D-28).
+        3. **Pocos disparos a puntos débiles expuestos** (M-04): The Mother abre su núcleo criogénico y expone los **3 transformadores** de alto voltaje que la alimentan, de 2 disparos cada uno (D-59, D-65, D-80). Al destruir el último, la estantería se apaga y The Mother cae. La sala contiene 8 balas: 6 para los transformadores y 2 de margen (valores iniciales, sujetos a balance; D-28, D-80).
             
     - **Sin reciclaje (D-28):** en la sala de The Mother no hay reciclaje de enemigos (M-20).
             
@@ -987,17 +1003,16 @@ flowchart TD
         - **Con los 6 documentos de Emilia** (acumulados en el terminal del brazo en cualquier intento, M-08): el jugador elige entre examinar la terminal central o irse por la salida.
             
     - **Cinemáticas de victoria (D-51):**
-        
-        | Condición | Momento final | Cinemática | Resultado |
-        |---|---|---|---|
-        | Victoria sin los 6 documentos | Lukas examina la terminal central de forma automática | **Relevo básico** | Algo ocurre y Lukas reemplaza automáticamente a The Mother: el terminal del brazo lo conecta, porque es el último con identidad |
-        | Victoria con los 6 documentos, examinar la terminal | El jugador examina la terminal central (`E`) | **Relevo completo** | Misma base que el Relevo básico, con el expediente R-H-01 a R-H-06 "estado desconocido" (D-49) y el segundo acto: al conectarse, Lukas oye el latido y lo entiende; el jugador solo ve un glitch ilegible (D-61). Lukas reemplaza a The Mother sabiendo más |
-        | Victoria con los 6 documentos, irse | El jugador elige la salida (`E`) | **Ambiguo** | En negro, el latido de Lukas y el del laboratorio se sincronizan en uno; silencio (D-61). No se sabe si Lukas fue asimilado, si se convirtió en The Mother o si ocurrió otra cosa |
-        
-        El final de derrota "Asimilación" no forma parte de esta tabla: se activa por el contador de 5 muertes (M-18, D-42). Sin final de Renuncia; "Salida" y "Encuentro con Emilia" quedan fuera de la demo (D-51).
-            
-    - Morir en la sala regresa al inicio del ciclo (M-16).
-        
+	
+| Condición                                           | Momento final                                         | Cinemática          | Resultado                                                                                                                                                                                                                                                   |
+| --------------------------------------------------- | ----------------------------------------------------- | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Victoria sin los 6 documentos                       | Lukas examina la terminal central de forma automática | **Relevo básico**   | Algo ocurre y Lukas reemplaza automáticamente a The Mother: el terminal del brazo lo conecta, porque es el último con identidad                                                                                                                             |
+| Victoria con los 6 documentos, examinar la terminal | El jugador examina la terminal central (`E`)          | **Relevo completo** | Misma base que el Relevo básico, con el expediente R-H-01 a R-H-06 "estado desconocido" (D-49) y el segundo acto: al conectarse, Lukas oye el latido y lo entiende; el jugador solo ve un glitch ilegible (D-61). Lukas reemplaza a The Mother sabiendo más |
+| Victoria con los 6 documentos, irse                 | El jugador elige la salida (`E`)                      | **Ambiguo**         | En negro, el latido de Lukas y el del laboratorio se sincronizan en uno; silencio (D-61). No se sabe si Lukas fue asimilado, si se convirtió en The Mother o si ocurrió otra cosa                                                                           |
+	El final de derrota "Asimilación" no forma parte de esta tabla: se activa por el contador de 5 muertes (M-18, D-42). Sin final de Renuncia; "Salida" y "Encuentro con Emilia" quedan fuera de la demo (D-51).
+	
+- Morir en la sala regresa al inicio del ciclo (M-16).
+
 - **Entrada:** Las mismas de M-02, M-04, M-06 y M-13; `E` sobre la terminal central o la salida en la decisión final (M-08).
     
 - **Estado inicial:** Personaje en la sala de The Mother con el inventario que traía.
@@ -1018,7 +1033,7 @@ flowchart TD
         
     - Los enemigos eliminados en la sala no se reciclan, por lo que rematarlos no es necesario (D-28).
         
-    - El número de puntos débiles de la fase 3 queda **Por definir** (no cubierto por D-23 a D-39).
+    - La fase 3 tiene 3 puntos débiles (los transformadores), de 2 disparos cada uno (D-80).
         
     - Si el sexto documento de Emilia se obtiene en el mismo intento en que se derrota a The Mother, cuenta para la decisión final, porque ya está acumulado en el terminal del brazo (D-51).
         
@@ -1054,20 +1069,20 @@ flowchart TD
         
     - **Remate (D-21):** evita el reciclaje de un cuerpo. Solo puede hacerse mientras el cuerpo sigue en la sala. Hay dos formas:
         
-        | Opción | Costo | Tiempo | Ruido | Entrada |
-        |---|---|---|---|---|
-        | Golpe en el suelo | 25% de la resistencia (valor inicial, sujeto a balance; M-06, D-37) | ~2 s (valor inicial, sujeto a balance) | Alerta a enemigos cercanos (M-09) | `Clic izquierdo` sin apuntar sobre un cuerpo |
-        | Consumible de remate (p. ej. combustible para incinerar) | 1 casilla del inventario (M-07; hasta 2 por casilla, D-37) | Rápido (duración **Por definir**, no cubierta por D-23 a D-39) | No alerta a enemigos | `E` sobre un cuerpo |
+| Opción                    | Costo                                                                                            | Tiempo                                 | Ruido                             | Entrada                                      |
+| ------------------------- | ------------------------------------------------------------------------------------------------ | -------------------------------------- | --------------------------------- | -------------------------------------------- |
+| Golpe en el suelo         | 25% de la resistencia (valor inicial, sujeto a balance; M-06, D-37)                              | ~2 s (valor inicial, sujeto a balance) | Alerta a enemigos cercanos (M-09) | `Clic izquierdo` sin apuntar sobre un cuerpo |
+| Punzón de descarga (M-11) | El punzón, de un solo uso: deja a Lukas sin defensa ante el próximo agarre (1 por casilla, D-71) | Rápido (duración **Por definir**)      | No alerta a enemigos              | `E` sobre un cuerpo                          |
         
-    - **Disponibilidad del remate (D-27):** el contexto "sobre un cuerpo" se activa a ~1.5 m (valor inicial, sujeto a balance) mirando un cuerpo no rematado, también durante el combate con enemigos vivos cerca. Si hay otro elemento interactivo al lado del cuerpo (puerta, panel, escalera, elevador u objeto), gana el que está al centro de la vista. Con un cuerpo ya rematado el contexto no se activa.
+- **Disponibilidad del remate (D-27):** el contexto "sobre un cuerpo" se activa a ~1.5 m (valor inicial, sujeto a balance) mirando un cuerpo no rematado, también durante el combate con enemigos vivos cerca. Si hay otro elemento interactivo al lado del cuerpo (puerta, panel, escalera, elevador u objeto), gana el que está al centro de la vista. Con un cuerpo ya rematado el contexto no se activa.
         
     - El golpe en el suelo no otorga protección contra el daño (D-05).
         
-    - El consumible de remate es distinto del objeto defensivo (M-11): no se activa al ser agarrado y no reemplaza la defensa contra agarres (D-14).
+    - **Objeto único (D-71):** el remate silencioso y la defensa contra agarres usan el mismo punzón de descarga (M-11). Clavado en un cuerpo, la descarga quema su último rastro de identidad y The Mother ya no puede reconstruirlo.
         
-    - La disponibilidad del consumible de remate es baja (presupuesto por piso, ver [[06 - Economía y Recursos]]).
+    - La disponibilidad del punzón de descarga es baja (presupuesto por piso, ver [[06 - Economía y Recursos]]).
         
-- **Entrada:** `Clic izquierdo` sin apuntar sobre un cuerpo para el golpe en el suelo; `E` sobre un cuerpo para usar el consumible de remate (ver [[04 - Controles]]).
+- **Entrada:** `Clic izquierdo` sin apuntar sobre un cuerpo para el golpe en el suelo; `E` sobre un cuerpo para usar el punzón de descarga (ver [[04 - Controles]]).
     
 - **Estado inicial:** Enemigo eliminado con su cuerpo en la sala.
     
@@ -1077,7 +1092,7 @@ flowchart TD
         
     - **Sin rematar:** el cuerpo desaparece tras el aviso y el enemigo reciclado reaparece en otra sala del mismo piso cuando el jugador sale de la sala.
         
-- **Recursos utilizados:** Resistencia o un consumible de remate, tiempo y exposición.
+- **Recursos utilizados:** Resistencia o un punzón de descarga, tiempo y exposición.
     
 - **Recompensa:** Una amenaza menos en el piso durante el resto del intento.
     
@@ -1085,11 +1100,11 @@ flowchart TD
     
     - **Golpe en el suelo:** el personaje queda expuesto ~2 s (valor inicial, sujeto a balance), gasta resistencia y alerta a enemigos cercanos.
         
-    - **Consumible de remate:** ocupa una casilla que compite con curas, munición y el objeto defensivo.
+    - **Punzón de descarga:** ocupa una casilla y, gastado en un remate, ya no protege contra el próximo agarre.
         
     - **No rematar:** un enemigo más rápido vuelve a aparecer en el piso.
         
-- **Interacciones con otras mecánicas:** Interactúa con M-06 Resistencia (costo del golpe en el suelo), M-07 Inventario (casilla del consumible), M-09 Sigilo (el golpe en el suelo hace ruido; el consumible no), M-10 Señales diegéticas (aviso de maquinaria), M-08 Interacción (prioridad por el centro de la vista, D-27), M-14 Escape de combate (la sala de la que se huyó sigue infestada, incluidos los reciclados) y M-19 Jefe final (sin reciclaje en la sala de The Mother, D-28).
+- **Interacciones con otras mecánicas:** Interactúa con M-06 Resistencia (costo del golpe en el suelo), M-07 Inventario (casilla del punzón), M-09 Sigilo (el golpe en el suelo hace ruido; el punzón no), M-11 Punzón de descarga (mismo objeto), M-10 Señales diegéticas (aviso de maquinaria), M-08 Interacción (prioridad por el centro de la vista, D-27), M-14 Escape de combate (la sala de la que se huyó sigue infestada, incluidos los reciclados) y M-19 Jefe final (sin reciclaje en la sala de The Mother, D-28).
     
 - **Casos límite:**
     
@@ -1097,17 +1112,17 @@ flowchart TD
         
     - Con resistencia insuficiente o en agotamiento (M-06), el golpe en el suelo no se ejecuta y se reproduce un jadeo audible.
         
-    - Sin consumible de remate en el inventario, `E` sobre un cuerpo no tiene efecto.
+    - Sin punzón de descarga en el inventario, `E` sobre un cuerpo no tiene efecto.
         
     - Si el cuerpo coincide con una puerta, un panel, una escalera, un elevador o un objeto, gana el elemento que está al centro de la vista (D-27, ver [[04 - Controles]]). Así, un cuerpo no puede bloquear la ruta garantizada hacia la sala clave final: basta con centrar la vista en el otro elemento (D-33, D-36, principio 9 de [[01 - Jugabilidad]]).
         
-    - Si el contexto se activa con el cuerpo de un enemigo reciclado o con los cuerpos de la sala del jefe, que no pueden reciclarse: **Por definir** (no cubierto por D-23 a D-39).
+    - Con el cuerpo de un enemigo reciclado o con los cuerpos de la sala del jefe, que no pueden reciclarse, el contexto de remate no se activa, para no gastar el punzón (D-71).
         
     - Si el jugador sale de la sala durante el aviso, el cuerpo desaparece y el enemigo reciclado reaparece en otra sala del mismo piso.
         
     - Rematar a un enemigo reciclado no es necesario: ya no puede volver a reciclarse.
         
-- **Impacto en pilares:** Refuerza **Decisiones con Consecuencias** (rematar cuesta tiempo y ruido frente a una casilla del inventario; no rematar deja una amenaza viva) y **Vulnerabilidad Constante** (eliminar a un enemigo no garantiza seguridad y rematar expone al personaje). Riesgos: desgaste sin fin, mitigado con el reciclaje único; saturar el inventario, mitigado con un presupuesto bajo del consumible de remate.
+- **Impacto en pilares:** Refuerza **Decisiones con Consecuencias** (rematar cuesta tiempo y ruido frente a una casilla del inventario; no rematar deja una amenaza viva) y **Vulnerabilidad Constante** (eliminar a un enemigo no garantiza seguridad y rematar expone al personaje). Riesgos: desgaste sin fin, mitigado con el reciclaje único; saturar el inventario, mitigado con un presupuesto bajo del punzón de descarga.
 
 ## Mecánicas Post-demo
 
@@ -1127,7 +1142,7 @@ flowchart TD
 |---|---|---|
 | Conos de visión enemigos visibles | Dan información completa y eliminan la incertidumbre (D-02) | A |
 | Esquiva con invulnerabilidad | Anula el castigo del daño y contradice la ausencia de dashes (D-05) | V |
-| Liberación de agarre por secuencia con usos por vida | Reemplazada por M-11 Objeto defensivo (D-14) | V, DC |
+| Liberación de agarre por secuencia con usos por vida | Reemplazada por M-11, hoy Punzón de descarga (D-14, D-71) | V, DC |
 | Ajuste para fijar siempre una perspectiva | Rompe el bloqueo de vigilancia (M-03) | V |
 | Regeneración de salud | Elimina las consecuencias del daño y el valor de las curas (D-07) | V, DC |
 
@@ -1145,7 +1160,7 @@ flowchart TD
 | M-08 Interacción y documentos | M-07 | M-15, M-16, M-17, M-19, M-20 |
 | M-09 Sigilo y ruido | M-02, M-06, M-12, M-20 | M-03, M-10 |
 | M-10 Señales diegéticas | M-09, M-18, M-19 | M-02, M-03, M-15, M-18, M-19, M-20 |
-| M-11 Objeto defensivo | M-07 | M-03, M-05 |
+| M-11 Punzón de descarga | M-07 | M-03, M-05, M-20 |
 | M-12 Linterna | M-01 | M-03, M-09 |
 | M-13 Hackeo | M-17 | M-14, M-15, M-19 |
 | M-14 Escape de combate | M-06, M-13, M-20 | M-03, M-07 |

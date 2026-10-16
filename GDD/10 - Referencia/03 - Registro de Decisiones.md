@@ -160,6 +160,8 @@ Esta sección conserva las decisiones importantes del proyecto y el razonamiento
 
 **Consecuencias:** Se crea M-11 y se elimina la mecánica anterior de liberación de agarre, su secuencia y su contador por vida.
 
+**Estado:** Modificada por D-71 (el punzón de descarga reúne la defensa contra agarres y el remate). Se conserva como histórico.
+
 **Responsable:** Christian Coronel Palma
 
 ## Decisión D-15 — Exploración vertical por pisos
@@ -273,6 +275,8 @@ Esta sección conserva las decisiones importantes del proyecto y el razonamiento
 **Motivo:** Refuerza **Decisiones con Consecuencias**: el jugador elige entre gastar tiempo, resistencia y ruido o una casilla del inventario, o asumir que el enemigo volverá.
 
 **Consecuencias:** M-20 documenta ambas formas y [[04 - Controles]] agrega el remate como acción contextual sobre un cuerpo. El golpe en el suelo no otorga protección contra el daño (D-05) y el consumible de remate no sustituye al objeto defensivo (D-14). Riesgo documentado: saturar el inventario, mitigado con un presupuesto bajo del consumible (D-17).
+
+**Estado:** Precisada por D-71 (el remate silencioso usa el punzón de descarga).
 
 **Responsable:** Christian Coronel Palma
 
@@ -800,6 +804,8 @@ Esta sección conserva las decisiones importantes del proyecto y el razonamiento
 
 **Consecuencias:** Precisa D-45 y D-52. M-08 en [[02 - Mecánicas]] y [[04 - Diálogos y Narrativa]] documentan el estilo y la sala ya registrada. [[06 - Economía y Recursos]] debe contemplar los recursos de sustitución.
 
+**Estado:** Precisada por D-79 (la sala con el documento ya registrado da 1 recurso extra).
+
 **Responsable:** Christian Coronel Palma
 
 ## Decisión D-59 — Lugares: Sektor V-7, pisos y sala de The Mother
@@ -924,6 +930,199 @@ Esta sección conserva las decisiones importantes del proyecto y el razonamiento
 
 **Responsable:** Christian Coronel Palma
 
+## Decisión D-71 — Inventario: 5 tipos de objeto y punzón de descarga
+
+**Fecha:** 2026-10-16
+
+**Tema:** Inventario y economía.
+
+**Problema:** El inventario mezclaba 6 tipos de objeto con casilla, más baterías y fusibles o tarjetas como Deseables y "otros objetos clave" sin definir. El consumible de remate duplicaba al golpe en el suelo con una presencia de 0-1 por piso, y no estaba escrito si el arma y el anillo ocupaban casilla.
+
+**Opciones consideradas:**
+
+1. Recortar baterías y fusibles y convertir los objetos clave en coleccionables.
+2. Mantener todo y añadir un consumible nuevo (celda de energía).
+3. Mantener el inventario, convertir la linterna en una barra recargable, eliminar los fusibles y fusionar el objeto defensivo con el consumible de remate.
+
+**Decisión tomada:** Opción 3.
+
+- El revólver, la linterna y el anillo no ocupan casilla.
+- Se eliminan los fusibles o tarjetas: el sellado rápido por hackeo (M-14) cubre su función.
+- **Linterna:** barra de carga de ~60 s de uso continuo que se recarga sola tras ~3 s apagada; en 0 se apaga hasta recuperar un mínimo. Sin baterías.
+- **Punzón de descarga:** equipo de contención de Kessler que sustituye al objeto defensivo y al consumible de remate. Es de un solo uso con 2 funciones: se activa solo al ser agarrado (aturde 2 s) o se usa con `E` sobre un cuerpo para rematarlo sin alertar. 1 por casilla. Presupuesto: 2-3, 1-2 y 0-1 por piso (showcase: 2, 1-2 y 0-1).
+- El contexto de remate no se activa sobre cuerpos que no pueden reciclarse.
+- Quedan 5 tipos de objeto con casilla: cura, munición, punzón de descarga, llave obligatoria y llave opcional.
+
+**Motivo:** Refuerza **Decisiones con Consecuencias**: gastar el punzón en un remate deja a Lukas sin defensa ante el próximo agarre.
+
+**Consecuencias:** Modifica D-14 (el remate y la defensa ya no son objetos distintos) y D-37 (máximo por casilla del consumible de remate). Precisa D-21. M-07, M-11, M-12, M-14 y M-20 se alinean, junto con S-03, S-05, S-09, [[04 - Controles]] y [[06 - Economía y Recursos]].
+
+**Responsable:** Christian Coronel Palma
+
+## Decisión D-72 — Energía de la sala clave final
+
+**Fecha:** 2026-10-16
+
+**Tema:** Niveles.
+
+**Problema:** M-15 exigía una "ruta alternativa a la fuente de energía" si el elevador quedaba sin energía, sin definir cuándo ocurría ni qué era esa fuente. Además, no debía haber rutas alternativas entre pisos.
+
+**Opciones consideradas:**
+
+1. Eliminar el caso sin energía.
+2. Eliminar el caso sin energía y dejar que las fallas abran atajos dentro del piso.
+3. Mantener la energía como objetivo con un interruptor en el mismo piso.
+
+**Decisión tomada:** Opción 3.
+
+- Los pisos 1 y 2 tienen ~1 de cada 3 probabilidades de empezar con la sala clave final sin energía. No aplica al primer intento del piso 1 ni al piso 3.
+- El interruptor está en una sala clave secundaria elegida por el generador, con ruta garantizada. Restaurarlo (`E`) emite un aviso de maquinaria que alerta a los enemigos cercanos.
+- Entre pisos solo se pasa por la sala clave final: no hay rutas alternativas. Las fallas (M-17) solo abren accesos dentro del mismo piso.
+
+**Motivo:** Refuerza **Adaptación**: el objetivo del piso cambia entre intentos sin añadir objetos.
+
+**Consecuencias:** M-15, M-17, S-08, [[02 - Niveles]], [[06 - Economía y Recursos]] y [[07 - Reglas y Estados del Juego]] se alinean.
+
+**Responsable:** Christian Coronel Palma
+
+## Decisión D-74 — Revólver de Kessler
+
+**Fecha:** 2026-10-16
+
+**Tema:** Combate.
+
+**Problema:** M-04 solo decía "1 arma de fuego"; faltaban el tipo, la munición por recogida, el apuntado y qué ocurría con el arma al morir, si no ocupa casilla.
+
+**Opciones consideradas:**
+
+1. Revólver de servicio, recarga bala a bala, devuelto por The Mother en cada reconstrucción.
+2. Pistola de pernos industrial.
+3. Pistola de seguridad moderna con cargador.
+
+**Decisión tomada:** Opción 1, con diseño de 2080.
+
+- Revólver de servicio del Werkschutz de Kessler Sicherheit AG (D-75), de gama alta: armazón cerámico y polímero, cañón alineado con la recámara inferior, seguro biométrico (el terminal del brazo identifica a Lukas como activo de Vitalis) y contador de balas en el armazón, que sustituye al indicador de munición del HUD.
+- Tambor de 6. Recarga bala a bala (~0.7 s por bala), cancelable, conservando las balas cargadas. Blísteres de 3 cartuchos; 12 balas por casilla. ~0.8 s entre disparos.
+- Apuntado con un punto pequeño cuya dispersión se cierra en ~1 s con Lukas quieto; sin auto-apuntado.
+- Cada tipo de enemigo tiene un punto débil: acertarle interrumpe el ataque o el agarre, sin reducir los disparos de D-66.
+- Cada disparo alerta a ~20 m y llena un poco la atención de The Mother.
+- La primera vez se encuentra en el cadáver asimilado de un guardia de Kessler (tutorial). Desde entonces, The Mother lo deja descargado en una bandeja de efectos personales junto a la cápsula en cada reconstrucción, también si Lukas murió antes de recogerlo.
+
+**Motivo:** Refuerza **Vulnerabilidad Constante** (Lukas no es tirador y la munición se pierde) sin dejarlo indefenso tras cada muerte. Vitalis no escatima en proteger sus experimentos.
+
+**Consecuencias:** M-01, M-04, M-16 y S-03 se alinean; [[04 - Objetos y Coleccionables]] documenta el arma.
+
+**Responsable:** Christian Coronel Palma
+
+## Decisión D-82 — Paleta de color y luz por piso
+
+**Fecha:** 2026-10-16
+
+**Tema:** Arte.
+
+**Problema:** El GDD citaba la estética de *Signalis* sin paleta propia. El equipo aportó 4 paletas de referencia y una imagen de ambientación, y el diseño de Lukas ya usaba teal y rojo.
+
+**Opciones consideradas:**
+
+1. Base fría con rojo y tinte por piso.
+2. Base fría con rojo, sin tintes por piso.
+3. Monocromo con un acento rojo.
+4. Paleta cálida y sucia.
+
+**Decisión tomada:** Opción 1, con las paletas del equipo.
+
+- Base (grises cálidos, ~70% de la pantalla); carmesí para Vitalis, carne y peligro; teal para Lukas y su terminal; morado solo para lo cósmico; verde fósforo para las pantallas de la instalación; ámbar de sodio tomado de la imagen de referencia.
+- Luz por piso: ámbar (mantenimiento), fluorescente blanco frío con sombras `#08241E` (clínica, para que Lukas no se funda con el fondo) y carmesí (núcleo y sala de The Mother).
+- El juego está mayormente a oscuras por el estado de emergencia; la linterna es la única luz blanca.
+- El color nunca es la única señal; un tinte por sala y como máximo un acento de información.
+
+**Motivo:** Refuerza **Vulnerabilidad Constante** (oscuridad y linterna) y separa la información de Lukas (teal), de la instalación (verde) y de la amenaza (rojo).
+
+**Consecuencias:** [[01 - Dirección de Arte]], [[03 - Entornos]] y [[04 - Interfaz Visual]] usan esta paleta.
+
+**Responsable:** Christian Coronel Palma
+
+## Decisión D-86 — Interfaz diegética
+
+**Fecha:** 2026-10-16
+
+**Tema:** Interfaz.
+
+**Problema:** Se quería una interfaz diegética como *Signalis*, pero legible para jugadores sin experiencia en el género.
+
+**Opciones consideradas:**
+
+1. Indicadores contextuales en pantalla por defecto, con opciones.
+2. Diegético por defecto, con opciones.
+3. Preguntar el estilo al iniciar.
+
+**Decisión tomada:** Diegético por defecto, con los estados en el terminal y no en pantalla.
+
+- Sin HUD permanente. Salud en la postura y en el terminal (electrocardiograma y etiqueta de texto); munición en el contador del revólver y en el inventario; carga de la linterna en el terminal.
+- En pantalla solo aparecen la retícula al apuntar, el aviso `E`, los subtítulos y las líneas de The Mother, y el aviso de autoguardado.
+- Las ayudas del tutorial son líneas de instrucción de The Mother en su canal de texto.
+- Terminal de fósforo teal con líneas de escaneo suaves, tipografía monoespaciada de los 90 y etiquetas en inglés en mayúsculas.
+
+**Motivo:** Refuerza **Vulnerabilidad Constante** (sin información superpuesta) y mantiene la legibilidad con etiquetas claras.
+
+**Consecuencias:** [[04 - Interfaz Visual]] documenta la interfaz; [[02 - UI y Menús]] y [[03 - Accesibilidad]] parten de esta regla.
+
+**Responsable:** Christian Coronel Palma
+
+## Decisión D-87 — Música y leitmotivs
+
+**Fecha:** 2026-10-16
+
+**Tema:** Audio.
+
+**Problema:** S-11 definía las señales jugables, pero no el papel ni el estilo de la música.
+
+**Opciones consideradas:**
+
+1. Ambiente sin música en la exploración y temas puntuales.
+2. Drone musical dinámico según la alerta.
+3. Sin música.
+
+**Decisión tomada:** Opción 1.
+
+- Exploración sin música: drones industriales, maquinaria y el latido del laboratorio. Música en el menú, las cinemáticas, la sala de The Mother (loop por fase) y los finales.
+- Estilo crudo, oscuro e industrial, melancólico y minimalista. Referencias: Lustmord, John Carpenter, Trent Reznor y Atticus Ross, Hildur Guðnadóttir, Akira Yamaoka y Petri Alanko.
+- Instrumentos: piano, guitarra acústica, sintetizadores, bajos, sonidos frágiles, estática, zumbidos eléctricos, máquinas y engranajes.
+- 3 leitmotivs: Emilia (piano y guitarra), The Mother (industrial) y el latido (bajos y subgraves).
+
+**Motivo:** Refuerza **Adaptación**: la música nunca tapa las señales de M-10 que el jugador aprende a leer.
+
+**Consecuencias:** [[05 - Audio y Música]] documenta la música y la mezcla.
+
+**Responsable:** Christian Coronel Palma
+
+## Decisión D-88 — Producción de animación
+
+**Fecha:** 2026-10-16
+
+**Tema:** Animación.
+
+**Problema:** Faltaba definir cómo se producen las animaciones con un equipo pequeño que prefiere recursos propios.
+
+**Opciones consideradas:**
+
+1. 100% propio, más las herramientas de Unity.
+2. Propio, con marcadores externos solo en el prototipo.
+3. Propio, con Mixamo para la locomoción.
+
+**Decisión tomada:** Opción 3.
+
+- Modelo, esqueleto, rig y clips en Blender. Solo la locomoción base viene de Mixamo, retocada.
+- En Unity, con herramientas incluidas (Animator, *Animation Rigging*, IK, ragdoll): apuntado, apoyo de pies, manos en objetos, espasmos de asimilados, patas del Rastrero y cuerpos.
+- Las acciones con intención y las sincronizadas (agarres, remates) siempre son clips propios.
+- Esqueleto humanoide compartido por Lukas, el Alto, la Boca y el Mudo; la locomoción de Lukas es la primera prioridad de producción.
+
+**Motivo:** Ahorra tiempo en la parte más difícil de animar a mano sin perder el movimiento antinatural de los asimilados, que es propio.
+
+**Consecuencias:** [[02 - Personajes y Animación]] documenta el flujo y las convenciones.
+
+**Responsable:** Christian Coronel Palma
+
 ## Registro
 
 | Fecha | Tema | Decisión | Responsable |
@@ -941,21 +1140,21 @@ Esta sección conserva las decisiones importantes del proyecto y el razonamiento
 | 2026-10-05 | D-11 Estructura | Salas clave fijas + salas procedurales (reemplaza la etiqueta "Lineal") | Christian Coronel Palma |
 | 2026-10-05 | D-12 Permadeath | Permadeath individual del clon; los datos persisten. **Modificada por D-18** | Christian Coronel Palma |
 | 2026-10-05 | D-13 Premisa | Premisa oficial del hombre que busca la última pista de su esposa fallecida. **Modificada por D-40** | Christian Coronel Palma |
-| 2026-10-05 | D-14 Agarre | La liberación de agarre se reemplaza por un objeto defensivo consumible | Christian Coronel Palma |
+| 2026-10-05 | D-14 Agarre | La liberación de agarre se reemplaza por un objeto defensivo consumible. **Modificada por D-71** | Christian Coronel Palma |
 | 2026-10-05 | D-15 Exploración vertical | Pisos conectados por escaleras o elevadores ubicados solo en salas clave. **Modificada por D-33** | Christian Coronel Palma |
 | 2026-10-05 | D-16 Jefe final | The Mother como jefe híbrido de 3 fases; derrotarla es la condición de victoria. **Precisada por D-51 y D-59** (sala y forma de The Mother) | Christian Coronel Palma |
 | 2026-10-06 | D-17 Recursos | Presupuesto garantizado por piso (mínimo y máximo de cada recurso); el generador decide la ubicación | Christian Coronel Palma |
 | 2026-10-06 | D-18 Muerte | El personaje se reconstruye, no se clona: siempre es el mismo hombre, recompuesto con piezas ajenas; se pierde todo el inventario. Modifica D-12 | Christian Coronel Palma |
 | 2026-10-06 | D-19 Etiquetas | Se elimina la etiqueta "Permadeath" y se usa "Ciclo de muerte y reconstrucción" | Christian Coronel Palma |
 | 2026-10-06 | D-20 Enemigos | Los enemigos eliminados siguen muertos durante el intento, pero The Mother puede reciclar cada uno una sola vez | Christian Coronel Palma |
-| 2026-10-06 | D-21 Remate | Dos formas de evitar el reciclaje: golpe en el suelo o consumible de remate | Christian Coronel Palma |
+| 2026-10-06 | D-21 Remate | Dos formas de evitar el reciclaje: golpe en el suelo o consumible de remate. **Precisada por D-71** | Christian Coronel Palma |
 | 2026-10-06 | D-22 Guardado | Suspensión al salir y reanudación en el mismo punto, sin guardado manual; el terminal y las fallas se autoguardan al cambiar. **Modificada por D-30** | Christian Coronel Palma |
 | 2026-10-07 | D-23 Señal de vigilancia | Señal escalonada según M-10: sin cambios en sospecha, degradada en búsqueda (más ruido CRT y retraso), cortada y bloqueada en caza; "en alerta" = caza, mismo alcance que M-03. Motivo: Vulnerabilidad Constante y Adaptación | Christian Coronel Palma |
 | 2026-10-07 | D-24 Atención de The Mother | Medidor oculto que se llena usando la vigilancia (~5 s) y baja sin usarla (~15 s); al llenarse, los enemigos cercanos pasan a sospecha y luego a búsqueda hacia el jugador. Motivo: Decisiones con Consecuencias y Vulnerabilidad Constante | Christian Coronel Palma |
 | 2026-10-07 | D-25 Cobertura de cámaras | Todas las salas clave (secundarias, finales y la del jefe) tienen cámara, más ~1 de cada 3 salas procedurales. Motivo: Adaptación (la cobertura procedural cambia por intento) | Christian Coronel Palma |
 | 2026-10-07 | D-26 Persecución entre pisos | Por escalera solo siguen los enemigos en caza, con un breve retraso; por elevador no siguen, pero los perseguidores esperan cerca del elevador si el jugador vuelve. Motivo: Vulnerabilidad Constante y Decisiones con Consecuencias (escalera o elevador cambian el riesgo) | Christian Coronel Palma |
 | 2026-10-07 | D-27 Remate | Disponible a ~1.5 m mirando un cuerpo no rematado, también en combate; si hay otro interactivo al lado, gana el que está al centro de la vista. Motivo: Decisiones con Consecuencias (rematar en combate es una elección arriesgada) | Christian Coronel Palma |
-| 2026-10-07 | D-28 Jefe | Fase 2 con cámaras hostiles (luz roja y sonido de motor; si una enfoca al jugador, los enemigos acuden a ese punto); sin reciclaje en la sala del jefe; la fase 3 tiene munición para todos los puntos débiles más 1–2 disparos de margen. Motivo: Vulnerabilidad Constante | Christian Coronel Palma |
+| 2026-10-07 | D-28 Jefe | Fase 2 con cámaras hostiles (luz roja y sonido de motor; si una enfoca al jugador, los enemigos acuden a ese punto); sin reciclaje en la sala del jefe; la fase 3 tiene munición para todos los puntos débiles más 1–2 disparos de margen. Motivo: Vulnerabilidad Constante. **Precisada por D-80** | Christian Coronel Palma |
 | 2026-10-07 | D-29 Degradación | La degradación estética solo se acumula y nunca se reinicia; ninguna capa tapa la interfaz crítica ni las señales de M-10. Motivo: Adaptación (el ciclo deja huella sin ocultar información) | Christian Coronel Palma |
 | 2026-10-07 | D-30 Guardado | Sin suspensión; autoguardado al llegar a la sala clave final de los pisos 1 y 2 sin enemigos en caza; aviso diegético "sincronizando…"; solo para continuar tras salir o un fallo; gracia de 2–3 s al cargar. Modifica D-22. Motivo: Decisiones con Consecuencias y Vulnerabilidad Constante | Christian Coronel Palma |
 | 2026-10-07 | D-31 Salir del juego | En alerta o caza cuenta como muerte completa; con calma fuera de una sala final guardada suma 1 al contador y a la degradación y se continúa desde la sala final; en una sala final guardada sin alerta, sin costo; un cierre inesperado no cuenta. Motivo: Vulnerabilidad Constante y Decisiones con Consecuencias | Christian Coronel Palma |
@@ -964,8 +1163,8 @@ Esta sección conserva las decisiones importantes del proyecto y el razonamiento
 | 2026-10-07 | D-34 Configuraciones | Completa: 8–12 procedurales + 2–3 secundarias + 1 final por piso (~45–60 min). Showcase: 6–8 procedurales + 2 secundarias + 1 final por piso (~30 min), con enemigos y recursos escalados en proporción. Motivo: Adaptación (misma estructura en ambas duraciones) | Christian Coronel Palma |
 | 2026-10-07 | D-35 Contador de 5 muertes | Solo lo reinicia llegar a la sala final del piso 2; las muertes del primer intento no cuentan; Reiniciar y salir con costo suman. Modifica D-08. Motivo: Vulnerabilidad Constante y Adaptación. **Modificada por D-42** (solo el nombre del final: "Asimilación"). **Precisada por D-56** | Christian Coronel Palma |
 | 2026-10-07 | D-36 Llaves | 1 llave obligatoria por piso que abre la sala final y llaves opcionales para atajos o salas con recursos; objetos clave de 1 casilla que se consumen al usarse; la llave obligatoria siempre es alcanzable antes de la puerta de la sala final. Motivo: Adaptación y Decisiones con Consecuencias (la llave compite por espacio) | Christian Coronel Palma |
-| 2026-10-07 | D-37 Valores iniciales | Valores iniciales de munición, disparos, velocidad por salud, resistencia, máximos por casilla, enemigos por piso, atención, enemigo reciclado y gracia al cargar (ver [[02 - Mecánicas]] y [[06 - Economía y Recursos]]). Motivo: Vulnerabilidad Constante y Decisiones con Consecuencias (escasez medible) | Christian Coronel Palma |
-| 2026-10-07 | D-38 Tutorial | Integrado en las primeras salas del piso 1, fijas solo en el primer intento; desde el segundo intento esas salas son procedurales. Motivo: Adaptación (se aprende una vez y luego el escenario cambia) | Christian Coronel Palma |
+| 2026-10-07 | D-37 Valores iniciales | Valores iniciales de munición, disparos, velocidad por salud, resistencia, máximos por casilla, enemigos por piso, atención, enemigo reciclado y gracia al cargar (ver [[02 - Mecánicas]] y [[06 - Economía y Recursos]]). Motivo: Vulnerabilidad Constante y Decisiones con Consecuencias (escasez medible). **Modificada por D-71** (punzón de descarga) | Christian Coronel Palma |
+| 2026-10-07 | D-38 Tutorial | Integrado en las primeras salas del piso 1, fijas solo en el primer intento; desde el segundo intento esas salas son procedurales. Motivo: Adaptación (se aprende una vez y luego el escenario cambia). **Precisada por D-70** | Christian Coronel Palma |
 | 2026-10-07 | D-39 Presentación | Cinemática completa de reconstrucción una sola vez; cinemática corta saltable en cada muerte o reinicio; transición de piso de mínimo 5 s sin pantalla de carga; menú principal Continuar, Nueva partida, Opciones, Créditos, Salir; créditos saltables tras verlos una vez. Motivo: Adaptación | Christian Coronel Palma |
 | 2026-10-07 | D-40 Premisa | La esposa del protagonista está desaparecida, no muerta: "Un hombre busca la última pista que su esposa desaparecida le dejó, pero queda atrapado en un ciclo sin fin del que ahora debe salir."; qué le ocurrió y su relación con la instalación y The Mother siguen Por definir. Modifica D-13. Motivo: Adaptación (descubrimiento progresivo) y horror cósmico por información incompleta. **Precisada por D-49** | Christian Coronel Palma |
 | 2026-10-08 | D-41 Nombre | "Identity Dissolution" es el nombre del proyecto; "Heartbeat" se mantiene como nombre clave. Motivo: identidad del proyecto (sin pilar asociado) | Christian Coronel Palma |
@@ -979,23 +1178,43 @@ Esta sección conserva las decisiones importantes del proyecto y el razonamiento
 | 2026-10-08 | D-49 Emilia | Científica de Vitalis despedida antes del incidente que investigó a escondidas; su papel en el incidente nunca se confirma; reconstruida como R-H-01 a R-H-06; no fue asimilada; "estado desconocido"; destino indefinido para la post-demo. Precisa D-40. Motivo: Adaptación. **Modificada por D-57** | Christian Coronel Palma |
 | 2026-10-08 | D-50 Lukas y la última pista | Técnico de mantenimiento de Vitalis en otra instalación; entra con su acceso de técnico; es R-H-07 por estar en el expediente de Emilia; la última pista es un mensaje de audio en una tablet o teléfono corporativo (transcripción con sonido vocal y forma de onda), que se pierde en la primera reconstrucción y queda copiado, corrupto, en el terminal del brazo. Cómo muere al final de la introducción: Por definir. Motivo: Adaptación. **Modificada por D-53** | Christian Coronel Palma |
 | 2026-10-08 | D-51 Finales | Asimilación, Relevo básico, Relevo completo y Ambiguo; Despertar en toda victoria; elección con la terminal central (`E`) y la salida, sin menú; "todos los documentos" = los 6 de Emilia en el terminal del brazo; sin Renuncia; gancho totalmente abierto. Precisa D-16. Motivo: Adaptación. **Modificada por D-55**; **precisada por D-61** | Christian Coronel Palma |
-| 2026-10-08 | D-52 Narrativa | Sin actuación de voz (sonidos más texto, subtítulos obligatorios); Lukas casi no habla y su sonido vocal se distorsiona con la degradación; "distorsión de voz" pasa a "distorsión del sonido vocal"; 6 documentos de Emilia, 2 por piso, en salas clave secundarias; documentos de Vitalis y The Mother en salas procedurales, sin contar para la elección final; idiomas: inglés principal, español secundario. Modifica D-08 y M-18 (texto). Motivo: Adaptación. **Precisada por D-58 y D-62** | Christian Coronel Palma |
+| 2026-10-08 | D-52 Narrativa | Sin actuación de voz (sonidos más texto, subtítulos obligatorios); Lukas casi no habla y su sonido vocal se distorsiona con la degradación; "distorsión de voz" pasa a "distorsión del sonido vocal"; 6 documentos de Emilia, 2 por piso, en salas clave secundarias; documentos de Vitalis y The Mother en salas procedurales, sin contar para la elección final; idiomas: inglés principal, español secundario. Modifica D-08 y M-18 (texto). Motivo: Adaptación. **Precisada por D-58 y D-62**. **Precisada por D-79** | Christian Coronel Palma |
 | 2026-10-15 | D-53 Introducción | Casa (cinemática), mensaje programado de Emilia al teléfono personal de Lukas (advertencia de no ir; termina con Emilia corriendo de algo), compuerta y elevador jugables, caída al piso que no existe, señuelo (Mudo) y ataque por la espalda sin mostrar (trigger y temporizador de respaldo); reconstrucción en imágenes fugaces; The Mother copia el teléfono al terminal como "efectos personales del sujeto". Modifica D-50. Motivo: Vulnerabilidad Constante y Adaptación. **Precisada por D-63** | Christian Coronel Palma |
 | 2026-10-15 | D-54 Anillo | Tras la primera reconstrucción, Lukas encuentra un anillo en el suelo; nunca se sabe si es el suyo o el de Emilia. Motivo: Adaptación (disolución de identidad, D-44) | Christian Coronel Palma |
 | 2026-10-15 | D-55 Memoria final | Los documentos y el mensaje se completan y Lukas recupera los nombres al caer The Mother solo con los 6 documentos de Emilia; sin ellos todo sigue corrupto y el Relevo básico ocurre sin nombres. Modifica D-45 y D-51. Motivo: Adaptación | Christian Coronel Palma |
 | 2026-10-15 | D-56 Hallazgo del piso 2 | Cinemática corta, una vez: la foto familiar de la casa, imposible y sin explicar, con la cara de Emilia borrosa; provoca obstinación (no esperanza) y reinicia el contador; después el contador sigue contando en el piso 3 y en la sala de The Mother. Precisa D-35. Motivo: Vulnerabilidad Constante. **Precisada por D-67** | Christian Coronel Palma |
 | 2026-10-15 | D-57 Emilia y el incidente | El latido es un texto (inspiración: *The King in Yellow*); el incidente fue su transmisión por megafonía; Emilia oyó el primer acto, fue reconstruida como R-H-01, la despidieron y volvió por el segundo acto (R-H-02 a R-H-06); olvida poco a poco; brillante y fría; ficha física. Modifica D-49. Motivo: Adaptación. **Precisada por D-64 y D-68** | Christian Coronel Palma |
-| 2026-10-15 | D-58 Documentos | Estilo *Signalis*: glitch provocado por el laboratorio o el latido, alemán sin traducir, burocracia frente a diario, frase clave "Escucha el latido"; los documentos de Emilia no usan R-H; The Mother muestra R-H-01 a R-H-06 en el piso 2 con código, fecha y causa; una sala secundaria ya registrada da recursos. Precisa D-45 y D-52. Motivo: Adaptación | Christian Coronel Palma |
+| 2026-10-15 | D-58 Documentos | Estilo *Signalis*: glitch provocado por el laboratorio o el latido, alemán sin traducir, burocracia frente a diario, frase clave "Escucha el latido"; los documentos de Emilia no usan R-H; The Mother muestra R-H-01 a R-H-06 en el piso 2 con código, fecha y causa; una sala secundaria ya registrada da recursos. Precisa D-45 y D-52. Motivo: Adaptación. **Precisada por D-79** | Christian Coronel Palma |
 | 2026-10-15 | D-59 Lugares | Sektor V-7, 2083; estética cruda e industrial con experimentos inhumanos; pisos de mantenimiento, clínica ilegal y núcleo; fila de cápsulas; sala de The Mother = central de megafonía que se transforma por fase (transformadores como puntos débiles, sin carne); The Mother = maniquí robótico de enfermera en rieles. Precisa D-16 y D-46. Motivo: Vulnerabilidad Constante y Adaptación. **Modificada por D-65** | Christian Coronel Palma |
-| 2026-10-15 | D-60 Enemigos | Asimilados grotescos (terror físico y cósmico): el Alto, la Boca, el Rastrero y el Mudo, cada uno con su versión reciclada. Precisa D-48. Motivo: Vulnerabilidad Constante. **Precisada por D-64 y D-66** | Christian Coronel Palma |
+| 2026-10-15 | D-60 Enemigos | Asimilados grotescos (terror físico y cósmico): el Alto, la Boca, el Rastrero y el Mudo, cada uno con su versión reciclada. Precisa D-48. Motivo: Vulnerabilidad Constante. **Precisada por D-64 y D-66**. **Precisada por D-76** | Christian Coronel Palma |
 | 2026-10-15 | D-61 Finales | Relevo completo: Lukas oye el segundo acto (glitch ilegible para el jugador); Asimilación: imágenes deformadas, informe de The Mother y Lukas como señuelo en el piso que no existe; Ambiguo: los dos latidos se sincronizan, silencio y gancho; decisión final con presión sin muerte. Precisa D-42 y D-51. Motivo: Adaptación | Christian Coronel Palma |
 | 2026-10-15 | D-62 Texto | Sin narrador; solo humor negro corporativo; textos redactados en inglés y nombres propios sin traducir; The Mother emite una línea de protocolo al inicio de cada fase del jefe; el texto de Lukas solo se degrada en la Asimilación. Precisa D-52. Motivo: Adaptación | Christian Coronel Palma |
 | 2026-10-15 | D-63 Introducción jugable | Lukas hackea la compuerta con su teléfono personal (reglas de M-13, sin terminal); HUD mínimo: moverse, mirar e interactuar, pausa sin "Reiniciar"; el elevador es cinemática; la muerte final está guionizada y no suma al contador ni a la degradación. Precisa D-53. Motivo: Adaptación | Christian Coronel Palma |
 | 2026-10-15 | D-64 Latido | El latido de fondo es el primer acto y no asimila; crece con la degradación; el segundo acto solo suena completo en el incidente y en el Relevo completo, donde el terminal protege a Lukas; ningún enemigo emite el latido y la Boca usa un grito propio. Precisa D-57 y D-60. Motivo: Adaptación | Christian Coronel Palma |
 | 2026-10-15 | D-65 The Mother | Archivo de muestras criogénicas en una grúa: el brazo recolector agarra a Lukas (M-11) en las 3 fases y puede matarlo; fase 2: cada enfoque de cámara libera un asimilado (máximo 2 activos) y niebla criogénica solo visual; fase 3: el núcleo criogénico expone los transformadores. Modifica D-59; precisa D-28. Motivo: Vulnerabilidad Constante | Christian Coronel Palma |
-| 2026-10-15 | D-66 Valores por tipo de enemigo | Disparos: Alto 4, Boca 3, Rastrero 2, Mudo 3; golpes para matar: Alto 2, Boca 3, Rastrero 4, Mudo 2; agarran el Alto y el Mudo; el Mudo se activa a ~3 m o al ser iluminado; reciclados: 2 disparos (Rastrero 1). Precisa D-60 y D-37; modifica D-07 (2-4 golpes). Motivo: Vulnerabilidad Constante | Christian Coronel Palma |
+| 2026-10-15 | D-66 Valores por tipo de enemigo | Disparos: Alto 4, Boca 3, Rastrero 2, Mudo 3; golpes para matar: Alto 2, Boca 3, Rastrero 4, Mudo 2; agarran el Alto y el Mudo; el Mudo se activa a ~3 m o al ser iluminado; reciclados: 2 disparos (Rastrero 1). Precisa D-60 y D-37; modifica D-07 (2-4 golpes). Motivo: Vulnerabilidad Constante. **Precisada por D-76** | Christian Coronel Palma |
 | 2026-10-15 | D-67 Hallazgo del piso 2 | La cinemática espera a que termine la caza, igual que el autoguardado, y no se puede saltar. Precisa D-56. Motivo: Adaptación | Christian Coronel Palma |
 | 2026-10-15 | D-68 Despido de Emilia | Vitalis no sabe que Emilia fue reconstruida porque nunca lee los reportes de The Mother; la considera una superviviente inestable y la despide para limpiar responsabilidades. Precisa D-57. Motivo: Adaptación | Christian Coronel Palma |
+| 2026-10-16 | D-69 Niveles y salas procedurales | Cada piso es un nivel; la Introducción y la Sala de The Mother son niveles propios. Las salas procedurales combinan 6 arquetipos (pasillo, almacén, sala abierta, vigilancia, hackeo y vertical) con el tema del piso (mantenimiento, clínica ilegal y núcleo). Motivo: Adaptación | Christian Coronel Palma |
+| 2026-10-16 | D-70 Tutorial | 4 salas fijas en el primer intento: fila de cápsulas, depósito a oscuras (linterna, inventario, revólver, 1 cura y 1 blíster), túnel (correr) y sala de calderas con 1 Rastrero real (sigilo, empujón y disparo; cuenta en los enemigos del piso 1). Sus recursos cuentan en el presupuesto del piso 1. Precisa D-38. Motivo: Vulnerabilidad Constante | Christian Coronel Palma |
+| 2026-10-16 | D-71 Inventario | 5 tipos de objeto con casilla; revólver, linterna y anillo sin casilla; fusibles eliminados; linterna con barra recargable (~60 s); el punzón de descarga sustituye al objeto defensivo y al consumible de remate (un solo uso, 2 funciones). Modifica D-14 y D-37; precisa D-21. Motivo: Decisiones con Consecuencias | Christian Coronel Palma |
+| 2026-10-16 | D-72 Energía | ~1 de cada 3 pisos (1 y 2) empieza con la sala final sin energía; interruptor ruidoso en una sala clave secundaria; nunca en el tutorial ni en el piso 3; entre pisos solo se pasa por la sala final. Motivo: Adaptación | Christian Coronel Palma |
+| 2026-10-16 | D-73 Objetos confiscados | Los "otros objetos clave" pasan a ser 12 objetos de narrativa escénica (personal, sujetos incluidos niños, incidente), 4 por piso, 1–2 por intento; se examinan y se registran en el terminal; no cuentan para los finales. Motivo: Adaptación | Christian Coronel Palma |
+| 2026-10-16 | D-74 Revólver de Kessler | Revólver de 2080 con seguro biométrico y contador en el armazón; tambor de 6, recarga bala a bala, blísteres de 3, ~0.8 s entre disparos, dispersión que se cierra quieto, puntos débiles que interrumpen, ruido a ~20 m; The Mother lo devuelve descargado en cada reconstrucción. Motivo: Vulnerabilidad Constante | Christian Coronel Palma |
+| 2026-10-16 | D-75 Kessler Sicherheit AG | Corporación de seguridad aliada de Vitalis; su división Werkschutz tenía el contrato exclusivo de Sektor V-7 y vigilaba sin preguntar. Motivo: Adaptación | Christian Coronel Palma |
+| 2026-10-16 | D-76 Enemigos: velocidad y reparto | Patrulla / caza: Alto 1.2 / 3 m/s (vista ~15 m); Boca 1 / 2.5 m/s (ciega, oído ~20 m); Rastrero 1.8 / 4.2 m/s (~8 m); Mudo inmóvil y estallidos de 4.5 m/s. Lukas: 0.8 / 1.5 / 4 m/s. Piso 1: Alto y Rastrero; piso 2: + Boca; piso 3: + Mudo. Precisa D-60 y D-66. Motivo: Adaptación | Christian Coronel Palma |
+| 2026-10-16 | D-77 Sin NPC vivos | No hay NPC vivos ni diálogos; The Mother y Emilia solo aparecen como texto; los cadáveres de guardias y personal ya están asimilados. Motivo: Vulnerabilidad Constante | Christian Coronel Palma |
+| 2026-10-16 | D-78 Misiones | 5 principales (Introducción, pisos 1 a 3, The Mother) y 2 secundarias persistentes (Expediente de Emilia, Objetos confiscados); sin desafíos. Sin lista de misiones: entorno, líneas de protocolo y contadores en el terminal. Motivo: Adaptación | Christian Coronel Palma |
+| 2026-10-16 | D-79 Documentos y recursos | 12 documentos que no son de Emilia (Vitalis, Kessler, The Mother e incidente), 4 por piso, 1–2 por intento; la sala con el documento de Emilia ya registrado da 1 recurso extra del tipo más escaso; el mínimo garantizado nunca queda tras una llave opcional. Precisa D-52 y D-58. Motivo: Decisiones con Consecuencias | Christian Coronel Palma |
+| 2026-10-16 | D-80 The Mother: valores | Fase 3: 3 transformadores de 2 disparos; la sala da 8 balas. Fase 2: 4 asimilados en total (Altos o Rastreros), máximo 2 activos. Precisa D-28 y D-65. Motivo: Vulnerabilidad Constante | Christian Coronel Palma |
+| 2026-10-16 | D-81 Render | Low-poly con luz moderna: texturas de baja resolución con filtro point, iluminación dinámica, render interno ~540p reescalado y dithering suave; sin PSX puro. Motivo: Vulnerabilidad Constante (la linterna y la oscuridad siguen siendo mecánica) | Christian Coronel Palma |
+| 2026-10-16 | D-82 Paleta y luz | Base (~70%), carmesí (Vitalis, carne, peligro), teal (Lukas), morado (cósmico), verde (pantallas de la instalación), ámbar de sodio; luz por piso ámbar / blanco frío con sombras `#08241E` / carmesí; juego mayormente a oscuras por emergencia; el color nunca es la única señal. Motivo: Vulnerabilidad Constante | Christian Coronel Palma |
+| 2026-10-16 | D-83 Diseño de Lukas | Las imágenes de referencia civil y R-H-07 son el diseño oficial; el anillo de la introducción va en la mano derecha (se corrige la imagen). Motivo: identidad del personaje | Christian Coronel Palma |
+| 2026-10-16 | D-84 Interactuables | Destello especular sutil solo bajo la linterna o una luz y aviso `E` a ~1.5 m; sin brillo propio a oscuras. Motivo: Vulnerabilidad Constante (buscar exige luz y su riesgo) | Christian Coronel Palma |
+| 2026-10-16 | D-85 Gore | Horror corporal sin desmembramiento: carne expuesta, sangre oscura e impactos; a los niños solo se alude con objetos; sin desnudez explícita. Motivo: tono | Christian Coronel Palma |
+| 2026-10-16 | D-86 Interfaz diegética | Sin HUD permanente; estados en el terminal con etiquetas claras; en pantalla solo retícula, aviso `E`, subtítulos, líneas de The Mother y autoguardado; terminal CRT teal monoespaciado. Motivo: Vulnerabilidad Constante | Christian Coronel Palma |
+| 2026-10-16 | D-87 Música | Exploración sin música; temas en menú, cinemáticas, jefe (loop por fase) y finales; estilo crudo, oscuro e industrial; leitmotivs de Emilia, The Mother y el latido. Motivo: Adaptación (no tapa las señales) | Christian Coronel Palma |
+| 2026-10-16 | D-88 Animación | Blender propio con locomoción base de Mixamo retocada; IK, capas, ruido procedural y ragdoll con herramientas de Unity; esqueleto humanoide compartido. Motivo: producción | Christian Coronel Palma |
 
 
 > **Navegación:** [[00 - Índice]] · ← [[02 - Referencias e Inspiración]] · [[04 - Historial de Versiones]] →

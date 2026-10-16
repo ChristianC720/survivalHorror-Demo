@@ -21,7 +21,7 @@ Centraliza términos técnicos, de diseño y propios del universo del videojuego
 | Reconstrucción | Proceso con el que The Mother recompone a Lukas tras cada muerte; siempre es el mismo hombre, con una pieza ajena más (D-18, D-43). |
 | Cinemática completa / corta | Reconstrucción mostrada una sola vez al terminar la introducción / en cada muerte o reinicio (D-39). |
 | Sala procedural | Sala generada en cada intento: exploración, amenazas y recursos (M-15). |
-| Sala clave secundaria | Sala fija cuya posición cambia por intento; contiene documentos, llaves u otros objetos clave (D-33). |
+| Sala clave secundaria | Sala fija cuya posición cambia por intento; contiene documentos, llaves y, a veces, el interruptor de energía (D-33, D-72). |
 | Sala clave final | Sala fija con la escalera o el elevador al piso siguiente; autoguarda en los pisos 1 y 2 (D-30, D-33). |
 | Llave obligatoria / opcional | Llave que abre la sala clave final / atajos o salas con recursos (D-36). |
 | Autoguardado | Guardado automático en la sala clave final de los pisos 1 y 2, solo para continuar tras salir o un fallo (D-30). |
@@ -30,7 +30,7 @@ Centraliza términos técnicos, de diseño y propios del universo del videojuego
 | Falla de la máquina | Ventaja de conocimiento temporal sobre el sistema de The Mother, que ella parchea tras 1-2 usos o al morir (M-17). |
 | Documento corrupto | Documento con partes ilegibles por un glitch del laboratorio o del latido. Distinto de una falla de la máquina (D-45, D-58). |
 | Reciclaje | Reconstrucción única de un enemigo eliminado por The Mother; regresa más rápido y más frágil (M-20, D-20). |
-| Remate | Acción que evita el reciclaje: golpe en el suelo o consumible de remate (M-20, D-21). |
+| Remate | Acción que evita el reciclaje: golpe en el suelo o punzón de descarga (M-20, D-21, D-71). |
 | Contador de 5 muertes | Contador que activa el final Asimilación; solo lo reinicia la sala clave final del piso 2 (D-35, D-56). |
 | Degradación | Deterioro estético acumulativo por muerte: corrupción CRT, distorsión del sonido vocal y cuerpo ajeno (M-18, D-29). |
 | Asimilación | Pérdida total de identidad por el laboratorio; también, el final de derrota (D-42, D-47). |
@@ -42,6 +42,12 @@ Centraliza términos técnicos, de diseño y propios del universo del videojuego
 | El incidente | Transmisión del latido por la megafonía de la instalación, que asimiló a quienes lo oyeron completo (D-57). |
 | El Alto / la Boca / el Rastrero / el Mudo | Los 4 tipos de asimilados (enemigos comunes) de la demo (D-60, D-66). |
 | Piso que no existe | Nivel sin plano ni botón donde muere Lukas en la introducción; solo vuelve en la cinemática de Asimilación (D-53, D-61). |
+| Arquetipo de sala | Forma jugable de una sala procedural (pasillo, almacén, sala abierta, vigilancia, hackeo o vertical) que cada piso viste con su tema (D-69). |
+| Punzón de descarga | Consumible de Kessler de un solo uso: defensa automática contra agarres o remate silencioso con `E` (M-11, M-20, D-71). |
+| Revólver de Kessler | Única arma de la demo; The Mother lo devuelve descargado en una bandeja de efectos personales tras cada reconstrucción (M-04, D-74). |
+| Kessler Sicherheit AG / Werkschutz | Corporación de seguridad aliada de Vitalis / su división de seguridad interna en Sektor V-7 (D-75). |
+| Objetos confiscados | 12 objetos de narrativa escénica que se examinan y se registran en el terminal del brazo (D-73). |
+| Energía de la sala final | Estado en que la sala clave final empieza sin energía (~1 de cada 3 en los pisos 1 y 2) y exige usar un interruptor (D-72). |
 | Configuración completa / showcase | Versión de ~45–60 min / versión reducida de ~30 min para eventos (D-34). |
 
 ## Convenciones de nombres
@@ -50,6 +56,8 @@ Documenta aquí términos que el equipo debe escribir siempre de la misma manera
 
 - **Identity Dissolution:** nombre del juego. **Heartbeat:** solo como nombre clave del proyecto (D-41).
 - **Vitalis Konzern:** único nombre de la corporación; no se abrevia ni se traduce (D-46, D-62).
+- **Kessler Sicherheit AG** y **Werkschutz:** no se traducen (D-75).
+- **"Punzón de descarga"**, no "objeto defensivo" ni "consumible de remate" (D-71).
 - **The Mother:** siempre en inglés y con artículo "The", también en español (D-62).
 - **Sektor V-7:** ubicación; no se traduce (D-59, D-62).
 - **R-H-XX:** código de sujeto con dos dígitos (R-H-07, R-H-14) (D-43).
