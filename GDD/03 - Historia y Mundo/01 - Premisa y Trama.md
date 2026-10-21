@@ -28,7 +28,7 @@ En el piso 3, Lukas enfrenta a The Mother en la central de megafonía desde dond
 
 ## Estructura narrativa
 
-La estructura sigue los 3 pisos de la instalación (D-33, M-15). La distribución temática de los documentos por acto es la intención narrativa; el texto de cada documento, qué documentos concretos son corruptos y en qué piso aparece cada pieza de información quedan **Por definir** en [[04 - Diálogos y Narrativa]].
+La estructura sigue los 3 pisos de la instalación (D-33, M-15). La distribución temática de los documentos por acto es la intención narrativa; los documentos de Emilia van 2 por piso en orden (D-121), la corrupción sigue la regla de D-127 y los textos están en borrador en [[05 - Textos del Juego]].
 
 ### Acto / Etapa 1
 

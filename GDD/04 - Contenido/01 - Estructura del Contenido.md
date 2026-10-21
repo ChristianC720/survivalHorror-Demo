@@ -72,4 +72,4 @@ Valores de la configuración completa; el showcase escala salas, enemigos y recu
 | Documentos, objetos confiscados y bestiario | Textos en [[04 - Diálogos y Narrativa]] | Se registran en el terminal del brazo (M-16) |
 
 
-> **Navegación:** [[00 - Índice]] · ← [[04 - Diálogos y Narrativa]] · [[02 - Niveles]] →
+> **Navegación:** [[00 - Índice]] · ← [[05 - Textos del Juego]] · [[02 - Niveles]] →

@@ -133,8 +133,8 @@ La demo tiene **5 misiones principales** y **2 secundarias persistentes**; no ha
 
 **Pasos:**
 
-1. Fase 1: hackear los nodos mientras patrulla el brazo recolector.
-2. Fase 2: sobrevivir a las cámaras hostiles y a los 4 asimilados (D-80).
+1. Fase 1: hackear los 3 nodos mientras patrulla el brazo recolector (D-114).
+2. Fase 2: eliminar a los 4 asimilados bajo las cámaras hostiles y llegar al núcleo (D-80, D-115).
 3. Fase 3: destruir los 3 transformadores.
 
 **Condición de éxito:** The Mother cae; Despertar y final de victoria (D-51).

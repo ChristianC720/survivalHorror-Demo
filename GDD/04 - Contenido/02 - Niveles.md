@@ -182,11 +182,11 @@ Llegada → Salas procedurales ⇄ Salas clave secundarias → Puerta con llave 
 
 | Fase | Contenido (D-65, D-80) |
 |---|---|
-| 1 | Hackeo de nodos en las mesas de mezcla mientras el brazo recolector patrulla |
-| 2 | Cámaras hostiles: cada enfoque libera un asimilado (Alto o Rastrero) desde una cápsula del archivo. **4 en total**, máximo 2 activos. Niebla criogénica solo visual |
+| 1 | Hackeo de 3 nodos en las mesas de mezcla mientras el brazo recolector patrulla (D-114) |
+| 2 | Cámaras hostiles: cada enfoque libera un asimilado desde una cápsula del archivo. **4 en total** (2 Altos y 2 Rastreros), máximo 2 activos. Niebla criogénica solo visual. Termina al eliminar a los 4 y llegar al núcleo; si Lukas llega antes de que salgan todos, salen los que falten (D-115, D-117) |
 | 3 | El núcleo criogénico expone **3 transformadores** de 2 disparos cada uno; al destruir el último, The Mother cae |
 
-**Recompensas:** **8 balas** fijas en la sala (6 para los transformadores + 2 de margen, D-28, D-80) y 0–1 curas.
+**Recompensas:** **20 balas** fijas en la sala: 12 en los puntos ciegos para la fase 2 (D-115) y 8 junto al núcleo para la fase 3 (6 para los transformadores + 2 de margen, D-28, D-80); 0–1 curas.
 
 **Puntos de guardado:** Ninguno; morir regresa al inicio del ciclo (D-30, M-16).
 
@@ -199,7 +199,7 @@ Llegada → Salas procedurales ⇄ Salas clave secundarias → Puerta con llave 
 **Mapa / diagrama:**
 
 ```text
-Entrada → Fase 1 (nodos) → Fase 2 (cámaras + 4 asimilados) → Fase 3 (3 transformadores) → Caída → Despertar → Decisión final / Relevo básico
+Entrada → Fase 1 (nodos) → Fase 2 (cámaras + 4 asimilados → núcleo) → Fase 3 (3 transformadores) → Caída → Despertar → Decisión final / Relevo básico
 ```
 
 ## Flujo del nivel

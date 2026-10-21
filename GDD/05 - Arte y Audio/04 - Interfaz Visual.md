@@ -20,7 +20,7 @@ No hay HUD permanente. Dónde se lee cada elemento:
 - **Recursos:** inventario de 6 casillas en el terminal (M-07).
 - **Indicadores contextuales:** los únicos elementos en pantalla:
   - Retícula de punto al apuntar (M-01).
-  - Aviso `E` a ~1.5 m de un interactuable (D-84).
+  - Aviso `E` a ~1.5 m de un interactuable (D-84). Con mando muestra el botón (`A`); los avisos y carteles siguen al último dispositivo usado y cambian al vuelo (D-132).
   - Subtítulos y líneas de texto (D-52, D-62).
   - Aviso "sincronizando…" del autoguardado (D-30).
 
@@ -50,7 +50,7 @@ Todos los estados combinan color con texto, forma o sonido (regla visual 1 de [[
 
 ## Convenciones
 
-**Tipografía:** monoespaciada de terminal de los 90 para datos y lecturas; sans condensada para títulos y menús. Las fuentes concretas están **por definir**, con licencia libre (OFL) o propias. Etiquetas del terminal en inglés y en mayúsculas (D-62).
+**Tipografía (D-126):** **VT323**, monoespaciada de terminal de los 90, para datos y lecturas; **IBM Plex Sans** para títulos y menús. Ambas con licencia libre (OFL). La opción de accesibilidad "Fuente para dislexia" sustituye ambas por **OpenDyslexic** ([[03 - Accesibilidad]]). Etiquetas del terminal en inglés y en mayúsculas (D-62).
 
 **Iconografía:** iconos de línea simples, monocromos, del color de la pantalla que los muestra: teal en el terminal y verde en las pantallas de la instalación.
 

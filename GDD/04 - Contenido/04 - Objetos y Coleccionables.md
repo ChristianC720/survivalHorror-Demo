@@ -62,7 +62,7 @@ En la demo no se vende ni se intercambia nada. El inventario tiene 6 casillas y 
 
 **Rareza:** —
 
-**Restricciones:** Barra de carga de ~60 s de uso continuo; se recarga sola tras ~3 s apagada. En 0 parpadea y se apaga hasta recuperar un mínimo de carga (D-71).
+**Restricciones:** Barra de carga (D-71): ~120 s de uso continuo; tras ~3 s apagada se recarga sola y se llena de 0 a 100% en ~30 s. En 0 parpadea, se apaga y no se puede encender durante ~10 s (D-124).
 
 **Interacciones:** La luz duplica la velocidad de alerta de los enemigos que ilumina y activa al Mudo; la Boca es ciega (M-09).
 
@@ -74,11 +74,11 @@ En la demo no se vende ni se intercambia nada. El inventario tiene 6 casillas y 
 
 **Descripción:** Kit médico de Vitalis.
 
-**Función:** Recuperar un estado de salud (M-05).
+**Función:** Recuperar un estado de salud; en Bien con daño, devuelve la salud completa (M-05, D-119).
 
 **Cómo se obtiene:** Presupuesto del piso (D-17).
 
-**Cómo se utiliza:** Desde el inventario (~1.5 s, M-07); no se usa en Bien.
+**Cómo se utiliza:** Desde el inventario (~1.5 s, M-07); no se usa con la salud completa.
 
 **Cantidad máxima:** 1 por casilla.
 
@@ -90,21 +90,21 @@ En la demo no se vende ni se intercambia nada. El inventario tiene 6 casillas y 
 
 **Interacciones:** M-05, M-07.
 
-**Representación visual:** **Por definir** ([[02 - Personajes y Animación]]).
+**Representación visual:** estuche rectangular de plástico rígido blanco sucio con asa, ribete carmesí y logotipo de Vitalis; dentro, un autoinyector. Etiqueta en alemán *Regenerationsmittel*. Silueta reconocible por el asa.
 
 ### Munición
 
 **Tipo:** Consumible.
 
-**Descripción:** Blíster de **3 cartuchos** sin vaina, de cebado eléctrico, con código de inventario de Vitalis (D-74).
+**Descripción:** Blíster de **4 cartuchos** sin vaina, de cebado eléctrico, con código de inventario de Vitalis (D-74).
 
 **Función:** Cargar el revólver.
 
-**Cómo se obtiene:** Presupuesto del piso (D-17); la sala de The Mother da 8 balas fijas (D-80).
+**Cómo se obtiene:** Presupuesto del piso (D-17); la sala de The Mother da 20 balas fijas: 12 para la fase 2 y 8 para la fase 3 (D-80, D-115).
 
 **Cómo se utiliza:** `R` carga bala a bala (~0.7 s por bala) desde el inventario; se puede cancelar conservando las balas ya cargadas.
 
-**Cantidad máxima:** 12 balas por casilla (4 blísteres).
+**Cantidad máxima:** 12 balas por casilla (3 blísteres, D-122).
 
 **Valor:** —
 
@@ -114,7 +114,7 @@ En la demo no se vende ni se intercambia nada. El inventario tiene 6 casillas y 
 
 **Interacciones:** M-04, M-07.
 
-**Representación visual:** **Por definir**.
+**Representación visual:** blíster transparente con 4 cartuchos cobrizos sin vaina y tapa de aluminio con código de inventario de Vitalis (D-122).
 
 ### Punzón de descarga
 
@@ -138,7 +138,7 @@ En la demo no se vende ni se intercambia nada. El inventario tiene 6 casillas y 
 
 **Interacciones:** M-07, M-11, M-20.
 
-**Representación visual:** **Por definir**.
+**Representación visual:** cilindro negro mate del largo de un antebrazo con empuñadura de goma, punta metálica y franja ámbar de aviso; logotipo "KESSLER WERKSCHUTZ" y un LED verde fósforo que indica carga.
 
 ### Llave obligatoria / Llave opcional
 
@@ -162,7 +162,7 @@ En la demo no se vende ni se intercambia nada. El inventario tiene 6 casillas y 
 
 **Interacciones:** M-07, M-08, M-15.
 
-**Representación visual:** **Por definir**.
+**Representación visual:** tarjeta magnética de Vitalis con número de sala. La obligatoria es una placa más grande con banda carmesí y un icono de escalera; la opcional es una tarjeta estándar con banda gris. Se distinguen por forma e icono, no solo por color.
 
 ### Anillo
 
@@ -186,7 +186,7 @@ En la demo no se vende ni se intercambia nada. El inventario tiene 6 casillas y 
 
 **Interacciones:** M-16.
 
-**Representación visual:** **Por definir**.
+**Representación visual:** alianza de acero sencilla y gastada; la inscripción interior está raspada y es ilegible, para que nunca se sepa de quién es (D-54).
 
 ### Documentos
 
@@ -234,7 +234,7 @@ En la demo no se vende ni se intercambia nada. El inventario tiene 6 casillas y 
 
 **Interacciones:** M-08, M-16.
 
-**Representación visual:** Objetos cotidianos (juguetes, carteras, fotos, gafas) con una etiqueta de inventario. Lista y textos: **Por definir** ([[04 - Diálogos y Narrativa]]).
+**Representación visual:** Objetos cotidianos (juguetes, carteras, fotos, gafas) con una etiqueta de inventario. Lista y textos en borrador en [[05 - Textos del Juego]].
 
 
 > **Navegación:** [[00 - Índice]] · ← [[03 - Enemigos y NPC]] · [[05 - Misiones y Desafíos]] →

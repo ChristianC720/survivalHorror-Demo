@@ -10,26 +10,26 @@ Define la relación entre las acciones del jugador y las entradas físicas del d
 |---|---|---|---|
 | Mover | `W` `A` `S` `D` | — | Stick izquierdo |
 | Mover la cámara / mirar | — | Movimiento del mouse | Stick derecho |
-| Correr | Mantener `Shift izquierdo` + dirección | — | Por definir (soporte posterior) |
-| Agacharse / sigilo | `Ctrl izquierdo` (alternar) | — | Por definir (soporte posterior) |
-| Apuntar | — | Mantener `Clic derecho` | Por definir (soporte posterior) |
-| Ataque principal (disparar) | — | `Clic izquierdo` mientras se apunta | Por definir (soporte posterior) |
-| Ataque secundario (empujón / golpe de culata) | — | `Clic izquierdo` sin apuntar | Por definir (soporte posterior) |
-| Recargar | `R` | — | Por definir (soporte posterior) |
-| Interactuar (recoger, leer, abrir, iniciar hackeo, usar escalera o elevador) | `E` | — | Por definir (soporte posterior) |
-| Linterna encender / apagar | `F` | — | Por definir (soporte posterior) |
-| Vista de vigilancia activar / salir | `Q` | — | Por definir (soporte posterior) |
-| Inventario y base de datos del terminal abrir / cerrar | `Tab` | — | Por definir (soporte posterior) |
-| Usar / equipar objeto (inventario abierto) | — | `Clic izquierdo` sobre la casilla | Por definir (soporte posterior) |
-| Descartar objeto (inventario abierto) | — | `Clic derecho` sobre la casilla | Por definir (soporte posterior) |
-| Introducir secuencia de hackeo (personaje inmóvil) | `W` `A` `S` `D` / `Flechas` | — | Por definir (soporte posterior) |
-| Abandonar hackeo | `E` | — | Por definir (soporte posterior) |
+| Correr | Mantener `Shift izquierdo` + dirección | — | Mantener `LB` |
+| Agacharse / sigilo | `Ctrl izquierdo` (alternar) | — | `B` (alternar) |
+| Apuntar | — | Mantener `Clic derecho` | Mantener `LT` |
+| Ataque principal (disparar) | — | `Clic izquierdo` mientras se apunta | `RT` mientras se apunta |
+| Ataque secundario (empujón / golpe de culata) | — | `Clic izquierdo` sin apuntar | `RT` sin apuntar |
+| Recargar | `R` | — | `X` |
+| Interactuar (recoger, leer, abrir, iniciar hackeo, usar escalera o elevador) | `E` | — | `A` |
+| Linterna encender / apagar | `F` | — | Cruceta arriba |
+| Vista de vigilancia activar / salir | `Q` | — | `Y` |
+| Inventario y base de datos del terminal abrir / cerrar | `Tab` | — | `View` |
+| Usar / equipar objeto (inventario abierto) | — | `Clic izquierdo` sobre la casilla | `A` sobre la casilla (cruceta o stick izquierdo para moverse) |
+| Descartar objeto (inventario abierto) | — | `Clic derecho` sobre la casilla | `X` sobre la casilla |
+| Introducir secuencia de hackeo (personaje inmóvil) | `W` `A` `S` `D` / `Flechas` | — | Cruceta o stick izquierdo |
+| Abandonar hackeo | `E` | — | `A` |
 | Punzón de descarga (defensa) | Automático al ser agarrado (sin entrada) | — | Automático |
-| Remate con golpe en el suelo (a ~1.5 m mirando un cuerpo no rematado) | — | `Clic izquierdo` sin apuntar | Por definir (soporte posterior) |
-| Remate con punzón de descarga (a ~1.5 m mirando un cuerpo no rematado) | `E` | — | Por definir (soporte posterior) |
-| Menú (pausa) abrir / cerrar | `Esc` | — | Por definir (soporte posterior) |
-| Seleccionar opción de menú (incluye "Reiniciar" en el menú de pausa) | — | `Clic izquierdo` sobre la opción | Por definir (soporte posterior) |
-| Saltar cinemática (corta de reconstrucción: pulsar; narrativas ya vistas: mantener ~1 s, D-91) o créditos ya vistos | `Espacio` | — | Por definir (soporte posterior) |
+| Remate con golpe en el suelo (a ~1.5 m mirando un cuerpo no rematado) | — | `Clic izquierdo` sin apuntar | `RT` sin apuntar |
+| Remate con punzón de descarga (a ~1.5 m mirando un cuerpo no rematado) | `E` | — | `A` |
+| Menú (pausa) abrir / cerrar | `Esc` | — | `Menu` |
+| Seleccionar opción de menú (incluye "Reiniciar" en el menú de pausa) | — | `Clic izquierdo` sobre la opción | Cruceta o stick izquierdo para moverse, `A` para seleccionar, `B` para volver |
+| Saltar cinemática (corta de reconstrucción: pulsar; narrativas ya vistas: mantener ~1 s, D-91) o créditos ya vistos | `Espacio` | — | `A` (pulsar o mantener, igual que `Espacio`) |
 
 **Contextos de entrada:** algunas teclas cambian de función según el contexto, pero ninguna tiene dos funciones dentro del mismo contexto.
 
@@ -56,7 +56,7 @@ Define la relación entre las acciones del jugador y las entradas físicas del d
 
 ¿El jugador puede cambiar los controles?
 
-Sí. Todas las acciones de teclado y ratón se pueden reasignar desde Opciones > Controles; el juego valida que ninguna tecla quede asignada a dos acciones dentro del mismo contexto. También se ajustan la sensibilidad (mirar y apuntar por separado), el eje vertical invertido, agacharse en modo alternar o mantener y la asistencia de apuntado (D-104). Los carteles del tutorial muestran la tecla asignada (D-89). El soporte completo para mando se definirá posteriormente ([[04 - Guardado y Configuración]]).
+Sí. Todas las acciones de teclado y ratón se pueden reasignar desde Opciones > Controles; el juego valida que ninguna tecla quede asignada a dos acciones dentro del mismo contexto. También se ajustan la sensibilidad (mirar y apuntar por separado), el eje vertical invertido, agacharse en modo alternar o mantener y la asistencia de apuntado (D-104). Los carteles del tutorial muestran la tecla asignada, o el botón del mando si es el último dispositivo usado (D-89, D-132). El mando (tipo Xbox) usa en la demo el mapa fijo de la columna Control, sin reasignación; reasignar el mando queda para después de la demo (D-120, [[04 - Guardado y Configuración]]).
 
 ## Entrada y retroalimentación
 

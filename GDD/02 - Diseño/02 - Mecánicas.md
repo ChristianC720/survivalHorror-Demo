@@ -209,7 +209,7 @@ stateDiagram-v2
         
     - **Obtención (D-74):** la primera vez está en el cadáver asimilado de un guardia de Kessler, en el tutorial. Desde entonces, The Mother lo deja **descargado** en una bandeja de efectos personales junto a la cápsula en cada reconstrucción, también si Lukas murió antes de recogerlo.
         
-    - La munición ocupa casillas del inventario (M-07). **Tambor:** 6 balas. **Munición por casilla:** 12 balas. Cada recogida es un blíster de 3 cartuchos (valores iniciales, sujetos a balance; D-37, D-74).
+    - La munición ocupa casillas del inventario (M-07). **Tambor:** 6 balas. **Munición por casilla:** 12 balas. Cada recogida es un blíster de 4 cartuchos (valores iniciales, sujetos a balance; D-37, D-74, D-122).
         
     - Eliminar a un enemigo requiere 2–4 disparos según su tipo: el Alto 4, la Boca 3, el Rastrero 2 y el Mudo 3; a un enemigo reciclado (M-20), 2 disparos, o 1 si es un Rastrero (valores iniciales, sujetos a balance; D-37, D-66).
         
@@ -261,6 +261,8 @@ stateDiagram-v2
         
     - Los enemigos matan en 2-4 golpes según su tipo: el Alto y el Mudo en 2, la Boca en 3 y el Rastrero en 4 (valores iniciales, sujetos a balance; D-66, modifica D-07).
         
+    - Internamente la salud es un valor oculto dividido en 3 tramos iguales. Una cura sube al tope del estado siguiente (Crítico → Herido, Herido → Bien) o, en Bien con daño, a la salud completa; un agarre sin punzón baja al tope del estado inferior (D-119).
+        
     - Las curas son escasas, ocupan casillas del inventario y su uso consume el tiempo de animación de M-07.
         
     - El estado de salud se comunica mediante la postura, la animación y el terminal del brazo.
@@ -283,7 +285,7 @@ stateDiagram-v2
     
     - Si el personaje recibe daño mientras usa una cura, la animación se cancela y la cura no se consume.
         
-    - Usar una cura en estado Bien no está permitido.
+    - Usar una cura en Bien sin daño no está permitido; en Bien con daño devuelve la salud completa (D-119).
         
 - **Impacto en pilares:** Refuerza **Vulnerabilidad Constante** y **Decisiones con Consecuencias**. Riesgo: si las curas son abundantes, el daño deja de importar.
 
@@ -299,7 +301,7 @@ stateDiagram-v2
         
 - **Reglas:**
     
-    - Una sola barra de resistencia se consume al correr, al empujar y al rematar con el golpe en el suelo (M-20), y se regenera automáticamente tras 3 segundos sin estas acciones (caminar no interrumpe la regeneración).
+    - Una sola barra de resistencia se consume al correr, al empujar y al rematar con el golpe en el suelo (M-20), y se regenera automáticamente tras 3 segundos sin estas acciones y se llena de 0 a 100% en ~4 s (25% por segundo, valor inicial, sujeto a balance; D-123); caminar no interrumpe la regeneración.
         
     - **Velocidades de Lukas (D-76):** agachado ~0.8 m/s, caminando ~1.5 m/s y corriendo ~4 m/s (valores iniciales, sujetos a balance). Corriendo deja atrás al Alto y a la Boca, pero no al Rastrero ni a los estallidos del Mudo.
         
@@ -405,7 +407,7 @@ stateDiagram-v2
         
     - **Objetos confiscados (D-73):** 12 objetos de narrativa escénica, 4 por piso: pertenencias del personal (piso 1), objetos confiscados a los sujetos, incluidos niños (piso 2), y restos del incidente (piso 3). Aparecen 1–2 por intento en salas procedurales. Se examinan con `E`, no se recogen ni ocupan casilla y se registran en la sección "Objetos confiscados" del terminal del brazo. No cuentan para ningún final.
         
-    - **Documentos corruptos (D-45):** algunos documentos se registran corruptos, con partes del texto ilegibles, sobre todo los relacionados con la memoria de Lukas. "Corrupto" es un término distinto de las fallas de la máquina (M-17). La corrupción es un glitch de realidad provocado por el laboratorio o el latido, no una censura (D-58). Nunca oculta información necesaria para avanzar (rutas, reglas) y solo se completa en el desenlace si Lukas reunió los 6 documentos de Emilia (M-19, D-55). Qué documentos concretos son corruptos queda **Por definir** en `03 - Historia y Mundo`.
+    - **Documentos corruptos (D-45):** algunos documentos se registran corruptos, con partes del texto ilegibles, sobre todo los relacionados con la memoria de Lukas. "Corrupto" es un término distinto de las fallas de la máquina (M-17). La corrupción es un glitch de realidad provocado por el laboratorio o el latido, no una censura (D-58). Nunca oculta información necesaria para avanzar (rutas, reglas) y solo se completa en el desenlace si Lukas reunió los 6 documentos de Emilia (M-19, D-55). Sale corrupto todo pasaje que nombra a Lukas, se dirige a él o habla de su vida con Emilia, en cualquier documento (D-127).
     - **Estilo de los documentos (D-58):** referencia *Signalis*. Burocracia de Vitalis Konzern y The Mother frente al diario de Emilia; fragmentos en alemán que nunca se traducen ni contienen información necesaria; frase clave "Escucha el latido".
         
     - Los objetos recogidos pasan al inventario si existe espacio (M-07).
@@ -596,7 +598,7 @@ stateDiagram-v2
         
     - Si el haz de luz ilumina directamente a un enemigo mientras el jugador está en sigilo, su alerta sube el doble de rápido.
         
-    - **Barra de carga (D-71):** ~60 s de uso continuo; se recarga sola tras ~3 s apagada. En 0, la linterna parpadea y se apaga hasta recuperar un mínimo de carga. No usa baterías ni ocupa casilla; el indicador está en el terminal del brazo (valores iniciales, sujetos a balance).
+    - **Barra de carga (D-71):** ~120 s de uso continuo; tras ~3 s apagada se recarga sola y se llena de 0 a 100% en ~30 s. En 0 parpadea, se apaga y no se puede encender durante ~10 s (D-124). No usa baterías ni ocupa casilla; el indicador está en el terminal del brazo (valores iniciales, sujetos a balance).
         
 - **Entrada:** `F` para encender y apagar.
     
@@ -731,7 +733,7 @@ stateDiagram-v2
 | Showcase (evento) | 6–8                   | 2                    | 1              | ~30 min             |
 	En el showcase, los enemigos y los recursos se escalan en proporción al número de salas (presupuestos en [[06 - Economía y Recursos]]).
         
-- **Enemigos por piso (configuración completa, D-37):** piso 1: 6–9; piso 2: 9–12; piso 3: 12–15 + The Mother. Máximo 2 enemigos activos por sala; ~1/3 de las salas quedan vacías a propósito (valores iniciales, sujetos a balance). La curva de dificultad se documenta en [[05 - Progresión]].
+- **Enemigos por piso (configuración completa, D-37):** piso 1: 6–9; piso 2: 9–12; piso 3: 12–15 + The Mother. Máximo 2 enemigos activos por sala; ~1/3 de las salas quedan vacías a propósito (valores iniciales, sujetos a balance). Si el piso generado tiene pocas salas, el número de enemigos se limita a 2 por sala ocupada aunque quede por debajo del rango (D-118). La curva de dificultad se documenta en [[05 - Progresión]].
         
     - Las escaleras y los elevadores existen **solo dentro de las salas clave finales** (D-33).
         
@@ -972,11 +974,11 @@ flowchart TD
     
     - El encuentro tiene 3 fases que reutilizan mecánicas existentes; cada fase dura 1-2 min (valor inicial, sujeto a balance). The Mother emite una línea de protocolo al inicio de cada fase (D-62):
         
-        1. **Hackeo de nodos bajo presión** (M-13) en las mesas de mezcla, mientras el brazo recolector patrulla los nodos (D-65); las fallas descubiertas (M-17) acortan las secuencias. Si M-17 (Deseable) no se implementa, la fase funciona con las secuencias de longitud original.
+        1. **Hackeo de nodos bajo presión** (M-13): **3 nodos** con secuencias de terminal principal (D-114) en las mesas de mezcla, mientras el brazo recolector patrulla los nodos (D-65); las fallas descubiertas (M-17) acortan las secuencias. Si M-17 (Deseable) no se implementa, la fase funciona con las secuencias de longitud original.
             
-        2. **Supervivencia y huida con cámaras hostiles (D-28):** las cámaras de la sala dejan de ser una herramienta del jugador (M-02, D-16) y pasan a vigilarlo. Cada cámara muestra una luz roja y emite el sonido de su motor al girar (M-10). Cada vez que una cámara enfoca al jugador, The Mother libera un asimilado desde una cápsula de su archivo, que acude a ese punto (4 en total, Altos o Rastreros, con un máximo de 2 activos a la vez; valores iniciales, sujetos a balance; D-65, D-80). Una niebla criogénica reduce la visibilidad, sin ralentizar ni tapar las señales de M-10 (D-65). El jugador se mueve entre los puntos ciegos de las cámaras.
+        2. **Supervivencia y huida con cámaras hostiles (D-28):** las cámaras de la sala dejan de ser una herramienta del jugador (M-02, D-16) y pasan a vigilarlo. Cada cámara muestra una luz roja y emite el sonido de su motor al girar (M-10). Cada vez que una cámara enfoca al jugador, The Mother libera un asimilado desde una cápsula de su archivo, que acude a ese punto (4 en total: 2 Altos y 2 Rastreros, con un máximo de 2 activos a la vez; valores iniciales, sujetos a balance; D-65, D-80, D-115). Una niebla criogénica reduce la visibilidad, sin ralentizar ni tapar las señales de M-10 (D-65). El jugador se mueve entre los puntos ciegos de las cámaras. La fase termina cuando los 4 asimilados están eliminados y Lukas llega al núcleo (D-115). Si Lukas llega al núcleo con asimilados por liberar, salen todos los que falten, con un máximo de 2 activos, así que esquivar todas las cámaras nunca bloquea la fase (D-117). Para la fase 2 la sala tiene **12 balas** (3 blísteres) en los puntos ciegos, aparte de las 8 de la fase 3 (D-115).
             
-        3. **Pocos disparos a puntos débiles expuestos** (M-04): The Mother abre su núcleo criogénico y expone los **3 transformadores** de alto voltaje que la alimentan, de 2 disparos cada uno (D-59, D-65, D-80). Al destruir el último, la estantería se apaga y The Mother cae. La sala contiene 8 balas: 6 para los transformadores y 2 de margen (valores iniciales, sujetos a balance; D-28, D-80).
+        3. **Pocos disparos a puntos débiles expuestos** (M-04): The Mother abre su núcleo criogénico y expone los **3 transformadores** de alto voltaje que la alimentan, de 2 disparos cada uno (D-59, D-65, D-80). Al destruir el último, la estantería se apaga y The Mother cae. Junto al núcleo hay 8 balas: 6 para los transformadores y 2 de margen (valores iniciales, sujetos a balance; D-28, D-80).
             
     - **Sin reciclaje (D-28):** en la sala de The Mother no hay reciclaje de enemigos (M-20): la sala es solo máquina, sin carne, y el laboratorio no levanta cuerpos en ella (D-99).
         
@@ -1136,7 +1138,7 @@ flowchart TD
 | Techos rotos (descenso entre pisos) | Complica la garantía de rutas válidas | A |
 | Detección por rejillas o ventanas entre salas | Requiere percepción entre salas | V |
 | Cámaras que "mienten" (horror cósmico) | Aumenta el alcance y complica la legibilidad de la vigilancia (principio 3 de [[01 - Jugabilidad]]) | A |
-| Soporte completo de control | Se prioriza teclado y mouse en la demo | — |
+| Soporte completo de control (reasignación del mando) | La demo incluye un mapa básico fijo de mando (D-120) | — |
 
 ## Mecánicas descartadas
 

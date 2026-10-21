@@ -49,6 +49,10 @@ Centraliza términos técnicos, de diseño y propios del universo del videojuego
 | Objetos confiscados | 12 objetos de narrativa escénica que se examinan y se registran en el terminal del brazo (D-73). |
 | Energía de la sala final | Estado en que la sala clave final empieza sin energía (~1 de cada 3 en los pisos 1 y 2) y exige usar un interruptor (D-72). |
 | Configuración completa / showcase | Versión de ~45–60 min / versión reducida de ~30 min para eventos (D-34). |
+| Semilla | Número que fija el resultado del generador de un piso; cada entrada a un piso usa una nueva (D-101). Se muestra en la consola de depuración para reproducir bugs. |
+| Greybox | Versión jugable con geometría gris y sin arte final, usada para probar sistemas antes del arte. |
+| Congelación de funciones | Fecha desde la que solo se corrigen errores o se recorta alcance; 2026-11-23 (D-111). |
+| Definición de terminado | Condiciones que debe cumplir una característica para darla por terminada (D-113, [[01 - Criterios de Calidad]]). |
 
 ## Convenciones de nombres
 

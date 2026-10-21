@@ -8,6 +8,7 @@ La accesibilidad busca que el mayor número posible de jugadores pueda comprende
 
 - [x] **Tamaño de texto:** escala de subtítulos y del terminal (mínimos a 1080p: subtítulos ≥ 32 px, terminal ≥ 24 px; [[04 - Interfaz Visual]]).
 - [x] **Subtítulos:** obligatorios para todas las voces (D-52); se puede ajustar tamaño y fondo.
+- [x] **Fuente para dislexia (D-126):** opcional y desactivada por defecto; usa OpenDyslexic en documentos, terminal, menús y subtítulos.
 - [x] **Contraste:** el texto mantiene 4.5:1 sobre su fondo; opción de fondo opaco para subtítulos.
 - [ ] **Modo para daltonismo:** no hay filtro. En su lugar, ningún estado se comunica solo con color (regla visual 1 de [[01 - Dirección de Arte]]).
 - [x] **Reasignación de controles:** todas las acciones de teclado y ratón ([[04 - Controles]]).
@@ -23,7 +24,7 @@ La accesibilidad busca que el mayor número posible de jugadores pueda comprende
 ## Consideraciones
 
 - **Subtítulos de sonido (D-102):** describen lo que se oye con su dirección aproximada, por ejemplo `[Pasos rápidos, detrás]`, `[Grito lejano, izquierda]` o `[Crujidos cerca]`. No dan distancia exacta ni posición en pantalla, así que respetan D-02: describen el sonido, no la percepción del enemigo. Cubren los estados de alerta, el latido del protagonista, el grito de la Boca, el aviso de reciclaje, las cámaras hostiles y los avisos del sistema.
-- **Modo Historia (D-103):** ~50% menos daño recibido (Lukas aguanta un golpe más), detección enemiga más lenta y +1 al mínimo de cada recurso por piso. Se mantienen la muerte, la reconstrucción, la degradación y todos los finales, incluida la Asimilación. Los valores son iniciales, sujetos a balance.
+- **Modo Historia (D-103):** ~50% menos daño recibido (cada enemigo necesita el doble de golpes para matar a Lukas, D-116), detección enemiga más lenta y +1 al mínimo de cada recurso por piso (1 blíster en munición; sin cambio en las llaves; el máximo sube si queda por debajo, D-131). Se mantienen la muerte, la reconstrucción, la degradación y todos los finales, incluida la Asimilación. Los valores son iniciales, sujetos a balance.
 - **Oscuridad:** calibración de brillo en el primer inicio (D-106); los recogibles destellan bajo la luz (D-84).
 - **Interfaz diegética:** los estados se leen en el terminal con etiquetas de texto claras (D-86), no solo con iconos o color.
 - **Tiempo real:** el inventario y el terminal no pausan (M-07); la pausa siempre está disponible, también en la decisión final (D-92).

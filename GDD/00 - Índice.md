@@ -45,6 +45,7 @@ Cada sección explica **qué información debe escribirse**, por qué es importa
 - [[02 - Mundo]]
 - [[03 - Personajes]]
 - [[04 - Diálogos y Narrativa]]
+- [[05 - Textos del Juego]]
 
 ### 04 — Contenido
 - [[01 - Estructura del Contenido]]

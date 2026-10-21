@@ -17,7 +17,7 @@ Cada sistema agrupa mecánicas de [[02 - Mecánicas]]. Las reglas de detalle viv
 | S-03 Salud y combate | Daño, estados de salud, disparo, empujón y defensa contra agarres (M-04, M-05, M-06, M-11). Pilares V, DC | S-02, S-04, S-05 | Definido (valores iniciales D-37, sujetos a balance) |
 | S-04 Resistencia | Barra única para correr, empujar y rematar con golpe en el suelo (M-06, M-20). Pilares V, DC | — | Definido (valores iniciales D-37, sujetos a balance) |
 | S-05 Inventario | 6 casillas en tiempo real para curas, munición, punzón de descarga y llaves (M-07, M-08; D-36, D-37, D-71). Pilar DC | S-06, S-08 | Definido |
-| S-06 Generación procedural por pisos | Construye los 3 pisos del intento con sus salas clave, sus llaves, su ruta garantizada, su cobertura de cámaras, su presupuesto de enemigos y recursos y los documentos de Emilia en salas clave secundarias, según la configuración (M-08, M-15; D-11, D-17, D-25, D-33, D-34, D-36, D-38, D-52). Pilar A | S-07, S-08 | Definido (distancia mínima a la sala clave final por definir) |
+| S-06 Generación procedural por pisos | Construye los 3 pisos del intento con sus salas clave, sus llaves, su ruta garantizada, su cobertura de cámaras, su presupuesto de enemigos y recursos y los documentos de Emilia en salas clave secundarias, según la configuración (M-08, M-15; D-11, D-17, D-25, D-33, D-34, D-36, D-38, D-52). Pilar A | S-07, S-08 | Definido |
 | S-07 Persistencia | Terminal del brazo, código de sujeto R-H, conteo de los 6 documentos de Emilia, fallas de la máquina, autoguardado en la sala clave final y costo de salir del juego (M-08, M-16, M-17; D-30, D-31, D-32, D-43, D-45, D-50, D-52). Pilares A, DC | S-02, S-06, S-08 | Definido |
 | S-08 Ciclo de muerte y reconstrucción | Procesa la muerte y el reinicio, reconstruye al personaje, lleva el contador y la degradación y reproduce las cinemáticas de presentación y las cinemáticas finales (Asimilación, Relevo básico, Relevo completo y Ambiguo) (M-15, M-16, M-18, M-19; D-18, D-29, D-32, D-35, D-39, D-42, D-51). Pilar A | S-03, S-07 | Definido (degradación: Deseable) |
 | S-09 Reciclaje de enemigos | El laboratorio recicla una vez a cada enemigo eliminado salvo que se remate; sin reciclaje en la sala del jefe (M-20; D-20, D-21, D-27, D-28, D-99). Pilares V, DC | S-02, S-04, S-05, S-11 | Definido |
@@ -95,9 +95,9 @@ Cada sistema agrupa mecánicas de [[02 - Mecánicas]]. Las reglas de detalle viv
 - Enfrentar a más de dos enemigos a la vez es casi muerte segura (M-04); S-06 limita a 2 los enemigos activos por sala (D-37).
 - **Tipos (D-60, D-66):** el Alto vigila pasillos y golpea a distancia; la Boca grita y pone a los enemigos cercanos en búsqueda hacia ella; el Rastrero flanquea y no agarra; el Mudo no patrulla y se activa a ~3 m o al ser iluminado. Agarran el Alto y el Mudo (M-11). Valores en [[03 - Personajes]].
 
-**Salidas:** Estado de alerta de cada enemigo, estado de alerta más alto dentro del alcance de M-03, eventos "entra en caza" y "sale de la caza", enemigos que siguen al jugador por la escalera, enemigos en espera junto al elevador, ataques y agarres.
+**Salidas:** Estado de alerta de cada enemigo, estado de alerta más alto dentro del alcance de M-03, eventos "entra en caza" y "sale de la caza" (cierre de tránsito, D-96), ataques y agarres.
 
-**Estados posibles:** Patrulla, Sospecha, Búsqueda, Caza, Espera junto al elevador, Aturdido (empujón, punzón de descarga o punto débil), Muerto.
+**Estados posibles:** Patrulla, Sospecha, Búsqueda, Caza, Aturdido (empujón, punzón de descarga o punto débil), Muerto.
 
 **Dependencias:** S-01 Cámara y vigilancia (atención de The Mother), S-06 Generación procedural (salas, rutas y coberturas), S-11 Audio dinámico (cada cambio de estado debe tener su señal).
 
@@ -105,7 +105,7 @@ Cada sistema agrupa mecánicas de [[02 - Mecánicas]]. Las reglas de detalle viv
 
 **Datos que necesita:** Rutas de patrulla, coberturas, puertas y su estado, posición y ruido del personaje, haz de la linterna, posición del elevador de cada piso, posición del jugador al llenarse la atención.
 
-**Datos que genera:** Estado de alerta por enemigo, ruta de persecución, eventos de detección, lista de perseguidores al usar la escalera o el elevador.
+**Datos que genera:** Estado de alerta por enemigo, ruta de persecución, eventos de detección, enemigos en caza (cierre de tránsito, D-96).
 
 **Riesgos:**
 
@@ -119,8 +119,8 @@ Cada sistema agrupa mecánicas de [[02 - Mecánicas]]. Las reglas de detalle viv
 - Todo cambio de estado de alerta produce una señal audible distinta en S-11.
 - La interfaz no muestra indicadores de la percepción de los enemigos (D-02).
 - Al llenarse la atención de The Mother, ningún enemigo cercano en patrulla permanece en patrulla.
-- Al usar la escalera, de los enemigos que perseguían al jugador, solo los que estaban en caza llegan al piso siguiente, y lo hacen después del retraso.
-- Al usar el elevador, ninguno de los perseguidores llega al piso siguiente; si el jugador vuelve por el elevador, los que lo perseguían están cerca del elevador.
+- Mientras haya un enemigo en caza, la escalera y el elevador de la sala clave final muestran `LOCKDOWN` y no se pueden usar; al terminar la caza se abren (D-96).
+- Ningún enemigo cambia de piso (D-96).
 
 ### S-03: Salud y combate
 
@@ -132,7 +132,7 @@ Cada sistema agrupa mecánicas de [[02 - Mecánicas]]. Las reglas de detalle viv
 
 - Salud fija sin regeneración con 3 estados: **Bien**, **Herido** y **Crítico**. Herido y Crítico reducen la velocidad un 15% y un 30% (valores iniciales, sujetos a balance; D-37) (M-05).
 - Los enemigos matan en 2-4 golpes según su tipo (valores iniciales, sujetos a balance; D-66).
-- 1 arma, el revólver de Kessler (D-74), con munición escasa: tambor de 6 balas, recarga bala a bala, blísteres de 3 cartuchos, 12 balas por casilla, 2–4 disparos para eliminar a un enemigo según su tipo y 2 para un reciclado, o 1 para un Rastrero reciclado (D-66), (valores iniciales, sujetos a balance; D-37). Recargar impide disparar y un golpe la cancela sin perder munición; acertar a un punto débil interrumpe el ataque (M-04, D-74).
+- 1 arma, el revólver de Kessler (D-74), con munición escasa: tambor de 6 balas, recarga bala a bala, blísteres de 4 cartuchos, 12 balas por casilla, 2–4 disparos para eliminar a un enemigo según su tipo y 2 para un reciclado, o 1 para un Rastrero reciclado (D-66), (valores iniciales, sujetos a balance; D-37). Recargar impide disparar y un golpe la cancela sin perder munición; acertar a un punto débil interrumpe el ataque (M-04, D-74).
 - El empujón aparta y aturde brevemente, consume resistencia de S-04 y no protege contra el daño (M-06, D-05).
 - Un agarre consume automáticamente el punzón de descarga y aturde al enemigo 2 s (valor inicial, sujeto a balance); sin objeto, el personaje baja un estado de salud o muere si estaba en Crítico (M-11). Agarran el Alto, el Mudo y el brazo recolector de The Mother (D-65, D-66).
 
@@ -156,7 +156,7 @@ Cada sistema agrupa mecánicas de [[02 - Mecánicas]]. Las reglas de detalle viv
 **Criterios de aceptación (ambas configuraciones):**
 
 - La salud no se regenera sola en ningún estado.
-- Usar una cura en Bien no está permitido; recibir daño durante la cura la cancela sin consumirla.
+- Una cura sube al tope del estado siguiente; en Bien sin daño no está permitido usarla y en Bien con daño devuelve la salud completa (D-119); recibir daño durante la cura la cancela sin consumirla.
 - El punzón de descarga se consume al ser agarrado (uno por agarre) o al rematar un cuerpo (D-71).
 - Con los valores iniciales, cada tipo cae con sus disparos de D-66 y un reciclado con 2 (1 si es un Rastrero).
 
@@ -170,7 +170,7 @@ Cada sistema agrupa mecánicas de [[02 - Mecánicas]]. Las reglas de detalle viv
 
 - Correr, empujar y rematar con golpe en el suelo consumen la misma barra (M-06, M-20). Disparar no consume resistencia.
 - Correr gasta ~10% por segundo; el empujón cuesta el 35% y el golpe en el suelo el 25% de la resistencia (valores iniciales, sujetos a balance; D-37).
-- Se regenera tras 3 s sin estas acciones; caminar no interrumpe la regeneración (M-06).
+- Se regenera tras 3 s sin estas acciones y se llena de 0 a 100% en ~4 s (25% por segundo, D-123); caminar no interrumpe la regeneración (M-06).
 - En 0 entra en agotamiento: no se puede correr ni empujar durante 2 s (M-06).
 - Con resistencia insuficiente la acción no se ejecuta y se reproduce un jadeo.
 
@@ -253,7 +253,7 @@ Cada sistema agrupa mecánicas de [[02 - Mecánicas]]. Las reglas de detalle viv
 | Recursos por piso | Presupuesto de [[06 - Economía y Recursos]] | Escalados en proporción al número de salas (ver [[06 - Economía y Recursos]]) |
 | Duración aproximada | ~45–60 min | ~30 min |
 
-- **Densidad de enemigos (D-37):** máximo 2 enemigos activos por sala y ~1/3 de las salas vacías a propósito. Como el showcase escala en proporción, conserva la misma densidad por sala que la configuración completa en cada piso. La curva de dificultad se documenta en [[05 - Progresión]].
+- **Densidad de enemigos (D-37):** máximo 2 enemigos activos por sala y ~1/3 de las salas vacías a propósito. Como el showcase escala en proporción, conserva la misma densidad por sala que la configuración completa en cada piso. Si el piso generado tiene pocas salas, el número de enemigos se limita a 2 por sala ocupada aunque quede por debajo del rango (D-118). La curva de dificultad se documenta en [[05 - Progresión]].
 - Las escaleras y los elevadores existen solo dentro de las salas clave finales. La posición de todas las salas clave cambia en cada intento (M-15).
 - **Llaves (D-36):** cada piso tiene 1 llave obligatoria que abre la puerta de la sala clave final y puede tener llaves opcionales para atajos o salas con recursos. La ruta desde la entrada del piso hasta la llave obligatoria no atraviesa la puerta de la sala final; como las puertas con llave opcional solo dan a atajos o salas con recursos, la llave obligatoria nunca queda detrás de ellas. En el piso 3, la llave obligatoria abre la puerta de la sala de The Mother, que ocupa el lugar de la sala clave final (M-15, D-36; ver [[06 - Economía y Recursos]]).
 - **Ruta garantizada:** cada piso tiene al menos una ruta válida entrada → llave obligatoria → sala clave final. Si la sala clave final empieza sin energía (~1 de cada 3 en los pisos 1 y 2), el generador garantiza una ruta al interruptor de una sala clave secundaria del mismo piso (D-72). Las salas procedurales combinan 6 arquetipos con el tema del piso (D-69, ver [[02 - Niveles]]).
@@ -262,15 +262,15 @@ Cada sistema agrupa mecánicas de [[02 - Mecánicas]]. Las reglas de detalle viv
     - **Documentos de Emilia:** 6 en total, 2 por piso, siempre en salas clave secundarias y nunca en salas procedurales. Se aplica igual en la configuración completa (2–3 secundarias por piso) y en la showcase (2 secundarias por piso, D-34); no se escalan con el factor de D-34. Son los únicos que cuentan para la decisión final (M-19, S-07).
     - **Documentos de Vitalis Konzern y de The Mother:** se colocan en salas procedurales como contexto del mundo y no cuentan para la decisión final. Cantidad: 12, 4 por piso, 1–2 por intento (D-79).
     - Como la posición de las salas clave cambia en cada intento (M-15), la posición de los documentos de Emilia dentro del piso también cambia.
-    - Si cada documento de Emilia pertenece siempre al mismo piso y cuáles son corruptos (D-45): **Por definir** (contenido en [[04 - Diálogos y Narrativa]]). Cuántos documentos de Emilia puede contener una misma sala clave secundaria: **Por definir**.
+    - Cada documento de Emilia pertenece siempre a su piso: los documentos 1–2 al piso 1, 3–4 al piso 2 y 5–6 al piso 3, según el reparto por actos de [[01 - Premisa y Trama]]. Cada sala clave secundaria contiene como máximo 1 documento de Emilia (D-121). Sale corrupto todo pasaje que nombra a Lukas, se dirige a él o habla de su vida con Emilia (D-45, D-127).
     - Si el documento de Emilia de una sala clave secundaria ya está registrado en el terminal del brazo, la sala contiene recursos en su lugar (D-58, M-08).
 - **Tutorial (D-38):** en el primer intento, las primeras salas del piso 1 son fijas y contienen el tutorial; desde el segundo intento esas salas son procedurales. Son 4 salas y cuentan dentro de las salas procedurales del piso 1 (D-70).
 - Distancia mínima entre la reaparición (o la entrada del piso) y la sala clave final: ≥ 4 salas en la ruta más corta; ≥ 3 en la configuración de showcase (D-100).
 - La sala de The Mother es una sala clave fija del piso 3 y contiene munición para todos los puntos débiles de la fase 3 más 1–2 disparos de margen (D-28, S-10).
 - **Semilla por piso (D-101):** cada piso se genera con una semilla nueva cada vez que se entra en él, también al continuar desde un autoguardado: la sala clave final guardada se conserva como punto de aparición, pero el resto del piso cambia aunque el contador no suba. No se puede volver a un piso anterior; al cambiar de piso, el anterior se descarta.
-- **Regeneración:** al morir o reiniciar se regeneran las salas procedurales, la posición de las salas clave, las llaves y la distribución de enemigos y recursos de todos los pisos (M-16). Al continuar desde un autoguardado, S-06 restaura el estado guardado por S-07 en lugar de generar uno nuevo (D-30).
+- **Regeneración:** al morir o reiniciar se regeneran las salas procedurales, la posición de las salas clave, las llaves y la distribución de enemigos y recursos de todos los pisos (M-16). Al continuar desde un autoguardado, S-06 coloca a Lukas en la sala clave final guardada y genera el resto del piso con una semilla nueva (D-30, D-101).
 
-**Salidas:** Grafo de salas por piso, posición de las salas clave, posición de la llave obligatoria y de las opcionales, salas con cámara, posición de enemigos y recursos, puertas y paneles hackeables, posición de los documentos de Emilia y de los de Vitalis Konzern y The Mother, distribución del piso para el autoguardado.
+**Salidas:** Grafo de salas por piso, posición de las salas clave, posición de la llave obligatoria y de las opcionales, salas con cámara, posición de enemigos y recursos, puertas y paneles hackeables, posición de los documentos de Emilia y de los de Vitalis Konzern y The Mother, sala clave final para el autoguardado (la distribución no se guarda, D-101).
 
 **Estados posibles:** Sin generar, Generando, Piso válido, Piso inválido (se descarta y se vuelve a generar), Restaurado desde autoguardado.
 
@@ -297,6 +297,8 @@ Cada sistema agrupa mecánicas de [[02 - Mecánicas]]. Las reglas de detalle viv
 | Ambas | Ningún piso carece de una ruta válida entrada → llave obligatoria → sala clave final que no atraviese la puerta de la sala final ni puertas de llave opcional. |
 | Ambas | Cada piso tiene exactamente 1 llave obligatoria y 1 sala clave final (o la sala de The Mother en el piso 3). |
 | Ambas | Ninguna escalera o elevador aparece fuera de una sala clave final. |
+| Ambas | Ninguna sala tiene más de 2 enemigos y el total del piso nunca supera 2 por sala ocupada (D-118). |
+| Ambas | Cada piso contiene sus 2 documentos de Emilia (1–2, 3–4 o 5–6) y ninguna sala secundaria tiene más de 1 (D-121). |
 | Ambas | Todas las salas clave tienen cámara y la proporción de salas procedurales con cámara es ~1/3 por piso, redondeada (tolerancia ±1 sala, valor inicial, sujeto a balance). |
 | Ambas | Ninguna sala tiene más de 2 enemigos activos al generarse. |
 | Ambas | En el primer intento las salas del tutorial son idénticas en todas las partidas; desde el segundo intento son procedurales. |
@@ -354,9 +356,9 @@ Cada sistema agrupa mecánicas de [[02 - Mecánicas]]. Las reglas de detalle viv
 
 **Dependencias:** S-02 IA y percepción (enemigos en caza), S-06 Generación procedural (regenera el piso al continuar), S-08 Ciclo de muerte (orden de guardar antes de la muerte y descarte del autoguardado).
 
-**Interacciones:** S-05 (el terminal comparte la tecla `Tab` con el inventario; el inventario forma parte del autoguardado), S-06 (restaura el estado del intento al continuar; coloca los documentos que se registran), S-08 (salir con costo suma al contador y a la degradación; cada reconstrucción sube el código de sujeto; el conteo de documentos decide la cinemática de victoria), S-10 (fallas que acortan la fase 1; la sala del jefe no guarda; conteo de documentos para la decisión final).
+**Interacciones:** S-05 (el terminal comparte la tecla `Tab` con el inventario; el inventario forma parte del autoguardado), S-06 (coloca a Lukas en la sala clave final guardada al continuar, D-101; coloca los documentos que se registran), S-08 (salir con costo suma al contador y a la degradación; cada reconstrucción sube el código de sujeto; el conteo de documentos decide la cinemática de victoria), S-10 (fallas que acortan la fase 1; la sala del jefe no guarda; conteo de documentos para la decisión final).
 
-**Datos que necesita:** Entradas del terminal, marca de corrupto y tipo (Emilia, Vitalis Konzern o The Mother) de cada documento, código de sujeto, estado de cada falla, contador de muertes y nivel de degradación (si M-18 se implementa), marca de primer intento, estado del intento en la última sala clave final, estado de alerta al salir.
+**Datos que necesita:** Entradas del terminal, marca de corrupto y tipo (Emilia, Vitalis Konzern, Kessler Sicherheit AG o The Mother) de cada documento, código de sujeto, estado de cada falla, contador de muertes y nivel de degradación (si M-18 se implementa), marca de primer intento, estado del intento en la última sala clave final, estado de alerta al salir.
 
 **Datos que genera:** Archivo de guardado (terminal, código de sujeto, conteo de documentos de Emilia, fallas, contador, degradación, autoguardado del intento y marca de salida confirmada).
 
@@ -508,8 +510,8 @@ Cada sistema agrupa mecánicas de [[02 - Mecánicas]]. Las reglas de detalle viv
 - **Sala (D-59):** la central de megafonía desde donde se emitió el latido en el incidente; es una sola sala que se transforma en cada fase y no tiene carne. The Mother es un archivo de muestras criogénicas en una grúa (D-65). Emite una línea de protocolo al inicio de cada fase (D-62).
 - **Brazo recolector (D-65):** recorre la sala en las 3 fases; si alcanza al jugador, lo agarra con las reglas de M-11 (S-03). Lukas puede morir en cualquier fase.
 - 3 fases de 1-2 min cada una (valor inicial, sujeto a balance) (M-19):
-    1. **Hackeo de nodos bajo presión** (M-13) en las mesas de mezcla y los racks de cinta (D-59), con el brazo recolector patrullando los nodos (D-65); las fallas acortan las secuencias. Sin M-17 funciona con la longitud original.
-    2. **Supervivencia y huida con cámaras hostiles (D-28):** cada cámara de la sala muestra una luz roja y emite el sonido de su motor al girar (S-11). Cada vez que una cámara enfoca al jugador, S-10 libera un asimilado desde una cápsula del archivo y envía ese punto a S-02; el asimilado acude a él. Nunca hay más de 2 activos; 4 en total en la fase (D-65, D-80). Una niebla criogénica reduce la visibilidad sin ralentizar ni tapar las señales de M-10 (D-65). El jugador avanza entre los puntos ciegos de las cámaras. La vista de vigilancia no está disponible durante esta fase (S-01). Valores iniciales (D-98): 3 cámaras que barren a ~20°/s con un cono de ~12 m y liberan tras ~1 s enfocando; el brazo recolector recorre los rieles a ~2.5 m/s, alcanza ~3 m y avisa ~1 s antes de agarrar.
+    1. **Hackeo de nodos bajo presión** (M-13): 3 nodos con secuencias de terminal principal (D-114) en las mesas de mezcla y los racks de cinta (D-59), con el brazo recolector patrullando los nodos (D-65); las fallas acortan las secuencias. Sin M-17 funciona con la longitud original.
+    2. **Supervivencia y huida con cámaras hostiles (D-28):** cada cámara de la sala muestra una luz roja y emite el sonido de su motor al girar (S-11). Cada vez que una cámara enfoca al jugador, S-10 libera un asimilado desde una cápsula del archivo y envía ese punto a S-02; el asimilado acude a él. Nunca hay más de 2 activos; 4 en total en la fase: 2 Altos y 2 Rastreros (D-65, D-80, D-115). Una niebla criogénica reduce la visibilidad sin ralentizar ni tapar las señales de M-10 (D-65). El jugador avanza entre los puntos ciegos de las cámaras. La fase termina cuando los 4 asimilados están eliminados y Lukas llega al núcleo (D-115). Si Lukas llega al núcleo con asimilados por liberar, salen todos los que falten, con un máximo de 2 activos, así que esquivar todas las cámaras nunca bloquea la fase (D-117). La sala tiene 12 balas (3 blísteres) en los puntos ciegos para esta fase, aparte de las de la fase 3 (D-115). La vista de vigilancia no está disponible durante esta fase (S-01). Valores iniciales (D-98): 3 cámaras que barren a ~20°/s con un cono de ~12 m y liberan tras ~1 s enfocando; el brazo recolector recorre los rieles a ~2.5 m/s, alcanza ~3 m y avisa ~1 s antes de agarrar.
     3. **Pocos disparos a puntos débiles expuestos** (M-04): transformadores de alto voltaje que quedan expuestos al abrirse el núcleo criogénico de The Mother (D-59, D-65). Al destruir el último, la estantería se apaga y The Mother cae. La sala contiene munición para todos los puntos débiles más 1–2 disparos de margen (valor inicial, sujeto a balance; D-28), aunque el jugador llegue sin munición. Son 3 transformadores de 2 disparos cada uno (D-80).
 - **Sin reciclaje (D-28):** los enemigos eliminados en la sala no se reciclan (S-09).
 - Morir en la sala regresa al inicio del ciclo (S-08).
@@ -542,6 +544,9 @@ Cada sistema agrupa mecánicas de [[02 - Mecánicas]]. Las reglas de detalle viv
 - En la fase 2, cada cámara muestra su luz roja y su motor suena al girar; cada enfoque libera un asimilado que se dirige a ese punto y nunca hay más de 2 activos (D-65).
 - El brazo recolector puede agarrar al jugador en las 3 fases y aplica la regla de M-11.
 - La sala tiene puntos ciegos que permiten atravesar la fase 2 sin ser enfocado.
+- La fase 1 exige completar 3 nodos (D-114).
+- La fase 3 no empieza hasta que los 4 asimilados están eliminados y Lukas llega al núcleo; con las 12 balas de la fase 2 se pueden eliminar los 4 aunque el jugador llegue sin munición (D-115).
+- Si Lukas llega al núcleo sin haber sido enfocado 4 veces, se liberan los asimilados que falten, con un máximo de 2 activos (D-117).
 - Al empezar la fase 3, la sala contiene munición para todos los puntos débiles más 1–2 disparos de margen, aunque el jugador llegue sin munición.
 - Ningún enemigo eliminado en la sala se recicla.
 - La derrota de The Mother dispara la revelación y la victoria.

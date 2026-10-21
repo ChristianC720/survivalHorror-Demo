@@ -33,11 +33,11 @@ Define el contexto donde ocurre el videojuego: lugares, culturas, reglas, histor
 
 - Vitalis Konzern construye el laboratorio subterráneo para explotar algo que no entiende y comercializarlo como medicina de regeneración (D-46). Dentro realiza experimentos ilegales e inhumanos (D-59).
 - The Mother se crea como IA médica de Vitalis para contener y estudiar a la criatura; su protocolo original es la preservación del personal (D-47). Sin saberlo, sus reconstrucciones la mantenían contenida.
-- **El incidente (D-57).** Alguien transmite el latido por la megafonía de la instalación, desde la central de megafonía del piso 3. Quien lo escucha completo es asimilado. Los documentos se contradicen sobre quién hizo la transmisión y nunca se confirma si la investigación de Emilia lo provocó (D-49). Fecha exacta del incidente: **Por definir**.
+- **El incidente (D-57).** Alguien transmite el latido por la megafonía de la instalación, desde la central de megafonía del piso 3. Quien lo escucha completo es asimilado. Los documentos se contradicen sobre quién hizo la transmisión y nunca se confirma si la investigación de Emilia lo provocó (D-49). El incidente ocurre en **2081** (D-125).
 - Emilia Reiner-Hellen, científica de Vitalis, está dentro durante la transmisión y solo oye una parte: el **primer acto**. Muere y The Mother la reconstruye como **R-H-01**, con la identidad conservada (D-57).
 - Vitalis saca a Emilia de la instalación y la despide sin saber que fue reconstruida: nunca lee los reportes de The Mother, la considera una superviviente inestable y la despide para limpiar responsabilidades (D-68). Después sella la instalación y la da de baja (D-46, D-57). Personal de Vitalis y sujetos de prueba que estaban dentro terminan asimilados por el laboratorio (D-48). The Mother queda activa con su protocolo de preservación corrupto (D-47).
-- Emilia vuelve a escondidas a la instalación sellada para escuchar el **segundo acto**. En sus visitas, The Mother la reconstruye como R-H-02 a R-H-06. Cada reconstrucción le quita algo de memoria; su diario lo muestra (D-57). Emilia **no fue asimilada**; su expediente indica "estado desconocido" y ni siquiera The Mother sabe qué ocurrió (D-49).
-- Emilia deja programada una nota de voz de su diario para enviarse al teléfono personal de Lukas si no vuelve (D-53).
+- Emilia vuelve a escondidas a la instalación sellada para escuchar el **segundo acto**; su primera visita es en octubre de 2082 (D-125). En sus visitas, The Mother la reconstruye como R-H-02 a R-H-06. Cada reconstrucción le quita algo de memoria; su diario lo muestra (D-57). Emilia **no fue asimilada**; su expediente indica "estado desconocido" y ni siquiera The Mother sabe qué ocurrió (D-49).
+- Emilia deja programada una nota de voz de su diario para enviarse al teléfono personal de Lukas si no vuelve (D-53). Lukas la recibe a principios de diciembre de 2083, cuando empieza el juego (D-125).
 
 ### Durante el juego
 
@@ -60,7 +60,7 @@ Resumen de la trama del mundo; la estructura en actos y los eventos se documenta
     - **Ambiguo** (con los 6 documentos, irse): el latido de Lukas y el del laboratorio se sincronizan. No se sabe si Lukas fue asimilado, si se convirtió en The Mother o si ocurrió otra cosa.
 - **Gancho abierto (D-51):** al final solo se escucha una nueva llegada y el sonido de The Mother iniciando el protocolo. El ciclo continúa; Vitalis no interviene.
 - **Ningún final ofrece salvación** (D-44). El destino de Emilia queda indefinido para la post-demo; nunca se afirma que esté bien (D-49).
-- **Intención post-demo (D-51):** en la continuación el protagonista cambia y, si hubo Relevo, Lukas es el antagonista. Estado del mundo exterior tras la demo: **Por definir** (post-demo).
+- **Intención post-demo (D-51):** en la continuación el protagonista cambia y, si hubo Relevo, Lukas es el antagonista. Estado del mundo exterior tras la demo: fuera del alcance de la demo (post-demo).
 
 ## Lugares
 
@@ -80,7 +80,7 @@ La instalación se recorre como un descenso hacia el núcleo del laboratorio (D-
 | Salas clave secundarias | Salas fijas cuya posición cambia por intento (2–3 por piso; D-33) | Documentos, llaves y, a veces, el interruptor de energía de la sala final (M-08, D-72); todas con cámara (D-25). Si su documento de Emilia ya está registrado, contienen 1 recurso extra (D-58, D-79) | Contienen los 6 documentos de Emilia, 2 por piso, también en el showcase (D-52) |
 | Salas clave finales (pisos 1 y 2) | Salas fijas con la escalera o el elevador hacia el piso siguiente (D-33) | Avance de piso con la llave obligatoria (D-36), autoguardado (D-30) y transición de piso (D-39) | Marcan cada etapa del descenso hacia el núcleo |
 | Sala de The Mother: central de megafonía | Al final del piso 3, en el lugar de la sala clave final (D-16, M-15). La central desde donde se emitió el latido: bobinas de cinta, mesas de mezcla y altavoces industriales del tamaño de una pared. Sin carne: es solo máquina. The Mother es un archivo de muestras criogénicas en una grúa (D-65). Contiene la terminal central (consola de emisión) y la salida (D-51, D-59) | Jefe final de 3 fases en una sola sala grande que se transforma: nodos en las mesas de mezcla vigilados por el brazo recolector (fase 1), cámaras hostiles que liberan asimilados y niebla criogénica (fase 2), transformadores expuestos al abrirse el núcleo criogénico (fase 3) (D-65). Sin autoguardado (M-19). Tras la fase 3, decisión final con la terminal central y la salida (`E`) | Lugar del incidente, de la revelación, del Despertar y de los finales de victoria (D-51, D-57) |
-| Exterior (mundo corporativo) | Distopía de megacorporaciones en Sektor V-7. Otras instalaciones de Vitalis: **Por definir** | Solo la casa de la introducción | Contexto: la instalación donde trabaja Lukas y los servidores de Vitalis que reciben los reportes que nadie lee |
+| Exterior (mundo corporativo) | Distopía de megacorporaciones en Sektor V-7. Otras instalaciones de Vitalis: fuera del alcance de la demo (post-demo) | Solo la casa de la introducción | Contexto: la instalación donde trabaja Lukas y los servidores de Vitalis que reciben los reportes que nadie lee |
 
 ## Facciones
 

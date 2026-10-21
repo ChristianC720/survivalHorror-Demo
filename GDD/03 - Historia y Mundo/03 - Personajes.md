@@ -92,7 +92,7 @@ Presenta dos estados visuales:
 - Obsesión por una búsqueda cuyo objeto no recuerda, que puede empujarlo a asumir riesgos.
 - Dependencia de la gestión de recursos limitados (seis slots de inventario).
 
-**Frases o tono de diálogo:** Sin actuación de voz: su voz se representa con un sonido vocal grave, rasposo y parco, más texto en pantalla (D-52). Casi no habla: frases cortas y murmullos al encontrar documentos o el anillo, sin heroísmo; tono cansado y melancólico. Sin humor (D-62). Su sonido vocal se distorsiona con la degradación (M-18); el texto en pantalla solo se degrada en la cinemática de Asimilación (D-62). `Por definir`: líneas concretas.
+**Frases o tono de diálogo:** Sin actuación de voz: su voz se representa con un sonido vocal grave, rasposo y parco, más texto en pantalla (D-52). Casi no habla: frases cortas y murmullos al encontrar documentos o el anillo, sin heroísmo; tono cansado y melancólico. Sin humor (D-62). Su sonido vocal se distorsiona con la degradación (M-18); el texto en pantalla solo se degrada en la cinemática de Asimilación (D-62). Líneas en borrador: [[05 - Textos del Juego]].
 
 **Referencias visuales:**
 
@@ -110,7 +110,7 @@ Presenta dos estados visuales:
 
 **Función narrativa:** Explica por qué Lukas vuelve tras cada muerte y por qué existen los enemigos comunes: **The Mother reconstruye; el laboratorio asimila** (D-47). Sus informes clínicos y documentos dan el contexto corporativo del incidente. Al ser derrotada revela que existe algo más, pero no puede explicar qué es la criatura (D-16, D-47). Ver [[01 - Premisa y Trama]] y [[02 - Mundo]].
 
-**Descripción física:** Un archivo de muestras criogénicas de Vitalis Konzern montado en una grúa: una estantería refrigerada de viales sellados con un brazo recolector de especímenes y un núcleo criogénico que la alimenta (D-65). Habita la central de megafonía al final del piso 3, desde donde se emitió el latido en el incidente (D-57). The Mother no es la criatura: ni su forma ni su sala tienen carne; es solo máquina. Diseño concreto: `Por definir` (ver [[02 - Personajes y Animación]]).
+**Descripción física:** Un archivo de muestras criogénicas de Vitalis Konzern montado en una grúa: una estantería refrigerada de viales sellados con un brazo recolector de especímenes y un núcleo criogénico que la alimenta (D-65). Habita la central de megafonía al final del piso 3, desde donde se emitió el latido en el incidente (D-57). The Mother no es la criatura: ni su forma ni su sala tienen carne; es solo máquina. Diseño concreto (D-129): una **estantería-catedral** de varios pisos, colgada de la grúa, llena de viales sellados con escarcha y luz carmesí interna. El brazo recolector es una pinza hidráulica de laboratorio con cables y mangueras colgando. El núcleo criogénico es una esfera de vidrio esmerilado en la base de la estantería, rodeada por los 3 transformadores de la fase 3. No tiene cara: su mirada son las cámaras de la sala (ver [[02 - Personajes y Animación]]).
 
 **Personalidad:** No tiene una voluntad que se pueda razonar: es un protocolo indiferente, clínico y burocrático (D-47, D-52).
 
@@ -145,9 +145,9 @@ Presenta dos estados visuales:
 - Su protocolo es ciego: no comprende las consecuencias de reconstruir ni qué es la criatura (D-47).
 - Transformadores de alto voltaje que la alimentan, expuestos en la fase 3 al abrirse su núcleo criogénico (M-19, D-59, D-65). Al destruir el último, la estantería se apaga y The Mother cae.
 
-**Frases o tono de diálogo:** Sin actuación de voz: su voz se representa con sonidos más texto en pantalla (D-52). Tono clínico y corporativo, con humor negro involuntario de burocracia absurda (D-62); se refiere a Lukas por su código de sujeto, no por su nombre. En el combate emite una línea de protocolo al inicio de cada fase (D-62). Usa la frase clave "Escucha el latido" como dato clínico (D-58). `Por definir`: líneas concretas (ver [[04 - Diálogos y Narrativa]]).
+**Frases o tono de diálogo:** Sin actuación de voz: su voz se representa con sonidos más texto en pantalla (D-52). Tono clínico y corporativo, con humor negro involuntario de burocracia absurda (D-62); se refiere a Lukas por su código de sujeto, no por su nombre. En el combate emite una línea de protocolo al inicio de cada fase (D-62). Usa la frase clave "Escucha el latido" como dato clínico (D-58). Líneas en borrador: [[05 - Textos del Juego]].
 
-**Referencias visuales:** Estética de *Signalis*. Equipo de laboratorio y almacenamiento criogénico industrial de los 90. Referencias concretas: `Por definir`.
+**Referencias visuales:** Estética de *Signalis*. Equipo de laboratorio y almacenamiento criogénico industrial de los 90. Lista de búsqueda en [[02 - Referencias e Inspiración]].
 
 ### Personajes secundarios
 
@@ -165,7 +165,7 @@ Presenta dos estados visuales:
 
 **Motivaciones:** Escuchar el **segundo acto** (D-57; inspiración: *The King in Yellow*). El latido del laboratorio es un texto; durante el incidente Emilia oyó solo una parte, el primer acto, y necesita oír el resto aunque la destruya.
 
-**Objetivos:** Tras su despido, volver a escondidas a la instalación sellada para escuchar el segundo acto (D-57). La investigación consiste en transcribir y estudiar el patrón del latido; su contenido concreto queda `Por definir`, y nunca explica qué es la criatura (D-16).
+**Objetivos:** Tras su despido, volver a escondidas a la instalación sellada para escuchar el segundo acto (D-57). La investigación consiste en transcribir y estudiar el patrón del latido; Emilia descubre que el latido tiene estructura de obra (actos, silencios y retornos) y lo anota como una partitura; deduce dónde y cuándo suena el segundo acto, y sus notas se vuelven más obsesivas con cada visita (D-128). La investigación nunca explica qué es la criatura (D-16).
 
 **Conflicto:** Estaba dentro durante la transmisión del latido, pero los documentos se contradicen sobre quién la hizo y nunca se confirma si su investigación provocó el incidente (D-49, D-57). Cada reconstrucción le quita algo de memoria (D-57).
 
@@ -187,9 +187,9 @@ Presenta dos estados visuales:
 - Obsesión con el segundo acto, que la empuja a volver pese al riesgo.
 - Pérdida progresiva de memoria con cada reconstrucción.
 
-**Frases o tono de diálogo:** Sin actuación de voz: la nota de voz se presenta como transcripción con sonido vocal y forma de onda (D-52, D-53). Diario íntimo, fragmentado y analítico (D-52, D-58). Usa la frase clave "Escucha el latido" como obsesión (D-58). Sin humor (D-62). `Por definir`: líneas concretas (ver [[04 - Diálogos y Narrativa]]).
+**Frases o tono de diálogo:** Sin actuación de voz: la nota de voz se presenta como transcripción con sonido vocal y forma de onda (D-52, D-53). Diario íntimo, fragmentado y analítico (D-52, D-58). Usa la frase clave "Escucha el latido" como obsesión (D-58). Sin humor (D-62). Líneas en borrador: [[05 - Textos del Juego]].
 
-**Referencias visuales:** Estética de *Signalis*. Referencias concretas: `Por definir`.
+**Referencias visuales:** Estética de *Signalis*. Lista de búsqueda en [[02 - Referencias e Inspiración]].
 
 ## NPC
 
@@ -248,7 +248,7 @@ Los reciclados mueren con 2 disparos, o con 1 si son un Rastrero (M-20). Detecci
 
 **Frases o tono de diálogo:** Sin diálogo. Solo sonidos de dolor que los representan.
 
-**Referencias visuales:** Estética de *Signalis* con terror físico de *Silent Hill*. Referencias concretas: `Por definir`.
+**Referencias visuales:** Estética de *Signalis* con terror físico de *Silent Hill*. Lista de búsqueda en [[02 - Referencias e Inspiración]].
 
 ### Enemigos reciclados
 
@@ -258,7 +258,15 @@ Los reciclados mueren con 2 disparos, o con 1 si son un Rastrero (M-20). Detecci
 
 **Función narrativa:** Materializan el rastro de identidad: después del reciclaje ya no les queda identidad, por eso solo ocurre una vez (D-47, M-20).
 
-**Descripción física:** Versión más asimilada de cada uno de los 4 tipos (D-60): más deformada y con más rasgos del laboratorio. Diseño concreto: `Por definir`.
+**Descripción física:** Versión de cada uno de los 4 tipos (D-60), sin rasgos del laboratorio ni carne nueva (D-130). Donde hay piezas metálicas, son el intento fallido de The Mother de preservar su último rastro de identidad (D-47, M-20). Cada tipo cambia su silueta de forma distinta:
+
+| Tipo | Aspecto del reciclado |
+|---|---|
+| El Alto | Vértebra metálica que alarga la columna y extensiones metálicas en los codos que alargan los brazos. Sin máscara: la cabeza queda a la vista. Conserva restos del uniforme del Werkschutz |
+| La Boca | Sin piezas metálicas. Delgada hasta los huesos, ciega, con restos de ropa de experimentación. Su boca se abre en vertical, separándose de abajo hacia arriba |
+| El Rastrero | El más orgánico, con menos metal. A cuatro patas, como una araña. Una vértebra metálica sustituida le impide ponerse de pie. En su cara invertida lleva fundidas unas pinzas metálicas, como los quelíceros de una araña |
+| El Mudo | Inspirado en las enfermeras de *Silent Hill*: uniforme clínico de Vitalis manchado, cabeza envuelta en vendas y una placa metálica remachada que le tapa la cara. Cuerpo rígido que se mueve con espasmos al activarse |
+
 
 **Personalidad:** Sin personalidad propia: han perdido su identidad (D-48).
 
@@ -281,9 +289,9 @@ Los reciclados mueren con 2 disparos, o con 1 si son un Rastrero (M-20). Detecci
 
 **Frases o tono de diálogo:** Sin diálogo.
 
-**Referencias visuales:** Las de los enemigos comunes. Referencias concretas: `Por definir`.
+**Referencias visuales:** Las de los enemigos comunes, más la fusión de carne y metal de la lista de búsqueda en [[02 - Referencias e Inspiración]].
 
-En el final "Asimilación", Lukas se convierte en uno de estos enemigos comunes: un Mudo que sirve de señuelo en el piso que no existe (D-42, D-61). La cantidad de enemigos por piso se documenta en [[02 - Mecánicas]] (M-15); su lugar en el mundo, en [[02 - Mundo]]. El texto de las entradas de bestiario queda `Por definir`.
+En el final "Asimilación", Lukas se convierte en uno de estos enemigos comunes: un Mudo que sirve de señuelo en el piso que no existe (D-42, D-61). La cantidad de enemigos por piso se documenta en [[02 - Mecánicas]] (M-15); su lugar en el mundo, en [[02 - Mundo]]. El texto de las entradas de bestiario está en borrador en [[05 - Textos del Juego]].
 
 
 > **Navegación:** [[00 - Índice]] · ← [[02 - Mundo]] · [[04 - Diálogos y Narrativa]] →

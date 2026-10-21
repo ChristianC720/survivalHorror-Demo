@@ -14,7 +14,7 @@ Los enemigos comunes son personas asimiladas por el laboratorio: personal de Vit
 - **Recompensa:** ninguna. Los enemigos no sueltan objetos; el saqueo de cadáveres es Post-demo (M-20).
 - **Reciclaje:** el laboratorio recicla cada cuerpo no rematado una sola vez, con un aviso orgánico ~40 s después de la muerte (D-99); el reciclado es un 25% más rápido y muere con 2 disparos, o con 1 si es un Rastrero (M-20, D-66).
 - **Puntos débiles:** cada tipo tiene uno. Acertarle interrumpe el ataque o el agarre en curso, pero no reduce los disparos necesarios (D-74).
-- **Densidad:** máximo 2 enemigos activos por sala; ~1/3 de las salas vacías (D-37).
+- **Densidad:** máximo 2 enemigos activos por sala; ~1/3 de las salas vacías (D-37). El total del piso nunca supera 2 por sala ocupada (D-118).
 - **Aparición por piso (D-76):** piso 1, el Alto y el Rastrero; piso 2, se suma la Boca; piso 3, se suma el Mudo. El Mudo de la introducción es un señuelo guionizado (D-53).
 
 ## Plantilla de enemigo
@@ -155,7 +155,7 @@ Inmóvil → (Lukas a ~3 m o luz) → Estallido → Agarrar → Pausa → Estall
 
 **Rango de detección:** Las cámaras de la sala (fase 2, D-28).
 
-**Ataques:** Brazo recolector (las 3 fases); 4 asimilados liberados en la fase 2, máximo 2 activos (D-80).
+**Ataques:** Brazo recolector (las 3 fases); 4 asimilados liberados en la fase 2 (2 Altos y 2 Rastreros), máximo 2 activos (D-80, D-115).
 
 **Debilidades:** Los transformadores expuestos.
 

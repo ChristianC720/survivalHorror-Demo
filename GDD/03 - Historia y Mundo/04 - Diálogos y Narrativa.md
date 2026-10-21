@@ -47,7 +47,7 @@ Define cómo se presenta la historia al jugador y cómo funcionan los diálogos.
 - Subtítulos o texto en pantalla obligatorios en todas las líneas.
 - Leer un documento no pausa el juego (M-08).
 - Ninguna línea ofrece opciones de respuesta; las únicas decisiones del jugador son espaciales e interactivas (ver "Decisiones narrativas").
-- **Documentos corruptos (D-45, D-58):** algunos documentos, sobre todo los relacionados con la memoria de Lukas, se registran con partes del texto ilegibles. La corrupción es un **glitch de realidad** provocado por el laboratorio o el latido: el texto se distorsiona con símbolos y letras corruptas. No es una censura. "Corrupto" es un término distinto de las fallas de la máquina (M-17). La corrupción **nunca** oculta información necesaria para avanzar (rutas, reglas): esa parte siempre es legible y solo se corrompe el contenido narrativo (M-08). Se completan en el desenlace solo si Lukas reunió los 6 documentos de Emilia (M-19, D-55). Qué documentos concretos son corruptos: **Por definir**.
+- **Documentos corruptos (D-45, D-58):** algunos documentos, sobre todo los relacionados con la memoria de Lukas, se registran con partes del texto ilegibles. La corrupción es un **glitch de realidad** provocado por el laboratorio o el latido: el texto se distorsiona con símbolos y letras corruptas. No es una censura. "Corrupto" es un término distinto de las fallas de la máquina (M-17). La corrupción **nunca** oculta información necesaria para avanzar (rutas, reglas): esa parte siempre es legible y solo se corrompe el contenido narrativo (M-08). Se completan en el desenlace solo si Lukas reunió los 6 documentos de Emilia (M-19, D-55). Regla (D-127): todo pasaje que nombra a Lukas, se dirige a él o habla de su vida con Emilia sale corrupto, en cualquier documento; el resto es legible. Textos en [[05 - Textos del Juego]].
 - **Frase clave (D-58):** **"Escucha el latido"** se repite entre las dos voces y cambia de sentido según quién la dice: indicación médica de calma (Vitalis), dato clínico (The Mother) u obsesión (Emilia).
 
 ### Escena / Conversación
@@ -64,7 +64,7 @@ Define cómo se presenta la historia al jugador y cómo funcionan los diálogos.
 - **Cierre:** un cliffhanger. Emilia suspira con miedo y se la oye correr de algo.
 - Lukas va igual, por obstinación.
 - El teléfono se pierde en la primera reconstrucción y The Mother copia el mensaje al terminal del brazo, **corrupto**, hasta completarse en el desenlace si Lukas reúne los 6 documentos (M-16, M-19, D-55).
-- Texto concreto del mensaje: **Por definir**.
+- Texto del mensaje (borrador): [[05 - Textos del Juego]].
 
 **Opciones del jugador:** Ninguna. El jugador puede consultar la copia en el terminal del brazo.
 
@@ -76,7 +76,7 @@ Define cómo se presenta la historia al jugador y cómo funcionan los diálogos.
 
 **Objetivo de la conversación:** Reconstruir la historia de Emilia: científica de Vitalis que estuvo dentro durante la transmisión del latido, oyó el primer acto, fue reconstruida como R-H-01, fue despedida y volvió a escondidas por el segundo acto (D-57).
 
-**Contexto:** 6 documentos, 2 por piso, en salas clave secundarias (D-52). Es un diario íntimo y fragmentado; empieza técnico, como el de una científica brillante y fría, y se va quebrando a medida que olvida (D-57). Nunca usa el código R-H (D-58). Los documentos se contradicen sobre quién hizo la transmisión y nunca se confirma (D-49). Algunos pueden ser corruptos (D-45). Texto de cada documento: **Por definir**.
+**Contexto:** 6 documentos, 2 por piso, en salas clave secundarias (D-52). Es un diario íntimo y fragmentado; empieza técnico, como el de una científica brillante y fría, y se va quebrando a medida que olvida (D-57). Nunca usa el código R-H (D-58). Los documentos se contradicen sobre quién hizo la transmisión y nunca se confirma (D-49). Algunos pueden ser corruptos (D-45). Su investigación es una partitura del latido (D-128). Texto de cada documento (borrador): [[05 - Textos del Juego]].
 
 **Opciones del jugador:** Recogerlos o no al explorar las salas clave secundarias.
 
@@ -100,7 +100,7 @@ Define cómo se presenta la historia al jugador y cómo funcionan los diálogos.
 - Informe de reclasificación del sujeto en la cinemática de Asimilación (D-61).
 - Gancho final: la voz (sonido) de The Mother iniciando el protocolo ante una nueva llegada (D-51).
 
-Redacción concreta de los textos: **Por definir**.
+Textos (borrador): [[05 - Textos del Juego]].
 
 **Opciones del jugador:** Ninguna.
 
@@ -112,7 +112,7 @@ Redacción concreta de los textos: **Por definir**.
 
 **Objetivo de la conversación:** Expresar la frustración de Lukas por no recordar a quién busca (D-45) y el desgaste del ciclo.
 
-**Contexto:** Lukas casi no habla: frases cortas y murmullos (sonidos) al encontrar documentos o el anillo, con texto en pantalla (D-52, M-08). Su sonido vocal se distorsiona con la degradación acumulada (**distorsión del sonido vocal**, M-18). El texto en pantalla de sus líneas se mantiene limpio durante el juego y solo se degrada en la cinemática de Asimilación (D-62). Frases concretas y disparadores adicionales: **Por definir**.
+**Contexto:** Lukas casi no habla: frases cortas y murmullos (sonidos) al encontrar documentos o el anillo, con texto en pantalla (D-52, M-08). Su sonido vocal se distorsiona con la degradación acumulada (**distorsión del sonido vocal**, M-18). El texto en pantalla de sus líneas se mantiene limpio durante el juego y solo se degrada en la cinemática de Asimilación (D-62). Frases y disparadores (borrador): [[05 - Textos del Juego]].
 
 **Opciones del jugador:** Ninguna.
 
@@ -163,4 +163,4 @@ Idiomas previstos:
 - **Alemán (D-58):** los fragmentos en alemán no se traducen en ningún idioma.
 
 
-> **Navegación:** [[00 - Índice]] · ← [[03 - Personajes]] · [[01 - Estructura del Contenido]] →
+> **Navegación:** [[00 - Índice]] · ← [[03 - Personajes]] · [[05 - Textos del Juego]] →

@@ -90,7 +90,20 @@ Imágenes guardadas en `10 - Referencia` (D-82, D-83):
 - Ambientación (solo como guía de color): ![[ReferenciaConColoresOscurosFrios.jpg]]
 - Lukas civil y R-H-07: ![[Lukas-Reiner-Hellen.jpg]] ![[Lukas-R-H-07.jpg]]
 
-Uso de cada paleta en [[01 - Dirección de Arte]]. **Por definir:** imágenes de referencia de Emilia (foto), The Mother, los asimilados y los pisos.
+Uso de cada paleta en [[01 - Dirección de Arte]].
+
+**Lista de búsqueda de referencias (pendiente de reunir las imágenes):** se guardan en `10 - Referencia` y se enlazan aquí.
+
+| Para | Qué buscar |
+|---|---|
+| Emilia (foto familiar) | Fotos familiares de los 90 en película, con flash directo y grano; retrato de boda informal en interior; tono cálido que contraste con el resto del juego |
+| Emilia (diario) | Cuadernos de laboratorio manuscritos; partituras anotadas a mano con tachaduras; documentos de *Signalis* |
+| The Mother | Almacenes criogénicos automatizados de biobancos; bibliotecas de cintas robotizadas; grúas pórtico industriales; la cámara de GLaDOS en *Portal 2* (máquina colgada del techo); la sala de MU-TH-UR en *Alien* (1979); el núcleo de *Event Horizon* (1997) |
+| Asimilados | Criaturas de *Silent Hill 2* (Lying Figure, Mannequin); Réplicas corruptas de *Signalis*; efectos prácticos de *The Thing* (1982); pinturas de Zdzisław Beksiński; manga de Junji Ito |
+| Reciclados (carne y metal) | Enfermeras de *Silent Hill* (Mudo reciclado); arañas y quelíceros (Rastrero reciclado); *Tetsuo: The Iron Man* (1989); cenobitas de *Hellraiser* (1987); prótesis médicas antiguas y aparatos ortopédicos de acero |
+| Piso 1 — Mantenimiento | Salas de calderas y talleres industriales; interiores de la central de Chernóbil; cubiertas de ingeniería de *Alien: Isolation* |
+| Piso 2 — Clínica ilegal | Hospitales soviéticos abandonados; el hospital Brookhaven de *Silent Hill 2*; quirófanos improvisados en naves industriales |
+| Piso 3 — Núcleo y central de megafonía | Estudios de radiodifusión de los 70-80 con bobinas de cinta y mesas de mezcla; salas de control de emisoras; la estación de escucha de Teufelsberg (Berlín) |
 
 ## Referencias externas
 

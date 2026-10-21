@@ -77,7 +77,7 @@ Sí. Audio 3D posicional con el sistema incluido en Unity: atenuación por dista
 - **Jefe:** la música de The Mother nunca tapa el motor de las cámaras ni las señales de alerta.
 - **Degradación (D-29):** el latido del laboratorio y la distorsión del sonido vocal crecen hasta un tope que nunca supera a las señales de M-10.
 - **Cinemáticas:** la música y el diseño sonoro tienen prioridad. Los subtítulos siempre se ven.
-- **Volúmenes separados en Opciones:** general, música, efectos y ambiente (ver [[02 - UI y Menús]]).
+- **Volúmenes separados en Opciones:** general, música, efectos, ambiente y voces (ver [[02 - UI y Menús]]).
 - Valores concretos de mezcla: **por definir** en pruebas.
 
 

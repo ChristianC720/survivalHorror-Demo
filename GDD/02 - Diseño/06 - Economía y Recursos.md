@@ -11,8 +11,8 @@ Las reglas de uso de cada recurso se detallan en [[02 - Mecánicas]]; esta secci
 | Recurso | Obtención | Uso | Límite | Pérdida |
 |---|---|---|---|---|
 | Salud | Inicia en **Bien** al reconstruirse (M-16). Solo se recupera con curas; no se regenera (D-07) | Absorber daño (M-05) | 3 estados: Bien, Herido y Crítico. Los enemigos matan en 2-4 golpes según su tipo (valores iniciales, sujetos a balance; D-66) | Golpes enemigos y agarres sin punzón de descarga (M-11). En Crítico, el siguiente daño mata |
-| Curas | Recolección en salas según el presupuesto del piso (D-17) | Recuperar un estado de salud; no se usan en Bien (M-05) | 1 cura por casilla (valor inicial, sujeto a balance; D-37) | Al usarse, al descartarse, al morir o al reiniciar. Si se recibe daño durante la animación, no se consume |
-| Munición | Recolección en salas según el presupuesto del piso (D-17); la sala de The Mother contiene 8 balas para la fase 3 (M-19, D-28, D-80) | Disparar el arma (M-04). Eliminar a un enemigo requiere 2–4 disparos según su tipo; a un reciclado, 2, o 1 si es un Rastrero (valores iniciales, sujetos a balance; D-37, D-66) | Tambor de 6 balas; 12 balas por casilla; cada recogida es un blíster de 3 cartuchos (valores iniciales, sujetos a balance; D-37, D-74) | Al disparar, al descartarse, al morir o al reiniciar. Recibir un golpe durante la recarga no la pierde |
+| Curas | Recolección en salas según el presupuesto del piso (D-17) | Recuperar un estado de salud; en Bien solo con daño, y entonces devuelven la salud completa (M-05, D-119) | 1 cura por casilla (valor inicial, sujeto a balance; D-37) | Al usarse, al descartarse, al morir o al reiniciar. Si se recibe daño durante la animación, no se consume |
+| Munición | Recolección en salas según el presupuesto del piso (D-17); la sala de The Mother contiene 12 balas para la fase 2 y 8 para la fase 3 (M-19, D-28, D-80, D-115) | Disparar el arma (M-04). Eliminar a un enemigo requiere 2–4 disparos según su tipo; a un reciclado, 2, o 1 si es un Rastrero (valores iniciales, sujetos a balance; D-37, D-66) | Tambor de 6 balas; 12 balas por casilla; cada recogida es un blíster de 4 cartuchos (valores iniciales, sujetos a balance; D-37, D-74, D-122) | Al disparar, al descartarse, al morir o al reiniciar. Recibir un golpe durante la recarga no la pierde |
 | Resistencia | Regeneración automática tras 3 s sin correr, empujar ni rematar con golpe en el suelo (M-06) | Correr (~10% por segundo), empujón (35%) y golpe en el suelo (25%) (valores iniciales, sujetos a balance; M-06, M-20, D-37) | Una barra (100%). En 0, agotamiento de 2 s | Se consume con cada acción; no se pierde al morir: el personaje se reconstruye con la barra al 100% |
 | Punzón de descarga (D-71) | Recolección en salas con presupuesto bajo (D-17) | Un solo uso con 2 funciones: se activa solo al ser agarrado y aturde al enemigo 2 s (M-11), o se usa con `E` sobre un cuerpo para rematarlo sin alertar (M-20) (valores iniciales, sujetos a balance) | 1 por casilla (valor inicial, sujeto a balance; D-37, D-71) | Al ser agarrado, al rematar, al descartarse, al morir o al reiniciar |
 | Llaves (D-36) | 1 llave obligatoria por piso, que el generador ubica alcanzable antes de la puerta de la sala clave final; llaves opcionales según el presupuesto del piso (M-08, M-15) | La obligatoria abre la puerta de la sala clave final; las opcionales abren atajos o salas con recursos (M-08) | 1 llave por casilla (valor inicial, sujeto a balance; D-37). Son objetos clave: con el inventario lleno se puede reemplazar otro objeto para recogerlas (M-07) | Se consumen al usarse en su puerta (M-07). Se pierden al morir o al reiniciar; el piso se regenera con una llave obligatoria nueva (M-07, D-36) |
@@ -20,7 +20,7 @@ Las reglas de uso de cada recurso se detallan en [[02 - Mecánicas]]; esta secci
 | Documentos de Emilia (D-52) | **6** en la demo, 2 por piso, siempre en salas clave secundarias, en ambas configuraciones (M-08, D-34) | Hacer avanzar la historia y, con los 6 acumulados en el terminal del brazo en cualquier intento, desbloquear la elección final entre Relevo completo y Ambiguo (M-19, D-51) | No ocupan casillas. Fuera del presupuesto por piso; no se escalan en el showcase. Son los únicos documentos que cuentan para la elección final | Ninguna al morir o reiniciar: persisten y se autoguardan al cambiar (M-16, D-30). Solo "Nueva partida" los borra y, con ellos, la elección final (D-32) |
 | Objetos confiscados (D-73) | Examinarlos en salas procedurales: 12, 4 por piso; aparecen 1–2 por intento | Narrativa escénica; no tienen uso mecánico | No ocupan casillas; se registran en el terminal del brazo | Ninguna: persisten; solo "Nueva partida" los borra (D-32) |
 | Fallas de la máquina (Deseable, M-17) | Descubrirlas en documentos, por observación o en terminales | Acortar hackeos u obtener accesos alternativos, incluida la fase 1 de The Mother (M-13, M-19) | 1-2 fallas en la demo; 1-2 usos por falla antes del parche (valores iniciales, sujetos a balance) | The Mother las parchea tras sus usos o al morir (M-17). El registro persiste en el terminal (D-30) |
-| Carga de la linterna (D-71) | Se recarga sola tras ~3 s con la linterna apagada | Energía de la linterna (M-12) | Una barra de ~60 s de uso continuo (valor inicial, sujeto a balance); no ocupa casilla | Se gasta con la linterna encendida; en 0 se apaga hasta recuperar un mínimo de carga |
+| Carga de la linterna (D-71) | Se recarga sola tras ~3 s con la linterna apagada y se llena en ~30 s (D-124) | Energía de la linterna (M-12) | Una barra de ~120 s de uso continuo (valor inicial, sujeto a balance; D-124); no ocupa casilla | Se gasta con la linterna encendida; en 0 se apaga y no se puede encender durante ~10 s (D-124) |
 
 ## Fuentes y sumideros
 
@@ -29,7 +29,7 @@ Las reglas de uso de cada recurso se detallan en [[02 - Mecánicas]]; esta secci
 - **Recolección en salas procedurales**, según el presupuesto garantizado por piso (D-17): curas, munición, punzón de descarga y llaves.
 - **Salas clave secundarias** (2–3 por piso en la configuración completa, 2 en el showcase; D-33, D-34): documentos, llaves y, a veces, el interruptor de energía (M-08, M-15, D-72). Los 2 documentos de Emilia de cada piso siempre están en estas salas (D-52); si ya están registrados, la sala da 1 recurso extra (D-79).
 - **Salas que abren las llaves opcionales:** atajos o salas con recursos (D-36). Sus recursos forman parte del presupuesto del piso, no lo amplían.
-- **Suministro fijo de la sala de The Mother:** 8 balas, para 3 transformadores de 2 disparos más 2 de margen (M-19, D-28, D-80).
+- **Suministro fijo de la sala de The Mother:** 20 balas: 12 en los puntos ciegos para los 4 asimilados de la fase 2 (D-115) y 8 junto al núcleo para 3 transformadores de 2 disparos más 2 de margen (M-19, D-28, D-80).
 - **Regeneración automática:** la resistencia (M-06) y la carga de la linterna (M-12, D-71).
 - **Investigación:** documentos, conocimiento y fallas de la máquina, registrados en el terminal del brazo (M-08, M-16, M-17).
 - **Reconstrucción:** el personaje vuelve con la salud en Bien y la resistencia al 100%, pero con el inventario vacío (M-16).
@@ -74,7 +74,7 @@ Define límites, regeneración, acumulación, intercambio y condiciones especial
 | Recurso | Piso 1 | Piso 2 | Piso 3 | Sala de The Mother |
 |---|---|---|---|---|
 | Curas | 2-3 | 1-2 | 1 | 0-1 |
-| Munición (balas; blísteres de 3, D-74) | 12-15 | 9-12 | 6-9 | 8 (3 transformadores × 2 disparos + 2 de margen; M-19, D-28, D-80) |
+| Munición (balas; blísteres de 4, D-74, D-122) | 12-16 | 8-12 | 4-8 | 20 (12 para la fase 2, D-115; 8 para la fase 3: 3 transformadores × 2 disparos + 2 de margen; M-19, D-28, D-80) |
 | Punzón de descarga (D-71) | 2-3 | 1-2 | 0-1 | 0 |
 | Llave obligatoria | 1 | 1 | 1 | 0 |
 | Llaves opcionales | 1-2 | 0-1 | 0-1 | 0 |
@@ -88,7 +88,7 @@ Define límites, regeneración, acumulación, intercambio y condiciones especial
 
 ### Modo Historia (D-103)
 
-- En el Modo Historia, el mínimo garantizado de cada recurso sube en 1 por piso; el máximo no cambia. El Modo Supervivencia usa los presupuestos de esta sección sin cambios.
+- En el Modo Historia, el mínimo garantizado de cada recurso sube en 1 por piso; si supera al máximo, el máximo sube lo mismo. En munición, +1 es 1 blíster (4 balas). Las llaves no cambian (D-131). El Modo Supervivencia usa los presupuestos de esta sección sin cambios.
 
 ### Presupuesto del showcase (D-34)
 
@@ -101,7 +101,7 @@ Define límites, regeneración, acumulación, intercambio y condiciones especial
 | Recurso | Piso 1 | Piso 2 | Piso 3 | Sala de The Mother |
 |---|---|---|---|---|
 | Curas | 2 | 1 | 1 | 0-1 |
-| Munición (balas) | 9-11 | 6-9 | 4-6 | Igual que en la configuración completa (D-28) |
+| Munición (balas; blísteres de 4, D-122) | 8-12 | 4-8 | 4 | Igual que en la configuración completa (D-28) |
 | Punzón de descarga (D-71) | 2 | 1-2 | 0-1 | 0 |
 | Llave obligatoria | 1 | 1 | 1 | 0 |
 | Llaves opcionales | 0-1 | 0-1 | 0 | 0 |
@@ -132,7 +132,7 @@ Define límites, regeneración, acumulación, intercambio y condiciones especial
 
 - Recibir daño durante la animación de una cura la cancela sin consumirla (M-05).
 - Recibir un golpe durante la recarga la cancela sin perder munición (M-04).
-- La sala de The Mother contiene 8 balas (3 transformadores de 2 disparos más 2 de margen), aunque el jugador llegue sin munición (M-19, D-28).
+- La sala de The Mother contiene 12 balas para la fase 2 y 8 para la fase 3 (3 transformadores de 2 disparos más 2 de margen), aunque el jugador llegue sin munición (M-19, D-28, D-115).
 - En la sala de The Mother no hay reciclaje de enemigos (D-28): rematar no es necesario y el presupuesto del punzón de descarga en la sala es 0.
 - Si la sala clave final empieza sin energía, el interruptor está en una sala clave secundaria del mismo piso con ruta garantizada (M-15, D-72).
 - Una llave obligatoria perdida al morir o reiniciar se sustituye por una nueva al regenerarse el piso (M-07, D-36).

@@ -16,7 +16,7 @@ Aspecto, rol y valores de cada personaje en [[03 - Personajes]] y [[03 - Enemigo
 | La Boca | Humanoide, cara partida con boca vertical | Deambular, caza, mordida, grito, aturdido, muerte (~8–10 clips) | Ondas de distorsión en el grito (sutiles) | Concepto |
 | El Rastrero | Cuadrúpedo, cara invertida | Locomoción procedural con IK, flanqueo, zarpazos, muerte (~6–8 clips) | — | Concepto |
 | El Mudo | Humanoide sin cara; pose de cadáver o de persona quieta | Inmóvil, estallido, agarre, pausa, muerte (~6–8 clips) | — | Concepto |
-| Versiones recicladas | Las mismas mallas con más rasgos del laboratorio (texturas y piezas añadidas) | Las de su tipo, más rápidas | Más morado y carne expuesta | Concepto |
+| Versiones recicladas | Las mismas mallas con cambios por tipo: piezas metálicas en el Alto, el Rastrero y el Mudo, y la Boca demacrada sin metal (D-130; ver [[03 - Personajes]]). El Mudo reciclado se mueve con espasmos | Las de su tipo, más rápidas | Metal oxidado de la paleta Base sobre la carne del original | Concepto |
 | The Mother | Estantería criogénica en una grúa con brazo recolector, núcleo y 3 transformadores; solo máquina (D-65) | Patrulla de la grúa, agarre del brazo, apertura del núcleo, caída (~6–8 clips + procedural) | Niebla criogénica, chispas de transformadores, luz roja de cámaras | Concepto |
 | Cadáveres asimilados | Variantes de personal de Vitalis, guardias de Kessler y sujetos (D-77) | Ragdoll y poses fijas | — | Concepto |
 | Lukas Mudo (Asimilación) | Malla del Mudo con piezas de Lukas (D-61) | Solo cinemática | — | Concepto |

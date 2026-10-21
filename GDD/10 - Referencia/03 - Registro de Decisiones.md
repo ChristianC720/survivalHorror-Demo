@@ -1205,6 +1205,113 @@ Esta sección conserva las decisiones importantes del proyecto y el razonamiento
 
 **Responsable:** Christian Coronel Palma
 
+## Decisión D-107 — Motor, render y paquetes
+
+**Fecha:** 2026-10-21
+
+**Tema:** Tecnología.
+
+**Problema:** `07 - Tecnología` estaba vacío: no había versión de Unity, pipeline de render ni lista de paquetes, y el equipo no podía crear el proyecto.
+
+**Opciones consideradas:**
+
+1. Unity 6.6 (*Supported release*) con URP.
+2. Unity 6 LTS con URP.
+3. Unity 2022.3 LTS con URP.
+
+**Decisión tomada:** Opción 1.
+
+- Unity 6.6, misma versión exacta en los 5 equipos.
+- URP con ruta *Forward+*, sin luz horneada; resolución interna ~540p con escalado *Nearest-Neighbor* y *dithering* de cámara (D-81).
+- Solo paquetes oficiales: Input System, Cinemachine 3, AI Navigation, Timeline, Animation Rigging, Localization, TextMeshPro y Test Framework.
+
+**Motivo:** *Forward+* permite muchas luces dinámicas en salas procedurales sin hornear; la linterna y la oscuridad son mecánica (M-12). Paquetes oficiales sin dependencias externas reducen el riesgo en 6 semanas.
+
+**Consecuencias:** Se completan [[01 - Arquitectura Técnica]] y [[02 - Motor y Herramientas]]. Cambiar de versión es una solicitud de cambio ([[05 - Gestión de Cambios]]).
+
+**Responsable:** Christian Coronel Palma
+
+## Decisión D-110 — Generación por grafo validado y NavMesh en tiempo de ejecución
+
+**Fecha:** 2026-10-21
+
+**Tema:** Tecnología y generación procedural.
+
+**Problema:** S-06 define las reglas del piso, pero no cómo garantizarlas en Unity ni cómo dar navegación a enemigos en salas que cambian en cada intento.
+
+**Opciones consideradas:**
+
+1. Generar un grafo abstracto, validarlo, instanciar prefabs de sala y construir un NavMesh por piso en tiempo de ejecución.
+2. Instanciar salas directamente y comprobar después con el NavMesh.
+3. Hornear NavMesh por prefab y unirlos con enlaces en las puertas.
+
+**Decisión tomada:** Opción 1.
+
+- El grafo (salas, puertas, llaves, cámaras, enemigos, recursos y documentos) es una clase C# pura, probada en EditMode con 1 000 semillas.
+- Si el validador falla se prueba otra semilla (máximo 20) y después un piso de respaldo fijo.
+- El NavMesh se construye durante la transición de piso o la reconstrucción, que lo ocultan (D-39).
+- Solo la sala actual y sus adyacentes están activas.
+
+**Motivo:** Garantiza que ningún piso sea imposible antes de instanciar nada (principio 9 de [[01 - Jugabilidad]]) y separa la lógica comprobable del motor.
+
+**Consecuencias:** Se documenta en [[01 - Arquitectura Técnica]], [[03 - Requisitos Técnicos]], [[05 - Seguridad y Riesgos Técnicos]] y [[02 - Pruebas]] (CP-01).
+
+**Responsable:** Christian Coronel Palma
+
+## Decisión D-111 — Alcance y plazo de la demo
+
+**Fecha:** 2026-10-21
+
+**Tema:** Producción.
+
+**Problema:** No había fecha de entrega, MVP, vertical slice ni orden de recorte.
+
+**Opciones consideradas:**
+
+1. Entrega a finales de noviembre de 2026 (~6 semanas).
+2. Mediados de diciembre de 2026.
+3. Enero de 2027 o después.
+
+**Decisión tomada:** Opción 1. Entrega el **2026-11-30**.
+
+- Objetivo principal: la configuración **showcase**; la completa solo si el balance llega a tiempo.
+- MVP el 2026-11-09 (piso 1 procedural con ciclo de muerte) y vertical slice el 2026-11-16 (piso 1 con calidad final).
+- Congelación de funciones el 2026-11-23.
+- Orden de recorte: M-17, M-18, configuración completa, documentos de contexto y objetos confiscados, cinemáticas narrativas, Modo Historia, español.
+- El mando queda fuera de la demo.
+
+**Motivo:** El plazo es corto; validar primero el bucle y lo más riesgoso (generación y ciclo de muerte) protege los tres pilares.
+
+**Consecuencias:** Se completan [[01 - Alcance]], [[02 - Roles y Responsabilidades]], [[03 - Roadmap]] y [[04 - Backlog del Proyecto]].
+
+**Responsable:** Christian Coronel Palma
+
+## Decisión D-115 — Fin de la fase 2 de The Mother
+
+**Fecha:** 2026-10-21
+
+**Tema:** Jefe final.
+
+**Problema:** M-19 y S-10 no decían cuándo termina la fase 2 (cámaras hostiles) ni cuándo empieza la fase 3. Además, si la fase exige eliminar a los asimilados, las 8 balas de la sala (reservadas para la fase 3) no alcanzan cuando Lukas llega sin munición (D-28).
+
+**Opciones consideradas:**
+
+1. Llegar al núcleo atravesando los puntos ciegos.
+2. Sobrevivir un tiempo fijo.
+3. Eliminar a los 4 asimilados y llegar al núcleo.
+
+**Decisión tomada:** Opción 3.
+
+- La fase 2 termina cuando los 4 asimilados están eliminados **y** Lukas llega al núcleo.
+- Los 4 asimilados son 2 Altos y 2 Rastreros (12 disparos en total).
+- La sala tiene **12 balas** sueltas en los puntos ciegos para la fase 2, aparte de las 8 junto al núcleo para la fase 3 (20 en total).
+
+**Motivo:** La fase combina las dos lecturas que pide el pilar **Vulnerabilidad Constante**: moverse entre puntos ciegos y gastar munición escasa. Fijar la mezcla de tipos garantiza que 12 balas bastan aunque el jugador llegue sin munición (D-28).
+
+**Consecuencias:** Precisa D-80. Se alinean M-19, S-10, [[02 - Niveles]], [[03 - Enemigos y NPC]], [[04 - Objetos y Coleccionables]], [[05 - Misiones y Desafíos]], [[05 - Progresión]], [[06 - Economía y Recursos]], [[02 - Pruebas]] y [[04 - Criterios de Aceptación]].
+
+**Responsable:** Christian Coronel Palma
+
 ## Registro
 
 | Fecha      | Tema                               | Decisión                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Responsable             |
@@ -1315,6 +1422,32 @@ Esta sección conserva las decisiones importantes del proyecto y el razonamiento
 | 2026-10-16 | D-104 Asistencia de apuntado | Opcional; desactivada por defecto con teclado y ratón, activada por defecto con mando. Precisa D-74. Motivo: accesibilidad | Christian Coronel Palma |
 | 2026-10-16 | D-105 Ranuras | 3 ranuras; Continuar usa la última; Nueva partida y Cargar partida eligen ranura; configuración, brillo y cinemáticas vistas son globales. Precisa D-32. Motivo: experiencia | Christian Coronel Palma |
 | 2026-10-16 | D-106 Brillo y efectos | Calibración de brillo en el primer inicio; opciones para reducir efectos CRT y glitch, destellos y movimiento; el pixelado no se desactiva. Motivo: accesibilidad | Christian Coronel Palma |
+| 2026-10-21 | D-107 Motor | Unity 6.6 (*Supported release*) con URP *Forward+* sin luz horneada; ~540p con escalado *Nearest-Neighbor*; solo paquetes oficiales (Input System, Cinemachine 3, AI Navigation, Timeline, Animation Rigging, Localization, TextMeshPro, Test Framework). Motivo: luz dinámica en salas procedurales | Christian Coronel Palma |
+| 2026-10-21 | D-108 Arquitectura | Escenas `Bootstrap`, `MainMenu`, `Intro`, `Floor` y `Cinematics`; una `GameStateMachine` con los estados de Reglas y Estados; eventos C# en `GameEvents` entre sistemas; balance en ScriptableObjects; lógica pura probada en EditMode. Motivo: bajo acoplamiento y pruebas | Christian Coronel Palma |
+| 2026-10-21 | D-109 Formato de guardado | JSON con `JsonUtility` en `persistentDataPath`: `global.json` y `slot_0..2.json`; escritura atómica con `.tmp` y `.bak`; `saveVersion` y migraciones; sin cifrado. Precisa D-30 y D-105. Motivo: ninguna ranura se corrompe | Christian Coronel Palma |
+| 2026-10-21 | D-110 Generación técnica | Grafo abstracto validado (1 000 semillas en pruebas), reintentos y piso de respaldo; prefabs de sala; NavMesh por piso en tiempo de ejecución durante la transición; solo la sala actual y las adyacentes activas. Precisa S-06. Motivo: ningún piso imposible | Christian Coronel Palma |
+| 2026-10-21 | D-111 Alcance y plazo | Entrega el 2026-11-30 con la showcase como objetivo; MVP 2026-11-09, vertical slice 2026-11-16, congelación 2026-11-23; orden de recorte M-17, M-18, completa, contexto, cinemáticas, Modo Historia, español; sin mando. Motivo: plazo de 6 semanas | Christian Coronel Palma |
+| 2026-10-21 | D-112 Requisitos | Mínimo Windows 10 64 bits, 4 núcleos, GTX 950, 8 GB, 1280 × 720 a 30 FPS; recomendado GTX 1060, 16 GB, 1080p a 60 FPS; generación + NavMesh ≤ 5 s; build ≤ 2 GB; presupuestos de luces, enemigos y triángulos. Provisionales hasta el perfilado. Motivo: rendimiento | Christian Coronel Palma |
+| 2026-10-21 | D-113 Calidad | Definición de terminado con revisión por otra persona y pruebas EditMode de la lógica pura; backlog y bugs en GitHub Issues con severidad; sin críticos abiertos al cerrar un hito ni críticos o altos en la entrega. Motivo: calidad con un equipo de 5 | Christian Coronel Palma |
+| 2026-10-21 | D-114 Nodos de la fase 1 | The Mother: 3 nodos de hackeo con secuencias de terminal principal en la fase 1. Precisa M-19. Motivo: 1-2 min por fase | Christian Coronel Palma |
+| 2026-10-21 | D-115 Fin de la fase 2 | Termina al eliminar a los 4 asimilados (2 Altos y 2 Rastreros) y llegar al núcleo; 12 balas sueltas en los puntos ciegos para la fase 2 además de las 8 de la fase 3. Precisa D-80. Motivo: Vulnerabilidad Constante | Christian Coronel Palma |
+| 2026-10-21 | D-116 Daño en Modo Historia | ~50% menos daño: cada enemigo necesita el doble de golpes para matar a Lukas; se elimina "aguanta un golpe más". Precisa D-103. Motivo: accesibilidad | Christian Coronel Palma |
+| 2026-10-21 | D-117 Asimilados pendientes en la fase 2 | Si Lukas llega al núcleo con asimilados sin liberar, salen todos los que falten (máximo 2 activos); esquivar las cámaras nunca bloquea la fase. Precisa D-115. Motivo: evitar un bloqueo | Christian Coronel Palma |
+| 2026-10-21 | D-118 Tope de enemigos por capacidad | El número de enemigos del piso nunca supera 2 por sala ocupada; con pocas salas queda por debajo del rango. Precisa D-37. Motivo: el piso 3 no cabía con 2 por sala y ~1/3 vacías | Christian Coronel Palma |
+| 2026-10-21 | D-119 Efecto de la cura | Salud oculta en 3 tramos; la cura sube al tope del estado siguiente y, en Bien con daño, a la salud completa; el agarre sin punzón baja al tope del estado inferior. Precisa M-05. Motivo: los golpes de 2-4 no encajan con 3 estados | Christian Coronel Palma |
+| 2026-10-21 | D-120 Mando básico | La demo incluye un mapa fijo de mando tipo Xbox, sin reasignación; reasignar el mando es post-demo. Modifica el alcance de D-111. Motivo: Público y Plataforma y D-104 lo daban por incluido | Christian Coronel Palma |
+| 2026-10-21 | D-121 Documentos de Emilia por piso | Los documentos 1–2 van en el piso 1, 3–4 en el 2 y 5–6 en el 3; máximo 1 por sala secundaria. Precisa D-52. Motivo: arco narrativo por actos | Christian Coronel Palma |
+| 2026-10-21 | D-122 Blísteres de 4 | Cada blíster trae 4 balas; presupuestos redondeados a múltiplos de 4 (completa 12-16, 8-12, 4-8; showcase 8-12, 4-8, 4). Modifica D-74. Motivo: rangos del showcase que no cuadraban con blísteres de 3 | Christian Coronel Palma |
+| 2026-10-21 | D-123 Regeneración de la resistencia | Tras 3 s sin gastarla, se llena de 0 a 100% en ~4 s (25% por segundo). Precisa M-06. Motivo: el agotamiento castiga con la espera, no con la recarga | Christian Coronel Palma |
+| 2026-10-21 | D-124 Carga de la linterna | ~120 s de uso continuo; se llena en ~30 s tras ~3 s apagada; al agotarse no se puede encender durante ~10 s. Modifica D-71. Motivo: la linterna es la herramienta principal en pisos a oscuras | Christian Coronel Palma |
+| 2026-10-21 | D-125 Línea temporal | Incidente en 2081; primera visita de Emilia en octubre de 2082; Lukas recibe la nota de voz a principios de diciembre de 2083. Precisa D-57 y D-59. Motivo: cierra la fecha del incidente | Christian Coronel Palma |
+| 2026-10-21 | D-126 Tipografías | VT323 para terminal y datos, IBM Plex Sans para títulos y menús (OFL); opción de accesibilidad con OpenDyslexic. Motivo: estética CRT a 540p y legibilidad | Christian Coronel Palma |
+| 2026-10-21 | D-127 Regla de corrupción | Sale corrupto todo pasaje que nombra a Lukas, se dirige a él o habla de su vida con Emilia, en cualquier documento y en la nota de voz; el resto es legible. Precisa D-45 y D-58. Motivo: corrupción sistémica, fácil de marcar en el texto | Christian Coronel Palma |
+| 2026-10-21 | D-128 Investigación de Emilia | Emilia transcribe el latido como una partitura (actos, silencios, retornos) y deduce dónde suena el segundo acto; sus notas se vuelven obsesivas. Precisa D-57. Motivo: concreta la investigación sin explicar la criatura (D-16) | Christian Coronel Palma |
+| 2026-10-21 | D-129 Diseño de The Mother | Estantería-catedral de viales con escarcha y luz carmesí colgada de la grúa; pinza hidráulica como brazo; núcleo de vidrio esmerilado con los 3 transformadores; sin cara, mira con las cámaras. Precisa D-65. Motivo: solo máquina, sin carne | Christian Coronel Palma |
+| 2026-10-21 | D-130 Aspecto de los reciclados | Sin rasgos del laboratorio. Alto: vértebra metálica y extensiones en los codos, sin máscara, restos del Werkschutz; Boca: sin metal, demacrada, boca que se abre de abajo hacia arriba; Rastrero: araña orgánica con vértebra metálica y pinzas fundidas en la cara; Mudo: inspirado en las enfermeras de Silent Hill, vendas, placa metálica en la cara y espasmos. Precisa D-60. Motivo: lectura clara del enemigo reciclado | Christian Coronel Palma |
+| 2026-10-21 | D-131 Recursos del Modo Historia | +1 al mínimo de cada recurso por piso; si supera al máximo, el máximo sube igual; en munición +1 es 1 blíster; las llaves no cambian. Precisa D-103. Motivo: el mínimo superaba al máximo en el showcase | Christian Coronel Palma |
+| 2026-10-21 | D-132 Avisos según el dispositivo | Carteles del tutorial y aviso de interacción muestran la tecla o el botón del último dispositivo usado y cambian al vuelo. Precisa D-89 y D-120. Motivo: mando básico en la demo | Christian Coronel Palma |
 
 
 > **Navegación:** [[00 - Índice]] · ← [[02 - Referencias e Inspiración]] · [[04 - Historial de Versiones]] →

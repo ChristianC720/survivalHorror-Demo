@@ -44,7 +44,7 @@ El jugador deberá poder comprender estas mecánicas mediante un tutorial contex
 | ----------------------- | --------------------------------------------------------------- |
 | Plataforma principal    | PC                                                              |
 | Plataformas secundarias | Ninguna                                                         |
-| Método de entrada       | Teclado y mouse como método principal, con soporte para control |
+| Método de entrada       | Teclado y mouse como método principal; mando con mapa básico fijo (D-120) |
 | Resolución objetivo     | 1920 × 1080 como objetivo inicial                               |
 | Relación de aspecto     | 16:9 como formato principal                                     |
 | Rendimiento objetivo    | 60 FPS                                                          |
@@ -67,7 +67,7 @@ Deberán considerarse especialmente:
 - Carga y descarga de escenarios.
 - Uso de memoria RAM y memoria gráfica.
 
-Los requisitos mínimos y recomendados de hardware se definirán cuando exista una versión estable para realizar pruebas de rendimiento.
+Los requisitos mínimos y recomendados provisionales están en [[03 - Requisitos Técnicos]] (D-112) y se confirman con el perfilado de la semana 6 del [[03 - Roadmap]].
 
 ### Controles:
 
@@ -92,7 +92,7 @@ Siempre que la implementación lo permita, los escenarios deberán organizarse d
 
 ### Almacenamiento:
 
-**Por definir.**
+Objetivo: build de **≤ 2 GB** y 3 GB libres para instalarlo (D-112, ver [[03 - Requisitos Técnicos]]).
 
 El tamaño final dependerá principalmente de:
 
