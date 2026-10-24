@@ -53,7 +53,7 @@ El jugador deberá aprender principalmente mediante interacción con el entorno 
 
 A nivel de sensación, el jugador debería pasar progresivamente de:
 
-`Desorientación → Observación → Comprensión básica → Primeras decisiones
+`Desorientación → Observación → Comprensión básica → Primeras decisiones`
 
 El primer contacto con una amenaza debe comunicar que enfrentarse directamente a los enemigos no siempre es la decisión correcta.
 
@@ -164,7 +164,7 @@ Otras condiciones de fracaso podrán existir únicamente si aportan valor al dis
 
 "Reiniciar" desde el menú de pausa también finaliza el intento y cuenta como muerte (D-32). Salir del juego durante una alerta o caza cuenta como muerte completa, y salir con calma fuera de una sala clave final ya guardada suma una muerte al contador y a la degradación, aunque al volver se continúa desde la sala clave final autoguardada (D-31). El detalle de estas reglas se documenta en [[07 - Reglas y Estados del Juego]].
 
-Existe además un final secundario de derrota: si el jugador acumula 5 muertes consecutivas, se activa el final **"Asimilación"** (D-42): el laboratorio termina de asimilar al protagonista. Solo llegar a la sala clave final del piso 2 reinicia el contador, y después sigue contando en el piso 3 y en la sala de The Mother (D-56); las demás salas clave no lo reinician. Las muertes del primer intento (el del tutorial) no cuentan, y "Reiniciar" y salir con costo suman al contador (D-35). Cada muerte también provoca una degradación estética acumulativa (mayor corrupción CRT y distorsión del sonido vocal del protagonista; el texto de sus líneas solo se degrada en la cinemática de Asimilación, D-62) que no afecta la jugabilidad, solo se acumula y nunca se reinicia (D-29). El detalle de estas reglas se documenta en [[02 - Mecánicas]].
+Existe además un final secundario de derrota: si el jugador acumula 5 muertes consecutivas, se activa el final **"Asimilación"** (D-42): el laboratorio termina de asimilar al protagonista. Solo llegar a la sala clave final del piso 2 reinicia el contador, y después sigue contando en el piso 3 y en la sala de The Mother (D-56); las demás salas clave no lo reinician. Las muertes del primer intento (el del tutorial) no cuentan, y "Reiniciar" y salir con costo suman al contador (D-35). Cada muerte también provoca una degradación estética acumulativa (mayor corrupción CRT y distorsión del sonido vocal del protagonista; el texto de sus líneas solo se degrada en la cinemática de Asimilación, D-62) que no afecta la jugabilidad y solo se acumula (D-29): únicamente vuelve a 0 en el ciclo nuevo tras un final (D-93) o con "Nueva partida". El detalle de estas reglas se documenta en [[02 - Mecánicas]].
 
 Los estados de muerte, reconstrucción, victoria y "Final: Asimilación", con sus transiciones, se documentan en [[07 - Reglas y Estados del Juego]].
 
@@ -257,7 +257,7 @@ Puede presentarse mediante:
 - Entorno.
 - Documentos.
 - Eventos.
-- Diálogos.
+- Líneas de texto de The Mother y de Lukas (no hay diálogos, D-77).
 - Cambios de perspectiva.
 - Elementos visuales.
 - Situaciones relacionadas con el ciclo de muerte.

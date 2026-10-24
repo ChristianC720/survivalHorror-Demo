@@ -4,7 +4,7 @@
 
 Define las condiciones técnicas necesarias para ejecutar y desarrollar el videojuego.
 
-Los requisitos son **objetivos provisionales** (D-112) y se confirman con el perfilado de la semana 6 del [[03 - Roadmap]].
+Los requisitos son **objetivos provisionales** (D-112) y se confirman con el perfilado de la semana de pruebas del [[03 - Roadmap]].
 
 ## Requisitos mínimos
 
@@ -34,6 +34,12 @@ Los requisitos son **objetivos provisionales** (D-112) y se confirman con el per
 
 **Almacenamiento:** 3 GB libres en SSD.
 
+## Requisitos de desarrollo
+
+- Unity `6000.6.6f1` con el módulo *Windows Build Support (IL2CPP)* (D-107).
+- Git y Git LFS instalados ([[02 - Motor y Herramientas]]).
+- Blender, Blockbench y FL Studio para quien produce arte y audio ([[02 - Motor y Herramientas]]).
+
 ## Objetivos de rendimiento
 
 **FPS objetivo:** 60 FPS a 1920 × 1080 en el equipo recomendado ([[03 - Público y Plataforma]]); nunca por debajo de 30 FPS en el mínimo.
@@ -61,6 +67,9 @@ Los requisitos son **objetivos provisionales** (D-112) y se confirman con el per
 - Sin luz horneada: las salas cambian en cada intento (S-06); la iluminación es dinámica con *Forward+*.
 - El render a ~540p no se desactiva (D-81); la interfaz siempre a resolución nativa.
 - Teclado y ratón completos; mando tipo Xbox con el mapa básico fijo de [[04 - Controles]], sin reasignación (D-120).
+- **NavMesh:** se construye una vez por piso, durante la transición o la reconstrucción; nunca durante el juego (D-110).
+- **Vista de vigilancia:** el retraso de imagen (~0.3 s) se hace guardando unas pocas imágenes de baja resolución; no debe bajar de 60 FPS.
+- **Unity 6.6 no es LTS:** ver el riesgo en [[05 - Seguridad y Riesgos Técnicos]].
 - **Tamaño del build:** objetivo ≤ 2 GB; cierra el punto de almacenamiento de [[03 - Público y Plataforma]].
 
 

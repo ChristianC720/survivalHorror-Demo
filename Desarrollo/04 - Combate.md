@@ -2,7 +2,7 @@
 
 **Objetivo:** revólver de Kessler, empujón, agarres con punzón de descarga, puntos débiles y remate de cuerpos.
 
-**Responsable:** Programación de jugabilidad.
+**Responsable:** Christian Coronel Palma.
 
 **Referencias:** `GDD/02 - Diseño/03 - Sistemas.md` (S-03, S-09), `GDD/02 - Diseño/02 - Mecánicas.md` (M-04, M-06, M-11, M-20), `GDD/04 - Contenido/04 - Objetos y Coleccionables.md` (revólver, punzón), decisiones D-66 (disparos por tipo), D-71, D-74 (revólver), D-27 (contexto sobre un cuerpo).
 

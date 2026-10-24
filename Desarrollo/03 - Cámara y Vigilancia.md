@@ -2,7 +2,7 @@
 
 **Objetivo:** cámara OTS por defecto, apuntado y vista de vigilancia isométrica con ruido, retraso, señal escalonada, corte, bloqueo y la atención oculta de The Mother.
 
-**Responsable:** Programación de jugabilidad.
+**Responsable:** Christian Coronel Palma.
 
 **Referencias:** `GDD/02 - Diseño/03 - Sistemas.md` (S-01), `GDD/02 - Diseño/02 - Mecánicas.md` (M-01, M-02, M-03), decisiones D-23 (señal escalonada), D-24 y D-98 (atención), D-25 (cobertura), D-28 (fase 2 del jefe).
 
@@ -17,7 +17,7 @@
 5. La retícula de punto (UI) solo aparece mientras `CM_Aim` está activa (D-86). Con asistencia de apuntado (D-104), la sensibilidad baja ~40% cuando un `SphereCast` desde el centro toca la capa `Enemy`.
 6. Al recibir daño, `CinemachineImpulseSource` sacude la cámara; desactívalo con "Reducción de movimiento" (D-106).
 
-## Parte B — Vista de vigilancia (semana 4)
+## Parte B — Vista de vigilancia (semana 3)
 
 ### Diseño técnico
 

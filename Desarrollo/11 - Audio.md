@@ -2,7 +2,7 @@
 
 **Objetivo:** que el sonido comunique la percepción y la cercanía de las amenazas sin indicadores en pantalla, con una mezcla por prioridades.
 
-**Responsable:** Audio, narrativa y UI.
+**Responsable:** Lian Daniel Sierra Vera (contenido y mezcla), con Christian Coronel Palma para la integración.
 
 **Referencias:** `GDD/02 - Diseño/03 - Sistemas.md` (S-11), `GDD/05 - Arte y Audio/05 - Audio y Música.md` (efectos, música, mezcla), `GDD/02 - Diseño/02 - Mecánicas.md` (M-10), D-23, D-29, D-46, D-64, D-87, D-95, D-102.
 

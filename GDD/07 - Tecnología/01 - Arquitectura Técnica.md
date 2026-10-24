@@ -41,7 +41,7 @@ La sala de The Mother es un prefab de sala clave fija que el generador coloca al
 | `GameStateMachine` | Estados principales (Menú, Introducción, Carga, Jugando, Pausa, Transición de piso, Muerte, Reconstrucción, Victoria, Decisión final, finales, Créditos) y subestados de Jugando | `SceneLoader`, `SaveService` |
 | `InputRouter` | Activa y desactiva mapas de acción por contexto (Exploración, Apuntando, Inventario, Hackeo, Vigilancia, Sobre un cuerpo, Menú, Cinemática) | Input System |
 | S-01 `CameraRig` / `SurveillanceSystem` | Cinemachine OTS y apuntado; vista isométrica de vigilancia; señal escalonada y atención oculta | S-02, S-06 |
-| S-02 `EnemyBrain` / `PerceptionSystem` / `AlertDirector` | Máquina de estados por enemigo, percepción (vista, luz, ruido), alerta más alta por zona | S-01, S-06, S-11, NavMesh |
+| S-02 `EnemyBrain` / `PerceptionSystem` / `AlertDirector` | Máquina de estados por enemigo, percepción (vista, luz, ruido), alerta más alta por zona, enemigos en caza y cierre de tránsito (`LOCKDOWN`, D-96) | S-01, S-06, S-11, NavMesh |
 | S-03 `Health` / `Revolver` / `Shove` / `GrabResolver` | Salud por estados, disparo, empujón, agarre con punzón | S-02, S-04, S-05 |
 | S-04 `Stamina` | Barra única, regeneración y agotamiento | — |
 | S-05 `Inventory` | 6 casillas, uso en tiempo real, llaves | S-06, S-08 |
@@ -79,6 +79,7 @@ flowchart LR
 - Datos separados de lógica: todo número de balance sale de un ScriptableObject.
 - Evitar dependencias innecesarias: solo paquetes oficiales de Unity ([[02 - Motor y Herramientas]]).
 - La pausa es la única que detiene el tiempo (`Time.timeScale = 0`); el inventario, el terminal y el hackeo nunca la usan (regla global 1).
+- **Determinismo de la generación:** la misma semilla y la misma configuración producen el mismo piso; la semilla se muestra en la consola de depuración para reproducir bugs ([[03 - Bugs y Seguimiento]]).
 
 
 > **Navegación:** [[00 - Índice]] · ← [[04 - Guardado y Configuración]] · [[02 - Motor y Herramientas]] →

@@ -67,7 +67,7 @@ Deberán considerarse especialmente:
 - Carga y descarga de escenarios.
 - Uso de memoria RAM y memoria gráfica.
 
-Los requisitos mínimos y recomendados provisionales están en [[03 - Requisitos Técnicos]] (D-112) y se confirman con el perfilado de la semana 6 del [[03 - Roadmap]].
+Los requisitos mínimos y recomendados provisionales están en [[03 - Requisitos Técnicos]] (D-112) y se confirman con el perfilado de la semana de pruebas del [[03 - Roadmap]].
 
 ### Controles:
 

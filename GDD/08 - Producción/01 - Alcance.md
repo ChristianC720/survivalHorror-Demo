@@ -4,7 +4,7 @@
 
 Define qué se va a construir y, sobre todo, qué queda fuera del proyecto.
 
-**Versión objetivo:** demo jugable para PC, entrega el **2026-11-30** (D-111). Plan semanal en [[03 - Roadmap]].
+**Versión objetivo:** demo jugable para PC, entrega el **2026-11-20** (D-111, D-134). Plan semanal en [[03 - Roadmap]].
 
 ## Alcance de la versión objetivo
 
@@ -34,11 +34,11 @@ Define qué se va a construir y, sobre todo, qué queda fuera del proyecto.
 
 El **Producto Mínimo Viable** debe contener únicamente lo necesario para demostrar que la experiencia principal funciona.
 
-**MVP del proyecto (hito H3, 2026-11-09):** un **piso 1 generado proceduralmente** en *greybox* donde Lukas se mueve en OTS, encuentra recursos en el inventario de 6 casillas, evita o combate a un enemigo con IA (el Alto) con revólver y empujón, consigue la llave obligatoria, llega a la sala clave final y, si muere, se reconstruye en la cápsula con un piso distinto y el terminal conservado. Prueba el bucle de [[01 - Jugabilidad]] sin arte final.
+**MVP del proyecto (hito H3, 2026-11-08):** un **piso 1 generado proceduralmente** en *greybox* donde Lukas se mueve en OTS, encuentra recursos en el inventario de 6 casillas, evita o combate a un enemigo con IA (el Alto) con revólver y empujón, consigue la llave obligatoria, llega a la sala clave final y, si muere, se reconstruye en la cápsula con un piso distinto y el terminal conservado. Prueba el bucle de [[01 - Jugabilidad]] sin arte final.
 
 ## Vertical Slice
 
-**Vertical slice (hito H4, 2026-11-16):** el **piso 1 completo con calidad final**: tutorial de 4 salas con carteles, arte y luz ámbar de mantenimiento, el Alto y el Rastrero animados, vista de vigilancia con señal escalonada, sigilo con linterna, hackeo, reciclaje y remate, audio de alertas y latidos, terminal del brazo y autoguardado en la sala final. Demuestra el tono, el render ~540p y los tres pilares.
+**Vertical slice (hito H4, 2026-11-11):** el **piso 1 completo con calidad final**: tutorial de 4 salas con carteles, arte y luz ámbar de mantenimiento, el Alto y el Rastrero animados, vista de vigilancia con señal escalonada, sigilo con linterna, hackeo, reciclaje y remate, audio de alertas y latidos, terminal del brazo y autoguardado en la sala final. Demuestra el tono, el render ~540p y los tres pilares.
 
 ## Criterios de recorte
 
@@ -51,8 +51,11 @@ Si el tiempo o los recursos son insuficientes, se recorta en este orden (D-111).
 5. **Cinemáticas:** las narrativas pasan a imágenes fijas con texto y sonido sobre Timeline; se mantienen la corta de reconstrucción y la transición de piso.
 6. **Modo Historia:** se mantiene la selección, pero solo cambia el daño recibido.
 7. **Español:** se entrega solo en inglés (idioma principal, D-62).
+8. **Introducción:** se reduce a la compuerta y el elevador.
+9. **Enemigos de los pisos 2 y 3:** la Boca y el Mudo reutilizan la IA del Alto o del Rastrero con otro modelo y otros valores.
+10. **Fase 2 de The Mother:** sin cámaras hostiles.
 
-**Nunca se recorta:** el ciclo muerte → reconstrucción → piso nuevo, la generación válida, la vista de vigilancia con costo, el inventario en tiempo real, The Mother, los 6 documentos de Emilia y la decisión final, ni las opciones de accesibilidad de brillo y subtítulos.
+**Nunca se recorta:** el ciclo muerte → reconstrucción → piso nuevo, la generación válida, la vista de vigilancia con costo, el inventario en tiempo real, The Mother (salvo lo que permite el recorte 10), los 6 documentos de Emilia y la decisión final, ni las opciones de accesibilidad de brillo y subtítulos.
 
 
 > **Navegación:** [[00 - Índice]] · ← [[05 - Seguridad y Riesgos Técnicos]] · [[02 - Roles y Responsabilidades]] →

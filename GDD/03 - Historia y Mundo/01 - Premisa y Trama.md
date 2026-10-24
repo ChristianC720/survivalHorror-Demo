@@ -8,7 +8,7 @@ Aquí se documenta la narrativa que sostiene la experiencia. La historia debe ex
 
 **Premisa oficial (D-40, precisada por D-49):** "Un hombre busca la última pista que su esposa desaparecida le dejó, pero queda atrapado en un ciclo sin fin del que ahora debe salir."
 
-**Tema central (D-44):** *Identity Dissolution trata sobre buscar sentido dentro de algo que no puede darlo. Lukas lucha por recordar a quien ama, y el laboratorio le demuestra, intento tras intento, que eso nunca importó.*
+**Tema central (D-44, D-133):** *Identity Dissolution trata sobre buscar sentido dentro de algo que no puede darlo. Lukas lucha por encontrar y recordar a quien ama, pero se encuentra enfrentando las amenazas de un lugar que le frena cada avance.*
 
 **Postura:** nihilismo puro frente al horror cósmico (lo incognoscible, la indiferencia, la insignificancia). El anillo es el ancla del personaje, no del universo. La motivación del jugador proviene del misterio y del descubrimiento, no de la esperanza (D-44).
 
@@ -61,7 +61,7 @@ La estructura sigue los 3 pisos de la instalación (D-33, M-15). La distribució
 
 - Se encuentran los últimos 2 documentos de Emilia en las salas clave secundarias del piso 3 (D-52).
 - Los documentos del piso 3 exponen la regla del mundo: **The Mother reconstruye; el laboratorio asimila**. The Mother reconstruye a todo aquel que llega y todavía conserva identidad, sin entender que cada reconstrucción alimenta la asimilación (D-47).
-- El jugador comprende que los enemigos son personas asimiladas y por qué un enemigo eliminado regresa una sola vez: The Mother intenta reconstruir su último rastro de identidad (D-47, D-48, M-20).
+- El jugador comprende que los enemigos son personas asimiladas y por qué un enemigo eliminado regresa una sola vez: el laboratorio consume su último rastro de identidad (D-47, D-48, D-99, M-20).
 - El contador de 5 muertes sigue contando: 5 muertes consecutivas en el piso 3 o en la sala de The Mother también llevan a la Asimilación (D-56).
 - **Jefe final:** The Mother, un archivo de muestras criogénicas montado en una grúa, en la central de megafonía al final del piso 3. Su brazo recolector trata a Lukas como un espécimen que debe archivar y puede matarlo (D-65). La sala se transforma en cada una de sus 3 fases, que reutilizan mecánicas existentes (M-19, D-59). Morir en la sala regresa al inicio del ciclo.
 - **Desenlace:** secuencia común de victoria, decisión final y cinemática según los documentos de Emilia reunidos (ver [[#Finales]]).

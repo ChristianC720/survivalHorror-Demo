@@ -75,7 +75,7 @@ Todos los estados combinan color con texto, forma o sonido (regla visual 1 de [[
 - **Calibración de brillo (D-106):** solo en el primer inicio; símbolos sobre negro y barra de brillo.
 - **Pantalla de título (D-90):** fondo negro con el logotipo y el latido del laboratorio. Al pulsar cualquier tecla o botón se pasa al menú principal.
 - **Menú principal (D-90):** Continuar, Nueva partida, Cargar partida, Opciones, Créditos y Salir (D-39, D-105), mostrado en un terminal verde de la instalación dentro de la sala de la fila de cápsulas, junto a la cápsula de Lukas.
-- **Pausa:** menú de pausa sobre la imagen oscurecida. En la introducción, sin "Reiniciar" (D-63).
+- **Pausa:** menú de pausa sobre la imagen oscurecida. Sin "Reiniciar" en la introducción (D-63) ni en la decisión final (D-92).
 - **Configuración:** Audio, Video, Controles, Accesibilidad y Juego ([[04 - Guardado y Configuración]]).
 - **Inventario:** sección del terminal del brazo. Las demás secciones son Estado (salud y linterna) y Registros (documentos, expediente de Emilia, bestiario, objetos confiscados, fallas y anillo).
 - **Mapa:** no existe en la demo.

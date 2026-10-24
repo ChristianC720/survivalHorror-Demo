@@ -2,7 +2,7 @@
 
 **Objetivo:** tener el esqueleto que todos los sistemas usan: escena `Bootstrap` con servicios persistentes, máquina de estados del juego, eventos entre sistemas, carga de escenas y pausa.
 
-**Responsable:** Programación de sistemas.
+**Responsable:** Christian Coronel Palma.
 
 **Referencias:** `GDD/07 - Tecnología/01 - Arquitectura Técnica.md` (D-108), `GDD/02 - Diseño/07 - Reglas y Estados del Juego.md` (estados, transiciones y reglas globales), `GDD/02 - Diseño/03 - Sistemas.md` (tabla "Relaciones entre sistemas").
 

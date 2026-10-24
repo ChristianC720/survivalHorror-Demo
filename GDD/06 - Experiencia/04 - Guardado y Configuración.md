@@ -34,7 +34,7 @@ Reglas completas del guardado en S-07 ([[03 - Sistemas]]) y en [[07 - Reglas y E
 | Video | Resolución, modo de pantalla (completa, ventana, sin bordes), V-Sync, límite de FPS, brillo (calibración), calidad de sombras |
 | Controles | Reasignación de teclado y ratón; sensibilidad para mirar y apuntar; invertir eje vertical; agacharse en modo alternar o mantener; asistencia de apuntado (D-104) |
 | Accesibilidad | Tamaño y fondo de subtítulos, escala del terminal, subtítulos de sonido (D-102), reducción de movimiento, de destellos y de efectos CRT y glitch (D-106) |
-| Jugabilidad | Idioma (inglés o español); el modo se elige al crear la partida y no se cambia aquí (D-103) |
+| Juego | Idioma (inglés o español); el modo se elige al crear la partida y no se cambia aquí (D-103) |
 
 ## Restablecimiento
 

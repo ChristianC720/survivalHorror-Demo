@@ -11,7 +11,7 @@ Aquí se define la **idea central** del videojuego. Esta sección funciona como 
 Identity Dissolution (nombre clave Heartbeat, D-41) es una experiencia de Survival Horror centrada en la supervivencia, la incertidumbre y las decisiones bajo presión, el jugador explora un entorno peligroso en el que la información es limitada, los recursos son escasos y enfrentarse directamente a las amenazas no siempre representa la mejor opción.
  Para avanzar, debe explorar, administrar recursos limitados, decidir cuándo combatir o evitar enfrentamientos y adaptarse a escenarios que cambian después de cada muerte. Combinando elementos de Survival Horror y Roguelite, utilizando la muerte, la generación procedural y el cambio dinámico de cámara como parte de la jugabilidad y de la narrativa.
 
-**Tema central (D-44):** *Identity Dissolution trata sobre buscar sentido dentro de algo que no puede darlo. Lukas lucha por encontrar y recordar a quien ama, pero se encuentra enfrentando las amenazas de un lugar que le frena cada avance.*
+**Tema central (D-44, D-133):** *Identity Dissolution trata sobre buscar sentido dentro de algo que no puede darlo. Lukas lucha por encontrar y recordar a quien ama, pero se encuentra enfrentando las amenazas de un lugar que le frena cada avance.*
 
 **Postura:** nihilismo puro frente al horror cósmico: lo incognoscible, la indiferencia y la insignificancia. El laboratorio de Vitalis Konzern tiene relación con la criatura lovecraftiana (D-46) y nunca se explica qué es, ni siquiera The Mother puede explicarlo (D-16, D-47). El anillo es el ancla del personaje, no del universo. La motivación del jugador proviene del misterio y del descubrimiento, no de la esperanza, y ningún final ofrece salvación (D-51). Ver [[01 - Premisa y Trama]] y [[02 - Mundo]].
 
@@ -81,7 +81,7 @@ Este videojuego **NO** es:
 - Un juego donde el jugador pueda almacenar grandes cantidades de recursos sin consecuencias.
 - Un Roguelike puro basado exclusivamente en progresión, estadísticas o generación procedural.
 - Un juego donde la generación procedural sustituya completamente al diseño manual de escenarios.
-- Un juego donde la cámara cambie libremente y sin costo únicamente por preferencia del jugador: la vista sobre el hombro es la vista por defecto y la vista isométrica de vigilancia solo está disponible en salas con cámara activa, con ruido y retraso, y se bloquea cuando el jugador es detectado.
+- Un juego donde la cámara cambie libremente y sin costo únicamente por preferencia del jugador: la vista sobre el hombro es la vista por defecto y la vista isométrica de vigilancia solo está disponible en salas con cámara activa, con ruido y retraso, y se corta y se bloquea cuando un enemigo cercano entra en caza (D-23).
 - Un videojuego donde morir implique repetir exactamente el mismo escenario.
 
 El objetivo es mantener el proyecto enfocado en una experiencia de **supervivencia, vulnerabilidad, exploración, incertidumbre y terror**, evitando agregar sistemas que reduzcan estas sensaciones o incrementen innecesariamente el alcance del proyecto.

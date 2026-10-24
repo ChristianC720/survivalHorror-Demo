@@ -47,8 +47,8 @@ Durante el recorrido:
 | Interactuar | `E` | Aviso `E` a ~1.5 m | Sonido del objeto | Recoger, leer, abrir (M-08) |
 | Apuntar y disparar | `Clic derecho` + `Clic izquierdo` | Retícula de punto; contador verde del revólver | Disparo; tambor vacío | Daño; ruido a ~20 m (M-04) |
 | Recargar | `R` | Animación bala a bala | Cartucho por bala | Tambor cargado (M-04) |
-| Empujón | `Clic izquierdo` sin apuntar | Animación de empujón | Golpe | Aleja al enemigo (M-14) |
-| Remate | `Clic izquierdo` / `E` sobre un cuerpo | Golpe en el suelo o punzón (~1.5 s) | Golpe ruidoso / descarga silenciosa | El cuerpo no se recicla (M-20) |
+| Empujón | `Clic izquierdo` sin apuntar | Animación de empujón | Golpe | Aleja al enemigo (M-06) |
+| Remate | `Clic izquierdo` / `E` sobre un cuerpo | Golpe en el suelo (~2 s) o punzón (~1.5 s) | Golpe ruidoso / descarga silenciosa | El cuerpo no se recicla (M-20) |
 | Curarse | Inventario | Animación ~1.5 s; postura mejora | Kit médico | +1 estado de salud (M-05) |
 | Recibir daño | — | Vibración de cámara, cambio de postura | Impacto y quejido | Baja un estado de salud (M-05) |
 | Hackear | `E` y secuencia | Secuencia en el terminal; panel verde | Pitido por entrada / error | Abrir, sellar o activar (M-13) |

@@ -51,8 +51,13 @@ Centraliza términos técnicos, de diseño y propios del universo del videojuego
 | Configuración completa / showcase | Versión de ~45–60 min / versión reducida de ~30 min para eventos (D-34). |
 | Semilla | Número que fija el resultado del generador de un piso; cada entrada a un piso usa una nueva (D-101). Se muestra en la consola de depuración para reproducir bugs. |
 | Greybox | Versión jugable con geometría gris y sin arte final, usada para probar sistemas antes del arte. |
-| Congelación de funciones | Fecha desde la que solo se corrigen errores o se recorta alcance; 2026-11-23 (D-111). |
-| Definición de terminado | Condiciones que debe cumplir una característica para darla por terminada (D-113, [[01 - Criterios de Calidad]]). |
+| Congelación de funciones | Fecha desde la que solo se corrigen errores o se recorta alcance; 2026-11-15 (D-134). |
+| Definición de terminado | Condiciones que debe cumplir una característica para darla por terminada (D-113, D-135, [[01 - Criterios de Calidad]]). |
+| Cierre de tránsito (`LOCKDOWN`) | Bloqueo de la escalera y el elevador de la sala final mientras haya enemigos en caza; al terminar la caza se autoguarda y se abren. Ningún enemigo cambia de piso (D-96). |
+| Fila de cápsulas | Sala de reconstrucción del piso 1: punto de reaparición y único refugio, porque los enemigos nunca entran (D-59, D-97). |
+| Sellado | Hackeo corto (2-3 entradas) que cierra una puerta hasta que Lukas la cruza o un enemigo la rompe (~30 s) (M-13, D-97). |
+| Modo Supervivencia / Modo Historia | Modos que se eligen al crear la partida; el Historia reduce ~50% el daño, ralentiza la detección y suma 1 al mínimo de cada recurso por piso (D-103). |
+| Ranura | Una de las 3 partidas guardadas; Continuar usa la última y Nueva partida borra solo la suya (D-105). |
 
 ## Convenciones de nombres
 

@@ -4,6 +4,8 @@
 
 Define cómo se comprobará que el videojuego funciona como fue diseñado.
 
+Responsable de QA: Lenin Ramón López Córdova ([[02 - Roles y Responsabilidades]]). Calendario de hitos en [[03 - Roadmap]].
+
 ## Tipos de prueba
 
 ### Pruebas funcionales
@@ -18,6 +20,7 @@ Comprueban que una característica haga lo que debe.
 Comprueban que varios sistemas funcionen correctamente juntos.
 
 - **PlayMode:** generar un piso, colocar al jugador y comprobar que existe un camino en el NavMesh hasta la llave y la sala final.
+- **Cadenas de la tabla de relaciones** de [[03 - Sistemas]]: por ejemplo, morir durante una caza → contador, inventario vacío, pisos regenerados, autoguardado descartado y código de sujeto +1.
 - **Recorrido completo:** de Nueva partida a los créditos en la showcase, una vez por semana desde H5 ([[03 - Roadmap]]).
 
 ### Pruebas de usabilidad
@@ -25,6 +28,16 @@ Comprueban que varios sistemas funcionen correctamente juntos.
 Comprueban si los jugadores entienden y pueden utilizar el sistema.
 
 - Desde H4, una persona ajena al equipo juega el piso 1 sin ayuda mientras alguien anota dónde se confunde. Preguntas: ¿entendió cómo se usa la vigilancia y su costo?, ¿supo que la muerte cambia el piso?, ¿entendió los estados de alerta por el sonido?
+- **Playtests con métricas** en cada hito desde H2, con personas que no conocen el GDD. Se les observa sin ayudar y luego se les pregunta. Los datos salen de la telemetría local de las compilaciones de prueba ([[05 - Seguridad y Riesgos Técnicos]]).
+
+| Pregunta | Cómo se mide |
+|---|---|
+| ¿La vista de vigilancia es útil y divertida? | Usos y segundos por piso; ¿la usa sin que se le diga? |
+| ¿Se percibe la atención de The Mother? | Veces que se llena; ¿siente que los enemigos lo encuentran "sin razón"? |
+| ¿Cuánto dura un piso y la partida? | Tiempo por piso y total (objetivo ~30 min en la showcase) |
+| ¿Morir es justo o frustrante? | Muertes por piso, sala y causa; ¿abandona antes de terminar? |
+| ¿Se entienden las reglas? | Que explique el reciclaje, el remate y el autoguardado sin haberlos leído |
+| ¿Rematar es una decisión o una tarea? | Remates frente a enemigos reciclados |
 
 ### Pruebas de rendimiento
 
@@ -32,7 +45,9 @@ Comprueban FPS, memoria, tiempos de carga y estabilidad.
 
 - Profiler y Memory Profiler en una build de desarrollo, en el piso 3 con 2 enemigos en caza y la linterna encendida.
 - Medir el tiempo de generación + NavMesh por piso (objetivo ≤ 5 s) y el tamaño del build ([[03 - Requisitos Técnicos]]).
+- Escenarios adicionales: vista de vigilancia con señal degradada y fase 2 de The Mother.
 - Partida de 60 min sin cierre inesperado ni crecimiento de memoria.
+- Cerrar el proceso a la fuerza durante un autoguardado: la ranura no se corrompe ([[04 - Datos y Persistencia]]).
 
 ## Caso de prueba
 
@@ -155,6 +170,25 @@ Plantilla, seguida de los casos críticos del proyecto.
 2. Medir 3 transiciones de piso.
 
 **Resultado esperado:** ≥ 30 FPS en el mínimo y 60 en el recomendado; generación + NavMesh ≤ 5 s.
+
+**Resultado obtenido:**
+
+**Estado:**
+
+### CP-07 Autoguardado pendiente durante una caza
+
+**Objetivo:** Llegar perseguido a la sala clave final no guarda hasta que termina la caza (S-07, D-96).
+
+**Precondiciones:** Piso 1, sin autoguardado previo; un Alto en caza persigue al jugador.
+
+**Pasos:**
+
+1. Entrar en la sala clave final con el Alto en caza.
+2. Comprobar que no aparece "sincronizando…" y que la escalera y el elevador muestran `LOCKDOWN`.
+3. Perder al Alto o eliminarlo hasta que salga de la caza.
+4. Salir del juego con calma y volver a cargar la ranura.
+
+**Resultado esperado:** "sincronizando…" aparece solo al terminar la caza; al cargar, el jugador aparece en la sala clave final con el mismo inventario y la sala sin enemigos dentro (D-97).
 
 **Resultado obtenido:**
 

@@ -3,7 +3,7 @@
 Estas guías explican **cómo** construir en Unity lo que el GDD define. El GDD (`GDD/`) es la fuente de verdad del **qué**: si una guía y el GDD se contradicen, manda el GDD y se corrige la guía.
 
 - **Motor:** Unity 6.6 con URP *Forward+* (D-107).
-- **Entrega:** 2026-11-30, configuración showcase como objetivo (D-111).
+- **Entrega:** 2026-11-20, configuración showcase como objetivo (D-111).
 - **Arquitectura:** `GDD/07 - Tecnología/01 - Arquitectura Técnica.md` (D-108).
 - **Plan semanal:** `GDD/08 - Producción/03 - Roadmap.md`.
 

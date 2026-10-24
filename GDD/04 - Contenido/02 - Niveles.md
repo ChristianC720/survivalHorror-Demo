@@ -4,7 +4,7 @@
 
 Cada nivel debe documentar su propósito jugable, estructura, dificultad, contenido y condiciones de entrada/salida.
 
-En Identity Dissolution cada **piso es un nivel**; la introducción y la sala de The Mother son niveles propios (D-69). Las reglas de estructura, llaves, autoguardado y persecución entre pisos están en [[02 - Mecánicas]] (M-15); los presupuestos de recursos, en [[06 - Economía y Recursos]]. Todas las cantidades y duraciones son valores iniciales, sujetos a balance.
+En Identity Dissolution cada **piso es un nivel**; la introducción y la sala de The Mother son niveles propios (D-69). Las reglas de estructura, llaves, autoguardado y cierre de tránsito durante la caza están en [[02 - Mecánicas]] (M-15); los presupuestos de recursos, en [[06 - Economía y Recursos]]. Todas las cantidades y duraciones son valores iniciales, sujetos a balance.
 
 ## Salas procedurales: arquetipos y temas
 

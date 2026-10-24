@@ -771,9 +771,9 @@ stateDiagram-v2
     
 - **Recompensa:** Avance hacia el objetivo, autoguardado en los pisos 1 y 2 y, en el piso 2, reinicio del contador de muertes.
     
-- **Penalización:** Las salas clave pueden exigir hackeos largos bajo amenaza; la llave obligatoria ocupa una casilla hasta usarse; la escalera no deja atrás a los enemigos en caza.
+- **Penalización:** Las salas clave pueden exigir hackeos largos bajo amenaza; la llave obligatoria ocupa una casilla hasta usarse; durante una caza, la escalera y el elevador quedan en cierre (D-96).
     
-- **Interacciones con otras mecánicas:** Interactúa con M-02 Vista de vigilancia (un piso a la vez; todas las salas clave tienen cámara, D-25), M-07 Inventario y M-08 Interacción (llaves), M-10 Señales diegéticas (estado de caza para la persecución), M-13 Hackeo, M-16 Reaparición por reconstrucción, M-18 Final de 5 muertes y M-19 Jefe final.
+- **Interacciones con otras mecánicas:** Interactúa con M-02 Vista de vigilancia (un piso a la vez; todas las salas clave tienen cámara, D-25), M-07 Inventario y M-08 Interacción (llaves), M-10 Señales diegéticas (estado de caza para el cierre de tránsito, D-96), M-13 Hackeo, M-16 Reaparición por reconstrucción, M-18 Final de 5 muertes y M-19 Jefe final.
     
 - **Casos límite:**
     
@@ -785,7 +785,7 @@ stateDiagram-v2
         
     - Si la sala clave final está sin energía, el generador garantiza una ruta válida hasta el interruptor de la sala clave secundaria del mismo piso (D-72).
         
-- **Impacto en pilares:** Refuerza **Adaptación** (la ruta y la posición de las salas clave cambian por intento, pero la estructura es comprensible) y **Decisiones con Consecuencias** (elegir escalera o elevador cambia quién sigue al jugador; las llaves compiten por espacio). Riesgo: si la sala clave final queda siempre cerca del inicio, el piso pierde tensión; el generador impone una distancia mínima de ≥ 4 salas (≥ 3 en showcase; D-100).
+- **Impacto en pilares:** Refuerza **Adaptación** (la ruta y la posición de las salas clave cambian por intento, pero la estructura es comprensible) y **Decisiones con Consecuencias** (las llaves compiten por espacio y cambiar de piso exige que termine la caza, D-96). Riesgo: si la sala clave final queda siempre cerca del inicio, el piso pierde tensión; el generador impone una distancia mínima de ≥ 4 salas (≥ 3 en showcase; D-100).
 
 **Estructura del intento:**
 
@@ -824,7 +824,7 @@ flowchart TD
         
     - **Reiniciar (D-32):** opción del menú de pausa. Regresa al inicio del ciclo, cuenta como muerte (suma al contador y a la degradación, M-18) y conserva el terminal del brazo. El inventario se pierde igual que al morir.
         
-    - **Nueva partida (D-32):** opción del menú principal. Borra todo el progreso, incluido el terminal del brazo, y pide confirmación.
+    - **Nueva partida (D-32):** opción del menú principal. Borra todo el progreso de la ranura elegida (D-105), incluido el terminal del brazo, y pide confirmación.
         
     - La muerte elimina todos los objetos del inventario.
         
@@ -864,7 +864,7 @@ flowchart TD
         
     - En el primer intento, las muertes y "Reiniciar" no suman al contador (D-35), pero sí suben el código de sujeto, porque cada una es una reconstrucción (D-43).
         
-    - "Nueva partida" borra el terminal del brazo, incluido el código de sujeto: la primera reconstrucción de la nueva partida vuelve a ser R-H-07 (D-32).
+    - "Nueva partida" borra el terminal del brazo de su ranura (D-105), incluido el código de sujeto: la primera reconstrucción de la nueva partida vuelve a ser R-H-07 (D-32).
         
 - **Impacto en pilares:** Refuerza **Adaptación**. Riesgo: si la información persistente resuelve los pisos, se pierde la incertidumbre; solo persisten reglas, no valores.
 
@@ -950,7 +950,7 @@ flowchart TD
     
     - Llegar a la sala clave final del piso 2 reinicia el contador, pero no la degradación (D-29).
         
-    - Si el jugador muere en el piso 3 o en la sala de The Mother después de reiniciar el contador, regresa al inicio del ciclo y esa muerte es la primera del contador reiniciado.
+    - Si el jugador muere en el piso 3 o en la sala de The Mother después de reiniciar el contador, regresa al inicio del ciclo y esa muerte suma al contador reiniciado (es la primera si no murió antes en el piso 3).
         
     - Si la quinta muerte se produce por "Reiniciar" o por salir con costo, también activa el final (D-31, D-32, D-35).
         
@@ -1033,7 +1033,7 @@ flowchart TD
     
 - **Casos límite:**
     
-    - Si el jugador llega sin munición, la sala proporciona munición para todos los puntos débiles de la fase 3 más 1–2 disparos de margen (D-28).
+    - Si el jugador llega sin munición, la sala proporciona 8 balas: 6 para los 3 transformadores y 2 de margen (D-28, D-80).
         
     - Los enemigos eliminados en la sala no se reciclan, por lo que rematarlos no es necesario (D-28).
         

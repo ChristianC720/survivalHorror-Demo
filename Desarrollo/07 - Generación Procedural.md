@@ -2,7 +2,7 @@
 
 **Objetivo:** construir cada piso con salas procedurales, salas clave, llaves, cámaras, enemigos, recursos y documentos según las reglas de S-06, sin producir nunca un piso imposible, y darle navegación a la IA.
 
-**Responsable:** Programación de sistemas.
+**Responsable:** Christian Coronel Palma.
 
 **Referencias:** `GDD/02 - Diseño/03 - Sistemas.md` (S-06, tabla de parámetros y criterios), `GDD/02 - Diseño/02 - Mecánicas.md` (M-15), `GDD/04 - Contenido/02 - Niveles.md` (arquetipos, tutorial, energía), `GDD/02 - Diseño/06 - Economía y Recursos.md` (presupuesto por piso), D-33, D-34, D-36, D-37, D-38, D-72, D-79, D-100, D-101, D-110.
 

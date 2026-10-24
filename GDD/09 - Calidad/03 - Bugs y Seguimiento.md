@@ -4,7 +4,7 @@
 
 Registra problemas encontrados durante las pruebas y permite darles seguimiento.
 
-Los bugs se registran como **GitHub Issues** con la etiqueta `bug` y una etiqueta de severidad (`sev:critica`, `sev:alta`, `sev:media`, `sev:baja`) (D-113). El ID es el número de la *issue* (`#123`). La tabla de esta nota solo resume los críticos y altos abiertos en cada hito.
+Los bugs se registran como tarjetas en **Trello** con la etiqueta "Bug" y una etiqueta de severidad (Crítica, Alta, Media, Baja) (D-113). Lenin Ramón López Córdova los clasifica y les asigna responsable ([[02 - Roles y Responsabilidades]]). El ID es el número de la tarjeta. La tabla de esta nota solo resume los críticos y altos abiertos en cada hito.
 
 **Severidad:**
 
@@ -42,6 +42,8 @@ Los bugs se registran como **GitHub Issues** con la etiqueta `bug` y una etiquet
 **Estado:** Abierto / En progreso / Resuelto / Cerrado
 
 ## Registro
+
+Estados: **Abierto** (sin asignar) → **En progreso** → **Resuelto** (corregido en `develop`) → **Cerrado** (QA lo verificó en una build).
 
 | ID | Bug | Severidad | Responsable | Estado |
 |---|---|---|---|---|

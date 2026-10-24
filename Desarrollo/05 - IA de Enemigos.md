@@ -2,7 +2,7 @@
 
 **Objetivo:** enemigos que patrullan, perciben por vista, luz y ruido, pasan por sospecha, búsqueda y caza, y se comportan según su tipo, sin mostrar nunca su percepción en pantalla.
 
-**Responsable:** Programación de sistemas.
+**Responsable:** Christian Coronel Palma.
 
 **Referencias:** `GDD/02 - Diseño/03 - Sistemas.md` (S-02), `GDD/04 - Contenido/03 - Enemigos y NPC.md` (fichas y valores, D-66, D-76), `GDD/02 - Diseño/02 - Mecánicas.md` (M-09, M-10, M-12, M-14), D-23, D-24, D-96 (cierre de tránsito), D-97 (salas de aparición).
 

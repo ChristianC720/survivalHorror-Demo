@@ -43,14 +43,17 @@ Cada sistema tiene además su lista detallada en [[03 - Sistemas]]; aquí va un 
 
 ## Criterios del proyecto
 
+Se comprueban en la configuración showcase; la completa solo se comprueba si se entrega ([[01 - Alcance]]).
+
 - [ ] El bucle principal funciona: explorar, gestionar, combatir o evadir, morir y reconstruirse con un piso distinto.
 - [ ] Las condiciones de victoria y derrota funcionan: victoria al derrotar a The Mother con el final que corresponde; la muerte reconstruye (y, si M-18 entra, la quinta activa la Asimilación).
 - [ ] El progreso puede guardarse: autoguardado, 3 ranuras, terminal persistente y la tabla de salida de [[07 - Reglas y Estados del Juego]].
 - [ ] Los sistemas principales están integrados: S-01..S-11 se comunican según [[03 - Sistemas]].
-- [ ] Las pruebas críticas están aprobadas: CP-01..CP-06 de [[02 - Pruebas]].
+- [ ] Las pruebas críticas están aprobadas: CP-01..CP-07 de [[02 - Pruebas]].
 - [ ] El rendimiento cumple el objetivo definido en [[03 - Requisitos Técnicos]].
 - [ ] No existen errores bloqueantes conocidos ([[03 - Bugs y Seguimiento]]).
 - [ ] Una partida showcase completa dura ~30 min sin muertes (D-34).
+- [ ] Un jugador que no conoce el GDD cumple el criterio mínimo de la demo de la [[01 - Ficha del Proyecto]].
 
 
 > **Navegación:** [[00 - Índice]] · ← [[03 - Bugs y Seguimiento]] · [[01 - Glosario]] →

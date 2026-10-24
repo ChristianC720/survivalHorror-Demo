@@ -2,7 +2,7 @@
 
 **Objetivo:** el aspecto low-poly con luz moderna a ~540p, la luz por piso, la importación de modelos y animaciones desde Blender y Mixamo, y los efectos CRT y de degradación.
 
-**Responsable:** Arte 3D y animación (con Programación de jugabilidad para los scripts).
+**Responsable:** Bryan Iván Navarrete Canché (con Christian Coronel Palma para los scripts).
 
 **Referencias:** `GDD/05 - Arte y Audio/01 - Dirección de Arte.md` (D-81, D-82, paleta), `GDD/05 - Arte y Audio/02 - Personajes y Animación.md` (D-88, convenciones), `GDD/05 - Arte y Audio/03 - Entornos.md` (kit modular, iluminación), `GDD/07 - Tecnología/03 - Requisitos Técnicos.md` (presupuestos), D-84, D-85, D-106.
 
@@ -60,7 +60,7 @@ public sealed class PixelRenderScale : MonoBehaviour
 ### 5. Personajes y animación (D-88)
 
 1. Exporta desde Blender en FBX: escala 1 = 1 m, *Apply Transform*, Y arriba al importar en Unity, sin cámaras ni luces.
-2. **Humanoid compartido** para Lukas, el Alto, la Boca y el Mudo: *Rig → Animation Type = Humanoid*, *Avatar* creado desde Lukas y reutilizado. Valida un clip de Mixamo por personaje en la semana 2.
+2. **Humanoid compartido** para Lukas, el Alto, la Boca y el Mudo: *Rig → Animation Type = Humanoid*, *Avatar* creado desde Lukas y reutilizado. Valida un clip de Mixamo por personaje en la semana 1.
 3. Rastrero y The Mother: *Generic* con esqueletos propios.
 4. Clips a 30 fps; locomoción de Mixamo retocada en Blender; agarres y remates como clips sincronizados propios.
 5. `Animator` de Lukas: capa base (locomoción con *Blend Tree* por velocidad y estado de salud), capa superior con máscara (apuntar, recargar, terminal), capa aditiva (respiración, golpe recibido).

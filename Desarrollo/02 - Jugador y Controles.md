@@ -2,7 +2,7 @@
 
 **Objetivo:** Lukas se mueve, corre, se agacha e interactúa con las teclas de Controles, con resistencia (S-04) y salud por estados (M-05).
 
-**Responsable:** Programación de jugabilidad.
+**Responsable:** Christian Coronel Palma.
 
 **Referencias:** `GDD/02 - Diseño/04 - Controles.md` (mapa y contextos), `GDD/02 - Diseño/03 - Sistemas.md` (S-03, S-04), `GDD/02 - Diseño/02 - Mecánicas.md` (M-05, M-06, M-09), `GDD/04 - Contenido/03 - Enemigos y NPC.md` (velocidades de Lukas, D-76).
 

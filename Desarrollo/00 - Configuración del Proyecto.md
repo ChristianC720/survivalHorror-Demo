@@ -2,13 +2,13 @@
 
 **Objetivo:** que los 5 integrantes abran el mismo proyecto Unity, con los mismos paquetes y ajustes, desde el repositorio.
 
-**Responsable:** Dirección y producción, con Programación de sistemas.
+**Responsable:** Christian Coronel Palma.
 
 **Referencias:** `GDD/07 - Tecnología/02 - Motor y Herramientas.md` (D-107), `GDD/07 - Tecnología/03 - Requisitos Técnicos.md` (D-112).
 
 ## Prerrequisitos (cada integrante)
 
-1. Unity Hub con **Unity 6.6** (la misma versión exacta para todos) y el módulo *Windows Build Support (IL2CPP)*.
+1. Unity Hub con **Unity 6.6 (`6000.6.6f1`)** (la misma versión exacta para todos) y el módulo *Windows Build Support (IL2CPP)*.
 2. Visual Studio 2022 con la carga "Desarrollo de juegos con Unity" (el `.vsconfig` del repositorio la instala) o Rider.
 3. Git y **Git LFS**: ejecutar `git lfs install` una vez por equipo. El `.gitattributes` del repositorio ya envía modelos, imágenes y audio a LFS.
 

@@ -12,7 +12,7 @@ Define cómo se presenta la historia al jugador y cómo funcionan los diálogos.
     - No hay conversaciones con opciones ni NPC con diálogo; los enemigos comunes son personas asimiladas (D-48, ver [[03 - Personajes]]).
     - Las únicas "voces" son la nota de voz de Emilia, los textos de The Mother y las frases cortas y murmullos de Lukas, siempre como sonido más texto (D-52).
 - Cinemáticas
-    - **Introducción (D-53), formato mixto:** la casa es una cinemática corta; la compuerta y el elevador son jugables hasta que el elevador falla y cae (cinemática); el piso que no existe es jugable y la muerte ocurre en juego. Detalle en [[01 - Premisa y Trama]].
+    - **Introducción (D-53), formato mixto:** la casa es una cinemática corta; la compuerta es jugable y el elevador es cinemática (D-63); el piso que no existe es jugable y la muerte ocurre en juego. Detalle en [[01 - Premisa y Trama]].
     - **Cinemática completa de reconstrucción (D-39, D-45, D-53):** una sola vez, al terminar la introducción; es **el momento del olvido**. Imágenes fugaces de 1–2 s con cortes a negro muestran la reconstrucción. Lukas despierta como **R-H-07** en la fila de cápsulas, sabiendo que busca algo o a alguien, sin recordar a quién, y recoge un anillo del suelo (D-54, M-16).
     - **Cinemática corta (D-39):** en cada muerte o reinicio; refleja la degradación acumulada y la pieza ajena visible (M-18, D-43). Se puede saltar.
     - **Hallazgo del piso 2 (D-56):** cinemática corta, una sola vez, en la sala clave final del piso 2: la foto familiar imposible, con la cara de Emilia borrosa.
@@ -20,7 +20,7 @@ Define cómo se presenta la historia al jugador y cómo funcionan los diálogos.
     - **Finales (D-42, D-51, D-61):** Asimilación, Relevo básico, Relevo completo y Ambiguo, con el Despertar en toda victoria y el gancho totalmente abierto (ver "Decisiones narrativas" y [[01 - Premisa y Trama]]).
 - Texto ambiental
     - **Estilo *Signalis* (D-58):** dos voces. La burocracia fría de Vitalis Konzern y The Mother (memos, carteles, propaganda, informes y protocolos) frente al diario íntimo y fragmentado de Emilia.
-    - **Documentos de Vitalis Konzern y de The Mother (D-52):** se ubican en salas procedurales como contexto del mundo y no cuentan para la elección final (M-08).
+    - **Documentos de Vitalis Konzern, Kessler Sicherheit AG y The Mother (D-52, D-79):** se ubican en salas procedurales como contexto del mundo y no cuentan para la elección final (M-08).
     - **Alemán sin traducir (D-58):** carteles, sellos y fragmentos de Vitalis en alemán. Nunca se traducen, en ningún idioma, y nunca contienen información necesaria.
     - **Terminal del brazo:** registra documentos, bestiario y código de sujeto, y persiste entre muertes (M-16). Muestra el aviso diegético de autoguardado "sincronizando…" (D-30).
     - **Bestiario (D-48):** informes clínicos de The Mother sobre sujetos asimilados, con código de sujeto; cada entrada se desbloquea en el primer encuentro.
@@ -96,7 +96,7 @@ Define cómo se presenta la historia al jugador y cómo funcionan los diálogos.
 - Documentos en salas procedurales y reportes a servidores de Vitalis que nadie lee (D-46, D-52).
 - Registros R-H-01 a R-H-06 en el piso 2, con código, fecha y causa, sin nombre ni estado (D-58).
 - Expediente R-H-01 a R-H-06 de Emilia, "estado desconocido", visible en el Relevo completo (D-49, D-51).
-- **Combate del jefe (D-62):** una línea de protocolo al inicio de cada fase de M-19. Ejemplo de tono: "Espécimen R-H-14: no conforme. Iniciando recolección." (D-65).
+- **Combate del jefe (D-62):** una línea de protocolo al inicio de cada fase de M-19. Ejemplo de tono (traducido; el original se redacta en inglés, D-62): "Espécimen R-H-14: no conforme. Iniciando recolección." (D-65).
 - Informe de reclasificación del sujeto en la cinemática de Asimilación (D-61).
 - Gancho final: la voz (sonido) de The Mother iniciando el protocolo ante una nueva llegada (D-51).
 

@@ -2,7 +2,7 @@
 
 **Objetivo:** el encuentro final de 3 fases en la sala de The Mother, la victoria, la decisión final y las cinemáticas de victoria.
 
-**Responsable:** Programación de sistemas (con Arte para la sala y Audio para la música por fases).
+**Responsable:** Christian Coronel Palma (con Bryan Iván Navarrete Canché para la sala y Lian Daniel Sierra Vera para la música por fases).
 
 **Referencias:** `GDD/02 - Diseño/03 - Sistemas.md` (S-10 y cinemáticas de S-08), `GDD/02 - Diseño/02 - Mecánicas.md` (M-19), `GDD/04 - Contenido/02 - Niveles.md` ("Sala de The Mother"), `GDD/04 - Contenido/03 - Enemigos y NPC.md` (The Mother), D-28, D-51, D-55, D-61, D-65, D-80, D-92, D-98.
 

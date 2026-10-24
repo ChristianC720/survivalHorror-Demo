@@ -2,7 +2,7 @@
 
 **Objetivo:** pruebas automáticas de la lógica crítica, perfilado contra los objetivos de rendimiento y la build de entrega.
 
-**Responsable:** Programación de sistemas (pruebas automáticas y build); todo el equipo (pruebas manuales).
+**Responsable:** Christian Coronel Palma (pruebas automáticas y build); Lenin Ramón López Córdova y todo el equipo (pruebas manuales).
 
 **Referencias:** `GDD/09 - Calidad/01 - Criterios de Calidad.md` (definición de terminado, D-113), `GDD/09 - Calidad/02 - Pruebas.md` (CP-01..CP-06), `GDD/09 - Calidad/03 - Bugs y Seguimiento.md`, `GDD/09 - Calidad/04 - Criterios de Aceptación.md`, `GDD/07 - Tecnología/03 - Requisitos Técnicos.md` (D-112).
 
@@ -62,7 +62,7 @@ Envueltas en `#if DEVELOPMENT_BUILD || UNITY_EDITOR`:
 - Teclas para: regenerar el piso, dar munición y curas, ir al piso 2 o 3, dar los 6 documentos de Emilia, matar al jugador.
 - Nunca se incluyen en la build de entrega.
 
-### 5. Perfilado (semana 6)
+### 5. Perfilado (semana de pruebas)
 
 1. *Build Profiles → Windows* con *Development Build* y *Autoconnect Profiler*.
 2. Jugar el piso 3 con la linterna y 2 enemigos en caza (CP-06); revisar CPU, GPU, *batches* y memoria en el Profiler y el Memory Profiler.
@@ -70,7 +70,7 @@ Envueltas en `#if DEVELOPMENT_BUILD || UNITY_EDITOR`:
 
 ### 6. Build de entrega
 
-1. Congelación de funciones el 2026-11-23; desde entonces solo correcciones (`GDD/08 - Producción/05 - Gestión de Cambios.md`).
+1. Congelación de funciones el 2026-11-15; desde entonces solo correcciones (`GDD/08 - Producción/05 - Gestión de Cambios.md`).
 2. *Player Settings:* IL2CPP, x86_64, sin *Development Build*, versión `1.0.0`.
 3. Escenas en orden: `Bootstrap` (0), `MainMenu`, `Intro`, `Floor`, `Cinematics`.
 4. Compila en `Build/IdentityDissolution_v1.0/` (ignorado por Git) y comprueba tamaño ≤ 2 GB.

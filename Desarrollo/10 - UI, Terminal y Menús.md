@@ -2,7 +2,7 @@
 
 **Objetivo:** interfaz diegética (terminal del brazo), los pocos elementos en pantalla, menús, Opciones, accesibilidad y localización en inglés y español.
 
-**Responsable:** Audio, narrativa y UI.
+**Responsable:** Christian Coronel Palma (programación); diseño visual de la interfaz por asignar ([[02 - Roles y Responsabilidades]]).
 
 **Referencias:** `GDD/05 - Arte y Audio/04 - Interfaz Visual.md` (D-86), `GDD/06 - Experiencia/02 - UI y Menús.md`, `GDD/06 - Experiencia/03 - Accesibilidad.md`, `GDD/06 - Experiencia/04 - Guardado y Configuración.md`, `GDD/02 - Diseño/07 - Reglas y Estados del Juego.md` (menús y confirmaciones), D-62, D-89, D-90, D-102..D-106.
 

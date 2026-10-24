@@ -2,7 +2,7 @@
 
 **Objetivo:** inventario de 6 casillas en tiempo real, interacción con `E` (recoger, leer, abrir, interruptores, escalera y elevador), linterna con carga y hackeo por secuencias.
 
-**Responsable:** Programación de jugabilidad.
+**Responsable:** Christian Coronel Palma.
 
 **Referencias:** `GDD/02 - Diseño/03 - Sistemas.md` (S-05), `GDD/02 - Diseño/02 - Mecánicas.md` (M-07, M-08, M-12, M-13), `GDD/04 - Contenido/04 - Objetos y Coleccionables.md`, `GDD/02 - Diseño/06 - Economía y Recursos.md`, D-36 (llaves), D-71 (5 tipos), D-72 (energía), D-84 (destello), D-97 (sellado).
 

@@ -2,7 +2,7 @@
 
 **Objetivo:** el ciclo de muerte y reconstrucción, el terminal del brazo persistente, las 3 ranuras con autoguardado y costo de salida, y el reciclaje de cuerpos.
 
-**Responsable:** Programación de sistemas.
+**Responsable:** Christian Coronel Palma.
 
 **Referencias:** `GDD/02 - Diseño/03 - Sistemas.md` (S-07, S-08, S-09), `GDD/02 - Diseño/02 - Mecánicas.md` (M-16, M-17, M-18, M-20), `GDD/02 - Diseño/07 - Reglas y Estados del Juego.md` (reglas globales 3–13 y casos especiales), `GDD/06 - Experiencia/04 - Guardado y Configuración.md`, `GDD/07 - Tecnología/04 - Datos y Persistencia.md` (D-109), D-30, D-31, D-32, D-35, D-43, D-93, D-94, D-96, D-99.
 
