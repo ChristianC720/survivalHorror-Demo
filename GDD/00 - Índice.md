@@ -24,6 +24,7 @@ Cada sección explica **qué información debe escribirse**, por qué es importa
 ## Acerca de esta guía
 
 - [[00 - Acerca de esta guía]]
+- [[00 - GDD Estructurado]] (vista consolidada del GDD)
 
 ### 01 — Visión
 - [[01 - Ficha del Proyecto]]
