@@ -70,7 +70,7 @@ El cambio entre perspectiva isométrica y Over the Shoulder no debe utilizarse �
 
 Cada cambio deberá responder a una necesidad jugable, narrativa o de presentación concreta.
 
-La perspectiva sobre el hombro es la vista por defecto y mantiene la cercanía, precisión, tensión y participación directa del jugador. La cámara isométrica favorece la percepción del entorno y la observación del espacio, pero es una acción manual de reconocimiento con costo: representa el acceso a las cámaras de seguridad de The Mother desde el terminal del brazo, solo existe en salas con cámara activa, muestra una imagen con ruido y retraso, obliga a permanecer quieto o caminar muy lento y se corta al recibir daño o cuando algún enemigo entra en alerta. Al usarla, el jugador ve por los ojos de la máquina.
+La perspectiva sobre el hombro es la vista por defecto y mantiene la cercanía, precisión, tensión y participación directa del jugador. La cámara isométrica favorece la percepción del entorno y la observación del espacio, pero es una acción manual de reconocimiento con costo: representa el acceso a las cámaras de seguridad de The Mother desde el terminal del brazo, solo existe en salas con cámara activa, muestra una imagen con ruido y retraso, obliga a permanecer quieto o caminar muy lento y se corta al recibir daño o cuando algún enemigo cercano entra en caza (D-23). Al usarla, el jugador ve por los ojos de la máquina.
 
 ### La muerte forma parte de la experiencia:
 

@@ -10,6 +10,8 @@ Define para quién se diseña el videojuego y dónde se jugará. Las decisiones 
 
 **Experiencia esperada:**  Intermedia.
 
+**Clasificación objetivo (D-138):** PEGI 16 / ESRB M. Horror corporal con sangre oscura, cuerpos deformados y violencia sin desmembramiento ni desnudez (D-85); a los niños solo se alude con objetos (D-73).
+
 **Intereses relevantes:**
 - Survival Horror.
 - Terror psicológico y ambiental.
@@ -71,7 +73,7 @@ Los requisitos mínimos y recomendados provisionales están en [[03 - Requisitos
 
 ### Controles:
 
-El diseño deberá priorizar teclado y mouse, considerando el soporte completo para control que se implementará posteriormente.
+El diseño deberá priorizar teclado y mouse. La demo incluye un mapa básico fijo de mando tipo Xbox, sin reasignación; reasignar el mando queda para después de la demo (D-120).
 Las acciones principales deberán poder realizarse sin combinaciones excesivamente complejas, y los controles deberán contemplar como mínimo:
 
 - Movimiento.
@@ -121,7 +123,7 @@ Prototipo académico / Demo jugable.
 
 La versión desarrollada inicialmente tiene como propósito demostrar los principales sistemas, mecánicas y decisiones de diseño del videojuego.
 
-Actualmente no se ha definido un modelo comercial para una hipotética versión final.
+Demo académica gratuita, sin monetización: no hay venta, compras dentro del juego ni anuncios. No se define un modelo comercial para una hipotética versión final (D-139).
 ## Consideraciones
 
 - [x] Controles adaptados a la plataforma
