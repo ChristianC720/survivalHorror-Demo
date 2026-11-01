@@ -14,8 +14,8 @@ namespace Heartbeat.Generation
     /// </summary>
     public sealed class RoomActivation : MonoBehaviour
     {
-        [Tooltip("Room lights allowed at once; one more is left for Lukas's flashlight (budget 16).")]
-        [SerializeField] private int maxRoomLights = 15;
+        [Tooltip("Room lights allowed at once; the flashlight and Lukas's rim light make 16 (budget).")]
+        [SerializeField] private int maxRoomLights = 14;
         [Tooltip("Room lights with shadows; the flashlight is the 4th shadowed light (budget 4).")]
         [SerializeField] private int maxShadowedRoomLights = 3;
 
