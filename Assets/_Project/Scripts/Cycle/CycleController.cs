@@ -106,6 +106,62 @@ namespace Heartbeat.Cycle
             Showcase = Data.showcase,
         };
 
+        // ---------- Main menu → game ----------
+
+        /// <summary>
+        /// Continue / Load / New game (Reglas y Estados): loads the slot and enters the floor. With an autosave it
+        /// resumes in that floor's final room with the saved inventory (D-30); otherwise the cycle starts on floor 1.
+        /// After a quit during a hunt it plays the short reconstruction; a pending fifth death plays Assimilation (D-96).
+        /// shortcut: New game skips the Intro scene until E14-intro exists.
+        /// </summary>
+        public void StartFromMenu(int slot, GameMode mode, bool newGame)
+        {
+            if (busy) return;
+            StartCoroutine(StartRoutine(slot, mode, newGame));
+        }
+
+        private IEnumerator StartRoutine(int slot, GameMode mode, bool newGame)
+        {
+            busy = true;
+            LoadOrCreate(slot, mode, newGame);
+            bool afterHuntQuit = Data.confirmedExit && Data.exitCost == ExitCost.Hunt;
+            Data.confirmedExit = false;
+            SaveNow();
+
+            states.TryTransition(GameStateId.Loading);
+            if (Data.deathCounter >= DeathCounter.AssimilationThreshold && !Data.firstAttempt)
+            {
+                states.TryTransition(GameStateId.EndingAssimilation);
+                HbLog.Info("Cycle", "Assimilation ending (M-18) on Continue");
+                GameEvents.RaiseEndingTriggered("Assimilation");
+                busy = false;
+                yield break;
+            }
+
+            bool resume = Data.hasAttemptSave && !afterHuntQuit;
+            CurrentFloor = resume ? Data.attemptSave.floor : 1;
+            carry = resume ? Data.attemptSave : null;
+            var request = NextRequest(CurrentFloor);
+            request.StartInFinalRoom = resume;
+            FloorSession.Pending = request;
+            loader.SetStatus(UI.Loc.Get("UI.HUD.SYNC_SUBJECT", Data.SubjectLabel));
+            HbLog.Info("Cycle", $"Start slot {slot} ({(newGame ? "new" : "continue")}): floor {CurrentFloor}, resume={resume}, {Data.SubjectLabel}");
+            if (afterHuntQuit) states.TryTransition(GameStateId.Reconstruction);
+            loader.Load(SceneNames.Floor, null, fadeOut: false);
+            while (loader.IsBusy) yield return null;
+            loader.SetStatus("");
+            states.TryTransition(GameStateId.Playing);
+            yield return loader.Fade(1f, 0f);
+            busy = false;
+        }
+
+        /// <summary>Pause ▸ Restart (confirmed): counts as a death (D-32, D-96). Not available in the Intro or final decision.</summary>
+        public void Restart()
+        {
+            if (busy || states.Current != GameStateId.Paused) return;
+            GameEvents.RaisePlayerDied(DeathCause.Restart);
+        }
+
         // ---------- Death → reconstruction ----------
 
         private void OnPlayerDied(DeathCause cause)

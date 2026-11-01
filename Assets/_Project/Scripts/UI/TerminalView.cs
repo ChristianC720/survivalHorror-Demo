@@ -25,10 +25,10 @@ namespace Heartbeat.UI
         [SerializeField] private DocumentDefinition[] documents = new DocumentDefinition[0];
         [SerializeField] private float baseFontSize = 26f;
 
-        private static readonly Color Teal = new Color(0.31f, 0.88f, 0.8f);
-        private static readonly Color TealDim = new Color(0.31f, 0.88f, 0.8f, 0.35f);
-        private static readonly Color Amber = new Color(0.95f, 0.7f, 0.24f);
-        private static readonly Color Red = new Color(1f, 0.32f, 0.26f);
+        private static Color Teal => UiKit.Teal;
+        private static Color TealDim => UiKit.TealDim;
+        private static Color Amber => UiKit.Amber;
+        private static Color Red => UiKit.Red;
         private const int EcgBars = 64;
 
         private InputRouter router;
@@ -379,42 +379,12 @@ namespace Heartbeat.UI
             return p;
         }
 
-        private static RectTransform NewRect(string name, Transform parent)
-        {
-            var go = new GameObject(name, typeof(RectTransform));
-            go.transform.SetParent(parent, false);
-            return (RectTransform)go.transform;
-        }
+        private static RectTransform NewRect(string name, Transform parent) => UiKit.Rect(name, parent);
 
-        private TMP_Text MakeText(Transform parent, string text, float scale)
-        {
-            var t = NewRect("Text", parent).gameObject.AddComponent<TextMeshProUGUI>();
-            t.text = text;
-            t.fontSize = baseFontSize * scale;
-            t.color = Teal;
-            t.raycastTarget = false;
-            return t;
-        }
+        private TMP_Text MakeText(Transform parent, string text, float scale) => UiKit.Text(parent, text, baseFontSize * scale, Teal);
 
-        private Button MakeButton(Transform parent, string text, UnityEngine.Events.UnityAction onClick, float scale)
-        {
-            var r = NewRect("Button", parent);
-            var img = r.gameObject.AddComponent<Image>();
-            img.color = new Color(0, 0, 0, 0.4f);
-            var b = r.gameObject.AddComponent<Button>();
-            var colors = b.colors;
-            colors.highlightedColor = new Color(1.4f, 1.4f, 1.4f);
-            colors.selectedColor = new Color(1.4f, 1.4f, 1.4f);
-            b.colors = colors;
-            b.onClick.AddListener(onClick);
-            r.gameObject.AddComponent<LayoutElement>().preferredHeight = 44;
-            var label = MakeText(r, text, scale);
-            label.alignment = TextAlignmentOptions.Center;
-            var lr = (RectTransform)label.transform;
-            lr.anchorMin = Vector2.zero; lr.anchorMax = Vector2.one;
-            lr.offsetMin = new Vector2(12, 0); lr.offsetMax = new Vector2(-12, 0);
-            return b;
-        }
+        private Button MakeButton(Transform parent, string text, System.Action onClick, float scale) =>
+            UiKit.Button(parent, text, baseFontSize * scale, Teal, onClick);
 
         private static void AddTrigger(EventTrigger t, EventTriggerType type, System.Action a)
         {

@@ -72,7 +72,7 @@ namespace Heartbeat.Generation
         }
 
         /// <summary>Generates and builds a floor. Returns false if no valid layout exists for the seed.</summary>
-        public bool Build(int floor, int seed, bool firstAttempt, bool storyMode, bool showcase, IReadOnlyCollection<string> registered = null)
+        public bool Build(int floor, int seed, bool firstAttempt, bool storyMode, bool showcase, IReadOnlyCollection<string> registered = null, bool startInFinalRoom = false)
         {
             var sw = Stopwatch.StartNew();
             Clear();
@@ -117,9 +117,11 @@ namespace Heartbeat.Generation
             surface.BuildNavMesh();
 
             activation.SetRooms(built);
-            foreach (var e in Layout.Enemies) PlaceEnemy(e);
-            SpawnPlayer();
-            activation.Apply(built[Layout.EntryRoom]);
+            // Continue from the autosave starts in the final room (D-30); the spawn room never holds enemies (global rule 6).
+            int spawnRoom = startInFinalRoom && Layout.FinalRoom >= 0 ? Layout.FinalRoom : Layout.EntryRoom;
+            foreach (var e in Layout.Enemies) if (!startInFinalRoom || e.Room != spawnRoom) PlaceEnemy(e);
+            SpawnPlayer(spawnRoom);
+            activation.Apply(built[spawnRoom]);
 
             LastBuildMs = sw.ElapsedMilliseconds;
             HbLog.Info("Gen", $"floor={floor} seed={Layout.Seed} (requested {seed}, {Layout.Attempts} attempts): {Layout.Rooms.Count} rooms, " +
@@ -295,9 +297,9 @@ namespace Heartbeat.Generation
             exit.Powered = final.IsPowered;
         }
 
-        private void SpawnPlayer()
+        private void SpawnPlayer(int room)
         {
-            var entry = built[Layout.EntryRoom];
+            var entry = built[room];
             var sp = entry.GetComponentsInChildren<SpawnPoint>(true).FirstOrDefault(s => s.kind == SpawnKind.Player);
             Vector3 pos = sp != null ? sp.transform.position : entry.transform.position + entry.transform.rotation * new Vector3(2f, 0f, 2f);
             Quaternion rot = sp != null ? sp.transform.rotation : entry.transform.rotation;

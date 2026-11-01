@@ -15,6 +15,7 @@ namespace Heartbeat.Core
         [SerializeField, Min(0f)] private float fadeSeconds = 0.4f;
 
         private CanvasGroup fade;
+        private TMPro.TMP_Text status;
         private bool busy;
 
         public bool IsBusy => busy;
@@ -37,6 +38,9 @@ namespace Heartbeat.Core
         }
 
         public void SetFade(float alpha) => fade.alpha = alpha;
+
+        /// <summary>Terminal boot line on the black screen, e.g. "SYNCHRONIZING SUBJECT R-H-09…" (D-96). Empty clears it.</summary>
+        public void SetStatus(string text) => status.text = text ?? "";
 
         private IEnumerator LoadRoutine(string sceneName, Action onLoaded, bool fadeOut)
         {
@@ -110,6 +114,20 @@ namespace Heartbeat.Core
             rt.anchorMax = Vector2.one;
             rt.offsetMin = rt.offsetMax = Vector2.zero;
             img.GetComponent<Image>().color = Color.black;
+
+            status = new GameObject("Status", typeof(RectTransform)).AddComponent<TMPro.TextMeshProUGUI>();
+            status.transform.SetParent(go.transform, false);
+            var srt = (RectTransform)status.transform;
+            srt.anchorMin = srt.anchorMax = srt.pivot = new Vector2(0.5f, 0.5f);
+            srt.sizeDelta = new Vector2(1400, 80);
+            status.alignment = TMPro.TextAlignmentOptions.Center;
+            status.fontSize = 32;
+            status.color = new Color(0.31f, 0.88f, 0.8f);
+            status.text = "";
+            var scaler = go.AddComponent<CanvasScaler>();
+            scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+            scaler.referenceResolution = new Vector2(1920, 1080);
+            scaler.matchWidthOrHeight = 0.5f;
         }
     }
 }

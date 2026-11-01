@@ -14,7 +14,7 @@ namespace Heartbeat.Generation
         public struct Request
         {
             public int Floor, Seed;
-            public bool FirstAttempt, StoryMode, Showcase;
+            public bool FirstAttempt, StoryMode, Showcase, StartInFinalRoom;
         }
 
         /// <summary>Set by the cycle / save system before loading this scene.</summary>
@@ -42,7 +42,7 @@ namespace Heartbeat.Generation
             };
             Pending = null;
             Services.TryGet<RegistryModel>(out var registry);
-            builder.Build(r.Floor, r.Seed, r.FirstAttempt, r.StoryMode, r.Showcase, registry != null ? new System.Collections.Generic.HashSet<string>(registry.Order) : null);
+            builder.Build(r.Floor, r.Seed, r.FirstAttempt, r.StoryMode, r.Showcase, registry != null ? new System.Collections.Generic.HashSet<string>(registry.Order) : null, r.StartInFinalRoom);
         }
 
         /// <summary>Debug console / tests: rebuild with a given seed.</summary>
