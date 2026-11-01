@@ -14,6 +14,7 @@
 | `CONF` | 12 confiscated objects (label: code, date, owner + 1–2 cold lines) |
 | `POST` | tutorial and ambience posters (key names come from the binding, `{key}` smart string) |
 | `END` | ending texts and credits |
+| `CAP` | sound captions (D-102): `CAP.<CUE name without CUE_, upper case>` for every Signal cue, shown by `UI.SoundCaptionView` with an approximate direction |
 
 ## Workflow
 - **Source of truth:** `Assets/_Project/Localization/Source/<TABLE>.tsv`, tab-separated `key, en, es[, note]` (use `

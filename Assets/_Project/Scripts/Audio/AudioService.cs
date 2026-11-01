@@ -9,7 +9,7 @@ namespace Heartbeat.Audio
     /// S-11 audio service, lives on the Bootstrap object (registered by Bootstrap). Pooled AudioSources with priority
     /// voice stealing (<see cref="VoicePicker"/>). Gameplay reaches it only through events: <see cref="Sfx"/> requests,
     /// plus the event → cue table in <see cref="OnEnable"/>. Every play logs "[Heartbeat][Audio] CUE_X" and raises
-    /// CuePlayed; cues without clips show their debug caption in development builds.
+    /// CuePlayed (UI.SoundCaptionView shows captions from it).
     /// </summary>
     public sealed class AudioService : MonoBehaviour
     {
@@ -17,7 +17,6 @@ namespace Heartbeat.Audio
         [SerializeField] private int voices = 24;
         [Tooltip("Alert cues only for enemies this close (same scope as the AlertDirector).")]
         [SerializeField] private float alertCueRadius = 25f;
-        [SerializeField] private bool showDebugCaptions = true;
         [SerializeField] private AudioBalance balance;
 
         [Header("Mixer (Audio/Mixer/Heartbeat.mixer)")]
@@ -39,7 +38,6 @@ namespace Heartbeat.Audio
         private AudioSource surveillanceLoop;
         private AlertState signaled;
 
-        private readonly List<(string text, float until)> captions = new List<(string, float)>();
 
         private void Awake()
         {
@@ -67,7 +65,6 @@ namespace Heartbeat.Audio
             else HbLog.Warn("Audio", "No AudioBalance: heartbeats disabled");
         }
 
-        private bool soundCaptions;
         private int degradation;
 
         private void OnDegradation(int level) => degradation = level;
@@ -79,7 +76,6 @@ namespace Heartbeat.Audio
             if (!Services.TryGet(out Save.SaveService saves)) return;
             var g = saves.LoadGlobal();
             ApplyVolumes(g);
-            soundCaptions = g.soundCaptions;
         }
 
         /// <summary>Options volumes (0..1) → exposed mixer params. Ambience/Music go through the duck in Update.</summary>
@@ -181,10 +177,6 @@ namespace Heartbeat.Audio
             started[i] = Time.unscaledTime;
             follow[i] = target;
             if (src.clip != null) src.Play();
-            if (soundCaptions && cue.priority == CuePriority.Signal && !string.IsNullOrEmpty(cue.debugCaption))
-                captions.Add((cue.debugCaption + Direction(spatial ? position : null), Time.unscaledTime + 2.5f));   // D-102; shortcut: caption text is the English cue caption (IMGUI), move to a SUB/CAP table + uGUI before release
-            else if (src.clip == null && showDebugCaptions && Debug.isDebugBuild && !string.IsNullOrEmpty(cue.debugCaption))
-                captions.Add((cue.debugCaption, Time.unscaledTime + 2f));
 
             if (cue.priority == CuePriority.Signal) duckUntil = Mathf.Max(duckUntil, Time.unscaledTime + duckHoldSeconds);
             HbLog.Info("Audio", cue.name);
@@ -208,7 +200,6 @@ namespace Heartbeat.Audio
                 // One-shots free their voice when done; empty-clip one-shots hold it ~0.5 s so stealing stays realistic.
                 if (!pool[i].loop && !pool[i].isPlaying && now - started[i] > 0.5f) busy[i] = false;
             }
-            captions.RemoveAll(c => c.until < now);
 
             if (mixer != null)
             {
@@ -216,25 +207,6 @@ namespace Heartbeat.Audio
                 mixer.SetFloat("vol_ambience", MixMath.LinearToDb(volAmbience) + duck);
                 mixer.SetFloat("vol_music", MixMath.LinearToDb(volMusic) + duck);
             }
-        }
-
-        private void OnGUI()
-        {
-            if (captions.Count == 0) return;
-            var style = new GUIStyle(GUI.skin.box) { fontSize = 14, alignment = TextAnchor.MiddleLeft };
-            for (int i = 0; i < captions.Count; i++)
-                GUI.Box(new Rect(Screen.width - 330, 10 + i * 26, 320, 24), "♪ " + captions[i].text, style);
-        }
-
-        /// <summary>Approximate direction for sound captions (D-102): never distance or screen position (D-02).</summary>
-        private static string Direction(Vector3? pos)
-        {
-            var cam = Camera.main;
-            if (!pos.HasValue || cam == null) return "";
-            Vector3 d = cam.transform.InverseTransformPoint(pos.Value);
-            float angle = Mathf.Atan2(d.x, d.z) * Mathf.Rad2Deg;
-            string key = Mathf.Abs(angle) < 45f ? "UI.DIR.AHEAD" : Mathf.Abs(angle) > 135f ? "UI.DIR.BEHIND" : angle > 0f ? "UI.DIR.RIGHT" : "UI.DIR.LEFT";
-            return ", " + UI.Loc.Get(key);
         }
 
         // ---------- Event → cue table (AUDIO_CUES.md) ----------
