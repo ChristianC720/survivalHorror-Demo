@@ -333,6 +333,7 @@ GameObject:
   - component: {fileID: 6928566924743440943}
   - component: {fileID: 4374356252612377418}
   - component: {fileID: 3832383360589686939}
+  - component: {fileID: 4105343024025492986}
   m_Layer: 11
   m_Name: Enemy_Alto
   m_TagString: Untagged
@@ -443,6 +444,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Heartbeat.Runtime::Heartbeat.Recycle.Corpse
   neverRecycle: 0
+--- !u!114 &4105343024025492986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4636455638720379637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6a28ccc7544b8940afb1abb966073db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Heartbeat.Runtime::Heartbeat.Audio.FootstepEmitter
+  balance: {fileID: 11400000, guid: 203b2ff80255b124a9081823f5a1188b, type: 2}
 --- !u!1 &4983779904320179761
 GameObject:
   m_ObjectHideFlags: 0

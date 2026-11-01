@@ -292,6 +292,7 @@ GameObject:
   - component: {fileID: 4214264003763487363}
   - component: {fileID: 707460425346237199}
   - component: {fileID: 1003214351030756633}
+  - component: {fileID: 2402450995711862663}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -512,6 +513,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Heartbeat.Runtime::Heartbeat.Level.PlayerHack
   player: {fileID: 5604194892502960124}
   health: {fileID: 1368415113503638425}
+--- !u!114 &2402450995711862663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2442423367564465436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6a28ccc7544b8940afb1abb966073db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Heartbeat.Runtime::Heartbeat.Audio.FootstepEmitter
+  balance: {fileID: 11400000, guid: 203b2ff80255b124a9081823f5a1188b, type: 2}
 --- !u!1 &3181610878793067074
 GameObject:
   m_ObjectHideFlags: 0

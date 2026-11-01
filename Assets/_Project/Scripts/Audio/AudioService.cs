@@ -18,6 +18,7 @@ namespace Heartbeat.Audio
         [Tooltip("Alert cues only for enemies this close (same scope as the AlertDirector).")]
         [SerializeField] private float alertCueRadius = 25f;
         [SerializeField] private bool showDebugCaptions = true;
+        [SerializeField] private AudioBalance balance;
 
         [Header("Mixer (Audio/Mixer/Heartbeat.mixer)")]
         [SerializeField] private AudioMixer mixer;
@@ -58,6 +59,12 @@ namespace Heartbeat.Audio
                 src.minDistance = 1f;
                 pool[i] = src;
             }
+            if (balance != null)
+            {
+                gameObject.AddComponent<ThreatAudio>().Init(this, balance);
+                gameObject.AddComponent<LabHeartbeat>().Init(this, balance);
+            }
+            else HbLog.Warn("Audio", "No AudioBalance: heartbeats disabled");
         }
 
         private void Start()

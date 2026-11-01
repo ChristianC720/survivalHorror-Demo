@@ -440,6 +440,7 @@ GameObject:
   - component: {fileID: 6221025064654418582}
   - component: {fileID: 1562842388518035082}
   - component: {fileID: 1254749380019379143}
+  - component: {fileID: 4914633292272389508}
   m_Layer: 11
   m_Name: Enemy_Rastrero
   m_TagString: Untagged
@@ -548,6 +549,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Heartbeat.Runtime::Heartbeat.Recycle.Corpse
   neverRecycle: 0
+--- !u!114 &4914633292272389508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4402736197546997208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6a28ccc7544b8940afb1abb966073db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Heartbeat.Runtime::Heartbeat.Audio.FootstepEmitter
+  balance: {fileID: 11400000, guid: 203b2ff80255b124a9081823f5a1188b, type: 2}
 --- !u!1 &5012237019969524390
 GameObject:
   m_ObjectHideFlags: 0

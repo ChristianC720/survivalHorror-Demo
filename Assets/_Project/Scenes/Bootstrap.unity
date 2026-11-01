@@ -249,6 +249,7 @@ MonoBehaviour:
   voices: 24
   alertCueRadius: 25
   showDebugCaptions: 1
+  balance: {fileID: 11400000, guid: 203b2ff80255b124a9081823f5a1188b, type: 2}
   mixer: {fileID: 24100000, guid: 5e97351fc7982014ba7fbec47c6a9128, type: 2}
   duckDb: -8
   duckHoldSeconds: 0.6
