@@ -64,6 +64,7 @@ namespace Heartbeat.Core
                 yield return SceneManager.UnloadSceneAsync(previous);
 
             CurrentScene = sceneName;
+            UI.UiFonts.Refresh();   // texts of the new scene get the D-126 fonts (or OpenDyslexic)
             HbLog.Info("Scene", $"Loaded {sceneName}");
             onLoaded?.Invoke();
 

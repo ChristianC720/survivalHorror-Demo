@@ -36,7 +36,7 @@ namespace Heartbeat.CameraSystem
         private void OnDisable() { Services.Unregister(this); GameEvents.OptionsChanged -= ReadOptions; }
 
         private float lookSensScale = 1f, aimSensScale = 1f;
-        private bool invertY;
+        private bool invertY, aimAssist;
 
         /// <summary>Options ▸ Controls: sensitivity multipliers and invert Y (D-104).</summary>
         private void ReadOptions()
@@ -46,6 +46,7 @@ namespace Heartbeat.CameraSystem
             lookSensScale = g.lookSensitivity;
             aimSensScale = g.aimSensitivity;
             invertY = g.invertY;
+            aimAssist = g.aimAssist;
         }
 
         private void Start()
@@ -108,6 +109,35 @@ namespace Heartbeat.CameraSystem
             yaw += delta.x;
             pitch += balance.invertY != invertY ? delta.y : -delta.y;
             pitch = Mathf.Clamp(pitch, balance.minPitch, balance.maxPitch);
+            if (aiming && aimAssist && router.UsingGamepad) AssistTowardWeakPoint();
+        }
+
+        /// <summary>
+        /// Aim assist (option, off by default; gamepad only): a gentle pull toward the nearest enemy weak point inside a
+        /// small cone around the reticle. Never snaps, never helps the mouse.
+        /// </summary>
+        private void AssistTowardWeakPoint()
+        {
+            if (!Services.TryGet(out AI.AlertDirector director)) return;
+            Vector3 eye = brain.transform.position;
+            Vector3 fwd = brain.transform.forward;
+            Vector3? best = null;
+            float bestAngle = balance.aimAssistCone;
+            foreach (var e in director.Enemies)
+            {
+                if (e == null || e.IsDead || !e.isActiveAndEnabled) continue;
+                var weak = e.GetComponentInChildren<Combat.WeakPoint>();
+                Vector3 p = weak != null ? weak.transform.position : e.transform.position + Vector3.up * 1.5f;
+                Vector3 to = p - eye;
+                if (to.magnitude > balance.aimAssistRange) continue;
+                float a = Vector3.Angle(fwd, to);
+                if (a < bestAngle) { bestAngle = a; best = p; }
+            }
+            if (!best.HasValue) return;
+            var want = Quaternion.LookRotation(best.Value - eye).eulerAngles;
+            float step = balance.aimAssistPull * Time.deltaTime;
+            yaw = Mathf.MoveTowardsAngle(yaw, want.y, step);
+            pitch = Mathf.Clamp(Mathf.MoveTowardsAngle(pitch, Mathf.DeltaAngle(0f, want.x), step), balance.minPitch, balance.maxPitch);
         }
 
         private void UpdateAim(bool wantsAim)

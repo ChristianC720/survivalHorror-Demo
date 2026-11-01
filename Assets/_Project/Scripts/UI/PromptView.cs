@@ -35,6 +35,8 @@ namespace Heartbeat.UI
             if (router != null) router.DeviceChanged -= OnDevice;
         }
 
+        private void Awake() => UiFonts.Apply(label, data: false, outline: true);
+
         private void Start()
         {
             if (Services.TryGet(out router)) router.DeviceChanged += OnDevice;

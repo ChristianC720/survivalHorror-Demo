@@ -13,6 +13,7 @@ namespace Heartbeat.UI
 
         private float until;
 
+        private void Awake() => UiFonts.Apply(label, data: true, outline: true);
         private void OnEnable() { GameEvents.Autosaved += OnSaved; group.alpha = 0f; }
         private void OnDisable() => GameEvents.Autosaved -= OnSaved;
 

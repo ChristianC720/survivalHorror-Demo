@@ -14,7 +14,6 @@ namespace Heartbeat.UI
     /// invert Y, crouch toggle/hold, aim assist, keyboard rebinding), Accessibility (text size, dyslexia font,
     /// opaque subtitles, sound captions) and Game (language). Every change is saved to GlobalData at once and
     /// broadcast with GameEvents.OptionsChanged. Used from the main menu and the pause menu.
-    /// shortcut: aim assist and the dyslexia font are stored but have no effect yet (no assist code, font not imported).
     /// </summary>
     public sealed class OptionsView : MonoBehaviour
     {
