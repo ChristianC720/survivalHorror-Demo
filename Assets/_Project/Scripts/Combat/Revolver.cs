@@ -57,7 +57,7 @@ namespace Heartbeat.Combat
         {
             bool unsteady = player.CurrentSpeed > 0.1f || player.IsRunning || hitThisFrame;
             hitThisFrame = false;
-            Model.Tick(Time.deltaTime, () => inventory.Model.TryConsume(ItemKind.Ammo), unsteady);
+            Model.Tick(Time.deltaTime, TakeRound, unsteady);
         }
 
         private void OnAttack(InputAction.CallbackContext _)
@@ -78,6 +78,13 @@ namespace Heartbeat.Combat
                 HbLog.Info("Revolver", "Reload started");
         }
 
+        private bool TakeRound()
+        {
+            if (!inventory.Model.TryConsume(ItemKind.Ammo)) return false;
+            Sfx.Play(Sfx.RevolverReloadRound, transform.position);
+            return true;
+        }
+
         private void OnHit() => hitThisFrame = true;
 
         public FireResult Fire()
@@ -88,6 +95,7 @@ namespace Heartbeat.Combat
             {
                 case FireResult.DryFire:
                     HbLog.Info("Revolver", "Dry fire (click)");
+                    Sfx.Play(Sfx.RevolverDryFire, transform.position);
                     return result;
                 case FireResult.Fired:
                     break;

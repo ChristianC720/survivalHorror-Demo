@@ -61,6 +61,7 @@ namespace Heartbeat.Inventory
                     }
                     healTimer = balance.healSeconds;
                     HbLog.Info("Inventory", "Heal started");
+                    Sfx.Play2D(Sfx.HealUse);
                     return true;
                 default:
                     // Ammo is loaded with R, spikes trigger on grabs or finishers, keys are used on doors.

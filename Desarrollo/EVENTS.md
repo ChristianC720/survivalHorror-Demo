@@ -35,7 +35,8 @@
 | `BossDefeated` | – | S-10 → S-08 | M-19 |
 | `PowerRestored` | `RoomInstance room` | Level → S-02 (noise), S-06 | D-72 |
 | `FaultUsed` / `FaultPatched` | `FaultId id` | Level → S-07 | M-17 |
-| `CuePlayed` | `AudioCue cue, Vector3 pos` | S-11 → debug captions, tests | – |
+| `CueRequested` | `string cueId, Vector3? pos` (null = 2D), via `Sfx.Play` | any → S-11 | – |
+| `CuePlayed` | `string cueId, Vector3? pos` | S-11 → debug captions, tests | – |
 | `AimChanged` | `bool aiming` | Camera → UI, Flashlight | M-01 |
 | `ShotFired` | `Vector3 origin` | Combat → S-01 (attention), S-11 | M-04 |
 | `InventoryChanged` | – | S-05 → UI, S-07 | M-07 |

@@ -60,6 +60,7 @@ namespace Heartbeat.Combat
                 target = h.collider.GetComponentInParent<IStaggerable>();
                 if (target != null) break;
             }
+            Sfx.Play(Sfx.Shove, origin);
             if (target != null)
             {
                 target.Stagger(transform.position, balance.shoveStaggerSeconds);

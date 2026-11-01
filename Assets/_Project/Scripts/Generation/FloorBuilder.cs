@@ -296,11 +296,11 @@ namespace Heartbeat.Generation
             if (Player == null)
             {
                 // Only reuse a player that belongs to this scene (the previous Floor scene may still be loaded).
-                var existing = FindObjectsByType<Player.PlayerController>(FindObjectsSortMode.None).FirstOrDefault(p => p.gameObject.scene == gameObject.scene);
+                var existing = FindObjectsByType<Player.PlayerController>().FirstOrDefault(p => p.gameObject.scene == gameObject.scene);
                 Player = existing != null ? existing.gameObject : Instantiate(playerPrefab);
                 Player.name = "Player";
                 UnityEngine.SceneManagement.SceneManager.MoveGameObjectToScene(Player, gameObject.scene);
-                if (!FindObjectsByType<CameraSystem.OtsCameraRig>(FindObjectsSortMode.None).Any(r => r.gameObject.scene == gameObject.scene))
+                if (!FindObjectsByType<CameraSystem.OtsCameraRig>().Any(r => r.gameObject.scene == gameObject.scene))
                 {
                     var cam = Instantiate(playerCameraPrefab);
                     cam.name = "PlayerCamera";

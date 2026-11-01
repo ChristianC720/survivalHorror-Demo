@@ -51,6 +51,8 @@ namespace Heartbeat.Core
             Services.Register(new Save.SaveService());
             Services.Register(gameObject.AddComponent<Cycle.CycleController>());
             gameObject.AddComponent<PauseInput>();
+            if (TryGetComponent(out Audio.AudioService audio)) Services.Register(audio);
+            else HbLog.Warn("Core", "No AudioService on Bootstrap: sounds disabled");
 
             IsReady = true;
             HbLog.Info("Core", "Services ready");

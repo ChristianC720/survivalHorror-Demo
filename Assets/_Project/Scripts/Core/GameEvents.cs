@@ -76,6 +76,10 @@ namespace Heartbeat.Core
         public static event Action<MonoBehaviour> InteractTargetChanged;  // null = nothing to interact with
         public static event Action<string, int, bool> ItemRegistered;     // record id, RecordKind, isNew
 
+        // Audio (S-11)
+        public static event Action<string, Vector3?> CueRequested;        // cue id, world position (null = 2D)
+        public static event Action<string, Vector3?> CuePlayed;           // cue id actually played (tests, debug captions)
+
         public static void RaiseGameStateChanged(GameStateId from, GameStateId to) => GameStateChanged?.Invoke(from, to);
         public static void RaisePlaySubStateChanged(PlaySubState from, PlaySubState to) => PlaySubStateChanged?.Invoke(from, to);
         public static void RaisePauseChanged(bool paused) => PauseChanged?.Invoke(paused);
@@ -106,6 +110,8 @@ namespace Heartbeat.Core
         public static void RaiseInventoryFull(string kind) => InventoryFull?.Invoke(kind);
         public static void RaiseInteractTargetChanged(MonoBehaviour target) => InteractTargetChanged?.Invoke(target);
         public static void RaiseItemRegistered(string id, int kind, bool isNew) => ItemRegistered?.Invoke(id, kind, isNew);
+        public static void RaiseCueRequested(string cue, Vector3? pos) => CueRequested?.Invoke(cue, pos);
+        public static void RaiseCuePlayed(string cue, Vector3? pos) => CuePlayed?.Invoke(cue, pos);
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         public static void ResetAll()
@@ -140,6 +146,8 @@ namespace Heartbeat.Core
             InventoryFull = null;
             InteractTargetChanged = null;
             ItemRegistered = null;
+            CueRequested = null;
+            CuePlayed = null;
             Services.Clear();
         }
     }

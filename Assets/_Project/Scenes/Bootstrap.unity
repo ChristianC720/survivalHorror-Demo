@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 251523370}
   - component: {fileID: 251523369}
   - component: {fileID: 251523368}
+  - component: {fileID: 251523371}
   m_Layer: 0
   m_Name: Bootstrap
   m_TagString: Untagged
@@ -178,6 +179,76 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &251523371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 251523367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90ef7b1d41ecbd0479056246639b1d15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Heartbeat.Runtime::Heartbeat.Audio.AudioService
+  cues:
+  - {fileID: 11400000, guid: 66ba59d19c1039346b1e828207553ade, type: 2}
+  - {fileID: 11400000, guid: f860951cb42b8c44bb36a6c8d7803494, type: 2}
+  - {fileID: 11400000, guid: 7b4a349766f319342a5704f2f8537da2, type: 2}
+  - {fileID: 11400000, guid: dbc4d6555aa0d9b4a8031a1a41bffef7, type: 2}
+  - {fileID: 11400000, guid: ab549a82fdf61354985fee35b8475b4e, type: 2}
+  - {fileID: 11400000, guid: 41b8cddca1ba618439307c96d8df08ad, type: 2}
+  - {fileID: 11400000, guid: 52a9c5908ace9b9438879532059fe9c7, type: 2}
+  - {fileID: 11400000, guid: dbc6eef31e81b72488e2afc4a30d4d31, type: 2}
+  - {fileID: 11400000, guid: 64538b3683f1db64ea31922c1048b5fd, type: 2}
+  - {fileID: 11400000, guid: 7b2181a0f6b152f4292566fa4cf44870, type: 2}
+  - {fileID: 11400000, guid: 51bb1a028c9d7e24fbf59a585385d89b, type: 2}
+  - {fileID: 11400000, guid: 286fae5e21241b145be51e54a7431e72, type: 2}
+  - {fileID: 11400000, guid: b4cedbb06d7c2874fb96b5e868cddd87, type: 2}
+  - {fileID: 11400000, guid: 42650e5457dd0634ebe31f4449b729ee, type: 2}
+  - {fileID: 11400000, guid: 233db159354457c418b4fc9812719f34, type: 2}
+  - {fileID: 11400000, guid: b86239d677193744197f0e4bf42ab1bf, type: 2}
+  - {fileID: 11400000, guid: 1e7b98139b0847d4d896799ccd9e1b0d, type: 2}
+  - {fileID: 11400000, guid: ba851e24b54f6684782ce9751543341c, type: 2}
+  - {fileID: 11400000, guid: 554408d2aeebdad449b48e7172298046, type: 2}
+  - {fileID: 11400000, guid: 623177c1691e4b64a9460fdae0f9c5f2, type: 2}
+  - {fileID: 11400000, guid: 02817c698b1544343a42c5dfa27a69f4, type: 2}
+  - {fileID: 11400000, guid: a9c07225cb5846a44bf7aa189c070a50, type: 2}
+  - {fileID: 11400000, guid: ad13a40876dac4c46a744d18a2183732, type: 2}
+  - {fileID: 11400000, guid: 3f05740459df1fd478867c5e54ee3d1c, type: 2}
+  - {fileID: 11400000, guid: fc8a9fe7485ccba4ab62c59574ffa90a, type: 2}
+  - {fileID: 11400000, guid: 8d200cdbb13620b40845ef65ea1f3462, type: 2}
+  - {fileID: 11400000, guid: 0d54d4205d9d512439d3a57e61a83701, type: 2}
+  - {fileID: 11400000, guid: fd5bc6d93b86b184cb0f3f4769948e89, type: 2}
+  - {fileID: 11400000, guid: ffc91b9fe6eac38479b4cd967ae535a8, type: 2}
+  - {fileID: 11400000, guid: 20f767841d3c9b844859f06f4dad27f7, type: 2}
+  - {fileID: 11400000, guid: 9e0cbfa660370104482bb17f67721b22, type: 2}
+  - {fileID: 11400000, guid: e9e92079918219842a67bb0d1717aab3, type: 2}
+  - {fileID: 11400000, guid: f45059fcd44b9de469dfab38839397ab, type: 2}
+  - {fileID: 11400000, guid: 775b9c4d5c996d7438aaa3ca4a66b6af, type: 2}
+  - {fileID: 11400000, guid: fdd54f0a9e4fdb849ad679b8a20e6ced, type: 2}
+  - {fileID: 11400000, guid: c4737bf75b2106a4b90e19593732eb51, type: 2}
+  - {fileID: 11400000, guid: 44b160a5e498e3e4a84528a41913c080, type: 2}
+  - {fileID: 11400000, guid: 9b4139b437c8e954b874f4f66e2d9101, type: 2}
+  - {fileID: 11400000, guid: 9177159b003d49e468e4c47f16f34878, type: 2}
+  - {fileID: 11400000, guid: 77ef7090a6a938c4ea5bdca4f82a54ff, type: 2}
+  - {fileID: 11400000, guid: 7e2172191078d2e4087b8317cc985f24, type: 2}
+  - {fileID: 11400000, guid: 91c9334f7ffffd544beb353926b6c09f, type: 2}
+  - {fileID: 11400000, guid: a2f578163f7918c4d84cee88027422e6, type: 2}
+  - {fileID: 11400000, guid: 2072fdc036df6ec44a089a392aa596fc, type: 2}
+  - {fileID: 11400000, guid: 83e0c202e11054041a6267d2abfbd48c, type: 2}
+  - {fileID: 11400000, guid: cc72436304a0e6741a58f33ee545ea92, type: 2}
+  - {fileID: 11400000, guid: c1a0e80032f1a8c4fab9e8bedc107214, type: 2}
+  - {fileID: 11400000, guid: 7a43eef599990cf428699b187124d393, type: 2}
+  - {fileID: 11400000, guid: ab62a9039edf600469d950e9ae6bf603, type: 2}
+  - {fileID: 11400000, guid: d5e2cc0d735cc3042beeff16e4fd37c1, type: 2}
+  - {fileID: 11400000, guid: 2f8d6a4fddb6d5242af18e871616bea0, type: 2}
+  - {fileID: 11400000, guid: 4808483dbf8312b448e7c8b2334873cf, type: 2}
+  - {fileID: 11400000, guid: 65d39d3318bcd094284cd4119d6e0d22, type: 2}
+  - {fileID: 11400000, guid: 6e0b2b6a0c9ee3346b357126a35040ae, type: 2}
+  voices: 24
+  alertCueRadius: 25
+  showDebugCaptions: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

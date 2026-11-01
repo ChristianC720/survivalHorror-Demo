@@ -16,7 +16,7 @@ namespace Heartbeat.EditorTools
         public static string StripAllInScene()
         {
             var sb = new StringBuilder();
-            foreach (var t in Object.FindObjectsByType<Transform>(FindObjectsInactive.Include, FindObjectsSortMode.None))
+            foreach (var t in Object.FindObjectsByType<Transform>(FindObjectsInactive.Include))
             {
                 if (!t.name.StartsWith("PH_")) continue;
                 var mesh = t.Find("Mesh");
