@@ -85,6 +85,13 @@ Assets/_Project/
 
 `set_property` only reaches serialized fields: expose wiring as `[SerializeField] private`.
 
+Known Aura quirks (verified):
+- `set_property` with `prefab_path` resolves object references to the prefab **root** fine, but references to **nested children** of the prefab can silently stay `None`. Always check with `get_game_object_info` (+`componentFilter`); if a ref is `None`, wire it with a scratchpad script using `PrefabUtility.LoadPrefabContents` + `SerializedObject`.
+- `create_ui_element` creates legacy `Text` without a Canvas. Build UI from `create_game_object` + `add_component` (`Canvas`, `CanvasScaler`, `TextMeshProUGUI`).
+- `save_scene` cannot "save as"; it often answers "not dirty" even after Aura edits (they are saved). Use a scratchpad `EditorSceneManager.SaveScene(scene, path, true)` to copy a scene.
+- `capture_editor_screenshot game_view` and vantage captures need Play Mode; `capture_scene_object` frames poorly on small or overlapping objects.
+- After writing a `.cs` file, `execute_script` often fails with "TCP connection lost" while Unity reloads the domain. Just call `check_compile_errors` again.
+
 ## Git (git-flow, AVH)
 - `main` = releases, `develop` = integration. **One branch per backlog task**: `git flow feature start E07-floor-validator`. Finish into `develop` once verified.
 - Milestone: `git flow release start H3` → tag `H3` → finish. Final tag `v1.0-demo`.

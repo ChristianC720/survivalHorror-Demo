@@ -31,6 +31,9 @@ namespace Heartbeat.CameraSystem
         public Transform Target => target;
         public float Yaw => yaw;
 
+        private void OnEnable() => Services.Register(this);
+        private void OnDisable() => Services.Unregister(this);
+
         private void Start()
         {
             router = Services.Get<InputRouter>();

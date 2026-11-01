@@ -41,6 +41,9 @@ namespace Heartbeat.Core
         public static event Action<int> HealthStateChanged;
         public static event Action<DeathCause> PlayerDied;
 
+        // Combat
+        public static event Action<Vector3> ShotFired;
+
         // Inventory
         public static event Action InventoryChanged;
 
@@ -54,6 +57,7 @@ namespace Heartbeat.Core
         public static void RaiseStaminaExhausted() => StaminaExhausted?.Invoke();
         public static void RaiseHealthStateChanged(int state) => HealthStateChanged?.Invoke(state);
         public static void RaisePlayerDied(DeathCause cause) => PlayerDied?.Invoke(cause);
+        public static void RaiseShotFired(Vector3 origin) => ShotFired?.Invoke(origin);
         public static void RaiseInventoryChanged() => InventoryChanged?.Invoke();
         public static void RaiseAimChanged(bool aiming) => AimChanged?.Invoke(aiming);
 
@@ -69,6 +73,7 @@ namespace Heartbeat.Core
             PlayerDied = null;
             AimChanged = null;
             InventoryChanged = null;
+            ShotFired = null;
             Services.Clear();
         }
     }
