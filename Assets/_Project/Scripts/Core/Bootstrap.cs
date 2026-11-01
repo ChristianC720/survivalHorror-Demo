@@ -36,6 +36,7 @@ namespace Heartbeat.Core
 
             if (sceneLoader == null) sceneLoader = gameObject.AddComponent<SceneLoader>();
             input = new InputRouter();
+            input.ContextChanged += ApplyCursor;
             EnsureEventSystem();
 
             states = new GameStateMachine();
@@ -86,6 +87,14 @@ namespace Heartbeat.Core
             HbLog.Info("State", $"{from} -> {to}");
             input.SetContext(DefaultContextFor(to));
             GameEvents.RaiseGameStateChanged(from, to);
+        }
+
+        /// <summary>The cursor is free only where the mouse drives a UI (menus, arm terminal).</summary>
+        private static void ApplyCursor(InputContext ctx)
+        {
+            bool free = ctx == InputContext.Menu || ctx == InputContext.Inventory || ctx == InputContext.None;
+            Cursor.lockState = free ? CursorLockMode.None : CursorLockMode.Locked;
+            Cursor.visible = free;
         }
 
         /// <summary>Input context when entering a main state. Gameplay systems refine it inside Playing.</summary>

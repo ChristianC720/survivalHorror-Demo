@@ -54,6 +54,26 @@ namespace Heartbeat.Tests
             Assert.IsFalse(Enabled("Gameplay/Aim"));
         }
 
+        /// <summary>Regression: entering Aiming while Aim is held must not reset Gameplay actions (it toggled aim off).</summary>
+        [Test]
+        public void SwitchingBetweenContexts_DoesNotDisableSharedActions()
+        {
+            router.SetContext(InputContext.Exploration);
+            int disabled = 0;
+            System.Action<object, InputActionChange> onChange = (obj, change) =>
+            {
+                if (change == InputActionChange.ActionDisabled && obj is InputAction a && a.actionMap.name == "Gameplay") disabled++;
+            };
+            InputSystem.onActionChange += onChange;
+            try
+            {
+                router.SetContext(InputContext.Aiming);
+                router.SetContext(InputContext.Exploration);
+            }
+            finally { InputSystem.onActionChange -= onChange; }
+            Assert.AreEqual(0, disabled);
+        }
+
         [Test]
         public void None_DisablesEverything()
         {

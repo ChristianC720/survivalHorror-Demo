@@ -34,6 +34,8 @@ namespace Heartbeat.Player
         /// <summary>When true (hacking, cinematics, heal animation lock) the character does not move.</summary>
         public bool MovementLocked { get; set; }
         public float CurrentSpeed { get; private set; }
+        /// <summary>Camera used for camera-relative movement (set by the OTS camera rig).</summary>
+        public Transform CameraTransform { get => cameraTransform; set => cameraTransform = value; }
         public Vector3 Velocity { get; private set; }
 
         private void Awake()
@@ -42,6 +44,9 @@ namespace Heartbeat.Player
             controller.height = balance.standHeight;
             controller.center = new Vector3(0f, balance.standHeight * 0.5f, 0f);
         }
+
+        private void OnEnable() => Services.Register(this);
+        private void OnDisable() => Services.Unregister(this);
 
         private void Start()
         {

@@ -50,46 +50,62 @@ namespace Heartbeat.InputRouting
             SetContext(InputContext.None);
         }
 
+        /// <summary>
+        /// Enables exactly the actions of <paramref name="context"/>. Actions that stay enabled across the switch are
+        /// not touched, so a button held during the change (e.g. Aim when entering the Aiming context) keeps its state.
+        /// </summary>
         public void SetContext(InputContext context)
         {
-            Actions.Disable();
-
-            // Inventory with a gamepad: the left stick drives the slot cursor, so it must not move Lukas.
-            Actions.Gameplay.Move.bindingMask = context == InputContext.Inventory
-                ? InputBinding.MaskByGroup("KeyboardMouse")
-                : (InputBinding?)null;
-
-            if (context != InputContext.None) Actions.System.Enable();
+            var wanted = new HashSet<InputAction>();
+            if (context != InputContext.None) AddMap(wanted, Actions.System.Get());
 
             if (GameplayWhitelist.TryGetValue(context, out var allowed))
             {
-                if (allowed == null) Actions.Gameplay.Enable();
+                if (allowed == null) AddMap(wanted, Actions.Gameplay.Get());
                 else
                     foreach (var name in allowed)
-                        Actions.asset.FindAction("Gameplay/" + name, true).Enable();
+                        wanted.Add(Actions.asset.FindAction("Gameplay/" + name, true));
             }
 
             switch (context)
             {
                 case InputContext.Inventory:
-                    Actions.Inventory.Enable();
-                    Actions.UI.Enable();
+                    AddMap(wanted, Actions.Inventory.Get());
+                    AddMap(wanted, Actions.UI.Get());
                     break;
                 case InputContext.Hacking:
-                    Actions.Hacking.Enable();
+                    AddMap(wanted, Actions.Hacking.Get());
                     break;
                 case InputContext.Menu:
-                    Actions.UI.Enable();
+                    AddMap(wanted, Actions.UI.Get());
                     break;
                 case InputContext.Cinematic:
-                    Actions.Cinematic.Enable();
+                    AddMap(wanted, Actions.Cinematic.Get());
                     break;
             }
+
+            // Inventory with a gamepad: the left stick drives the slot cursor, so it must not move Lukas.
+            // Changing a binding mask re-resolves the action, so only touch it when it actually changes.
+            InputBinding? moveMask = context == InputContext.Inventory ? InputBinding.MaskByGroup("KeyboardMouse") : (InputBinding?)null;
+            if (!Nullable.Equals(Actions.Gameplay.Move.bindingMask, moveMask)) Actions.Gameplay.Move.bindingMask = moveMask;
+
+            foreach (var map in Actions.asset.actionMaps)
+                foreach (var action in map.actions)
+                {
+                    bool want = wanted.Contains(action);
+                    if (want && !action.enabled) action.Enable();
+                    else if (!want && action.enabled) action.Disable();
+                }
 
             if (Context == context) return;
             Context = context;
             HbLog.Dev("Input", $"Context -> {context}");
             ContextChanged?.Invoke(context);
+        }
+
+        private static void AddMap(HashSet<InputAction> set, InputActionMap map)
+        {
+            foreach (var a in map.actions) set.Add(a);
         }
 
         /// <summary>Keyboard/mouse rebinding overrides (D-120: gamepad map is fixed in the demo).</summary>
