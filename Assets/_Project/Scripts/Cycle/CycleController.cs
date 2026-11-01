@@ -35,6 +35,7 @@ namespace Heartbeat.Cycle
         private bool skipRequested;
         private AttemptSave carry;            // inventory brought to the next floor
         private bool autosavePending;
+        private RoomInstance savedFinalRoom;  // final key room whose autosave is current (no-cost quit)
         private readonly System.Random seeds = new System.Random();
 
         public int Slot { get; private set; }
@@ -119,19 +120,8 @@ namespace Heartbeat.Cycle
             if (states.Current == GameStateId.Paused) Services.Get<PauseService>().TryLeavePauseTo(GameStateId.Death);
             else states.TryTransition(GameStateId.Death);
 
-            var s = new DeathCounter.State
-            {
-                Consecutive = Data.deathCounter, Total = Data.totalDeaths, SubjectCode = Data.subjectCode,
-                Degradation = Data.degradationLevel, FirstAttempt = Data.firstAttempt,
-            };
-            bool assimilate = DeathCounter.RegisterDeath(ref s, cause == DeathCause.Scripted);
-            Data.deathCounter = s.Consecutive; Data.totalDeaths = s.Total; Data.subjectCode = s.SubjectCode;
-            Data.degradationLevel = s.Degradation; Data.firstAttempt = s.FirstAttempt;
-            Data.hasAttemptSave = false;             // the autosave is discarded (S-08)
-            carry = null;
+            bool assimilate = RegisterDeath(cause);
             SaveNow();                               // save before processing the death
-            GameEvents.RaiseDegradationChanged(Data.degradationLevel);
-            HbLog.Info("Cycle", $"Death ({cause}) -> {Data.SubjectLabel}, consecutive {Data.deathCounter}/{DeathCounter.AssimilationThreshold}");
 
             yield return loader.Fade(0f, 1f);
 
@@ -156,6 +146,59 @@ namespace Heartbeat.Cycle
             states.TryTransition(GameStateId.Playing);
             yield return loader.Fade(1f, 0f);
             busy = false;
+        }
+
+        private DeathCounter.State CounterState => new DeathCounter.State
+        {
+            Consecutive = Data.deathCounter, Total = Data.totalDeaths, SubjectCode = Data.subjectCode,
+            Degradation = Data.degradationLevel, FirstAttempt = Data.firstAttempt,
+        };
+
+        private void WriteCounter(DeathCounter.State s)
+        {
+            Data.deathCounter = s.Consecutive; Data.totalDeaths = s.Total; Data.subjectCode = s.SubjectCode;
+            Data.degradationLevel = s.Degradation; Data.firstAttempt = s.FirstAttempt;
+            GameEvents.RaiseDegradationChanged(Data.degradationLevel);
+        }
+
+        /// <summary>Counter, subject code and degradation; the autosave (and with it the inventory) is discarded (S-08).</summary>
+        private bool RegisterDeath(DeathCause cause)
+        {
+            var s = CounterState;
+            bool assimilate = DeathCounter.RegisterDeath(ref s, cause == DeathCause.Scripted);
+            WriteCounter(s);
+            Data.hasAttemptSave = false;
+            carry = null;
+            HbLog.Info("Cycle", $"Death ({cause}) -> {Data.SubjectLabel}, consecutive {Data.deathCounter}/{DeathCounter.AssimilationThreshold}");
+            return assimilate;
+        }
+
+        // ---------- Quit (D-31) ----------
+
+        /// <summary>What quitting now would cost; the pause menu's confirmation dialog shows it before quitting.</summary>
+        public ExitCost QuitCost => ExitRules.Evaluate(
+            Services.TryGet<AlertDirector>(out var d) && d.HuntingCount > 0,
+            savedFinalRoom != null && RoomInstance.Current == savedFinalRoom);
+
+        /// <summary>Pause menu "Quit": applies the exit table, saves and returns to the main menu.</summary>
+        public void QuitToMenu()
+        {
+            if (busy || states.Current != GameStateId.Paused) return;
+            var cost = QuitCost;
+            if (cost == ExitCost.Hunt) RegisterDeath(DeathCause.QuitDuringAlert);
+            else if (cost == ExitCost.Calm)
+            {
+                var s = CounterState;
+                DeathCounter.RegisterCalmExit(ref s);
+                WriteCounter(s);
+            }
+            // shortcut: a counter that reaches 5 by quitting is not checked here; Continue must play Assimilation (E08-endings, H5).
+            Data.exitCost = cost;
+            Data.confirmedExit = true;
+            SaveNow();
+            HbLog.Info("Cycle", $"Quit cost={cost} -> {Data.SubjectLabel}, consecutive {Data.deathCounter}, degradation {Data.degradationLevel}, autosave={Data.hasAttemptSave}");
+            Services.Get<PauseService>().TryLeavePauseTo(GameStateId.MainMenu);
+            loader.Load(SceneNames.MainMenu);
         }
 
         // ---------- Floor progression ----------
@@ -194,6 +237,7 @@ namespace Heartbeat.Cycle
         private void OnRoomEntered(MonoBehaviour m)
         {
             var room = m as RoomInstance;
+            if (room != savedFinalRoom) savedFinalRoom = null;
             if (room == null || room.Definition == null || room.Definition.role != RoomRole.Final || CurrentFloor >= 3) return;
             bool hunting = Services.TryGet<AlertDirector>(out var d) && d.HuntingCount > 0;
             if (hunting) { autosavePending = true; HbLog.Info("Cycle", "Autosave pending: hunt in progress"); return; }
@@ -210,6 +254,7 @@ namespace Heartbeat.Cycle
             autosavePending = false;
             Data.hasAttemptSave = true;
             Data.attemptSave = Snapshot();
+            savedFinalRoom = RoomInstance.Current;
             if (CurrentFloor == 2)
             {
                 var s = new DeathCounter.State { Consecutive = Data.deathCounter };

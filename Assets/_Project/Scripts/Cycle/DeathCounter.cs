@@ -26,13 +26,19 @@ namespace Heartbeat.Cycle
             if (scripted) return false;                   // intro death (D-63)
             s.Total++;
             s.SubjectCode++;
-            if (s.FirstAttempt)                           // tutorial deaths do not count (D-35)
-            {
-                s.FirstAttempt = false;
-                return false;
-            }
+            bool counts = !s.FirstAttempt;                // tutorial deaths do not count (D-35)...
+            s.FirstAttempt = false;
+            return AddCost(ref s, counts);
+        }
+
+        /// <summary>Quitting calmly outside a saved final key room (D-31): +1 counter and degradation, same attempt.</summary>
+        public static bool RegisterCalmExit(ref State s) => AddCost(ref s, !s.FirstAttempt);
+
+        private static bool AddCost(ref State s, bool counts)
+        {
+            if (s.Degradation < MaxDegradation) s.Degradation++;   // ...but always degrade (D-94)
+            if (!counts) return false;
             s.Consecutive++;
-            if (s.Degradation < MaxDegradation) s.Degradation++;
             return s.Consecutive >= AssimilationThreshold;
         }
 

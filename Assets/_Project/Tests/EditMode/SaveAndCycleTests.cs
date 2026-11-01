@@ -136,5 +136,46 @@ namespace Heartbeat.Tests
             DeathCounter.RegisterDeath(ref s);
             Assert.AreEqual(DeathCounter.MaxDegradation, s.Degradation);
         }
+
+        [Test]
+        public void TutorialDeath_StillDegrades() // D-94
+        {
+            var s = new DeathCounter.State { FirstAttempt = true };
+            DeathCounter.RegisterDeath(ref s);
+            Assert.AreEqual(1, s.Degradation);
+        }
+
+        [Test]
+        public void CalmExit_AddsCounterAndDegradation_KeepsSubjectAndAttempt() // D-31
+        {
+            var s = new DeathCounter.State { SubjectCode = 8, Consecutive = 1 };
+            DeathCounter.RegisterCalmExit(ref s);
+            Assert.AreEqual(2, s.Consecutive);
+            Assert.AreEqual(1, s.Degradation);
+            Assert.AreEqual(8, s.SubjectCode);
+            Assert.AreEqual(0, s.Total);
+        }
+
+        [Test]
+        public void CalmExit_InTutorial_OnlyDegrades() // D-94
+        {
+            var s = new DeathCounter.State { FirstAttempt = true };
+            DeathCounter.RegisterCalmExit(ref s);
+            Assert.AreEqual(0, s.Consecutive);
+            Assert.AreEqual(1, s.Degradation);
+            Assert.IsTrue(s.FirstAttempt);
+        }
+    }
+
+    public class ExitRulesTests
+    {
+        [TestCase(true, false, ExitCost.Hunt)]
+        [TestCase(true, true, ExitCost.Hunt)]      // chased into the final room: autosave still pending (D-96)
+        [TestCase(false, false, ExitCost.Calm)]
+        [TestCase(false, true, ExitCost.None)]
+        public void ExitTable(bool hunting, bool inSavedFinalRoom, ExitCost expected) // D-31
+        {
+            Assert.AreEqual(expected, ExitRules.Evaluate(hunting, inSavedFinalRoom));
+        }
     }
 }

@@ -27,7 +27,7 @@ Each checkbox is one git-flow feature: `git flow feature start <id>`.
 - [x] `E07-builder` · `E07-navmesh-activation` (12-room floor + NavMesh in 365 ms)
 - [x] `E08-death-cycle` · `E08-save-service` · `E08-arm-terminal-data` (registry persisted per slot)
 - [x] `E08-recycling`
-- [ ] `E08-exit-cost`
+- [x] `E08-exit-cost` — exit table D-31, calm exit cost, first-attempt degradation (D-94)
 - [x] `E03-surveillance` — iso view, signal stages, hidden attention, lockout (M-02, M-03)
 
 ## H4 — Vertical slice
