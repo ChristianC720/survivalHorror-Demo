@@ -187,6 +187,8 @@ namespace Heartbeat.AI
                 if (NavMesh.SamplePosition(flank, out var hit, 2f, NavMesh.AllAreas)) chaseTarget = hit.position;
             }
 
+            // Stop short of Lukas: walking into his CharacterController shoved him through walls (fell out of the floor).
+            agent.stoppingDistance = SeesPlayer ? definition.grabRange * 0.8f : 0.2f;
             agent.SetDestination(chaseTarget);
 
             if (dist <= definition.attackRange && cooldownTimer <= 0f && SeesPlayer && !(director != null && director.PlayerDead))
