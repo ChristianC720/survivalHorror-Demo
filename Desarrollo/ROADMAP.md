@@ -31,9 +31,9 @@ Each checkbox is one git-flow feature: `git flow feature start <id>`.
 - [x] `E03-surveillance` — iso view, signal stages, hidden attention, lockout (M-02, M-03)
 
 ## H4 — Vertical slice
-- [ ] `E10-terminal-ui` · `E10-diegetic-hud` · `E10-subtitles` · `E10-main-menu` · `E10-options` · `E10-localization`
+- [x] `E10-terminal-ui` · `E10-diegetic-hud` · `E10-subtitles` · `E10-main-menu` · `E10-options` · `E10-localization` (shortcuts: screen-space terminal, flat menu backdrop, aim assist + dyslexia font stored only — see PLACEHOLDERS.md)
 - [x] `E11-audio-service` · `E11-mixer` · `E11-signals-heartbeats` (Boca scream lands with E05-boca)
-- [ ] `E12-f1-lighting` — one tint per room, ≤ 16 lights / ≤ 4 shadowed
+- [x] `E12-f1-lighting` — one tint per room, ≤ 16 lights / ≤ 4 shadowed (RoomActivation budget, power-aware)
 
 ## H5 — Content complete
 - [ ] `E14-f2-kit-rooms` · `E14-f3-kit-rooms` · `E05-boca` · `E05-mudo`

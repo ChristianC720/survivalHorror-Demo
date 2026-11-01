@@ -192,6 +192,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abe766ac61f1e544285bda3cd5907d43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Heartbeat.Runtime::Heartbeat.Generation.RoomActivation
+  maxRoomLights: 15
+  maxShadowedRoomLights: 3
 --- !u!114 &664391585
 MonoBehaviour:
   m_ObjectHideFlags: 0
