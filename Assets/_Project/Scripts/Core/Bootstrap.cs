@@ -54,6 +54,7 @@ namespace Heartbeat.Core
             if (TryGetComponent(out Audio.AudioService audio)) Services.Register(audio);
             else HbLog.Warn("Core", "No AudioService on Bootstrap: sounds disabled");
 
+            UI.Loc.SetLanguage(Services.Get<Save.SaveService>().LoadGlobal().language);
             IsReady = true;
             HbLog.Info("Core", "Services ready");
         }

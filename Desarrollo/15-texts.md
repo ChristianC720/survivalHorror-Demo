@@ -15,9 +15,16 @@
 | `POST` | tutorial and ambience posters (key names come from the binding, `{key}` smart string) |
 | `END` | ending texts and credits |
 
+## Workflow
+- **Source of truth:** `Assets/_Project/Localization/Source/<TABLE>.tsv`, tab-separated `key, en, es[, note]` (use `
+` for line breaks). Never edit the generated tables in `Localization/Tables/` by hand.
+- Run **Heartbeat ▸ Import Localization** (`Heartbeat.EditorTools.LocalizationImporter.Import()`, callable from `execute_script`). It creates settings/locales if missing and upserts every row.
+- Runtime: `Heartbeat.UI.Loc.Get("UI.TERM.SUBJECT", "R-H-09")` (table = first key segment, `{0}` args via string.Format), `LocalizedLabel` for static TMP labels, `Loc.SetLanguage("es")` (Bootstrap applies `GlobalData.language`). Missing keys render as the key itself.
+- Localization uses Addressables: a player build needs **Addressables ▸ Build** first (E13-build).
+
 ## Rules
 - Key format: `<table>.<area>.<id>`, e.g. `DOC.EMILIA.03`, `SUB.MOTHER.P2.01`.
-- German lines: same text in both locales; mark the entry with the metadata comment `DE-NO-TRANSLATE`.
+- German lines: put `DE-NO-TRANSLATE` in the note column; the importer copies the English cell to Spanish.
 - Corruption/glitch in documents is a render effect (TMP character jitter); it never removes information needed to progress.
 - `DocumentDefinition` SOs reference table keys, owner, floor, kind (Emilia / Context / Confiscated) and the registry id.
 

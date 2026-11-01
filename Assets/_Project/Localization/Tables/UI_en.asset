@@ -1,0 +1,431 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: UI_en
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.StringTable
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: f1716f21d263e7542bdc0268b9c6e5e2, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 2297561088
+    m_Localized: Open
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2389835776
+    m_Localized: Close
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030080
+    m_Localized: Locked
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030081
+    m_Localized: Pick up
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030082
+    m_Localized: Read
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030083
+    m_Localized: Examine
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030084
+    m_Localized: Hack
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030085
+    m_Localized: Restore power
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030086
+    m_Localized: No power
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030087
+    m_Localized: Descend
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030088
+    m_Localized: LOCKDOWN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030089
+    m_Localized: "SYNCHRONIZING\u2026"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030090
+    m_Localized: "SYNCHRONIZING SUBJECT {0}\u2026"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030091
+    m_Localized: ACCESS DENIED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030092
+    m_Localized: INVENTORY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030093
+    m_Localized: STATUS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030094
+    m_Localized: LOGS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030095
+    m_Localized: SUBJECT {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030096
+    m_Localized: 'HEALTH: FINE'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030097
+    m_Localized: 'HEALTH: INJURED'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030098
+    m_Localized: 'HEALTH: CRITICAL'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030099
+    m_Localized: 'FLASHLIGHT: {0}%'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030100
+    m_Localized: 'FLASHLIGHT: DEPLETED'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030101
+    m_Localized: 'DRUM: {0}/6'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030102
+    m_Localized: "\u2014 empty \u2014"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030103
+    m_Localized: Use
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030104
+    m_Localized: Discard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030105
+    m_Localized: No records.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030106
+    m_Localized: 'EMILIA FILE: {0}/6'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030107
+    m_Localized: Emilia's file
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030108
+    m_Localized: Documents
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030109
+    m_Localized: Bestiary
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030110
+    m_Localized: Confiscated objects
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030111
+    m_Localized: Faults
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030112
+    m_Localized: Rules
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030113
+    m_Localized: Ring
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030114
+    m_Localized: Revolver rounds
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030115
+    m_Localized: Stabilizer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030116
+    m_Localized: Discharge spike
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030117
+    m_Localized: Access key
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030118
+    m_Localized: Service key
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030119
+    m_Localized: Adjust the brightness until the left symbol is barely visible and the right one is not.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030120
+    m_Localized: Accept
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030121
+    m_Localized: Press any key
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030122
+    m_Localized: Continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030123
+    m_Localized: New game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030124
+    m_Localized: Load game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030125
+    m_Localized: Options
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030126
+    m_Localized: Credits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030127
+    m_Localized: Quit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030128
+    m_Localized: Back
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030129
+    m_Localized: SELECT SLOT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030130
+    m_Localized: EMPTY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030131
+    m_Localized: DAMAGED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030132
+    m_Localized: "{0} \xB7 {1} \xB7 Floor {2} \xB7 Emilia {3}/6 \xB7 {4}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030133
+    m_Localized: Delete
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030134
+    m_Localized: SELECT MODE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030135
+    m_Localized: Survival
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030136
+    m_Localized: The intended experience. Scarce resources; every death costs.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030137
+    m_Localized: Story
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030138
+    m_Localized: A little more room to breathe. One extra resource per type and floor.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030139
+    m_Localized: PAUSED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030140
+    m_Localized: Resume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030141
+    m_Localized: Restart
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030142
+    m_Localized: Quit to menu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030143
+    m_Localized: Cancel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030144
+    m_Localized: Confirm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030145
+    m_Localized: This slot will be erased, including its terminal records. Continue?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030146
+    m_Localized: Delete this slot? This cannot be undone.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030147
+    m_Localized: Restarting counts as a death. Continue?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030148
+    m_Localized: 'You are being hunted. Quitting now counts as a death: new subject, inventory lost.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030149
+    m_Localized: Quitting outside a saved room adds one death to the counter and degrades the cycle. The autosave is kept.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030150
+    m_Localized: Progress is saved. Quit to the main menu?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030151
+    m_Localized: Close the game?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030152
+    m_Localized: Restore the default values of {0}?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030153
+    m_Localized: Audio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030154
+    m_Localized: Video
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030155
+    m_Localized: Controls
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030156
+    m_Localized: Accessibility
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030157
+    m_Localized: Game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030158
+    m_Localized: Restore defaults
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030159
+    m_Localized: Master volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030160
+    m_Localized: Music
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030161
+    m_Localized: Effects
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2398224384
+    m_Localized: Ambience
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2398224385
+    m_Localized: Voices
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2398224386
+    m_Localized: Brightness
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2398224387
+    m_Localized: Camera sensitivity
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2398224388
+    m_Localized: Aim sensitivity
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2398224389
+    m_Localized: Invert Y axis
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2398224390
+    m_Localized: 'Crouch: toggle'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2398224391
+    m_Localized: Aim assist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2398224392
+    m_Localized: Rebind
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2398224393
+    m_Localized: "Press a key\u2026"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2398224394
+    m_Localized: Subtitles
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2398224395
+    m_Localized: Text size
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2398224396
+    m_Localized: Dyslexia-friendly font
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2398224397
+    m_Localized: Language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2398224398
+    m_Localized: On
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2398224399
+    m_Localized: Off
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2398224400
+    m_Localized: Survival
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2398224401
+    m_Localized: Story
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

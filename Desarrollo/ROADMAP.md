@@ -32,7 +32,7 @@ Each checkbox is one git-flow feature: `git flow feature start <id>`.
 
 ## H4 — Vertical slice
 - [ ] `E10-terminal-ui` · `E10-diegetic-hud` · `E10-subtitles` · `E10-main-menu` · `E10-options` · `E10-localization`
-- [ ] `E11-audio-service` · `E11-mixer` · `E11-signals-heartbeats`
+- [x] `E11-audio-service` · `E11-mixer` · `E11-signals-heartbeats` (Boca scream lands with E05-boca)
 - [ ] `E12-f1-lighting` — one tint per room, ≤ 16 lights / ≤ 4 shadowed
 
 ## H5 — Content complete

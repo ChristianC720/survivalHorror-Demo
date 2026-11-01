@@ -1,0 +1,431 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: UI_es
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.StringTable
+  m_LocaleId:
+    m_Code: es
+  m_SharedData: {fileID: 11400000, guid: f1716f21d263e7542bdc0268b9c6e5e2, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 2297561088
+    m_Localized: Abrir
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2389835776
+    m_Localized: Cerrar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030080
+    m_Localized: Cerrada
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030081
+    m_Localized: Recoger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030082
+    m_Localized: Leer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030083
+    m_Localized: Examinar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030084
+    m_Localized: Hackear
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030085
+    m_Localized: "Restaurar energ\xEDa"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030086
+    m_Localized: "Sin energ\xEDa"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030087
+    m_Localized: Descender
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030088
+    m_Localized: CIERRE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030089
+    m_Localized: "SINCRONIZANDO\u2026"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030090
+    m_Localized: "SINCRONIZANDO SUJETO {0}\u2026"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030091
+    m_Localized: ACCESO DENEGADO
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030092
+    m_Localized: INVENTARIO
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030093
+    m_Localized: ESTADO
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030094
+    m_Localized: REGISTROS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030095
+    m_Localized: SUJETO {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030096
+    m_Localized: 'SALUD: ESTABLE'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030097
+    m_Localized: 'SALUD: HERIDO'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030098
+    m_Localized: "SALUD: CR\xCDTICO"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030099
+    m_Localized: 'LINTERNA: {0}%'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030100
+    m_Localized: 'LINTERNA: AGOTADA'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030101
+    m_Localized: 'TAMBOR: {0}/6'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030102
+    m_Localized: "\u2014 vac\xEDo \u2014"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030103
+    m_Localized: Usar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030104
+    m_Localized: Descartar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030105
+    m_Localized: Sin registros.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030106
+    m_Localized: 'EXPEDIENTE EMILIA: {0}/6'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030107
+    m_Localized: Expediente de Emilia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030108
+    m_Localized: Documentos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030109
+    m_Localized: Bestiario
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030110
+    m_Localized: Objetos confiscados
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030111
+    m_Localized: Fallas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030112
+    m_Localized: Reglas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030113
+    m_Localized: Anillo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030114
+    m_Localized: "Balas de rev\xF3lver"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030115
+    m_Localized: Estabilizador
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030116
+    m_Localized: "Punz\xF3n de descarga"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030117
+    m_Localized: Llave de acceso
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030118
+    m_Localized: Llave de servicio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030119
+    m_Localized: "Ajusta el brillo hasta que el s\xEDmbolo de la izquierda apenas se vea y el de la derecha no."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030120
+    m_Localized: Aceptar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030121
+    m_Localized: Pulsa cualquier tecla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030122
+    m_Localized: Continuar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030123
+    m_Localized: Nueva partida
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030124
+    m_Localized: Cargar partida
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030125
+    m_Localized: Opciones
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030126
+    m_Localized: "Cr\xE9ditos"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030127
+    m_Localized: Salir
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030128
+    m_Localized: Volver
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030129
+    m_Localized: ELEGIR RANURA
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030130
+    m_Localized: "VAC\xCDA"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030131
+    m_Localized: "DA\xD1ADA"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030132
+    m_Localized: "{0} \xB7 {1} \xB7 Piso {2} \xB7 Emilia {3}/6 \xB7 {4}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030133
+    m_Localized: Borrar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030134
+    m_Localized: ELEGIR MODO
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030135
+    m_Localized: Supervivencia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030136
+    m_Localized: La experiencia prevista. Recursos escasos; cada muerte cuesta.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030137
+    m_Localized: Historia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030138
+    m_Localized: "Un poco m\xE1s de margen. Un recurso extra por tipo y piso."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030139
+    m_Localized: PAUSA
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030140
+    m_Localized: Volver al juego
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030141
+    m_Localized: Reiniciar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030142
+    m_Localized: "Salir al men\xFA"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030143
+    m_Localized: Cancelar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030144
+    m_Localized: Confirmar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030145
+    m_Localized: "Se borrar\xE1 esta ranura, incluidos los registros del terminal. \xBFContinuar?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030146
+    m_Localized: "\xBFBorrar esta ranura? No se puede deshacer."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030147
+    m_Localized: "Reiniciar cuenta como una muerte. \xBFContinuar?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030148
+    m_Localized: "Te est\xE1n cazando. Salir ahora cuenta como una muerte: nuevo sujeto, inventario perdido."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030149
+    m_Localized: Salir fuera de una sala guardada suma una muerte al contador y degrada el ciclo. Se conserva el autoguardado.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030150
+    m_Localized: "El progreso est\xE1 guardado. \xBFSalir al men\xFA principal?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030151
+    m_Localized: "\xBFCerrar el juego?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030152
+    m_Localized: "\xBFRestablecer los valores predeterminados de {0}?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030153
+    m_Localized: Audio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030154
+    m_Localized: Video
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030155
+    m_Localized: Controles
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030156
+    m_Localized: Accesibilidad
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030157
+    m_Localized: Juego
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030158
+    m_Localized: Restablecer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030159
+    m_Localized: Volumen general
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030160
+    m_Localized: "M\xFAsica"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030161
+    m_Localized: Efectos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2398224384
+    m_Localized: Ambiente
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2398224385
+    m_Localized: Voces
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2398224386
+    m_Localized: Brillo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2398224387
+    m_Localized: "Sensibilidad de c\xE1mara"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2398224388
+    m_Localized: Sensibilidad al apuntar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2398224389
+    m_Localized: Invertir eje Y
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2398224390
+    m_Localized: 'Agacharse: alternar'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2398224391
+    m_Localized: Asistencia de apuntado
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2398224392
+    m_Localized: Reasignar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2398224393
+    m_Localized: "Pulsa una tecla\u2026"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2398224394
+    m_Localized: "Subt\xEDtulos"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2398224395
+    m_Localized: "Tama\xF1o del texto"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2398224396
+    m_Localized: Fuente para dislexia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2398224397
+    m_Localized: Idioma
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2398224398
+    m_Localized: "S\xED"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2398224399
+    m_Localized: No
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2398224400
+    m_Localized: Supervivencia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2398224401
+    m_Localized: Historia
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []
