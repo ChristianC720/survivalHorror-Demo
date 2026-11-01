@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3884983768438191374}
   - component: {fileID: 1368415113503638425}
   - component: {fileID: 5604194892502960124}
+  - component: {fileID: 7073963810229885166}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -104,6 +105,20 @@ MonoBehaviour:
   health: {fileID: 1368415113503638425}
   visual: {fileID: 616260273600623914}
   cameraTransform: {fileID: 0}
+--- !u!114 &7073963810229885166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2442423367564465436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4057fd77d584fea4180ed75519c53fd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Heartbeat.Runtime::Heartbeat.Inventory.PlayerInventory
+  balance: {fileID: 11400000, guid: 700426a2ac4d41848b6e4a139964ffa9, type: 2}
+  health: {fileID: 1368415113503638425}
 --- !u!1001 &2593738605062868789
 PrefabInstance:
   m_ObjectHideFlags: 0

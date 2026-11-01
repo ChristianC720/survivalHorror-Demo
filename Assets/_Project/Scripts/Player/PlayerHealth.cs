@@ -9,6 +9,9 @@ namespace Heartbeat.Player
         [SerializeField] private PlayerBalance balance;
 
         public HealthModel Model { get; private set; }
+
+        /// <summary>Raised on every damaging hit or grab (cancels heal animations, interrupts hacking).</summary>
+        public event System.Action Hit;
         public HealthState State => Model.State;
 
         private void Awake()
@@ -19,9 +22,17 @@ namespace Heartbeat.Player
 
         private void OnDestroy() => Model.StateChanged -= OnStateChanged;
 
-        public void ApplyHit(int hitsToKill) => Model.ApplyHit(hitsToKill);
+        public void ApplyHit(int hitsToKill)
+        {
+            Model.ApplyHit(hitsToKill);
+            Hit?.Invoke();
+        }
 
-        public void ApplyGrabWithoutSpike() => Model.ApplyGrabWithoutSpike();
+        public void ApplyGrabWithoutSpike()
+        {
+            Model.ApplyGrabWithoutSpike();
+            Hit?.Invoke();
+        }
 
         private void OnStateChanged(HealthState state)
         {

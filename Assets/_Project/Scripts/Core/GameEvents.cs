@@ -41,6 +41,9 @@ namespace Heartbeat.Core
         public static event Action<int> HealthStateChanged;
         public static event Action<DeathCause> PlayerDied;
 
+        // Inventory
+        public static event Action InventoryChanged;
+
         // Camera
         public static event Action<bool> AimChanged;
 
@@ -51,6 +54,7 @@ namespace Heartbeat.Core
         public static void RaiseStaminaExhausted() => StaminaExhausted?.Invoke();
         public static void RaiseHealthStateChanged(int state) => HealthStateChanged?.Invoke(state);
         public static void RaisePlayerDied(DeathCause cause) => PlayerDied?.Invoke(cause);
+        public static void RaiseInventoryChanged() => InventoryChanged?.Invoke();
         public static void RaiseAimChanged(bool aiming) => AimChanged?.Invoke(aiming);
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
@@ -64,6 +68,7 @@ namespace Heartbeat.Core
             HealthStateChanged = null;
             PlayerDied = null;
             AimChanged = null;
+            InventoryChanged = null;
             Services.Clear();
         }
     }
