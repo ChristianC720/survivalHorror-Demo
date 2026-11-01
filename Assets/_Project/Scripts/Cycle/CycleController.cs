@@ -81,7 +81,10 @@ namespace Heartbeat.Cycle
             if (Data == null)
             {
                 if (newGame) saves.Delete(slot);
-                Data = new SlotData { mode = mode };
+                // Showcase preset (×0.75 budgets, 6–8 + 2 + 1 rooms) for fairs/demos: launch the build with -showcase.
+                bool showcase = System.Array.IndexOf(System.Environment.GetCommandLineArgs(), "-showcase") >= 0;
+                Data = new SlotData { mode = mode, showcase = showcase };
+                if (showcase) HbLog.Info("Cycle", "Showcase preset for this slot");
             }
             registry.Import(Data.terminal.Select(e => (e.id, e.kind)));
             var g = saves.LoadGlobal();

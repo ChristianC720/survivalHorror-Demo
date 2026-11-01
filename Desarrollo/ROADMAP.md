@@ -40,7 +40,7 @@ Each checkbox is one git-flow feature: `git flow feature start <id>`.
 - [ ] `E14-mother-room` · `E09-phase1-nodes` · `E09-phase2-cameras` · `E09-phase3-transformers` · `E09-final-decision`
 - [ ] `E14-intro` · [x] `E08-endings` (card sequences; staged shots with E14-intro) · [x] `E08-degradation-assimilation` (M-18 CRT + vocal pitch) · [ ] `E08-machine-faults` (M-17)
 - [x] `E15-documents` · `E15-bestiary` (36 records, corruption, first-encounter unlock) · [ ] `E15-posters` · [x] `E15-es-table` (all GDD texts EN+ES)
-- [ ] `E07-story-mode-showcase` — Story mode (+1 minimum) and showcase preset
+- [x] `E07-story-mode-showcase` — Story mode (+1 minimum) and showcase preset (new slots get it with the `-showcase` launch argument)
 
 ## H6 — Release
 - [ ] `E13-profiling` · `E13-bugfix` · `E13-build` → tag `v1.0-demo`
