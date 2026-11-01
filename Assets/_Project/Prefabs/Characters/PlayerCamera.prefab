@@ -147,6 +147,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8406970484525611865}
   - component: {fileID: 1889930619009904491}
+  - component: {fileID: 627652529268577581}
   m_Layer: 0
   m_Name: PlayerCamera
   m_TagString: Untagged
@@ -190,6 +191,22 @@ MonoBehaviour:
   exploreCamera: {fileID: 1901139451730267378}
   aimCamera: {fileID: 1609398416557348563}
   reticle: {fileID: 51838757994863300}
+--- !u!114 &627652529268577581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1613256690469110135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 142ac34620274f44b9ebf6010eaea55d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Heartbeat.Runtime::Heartbeat.CameraSystem.SurveillanceSystem
+  textureHeight: 270
+  delaySeconds: 0.3
+  orthoSize: 7
+  shotAttention: 0.15
 --- !u!1 &5700450466030563058
 GameObject:
   m_ObjectHideFlags: 0

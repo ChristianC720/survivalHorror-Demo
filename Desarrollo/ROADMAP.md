@@ -28,7 +28,7 @@ Each checkbox is one git-flow feature: `git flow feature start <id>`.
 - [x] `E08-death-cycle` · `E08-save-service` · `E08-arm-terminal-data` (registry persisted per slot)
 - [x] `E08-recycling`
 - [ ] `E08-exit-cost`
-- [ ] `E03-surveillance` — iso view, signal stages, hidden attention, lockout (M-02, M-03)
+- [x] `E03-surveillance` — iso view, signal stages, hidden attention, lockout (M-02, M-03)
 
 ## H4 — Vertical slice
 - [ ] `E10-terminal-ui` · `E10-diegetic-hud` · `E10-subtitles` · `E10-main-menu` · `E10-options` · `E10-localization`
