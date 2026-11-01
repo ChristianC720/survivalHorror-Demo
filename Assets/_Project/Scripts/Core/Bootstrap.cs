@@ -46,6 +46,7 @@ namespace Heartbeat.Core
             Services.Register(sceneLoader);
             Services.Register(new PauseService(states));
             Services.Register(input);
+            gameObject.AddComponent<PauseInput>();
 
             IsReady = true;
             HbLog.Info("Core", "Services ready");
