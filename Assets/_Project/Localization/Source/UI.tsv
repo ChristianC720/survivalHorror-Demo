@@ -1,0 +1,115 @@
+key	en	es	note
+UI.PROMPT.OPEN	Open	Abrir
+UI.PROMPT.CLOSE	Close	Cerrar
+UI.PROMPT.LOCKED	Locked	Cerrada
+UI.PROMPT.PICKUP	Pick up	Recoger
+UI.PROMPT.READ	Read	Leer
+UI.PROMPT.EXAMINE	Examine	Examinar
+UI.PROMPT.HACK	Hack	Hackear
+UI.PROMPT.POWER	Restore power	Restaurar energía
+UI.PROMPT.NOPOWER	No power	Sin energía
+UI.PROMPT.DESCEND	Descend	Descender
+UI.PROMPT.LOCKDOWN	LOCKDOWN	LOCKDOWN	KEEP-EN (D-62 terminal label)
+UI.HUD.SYNC	SYNCHRONIZING…	SYNCHRONIZING…	KEEP-EN (D-62 terminal label)
+UI.HUD.SYNC_SUBJECT	SYNCHRONIZING SUBJECT {0}…	SYNCHRONIZING SUBJECT {0}…	KEEP-EN (D-62 terminal label)
+UI.HUD.ACCESS_DENIED	ACCESS DENIED	ACCESS DENIED	KEEP-EN (D-62 terminal label)
+UI.TERM.TAB_INVENTORY	INVENTORY	INVENTORY	KEEP-EN (D-62 terminal label)
+UI.TERM.TAB_STATUS	STATUS	STATUS	KEEP-EN (D-62 terminal label)
+UI.TERM.TAB_LOGS	LOGS	LOGS	KEEP-EN (D-62 terminal label)
+UI.TERM.SUBJECT	SUBJECT {0}	SUBJECT {0}	KEEP-EN (D-62 terminal label)
+UI.TERM.HEALTH_FINE	HEALTH: FINE	HEALTH: FINE	KEEP-EN (D-62 terminal label)
+UI.TERM.HEALTH_INJURED	HEALTH: INJURED	HEALTH: INJURED	KEEP-EN (D-62 terminal label)
+UI.TERM.HEALTH_CRITICAL	HEALTH: CRITICAL	HEALTH: CRITICAL	KEEP-EN (D-62 terminal label)
+UI.TERM.FLASHLIGHT	FLASHLIGHT: {0}%	FLASHLIGHT: {0}%	KEEP-EN (D-62 terminal label)
+UI.TERM.FLASHLIGHT_LOCKED	FLASHLIGHT: DEPLETED	FLASHLIGHT: DEPLETED	KEEP-EN (D-62 terminal label)
+UI.TERM.DRUM	DRUM: {0}/6	DRUM: {0}/6	KEEP-EN (D-62 terminal label)
+UI.TERM.EMPTY_SLOT	— empty —	— vacío —
+UI.TERM.USE	Use	Usar
+UI.TERM.DISCARD	Discard	Descartar
+UI.TERM.NO_LOGS	No records.	Sin registros.
+UI.TERM.EMILIA_COUNT	EMILIA FILE: {0}/6	EMILIA FILE: {0}/6	KEEP-EN (D-62 terminal label)
+UI.TERM.CAT_EMILIA	Emilia's file	Expediente de Emilia
+UI.TERM.CAT_DOCS	Documents	Documentos
+UI.TERM.CAT_BESTIARY	Bestiary	Bestiario
+UI.TERM.CAT_CONFISCATED	Confiscated objects	Objetos confiscados
+UI.TERM.CAT_FAULTS	Faults	Fallas
+UI.TERM.CAT_RULES	Rules	Reglas
+UI.TERM.CAT_RING	Ring	Anillo
+UI.ITEM.Ammo	Revolver rounds	Balas de revólver
+UI.ITEM.Heal	Stabilizer	Estabilizador
+UI.ITEM.Spike	Discharge spike	Punzón de descarga
+UI.ITEM.KeyMandatory	Access key	Llave de acceso
+UI.ITEM.KeyOptional	Service key	Llave de servicio
+UI.BRIGHT.TITLE	Adjust the brightness until the left symbol is barely visible and the right one is not.	Ajusta el brillo hasta que el símbolo de la izquierda apenas se vea y el de la derecha no.
+UI.BRIGHT.ACCEPT	Accept	Aceptar
+UI.TITLE.PRESS	Press any key	Pulsa cualquier tecla
+UI.MENU.CONTINUE	Continue	Continuar
+UI.MENU.NEW	New game	Nueva partida
+UI.MENU.LOAD	Load game	Cargar partida
+UI.MENU.OPTIONS	Options	Opciones
+UI.MENU.CREDITS	Credits	Créditos
+UI.MENU.QUIT	Quit	Salir
+UI.MENU.BACK	Back	Volver
+UI.SLOT.TITLE	SELECT SLOT	ELEGIR RANURA
+UI.SLOT.EMPTY	EMPTY	EMPTY	KEEP-EN (D-62 terminal label)
+UI.SLOT.DAMAGED	DAMAGED	DAMAGED	KEEP-EN (D-62 terminal label)
+UI.SLOT.SUMMARY	{0} · {1} · Floor {2} · Emilia {3}/6 · {4}	{0} · {1} · Piso {2} · Emilia {3}/6 · {4}
+UI.SLOT.DELETE	Delete	Borrar
+UI.MODE.TITLE	SELECT MODE	ELEGIR MODO
+UI.MODE.SURVIVAL	Survival	Supervivencia
+UI.MODE.SURVIVAL_DESC	The intended experience. Scarce resources; every death costs.	La experiencia prevista. Recursos escasos; cada muerte cuesta.
+UI.MODE.STORY	Story	Historia
+UI.MODE.STORY_DESC	A little more room to breathe. One extra resource per type and floor.	Un poco más de margen. Un recurso extra por tipo y piso.
+UI.PAUSE.TITLE	PAUSED	PAUSA
+UI.PAUSE.RESUME	Resume	Volver al juego
+UI.PAUSE.RESTART	Restart	Reiniciar
+UI.PAUSE.QUIT	Quit to menu	Salir al menú
+UI.CONFIRM.CANCEL	Cancel	Cancelar
+UI.CONFIRM.OK	Confirm	Confirmar
+UI.CONFIRM.OVERWRITE	This slot will be erased, including its terminal records. Continue?	Se borrará esta ranura, incluidos los registros del terminal. ¿Continuar?
+UI.CONFIRM.DELETE	Delete this slot? This cannot be undone.	¿Borrar esta ranura? No se puede deshacer.
+UI.CONFIRM.RESTART	Restarting counts as a death. Continue?	Reiniciar cuenta como una muerte. ¿Continuar?
+UI.CONFIRM.QUIT_HUNT	You are being hunted. Quitting now counts as a death: new subject, inventory lost.	Te están cazando. Salir ahora cuenta como una muerte: nuevo sujeto, inventario perdido.
+UI.CONFIRM.QUIT_CALM	Quitting outside a saved room adds one death to the counter and degrades the cycle. The autosave is kept.	Salir fuera de una sala guardada suma una muerte al contador y degrada el ciclo. Se conserva el autoguardado.
+UI.CONFIRM.QUIT_FREE	Progress is saved. Quit to the main menu?	El progreso está guardado. ¿Salir al menú principal?
+UI.CONFIRM.QUIT_GAME	Close the game?	¿Cerrar el juego?
+UI.CONFIRM.RESET_SECTION	Restore the default values of {0}?	¿Restablecer los valores predeterminados de {0}?
+UI.OPT.AUDIO	Audio	Audio
+UI.OPT.VIDEO	Video	Video
+UI.OPT.CONTROLS	Controls	Controles
+UI.OPT.ACCESSIBILITY	Accessibility	Accesibilidad
+UI.OPT.GAME	Game	Juego
+UI.OPT.RESET	Restore defaults	Restablecer
+UI.OPT.VOL_MASTER	Master volume	Volumen general
+UI.OPT.VOL_MUSIC	Music	Música
+UI.OPT.VOL_SFX	Effects	Efectos
+UI.OPT.VOL_AMBIENCE	Ambience	Ambiente
+UI.OPT.VOL_VOICES	Voices	Voces
+UI.OPT.BRIGHTNESS	Brightness	Brillo
+UI.OPT.LOOK_SENS	Camera sensitivity	Sensibilidad de cámara
+UI.OPT.AIM_SENS	Aim sensitivity	Sensibilidad al apuntar
+UI.OPT.INVERT_Y	Invert Y axis	Invertir eje Y
+UI.OPT.CROUCH_TOGGLE	Crouch: toggle	Agacharse: alternar
+UI.OPT.AIM_ASSIST	Aim assist	Asistencia de apuntado
+UI.OPT.REBIND	Rebind	Reasignar
+UI.OPT.REBIND_WAIT	Press a key…	Pulsa una tecla…
+UI.OPT.SUBTITLES	Subtitles	Subtítulos
+UI.OPT.TEXT_SCALE	Text size	Tamaño del texto
+UI.OPT.DYSLEXIA_FONT	Dyslexia-friendly font	Fuente para dislexia
+UI.OPT.LANGUAGE	Language	Idioma
+UI.OPT.ON	On	Sí
+UI.OPT.OFF	Off	No
+UI.MODE_LABEL.Survival	Survival	Supervivencia
+UI.MODE_LABEL.Story	Story	Historia
+UI.TERM.REGISTERED	REGISTERED	REGISTERED	KEEP-EN (D-62 terminal label)
+UI.HUD.ACCESS_GRANTED	ACCESS GRANTED	ACCESS GRANTED	KEEP-EN (D-62 terminal label)
+UI.TERM.MOTHER_SUBJECT_REGISTER	SUBJECT {0} PRESERVED. IDENTITY: RETAINED.	SUBJECT {0} PRESERVED. IDENTITY: RETAINED.	KEEP-EN (D-62 terminal label)
+UI.OPT.SUB_OPAQUE	Opaque subtitle background	Fondo opaco de subtítulos	
+UI.OPT.SOUND_CAPTIONS	Sound captions	Subtítulos de sonido	
+UI.DIR.AHEAD	ahead	delante	
+UI.DIR.BEHIND	behind	detrás	
+UI.DIR.LEFT	left	izquierda	
+UI.DIR.RIGHT	right	derecha	
+UI.OPT.REBIND_TAKEN	Key already in use	Tecla ya asignada	
+UI.OPT.LANG_EN	English	English	KEEP-EN
+UI.OPT.LANG_ES	Español	Español	KEEP-EN

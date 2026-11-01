@@ -51,7 +51,13 @@ namespace Heartbeat.Core
             Services.Register(new Save.SaveService());
             Services.Register(gameObject.AddComponent<Cycle.CycleController>());
             gameObject.AddComponent<PauseInput>();
+            if (TryGetComponent(out Audio.AudioService audio)) Services.Register(audio);
+            else HbLog.Warn("Core", "No AudioService on Bootstrap: sounds disabled");
 
+            var global = Services.Get<Save.SaveService>().LoadGlobal();
+            UI.Loc.SetLanguage(global.language);
+            input.LoadBindingOverrides(global.bindingOverrides);
+            Render.Brightness.Apply(global.brightness);
             IsReady = true;
             HbLog.Info("Core", "Services ready");
         }
@@ -61,8 +67,9 @@ namespace Heartbeat.Core
             string launchScene = BootstrapLoader.LaunchScene;
             if (string.IsNullOrEmpty(launchScene) || launchScene == SceneNames.Bootstrap)
             {
-                // Normal game launch. Brightness calibration and title come with E-10; go to the menu for now.
-                states.TryTransition(GameStateId.MainMenu);
+                // Normal launch: brightness calibration on the first launch only (D-106), then the title (D-90).
+                bool calibrated = Services.Get<Save.SaveService>().LoadGlobal().brightnessCalibrated;
+                states.TryTransition(calibrated ? GameStateId.Title : GameStateId.BrightnessCalibration);
                 sceneLoader.Load(SceneNames.MainMenu);
                 return;
             }

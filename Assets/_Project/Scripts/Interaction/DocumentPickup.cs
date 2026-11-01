@@ -34,6 +34,8 @@ namespace Heartbeat.Interaction
             string extra = document.kind == RecordKind.EmiliaDocument ? $" (Emilia {registry.EmiliaCount}/{RegistryModel.EmiliaTotal})" : "";
             HbLog.Info("Registry", isNew ? $"REGISTERED {document.id}{extra}" : $"Already registered {document.id}");
             GameEvents.RaiseItemRegistered(document.id, (int)document.kind, isNew);
+            if (isNew && document.kind == RecordKind.EmiliaDocument)
+                Subtitles.Say(Subtitles.Lukas, registry.EmiliaCount == 1 ? "SUB.LUKAS.FIRST_EMILIA_DOC" : "SUB.LUKAS.EMILIA_DOC");
             if (!staysInWorld) gameObject.SetActive(false);
         }
     }

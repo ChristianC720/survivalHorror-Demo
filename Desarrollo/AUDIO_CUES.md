@@ -6,10 +6,12 @@ Source: `GDD/05 - Arte y Audio/05 - Audio y Música.md`, S-11 in `GDD/02 - Dise�
 - Every sound is an `AudioCue` ScriptableObject in `Assets/_Project/ScriptableObjects/Audio/` named `CUE_<Group>_<Name>`.
 - Fields: `AudioClip[] clips` (**empty for now**), `AudioMixerGroup bus`, `CuePriority priority` (Signal = 1, Combat = 2, Ambience = 3, Music = 4), `bool spatial`, `float volume`, `Vector2 pitchRange`, `float maxDistance`, `bool loop`, `string debugCaption`.
 - `AudioService.Play(cue, position)` always raises `GameEvents.CuePlayed(cue, position)` and logs `[Heartbeat][Audio] <cue name>`. Playtests assert on that line. If the clip list is empty, a development build shows `debugCaption` as a small caption in the corner (toggle with the `F2` debug key). This lets QA "hear" the placeholder.
+- Gameplay never touches the service: event-driven cues are mapped in `AudioService.OnEnable` (ShotFired, alerts, autosave…); local feedback uses `Sfx.Play(Sfx.DoorOpen, pos)` / `Sfx.Play2D(...)` (Core), which raises `GameEvents.CueRequested`. Loops owned by audio components use `AudioService.StartLoop/Stop`.
+- The `AudioService` component sits on the `Bootstrap` object with every cue in its `cues` list. A new cue must be added there (re-run the cue wiring script or drag it in), or it logs `Unknown cue`.
 - Final audio = drop clips into the existing cue assets. No code changes.
 
 ## Mixer (`Assets/_Project/Audio/Mixer/Heartbeat.mixer`)
-`Master` → `Signals` (P1) · `Player&Combat` (P2) · `Ambience` (P3, includes lab heartbeat) · `Music` (P4) · `Voices` (vocal sounds + captions). A P1 cue ducks `Ambience` and `Music` through a Duck Volume effect driven by a send from `Signals`. The Options volumes map to the exposed parameters `vol_master`, `vol_music`, `vol_sfx`, `vol_ambience`, `vol_voices`.
+`Master` → `Signals` (P1) · `PlayerCombat` (P2) · `Ambience` (P3, includes lab heartbeat) · `Music` (P4) · `Voices` (vocal sounds + captions). A P1 cue ducks `Ambience` and `Music` (−8 dB, 0.6 s hold, 1.5 s release; fields on `AudioService`). The duck is done in code on the exposed params, not with a Duck Volume effect, because mixer effects cannot be created through a public API. The Options volumes map to the exposed parameters `vol_master`, `vol_music`, `vol_sfx`, `vol_ambience`, `vol_voices` (+ `vol_signals`, not in Options) through `AudioService.ApplyVolumes(GlobalData)`, applied on start.
 
 ## Cue list
 | Cue | Bus / P | Spatial | Loop | Trigger | GDD |

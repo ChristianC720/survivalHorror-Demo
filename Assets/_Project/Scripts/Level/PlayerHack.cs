@@ -83,6 +83,7 @@ namespace Heartbeat.Level
             if (!IsHacking) return;
             var step = Current.Input(dir);
             Stepped?.Invoke(step);
+            Sfx.Play(step == HackStep.Error ? Sfx.HackError : step == HackStep.Complete ? Sfx.HackSuccess : Sfx.HackInput, transform.position);
             if (step == HackStep.Error) HbLog.Info("Hack", $"Error beep, sequence restarted (errors={Current.Errors})");
             if (step == HackStep.Complete) End(true, "success");
         }

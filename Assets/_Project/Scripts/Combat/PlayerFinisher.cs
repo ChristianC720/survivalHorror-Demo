@@ -93,6 +93,7 @@ namespace Heartbeat.Combat
                 HbLog.Info("Combat", "No discharge spike: E does nothing over the body");
                 return;
             }
+            Sfx.Play(Sfx.SpikeDischarge, transform.position);   // audible to the player, emits no AI noise
             StartCoroutine(FinishRoutine(Target, balance.spikeFinisherSeconds, "discharge spike", noisy: false));
         }
 

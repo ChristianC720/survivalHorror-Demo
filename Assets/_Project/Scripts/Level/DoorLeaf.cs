@@ -56,6 +56,7 @@ namespace Heartbeat.Level
             {
                 case DoorLock.NoPower:
                     HbLog.Info("Door", $"{name}: no power");
+                    Sfx.Play(Sfx.DoorLocked, transform.position);
                     return;
                 case DoorLock.MandatoryKey:
                 case DoorLock.OptionalKey:
@@ -63,6 +64,7 @@ namespace Heartbeat.Level
                     if (!who.Inventory.Model.TryConsume(kind))
                     {
                         HbLog.Info("Door", $"{name}: ACCESS DENIED ({kind} required)");
+                        Sfx.Play(Sfx.DoorLocked, transform.position);
                         return;
                     }
                     lockType = DoorLock.None;
@@ -71,7 +73,7 @@ namespace Heartbeat.Level
                     return;
             }
 
-            if (State == DoorState.Sealed) { HbLog.Info("Door", $"{name}: sealed"); return; }
+            if (State == DoorState.Sealed) { HbLog.Info("Door", $"{name}: sealed"); Sfx.Play(Sfx.DoorLocked, transform.position); return; }
 
             // Lukas crossed this door and turns back towards it while enemies hunt: offer the quick seal.
             bool hunting = Services.TryGet<AlertDirector>(out var d) && d.HuntingCount > 0;
@@ -91,6 +93,7 @@ namespace Heartbeat.Level
             breakProgress = 0f;
             SetState(DoorState.Sealed);
             HbLog.Info("Door", $"{name}: SEALED");
+            Sfx.Play(Sfx.DoorSeal, transform.position);
         }
 
         /// <summary>Enemies call this when their path crosses a closed, unlocked door.</summary>
@@ -123,6 +126,7 @@ namespace Heartbeat.Level
             if (lastSide != 0 && side != lastSide && State == DoorState.Sealed)
             {
                 HbLog.Info("Door", $"{name}: seal broken (Lukas crossed back)");
+                Sfx.Play(Sfx.DoorSealBreak, transform.position);
                 SetState(DoorState.Open);
             }
             lastSide = side;
@@ -140,6 +144,7 @@ namespace Heartbeat.Level
             if (breakProgress >= sealBreakSeconds)
             {
                 HbLog.Info("Door", $"{name}: seal broken by an enemy");
+                Sfx.Play(Sfx.DoorSealBreak, transform.position);
                 SetState(DoorState.Open);
             }
         }
@@ -154,6 +159,8 @@ namespace Heartbeat.Level
 
         private void SetState(DoorState s)
         {
+            if (s != State && (s == DoorState.Open || s == DoorState.Closed) && State != DoorState.Sealed)
+                Sfx.Play(Sfx.DoorOpen, transform.position);   // one motor cue for open and close
             State = s;
             if (obstacle != null) obstacle.enabled = s == DoorState.Sealed || IsLocked;
             if (s != DoorState.Sealed) breakProgress = 0f;

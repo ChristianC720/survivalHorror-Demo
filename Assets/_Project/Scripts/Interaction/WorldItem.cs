@@ -39,6 +39,7 @@ namespace Heartbeat.Interaction
                 return;
             }
             amount = left;
+            Sfx.Play2D(Sfx.Pickup);
             HbLog.Info("Interact", $"Picked up {kind} x{taken}{(left > 0 ? $" ({left} left on the floor)" : "")}");
             if (amount <= 0) gameObject.SetActive(false);
         }

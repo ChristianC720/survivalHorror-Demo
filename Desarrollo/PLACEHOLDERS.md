@@ -29,3 +29,12 @@ Rules
 | `PH_Intro_House`, `PH_Intro_Elevator` | Intro set pieces | room-sized | kit-like boxes | – | – | pending |
 
 Add a row whenever you create a new `PH_` prefab.
+
+## UI placeholders
+| Item | Intended asset | Current placeholder | Status |
+|---|---|---|---|
+| Title logo | "Identity Dissolution" logotype (D-90) | bold TMP text in `MenuView.ShowTitle` | pending art |
+| Fonts | VT323 (data), IBM Plex Sans (menus), OpenDyslexic (option), OFL, `.ttf` in `UI/Fonts/` | LiberationSans SDF (+ `TMP_HUD_Outline.mat` for HUD text) | pending import |
+| Main menu backdrop | capsule-row room with the facility terminal next to Lukas's capsule (D-90) | flat black screen with green text | pending (E12-f1-lighting) |
+| Credits roll | END table credits | hard-coded lines in `MenuView.ShowCredits` | pending (E15) |
+| Arm terminal | world-space canvas on Lukas's forearm + screen mirror | screen-space panel only | pending Lukas model |

@@ -1,0 +1,484 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: UI Shared Data
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.SharedTableData
+  m_TableCollectionName: UI
+  m_TableCollectionNameGuidString: f1716f21d263e7542bdc0268b9c6e5e2
+  m_Entries:
+  - m_Id: 2297561088
+    m_Key: UI.PROMPT.OPEN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2389835776
+    m_Key: UI.PROMPT.CLOSE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030080
+    m_Key: UI.PROMPT.LOCKED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030081
+    m_Key: UI.PROMPT.PICKUP
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030082
+    m_Key: UI.PROMPT.READ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030083
+    m_Key: UI.PROMPT.EXAMINE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030084
+    m_Key: UI.PROMPT.HACK
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030085
+    m_Key: UI.PROMPT.POWER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030086
+    m_Key: UI.PROMPT.NOPOWER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030087
+    m_Key: UI.PROMPT.DESCEND
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030088
+    m_Key: UI.PROMPT.LOCKDOWN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030089
+    m_Key: UI.HUD.SYNC
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030090
+    m_Key: UI.HUD.SYNC_SUBJECT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030091
+    m_Key: UI.HUD.ACCESS_DENIED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030092
+    m_Key: UI.TERM.TAB_INVENTORY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030093
+    m_Key: UI.TERM.TAB_STATUS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030094
+    m_Key: UI.TERM.TAB_LOGS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030095
+    m_Key: UI.TERM.SUBJECT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030096
+    m_Key: UI.TERM.HEALTH_FINE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030097
+    m_Key: UI.TERM.HEALTH_INJURED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030098
+    m_Key: UI.TERM.HEALTH_CRITICAL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030099
+    m_Key: UI.TERM.FLASHLIGHT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030100
+    m_Key: UI.TERM.FLASHLIGHT_LOCKED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030101
+    m_Key: UI.TERM.DRUM
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030102
+    m_Key: UI.TERM.EMPTY_SLOT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030103
+    m_Key: UI.TERM.USE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030104
+    m_Key: UI.TERM.DISCARD
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030105
+    m_Key: UI.TERM.NO_LOGS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030106
+    m_Key: UI.TERM.EMILIA_COUNT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030107
+    m_Key: UI.TERM.CAT_EMILIA
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030108
+    m_Key: UI.TERM.CAT_DOCS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030109
+    m_Key: UI.TERM.CAT_BESTIARY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030110
+    m_Key: UI.TERM.CAT_CONFISCATED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030111
+    m_Key: UI.TERM.CAT_FAULTS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030112
+    m_Key: UI.TERM.CAT_RULES
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030113
+    m_Key: UI.TERM.CAT_RING
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030114
+    m_Key: UI.ITEM.Ammo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030115
+    m_Key: UI.ITEM.Heal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030116
+    m_Key: UI.ITEM.Spike
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030117
+    m_Key: UI.ITEM.KeyMandatory
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030118
+    m_Key: UI.ITEM.KeyOptional
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030119
+    m_Key: UI.BRIGHT.TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030120
+    m_Key: UI.BRIGHT.ACCEPT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030121
+    m_Key: UI.TITLE.PRESS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030122
+    m_Key: UI.MENU.CONTINUE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030123
+    m_Key: UI.MENU.NEW
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030124
+    m_Key: UI.MENU.LOAD
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030125
+    m_Key: UI.MENU.OPTIONS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030126
+    m_Key: UI.MENU.CREDITS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030127
+    m_Key: UI.MENU.QUIT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030128
+    m_Key: UI.MENU.BACK
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030129
+    m_Key: UI.SLOT.TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030130
+    m_Key: UI.SLOT.EMPTY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030131
+    m_Key: UI.SLOT.DAMAGED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030132
+    m_Key: UI.SLOT.SUMMARY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030133
+    m_Key: UI.SLOT.DELETE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030134
+    m_Key: UI.MODE.TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030135
+    m_Key: UI.MODE.SURVIVAL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030136
+    m_Key: UI.MODE.SURVIVAL_DESC
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030137
+    m_Key: UI.MODE.STORY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030138
+    m_Key: UI.MODE.STORY_DESC
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030139
+    m_Key: UI.PAUSE.TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030140
+    m_Key: UI.PAUSE.RESUME
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030141
+    m_Key: UI.PAUSE.RESTART
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030142
+    m_Key: UI.PAUSE.QUIT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030143
+    m_Key: UI.CONFIRM.CANCEL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030144
+    m_Key: UI.CONFIRM.OK
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030145
+    m_Key: UI.CONFIRM.OVERWRITE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030146
+    m_Key: UI.CONFIRM.DELETE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030147
+    m_Key: UI.CONFIRM.RESTART
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030148
+    m_Key: UI.CONFIRM.QUIT_HUNT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030149
+    m_Key: UI.CONFIRM.QUIT_CALM
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030150
+    m_Key: UI.CONFIRM.QUIT_FREE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030151
+    m_Key: UI.CONFIRM.QUIT_GAME
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030152
+    m_Key: UI.CONFIRM.RESET_SECTION
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030153
+    m_Key: UI.OPT.AUDIO
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030154
+    m_Key: UI.OPT.VIDEO
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030155
+    m_Key: UI.OPT.CONTROLS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030156
+    m_Key: UI.OPT.ACCESSIBILITY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030157
+    m_Key: UI.OPT.GAME
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030158
+    m_Key: UI.OPT.RESET
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030159
+    m_Key: UI.OPT.VOL_MASTER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030160
+    m_Key: UI.OPT.VOL_MUSIC
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2394030161
+    m_Key: UI.OPT.VOL_SFX
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2398224384
+    m_Key: UI.OPT.VOL_AMBIENCE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2398224385
+    m_Key: UI.OPT.VOL_VOICES
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2398224386
+    m_Key: UI.OPT.BRIGHTNESS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2398224387
+    m_Key: UI.OPT.LOOK_SENS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2398224388
+    m_Key: UI.OPT.AIM_SENS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2398224389
+    m_Key: UI.OPT.INVERT_Y
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2398224390
+    m_Key: UI.OPT.CROUCH_TOGGLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2398224391
+    m_Key: UI.OPT.AIM_ASSIST
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2398224392
+    m_Key: UI.OPT.REBIND
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2398224393
+    m_Key: UI.OPT.REBIND_WAIT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2398224394
+    m_Key: UI.OPT.SUBTITLES
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2398224395
+    m_Key: UI.OPT.TEXT_SCALE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2398224396
+    m_Key: UI.OPT.DYSLEXIA_FONT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2398224397
+    m_Key: UI.OPT.LANGUAGE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2398224398
+    m_Key: UI.OPT.ON
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2398224399
+    m_Key: UI.OPT.OFF
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2398224400
+    m_Key: UI.MODE_LABEL.Survival
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2398224401
+    m_Key: UI.MODE_LABEL.Story
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1385306390528
+    m_Key: UI.TERM.REGISTERED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1385369305088
+    m_Key: UI.HUD.ACCESS_GRANTED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1932914720768
+    m_Key: UI.TERM.MOTHER_SUBJECT_REGISTER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1932914720769
+    m_Key: UI.OPT.SUB_OPAQUE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1932914720770
+    m_Key: UI.OPT.SOUND_CAPTIONS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6196361822208
+    m_Key: UI.DIR.AHEAD
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6196433125376
+    m_Key: UI.DIR.BEHIND
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6196433125377
+    m_Key: UI.DIR.LEFT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6196433125378
+    m_Key: UI.DIR.RIGHT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6196433125379
+    m_Key: UI.OPT.REBIND_TAKEN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6196433125380
+    m_Key: UI.OPT.LANG_EN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6196433125381
+    m_Key: UI.OPT.LANG_ES
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 262737125687427183
+  references:
+    version: 2
+    RefIds:
+    - rid: 262737125687427183
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1793552483111

@@ -21,4 +21,6 @@ EditorBuildSettings:
     path: Assets/_Project/Scenes/Cinematics.unity
     guid: 5669062c0fc14204380f1188fc06d759
   m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: 3569f9201923b364098d2f8ddc922c19, type: 2}
     com.unity.input.settings: {fileID: 11400000, guid: 30852f3d96cc87d4e95733454fcea636, type: 2}
+    com.unity.localization.settings: {fileID: 11400000, guid: 928122e7f85a06b4b8d26e130f0620f6, type: 2}

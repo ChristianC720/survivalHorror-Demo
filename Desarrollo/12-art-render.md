@@ -23,5 +23,6 @@ Sample the exact values from the palette PNGs with a scratchpad script if needed
 
 ## Tasks
 - `E12-sandbox-kit` (H1): `Sandbox_Kit` scene, snapping set, F1 kit pieces (see `14-levels.md`, `KIT_SPEC.md`).
-- `E12-f1-lighting` (H4): light templates per floor (`Prefabs/Level/Light_F1_Sodium` …), ≤ 16 active lights, ≤ 4 with shadows.
+- `E12-f1-lighting` (H4): light templates per floor (`Prefabs/Level/Light_F1_Sodium`: downward spot 140°, intensity 18, range 9), ≤ 16 active lights, ≤ 4 with shadows. `RoomActivation` lights the current room then neighbours by distance up to 15 room lights (+ flashlight), gives hard shadows only to ≤ 3 lights of the current room, and keeps unpowered rooms dark until `PowerRestored`. Log: `[Heartbeat][Rooms] Active around <room>: … lights=N shadowed=M`.
+- Player brightness (D-106) is a gain in the PixelDither pass (`_HbBrightness`, `Heartbeat.Render.Brightness`).
 - Placeholders as they are needed by other epics (`PLACEHOLDERS.md`).

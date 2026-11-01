@@ -20,6 +20,7 @@ Shader "Hidden/Heartbeat/PixelDither"
 
             float _ColorSteps;      // levels per channel, e.g. 32
             float _DitherStrength;  // 0..1
+            float _HbBrightness;    // global, set by Heartbeat.Render.Brightness: player brightness - 1 (0 = neutral, D-106)
 
             static const float Bayer4[16] =
             {
@@ -39,6 +40,7 @@ Shader "Hidden/Heartbeat/PixelDither"
 
                 // Quantize in perceptual space so the steps are even to the eye.
                 float3 c = pow(saturate(col.rgb), 1.0 / 2.2);
+                c = saturate(c * (1.0 + _HbBrightness));
                 float steps = max(_ColorSteps, 2.0);
                 c = floor(c * steps + 0.5 + threshold * _DitherStrength) / steps;
                 col.rgb = pow(saturate(c), 2.2);

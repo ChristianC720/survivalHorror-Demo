@@ -35,7 +35,7 @@ namespace Heartbeat.InputRouting
             // Surveillance: stand still or walk very slowly; running/aiming/shoving exit the view, so they stay readable.
             { InputContext.Surveillance, new[] { "Move", "Sprint", "Aim", "Attack", "Surveillance", "Interact" } },
             // Inventory: real time; the character can still move, but no aim/shoot/shove (Controles).
-            { InputContext.Inventory, new[] { "Move", "Look", "Sprint", "Crouch" } },
+            { InputContext.Inventory, new[] { "Move", "Sprint", "Crouch" } },   // no Look: the mouse drives the terminal
             { InputContext.IntroPlayable, new[] { "Move", "Look", "Interact" } },
         };
 
@@ -44,10 +44,28 @@ namespace Heartbeat.InputRouting
 
         public event Action<InputContext> ContextChanged;
 
+        /// <summary>Last device that performed an action; prompts and posters follow it on the fly (D-132).</summary>
+        public bool UsingGamepad { get; private set; }
+        public event Action<bool> DeviceChanged;
+
         public InputRouter()
         {
             Actions = new HeartbeatInput();
             SetContext(InputContext.None);
+            InputSystem.onActionChange += OnActionChange;
+        }
+
+        /// <summary>Display name of the action's binding for the current device, e.g. "E" or "A".</summary>
+        public string KeyFor(InputAction action) =>
+            action.GetBindingDisplayString(InputBinding.MaskByGroup(UsingGamepad ? "Gamepad" : "KeyboardMouse"));
+
+        private void OnActionChange(object o, InputActionChange change)
+        {
+            if (change != InputActionChange.ActionPerformed || !(o is InputAction a) || a.activeControl == null) return;
+            bool pad = a.activeControl.device is Gamepad;
+            if (pad == UsingGamepad) return;
+            UsingGamepad = pad;
+            DeviceChanged?.Invoke(pad);
         }
 
         /// <summary>
@@ -130,10 +148,11 @@ namespace Heartbeat.InputRouting
 
         public void Dispose()
         {
+            InputSystem.onActionChange -= OnActionChange;
             Actions.Disable();
-            // The generated wrapper's Dispose calls Object.Destroy, which is invalid in edit mode (tests).
-            if (UnityEngine.Application.isPlaying) Actions.Dispose();
-            else UnityEngine.Object.DestroyImmediate(Actions.asset);
+            // In play mode the asset is left to Unity: Bootstrap lives for the whole session, and destroying it here
+            // broke the OnDestroy unsubscriptions of components torn down after Bootstrap when play stops.
+            if (!UnityEngine.Application.isPlaying) UnityEngine.Object.DestroyImmediate(Actions.asset);
         }
     }
 }

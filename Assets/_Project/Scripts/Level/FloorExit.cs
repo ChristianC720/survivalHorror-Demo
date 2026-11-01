@@ -28,7 +28,7 @@ namespace Heartbeat.Level
         public void Interact(Interactor who)
         {
             if (!Powered) { HbLog.Info("Exit", "No power"); return; }
-            if (Locked) { HbLog.Info("Exit", "LOCKDOWN: Containment breach. Transit suspended."); return; }
+            if (Locked) { HbLog.Info("Exit", "LOCKDOWN: Containment breach. Transit suspended."); Sfx.Play(Sfx.TransitLockdown, transform.position); Subtitles.Say(Subtitles.Mother, "SUB.MOTHER.LOCKDOWN"); return; }
             HbLog.Info("Exit", $"Floor {Floor} exit used");
             GameEvents.RaiseFloorExitRequested(Floor);
         }

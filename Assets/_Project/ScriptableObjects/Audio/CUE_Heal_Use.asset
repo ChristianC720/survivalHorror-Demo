@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 714307412c8508b4e91b3ad69fb53fe9, type: 3}
+  m_Name: CUE_Heal_Use
+  m_EditorClassIdentifier: Heartbeat.Runtime::Heartbeat.Audio.AudioCue
+  clips: []
+  bus: {fileID: -5723580548553804568, guid: 5e97351fc7982014ba7fbec47c6a9128, type: 2}
+  priority: 2
+  spatial: 0
+  volume: 1
+  pitchRange: {x: 0.95, y: 1.05}
+  maxDistance: 20
+  loop: 0
+  debugCaption: '[Injection]'

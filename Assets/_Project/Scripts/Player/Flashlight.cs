@@ -50,6 +50,7 @@ namespace Heartbeat.Player
             bool now = Model.Toggle();
             if (!before && !now) HbLog.Info("Flashlight", Model.IsLocked ? "Locked (depleted)" : "Empty");
             else HbLog.Info("Flashlight", now ? "On" : "Off");
+            Sfx.Play2D(Sfx.FlashlightToggle);
             Apply();
         }
 
@@ -57,6 +58,7 @@ namespace Heartbeat.Player
         {
             HbLog.Info("Flashlight", "Depleted: flicker and off, locked ~10 s");
             flickerTimer = 0.8f;
+            Sfx.Play2D(Sfx.FlashlightFlicker);
         }
 
         private void Update()

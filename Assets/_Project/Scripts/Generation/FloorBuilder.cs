@@ -72,7 +72,7 @@ namespace Heartbeat.Generation
         }
 
         /// <summary>Generates and builds a floor. Returns false if no valid layout exists for the seed.</summary>
-        public bool Build(int floor, int seed, bool firstAttempt, bool storyMode, bool showcase, IReadOnlyCollection<string> registered = null)
+        public bool Build(int floor, int seed, bool firstAttempt, bool storyMode, bool showcase, IReadOnlyCollection<string> registered = null, bool startInFinalRoom = false)
         {
             var sw = Stopwatch.StartNew();
             Clear();
@@ -117,9 +117,11 @@ namespace Heartbeat.Generation
             surface.BuildNavMesh();
 
             activation.SetRooms(built);
-            foreach (var e in Layout.Enemies) PlaceEnemy(e);
-            SpawnPlayer();
-            activation.Apply(built[Layout.EntryRoom]);
+            // Continue from the autosave starts in the final room (D-30); the spawn room never holds enemies (global rule 6).
+            int spawnRoom = startInFinalRoom && Layout.FinalRoom >= 0 ? Layout.FinalRoom : Layout.EntryRoom;
+            foreach (var e in Layout.Enemies) if (!startInFinalRoom || e.Room != spawnRoom) PlaceEnemy(e);
+            SpawnPlayer(spawnRoom);
+            activation.Apply(built[spawnRoom]);
 
             LastBuildMs = sw.ElapsedMilliseconds;
             HbLog.Info("Gen", $"floor={floor} seed={Layout.Seed} (requested {seed}, {Layout.Attempts} attempts): {Layout.Rooms.Count} rooms, " +
@@ -242,6 +244,15 @@ namespace Heartbeat.Generation
             _ => null,
         };
 
+        /// <summary>Discarded inventory item (M-07): a normal pickup on the floor of the current floor.</summary>
+        public void DropItem(ItemKind kind, int amount, Vector3 position)
+        {
+            var prefab = PrefabFor(kind);
+            if (prefab == null) return;
+            var go = Instantiate(prefab, position, Quaternion.identity, floorRoot);
+            if (go.TryGetComponent(out WorldItem wi)) wi.Setup(kind, amount);
+        }
+
         private void Spawn(GameObject prefab, Transform at, ItemKind kind, int amount)
         {
             if (prefab == null) return;
@@ -286,9 +297,9 @@ namespace Heartbeat.Generation
             exit.Powered = final.IsPowered;
         }
 
-        private void SpawnPlayer()
+        private void SpawnPlayer(int room)
         {
-            var entry = built[Layout.EntryRoom];
+            var entry = built[room];
             var sp = entry.GetComponentsInChildren<SpawnPoint>(true).FirstOrDefault(s => s.kind == SpawnKind.Player);
             Vector3 pos = sp != null ? sp.transform.position : entry.transform.position + entry.transform.rotation * new Vector3(2f, 0f, 2f);
             Quaternion rot = sp != null ? sp.transform.rotation : entry.transform.rotation;
@@ -296,11 +307,11 @@ namespace Heartbeat.Generation
             if (Player == null)
             {
                 // Only reuse a player that belongs to this scene (the previous Floor scene may still be loaded).
-                var existing = FindObjectsByType<Player.PlayerController>(FindObjectsSortMode.None).FirstOrDefault(p => p.gameObject.scene == gameObject.scene);
+                var existing = FindObjectsByType<Player.PlayerController>().FirstOrDefault(p => p.gameObject.scene == gameObject.scene);
                 Player = existing != null ? existing.gameObject : Instantiate(playerPrefab);
                 Player.name = "Player";
                 UnityEngine.SceneManagement.SceneManager.MoveGameObjectToScene(Player, gameObject.scene);
-                if (!FindObjectsByType<CameraSystem.OtsCameraRig>(FindObjectsSortMode.None).Any(r => r.gameObject.scene == gameObject.scene))
+                if (!FindObjectsByType<CameraSystem.OtsCameraRig>().Any(r => r.gameObject.scene == gameObject.scene))
                 {
                     var cam = Instantiate(playerCameraPrefab);
                     cam.name = "PlayerCamera";
