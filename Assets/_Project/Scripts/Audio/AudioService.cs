@@ -68,6 +68,9 @@ namespace Heartbeat.Audio
         }
 
         private bool soundCaptions;
+        private int degradation;
+
+        private void OnDegradation(int level) => degradation = level;
 
         private void Start() => OnOptions();
 
@@ -94,6 +97,7 @@ namespace Heartbeat.Audio
         {
             GameEvents.CueRequested += OnCueRequested;
             GameEvents.OptionsChanged += OnOptions;
+            GameEvents.DegradationChanged += OnDegradation;
             GameEvents.ShotFired += OnShot;
             GameEvents.EnemyAlertChanged += OnEnemyAlert;
             GameEvents.HighestAlertChanged += OnHighestAlert;
@@ -113,6 +117,7 @@ namespace Heartbeat.Audio
         {
             GameEvents.CueRequested -= OnCueRequested;
             GameEvents.OptionsChanged -= OnOptions;
+            GameEvents.DegradationChanged -= OnDegradation;
             GameEvents.ShotFired -= OnShot;
             GameEvents.EnemyAlertChanged -= OnEnemyAlert;
             GameEvents.HighestAlertChanged -= OnHighestAlert;
@@ -167,6 +172,8 @@ namespace Heartbeat.Audio
             src.outputAudioMixerGroup = cue.bus;
             src.volume = cue.volume;
             src.pitch = Random.Range(cue.pitchRange.x, cue.pitchRange.y);
+            // M-18 vocal distortion: voices drop and waver with degradation; signals are never touched (D-29).
+            if (cue.name.StartsWith("CUE_Vocal_")) src.pitch *= Mathf.Max(0.75f, 1f - 0.025f * degradation) * Random.Range(1f - 0.01f * degradation, 1f);
             src.loop = loop;
             src.clip = cue.PickClip();
             busy[i] = true;

@@ -38,7 +38,7 @@ Each checkbox is one git-flow feature: `git flow feature start <id>`.
 ## H5 — Content complete
 - [ ] `E14-f2-kit-rooms` · `E14-f3-kit-rooms` · `E05-boca` · `E05-mudo`
 - [ ] `E14-mother-room` · `E09-phase1-nodes` · `E09-phase2-cameras` · `E09-phase3-transformers` · `E09-final-decision`
-- [ ] `E14-intro` · `E08-endings` · `E08-degradation-assimilation` (M-18) · `E08-machine-faults` (M-17)
+- [ ] `E14-intro` · [x] `E08-endings` (card sequences; staged shots with E14-intro) · [x] `E08-degradation-assimilation` (M-18 CRT + vocal pitch) · [ ] `E08-machine-faults` (M-17)
 - [x] `E15-documents` · `E15-bestiary` (36 records, corruption, first-encounter unlock) · [ ] `E15-posters` · [x] `E15-es-table` (all GDD texts EN+ES)
 - [ ] `E07-story-mode-showcase` — Story mode (+1 minimum) and showcase preset
 

@@ -88,6 +88,7 @@ namespace Heartbeat.Cycle
             g.lastUsedSlot = slot;
             saves.SaveGlobal(g);
             HbLog.Info("Cycle", $"Slot {slot}: {Data.SubjectLabel}, deaths {Data.deathCounter}, registry {registry.Count}");
+            GameEvents.RaiseDegradationChanged(Data.degradationLevel);
         }
 
         public void SaveNow()

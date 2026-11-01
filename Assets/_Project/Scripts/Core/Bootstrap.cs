@@ -61,6 +61,8 @@ namespace Heartbeat.Core
             UI.Loc.SetLanguage(global.language);
             input.LoadBindingOverrides(global.bindingOverrides);
             Render.Brightness.Apply(global.brightness);
+            Render.Degradation.Apply(0);
+            GameEvents.DegradationChanged += Render.Degradation.Apply;
             IsReady = true;
             HbLog.Info("Core", "Services ready");
         }
