@@ -83,6 +83,14 @@ namespace Heartbeat.Combat
             }
         }
 
+        /// <summary>Restores the drum when the inventory is carried to the next floor or loaded from an autosave.</summary>
+        public void SetLoaded(int rounds)
+        {
+            Loaded = Math.Max(0, Math.Min(drumSize, rounds));
+            IsReloading = false;
+            LoadedChanged?.Invoke(Loaded);
+        }
+
         /// <summary>Reconstruction: The Mother returns it unloaded (D-74).</summary>
         public void Unload()
         {

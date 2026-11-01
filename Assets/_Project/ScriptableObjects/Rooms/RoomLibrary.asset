@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77bd332081d2a0d47aff56e338acc8ab, type: 3}
+  m_Name: RoomLibrary
+  m_EditorClassIdentifier: Heartbeat.Runtime::Heartbeat.Generation.RoomLibrary
+  rooms:
+  - {fileID: 11400000, guid: a19cd87607f3b94488ceafca56aa4a27, type: 2}
+  - {fileID: 11400000, guid: bc2e0901b5e5db149b7fee6465d6551c, type: 2}
+  - {fileID: 11400000, guid: e7370619770168a4889322f7d958333d, type: 2}
+  - {fileID: 11400000, guid: 0cf47961b0361f049b579908f7fcb34b, type: 2}
+  - {fileID: 11400000, guid: e66de15809a301540bfa9a432077bbe5, type: 2}
+  - {fileID: 11400000, guid: e00580bc4b6bc9d4e84840ed77f958d7, type: 2}
+  - {fileID: 11400000, guid: bc94024c1f5e85d4a8b35d948c1fb240, type: 2}
+  - {fileID: 11400000, guid: 4717134959db52343a4aa1255f9437e3, type: 2}
+  - {fileID: 11400000, guid: e0259cc53b56f9047a104be2a5481a7a, type: 2}
+  - {fileID: 11400000, guid: 3c7b38db1a06af04289e62a5abdb0026, type: 2}

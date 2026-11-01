@@ -21,11 +21,11 @@ Rules
 | `PH_TheMother_CollectorArm` | Collector arm | 1 × 1 × 6 | box segments | ≤ 4k | Patrol, sweep, grab | pending |
 | `PH_TheMother_HostileCamera` | Hostile camera | 0.4 × 0.4 × 0.6 | box + cylinder lens | ≤ 1k | Pan / focus | pending |
 | `PH_Shared_Corpse` | Static dead assimilated | 0.6 × 0.3 × 1.8 | flattened capsule | ≤ 3k | – | pending |
-| `PH_F1_Generator`, `PH_F1_Boiler`, `PH_F1_Forklift`, `PH_F1_GantryCrane`, `PH_F1_WaterPump` | Floor 1 machines | see `OBJECT_CATALOG.md` | boxes / cylinders | ≤ 2k each | – | pending |
+| `PH_F1_Generator`, `PH_F1_Boiler`, `PH_F1_Forklift`, `PH_F1_GantryCrane`, `PH_F1_WaterPump` | Floor 1 machines | see `OBJECT_CATALOG.md` | boxes / cylinders | ≤ 2k each | – | Generator, Boiler done; others pending |
 | `PH_F2_HumanCapsule`, `PH_F2_MonsterCapsule`, `PH_F2_ResonanceCapsule` | Floor 2 capsules | see catalog | cylinder + box base | ≤ 2k each | – | pending |
 | `PH_F3_CryoTank`, `PH_F3_Transformer`, `PH_F3_BrokenCapsule` | Floor 3 machines | see catalog | cylinders / boxes | ≤ 2k each | – | pending |
 | `PH_Revolver` | Kessler revolver (ceramic frame, green round counter) | 0.25 × 0.15 × 0.05 | boxes; counter is a TMP 3D text | ≤ 1.5k | – | placeholder done (inside Player prefab, WeaponSocket) |
-| `PH_Capsule_Reconstruction` | Reconstruction capsule (capsule row) | 1.0 × 2.2 × 1.0 | cylinder + glass box | ≤ 2k | open/close | pending |
+| `PH_Capsule_Reconstruction` | Reconstruction capsule (capsule row) | 1.0 × 2.2 × 1.0 | cylinder + glass box | ≤ 2k | open/close | placeholder done |
 | `PH_Intro_House`, `PH_Intro_Elevator` | Intro set pieces | room-sized | kit-like boxes | – | – | pending |
 
 Add a row whenever you create a new `PH_` prefab.

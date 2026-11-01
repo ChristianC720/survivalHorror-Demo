@@ -47,7 +47,9 @@ namespace Heartbeat.Core
             Services.Register(sceneLoader);
             Services.Register(new PauseService(states));
             Services.Register(input);
-            Services.Register(new Narrative.RegistryModel());   // persistent knowledge; SaveService (E-08) loads it
+            Services.Register(new Narrative.RegistryModel());   // persistent knowledge, loaded from the slot
+            Services.Register(new Save.SaveService());
+            Services.Register(gameObject.AddComponent<Cycle.CycleController>());
             gameObject.AddComponent<PauseInput>();
 
             IsReady = true;

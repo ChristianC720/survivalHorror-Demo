@@ -50,11 +50,25 @@ namespace Heartbeat.Core
         public static event Action<AttackInfo> PlayerAttacked;
         public static event Action<bool> GrabResolved;        // true = countered by the spike
         public static event Action<MonoBehaviour, Vector3> EnemyKilled;
+        public static event Action<Vector3> RecycleWarning;
+        public static event Action<MonoBehaviour> EnemyRecycled;
 
         // AI
         public static event Action<MonoBehaviour, AlertState, float> EnemyAlertChanged;
         public static event Action<AlertState> HighestAlertChanged;
         public static event Action<bool> HuntChanged;          // true = at least one enemy hunting
+
+        // Level
+        public static event Action<MonoBehaviour> RoomEntered;            // Heartbeat.Generation.RoomInstance
+        public static event Action<int, int> FloorBuilt;                  // floor, seed
+        public static event Action PowerRestored;
+        public static event Action<int> FloorExitRequested;               // floor being left
+
+        // Cycle
+        public static event Action<int> DegradationChanged;
+        public static event Action<int> Reconstructed;                    // new subject code
+        public static event Action<string> EndingTriggered;               // Assimilation, BasicRelief, FullRelief, Ambiguous
+        public static event Action Autosaved;
 
         // Inventory / interaction
         public static event Action InventoryChanged;
@@ -75,9 +89,19 @@ namespace Heartbeat.Core
         public static void RaisePlayerAttacked(AttackInfo info) => PlayerAttacked?.Invoke(info);
         public static void RaiseGrabResolved(bool countered) => GrabResolved?.Invoke(countered);
         public static void RaiseEnemyKilled(MonoBehaviour enemy, Vector3 pos) => EnemyKilled?.Invoke(enemy, pos);
+        public static void RaiseRecycleWarning(Vector3 pos) => RecycleWarning?.Invoke(pos);
+        public static void RaiseEnemyRecycled(MonoBehaviour enemy) => EnemyRecycled?.Invoke(enemy);
         public static void RaiseEnemyAlertChanged(MonoBehaviour enemy, AlertState state, float distance) => EnemyAlertChanged?.Invoke(enemy, state, distance);
         public static void RaiseHighestAlertChanged(AlertState state) => HighestAlertChanged?.Invoke(state);
         public static void RaiseHuntChanged(bool hunting) => HuntChanged?.Invoke(hunting);
+        public static void RaiseRoomEntered(MonoBehaviour room) => RoomEntered?.Invoke(room);
+        public static void RaiseFloorBuilt(int floor, int seed) => FloorBuilt?.Invoke(floor, seed);
+        public static void RaisePowerRestored() => PowerRestored?.Invoke();
+        public static void RaiseFloorExitRequested(int floor) => FloorExitRequested?.Invoke(floor);
+        public static void RaiseDegradationChanged(int level) => DegradationChanged?.Invoke(level);
+        public static void RaiseReconstructed(int subject) => Reconstructed?.Invoke(subject);
+        public static void RaiseEndingTriggered(string ending) => EndingTriggered?.Invoke(ending);
+        public static void RaiseAutosaved() => Autosaved?.Invoke();
         public static void RaiseInventoryChanged() => InventoryChanged?.Invoke();
         public static void RaiseInventoryFull(string kind) => InventoryFull?.Invoke(kind);
         public static void RaiseInteractTargetChanged(MonoBehaviour target) => InteractTargetChanged?.Invoke(target);
@@ -99,10 +123,20 @@ namespace Heartbeat.Core
             PlayerAttacked = null;
             GrabResolved = null;
             EnemyKilled = null;
+            RecycleWarning = null;
+            EnemyRecycled = null;
             EnemyAlertChanged = null;
             HighestAlertChanged = null;
             HuntChanged = null;
             InventoryChanged = null;
+            DegradationChanged = null;
+            Reconstructed = null;
+            EndingTriggered = null;
+            Autosaved = null;
+            RoomEntered = null;
+            FloorBuilt = null;
+            PowerRestored = null;
+            FloorExitRequested = null;
             InventoryFull = null;
             InteractTargetChanged = null;
             ItemRegistered = null;
