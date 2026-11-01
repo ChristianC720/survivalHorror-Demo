@@ -14,7 +14,103 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.SharedTableData
   m_TableCollectionName: CONF
   m_TableCollectionNameGuidString: 00c3980c43d2faf44a50388d81d5893e
-  m_Entries: []
+  m_Entries:
+  - m_Id: 17772506644480
+    m_Key: CONF.WATCH.TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772556976128
+    m_Key: CONF.WATCH.BODY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772556976129
+    m_Key: CONF.THERMOS.TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772556976130
+    m_Key: CONF.THERMOS.BODY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772556976131
+    m_Key: CONF.GLASSES.TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772556976132
+    m_Key: CONF.GLASSES.BODY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772556976133
+    m_Key: CONF.LUNCHBOX_NOTE.TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772556976134
+    m_Key: CONF.LUNCHBOX_NOTE.BODY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772556976135
+    m_Key: CONF.PLUSH_RABBIT.TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772556976136
+    m_Key: CONF.PLUSH_RABBIT.BODY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772556976137
+    m_Key: CONF.WALLET.TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772556976138
+    m_Key: CONF.WALLET.BODY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772556976139
+    m_Key: CONF.ROSARY.TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772556976140
+    m_Key: CONF.ROSARY.BODY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772556976141
+    m_Key: CONF.CHILD_DRAWING.TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772556976142
+    m_Key: CONF.CHILD_DRAWING.BODY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772556976143
+    m_Key: CONF.EARPLUGS.TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772556976144
+    m_Key: CONF.EARPLUGS.BODY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772556976145
+    m_Key: CONF.BADGE_KS.TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772556976146
+    m_Key: CONF.BADGE_KS.BODY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772556976147
+    m_Key: CONF.CASSETTE.TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772556976148
+    m_Key: CONF.CASSETTE.BODY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772556976149
+    m_Key: CONF.HEADPHONES.TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772556976150
+    m_Key: CONF.HEADPHONES.BODY
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

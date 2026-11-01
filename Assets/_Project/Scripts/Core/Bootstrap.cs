@@ -47,7 +47,9 @@ namespace Heartbeat.Core
             Services.Register(sceneLoader);
             Services.Register(new PauseService(states));
             Services.Register(input);
-            Services.Register(new Narrative.RegistryModel());   // persistent knowledge, loaded from the slot
+            var registry = new Narrative.RegistryModel();     // persistent knowledge, loaded from the slot
+            Services.Register(registry);
+            Services.Register(new Narrative.BestiaryUnlocker(registry));
             Services.Register(new Save.SaveService());
             Services.Register(gameObject.AddComponent<Cycle.CycleController>());
             gameObject.AddComponent<PauseInput>();
@@ -89,6 +91,7 @@ namespace Heartbeat.Core
             states.StateChanged -= OnStateChanged;
             states.SubStateChanged -= GameEvents.RaisePlaySubStateChanged;
             input?.Dispose();
+            if (Services.TryGet(out Narrative.BestiaryUnlocker bestiary)) bestiary.Dispose();
             IsReady = false;
         }
 

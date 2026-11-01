@@ -214,7 +214,11 @@ namespace Heartbeat.UI
         private void Read(string id)
         {
             readerTitle.text = TitleOf(id);
-            readerBody.text = docsById.TryGetValue(id, out var d) ? Loc.Get(d.bodyKey) : "";
+            // {0} = Lukas's current subject number; {c} passages stay corrupt until the ending reveals them (D-127, D-55).
+            var cycle = Services.TryGet(out Cycle.CycleController c) ? c.Data : null;
+            string n = cycle != null ? cycle.subjectCode.ToString("00") : "07";
+            bool reveal = cycle != null && cycle.cycleCompleted && Services.Get<RegistryModel>().HasAllEmilia;
+            readerBody.text = docsById.TryGetValue(id, out var d) ? DocText.Render(Loc.Get(d.bodyKey, n), reveal) : "";
             HbLog.Info("Terminal", $"Read {id}");
         }
 

@@ -14,7 +14,159 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.SharedTableData
   m_TableCollectionName: DOC
   m_TableCollectionNameGuidString: 9b5eaff2e83da124da564122270dcaf9
-  m_Entries: []
+  m_Entries:
+  - m_Id: 17771982356480
+    m_Key: DOC.VOICE_NOTE_EMILIA.TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299520
+    m_Key: DOC.VOICE_NOTE_EMILIA.BODY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299521
+    m_Key: DOC.EMILIA.01.TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299522
+    m_Key: DOC.EMILIA.01.BODY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299523
+    m_Key: DOC.EMILIA.02.TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299524
+    m_Key: DOC.EMILIA.02.BODY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299525
+    m_Key: DOC.EMILIA.03.TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299526
+    m_Key: DOC.EMILIA.03.BODY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299527
+    m_Key: DOC.EMILIA.04.TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299528
+    m_Key: DOC.EMILIA.04.BODY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299529
+    m_Key: DOC.EMILIA.05.TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299530
+    m_Key: DOC.EMILIA.05.BODY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299531
+    m_Key: DOC.EMILIA.06.TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299532
+    m_Key: DOC.EMILIA.06.BODY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299533
+    m_Key: DOC.VK_MAINTENANCE_NOTICE.TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299534
+    m_Key: DOC.VK_MAINTENANCE_NOTICE.BODY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299535
+    m_Key: DOC.KS_PATROL_LOG.TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299536
+    m_Key: DOC.KS_PATROL_LOG.BODY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299537
+    m_Key: DOC.VK_REGEN_POSTER.TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299538
+    m_Key: DOC.VK_REGEN_POSTER.BODY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299539
+    m_Key: DOC.MOTHER_STATUS_REPORT.TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299540
+    m_Key: DOC.MOTHER_STATUS_REPORT.BODY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299541
+    m_Key: DOC.MOTHER_RH_RECORDS.TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299542
+    m_Key: DOC.MOTHER_RH_RECORDS.BODY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299543
+    m_Key: DOC.VK_TERMINATION.TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299544
+    m_Key: DOC.VK_TERMINATION.BODY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299545
+    m_Key: DOC.VK_INCIDENT_MEMO.TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299546
+    m_Key: DOC.VK_INCIDENT_MEMO.BODY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299547
+    m_Key: DOC.KS_INCIDENT_REPORT.TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299548
+    m_Key: DOC.KS_INCIDENT_REPORT.BODY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299549
+    m_Key: DOC.MOTHER_PRESERVATION_PROTOCOL.TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299550
+    m_Key: DOC.MOTHER_PRESERVATION_PROTOCOL.BODY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299551
+    m_Key: DOC.MOTHER_ARCHIVE_INDEX.TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299552
+    m_Key: DOC.MOTHER_ARCHIVE_INDEX.BODY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299553
+    m_Key: DOC.VK_RND_MINUTES.TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299554
+    m_Key: DOC.VK_RND_MINUTES.BODY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299555
+    m_Key: DOC.MOTHER_LISTENING_NOTE.TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299556
+    m_Key: DOC.MOTHER_LISTENING_NOTE.BODY
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

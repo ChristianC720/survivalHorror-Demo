@@ -206,8 +206,8 @@ namespace Heartbeat.Generation
                     }
                     prefab = documentPrefab;
                     break;
-                case ItemSpawnTag.Document: doc = Pick(contextDocuments); prefab = doc != null ? documentPrefab : null; break;
-                case ItemSpawnTag.Confiscated: doc = Pick(confiscatedObjects); prefab = doc != null ? documentPrefab : null; stays = true; break;
+                case ItemSpawnTag.Document: doc = Pick(contextDocuments, registered, item); prefab = doc != null ? documentPrefab : null; break;
+                case ItemSpawnTag.Confiscated: doc = Pick(confiscatedObjects, registered, item); prefab = doc != null ? documentPrefab : null; stays = true; break;
                 default:
                     Spawn(PrefabFor(item.Kind), at, item.Kind, item.Amount);
                     return;
@@ -231,8 +231,18 @@ namespace Heartbeat.Generation
             return null;
         }
 
-        private static DocumentDefinition Pick(DocumentDefinition[] pool) =>
-            pool == null || pool.Length == 0 ? null : pool[Random.Range(0, pool.Length)];
+        /// <summary>
+        /// A record of this floor, unread ones first; deterministic from the floor seed and the spawn (same seed = same floor).
+        /// </summary>
+        private DocumentDefinition Pick(DocumentDefinition[] pool, IReadOnlyCollection<string> registered, ItemPlacement item)
+        {
+            var mine = (pool ?? new DocumentDefinition[0]).Where(d => d != null && d.floor == Layout.Floor).ToList();
+            var unread = registered == null ? mine : mine.Where(d => !registered.Contains(d.id)).ToList();
+            var from = unread.Count > 0 ? unread : mine;
+            if (from.Count == 0) return null;
+            var rng = new System.Random(Layout.Seed * 31 + item.Room * 7 + item.Spawn);
+            return from[rng.Next(from.Count)];
+        }
 
         private GameObject PrefabFor(ItemKind k) => k switch
         {

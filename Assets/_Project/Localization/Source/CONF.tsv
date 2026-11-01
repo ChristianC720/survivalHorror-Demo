@@ -1,1 +1,25 @@
 key	en	es	note
+CONF.WATCH.TITLE	Stopped wristwatch	Reloj de pulsera parado	
+CONF.WATCH.BODY	VK-INV-1031 · 2081-03-14 · Maintenance, Sublevel B\nStopped at 03:12. Battery functional.	VK-INV-1031 · 2081-03-14 · Maintenance, Sublevel B\nSe detuvo a las 03:12. La pila funciona.	
+CONF.THERMOS.TITLE	Thermos with a scratched-out name	Termo con nombre rayado	
+CONF.THERMOS.BODY	VK-INV-1047 · 2081-03-14 · Maintenance, Sublevel A\nContents: coffee, cold. Owner's name removed by owner.	VK-INV-1047 · 2081-03-14 · Maintenance, Sublevel A\nContenido: café, frío. El dueño borró su propio nombre.	
+CONF.GLASSES.TITLE	Reading glasses with one cracked lens	Gafas de lectura con un cristal roto	
+CONF.GLASSES.BODY	VK-INV-1052 · 2081-03-14 · Boiler room 2\nPrescription: strong. Owner will not need them.	VK-INV-1052 · 2081-03-14 · Boiler room 2\nGraduación: alta. El dueño ya no las necesitará.	
+CONF.LUNCHBOX_NOTE.TITLE	Lunchbox with a child's note	Fiambrera con una nota infantil	
+CONF.LUNCHBOX_NOTE.BODY	VK-INV-1060 · 2081-03-14 · Workshop C\nNote reads "come home soon". Request not processed.	VK-INV-1060 · 2081-03-14 · Workshop C\nLa nota dice "vuelve pronto". Solicitud no procesada.	
+CONF.PLUSH_RABBIT.TITLE	Plush rabbit with a hospital wristband	Conejo de peluche con pulsera de hospital	
+CONF.PLUSH_RABBIT.BODY	VK-INV-2004 · 2080-09-01 · Subject, minor\nAdmitted with subject. Not required for treatment.	VK-INV-2004 · 2080-09-01 · Subject, minor\nIngresó con el sujeto. No es necesario para el tratamiento.	
+CONF.WALLET.TITLE	Wallet with an ID card	Cartera con documento de identidad	
+CONF.WALLET.BODY	VK-INV-2018 · 2080-12-11 · Subject, adult\nIdentity document retained. Identity not retained.	VK-INV-2018 · 2080-12-11 · Subject, adult\nDocumento de identidad conservado. Identidad no conservada.	
+CONF.ROSARY.TITLE	Plastic rosary	Rosario de plástico	
+CONF.ROSARY.BODY	VK-INV-2023 · 2081-01-30 · Subject, adult\nUsed during procedures. No measurable effect.	VK-INV-2023 · 2081-01-30 · Subject, adult\nUsado durante los procedimientos. Sin efecto medible.	
+CONF.CHILD_DRAWING.TITLE	Drawing of a house with a sun	Dibujo de una casa con un sol	
+CONF.CHILD_DRAWING.BODY	VK-INV-2031 · 2081-02-17 · Subject, minor\nDrawing of a house. Subject was not discharged.	VK-INV-2031 · 2081-02-17 · Subject, minor\nDibujo de una casa. El sujeto no recibió el alta.	
+CONF.EARPLUGS.TITLE	Bloodied earplugs	Tapones para los oídos ensangrentados	
+CONF.EARPLUGS.BODY	VK-INV-3002 · 2081-03-14 · PA central\nInsufficient protection.	VK-INV-3002 · 2081-03-14 · PA central\nProtección insuficiente.	
+CONF.BADGE_KS.TITLE	Werkschutz badge, post 7	Placa del Werkschutz, puesto 7	
+CONF.BADGE_KS.BODY	VK-INV-3009 · 2081-03-14 · Kessler Werkschutz\nReturned to Kessler. Kessler did not collect it.	VK-INV-3009 · 2081-03-14 · Kessler Werkschutz\nDevuelta a Kessler. Kessler no vino a recogerla.	
+CONF.CASSETTE.TITLE	Cassette hand-labelled "AKT I"	Casete etiquetada a mano "AKT I"	
+CONF.CASSETTE.BODY	VK-INV-3015 · 2081-03-14 · PA central\nDo not play.	VK-INV-3015 · 2081-03-14 · PA central\nNo reproducir.	
+CONF.HEADPHONES.TITLE	Melted studio headphones	Auriculares de estudio derretidos	
+CONF.HEADPHONES.BODY	VK-INV-3021 · 2081-03-14 · PA central\nOwner kept listening.	VK-INV-3021 · 2081-03-14 · PA central\nEl dueño siguió escuchando.	

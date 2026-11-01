@@ -17,7 +17,159 @@ MonoBehaviour:
   m_SharedData: {fileID: 11400000, guid: 9b5eaff2e83da124da564122270dcaf9, type: 2}
   m_Metadata:
     m_Items: []
-  m_TableData: []
+  m_TableData:
+  - m_Id: 17771982356480
+    m_Localized: "Voice note \u2014 Emilia"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299520
+    m_Localized: "<c>Lukas. If you're hearing this, I didn't come back.</c>\\nI've been looking into what happened at Vitalis. The incident. I found something in the sound and I went back for the rest of it.\\nSomething went wrong. I don't remember\u2026 I don't remember what I'm forgetting.\\nDon't come looking for me. <c>Please. Not you. Stay home. Keep the photo.</c>\\n<i>(breathing)</i> \u2026it's in the walls. I can hear it from here.\\n<i>(footsteps, running)</i>"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299521
+    m_Localized: "Notebook \u2014 2080-11-02"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299522
+    m_Localized: 'Sublevel C, acoustic lab. The pulse under the plant is not a heartbeat. A heartbeat repeats. This develops.\nI am transcribing it as a score: phrases, rests, returns. Tempo is stable at 41 bpm. Every 3 hours the material comes back slightly changed, like a theme after its variation.\nIt has the shape of an opening. Openings are followed by something.\n<c>Lukas asked why I come home smelling of the cold rooms. I said "work". He laughed and made tea anyway.</c>'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299523
+    m_Localized: "Notebook \u2014 2081-03-13"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299524
+    m_Localized: 'The score is complete up to bar 212. Then a double bar line. The first act ends there.\nThe second act exists. I can hear where it should start: the rests change length, as if something were waiting for a cue.\nRequested access to the PA central to compare the room''s resonance with the transcription. Denied. Kessler posted a guard at the door.\nI left a copy of the score on the mixing desk. I shouldn''t have.\n<c>Tomorrow is our anniversary. I''ll be home early. I promised.</c>'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299525
+    m_Localized: "Notebook \u2014 2081-03-20"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299526
+    m_Localized: I heard it. Only the first act, through the walls of Sublevel C. Then nothing.\nI woke up in a capsule. My hands were cold for two days. The machine said my preservation was "successful".\nI did not open the channel. I was in the acoustic lab. I am almost sure I was in the acoustic lab.\nVitalis calls me an "unstable survivor". Termination effective 2081-04-02.\n<c>I didn't tell Lukas about the capsule. I told him I was let go. He held me all night and said it was their loss.</c>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299527
+    m_Localized: "Notebook \u2014 2082-10-19"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299528
+    m_Localized: Went back. My old badge still opens the maintenance hatch; nobody revoked it. Nobody revokes anything here.\nThe pulse is louder without people. The building rearranges itself between visits; I mark doors with chalk and the marks are in the wrong rooms.\nThe machine greeted me with a number. I will not write it down.\nI died on the stairs of Sublevel C. I woke up in the capsule again. I lost something. I checked the score and it is all there. So it was something else.\nListen to the heartbeat. The second act starts at the core.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299529
+    m_Localized: "Notebook \u2014 2083-05-09"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299530
+    m_Localized: Third time this year. Or fourth. The dates are in the margins in my handwriting, so it must be true.\nThere is a photo in my wallet. A man is holding me and I am laughing. <c>His name is Lukas. His name is Lukas. His name is</c>\nI know I love him. I wrote it here so the machine can't take it.\nThe score now has notes I don't remember writing. Bars 213 to 240. I must have heard them. I must have been closer.\nListen to the heartbeat. Listen to the heartbeat. Listen.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299531
+    m_Localized: "Notebook \u2014 2083-11-17"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299532
+    m_Localized: I opened the channel.\nI did not open the channel.\nBoth sentences are in my handwriting, on the same page, with the same pen.\nTomorrow I go to the core. If the second act plays, I want to be in the room. If I don't come back, the phone will send the recording. <c>He will come anyway. He always comes anyway. Lukas, don't.</c>\nThe score ends at bar 240. The rest is not written. The rest has to be heard.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299533
+    m_Localized: "Vitalis Konzern \u2014 Notice to maintenance staff"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299534
+    m_Localized: "TO: Maintenance, Sublevels A\u2013C\\nRE: Low-frequency sound\\nThe rhythmic sound reported in the boiler rooms is plant resonance and poses no risk. Staff experiencing anxiety are reminded that listening to the heartbeat has a documented calming effect.\\nDo not record the sound. Do not hum along. Overtime will not be paid for \"listening breaks\".\\n<i>Ordnung ist das halbe Leben.</i>"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299535
+    m_Localized: "Kessler Sicherheit AG \u2014 Werkschutz patrol log, post 3"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299536
+    m_Localized: 02:00 Round complete. Nothing to report.\n02:40 Technician asks what is behind Door C-11. Told him it is not his concern. It is not ours either.\n03:00 Round complete. Nothing to report. Floor feels warm.\n03:12 Music on the PA. Nothing to report.\n03:13
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299537
+    m_Localized: "Vitalis Konzern \u2014 Advertising poster"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299538
+    m_Localized: "VITALIS REGEN\u2122\\nYour body. Renewed. Again.\\nClinically proven regeneration for the modern workforce. Ask your supervisor about early enrollment.\\n<i>Gesundheit ist Pflicht.</i>\\nSide effects may include fatigue, tinnitus and mild loss of personal history."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299539
+    m_Localized: "The Mother \u2014 Automatic status report"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299540
+    m_Localized: 'FACILITY STATUS: DECOMMISSIONED\nPersonnel on site: 0\nPersonnel preserved: {0}\nReports sent to Vitalis servers: 4,112\nReports read: 0\nRecommendation: continue reporting.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299541
+    m_Localized: "The Mother \u2014 Preservation log, series R-H"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299542
+    m_Localized: "SERIES R-H \u2014 PRESERVATION LOG\\nR-H-01 \xB7 2081-03-14 \xB7 Cardiac arrest. Acoustic exposure.\\nR-H-02 \xB7 2082-10-19 \xB7 Fall. Sublevel C stairwell.\\nR-H-03 \xB7 2083-01-27 \xB7 Hypothermia.\\nR-H-04 \xB7 2083-05-09 \xB7 Blunt trauma.\\nR-H-05 \xB7 2083-08-30 \xB7 Asphyxia.\\nR-H-06 \xB7 2083-11-18 \xB7 Acoustic exposure.\\nPreservation: successful. Subject retains identity."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299543
+    m_Localized: "Vitalis Konzern \u2014 Human Resources, termination notice"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299544
+    m_Localized: Dr. E. Reiner-Hellen, Acoustic Research\nFollowing the event of 2081-03-14, you have been classified as an unstable survivor. Your employment ends on 2081-04-02.\nVitalis Konzern thanks you for your contribution and reminds you that all research, notes and recollections remain company property.\nPlease return your badge.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299545
+    m_Localized: "Vitalis Konzern \u2014 Board, internal memo"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299546
+    m_Localized: CONFIDENTIAL\nThe event of 2081-03-14 was caused by an unauthorized researcher who accessed the PA central and broadcast unapproved material.\nThe facility will be sealed and decommissioned. No retrieval of personnel is planned; retrieval is not cost-effective.\nRegen production continues from existing stock.\n<i>Vertraulich. Nicht kopieren.</i>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299547
+    m_Localized: "Kessler Sicherheit AG \u2014 Incident report, post 7"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299548
+    m_Localized: 'Broadcast initiated 03:12 from the PA central console.\nConsole log: authenticated by facility system. No badge used.\nGuard on Post 7 (PA central door) reports no one entered or left.\nGuard on Post 7 stopped reporting at 03:14.\nContract status: active. Invoice attached.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299549
+    m_Localized: "The Mother \u2014 Staff preservation protocol (revision 9)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299550
+    m_Localized: '1. Personnel who cease to function are preserved.\n2. Preservation requires identity. Identity is confirmed by response to the subject code.\n3. Personnel without identity cannot be preserved. They remain on site. They are not my responsibility.\n4. Each preservation is successful.\n5. The number of personnel without identity is increasing. Cause: outside the scope of this protocol.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299551
+    m_Localized: "The Mother \u2014 Cryogenic archive index"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299552
+    m_Localized: "CRYOGENIC ARCHIVE \u2014 INDEX\\nSamples stored: 1,204\\nOrigin: personnel (all)\\nPurpose: Vitalis Regen\u2122 reference material\\nNon-conforming specimens pending collection: 1\\nNote: the archive sings at night. Logged as compressor noise."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299553
+    m_Localized: "Vitalis Konzern \u2014 R&D minutes"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299554
+    m_Localized: 'Attendees: R&D Board.\nItem 1: Source of the regenerative compound. Discussion postponed indefinitely.\nItem 2: Yield is up 14% since the night shift was moved closer to the core.\nItem 3: A board member asked what the compound is. The question was struck from the minutes.\nItem 4: Coffee machine on Sublevel B replaced.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299555
+    m_Localized: "The Mother \u2014 Clinical note: acoustic exposure"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299556
+    m_Localized: 'Subjects exposed to the first act: preservable.\nSubjects exposed to the complete heartbeat: no longer subjects.\nRecommendation to personnel: listen to the heartbeat. Do not listen to all of it.'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

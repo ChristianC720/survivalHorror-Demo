@@ -22,6 +22,9 @@
 - Runtime: `Heartbeat.UI.Loc.Get("UI.TERM.SUBJECT", "R-H-09")` (table = first key segment, `{0}` args via string.Format), `LocalizedLabel` for static TMP labels, `Loc.SetLanguage("es")` (Bootstrap applies `GlobalData.language`). Missing keys render as the key itself.
 - Localization uses Addressables: a player build needs **Addressables ▸ Build** first (E13-build).
 
+- `DOC`, `BEST` and `CONF` were generated once from `GDD/03 - Historia y Mundo/05 - Textos del Juego.md` (36 records: voice note, 6 Emilia, 12 context, 5 bestiary, 12 confiscated) with matching `DocumentDefinition` assets in `ScriptableObjects/Docs` (`DOC_VK_TERMINATION` …). From now on edit the TSV rows directly. Markup in bodies: `<c>…</c>` = corrupt passage (D-127, rendered by `Narrative.DocText`), `<i>…</i>` = German/stage directions, `{0}` = Lukas's subject number (`{n}` in the GDD).
+- Bestiary entries unlock on the first encounter (`Narrative.BestiaryUnlocker`, D-48); context documents and confiscated objects are picked per floor, unread first, seeded by the floor seed.
+
 ## Rules
 - Key format: `<table>.<area>.<id>`, e.g. `DOC.EMILIA.03`, `SUB.MOTHER.P2.01`.
 - German lines: put `DE-NO-TRANSLATE` in the note column; the importer copies the English cell to Spanish.

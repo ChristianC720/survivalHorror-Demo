@@ -165,8 +165,32 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1b2837707b51ac74187fcd01b3d56d10, type: 2}
   - {fileID: 11400000, guid: 771c3c6d9a0b1ce4fa43e484ea907790, type: 2}
   - {fileID: 11400000, guid: 7a2a4e7dce65c0340a1a728b15025863, type: 2}
-  contextDocuments: []
-  confiscatedObjects: []
+  contextDocuments:
+  - {fileID: 11400000, guid: ed651531d3f69c24081aa813e501d554, type: 2}
+  - {fileID: 11400000, guid: 6f5ddd7744e3e9b4c82e676c71177eac, type: 2}
+  - {fileID: 11400000, guid: 8b28850e233860a4c925e7668f05b558, type: 2}
+  - {fileID: 11400000, guid: f91c0352af9f52e4587b4208bbb4c6ae, type: 2}
+  - {fileID: 11400000, guid: f3e43ff1b2219a2499d2dca586975478, type: 2}
+  - {fileID: 11400000, guid: abc3a0d812b6a5547913e4eb19de231a, type: 2}
+  - {fileID: 11400000, guid: e39c97528720d1c42aae2cf906ab8ea1, type: 2}
+  - {fileID: 11400000, guid: 415978c76c5013f43b17fef0c58b7a94, type: 2}
+  - {fileID: 11400000, guid: 8a9926e28d10baf4d9ed8a92c570d72b, type: 2}
+  - {fileID: 11400000, guid: 9b3c1a15a0f184645a754d4e00aa5656, type: 2}
+  - {fileID: 11400000, guid: 18f9966bb569432498cdd41e96062f0a, type: 2}
+  - {fileID: 11400000, guid: cd23ccfaeedd74d40bdedb35517f91ef, type: 2}
+  confiscatedObjects:
+  - {fileID: 11400000, guid: 166c4887b5d6f8e4b9f686a6571f9ea5, type: 2}
+  - {fileID: 11400000, guid: 12fc74e13655fdf49aefc051726bfe22, type: 2}
+  - {fileID: 11400000, guid: 246eda497b409ca42a4585b3f801e8c8, type: 2}
+  - {fileID: 11400000, guid: 13c1f13b27273d54ab2e81a3b6086877, type: 2}
+  - {fileID: 11400000, guid: 2ab7cad0edac91641a32f8edd6b16caa, type: 2}
+  - {fileID: 11400000, guid: 855c36002d8c8d646a17d1d416e1d7d4, type: 2}
+  - {fileID: 11400000, guid: 2e6d617732c73c74cad83fca48b6bd9b, type: 2}
+  - {fileID: 11400000, guid: 537a997909620d442a2de924a0a9ee1a, type: 2}
+  - {fileID: 11400000, guid: 16af1b7e4b164254bb4b8e5436ae60a3, type: 2}
+  - {fileID: 11400000, guid: 07010c8c12af1f34bb0e6f223e38bb6c, type: 2}
+  - {fileID: 11400000, guid: 9ea6600c3290e8c4880faddaad2325fe, type: 2}
+  - {fileID: 11400000, guid: 08dcc50b93d55864989c1736ae4eedb0, type: 2}
   healPrefab: {fileID: 5459184611911477886, guid: dda272855226b104cacb9538272dcb74, type: 3}
   ammoPrefab: {fileID: 6007449852972562611, guid: 579e028f4c1642b47aa18921e8ad48f2, type: 3}
   spikePrefab: {fileID: 1029440222488540631, guid: 5e1e83755054c9c49b520fe88d00f4b2, type: 3}

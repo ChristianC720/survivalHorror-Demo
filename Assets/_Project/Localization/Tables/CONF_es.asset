@@ -17,7 +17,103 @@ MonoBehaviour:
   m_SharedData: {fileID: 11400000, guid: 00c3980c43d2faf44a50388d81d5893e, type: 2}
   m_Metadata:
     m_Items: []
-  m_TableData: []
+  m_TableData:
+  - m_Id: 17772506644480
+    m_Localized: Reloj de pulsera parado
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772556976128
+    m_Localized: "VK-INV-1031 \xB7 2081-03-14 \xB7 Maintenance, Sublevel B\\nSe detuvo a las 03:12. La pila funciona."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772556976129
+    m_Localized: Termo con nombre rayado
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772556976130
+    m_Localized: "VK-INV-1047 \xB7 2081-03-14 \xB7 Maintenance, Sublevel A\\nContenido: caf\xE9, fr\xEDo. El due\xF1o borr\xF3 su propio nombre."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772556976131
+    m_Localized: Gafas de lectura con un cristal roto
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772556976132
+    m_Localized: "VK-INV-1052 \xB7 2081-03-14 \xB7 Boiler room 2\\nGraduaci\xF3n: alta. El due\xF1o ya no las necesitar\xE1."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772556976133
+    m_Localized: Fiambrera con una nota infantil
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772556976134
+    m_Localized: "VK-INV-1060 \xB7 2081-03-14 \xB7 Workshop C\\nLa nota dice \"vuelve pronto\". Solicitud no procesada."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772556976135
+    m_Localized: Conejo de peluche con pulsera de hospital
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772556976136
+    m_Localized: "VK-INV-2004 \xB7 2080-09-01 \xB7 Subject, minor\\nIngres\xF3 con el sujeto. No es necesario para el tratamiento."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772556976137
+    m_Localized: Cartera con documento de identidad
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772556976138
+    m_Localized: "VK-INV-2018 \xB7 2080-12-11 \xB7 Subject, adult\\nDocumento de identidad conservado. Identidad no conservada."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772556976139
+    m_Localized: "Rosario de pl\xE1stico"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772556976140
+    m_Localized: "VK-INV-2023 \xB7 2081-01-30 \xB7 Subject, adult\\nUsado durante los procedimientos. Sin efecto medible."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772556976141
+    m_Localized: Dibujo de una casa con un sol
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772556976142
+    m_Localized: "VK-INV-2031 \xB7 2081-02-17 \xB7 Subject, minor\\nDibujo de una casa. El sujeto no recibi\xF3 el alta."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772556976143
+    m_Localized: "Tapones para los o\xEDdos ensangrentados"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772556976144
+    m_Localized: "VK-INV-3002 \xB7 2081-03-14 \xB7 PA central\\nProtecci\xF3n insuficiente."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772556976145
+    m_Localized: Placa del Werkschutz, puesto 7
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772556976146
+    m_Localized: "VK-INV-3009 \xB7 2081-03-14 \xB7 Kessler Werkschutz\\nDevuelta a Kessler. Kessler no vino a recogerla."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772556976147
+    m_Localized: Casete etiquetada a mano "AKT I"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772556976148
+    m_Localized: "VK-INV-3015 \xB7 2081-03-14 \xB7 PA central\\nNo reproducir."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772556976149
+    m_Localized: Auriculares de estudio derretidos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772556976150
+    m_Localized: "VK-INV-3021 \xB7 2081-03-14 \xB7 PA central\\nEl due\xF1o sigui\xF3 escuchando."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
