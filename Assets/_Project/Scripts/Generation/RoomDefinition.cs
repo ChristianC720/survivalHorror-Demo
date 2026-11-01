@@ -40,6 +40,8 @@ namespace Heartbeat.Generation
         [Tooltip("Final rooms of floors 1-2 may start without power (D-72).")] public bool canBeUnpowered;
         public int enemySpawns;
         public int itemSpawns;
+        [Tooltip("Tag of each item spawn, in hierarchy order (the builder maps index -> SpawnPoint).")]
+        public List<ItemSpawnTag> itemSpawnTags = new List<ItemSpawnTag>();
         [Tooltip("Weight when picking procedural rooms.")] public float weight = 1f;
     }
 }

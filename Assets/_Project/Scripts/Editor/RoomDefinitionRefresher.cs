@@ -97,6 +97,7 @@ namespace Heartbeat.EditorTools
             def.sockets = sockets;
             def.enemySpawns = enemies;
             def.itemSpawns = items;
+            def.itemSpawnTags = spawns.Where(s => s.kind == SpawnKind.Item).Select(s => s.itemTag).ToList();
             def.hasCamera = inst.CameraMount != null || n.StartsWith("KEY_");
             def.floor = n.Contains("_F3_") ? 3 : n.Contains("_F2_") ? 2 : 1;
             def.role = n.StartsWith("TUT_") ? RoomRole.Tutorial

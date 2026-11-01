@@ -23,7 +23,8 @@ Each checkbox is one git-flow feature: `git flow feature start <id>`.
 
 ## H3 — MVP
 - [ ] `E14-f1-rooms` — 6 F1 archetype rooms + 2–3 F1 secondary key rooms + F1 final + capsule row + 4 tutorial rooms
-- [ ] `E07-layout-graph` · `E07-validator` (1 000 seeds) · `E07-builder` · `E07-navmesh-activation` · `E07-budget`
+- [x] `E07-layout-graph` · `E07-validator` (1 000 seeds) · `E07-budget`
+- [ ] `E07-builder` · `E07-navmesh-activation`
 - [ ] `E08-death-cycle` · `E08-save-service` · `E08-arm-terminal-data` · `E08-recycling` · `E08-exit-cost`
 - [ ] `E03-surveillance` — iso view, signal stages, hidden attention, lockout (M-02, M-03)
 
