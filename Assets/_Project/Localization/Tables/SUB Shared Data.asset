@@ -14,7 +14,87 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.SharedTableData
   m_TableCollectionName: SUB
   m_TableCollectionNameGuidString: 2b828843787d449448d3dd73861bd1b7
-  m_Entries: []
+  m_Entries:
+  - m_Id: 1855164907520
+    m_Key: SUB.SPEAKER.LUKAS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1855240404992
+    m_Key: SUB.SPEAKER.MOTHER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1855244599296
+    m_Key: SUB.SPEAKER.EMILIA
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1855244599297
+    m_Key: SUB.MOTHER.LOCKDOWN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1855244599298
+    m_Key: SUB.MOTHER.PHASE1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1855244599299
+    m_Key: SUB.MOTHER.PHASE2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1855244599300
+    m_Key: SUB.MOTHER.PHASE3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1855244599301
+    m_Key: SUB.MOTHER.FALL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1855244599302
+    m_Key: SUB.MOTHER.ASSIMILATION
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1855244599303
+    m_Key: SUB.MOTHER.HOOK
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1855244599304
+    m_Key: SUB.LUKAS.RING
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1855244599305
+    m_Key: SUB.LUKAS.RING_EXAMINE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1855244599306
+    m_Key: SUB.LUKAS.FIRST_EMILIA_DOC
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1855244599307
+    m_Key: SUB.LUKAS.EMILIA_DOC
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1855244599308
+    m_Key: SUB.LUKAS.RH_RECORDS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1855244599309
+    m_Key: SUB.LUKAS.VOICE_NOTE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1855244599310
+    m_Key: SUB.LUKAS.PHOTO_FLOOR2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1855244599311
+    m_Key: SUB.LUKAS.CAPSULE_RETURN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1855244599312
+    m_Key: SUB.LUKAS.NAME_EMILIA
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1855244599313
+    m_Key: SUB.LUKAS.NAME_OWN
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

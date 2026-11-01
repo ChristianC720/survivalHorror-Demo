@@ -17,7 +17,87 @@ MonoBehaviour:
   m_SharedData: {fileID: 11400000, guid: 2b828843787d449448d3dd73861bd1b7, type: 2}
   m_Metadata:
     m_Items: []
-  m_TableData: []
+  m_TableData:
+  - m_Id: 1855164907520
+    m_Localized: Lukas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1855240404992
+    m_Localized: THE MOTHER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1855244599296
+    m_Localized: Emilia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1855244599297
+    m_Localized: Containment breach. Transit suspended.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1855244599298
+    m_Localized: 'Specimen {0}: non-conforming. Initiating collection.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1855244599299
+    m_Localized: Visual containment active. Releasing archived personnel to assist.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1855244599300
+    m_Localized: Core exposed. Preservation of {0} is the priority. Please hold still.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1855244599301
+    m_Localized: There is something else. I cannot describe it. It is not in my protocol.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1855244599302
+    m_Localized: "Subject {0}: identity not detected. Reclassified: decoy. Assigned to level \u22120."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1855244599303
+    m_Localized: New arrival detected. Initiating preservation protocol.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1855244599304
+    m_Localized: "\u2026This matters. I don't know why."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1855244599305
+    m_Localized: "Mine? Hers? \u2026Whose?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1855244599306
+    m_Localized: I know this handwriting.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1855244599307
+    m_Localized: "\u2026Keep going."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1855244599308
+    m_Localized: Six before me.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1855244599309
+    m_Localized: Say my name. Say it again.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1855244599310
+    m_Localized: "You're not supposed to be here. \u2026Neither am I."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1855244599311
+    m_Localized: Again.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1855244599312
+    m_Localized: "\u2026Emilia."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1855244599313
+    m_Localized: "\u2026Lukas. I'm Lukas."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

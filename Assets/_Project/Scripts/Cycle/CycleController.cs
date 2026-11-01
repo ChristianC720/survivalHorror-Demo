@@ -138,6 +138,7 @@ namespace Heartbeat.Cycle
             CurrentFloor = 1;
             FloorSession.Pending = NextRequest(1);
             GameEvents.RaiseReconstructed(Data.subjectCode);
+            if (Random.value < 1f / 3f) Subtitles.Say(Subtitles.Lukas, "SUB.LUKAS.CAPSULE_RETURN");   // 1 in 3 (Textos del Juego)
             HbLog.Info("Cycle", $"RECONSTRUCTION: subject {Data.SubjectLabel} (Space skips)");
             loader.Load(SceneNames.Floor, null, fadeOut: false);
             skipRequested = false;

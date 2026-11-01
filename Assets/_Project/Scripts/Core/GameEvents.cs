@@ -80,6 +80,9 @@ namespace Heartbeat.Core
         public static event Action<string, Vector3?> CueRequested;        // cue id, world position (null = 2D)
         public static event Action<string, Vector3?> CuePlayed;           // cue id actually played (tests, debug captions)
 
+        // Narrative text (D-52: no voice acting, subtitles for every vocal sound)
+        public static event Action<string, string, object[]> SubtitleRequested;   // speaker id, SUB key, format args
+
         public static void RaiseGameStateChanged(GameStateId from, GameStateId to) => GameStateChanged?.Invoke(from, to);
         public static void RaisePlaySubStateChanged(PlaySubState from, PlaySubState to) => PlaySubStateChanged?.Invoke(from, to);
         public static void RaisePauseChanged(bool paused) => PauseChanged?.Invoke(paused);
@@ -112,6 +115,7 @@ namespace Heartbeat.Core
         public static void RaiseItemRegistered(string id, int kind, bool isNew) => ItemRegistered?.Invoke(id, kind, isNew);
         public static void RaiseCueRequested(string cue, Vector3? pos) => CueRequested?.Invoke(cue, pos);
         public static void RaiseCuePlayed(string cue, Vector3? pos) => CuePlayed?.Invoke(cue, pos);
+        public static void RaiseSubtitleRequested(string speaker, string key, object[] args) => SubtitleRequested?.Invoke(speaker, key, args);
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         public static void ResetAll()
@@ -148,6 +152,7 @@ namespace Heartbeat.Core
             ItemRegistered = null;
             CueRequested = null;
             CuePlayed = null;
+            SubtitleRequested = null;
             Services.Clear();
         }
     }

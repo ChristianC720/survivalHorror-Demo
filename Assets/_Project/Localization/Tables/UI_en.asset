@@ -434,6 +434,18 @@ MonoBehaviour:
     m_Localized: ACCESS GRANTED
     m_Metadata:
       m_Items: []
+  - m_Id: 1932914720768
+    m_Localized: 'SUBJECT {0} PRESERVED. IDENTITY: RETAINED.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1932914720769
+    m_Localized: Opaque subtitle background
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1932914720770
+    m_Localized: Sound captions
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

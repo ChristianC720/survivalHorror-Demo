@@ -17,7 +17,87 @@ MonoBehaviour:
   m_SharedData: {fileID: 11400000, guid: 2b828843787d449448d3dd73861bd1b7, type: 2}
   m_Metadata:
     m_Items: []
-  m_TableData: []
+  m_TableData:
+  - m_Id: 1855164907520
+    m_Localized: Lukas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1855240404992
+    m_Localized: THE MOTHER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1855244599296
+    m_Localized: Emilia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1855244599297
+    m_Localized: "Brecha de contenci\xF3n. Tr\xE1nsito suspendido."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1855244599298
+    m_Localized: "Esp\xE9cimen {0}: no conforme. Iniciando recolecci\xF3n."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1855244599299
+    m_Localized: "Contenci\xF3n visual activa. Liberando personal archivado para colaborar."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1855244599300
+    m_Localized: "N\xFAcleo expuesto. La preservaci\xF3n de {0} es prioritaria. Por favor, no se mueva."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1855244599301
+    m_Localized: "Hay algo m\xE1s. No puedo describirlo. No est\xE1 en mi protocolo."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1855244599302
+    m_Localized: "Sujeto {0}: identidad no detectada. Reclasificado: se\xF1uelo. Asignado al nivel \u22120."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1855244599303
+    m_Localized: "Nueva llegada detectada. Iniciando protocolo de preservaci\xF3n."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1855244599304
+    m_Localized: "\u2026Esto importa. No s\xE9 por qu\xE9."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1855244599305
+    m_Localized: "\xBFM\xEDo? \xBFDe ella? \u2026\xBFDe qui\xE9n?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1855244599306
+    m_Localized: Conozco esta letra.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1855244599307
+    m_Localized: "\u2026Sigue."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1855244599308
+    m_Localized: Seis antes que yo.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1855244599309
+    m_Localized: Di mi nombre. Dilo otra vez.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1855244599310
+    m_Localized: "No deber\xEDas estar aqu\xED. \u2026Yo tampoco."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1855244599311
+    m_Localized: Otra vez.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1855244599312
+    m_Localized: "\u2026Emilia."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1855244599313
+    m_Localized: "\u2026Lukas. Soy Lukas."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

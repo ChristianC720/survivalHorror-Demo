@@ -1,1 +1,21 @@
 key	en	es	note
+SUB.SPEAKER.LUKAS	Lukas	Lukas	KEEP-EN (proper name)
+SUB.SPEAKER.MOTHER	THE MOTHER	THE MOTHER	KEEP-EN (proper name)
+SUB.SPEAKER.EMILIA	Emilia	Emilia	KEEP-EN (proper name)
+SUB.MOTHER.LOCKDOWN	Containment breach. Transit suspended.	Brecha de contención. Tránsito suspendido.	
+SUB.MOTHER.PHASE1	Specimen {0}: non-conforming. Initiating collection.	Espécimen {0}: no conforme. Iniciando recolección.	
+SUB.MOTHER.PHASE2	Visual containment active. Releasing archived personnel to assist.	Contención visual activa. Liberando personal archivado para colaborar.	
+SUB.MOTHER.PHASE3	Core exposed. Preservation of {0} is the priority. Please hold still.	Núcleo expuesto. La preservación de {0} es prioritaria. Por favor, no se mueva.	
+SUB.MOTHER.FALL	There is something else. I cannot describe it. It is not in my protocol.	Hay algo más. No puedo describirlo. No está en mi protocolo.	
+SUB.MOTHER.ASSIMILATION	Subject {0}: identity not detected. Reclassified: decoy. Assigned to level −0.	Sujeto {0}: identidad no detectada. Reclasificado: señuelo. Asignado al nivel −0.	
+SUB.MOTHER.HOOK	New arrival detected. Initiating preservation protocol.	Nueva llegada detectada. Iniciando protocolo de preservación.	
+SUB.LUKAS.RING	…This matters. I don't know why.	…Esto importa. No sé por qué.	
+SUB.LUKAS.RING_EXAMINE	Mine? Hers? …Whose?	¿Mío? ¿De ella? …¿De quién?	
+SUB.LUKAS.FIRST_EMILIA_DOC	I know this handwriting.	Conozco esta letra.	
+SUB.LUKAS.EMILIA_DOC	…Keep going.	…Sigue.	
+SUB.LUKAS.RH_RECORDS	Six before me.	Seis antes que yo.	
+SUB.LUKAS.VOICE_NOTE	Say my name. Say it again.	Di mi nombre. Dilo otra vez.	
+SUB.LUKAS.PHOTO_FLOOR2	You're not supposed to be here. …Neither am I.	No deberías estar aquí. …Yo tampoco.	
+SUB.LUKAS.CAPSULE_RETURN	Again.	Otra vez.	
+SUB.LUKAS.NAME_EMILIA	…Emilia.	…Emilia.	
+SUB.LUKAS.NAME_OWN	…Lukas. I'm Lukas.	…Lukas. Soy Lukas.	

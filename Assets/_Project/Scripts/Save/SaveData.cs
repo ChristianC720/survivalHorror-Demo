@@ -19,7 +19,9 @@ namespace Heartbeat.Save
         public string language = "en";
         public string bindingOverrides = "";
         public float volMaster = 1f, volMusic = 0.8f, volSfx = 1f, volAmbience = 1f, volVoices = 1f;
-        public bool subtitles = true;
+        public bool subtitles = true;          // shortcut: unused, subtitles are mandatory (D-52); kept for save compatibility
+        public bool subtitleOpaque;
+        public bool soundCaptions;             // D-102, off by default
         public float textScale = 1f;
         public bool dyslexiaFont;
         public bool crouchToggle = true;

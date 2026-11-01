@@ -431,6 +431,18 @@ MonoBehaviour:
     m_Key: UI.HUD.ACCESS_GRANTED
     m_Metadata:
       m_Items: []
+  - m_Id: 1932914720768
+    m_Key: UI.TERM.MOTHER_SUBJECT_REGISTER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1932914720769
+    m_Key: UI.OPT.SUB_OPAQUE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1932914720770
+    m_Key: UI.OPT.SOUND_CAPTIONS
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
