@@ -106,3 +106,10 @@ UI.HUD.ACCESS_GRANTED	ACCESS GRANTED	ACCESS GRANTED	KEEP-EN (D-62 terminal label
 UI.TERM.MOTHER_SUBJECT_REGISTER	SUBJECT {0} PRESERVED. IDENTITY: RETAINED.	SUBJECT {0} PRESERVED. IDENTITY: RETAINED.	KEEP-EN (D-62 terminal label)
 UI.OPT.SUB_OPAQUE	Opaque subtitle background	Fondo opaco de subtítulos	
 UI.OPT.SOUND_CAPTIONS	Sound captions	Subtítulos de sonido	
+UI.DIR.AHEAD	ahead	delante	
+UI.DIR.BEHIND	behind	detrás	
+UI.DIR.LEFT	left	izquierda	
+UI.DIR.RIGHT	right	derecha	
+UI.OPT.REBIND_TAKEN	Key already in use	Tecla ya asignada	
+UI.OPT.LANG_EN	English	English	KEEP-EN
+UI.OPT.LANG_ES	Español	Español	KEEP-EN

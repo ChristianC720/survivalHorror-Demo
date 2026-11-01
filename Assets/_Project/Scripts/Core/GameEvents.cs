@@ -83,6 +83,9 @@ namespace Heartbeat.Core
         // Narrative text (D-52: no voice acting, subtitles for every vocal sound)
         public static event Action<string, string, object[]> SubtitleRequested;   // speaker id, SUB key, format args
 
+        // Options (GlobalData saved; listeners re-read it from SaveService)
+        public static event Action OptionsChanged;
+
         public static void RaiseGameStateChanged(GameStateId from, GameStateId to) => GameStateChanged?.Invoke(from, to);
         public static void RaisePlaySubStateChanged(PlaySubState from, PlaySubState to) => PlaySubStateChanged?.Invoke(from, to);
         public static void RaisePauseChanged(bool paused) => PauseChanged?.Invoke(paused);
@@ -116,6 +119,7 @@ namespace Heartbeat.Core
         public static void RaiseCueRequested(string cue, Vector3? pos) => CueRequested?.Invoke(cue, pos);
         public static void RaiseCuePlayed(string cue, Vector3? pos) => CuePlayed?.Invoke(cue, pos);
         public static void RaiseSubtitleRequested(string speaker, string key, object[] args) => SubtitleRequested?.Invoke(speaker, key, args);
+        public static void RaiseOptionsChanged() => OptionsChanged?.Invoke();
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         public static void ResetAll()
@@ -153,6 +157,7 @@ namespace Heartbeat.Core
             CueRequested = null;
             CuePlayed = null;
             SubtitleRequested = null;
+            OptionsChanged = null;
             Services.Clear();
         }
     }

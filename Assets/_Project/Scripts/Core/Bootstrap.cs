@@ -56,6 +56,7 @@ namespace Heartbeat.Core
 
             var global = Services.Get<Save.SaveService>().LoadGlobal();
             UI.Loc.SetLanguage(global.language);
+            input.LoadBindingOverrides(global.bindingOverrides);
             Render.Brightness.Apply(global.brightness);
             IsReady = true;
             HbLog.Info("Core", "Services ready");

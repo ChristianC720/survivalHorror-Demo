@@ -443,6 +443,34 @@ MonoBehaviour:
     m_Key: UI.OPT.SOUND_CAPTIONS
     m_Metadata:
       m_Items: []
+  - m_Id: 6196361822208
+    m_Key: UI.DIR.AHEAD
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6196433125376
+    m_Key: UI.DIR.BEHIND
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6196433125377
+    m_Key: UI.DIR.LEFT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6196433125378
+    m_Key: UI.DIR.RIGHT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6196433125379
+    m_Key: UI.OPT.REBIND_TAKEN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6196433125380
+    m_Key: UI.OPT.LANG_EN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6196433125381
+    m_Key: UI.OPT.LANG_ES
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

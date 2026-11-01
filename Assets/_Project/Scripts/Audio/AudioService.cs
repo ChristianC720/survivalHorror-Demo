@@ -67,9 +67,16 @@ namespace Heartbeat.Audio
             else HbLog.Warn("Audio", "No AudioBalance: heartbeats disabled");
         }
 
-        private void Start()
+        private bool soundCaptions;
+
+        private void Start() => OnOptions();
+
+        private void OnOptions()
         {
-            if (Services.TryGet(out Save.SaveService saves)) ApplyVolumes(saves.LoadGlobal());
+            if (!Services.TryGet(out Save.SaveService saves)) return;
+            var g = saves.LoadGlobal();
+            ApplyVolumes(g);
+            soundCaptions = g.soundCaptions;
         }
 
         /// <summary>Options volumes (0..1) → exposed mixer params. Ambience/Music go through the duck in Update.</summary>
@@ -86,6 +93,7 @@ namespace Heartbeat.Audio
         private void OnEnable()
         {
             GameEvents.CueRequested += OnCueRequested;
+            GameEvents.OptionsChanged += OnOptions;
             GameEvents.ShotFired += OnShot;
             GameEvents.EnemyAlertChanged += OnEnemyAlert;
             GameEvents.HighestAlertChanged += OnHighestAlert;
@@ -104,6 +112,7 @@ namespace Heartbeat.Audio
         private void OnDisable()
         {
             GameEvents.CueRequested -= OnCueRequested;
+            GameEvents.OptionsChanged -= OnOptions;
             GameEvents.ShotFired -= OnShot;
             GameEvents.EnemyAlertChanged -= OnEnemyAlert;
             GameEvents.HighestAlertChanged -= OnHighestAlert;
@@ -165,7 +174,9 @@ namespace Heartbeat.Audio
             started[i] = Time.unscaledTime;
             follow[i] = target;
             if (src.clip != null) src.Play();
-            else if (showDebugCaptions && Debug.isDebugBuild && !string.IsNullOrEmpty(cue.debugCaption))
+            if (soundCaptions && cue.priority == CuePriority.Signal && !string.IsNullOrEmpty(cue.debugCaption))
+                captions.Add((cue.debugCaption + Direction(spatial ? position : null), Time.unscaledTime + 2.5f));   // D-102; shortcut: caption text is the English cue caption (IMGUI), move to a SUB/CAP table + uGUI before release
+            else if (src.clip == null && showDebugCaptions && Debug.isDebugBuild && !string.IsNullOrEmpty(cue.debugCaption))
                 captions.Add((cue.debugCaption, Time.unscaledTime + 2f));
 
             if (cue.priority == CuePriority.Signal) duckUntil = Mathf.Max(duckUntil, Time.unscaledTime + duckHoldSeconds);
@@ -206,6 +217,17 @@ namespace Heartbeat.Audio
             var style = new GUIStyle(GUI.skin.box) { fontSize = 14, alignment = TextAnchor.MiddleLeft };
             for (int i = 0; i < captions.Count; i++)
                 GUI.Box(new Rect(Screen.width - 330, 10 + i * 26, 320, 24), "♪ " + captions[i].text, style);
+        }
+
+        /// <summary>Approximate direction for sound captions (D-102): never distance or screen position (D-02).</summary>
+        private static string Direction(Vector3? pos)
+        {
+            var cam = Camera.main;
+            if (!pos.HasValue || cam == null) return "";
+            Vector3 d = cam.transform.InverseTransformPoint(pos.Value);
+            float angle = Mathf.Atan2(d.x, d.z) * Mathf.Rad2Deg;
+            string key = Mathf.Abs(angle) < 45f ? "UI.DIR.AHEAD" : Mathf.Abs(angle) > 135f ? "UI.DIR.BEHIND" : angle > 0f ? "UI.DIR.RIGHT" : "UI.DIR.LEFT";
+            return ", " + UI.Loc.Get(key);
         }
 
         // ---------- Event → cue table (AUDIO_CUES.md) ----------

@@ -42,14 +42,27 @@ namespace Heartbeat.UI
             var title = UiKit.Text(box, Loc.Get("UI.PAUSE.TITLE"), 40, UiKit.Teal);
             title.alignment = TMPro.TextAlignmentOptions.Center;
             var resume = UiKit.Button(box, Loc.Get("UI.PAUSE.RESUME"), 30, UiKit.Teal, () => Services.Get<PauseService>().TryResume(), 56);
-            var options = UiKit.Button(box, Loc.Get("UI.MENU.OPTIONS"), 30, UiKit.Teal, null, 56);
-            options.interactable = false;   // enabled by E10-options
+            UiKit.Button(box, Loc.Get("UI.MENU.OPTIONS"), 30, UiKit.Teal, ShowOptions, 56);
             bool canRestart = pausedFrom == GameStateId.Playing;   // not in the Intro or the final decision
             var restart = UiKit.Button(box, Loc.Get("UI.PAUSE.RESTART"), 30, UiKit.Teal, ConfirmRestart, 56);
             restart.interactable = canRestart;
             UiKit.Button(box, Loc.Get("UI.PAUSE.QUIT"), 30, UiKit.Teal, ConfirmQuit, 56);
             UiKit.Select(resume);
             HbLog.Info("UI", "Pause menu");
+        }
+
+        private void ShowOptions()
+        {
+            Destroy(root.gameObject);
+            root = UiKit.Stretch(UiKit.Rect("PauseOptions", transform), Vector2.zero, Vector2.one);
+            root.gameObject.AddComponent<Image>().color = new Color(0f, 0f, 0f, 0.85f);
+            var box = UiKit.Rect("Box", root);
+            box.anchorMin = box.anchorMax = box.pivot = new Vector2(0.5f, 0.5f);
+            box.sizeDelta = new Vector2(1300, 0);
+            UiKit.Panel(box, new Color(0.01f, 0.05f, 0.05f, 0.95f), UiKit.TealDim);
+            UiKit.Column(box, 10, 24);
+            box.gameObject.AddComponent<ContentSizeFitter>().verticalFit = ContentSizeFitter.FitMode.PreferredSize;
+            OptionsView.Build(box, root, UiKit.Teal, () => { Destroy(root.gameObject); Build(); });
         }
 
         private void ConfirmRestart() =>

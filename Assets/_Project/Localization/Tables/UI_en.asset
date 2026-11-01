@@ -446,6 +446,34 @@ MonoBehaviour:
     m_Localized: Sound captions
     m_Metadata:
       m_Items: []
+  - m_Id: 6196361822208
+    m_Localized: ahead
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6196433125376
+    m_Localized: behind
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6196433125377
+    m_Localized: left
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6196433125378
+    m_Localized: right
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6196433125379
+    m_Localized: Key already in use
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6196433125380
+    m_Localized: English
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6196433125381
+    m_Localized: "Espa\xF1ol"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

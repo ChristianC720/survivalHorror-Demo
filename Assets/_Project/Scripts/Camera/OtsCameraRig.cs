@@ -32,11 +32,25 @@ namespace Heartbeat.CameraSystem
         public float Yaw => yaw;
         public CinemachineBrain Brain => brain;
 
-        private void OnEnable() => Services.Register(this);
-        private void OnDisable() => Services.Unregister(this);
+        private void OnEnable() { Services.Register(this); GameEvents.OptionsChanged += ReadOptions; }
+        private void OnDisable() { Services.Unregister(this); GameEvents.OptionsChanged -= ReadOptions; }
+
+        private float lookSensScale = 1f, aimSensScale = 1f;
+        private bool invertY;
+
+        /// <summary>Options ▸ Controls: sensitivity multipliers and invert Y (D-104).</summary>
+        private void ReadOptions()
+        {
+            if (!Services.TryGet(out Save.SaveService saves)) return;
+            var g = saves.LoadGlobal();
+            lookSensScale = g.lookSensitivity;
+            aimSensScale = g.aimSensitivity;
+            invertY = g.invertY;
+        }
 
         private void Start()
         {
+            ReadOptions();
             router = Services.Get<InputRouter>();
             if (!Services.TryGet(out player))
             {
@@ -89,10 +103,10 @@ namespace Heartbeat.CameraSystem
         {
             Vector2 v = look.ReadValue<Vector2>();
             bool stick = look.activeControl != null && look.activeControl.device is Gamepad;
-            float sens = aiming ? balance.aimMouseSensitivity : balance.mouseSensitivity;
+            float sens = aiming ? balance.aimMouseSensitivity * aimSensScale : balance.mouseSensitivity * lookSensScale;
             Vector2 delta = stick ? v / 300f * balance.stickDegreesPerSecond * Time.deltaTime : v * sens;
             yaw += delta.x;
-            pitch += balance.invertY ? delta.y : -delta.y;
+            pitch += balance.invertY != invertY ? delta.y : -delta.y;
             pitch = Mathf.Clamp(pitch, balance.minPitch, balance.maxPitch);
         }
 

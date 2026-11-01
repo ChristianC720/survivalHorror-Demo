@@ -147,8 +147,7 @@ namespace Heartbeat.UI
             cont.interactable = canContinue;                                // grey without a game (D-96)
             var newBtn = Btn(Loc.Get("UI.MENU.NEW"), () => ShowSlots(newGame: true));
             Btn(Loc.Get("UI.MENU.LOAD"), () => ShowSlots(newGame: false));
-            var opt = Btn(Loc.Get("UI.MENU.OPTIONS"), ShowOptions);
-            opt.interactable = false;   // enabled by E10-options
+            Btn(Loc.Get("UI.MENU.OPTIONS"), ShowOptions);
             Btn(Loc.Get("UI.MENU.CREDITS"), ShowCredits);
             Btn(Loc.Get("UI.MENU.QUIT"), () => ConfirmDialog.Show(canvas, Loc.Get("UI.CONFIRM.QUIT_GAME"), QuitGame, null, Green));
             UiKit.Select(canContinue ? cont : newBtn);
@@ -221,7 +220,9 @@ namespace Heartbeat.UI
 
         private void ShowOptions()
         {
-            HbLog.Info("Menu", "Options (E10-options)");
+            NewScreen(1300);
+            OptionsView.Build(screen, canvas, Green, ShowMain);
+            HbLog.Info("Menu", "Options");
         }
 
         private void StartGame(int slot, GameMode mode, bool newGame)
