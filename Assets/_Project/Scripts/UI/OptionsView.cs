@@ -29,6 +29,7 @@ namespace Heartbeat.UI
         private RectTransform body;
         private OptionsSection section;
         private InputActionRebindingExtensions.RebindingOperation rebind;
+        private readonly System.Collections.Generic.Dictionary<string, Button> rebindButtons = new System.Collections.Generic.Dictionary<string, Button>();
 
         /// <summary>Builds the options screen inside <paramref name="parent"/> (a vertical layout).</summary>
         public static OptionsView Build(RectTransform parent, Transform dialogParent, Color color, Action onBack)
@@ -84,6 +85,7 @@ namespace Heartbeat.UI
             rebind?.Cancel();
             section = s;
             foreach (Transform c in body) Destroy(c.gameObject);
+            rebindButtons.Clear();
             switch (s)
             {
                 case OptionsSection.Audio:
@@ -201,7 +203,17 @@ namespace Heartbeat.UI
             label.gameObject.AddComponent<LayoutElement>().preferredWidth = 420;
             Button b = null;
             b = UiKit.Button(r, Current(action), 22, color, () => StartRebind(action, b), 34);
+            rebindButtons[actionName] = b;
         }
+
+        /// <summary>Playtests: same as clicking the rebind button of a Gameplay action (Controls section must be shown).</summary>
+        public void DebugRebind(string actionName)
+        {
+            if (rebindButtons.TryGetValue(actionName, out var b) && b != null) b.onClick.Invoke();
+        }
+
+        public string DebugBinding(string actionName) =>
+            Current(Services.Get<InputRouter>().Actions.asset.FindAction("Gameplay/" + actionName, true));
 
         private static string Current(InputAction a) =>
             a.GetBindingDisplayString(InputBinding.MaskByGroup("KeyboardMouse"));
