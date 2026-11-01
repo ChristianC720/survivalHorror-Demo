@@ -8,7 +8,7 @@ Each checkbox is one git-flow feature: `git flow feature start <id>`.
 - [x] `E00-cleanup` — legacy prototype tagged and removed; docs, skills
 - [x] `E00-packages` — Cinemachine 3, Timeline, Animation Rigging, Localization, Test Framework, TMP essentials; asmdefs; folders; layers (KIT_SPEC §6)
 - [x] `E00-render` — pixelated ~540p Renderer Feature + dithering, Forward+, quality tiers
-- [ ] `E01-core` — `Bootstrap`, `Services`, `GameEvents`, `GameStateMachine`, `SceneLoader`, scenes in build
+- [x] `E01-core` — `Bootstrap`, `Services`, `GameEvents`, `GameStateMachine`, `SceneLoader`, scenes in build
 - [ ] `E01-pause` — pause (only `timeScale` user), confirmations
 - [ ] `E02-input` — `Heartbeat.inputactions` with 8 context maps, `InputRouter`, fixed gamepad map
 - [ ] `E02-player-motor` — `PH_Lukas`, CharacterController movement (crouch 0.8 / walk 1.5 / run 4 m/s), noise emitter

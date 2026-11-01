@@ -1,0 +1,109 @@
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem.UI;
+using UnityEngine.SceneManagement;
+
+namespace Heartbeat.Core
+{
+    /// <summary>
+    /// Root of the persistent Bootstrap scene (D-108). Creates and registers the services, then routes to the
+    /// first state. When Play is pressed in another scene, <see cref="BootstrapLoader"/> loads Bootstrap
+    /// additively and that scene is adopted as the gameplay scene (dev convenience).
+    /// </summary>
+    [DefaultExecutionOrder(-1000)]
+    public sealed class Bootstrap : MonoBehaviour
+    {
+        [SerializeField] private SceneLoader sceneLoader;
+
+        public static bool IsReady { get; private set; }
+
+        private GameStateMachine states;
+
+        private void Awake()
+        {
+            if (Services.TryGet<GameStateMachine>(out _))
+            {
+                // A second Bootstrap (e.g. scene reloaded): keep the first one.
+                Destroy(gameObject);
+                return;
+            }
+
+            DontDestroyOnLoad(gameObject);
+            PauseService.ResetTime();
+
+            if (sceneLoader == null) sceneLoader = gameObject.AddComponent<SceneLoader>();
+            EnsureEventSystem();
+
+            states = new GameStateMachine();
+            states.StateChanged += OnStateChanged;
+            states.SubStateChanged += GameEvents.RaisePlaySubStateChanged;
+
+            Services.Register(states);
+            Services.Register(sceneLoader);
+            Services.Register(new PauseService(states));
+
+            IsReady = true;
+            HbLog.Info("Core", "Services ready");
+        }
+
+        private void Start()
+        {
+            string launchScene = BootstrapLoader.LaunchScene;
+            if (string.IsNullOrEmpty(launchScene) || launchScene == SceneNames.Bootstrap)
+            {
+                // Normal game launch. Brightness calibration and title come with E-10; go to the menu for now.
+                states.TryTransition(GameStateId.MainMenu);
+                sceneLoader.Load(SceneNames.MainMenu);
+                return;
+            }
+
+            // Editor: play pressed inside a gameplay or sandbox scene.
+            sceneLoader.AdoptOpenScene(launchScene);
+            var target = launchScene == SceneNames.MainMenu ? GameStateId.MainMenu
+                : launchScene == SceneNames.Intro ? GameStateId.Intro
+                : GameStateId.Playing;
+            states.TryTransition(target);
+            HbLog.Info("Core", $"Launched from scene '{launchScene}' -> {target}");
+        }
+
+        private void OnDestroy()
+        {
+            if (states == null) return;
+            states.StateChanged -= OnStateChanged;
+            states.SubStateChanged -= GameEvents.RaisePlaySubStateChanged;
+            IsReady = false;
+        }
+
+        private static void OnStateChanged(GameStateId from, GameStateId to)
+        {
+            HbLog.Info("State", $"{from} -> {to}");
+            GameEvents.RaiseGameStateChanged(from, to);
+        }
+
+        private void EnsureEventSystem()
+        {
+            if (FindAnyObjectByType<EventSystem>() != null) return;
+            var es = new GameObject("EventSystem", typeof(EventSystem), typeof(InputSystemUIInputModule));
+            es.transform.SetParent(transform, false);
+        }
+    }
+
+    /// <summary>Loads Bootstrap first whatever scene Play was pressed in.</summary>
+    public static class BootstrapLoader
+    {
+        public static string LaunchScene { get; private set; }
+
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+        private static void LoadBootstrap()
+        {
+            LaunchScene = SceneManager.GetActiveScene().name;
+            if (LaunchScene == SceneNames.Bootstrap) return;
+            if (!Application.CanStreamedLevelBeLoaded(SceneNames.Bootstrap))
+            {
+                Debug.LogWarning("[Heartbeat][Core] Bootstrap scene is not in the build settings");
+                return;
+            }
+            SceneManager.LoadScene(SceneNames.Bootstrap, LoadSceneMode.Additive);
+        }
+    }
+}
