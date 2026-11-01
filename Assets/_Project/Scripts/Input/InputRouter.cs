@@ -44,10 +44,28 @@ namespace Heartbeat.InputRouting
 
         public event Action<InputContext> ContextChanged;
 
+        /// <summary>Last device that performed an action; prompts and posters follow it on the fly (D-132).</summary>
+        public bool UsingGamepad { get; private set; }
+        public event Action<bool> DeviceChanged;
+
         public InputRouter()
         {
             Actions = new HeartbeatInput();
             SetContext(InputContext.None);
+            InputSystem.onActionChange += OnActionChange;
+        }
+
+        /// <summary>Display name of the action's binding for the current device, e.g. "E" or "A".</summary>
+        public string KeyFor(InputAction action) =>
+            action.GetBindingDisplayString(InputBinding.MaskByGroup(UsingGamepad ? "Gamepad" : "KeyboardMouse"));
+
+        private void OnActionChange(object o, InputActionChange change)
+        {
+            if (change != InputActionChange.ActionPerformed || !(o is InputAction a) || a.activeControl == null) return;
+            bool pad = a.activeControl.device is Gamepad;
+            if (pad == UsingGamepad) return;
+            UsingGamepad = pad;
+            DeviceChanged?.Invoke(pad);
         }
 
         /// <summary>
@@ -130,6 +148,7 @@ namespace Heartbeat.InputRouting
 
         public void Dispose()
         {
+            InputSystem.onActionChange -= OnActionChange;
             Actions.Disable();
             // The generated wrapper's Dispose calls Object.Destroy, which is invalid in edit mode (tests).
             if (UnityEngine.Application.isPlaying) Actions.Dispose();

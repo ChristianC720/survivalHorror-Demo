@@ -426,6 +426,14 @@ MonoBehaviour:
     m_Localized: Story
     m_Metadata:
       m_Items: []
+  - m_Id: 1385306390528
+    m_Localized: REGISTERED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1385369305088
+    m_Localized: ACCESS GRANTED
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

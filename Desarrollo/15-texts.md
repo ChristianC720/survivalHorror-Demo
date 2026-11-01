@@ -25,6 +25,7 @@
 ## Rules
 - Key format: `<table>.<area>.<id>`, e.g. `DOC.EMILIA.03`, `SUB.MOTHER.P2.01`.
 - German lines: put `DE-NO-TRANSLATE` in the note column; the importer copies the English cell to Spanish.
+- Terminal and facility labels (`HEALTH: INJURED`, `SYNCHRONIZING…`, `LOCKDOWN`, `ACCESS DENIED`, tab names) are English uppercase in both languages (Interfaz Visual, D-62): note `KEEP-EN`. Menus, prompts and descriptions are translated.
 - Corruption/glitch in documents is a render effect (TMP character jitter); it never removes information needed to progress.
 - `DocumentDefinition` SOs reference table keys, owner, floor, kind (Emilia / Context / Confiscated) and the registry id.
 

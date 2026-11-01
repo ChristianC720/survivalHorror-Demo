@@ -14,7 +14,7 @@ namespace Heartbeat.EditorTools
     /// Source of truth for all in-game text: Assets/_Project/Localization/Source/&lt;TABLE&gt;.tsv
     /// (columns: key, en, es[, note]). This importer creates the Localization settings, the en/es locales and one
     /// string table collection per file, and upserts every row. Edit the TSV, then run Heartbeat/Import Localization.
-    /// A note column containing DE-NO-TRANSLATE copies the English text to Spanish (German lines, 15-texts.md).
+    /// A note column containing DE-NO-TRANSLATE (German lines) or KEEP-EN (terminal labels, D-62) copies the English text to Spanish.
     /// </summary>
     public static class LocalizationImporter
     {
@@ -42,7 +42,7 @@ namespace Heartbeat.EditorTools
                     var c = line.Split('\t');
                     if (c.Length < 3) { Debug.LogWarning($"[Heartbeat][Loc] {name}: bad row '{line}'"); continue; }
                     string key = c[0].Trim();
-                    bool keepGerman = c.Length > 3 && c[3].Contains("DE-NO-TRANSLATE");
+                    bool keepGerman = c.Length > 3 && (c[3].Contains("DE-NO-TRANSLATE") || c[3].Contains("KEEP-EN"));
                     if (col.SharedData.GetEntry(key) == null) col.SharedData.AddKey(key);
                     for (int i = 0; i < Codes.Length; i++)
                     {

@@ -59,59 +59,59 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 2394030088
-    m_Localized: CIERRE
+    m_Localized: LOCKDOWN
     m_Metadata:
       m_Items: []
   - m_Id: 2394030089
-    m_Localized: "SINCRONIZANDO\u2026"
+    m_Localized: "SYNCHRONIZING\u2026"
     m_Metadata:
       m_Items: []
   - m_Id: 2394030090
-    m_Localized: "SINCRONIZANDO SUJETO {0}\u2026"
+    m_Localized: "SYNCHRONIZING SUBJECT {0}\u2026"
     m_Metadata:
       m_Items: []
   - m_Id: 2394030091
-    m_Localized: ACCESO DENEGADO
+    m_Localized: ACCESS DENIED
     m_Metadata:
       m_Items: []
   - m_Id: 2394030092
-    m_Localized: INVENTARIO
+    m_Localized: INVENTORY
     m_Metadata:
       m_Items: []
   - m_Id: 2394030093
-    m_Localized: ESTADO
+    m_Localized: STATUS
     m_Metadata:
       m_Items: []
   - m_Id: 2394030094
-    m_Localized: REGISTROS
+    m_Localized: LOGS
     m_Metadata:
       m_Items: []
   - m_Id: 2394030095
-    m_Localized: SUJETO {0}
+    m_Localized: SUBJECT {0}
     m_Metadata:
       m_Items: []
   - m_Id: 2394030096
-    m_Localized: 'SALUD: ESTABLE'
+    m_Localized: 'HEALTH: FINE'
     m_Metadata:
       m_Items: []
   - m_Id: 2394030097
-    m_Localized: 'SALUD: HERIDO'
+    m_Localized: 'HEALTH: INJURED'
     m_Metadata:
       m_Items: []
   - m_Id: 2394030098
-    m_Localized: "SALUD: CR\xCDTICO"
+    m_Localized: 'HEALTH: CRITICAL'
     m_Metadata:
       m_Items: []
   - m_Id: 2394030099
-    m_Localized: 'LINTERNA: {0}%'
+    m_Localized: 'FLASHLIGHT: {0}%'
     m_Metadata:
       m_Items: []
   - m_Id: 2394030100
-    m_Localized: 'LINTERNA: AGOTADA'
+    m_Localized: 'FLASHLIGHT: DEPLETED'
     m_Metadata:
       m_Items: []
   - m_Id: 2394030101
-    m_Localized: 'TAMBOR: {0}/6'
+    m_Localized: 'DRUM: {0}/6'
     m_Metadata:
       m_Items: []
   - m_Id: 2394030102
@@ -131,7 +131,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 2394030106
-    m_Localized: 'EXPEDIENTE EMILIA: {0}/6'
+    m_Localized: 'EMILIA FILE: {0}/6'
     m_Metadata:
       m_Items: []
   - m_Id: 2394030107
@@ -227,11 +227,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 2394030130
-    m_Localized: "VAC\xCDA"
+    m_Localized: EMPTY
     m_Metadata:
       m_Items: []
   - m_Id: 2394030131
-    m_Localized: "DA\xD1ADA"
+    m_Localized: DAMAGED
     m_Metadata:
       m_Items: []
   - m_Id: 2394030132
@@ -424,6 +424,14 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 2398224401
     m_Localized: Historia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1385306390528
+    m_Localized: REGISTERED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1385369305088
+    m_Localized: ACCESS GRANTED
     m_Metadata:
       m_Items: []
   references:
