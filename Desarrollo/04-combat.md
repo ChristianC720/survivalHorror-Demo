@@ -1,0 +1,19 @@
+# E-04 Combat (S-03)
+
+**Goal:** a revolver that never has enough ammo, a shove that costs stamina, the discharge spike, and finishing corpses.
+
+**GDD sources:** M-04, M-06, M-11, M-20, S-03; item details in `04 - Contenido/04 - Objetos y Coleccionables.md` (D-71, D-74, D-122).
+
+## Deliverables
+`Scripts/Combat/Revolver.cs`, `RevolverModel.cs` (pure: drum 6, round-by-round reload ~0.7 s, cancellable, ~0.8 s between shots), `Shove.cs`, `GrabResolver.cs`, `Finisher.cs`, `IDamageable.cs`, `WeakPoint.cs`, `Balance/CombatBalance.asset`, `PH/PH_Revolver` with a TMP counter on the frame (diegetic ammo, D-86).
+
+## Tasks
+- `E04-revolver`: hitscan from the camera centre while aiming (layers `Enemy`, `Hitbox`, `Environment`). Shot noise ~20 m (`NoiseEmitted`) + attention bump. Dry fire on empty. Reload takes rounds from the inventory (S-05) one by one. The revolver always comes back unloaded after reconstruction.
+- `E04-shove`: left click without aiming. Costs 35 % stamina (`StaminaModel.TrySpend`); fails with a gasp otherwise. Short stagger on `IStaggerable`.
+- `E04-spike-grab`: when an enemy grabs, `GrabResolver` checks the inventory: if a spike is present it is consumed automatically, the enemy is stunned 2 s and Lukas takes no damage (M-11). Otherwise the grab damage applies (by type).
+- `E04-finisher`: near a corpse (context `OverBody`): left click = ground strike (stamina, makes noise, `GroundStrikeNoise`); `E` = spike finisher (~1.5 s, silent, consumes the spike). Both prevent recycling. `E` is not shown on corpses that cannot be recycled.
+
+## Acceptance
+- M-04: 6 loaded rounds, 4 hits on an Alto → it dies, the counter shows 2, enemies within ~20 m alerted.
+- M-11, M-20 rows.
+- EditMode: `RevolverModel` drum and reload tests.
