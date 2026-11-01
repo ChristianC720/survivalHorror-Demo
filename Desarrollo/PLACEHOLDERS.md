@@ -10,7 +10,7 @@ Rules
 
 | Prefab | Stands for | Real size (W×H×D m) | Primitive build | Tri budget (final) | Rig / anim needed | Status |
 |---|---|---|---|---|---|---|
-| `PH_Lukas` | Lukas R-H-07 (teal overalls, arm terminal on left forearm) | 0.5 × 1.78 × 0.3 | capsule body, sphere head, box arm terminal (left) | 5–8k | Humanoid; Mixamo locomotion, aim, reload, shove, grab, injured/critical gaits | pending |
+| `PH_Lukas` | Lukas R-H-07 (teal overalls, arm terminal on left forearm) | 0.5 × 1.78 × 0.3 | capsule body, sphere head, box arm terminal (left) | 5–8k | Humanoid; Mixamo locomotion, aim, reload, shove, grab, injured/critical gaits | placeholder done |
 | `PH_Lukas_Civil` | Lukas in the intro (civilian clothes) | same | same, grey | 5–8k | same | pending |
 | `PH_Alto` | El Alto | 0.8 × 2.5 × 0.6 | tall capsule, long box arms | ≤ 6k | Long reach attack, grab | pending |
 | `PH_Rastrero` | El Rastrero | 0.6 × 1.0 × 1.4 | horizontal capsule, low | ≤ 5k | Fast quadruped crawl, flank, lunge | pending |
