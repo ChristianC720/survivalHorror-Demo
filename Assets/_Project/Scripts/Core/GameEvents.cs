@@ -58,6 +58,9 @@ namespace Heartbeat.Core
 
         // Level
         public static event Action<MonoBehaviour> RoomEntered;            // Heartbeat.Generation.RoomInstance
+        public static event Action<int, int> FloorBuilt;                  // floor, seed
+        public static event Action PowerRestored;
+        public static event Action<int> FloorExitRequested;               // floor being left
 
         // Inventory / interaction
         public static event Action InventoryChanged;
@@ -82,6 +85,9 @@ namespace Heartbeat.Core
         public static void RaiseHighestAlertChanged(AlertState state) => HighestAlertChanged?.Invoke(state);
         public static void RaiseHuntChanged(bool hunting) => HuntChanged?.Invoke(hunting);
         public static void RaiseRoomEntered(MonoBehaviour room) => RoomEntered?.Invoke(room);
+        public static void RaiseFloorBuilt(int floor, int seed) => FloorBuilt?.Invoke(floor, seed);
+        public static void RaisePowerRestored() => PowerRestored?.Invoke();
+        public static void RaiseFloorExitRequested(int floor) => FloorExitRequested?.Invoke(floor);
         public static void RaiseInventoryChanged() => InventoryChanged?.Invoke();
         public static void RaiseInventoryFull(string kind) => InventoryFull?.Invoke(kind);
         public static void RaiseInteractTargetChanged(MonoBehaviour target) => InteractTargetChanged?.Invoke(target);
@@ -108,6 +114,9 @@ namespace Heartbeat.Core
             HuntChanged = null;
             InventoryChanged = null;
             RoomEntered = null;
+            FloorBuilt = null;
+            PowerRestored = null;
+            FloorExitRequested = null;
             InventoryFull = null;
             InteractTargetChanged = null;
             ItemRegistered = null;
