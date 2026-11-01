@@ -289,6 +289,7 @@ GameObject:
   - component: {fileID: 5953581016024664701}
   - component: {fileID: 5075535637935878957}
   - component: {fileID: 4311922564629683344}
+  - component: {fileID: 4214264003763487363}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -461,6 +462,21 @@ MonoBehaviour:
   player: {fileID: 5604194892502960124}
   stamina: {fileID: 3884983768438191374}
   finisher: {fileID: 5075535637935878957}
+--- !u!114 &4214264003763487363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2442423367564465436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 850733cfc5ff27f41afbe1aebe539651, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Heartbeat.Runtime::Heartbeat.Interaction.Interactor
+  range: 1.8
+  player: {fileID: 5604194892502960124}
+  inventory: {fileID: 7073963810229885166}
 --- !u!1 &5790803089912618396
 GameObject:
   m_ObjectHideFlags: 0

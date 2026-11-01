@@ -19,7 +19,7 @@ Each checkbox is one git-flow feature: `git flow feature start <id>`.
 ## H2 — Combat prototype
 - [x] `E04-revolver` · `E04-shove` · `E04-spike-grab` · `E04-finisher`
 - [x] `E05-ai-core` (perception, alert director, Alto, Rastrero) — merged as one feature
-- [ ] `E06-inventory` (pure model + tests) ✅ · `E06-interaction` · `E06-documents-registry` · `E06-flashlight` · `E06-hacking` · `E06-doors-seal`
+- [x] `E06-inventory` · `E06-interaction` · `E06-documents-registry` — remaining: `E06-flashlight` · `E06-hacking` · `E06-doors-seal`
 
 ## H3 — MVP
 - [ ] `E14-f1-rooms` — 6 F1 archetype rooms + 2–3 F1 secondary key rooms + F1 final + capsule row + 4 tutorial rooms

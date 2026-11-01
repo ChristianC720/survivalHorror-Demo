@@ -30,6 +30,9 @@ namespace Heartbeat.Combat
         public bool HasTarget => Target != null;
         public bool IsFinishing { get; private set; }
 
+        private void OnEnable() => Services.Register(this);
+        private void OnDisable() => Services.Unregister(this);
+
         private void Start()
         {
             corpseMask = LayerMask.GetMask("Corpse");
@@ -49,6 +52,10 @@ namespace Heartbeat.Combat
         {
             if (IsFinishing) return;
             Target = player.IsAiming ? null : FindTarget();
+            // D-27: if a door, panel or item is more centred in the view than the body, E/click go to it instead.
+            if (Target != null && Services.TryGet<Interaction.Interactor>(out var interactor) && interactor.Current != null
+                && interactor.CurrentScore > interactor.ViewScore(Target.transform.position))
+                Target = null;
 
             var ctx = router.Context;
             if (Target != null && ctx == InputContext.Exploration) router.SetContext(InputContext.OverBody);
