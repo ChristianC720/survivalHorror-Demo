@@ -64,7 +64,7 @@ namespace Heartbeat.UI
                 if (text != key) Add(captionStack, $"[{text}{Direction(pos)}]", baseFontSize * textScale, opaque ? 1f : 0.65f);
             }
             else if (Debug.isDebugBuild && cue.PickClip() == null && !string.IsNullOrEmpty(cue.debugCaption))
-                Add(devStack, "♪ " + cue.debugCaption, 16f, 0.5f);
+                Add(devStack, "* " + cue.debugCaption, 16f, 0.5f);
         }
 
         /// <summary>Approximate direction relative to the camera: ahead / behind / left / right.</summary>
