@@ -14,7 +14,7 @@ Each checkbox is one git-flow feature: `git flow feature start <id>`.
 - [x] `E02-player-motor` — `PH_Lukas`, CharacterController movement (crouch 0.8 / walk 1.5 / run 4 m/s), noise emitter
 - [x] `E02-stamina-health` — pure `StaminaModel`, `HealthModel` (Fine/Injured/Critical) + tests
 - [x] `E03-ots-camera` — Cinemachine OTS + aim (M-01)
-- [ ] `E12-sandbox-kit` — `Sandbox_Kit` scene, snapping, F1 kit pieces (with Aura)
+- [x] `E12-sandbox-kit` — `Sandbox_Kit` scene, snapping, F1 kit pieces (with Aura) + shared ramp/platform
 
 ## H2 — Combat prototype
 - [ ] `E04-revolver` · `E04-shove` · `E04-spike-grab` · `E04-finisher`
