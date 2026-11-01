@@ -13,7 +13,7 @@ namespace Heartbeat.Core
         public static void Warn(string system, string message) => Debug.LogWarning($"[Heartbeat][{system}] {message}");
         public static void Error(string system, string message) => Debug.LogError($"[Heartbeat][{system}] {message}");
 
-        [Conditional("UNITY_EDITOR"), Conditional("DEVELOPMENT_BUILD")]
+        [Conditional("UNITY_EDITOR"), Conditional("DEBUG")]
         public static void Dev(string system, string message) => Debug.Log($"[Heartbeat][{system}][dev] {message}");
     }
 }
