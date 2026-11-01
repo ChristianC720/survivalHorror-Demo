@@ -26,7 +26,9 @@ namespace Heartbeat.Boss
         public int releasesTotal = 4;
         public int maxActive = 2;
         [Tooltip("Rounds in the room's blind spots for phase 2 (3 blisters).")] public int phase2Ammo = 12;
-        public float fogDensity = 0.06f;
+        [Tooltip("Dark cold haze: hides distance, never washes the image out or hides the M-10 signals.")]
+        public float fogDensity = 0.045f;
+        public Color fogColor = new Color(0.09f, 0.1f, 0.115f);
 
         [Header("Transformers, phase 3 (D-80)")]
         public int transformerShots = 2;

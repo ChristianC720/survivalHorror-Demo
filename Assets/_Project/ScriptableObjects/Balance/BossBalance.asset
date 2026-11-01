@@ -27,7 +27,7 @@ MonoBehaviour:
   releasesTotal: 4
   maxActive: 2
   phase2Ammo: 12
-  fogDensity: 0.06
+  fogDensity: 0.045
   transformerShots: 2
   phase3Ammo: 8
   autoDecisionSeconds: 6

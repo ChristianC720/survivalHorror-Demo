@@ -92,7 +92,7 @@ namespace Heartbeat.Boss
             foreach (var t in transformers) t.SetArmed(p == MotherPhase.Transformers);
             if (arm != null) arm.SetActive(p != MotherPhase.Defeated);
             RenderSettings.fog = p == MotherPhase.Cameras;   // cryo fog: less visibility, never hides M-10 signals
-            RenderSettings.fogColor = new Color(0.55f, 0.6f, 0.65f);
+            RenderSettings.fogColor = balance.fogColor;
             RenderSettings.fogMode = FogMode.ExponentialSquared;
             RenderSettings.fogDensity = balance.fogDensity;
 
