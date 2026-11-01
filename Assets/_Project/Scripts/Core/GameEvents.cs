@@ -56,6 +56,9 @@ namespace Heartbeat.Core
         public static event Action<AlertState> HighestAlertChanged;
         public static event Action<bool> HuntChanged;          // true = at least one enemy hunting
 
+        // Level
+        public static event Action<MonoBehaviour> RoomEntered;            // Heartbeat.Generation.RoomInstance
+
         // Inventory / interaction
         public static event Action InventoryChanged;
         public static event Action<string> InventoryFull;                 // item kind that did not fit
@@ -78,6 +81,7 @@ namespace Heartbeat.Core
         public static void RaiseEnemyAlertChanged(MonoBehaviour enemy, AlertState state, float distance) => EnemyAlertChanged?.Invoke(enemy, state, distance);
         public static void RaiseHighestAlertChanged(AlertState state) => HighestAlertChanged?.Invoke(state);
         public static void RaiseHuntChanged(bool hunting) => HuntChanged?.Invoke(hunting);
+        public static void RaiseRoomEntered(MonoBehaviour room) => RoomEntered?.Invoke(room);
         public static void RaiseInventoryChanged() => InventoryChanged?.Invoke();
         public static void RaiseInventoryFull(string kind) => InventoryFull?.Invoke(kind);
         public static void RaiseInteractTargetChanged(MonoBehaviour target) => InteractTargetChanged?.Invoke(target);
@@ -103,6 +107,7 @@ namespace Heartbeat.Core
             HighestAlertChanged = null;
             HuntChanged = null;
             InventoryChanged = null;
+            RoomEntered = null;
             InventoryFull = null;
             InteractTargetChanged = null;
             ItemRegistered = null;

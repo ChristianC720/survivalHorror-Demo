@@ -49,13 +49,16 @@ Corners: the inset walls overlap in the 0.3 × 0.3 corner square, which is inten
 Each floor theme has its own kit (`F1`, `F2`, `F3`) with **identical geometry** and different materials. Build `F1` first, then duplicate the prefabs (`duplicate_asset`) and swap materials for `F2` and `F3`.
 
 ## 3. Room prefabs
+
+**Shell vs design (decision 2026-11-01).** The repetitive shell of a room — floor and ceiling tiles, perimeter walls, and the doorway/wall at each socket — is assembled at runtime by `RoomShell` from the hand-built kit pieces (`KitSet_F<n>`). Everything that makes a room *designed* is placed by hand with Aura in the prefab: sockets, props and cover, interior walls, ramps and platforms, lights, spawns, camera mount. Reason: the shell is identical for every room and costs ~70 tool calls per room by hand; the result is the same geometry and follows the user's instruction to assemble the hand-built pieces with a runtime script. Use the `Preview Shell` context menu on `RoomShell` (or the scratchpad `PreviewShell`) to see the walls while dressing a room; previews are `DontSave`.
 Naming: `ROOM_<F>_<Archetype>_<Variant>` (procedural) and `KEY_<F>_<Secondary|Final>_<Variant>`, plus `KEY_F1_CapsuleRow`, `TUT_F1_<1..4>`, `KEY_F3_Mother`.
 Archetypes: `Corridor`, `Storage`, `Open`, `Surveillance`, `Hack`, `Vertical`.
 
-Root `ROOM_…` (pivot = room min corner at y=0, scale 1) with this hierarchy:
+Root `ROOM_…` (pivot = room min corner at y=0, scale 1, layer `RoomVolume`) with `RoomInstance`, `RoomShell` (cellsX, cellsZ, kit, tall, windows) and a trigger `BoxCollider` covering the interior. Hierarchy:
 ```
 ROOM_F1_Storage_A            RoomInstance (ref to RoomDefinition), RoomVolume (BoxCollider trigger, layer RoomVolume)
-├─ Geometry                  kit pieces: floor, ceiling, walls (NOT at socket edges)
+├─ (Shell)                   built at runtime by RoomShell — never saved in the prefab
+├─ Geometry                  optional hand-placed interior kit pieces (inner walls, columns, ramps, platforms)
 ├─ Props                     PROP_/PH_ prefabs on the 0.5 m sub-grid
 ├─ Lights                    exactly one light tint per room (warm amber F1 / cold F2 / crimson F3)
 ├─ Sockets                   DoorSocket × n

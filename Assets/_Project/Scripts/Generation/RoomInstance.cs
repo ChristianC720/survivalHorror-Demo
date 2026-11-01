@@ -1,0 +1,44 @@
+using System.Collections.Generic;
+using Heartbeat.Core;
+using UnityEngine;
+
+namespace Heartbeat.Generation
+{
+    /// <summary>
+    /// Root component of a room prefab. At runtime it knows its definition, its placement on the floor grid and its
+    /// neighbours; its trigger (RoomVolume, layer RoomVolume) reports when Lukas enters (S-06 activation, S-01 cameras).
+    /// </summary>
+    public sealed class RoomInstance : MonoBehaviour
+    {
+        [SerializeField] private RoomDefinition definition;
+        [Tooltip("Optional surveillance camera pose (KIT_SPEC §3).")]
+        [SerializeField] private Transform cameraMount;
+
+        private readonly List<RoomInstance> neighbours = new List<RoomInstance>();
+
+        public RoomDefinition Definition { get => definition; set => definition = value; }
+        public Transform CameraMount => cameraMount;
+        public int NodeIndex { get; set; } = -1;
+        public bool IsEmpty { get; set; }
+        public bool IsPowered { get; set; } = true;
+        public IReadOnlyList<RoomInstance> Neighbours => neighbours;
+
+        public static RoomInstance Current { get; private set; }
+
+        public void AddNeighbour(RoomInstance r) { if (r != null && !neighbours.Contains(r)) neighbours.Add(r); }
+
+        public IEnumerable<DoorSocket> Sockets() => GetComponentsInChildren<DoorSocket>(true);
+        public IEnumerable<SpawnPoint> Spawns() => GetComponentsInChildren<SpawnPoint>(true);
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (!other.CompareTag("Player")) return;
+            Current = this;
+            HbLog.Info("Room", $"Entered {name}");
+            GameEvents.RaiseRoomEntered(this);
+        }
+
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+        private static void ResetStatics() => Current = null;
+    }
+}
