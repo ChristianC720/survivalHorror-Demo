@@ -1,0 +1,25 @@
+{
+    "name": "Heartbeat.Runtime",
+    "rootNamespace": "Heartbeat",
+    "references": [
+        "Unity.InputSystem",
+        "Unity.Cinemachine",
+        "Unity.AI.Navigation",
+        "Unity.Localization",
+        "Unity.TextMeshPro",
+        "UnityEngine.UI",
+        "Unity.Timeline",
+        "Unity.Animation.Rigging",
+        "Unity.RenderPipelines.Universal.Runtime",
+        "Unity.RenderPipelines.Core.Runtime"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

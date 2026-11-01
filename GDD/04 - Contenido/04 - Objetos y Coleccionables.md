@@ -4,6 +4,8 @@
 
 Define objetos que el jugador puede recoger, utilizar, equipar, vender, intercambiar o descubrir.
 
+Los objetos de escenario (props) de cada piso están en [[00 - Ideas de objetos por sala]].
+
 En la demo no se vende ni se intercambia nada. El inventario tiene 6 casillas y **5 tipos de objeto** (D-71); el arma y la linterna no ocupan casilla. Los presupuestos por piso están en [[06 - Economía y Recursos]]. Todos los valores son iniciales, sujetos a balance.
 
 | Objeto | Tipo | Casilla | Persiste al morir |
