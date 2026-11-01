@@ -65,6 +65,7 @@ namespace Heartbeat.Save
         public bool firstAttempt = true;       // tutorial attempt (D-38, D-70)
         public bool introDone;
         public bool cycleCompleted;            // D-93
+        public bool newCyclePending;           // an ending was reached: the next Continue starts a new cycle (D-93)
         public List<RecordEntry> terminal = new List<RecordEntry>();
         public List<string> patchedFaults = new List<string>();
         public bool hasAttemptSave;            // JsonUtility cannot serialise null objects

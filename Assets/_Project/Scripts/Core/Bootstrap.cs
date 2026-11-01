@@ -52,6 +52,7 @@ namespace Heartbeat.Core
             Services.Register(new Narrative.BestiaryUnlocker(registry));
             Services.Register(new Save.SaveService());
             Services.Register(gameObject.AddComponent<Cycle.CycleController>());
+            gameObject.AddComponent<Cycle.EndingDirector>();
             gameObject.AddComponent<PauseInput>();
             if (TryGetComponent(out Audio.AudioService audio)) Services.Register(audio);
             else HbLog.Warn("Core", "No AudioService on Bootstrap: sounds disabled");

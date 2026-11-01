@@ -17,7 +17,47 @@ MonoBehaviour:
   m_SharedData: {fileID: 11400000, guid: 686065fc3b577f14d8e32a1d2d6a436c, type: 2}
   m_Metadata:
     m_Items: []
-  m_TableData: []
+  m_TableData:
+  - m_Id: 19800221941760
+    m_Localized: IDENTITY DISSOLUTION
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19800289050624
+    m_Localized: "Christian Coronel Palma \u2014 project lead, programming, narrative\\nVictor Gabriel Alvarado Chay \u2014 level design, narrative, interface content\\nBryan Iv\xE1n Navarrete Canch\xE9 \u2014 3D art and animation\\nLian Daniel Sierra Vera \u2014 audio and music\\nLenin Ram\xF3n L\xF3pez C\xF3rdova \u2014 QA and audio"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19800297439232
+    m_Localized: '[Space] Skip'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19800297439233
+    m_Localized: R-H-{0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19800301633536
+    m_Localized: "LEVEL \u22120"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19800301633537
+    m_Localized: 'FINAL: ASSIMILATION'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19800301633538
+    m_Localized: The heartbeat quickens.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19800301633539
+    m_Localized: The terminal on his arm connects. He is the last one with an identity.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19800301633540
+    m_Localized: "SUBJECTS R-H-01 \u2026 R-H-06 \u2014 STATUS: UNKNOWN"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19800301633541
+    m_Localized: Two heartbeats. Then one.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

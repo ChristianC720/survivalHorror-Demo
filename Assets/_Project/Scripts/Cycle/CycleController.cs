@@ -126,6 +126,17 @@ namespace Heartbeat.Cycle
             LoadOrCreate(slot, mode, newGame);
             bool afterHuntQuit = Data.confirmedExit && Data.exitCost == ExitCost.Hunt;
             Data.confirmedExit = false;
+            if (Data.newCyclePending)
+            {
+                // New cycle after an ending (D-93): from the capsule, terminal kept, counter and degradation to 0, subject continues.
+                Data.newCyclePending = false;
+                Data.deathCounter = 0;
+                Data.degradationLevel = 0;
+                Data.hasAttemptSave = false;
+                Data.firstAttempt = false;
+                GameEvents.RaiseDegradationChanged(0);
+                HbLog.Info("Cycle", $"New cycle (D-93): {Data.SubjectLabel}, terminal kept ({registry.Count} records)");
+            }
             SaveNow();
 
             states.TryTransition(GameStateId.Loading);
