@@ -291,6 +291,7 @@ GameObject:
   - component: {fileID: 4311922564629683344}
   - component: {fileID: 4214264003763487363}
   - component: {fileID: 707460425346237199}
+  - component: {fileID: 1003214351030756633}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -497,6 +498,20 @@ MonoBehaviour:
   aimAngle: 28
   range: 14
   intensity: 18
+--- !u!114 &1003214351030756633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2442423367564465436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47ea89e75f394cb4eb68d33a837bd8ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Heartbeat.Runtime::Heartbeat.Level.PlayerHack
+  player: {fileID: 5604194892502960124}
+  health: {fileID: 1368415113503638425}
 --- !u!1 &3181610878793067074
 GameObject:
   m_ObjectHideFlags: 0

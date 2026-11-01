@@ -87,6 +87,7 @@ Assets/_Project/
 
 Known Aura quirks (verified):
 - `set_property` with `prefab_path` resolves object references to the prefab **root** fine, but references to **nested children** of the prefab can silently stay `None`. Always check with `get_game_object_info` (+`componentFilter`); if a ref is `None`, wire it with a scratchpad script using `PrefabUtility.LoadPrefabContents` + `SerializedObject`.
+- `add_component` cannot resolve `UnityEngine.AI` types (`NavMeshAgent`, `NavMeshObstacle`): add them with a scratchpad script or via `[RequireComponent]`.
 - `create_ui_element` creates legacy `Text` without a Canvas. Build UI from `create_game_object` + `add_component` (`Canvas`, `CanvasScaler`, `TextMeshProUGUI`).
 - `save_scene` cannot "save as"; it often answers "not dirty" even after Aura edits (they are saved). Use a scratchpad `EditorSceneManager.SaveScene(scene, path, true)` to copy a scene.
 - `capture_editor_screenshot game_view` and vantage captures need Play Mode; `capture_scene_object` frames poorly on small or overlapping objects.
