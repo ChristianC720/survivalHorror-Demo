@@ -33,6 +33,7 @@ namespace Heartbeat.Boss
             if (IsDone) return;
             IsDone = true;
             if (screen != null) screen.enabled = false;
+            Sfx.Play("CUE_Boss_NodeHacked", transform.position);
             Services.Get<MotherDirector>().NodeHacked(this);
         }
     }

@@ -31,7 +31,7 @@ namespace Heartbeat.Boss
         {
             if (!IsAlive) return;
             hits++;
-            Sfx.Play(Sfx.SpikeDischarge, transform.position);   // electric crack (placeholder cue)
+            Sfx.Play("CUE_Transformer_Hit", transform.position);
             HbLog.Info("Boss", $"{name} hit ({hits}/{balance.transformerShots})");
             if (hits >= balance.transformerShots) Destroy_();
         }
@@ -40,6 +40,7 @@ namespace Heartbeat.Boss
         {
             destroyed = true;
             armed = false;
+            Sfx.Play("CUE_Transformer_Destroyed", transform.position);
             if (glow != null)
             {
                 if (deadMaterial != null) glow.sharedMaterial = deadMaterial;

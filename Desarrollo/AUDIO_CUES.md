@@ -42,6 +42,10 @@ Source: `GDD/05 - Arte y Audio/05 - Audio y Música.md`, S-11 in `GDD/02 - Dise�
 | `CUE_Pickup` | Player&Combat / 2 | – | – | item picked up | M-07 |
 | `CUE_Heal_Use` | Player&Combat / 2 | – | – | heal animation (~1.5 s) | M-05 |
 | `CUE_Flashlight_Toggle` / `CUE_Flashlight_Flicker` | Player&Combat / 2 | – | – | flashlight | M-12 |
+| `CUE_Arm_Hydraulic` | Signals / 1 | ✔ | – | collector arm warns ~1 s before grabbing | D-98 |
+| `CUE_HostileCamera_Lock` | Signals / 1 | ✔ | – | hostile camera locks its red light on Lukas | D-28 |
+| `CUE_Transformer_Hit` / `CUE_Transformer_Destroyed` | Player&Combat / 2 | ✔ | – | phase 3 transformer shot / destroyed | D-80 |
+| `CUE_Boss_NodeHacked` | Signals / 1 | ✔ | – | phase 1 node goes offline | M-19 |
 | `CUE_Surveillance_Static` | Signals / 1 | – | ✔ | while surveillance view is open | M-02 |
 | `CUE_Amb_F1` / `CUE_Amb_F2` / `CUE_Amb_F3` / `CUE_Amb_Mother` | Ambience / 3 | – | ✔ | floor ambience drones | S-11 |
 | `CUE_Vocal_Lukas` / `CUE_Vocal_Mother` / `CUE_Vocal_Emilia` | Voices / 2 | – | – | vocal sound accompanying a subtitle line | D-52 |

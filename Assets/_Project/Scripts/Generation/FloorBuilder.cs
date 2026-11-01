@@ -161,6 +161,7 @@ namespace Heartbeat.Generation
 
         public void Clear()
         {
+            foreach (var r in built) if (r != null) r.Retired = true;
             built.Clear();
             if (floorRoot != null) Destroy(floorRoot.gameObject);
             if (doorsRoot != null) Destroy(doorsRoot.gameObject);

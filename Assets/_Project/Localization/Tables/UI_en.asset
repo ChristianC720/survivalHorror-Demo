@@ -478,6 +478,10 @@ MonoBehaviour:
     m_Localized: Leave
     m_Metadata:
       m_Items: []
+  - m_Id: 77192989114368
+    m_Localized: Quitting the first attempt costs no death, but the cycle still degrades.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

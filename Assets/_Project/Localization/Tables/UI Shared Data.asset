@@ -475,6 +475,10 @@ MonoBehaviour:
     m_Key: UI.PROMPT.LEAVE
     m_Metadata:
       m_Items: []
+  - m_Id: 77192989114368
+    m_Key: UI.CONFIRM.QUIT_CALM_TUTORIAL
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -478,6 +478,10 @@ MonoBehaviour:
     m_Localized: Salir
     m_Metadata:
       m_Items: []
+  - m_Id: 77192989114368
+    m_Localized: Salir en el primer intento no suma una muerte, pero el ciclo se degrada igualmente.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

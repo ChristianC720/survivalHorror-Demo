@@ -21,6 +21,8 @@ namespace Heartbeat.Generation
         public int NodeIndex { get; set; } = -1;
         public bool IsEmpty { get; set; }
         public bool IsPowered { get; set; } = true;
+        /// <summary>Set when the floor is torn down (rebuild, death): its trigger can still fire before Destroy runs.</summary>
+        public bool Retired { get; set; }
         public IReadOnlyList<RoomInstance> Neighbours => neighbours;
 
         public static RoomInstance Current { get; private set; }
@@ -32,7 +34,7 @@ namespace Heartbeat.Generation
 
         private void OnTriggerEnter(Collider other)
         {
-            if (!other.CompareTag("Player")) return;
+            if (Retired || !other.CompareTag("Player")) return;
             Current = this;
             HbLog.Info("Room", $"Entered {name}");
             GameEvents.RaiseRoomEntered(this);

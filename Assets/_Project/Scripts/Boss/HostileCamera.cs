@@ -61,6 +61,7 @@ namespace Heartbeat.Boss
             {
                 focus = 0f;
                 cooldown = balance.cameraCooldown;
+                Sfx.Play("CUE_HostileCamera_Lock", transform.position);
                 Services.Get<MotherDirector>().CameraLocked(this, p.transform.position);
             }
         }

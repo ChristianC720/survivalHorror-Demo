@@ -314,6 +314,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4808483dbf8312b448e7c8b2334873cf, type: 2}
   - {fileID: 11400000, guid: 65d39d3318bcd094284cd4119d6e0d22, type: 2}
   - {fileID: 11400000, guid: 6e0b2b6a0c9ee3346b357126a35040ae, type: 2}
+  - {fileID: 11400000, guid: f7b9802865e837349834ecdaa987c838, type: 2}
+  - {fileID: 11400000, guid: 5dd20b47e83cecf4d92c6ac3b16f1bce, type: 2}
+  - {fileID: 11400000, guid: 82a7744976079a643922ae4ba406c0b4, type: 2}
+  - {fileID: 11400000, guid: f56e2f38e7df0804b8708995e61ddf90, type: 2}
+  - {fileID: 11400000, guid: 65abc365054c8d04dbbd72a184f41fd2, type: 2}
   voices: 24
   alertCueRadius: 25
   showDebugCaptions: 1

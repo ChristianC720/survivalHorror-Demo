@@ -170,6 +170,7 @@ namespace Heartbeat.AI
 
         private void TickPatrol(float dt)
         {
+            agent.stoppingDistance = 0.2f;
             agent.speed = Speed(definition.patrolSpeed);
             agent.isStopped = false;
             if (agent.pathPending || agent.remainingDistance > 0.4f) return;
@@ -188,6 +189,7 @@ namespace Heartbeat.AI
 
         private void TickSearch(float dt)
         {
+            agent.stoppingDistance = 0.2f;
             agent.isStopped = false;
             agent.speed = Speed(definition.patrolSpeed * 1.4f);
             if (Vector3.Distance(agent.destination, lastKnown) > 0.5f) agent.SetDestination(lastKnown);

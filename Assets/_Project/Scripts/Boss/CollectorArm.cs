@@ -69,7 +69,7 @@ namespace Heartbeat.Boss
             {
                 windup = balance.armWarning;
                 if (warnLight != null) warnLight.enabled = true;
-                Sfx.Play("CUE_Enemy_Grab", transform.position);   // hydraulic warning (placeholder cue)
+                Sfx.Play("CUE_Arm_Hydraulic", transform.position);
                 HbLog.Info("Boss", "Collector arm winds up");
                 return;
             }

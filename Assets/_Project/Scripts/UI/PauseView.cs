@@ -72,7 +72,10 @@ namespace Heartbeat.UI
         {
             var cycle = Services.Get<CycleController>();
             var cost = cycle.QuitCost;
-            string key = cost == ExitCost.Hunt ? "UI.CONFIRM.QUIT_HUNT" : cost == ExitCost.Calm ? "UI.CONFIRM.QUIT_CALM" : "UI.CONFIRM.QUIT_FREE";
+            bool tutorial = cycle.Data != null && cycle.Data.firstAttempt;
+            string key = cost == ExitCost.Hunt ? "UI.CONFIRM.QUIT_HUNT"
+                : cost == ExitCost.Calm ? (tutorial ? "UI.CONFIRM.QUIT_CALM_TUTORIAL" : "UI.CONFIRM.QUIT_CALM")
+                : "UI.CONFIRM.QUIT_FREE";
             HbLog.Info("UI", $"Quit confirmation shows cost={cost}");
             ConfirmDialog.Show(root, Loc.Get(key), cycle.QuitToMenu, null, cost == ExitCost.Hunt ? UiKit.Red : UiKit.Amber);
         }
