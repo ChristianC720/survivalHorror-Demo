@@ -287,6 +287,8 @@ GameObject:
   - component: {fileID: 7073963810229885166}
   - component: {fileID: 8905714581570685979}
   - component: {fileID: 5953581016024664701}
+  - component: {fileID: 5075535637935878957}
+  - component: {fileID: 4311922564629683344}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -425,6 +427,40 @@ MonoBehaviour:
   balance: {fileID: 11400000, guid: 92b7612bc1f7e744ba276570c0aff41e, type: 2}
   health: {fileID: 1368415113503638425}
   inventory: {fileID: 7073963810229885166}
+--- !u!114 &5075535637935878957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2442423367564465436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e67304acef9eca449d1b1e3f2f0f51a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Heartbeat.Runtime::Heartbeat.Combat.PlayerFinisher
+  balance: {fileID: 11400000, guid: 92b7612bc1f7e744ba276570c0aff41e, type: 2}
+  playerBalance: {fileID: 11400000, guid: 700426a2ac4d41848b6e4a139964ffa9, type: 2}
+  player: {fileID: 5604194892502960124}
+  stamina: {fileID: 3884983768438191374}
+  inventory: {fileID: 7073963810229885166}
+--- !u!114 &4311922564629683344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2442423367564465436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e26b3d49710ce34292169255012dd08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Heartbeat.Runtime::Heartbeat.Combat.Shove
+  balance: {fileID: 11400000, guid: 92b7612bc1f7e744ba276570c0aff41e, type: 2}
+  playerBalance: {fileID: 11400000, guid: 700426a2ac4d41848b6e4a139964ffa9, type: 2}
+  player: {fileID: 5604194892502960124}
+  stamina: {fileID: 3884983768438191374}
+  finisher: {fileID: 5075535637935878957}
 --- !u!1 &5790803089912618396
 GameObject:
   m_ObjectHideFlags: 0

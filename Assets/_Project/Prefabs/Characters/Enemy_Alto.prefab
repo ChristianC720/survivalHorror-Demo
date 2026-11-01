@@ -332,6 +332,7 @@ GameObject:
   - component: {fileID: 2902419629958704205}
   - component: {fileID: 6928566924743440943}
   - component: {fileID: 4374356252612377418}
+  - component: {fileID: 3832383360589686939}
   m_Layer: 11
   m_Name: Enemy_Alto
   m_TagString: Untagged
@@ -429,6 +430,19 @@ MonoBehaviour:
   definition: {fileID: 11400000, guid: b27cb7d3c59f6e74b84fae2b6f09443e, type: 2}
   eyeHeight: 2.2
   visual: {fileID: 7081531499114721801}
+--- !u!114 &3832383360589686939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4636455638720379637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b16b359c4461fac4b8a07c017e8ffc10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Heartbeat.Runtime::Heartbeat.Recycle.Corpse
+  neverRecycle: 0
 --- !u!1 &4983779904320179761
 GameObject:
   m_ObjectHideFlags: 0

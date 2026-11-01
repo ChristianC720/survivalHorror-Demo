@@ -1,0 +1,105 @@
+using System.Collections;
+using Heartbeat.Core;
+using Heartbeat.InputRouting;
+using Heartbeat.Inventory;
+using Heartbeat.Player;
+using Heartbeat.Recycle;
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+namespace Heartbeat.Combat
+{
+    /// <summary>
+    /// Finishing bodies (M-20, D-27). At ~1.5 m looking at an unfinished body Lukas enters the OverBody context:
+    /// left click = ground strike (25% stamina, ~2 s, audible), E = discharge spike (~1.5 s, silent, consumes the spike).
+    /// Both stop the lab from recycling the body. Bodies that cannot be recycled never trigger the context.
+    /// </summary>
+    public sealed class PlayerFinisher : MonoBehaviour
+    {
+        [SerializeField] private CombatBalance balance;
+        [SerializeField] private PlayerBalance playerBalance;
+        [SerializeField] private PlayerController player;
+        [SerializeField] private PlayerStamina stamina;
+        [SerializeField] private PlayerInventory inventory;
+
+        private InputRouter router;
+        private int corpseMask;
+        private readonly Collider[] buffer = new Collider[8];
+
+        public Corpse Target { get; private set; }
+        public bool HasTarget => Target != null;
+        public bool IsFinishing { get; private set; }
+
+        private void Start()
+        {
+            corpseMask = LayerMask.GetMask("Corpse");
+            router = Services.Get<InputRouter>();
+            router.Actions.Gameplay.Attack.performed += OnAttack;
+            router.Actions.Gameplay.Interact.performed += OnInteract;
+        }
+
+        private void OnDestroy()
+        {
+            if (router == null) return;
+            router.Actions.Gameplay.Attack.performed -= OnAttack;
+            router.Actions.Gameplay.Interact.performed -= OnInteract;
+        }
+
+        private void Update()
+        {
+            if (IsFinishing) return;
+            Target = player.IsAiming ? null : FindTarget();
+
+            var ctx = router.Context;
+            if (Target != null && ctx == InputContext.Exploration) router.SetContext(InputContext.OverBody);
+            else if (Target == null && ctx == InputContext.OverBody) router.SetContext(InputContext.Exploration);
+        }
+
+        private Corpse FindTarget()
+        {
+            int n = Physics.OverlapSphereNonAlloc(transform.position, balance.finisherRange, buffer, corpseMask, QueryTriggerInteraction.Collide);
+            Corpse best = null;
+            float bestDot = 0.5f;   // must be roughly in front of Lukas
+            for (int i = 0; i < n; i++)
+            {
+                var c = buffer[i].GetComponentInParent<Corpse>();
+                if (c == null || !c.CanBeRecycled) continue;
+                Vector3 to = c.transform.position - transform.position; to.y = 0f;
+                float dot = to.sqrMagnitude < 0.01f ? 1f : Vector3.Dot(transform.forward, to.normalized);
+                if (dot > bestDot) { bestDot = dot; best = c; }
+            }
+            return best;
+        }
+
+        private void OnAttack(InputAction.CallbackContext _)
+        {
+            if (!HasTarget || IsFinishing || player.IsAiming) return;
+            if (!stamina.TrySpend(playerBalance.groundStrikeCost)) return;   // gasp logged by stamina
+            StartCoroutine(FinishRoutine(Target, balance.groundStrikeSeconds, "ground strike", noisy: true));
+        }
+
+        private void OnInteract(InputAction.CallbackContext _)
+        {
+            if (!HasTarget || IsFinishing) return;
+            if (!inventory.Model.TryConsume(ItemKind.Spike))
+            {
+                HbLog.Info("Combat", "No discharge spike: E does nothing over the body");
+                return;
+            }
+            StartCoroutine(FinishRoutine(Target, balance.spikeFinisherSeconds, "discharge spike", noisy: false));
+        }
+
+        private IEnumerator FinishRoutine(Corpse corpse, float seconds, string how, bool noisy)
+        {
+            IsFinishing = true;
+            player.MovementLocked = true;
+            HbLog.Info("Combat", $"Finisher started: {how}");
+            if (noisy)
+                GameEvents.RaiseNoiseEmitted(new NoiseInfo(corpse.transform.position, balance.groundStrikeNoiseRadius, NoiseSource.GroundStrike));
+            yield return new WaitForSeconds(seconds);
+            corpse.Finish(how);
+            player.MovementLocked = false;
+            IsFinishing = false;
+        }
+    }
+}

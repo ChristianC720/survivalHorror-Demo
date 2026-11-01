@@ -33,6 +33,12 @@ namespace Heartbeat.AI
             }
         }
 
+        /// <summary>Debug console / tests: kill outright.</summary>
+        public void DebugKill()
+        {
+            while (IsAlive) ReceiveShot(new ShotHit(transform.position + Vector3.up, Vector3.forward, false));
+        }
+
         /// <summary>Called by the recycling system when the lab raises the body (M-20).</summary>
         public void Revive(bool recycled)
         {

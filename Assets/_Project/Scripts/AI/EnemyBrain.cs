@@ -264,6 +264,7 @@ namespace Heartbeat.AI
             windupTimer = -1f;
             if (visual != null) visual.localRotation = Quaternion.Euler(-90f, 0f, 0f);   // placeholder fall
             gameObject.layer = LayerMask.NameToLayer("Corpse");
+            foreach (var c in GetComponents<Collider>()) c.isTrigger = true;   // the body does not block movement
             if (alert.State != AlertState.Patrol) OnAlertChanged(alert.State, AlertState.Patrol);
             GameEvents.RaiseEnemyKilled(this, transform.position);
         }
@@ -277,6 +278,14 @@ namespace Heartbeat.AI
 
         /// <summary>Debug / tests: force an alert state.</summary>
         public void DebugForceHunt() => alert.ForceHunt();
+
+        /// <summary>Debug / tests: move the agent to a point (and face yaw degrees).</summary>
+        public void DebugWarp(float x, float y, float z, float yaw)
+        {
+            if (agent.enabled) agent.Warp(new Vector3(x, y, z)); else transform.position = new Vector3(x, y, z);
+            transform.rotation = Quaternion.Euler(0f, yaw, 0f);
+            home = transform.position;
+        }
 
         /// <summary>Debug / tests: land an attack or grab right now, bypassing range and chance.</summary>
         public void DebugAttack(bool grab)
