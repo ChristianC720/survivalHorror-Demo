@@ -113,3 +113,4 @@ UI.DIR.RIGHT	right	derecha
 UI.OPT.REBIND_TAKEN	Key already in use	Tecla ya asignada	
 UI.OPT.LANG_EN	English	English	KEEP-EN
 UI.OPT.LANG_ES	Español	Español	KEEP-EN
+UI.PROMPT.LEAVE	Leave	Salir	

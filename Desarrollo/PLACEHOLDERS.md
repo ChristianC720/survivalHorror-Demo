@@ -38,3 +38,4 @@ Add a row whenever you create a new `PH_` prefab.
 | Main menu backdrop | capsule-row room with the facility terminal next to Lukas's capsule (D-90) | flat black screen with green text | pending (E12-f1-lighting) |
 | Credits roll | END table credits | hard-coded lines in `MenuView.ShowCredits` | pending (E15) |
 | Arm terminal | world-space canvas on Lukas's forearm + screen mirror | screen-space panel only | pending Lukas model |
+| The Mother (crane archive, collector arm, cryo core) | cryogenic sample archive on a crane with a collector arm and an opening core (D-65) | `ROOM_Mother`: CryoTank ×1.6 core, box arm + claw, cube cameras with red lights | pending model + core-opening animation |

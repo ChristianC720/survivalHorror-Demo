@@ -41,14 +41,17 @@ namespace Heartbeat.UI
         }
 
         private void OnTarget(MonoBehaviour t) => Show(t as IInteractable);
-        private void OnState(GameStateId _, GameStateId to) { if (to != GameStateId.Playing && to != GameStateId.Intro) Show(null); }
+        private void OnState(GameStateId _, GameStateId to) { if (!Playable(to)) Show(null); }
+
+        private static bool Playable(GameStateId s) => s == GameStateId.Playing || s == GameStateId.Intro || s == GameStateId.FinalDecision;
         private void OnDevice(bool _) => Show(target);
         private void OnLocale(UnityEngine.Localization.Locale _) => Show(target);
 
         private void Show(IInteractable t)
         {
             target = t;
-            bool visible = t != null && (t as MonoBehaviour) != null;
+            bool visible = t != null && (t as MonoBehaviour) != null
+                           && (!Services.TryGet(out GameStateMachine states) || Playable(states.Current));
             group.alpha = visible ? 1f : 0f;
             if (!visible) return;
             string key = router != null ? router.KeyFor(router.Actions.Gameplay.Interact) : "E";

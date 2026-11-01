@@ -204,6 +204,7 @@ MonoBehaviour:
   mudoPrefab: {fileID: 4636455638720379637, guid: 0cc35bbf0a5cb084b85f058d6e10a530, type: 3}
   playerPrefab: {fileID: 2442423367564465436, guid: 1ebcff6879e93504295068212b61a496, type: 3}
   playerCameraPrefab: {fileID: 1613256690469110135, guid: d0d9526cae61ab941bdba2ced9fdb952, type: 3}
+  motherRoomPrefab: {fileID: 75879741754685766, guid: 0cff6b8a339b94c4fb7806e737dab833, type: 3}
 --- !u!114 &664391584
 MonoBehaviour:
   m_ObjectHideFlags: 0

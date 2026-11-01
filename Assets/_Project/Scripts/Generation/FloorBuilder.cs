@@ -72,8 +72,37 @@ namespace Heartbeat.Generation
         }
 
         /// <summary>Generates and builds a floor. Returns false if no valid layout exists for the seed.</summary>
+        /// <summary>The Mother's room is built as "floor 4" in the Floor scene (fixed key room after floor 3, D-33).</summary>
+        public const int MotherFloor = 4;
+        [SerializeField] private GameObject motherRoomPrefab;
+
+        /// <summary>The PA central (D-59): one fixed, sealed room; no autosave on arrival (D-30).</summary>
+        public bool BuildMother()
+        {
+            var sw = Stopwatch.StartNew();
+            Clear();
+            Layout = null;
+            floorRoot = new GameObject("MotherRoom").transform;
+            floorRoot.SetParent(transform, false);
+            var room = Instantiate(motherRoomPrefab, floorRoot).GetComponent<RoomInstance>();
+            room.name = "ROOM_Mother";
+            room.GetComponent<RoomShell>().Build(new List<SocketData>());
+            built.Add(room);
+            surface.collectObjects = CollectObjects.Children;
+            surface.layerMask = LayerMask.GetMask("Environment");
+            surface.BuildNavMesh();
+            activation.SetRooms(built);
+            SpawnPlayer(0);
+            activation.Apply(room);
+            LastBuildMs = sw.ElapsedMilliseconds;
+            HbLog.Info("Gen", $"floor={MotherFloor} The Mother's room built in {LastBuildMs} ms");
+            GameEvents.RaiseFloorBuilt(MotherFloor, 0);
+            return true;
+        }
+
         public bool Build(int floor, int seed, bool firstAttempt, bool storyMode, bool showcase, IReadOnlyCollection<string> registered = null, bool startInFinalRoom = false)
         {
+            if (floor >= MotherFloor) return BuildMother();
             var sw = Stopwatch.StartNew();
             Clear();
 

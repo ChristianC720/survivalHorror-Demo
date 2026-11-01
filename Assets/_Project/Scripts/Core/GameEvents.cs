@@ -86,6 +86,10 @@ namespace Heartbeat.Core
         // Options (GlobalData saved; listeners re-read it from SaveService)
         public static event Action OptionsChanged;
 
+        // Boss (S-10)
+        public static event Action<int> BossPhaseChanged;                 // 1 nodes, 2 cameras, 3 transformers, 4 defeated
+        public static event Action BossDefeated;
+
         public static void RaiseGameStateChanged(GameStateId from, GameStateId to) => GameStateChanged?.Invoke(from, to);
         public static void RaisePlaySubStateChanged(PlaySubState from, PlaySubState to) => PlaySubStateChanged?.Invoke(from, to);
         public static void RaisePauseChanged(bool paused) => PauseChanged?.Invoke(paused);
@@ -120,6 +124,8 @@ namespace Heartbeat.Core
         public static void RaiseCuePlayed(string cue, Vector3? pos) => CuePlayed?.Invoke(cue, pos);
         public static void RaiseSubtitleRequested(string speaker, string key, object[] args) => SubtitleRequested?.Invoke(speaker, key, args);
         public static void RaiseOptionsChanged() => OptionsChanged?.Invoke();
+        public static void RaiseBossPhaseChanged(int phase) => BossPhaseChanged?.Invoke(phase);
+        public static void RaiseBossDefeated() => BossDefeated?.Invoke();
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         public static void ResetAll()
@@ -158,6 +164,8 @@ namespace Heartbeat.Core
             CuePlayed = null;
             SubtitleRequested = null;
             OptionsChanged = null;
+            BossPhaseChanged = null;
+            BossDefeated = null;
             Services.Clear();
         }
     }
