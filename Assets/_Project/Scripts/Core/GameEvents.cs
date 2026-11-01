@@ -62,6 +62,12 @@ namespace Heartbeat.Core
         public static event Action PowerRestored;
         public static event Action<int> FloorExitRequested;               // floor being left
 
+        // Cycle
+        public static event Action<int> DegradationChanged;
+        public static event Action<int> Reconstructed;                    // new subject code
+        public static event Action<string> EndingTriggered;               // Assimilation, BasicRelief, FullRelief, Ambiguous
+        public static event Action Autosaved;
+
         // Inventory / interaction
         public static event Action InventoryChanged;
         public static event Action<string> InventoryFull;                 // item kind that did not fit
@@ -88,6 +94,10 @@ namespace Heartbeat.Core
         public static void RaiseFloorBuilt(int floor, int seed) => FloorBuilt?.Invoke(floor, seed);
         public static void RaisePowerRestored() => PowerRestored?.Invoke();
         public static void RaiseFloorExitRequested(int floor) => FloorExitRequested?.Invoke(floor);
+        public static void RaiseDegradationChanged(int level) => DegradationChanged?.Invoke(level);
+        public static void RaiseReconstructed(int subject) => Reconstructed?.Invoke(subject);
+        public static void RaiseEndingTriggered(string ending) => EndingTriggered?.Invoke(ending);
+        public static void RaiseAutosaved() => Autosaved?.Invoke();
         public static void RaiseInventoryChanged() => InventoryChanged?.Invoke();
         public static void RaiseInventoryFull(string kind) => InventoryFull?.Invoke(kind);
         public static void RaiseInteractTargetChanged(MonoBehaviour target) => InteractTargetChanged?.Invoke(target);
@@ -113,6 +123,10 @@ namespace Heartbeat.Core
             HighestAlertChanged = null;
             HuntChanged = null;
             InventoryChanged = null;
+            DegradationChanged = null;
+            Reconstructed = null;
+            EndingTriggered = null;
+            Autosaved = null;
             RoomEntered = null;
             FloorBuilt = null;
             PowerRestored = null;

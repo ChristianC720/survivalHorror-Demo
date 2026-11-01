@@ -25,7 +25,8 @@ Each checkbox is one git-flow feature: `git flow feature start <id>`.
 - [x] `E14-f1-rooms` — 6 F1 archetype rooms + 2 secondary + final + capsule row (tutorial reuses Storage/Corridor/Open, D-70)
 - [x] `E07-layout-graph` · `E07-validator` (1 000 seeds) · `E07-budget`
 - [x] `E07-builder` · `E07-navmesh-activation` (12-room floor + NavMesh in 365 ms)
-- [ ] `E08-death-cycle` · `E08-save-service` · `E08-arm-terminal-data` · `E08-recycling` · `E08-exit-cost`
+- [x] `E08-death-cycle` · `E08-save-service` · `E08-arm-terminal-data` (registry persisted per slot)
+- [ ] `E08-recycling` · `E08-exit-cost`
 - [ ] `E03-surveillance` — iso view, signal stages, hidden attention, lockout (M-02, M-03)
 
 ## H4 — Vertical slice

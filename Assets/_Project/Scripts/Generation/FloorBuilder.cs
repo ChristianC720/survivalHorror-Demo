@@ -80,6 +80,12 @@ namespace Heartbeat.Generation
             var cfg = ConfigFor(floor, showcase);
             var p = cfg.ToParams(seed, firstAttempt, storyMode);
             var templates = library.rooms.Where(r => r != null && r.floor == floor).Select(RoomTemplate.From).ToList();
+            if (templates.Count == 0)
+            {
+                // Development fallback until the floor's own rooms exist (E-14 F2/F3).
+                HbLog.Warn("Gen", $"No rooms for floor {floor} yet: using floor 1 rooms");
+                templates = library.rooms.Where(r => r != null && r.floor == 1).Select(RoomTemplate.From).ToList();
+            }
             Layout = LayoutGenerator.Generate(p, templates);
             if (Layout == null)
             {
@@ -90,6 +96,9 @@ namespace Heartbeat.Generation
             floorRoot = new GameObject($"Floor_{floor}_seed{Layout.Seed}").transform;
             floorRoot.SetParent(transform, false);
             doorsRoot = new GameObject($"Doors_{floor}").transform;
+            // Start() of a freshly loaded scene runs before it becomes the active scene: anything instantiated at the
+            // root would land in the previous (about to be unloaded) scene. Keep everything in this scene.
+            UnityEngine.SceneManagement.SceneManager.MoveGameObjectToScene(doorsRoot.gameObject, gameObject.scene);
             emiliaCursor = 0;
 
             foreach (var pr in Layout.Rooms) built.Add(PlaceRoom(pr));
@@ -286,10 +295,17 @@ namespace Heartbeat.Generation
 
             if (Player == null)
             {
-                var existing = FindAnyObjectByType<Player.PlayerController>();
+                // Only reuse a player that belongs to this scene (the previous Floor scene may still be loaded).
+                var existing = FindObjectsByType<Player.PlayerController>(FindObjectsSortMode.None).FirstOrDefault(p => p.gameObject.scene == gameObject.scene);
                 Player = existing != null ? existing.gameObject : Instantiate(playerPrefab);
                 Player.name = "Player";
-                if (FindAnyObjectByType<CameraSystem.OtsCameraRig>() == null) Instantiate(playerCameraPrefab).name = "PlayerCamera";
+                UnityEngine.SceneManagement.SceneManager.MoveGameObjectToScene(Player, gameObject.scene);
+                if (!FindObjectsByType<CameraSystem.OtsCameraRig>(FindObjectsSortMode.None).Any(r => r.gameObject.scene == gameObject.scene))
+                {
+                    var cam = Instantiate(playerCameraPrefab);
+                    cam.name = "PlayerCamera";
+                    UnityEngine.SceneManagement.SceneManager.MoveGameObjectToScene(cam, gameObject.scene);
+                }
             }
             Player.GetComponent<Player.PlayerController>().DebugTeleport(pos.x, pos.y, pos.z, rot.eulerAngles.y);
         }

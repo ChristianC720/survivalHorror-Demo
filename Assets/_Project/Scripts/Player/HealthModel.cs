@@ -70,7 +70,8 @@ namespace Heartbeat.Player
 
         public void Kill() => SetValue(0f);
 
-        private void SetValue(float v)
+        /// <summary>Restores hidden health (floor carry-over, autosave).</summary>
+        public void SetValue(float v)
         {
             var before = State;
             Value = Math.Max(0f, Math.Min(Max, v));

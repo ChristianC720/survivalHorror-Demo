@@ -43,7 +43,8 @@ namespace Heartbeat.Core
             busy = true;
             yield return Fade(0f, 1f);
 
-            string previous = CurrentScene;
+            // Keep the handle: reloading the same scene name (Floor -> Floor) makes name lookups ambiguous.
+            Scene previous = string.IsNullOrEmpty(CurrentScene) ? default : FindLoaded(CurrentScene);
             var op = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
             if (op == null)
             {
@@ -53,9 +54,9 @@ namespace Heartbeat.Core
             }
             while (!op.isDone) yield return null;
 
-            var loaded = SceneManager.GetSceneByName(sceneName);
+            var loaded = SceneManager.GetSceneAt(SceneManager.sceneCount - 1);
             SceneManager.SetActiveScene(loaded);
-            if (!string.IsNullOrEmpty(previous) && previous != sceneName && SceneManager.GetSceneByName(previous).isLoaded)
+            if (previous.IsValid() && previous.isLoaded && previous != loaded)
                 yield return SceneManager.UnloadSceneAsync(previous);
 
             CurrentScene = sceneName;
@@ -64,6 +65,16 @@ namespace Heartbeat.Core
 
             if (fadeOut) yield return Fade(1f, 0f);
             busy = false;
+        }
+
+        private static Scene FindLoaded(string name)
+        {
+            for (int i = 0; i < SceneManager.sceneCount; i++)
+            {
+                var s = SceneManager.GetSceneAt(i);
+                if (s.name == name && s.isLoaded) return s;
+            }
+            return default;
         }
 
         /// <summary>Registers a scene that was already open when Bootstrap started (editor play-from-scene).</summary>
