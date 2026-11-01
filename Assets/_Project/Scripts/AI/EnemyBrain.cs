@@ -269,6 +269,23 @@ namespace Heartbeat.AI
             GameEvents.RaiseEnemyKilled(this, transform.position);
         }
 
+        /// <summary>The lab raised this body (M-20): stand up, collide again, back on the NavMesh, searching.</summary>
+        public void OnRecycled()
+        {
+            gameObject.layer = LayerMask.NameToLayer("Enemy");
+            foreach (var c in GetComponents<Collider>()) c.isTrigger = false;
+            if (visual != null) visual.localRotation = Quaternion.identity;
+            agent.enabled = true;
+            if (agent.isOnNavMesh) agent.Warp(transform.position);
+            agent.isStopped = false;
+            staggerTimer = 0f;
+            windupTimer = -1f;
+            alert.Reset();
+            alert.Hear(NoiseSource.Other);   // rises disoriented: suspicion
+            if (director == null) Services.TryGet(out director);
+            director?.Register(this);
+        }
+
         private void OnAlertChanged(AlertState from, AlertState to)
         {
             HbLog.Info("AI", $"{name} {from}->{to}");

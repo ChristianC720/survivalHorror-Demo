@@ -50,6 +50,8 @@ namespace Heartbeat.Core
         public static event Action<AttackInfo> PlayerAttacked;
         public static event Action<bool> GrabResolved;        // true = countered by the spike
         public static event Action<MonoBehaviour, Vector3> EnemyKilled;
+        public static event Action<Vector3> RecycleWarning;
+        public static event Action<MonoBehaviour> EnemyRecycled;
 
         // AI
         public static event Action<MonoBehaviour, AlertState, float> EnemyAlertChanged;
@@ -87,6 +89,8 @@ namespace Heartbeat.Core
         public static void RaisePlayerAttacked(AttackInfo info) => PlayerAttacked?.Invoke(info);
         public static void RaiseGrabResolved(bool countered) => GrabResolved?.Invoke(countered);
         public static void RaiseEnemyKilled(MonoBehaviour enemy, Vector3 pos) => EnemyKilled?.Invoke(enemy, pos);
+        public static void RaiseRecycleWarning(Vector3 pos) => RecycleWarning?.Invoke(pos);
+        public static void RaiseEnemyRecycled(MonoBehaviour enemy) => EnemyRecycled?.Invoke(enemy);
         public static void RaiseEnemyAlertChanged(MonoBehaviour enemy, AlertState state, float distance) => EnemyAlertChanged?.Invoke(enemy, state, distance);
         public static void RaiseHighestAlertChanged(AlertState state) => HighestAlertChanged?.Invoke(state);
         public static void RaiseHuntChanged(bool hunting) => HuntChanged?.Invoke(hunting);
@@ -119,6 +123,8 @@ namespace Heartbeat.Core
             PlayerAttacked = null;
             GrabResolved = null;
             EnemyKilled = null;
+            RecycleWarning = null;
+            EnemyRecycled = null;
             EnemyAlertChanged = null;
             HighestAlertChanged = null;
             HuntChanged = null;

@@ -37,6 +37,9 @@ namespace Heartbeat.Recycle
             HbLog.Info("Recycle", $"{name} finished by {how}; it will not be recycled");
         }
 
+        /// <summary>Debug / tests: pretend the body died <paramref name="seconds"/> ago.</summary>
+        public void DebugAge(float seconds) => DiedAt = Time.time - seconds;
+
         /// <summary>Called when the lab raises the body (E-08) so it becomes a living, recycled enemy again.</summary>
         public void OnRaised()
         {

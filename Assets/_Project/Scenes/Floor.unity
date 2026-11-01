@@ -249,6 +249,7 @@ GameObject:
   m_Component:
   - component: {fileID: 675742611}
   - component: {fileID: 675742610}
+  - component: {fileID: 675742612}
   m_Layer: 0
   m_Name: AlertDirector
   m_TagString: Untagged
@@ -284,6 +285,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &675742612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 675742609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 636b262e837cf604591000162596af88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Heartbeat.Runtime::Heartbeat.Recycle.RecycleSystem
+  riseAfterSeconds: 40
+  warningSeconds: 3
+  metal: {fileID: 2100000, guid: 6082adaba89a82042911f74d7610cd30, type: 2}
 --- !u!1 &1894999164
 GameObject:
   m_ObjectHideFlags: 0

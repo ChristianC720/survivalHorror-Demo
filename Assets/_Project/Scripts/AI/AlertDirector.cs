@@ -23,6 +23,11 @@ namespace Heartbeat.AI
         public int HuntingCount { get; private set; }
         public IReadOnlyList<EnemyBrain> Enemies => enemies;
 
+        private void Awake()
+        {
+            if (GetComponent<Recycle.RecycleSystem>() == null) gameObject.AddComponent<Recycle.RecycleSystem>();
+        }
+
         private void OnEnable()
         {
             Services.Register(this);
