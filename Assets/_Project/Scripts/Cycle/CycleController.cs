@@ -56,8 +56,17 @@ namespace Heartbeat.Cycle
             GameEvents.FloorBuilt += OnFloorBuilt;
             GameEvents.HuntChanged += OnHuntChanged;
 
-            if (Data == null) LoadOrCreate(saves.LoadGlobal().lastUsedSlot, GameMode.Survival, newGame: false);
+            if (Data != null) return;
+            // Play pressed inside a gameplay/sandbox scene in the editor: a hidden dev slot, fresh every Play, so tests
+            // never touch the player's real slots. Launches through Bootstrap/MainMenu use the real slots.
+            string launch = BootstrapLoader.LaunchScene;
+            bool devLaunch = Application.isEditor && !string.IsNullOrEmpty(launch) && launch != SceneNames.Bootstrap && launch != SceneNames.MainMenu;
+            if (devLaunch) LoadOrCreate(DevSlot, GameMode.Survival, newGame: true);
+            else LoadOrCreate(saves.LoadGlobal().lastUsedSlot, GameMode.Survival, newGame: false);
         }
+
+        /// <summary>Hidden slot file used by editor play-from-scene (never listed in the menus, never "last used").</summary>
+        public const int DevSlot = SaveService.SlotCount;
 
         private void OnDestroy()
         {
@@ -87,9 +96,12 @@ namespace Heartbeat.Cycle
                 if (showcase) HbLog.Info("Cycle", "Showcase preset for this slot");
             }
             registry.Import(Data.terminal.Select(e => (e.id, e.kind)));
-            var g = saves.LoadGlobal();
-            g.lastUsedSlot = slot;
-            saves.SaveGlobal(g);
+            if (slot != DevSlot)
+            {
+                var g = saves.LoadGlobal();
+                g.lastUsedSlot = slot;
+                saves.SaveGlobal(g);
+            }
             HbLog.Info("Cycle", $"Slot {slot}: {Data.SubjectLabel}, deaths {Data.deathCounter}, registry {registry.Count}");
             GameEvents.RaiseDegradationChanged(Data.degradationLevel);
         }
