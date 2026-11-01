@@ -30,6 +30,10 @@ namespace Heartbeat.CameraSystem
         public bool IsAiming => aiming;
         public Transform Target => target;
         public float Yaw => yaw;
+        public CinemachineBrain Brain => brain;
+
+        private void OnEnable() => Services.Register(this);
+        private void OnDisable() => Services.Unregister(this);
 
         private void Start()
         {

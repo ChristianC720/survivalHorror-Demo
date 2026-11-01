@@ -102,6 +102,14 @@ namespace Heartbeat.Player
             ApplyPosture();
         }
 
+        /// <summary>Debug console / tests: teleport Lukas and face yaw degrees.</summary>
+        public void DebugTeleport(float x, float y, float z, float yaw)
+        {
+            controller.enabled = false;
+            transform.SetPositionAndRotation(new Vector3(x, y, z), Quaternion.Euler(0f, yaw, 0f));
+            controller.enabled = true;
+        }
+
         private float BaseSpeed()
         {
             if (IsSurveilling) return balance.surveillanceSpeed;

@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e710891a2839cfa4e9081394227098a3, type: 3}
+  m_Name: CombatBalance
+  m_EditorClassIdentifier: Heartbeat.Runtime::Heartbeat.Combat.CombatBalance
+  drumSize: 6
+  secondsBetweenShots: 0.8
+  reloadSecondsPerRound: 0.7
+  maxSpreadDegrees: 5
+  spreadCloseSeconds: 1
+  spreadPerShot: 0.6
+  range: 60
+  shotNoiseRadius: 20
+  shoveRange: 1.6
+  shoveRadius: 0.6
+  shoveStaggerSeconds: 1.2
+  shoveCooldown: 0.6
+  spikeStunSeconds: 2
+  finisherRange: 1.5
+  spikeFinisherSeconds: 1.5
+  groundStrikeSeconds: 2
+  groundStrikeNoiseRadius: 10

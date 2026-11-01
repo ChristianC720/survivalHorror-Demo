@@ -17,9 +17,9 @@ Each checkbox is one git-flow feature: `git flow feature start <id>`.
 - [x] `E12-sandbox-kit` — `Sandbox_Kit` scene, snapping, F1 kit pieces (with Aura) + shared ramp/platform
 
 ## H2 — Combat prototype
-- [ ] `E04-revolver` · `E04-shove` · `E04-spike-grab` · `E04-finisher`
-- [ ] `E05-perception` · `E05-alert-director` · `E05-alto` · `E05-rastrero`
-- [ ] `E06-inventory` (pure model + tests) · `E06-interaction` · `E06-documents-registry` · `E06-flashlight` · `E06-hacking` · `E06-doors-seal`
+- [x] `E04-revolver` · `E04-shove` · `E04-spike-grab` · `E04-finisher`
+- [x] `E05-ai-core` (perception, alert director, Alto, Rastrero) — merged as one feature
+- [x] `E06-inventory` · `E06-interaction` · `E06-documents-registry` · `E06-flashlight` · `E06-hacking` · `E06-doors-seal` (all done)
 
 ## H3 — MVP
 - [ ] `E14-f1-rooms` — 6 F1 archetype rooms + 2–3 F1 secondary key rooms + F1 final + capsule row + 4 tutorial rooms
