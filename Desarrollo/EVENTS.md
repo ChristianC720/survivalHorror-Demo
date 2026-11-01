@@ -10,13 +10,13 @@
 | `FloorExitRequested` | `int floor` | Level → S-08 / state machine | M-15 |
 | `AttentionFull` | `Vector3 playerPos` | S-01 → S-02 | D-24 |
 | `HighestAlertChanged` | `AlertState state` | S-02 → S-01, S-11, S-07 | M-03, M-10 |
-| `EnemyAlertChanged` | `EnemyBrain enemy, AlertState state, float distance` | S-02 → S-11 | S-11 |
-| `HuntStarted` / `HuntEnded` | `EnemyBrain enemy` | S-02 → S-01 (cut + lock), S-07 (pending autosave, exit cost), Level (transit lockdown) | M-03, D-96 |
+| `EnemyAlertChanged` | `MonoBehaviour enemy (EnemyBrain), AlertState state, float distance` | S-02 → S-11 | S-11 |
+| `HuntChanged` | `bool hunting` (first enemy enters Hunt / last one leaves) | S-02 → S-01 (cut + lock), S-07 (pending autosave, exit cost), Level (transit lockdown) | M-03, D-96 |
 | `PlayerAttacked` | `AttackInfo info` | S-02 → S-03 | S-03 |
-| `PlayerGrabbed` / `GrabResolved` | `EnemyBrain enemy`, `bool spikeUsed` | S-02 ↔ S-03 | M-11 |
+| `GrabResolved` | `bool spikeUsed` (grabs arrive as `PlayerAttacked` with `IsGrab`) | S-03 → UI, S-11 | M-11 |
 | `HealthStateChanged` | `HealthState state` | S-03 → UI, Player (posture), S-11 | M-05 |
 | `PlayerDied` | `DeathCause cause` | S-03 → S-08 | S-08 |
-| `EnemyKilled` | `EnemyBrain enemy, Vector3 corpsePos` | S-03 → S-09 | S-09 |
+| `EnemyKilled` | `MonoBehaviour enemy (EnemyBrain), Vector3 corpsePos` | S-03 → S-09 | S-09 |
 | `EnemyRecycled` | `EnemyBrain enemy` | S-09 → S-02 | M-20 |
 | `RecycleWarning` | `Corpse corpse` | S-09 → S-11 | D-99 |
 | `GroundStrikeNoise` | `Vector3 pos, float radius` | S-09 → S-02 | M-20 |
@@ -36,5 +36,8 @@
 | `PowerRestored` | `RoomInstance room` | Level → S-02 (noise), S-06 | D-72 |
 | `FaultUsed` / `FaultPatched` | `FaultId id` | Level → S-07 | M-17 |
 | `CuePlayed` | `AudioCue cue, Vector3 pos` | S-11 → debug captions, tests | – |
+| `AimChanged` | `bool aiming` | Camera → UI, Flashlight | M-01 |
+| `ShotFired` | `Vector3 origin` | Combat → S-01 (attention), S-11 | M-04 |
+| `InventoryChanged` | – | S-05 → UI, S-07 | M-07 |
 | `GameStateChanged` | `GameStateId from, GameStateId to` | state machine → all | Reglas y Estados |
 | `InputContextChanged` | `InputContext ctx` | InputRouter → UI prompts | Controles |

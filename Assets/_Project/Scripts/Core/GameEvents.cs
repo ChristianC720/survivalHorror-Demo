@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Heartbeat.Core
 {
-    /// <summary>Who made a noise (M-09). Enemies react differently to some sources later (e.g. ground strike).</summary>
+    /// <summary>Who made a noise (M-09). Enemies react differently to some sources (loud vs quiet).</summary>
     public enum NoiseSource { Footsteps, Running, Shot, GroundStrike, Machinery, Scream, Other }
 
     public readonly struct NoiseInfo
@@ -24,9 +24,9 @@ namespace Heartbeat.Core
 
     /// <summary>
     /// Static event bus between systems (D-108). Catalog: Desarrollo/EVENTS.md — add rows there first.
-    /// Events are added here as the systems that raise them are implemented.
-    /// <see cref="ResetAll"/> runs on every play-mode entry because domain reload is disabled.
-    /// Health state is passed as int to keep Core independent of Player; cast to Heartbeat.Player.HealthState.
+    /// Events are added as the systems that raise them are implemented. <see cref="ResetAll"/> runs on every
+    /// play-mode entry because domain reload is disabled. Payloads use Core types or MonoBehaviour so Core does not
+    /// depend on gameplay code (cast the MonoBehaviour to the concrete type in the listener).
     /// </summary>
     public static class GameEvents
     {
@@ -38,17 +38,26 @@ namespace Heartbeat.Core
         // Player
         public static event Action<NoiseInfo> NoiseEmitted;
         public static event Action StaminaExhausted;
-        public static event Action<int> HealthStateChanged;
+        public static event Action<int> HealthStateChanged;   // Heartbeat.Player.HealthState
         public static event Action<DeathCause> PlayerDied;
+
+        // Camera / surveillance
+        public static event Action<bool> AimChanged;
+        public static event Action<Vector3> AttentionFull;
 
         // Combat
         public static event Action<Vector3> ShotFired;
+        public static event Action<AttackInfo> PlayerAttacked;
+        public static event Action<bool> GrabResolved;        // true = countered by the spike
+        public static event Action<MonoBehaviour, Vector3> EnemyKilled;
+
+        // AI
+        public static event Action<MonoBehaviour, AlertState, float> EnemyAlertChanged;
+        public static event Action<AlertState> HighestAlertChanged;
+        public static event Action<bool> HuntChanged;          // true = at least one enemy hunting
 
         // Inventory
         public static event Action InventoryChanged;
-
-        // Camera
-        public static event Action<bool> AimChanged;
 
         public static void RaiseGameStateChanged(GameStateId from, GameStateId to) => GameStateChanged?.Invoke(from, to);
         public static void RaisePlaySubStateChanged(PlaySubState from, PlaySubState to) => PlaySubStateChanged?.Invoke(from, to);
@@ -57,9 +66,16 @@ namespace Heartbeat.Core
         public static void RaiseStaminaExhausted() => StaminaExhausted?.Invoke();
         public static void RaiseHealthStateChanged(int state) => HealthStateChanged?.Invoke(state);
         public static void RaisePlayerDied(DeathCause cause) => PlayerDied?.Invoke(cause);
-        public static void RaiseShotFired(Vector3 origin) => ShotFired?.Invoke(origin);
-        public static void RaiseInventoryChanged() => InventoryChanged?.Invoke();
         public static void RaiseAimChanged(bool aiming) => AimChanged?.Invoke(aiming);
+        public static void RaiseAttentionFull(Vector3 playerPos) => AttentionFull?.Invoke(playerPos);
+        public static void RaiseShotFired(Vector3 origin) => ShotFired?.Invoke(origin);
+        public static void RaisePlayerAttacked(AttackInfo info) => PlayerAttacked?.Invoke(info);
+        public static void RaiseGrabResolved(bool countered) => GrabResolved?.Invoke(countered);
+        public static void RaiseEnemyKilled(MonoBehaviour enemy, Vector3 pos) => EnemyKilled?.Invoke(enemy, pos);
+        public static void RaiseEnemyAlertChanged(MonoBehaviour enemy, AlertState state, float distance) => EnemyAlertChanged?.Invoke(enemy, state, distance);
+        public static void RaiseHighestAlertChanged(AlertState state) => HighestAlertChanged?.Invoke(state);
+        public static void RaiseHuntChanged(bool hunting) => HuntChanged?.Invoke(hunting);
+        public static void RaiseInventoryChanged() => InventoryChanged?.Invoke();
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         public static void ResetAll()
@@ -72,8 +88,15 @@ namespace Heartbeat.Core
             HealthStateChanged = null;
             PlayerDied = null;
             AimChanged = null;
-            InventoryChanged = null;
+            AttentionFull = null;
             ShotFired = null;
+            PlayerAttacked = null;
+            GrabResolved = null;
+            EnemyKilled = null;
+            EnemyAlertChanged = null;
+            HighestAlertChanged = null;
+            HuntChanged = null;
+            InventoryChanged = null;
             Services.Clear();
         }
     }

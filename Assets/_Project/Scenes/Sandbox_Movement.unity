@@ -650,6 +650,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7646876407637486743, guid: 1ebcff6879e93504295068212b61a496, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4287430489
+      objectReference: {fileID: 0}
+    - target: {fileID: 7646876407637486743, guid: 1ebcff6879e93504295068212b61a496, type: 3}
+      propertyPath: m_TextStyleHashCode
+      value: -1183493901
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -672,7 +680,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4006017199468059012, guid: d0d9526cae61ab941bdba2ced9fdb952, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4006017199468059012, guid: d0d9526cae61ab941bdba2ced9fdb952, type: 3}
       propertyPath: m_LocalPosition.y
@@ -680,7 +688,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4006017199468059012, guid: d0d9526cae61ab941bdba2ced9fdb952, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.5
+      value: -1.1
       objectReference: {fileID: 0}
     - target: {fileID: 4776449462022305367, guid: d0d9526cae61ab941bdba2ced9fdb952, type: 3}
       propertyPath: field of view

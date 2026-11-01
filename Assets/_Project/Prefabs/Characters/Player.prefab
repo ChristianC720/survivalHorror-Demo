@@ -286,6 +286,7 @@ GameObject:
   - component: {fileID: 5604194892502960124}
   - component: {fileID: 7073963810229885166}
   - component: {fileID: 8905714581570685979}
+  - component: {fileID: 5953581016024664701}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -409,6 +410,21 @@ MonoBehaviour:
   inventory: {fileID: 7073963810229885166}
   health: {fileID: 1368415113503638425}
   muzzle: {fileID: 9197430729809118785}
+--- !u!114 &5953581016024664701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2442423367564465436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19254b8bf664a864e975f7f123b63cdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Heartbeat.Runtime::Heartbeat.Combat.PlayerDamageReceiver
+  balance: {fileID: 11400000, guid: 92b7612bc1f7e744ba276570c0aff41e, type: 2}
+  health: {fileID: 1368415113503638425}
+  inventory: {fileID: 7073963810229885166}
 --- !u!1 &5790803089912618396
 GameObject:
   m_ObjectHideFlags: 0
