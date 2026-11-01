@@ -70,9 +70,9 @@ Rules:
 - Size in whole cells. Footprint ≤ 8 × 8 cells (16 m) except `KEY_F3_Mother`.
 - The `RoomVolume` box covers the interior exactly (inset 0.3) from y 0 to the wall height.
 - **Leave socket edges empty** in `Geometry`: the builder fills each socket with a doorway (if connected) or a wall (if not).
-- Every room has ≥ 2 sockets on different edges (corridors: on opposite edges). Sockets sit on cells that do not hold walls of the vertical room's upper level.
+- Procedural rooms have ≥ 2 sockets on different edges (corridors: on opposite edges); key rooms (leaves) may have 1. Sockets sit on cells that do not hold walls of the vertical room's upper level.
 - Collectibles only stand out under light (art rule): no emissive pickups.
-- Enemy spawns ≥ 6 m from any socket that can be the entry. Two enemy spawns max per room (GDD max 2 active per room).
+- Enemy spawns ≥ 4 m from every socket (6 m was impossible in rooms with 3–4 sockets). Two enemy spawns max per room (GDD max 2 active per room).
 - Room metadata goes in a `RoomDefinition` asset (`ScriptableObjects/Rooms/`): archetype, floor, `RoomRole` (Procedural / Secondary / Final / CapsuleRow / Tutorial / Mother), size in cells, socket list (auto-filled by the `Heartbeat/Rooms/Refresh Definition` editor menu), `hasCamera`, `canBeUnpowered`, prefab reference.
 
 ## 4. DoorSocket

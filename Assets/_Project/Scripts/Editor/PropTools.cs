@@ -21,7 +21,7 @@ namespace Heartbeat.EditorTools
             int env = LayerMask.NameToLayer("Environment");
             foreach (var root in UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects())
             {
-                if (!root.name.StartsWith("PROP_") && !(root.name.StartsWith("PH_F") || root.name.StartsWith("PH_Shared"))) continue;
+                if (!root.name.StartsWith("PROP_") && !root.name.StartsWith("PH_")) continue;   // run in Sandbox_Kit with props only
                 foreach (var c in root.GetComponentsInChildren<Collider>(true))
                     if (c.gameObject != root) Object.DestroyImmediate(c);
 

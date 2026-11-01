@@ -22,7 +22,7 @@ Each checkbox is one git-flow feature: `git flow feature start <id>`.
 - [x] `E06-inventory` · `E06-interaction` · `E06-documents-registry` · `E06-flashlight` · `E06-hacking` · `E06-doors-seal` (all done)
 
 ## H3 — MVP
-- [ ] `E14-f1-rooms` — 6 F1 archetype rooms + 2–3 F1 secondary key rooms + F1 final + capsule row + 4 tutorial rooms
+- [x] `E14-f1-rooms` — 6 F1 archetype rooms + 2 secondary + final + capsule row (tutorial reuses Storage/Corridor/Open, D-70)
 - [x] `E07-layout-graph` · `E07-validator` (1 000 seeds) · `E07-budget`
 - [ ] `E07-builder` · `E07-navmesh-activation`
 - [ ] `E08-death-cycle` · `E08-save-service` · `E08-arm-terminal-data` · `E08-recycling` · `E08-exit-cost`

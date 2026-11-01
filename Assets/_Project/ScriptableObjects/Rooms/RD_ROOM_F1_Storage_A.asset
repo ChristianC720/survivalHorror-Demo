@@ -30,4 +30,5 @@ MonoBehaviour:
   canBeUnpowered: 0
   enemySpawns: 1
   itemSpawns: 3
+  itemSpawnTags: 000000000000000001000000i
   weight: 1

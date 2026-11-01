@@ -73,7 +73,7 @@ namespace Heartbeat.EditorTools
                 sockets.Add(new SocketData { cell = cell, facing = facing, allowLocked = s.allowLocked });
                 facings.Add(facing);
             }
-            if (sockets.Count < 2 && !prefab.name.Contains("Mother") && !prefab.name.Contains("Final")) issues.Add("needs >= 2 sockets");
+            if (sockets.Count < 1 || (sockets.Count < 2 && !prefab.name.StartsWith("KEY_"))) issues.Add("procedural rooms need >= 2 sockets, key rooms >= 1");
             if (facings.Count < 2 && sockets.Count >= 2) issues.Add("sockets must be on different edges");
 
             // Spawns
@@ -83,7 +83,7 @@ namespace Heartbeat.EditorTools
             if (enemies > 2) issues.Add("more than 2 enemy spawns (D-37)");
             foreach (var e in spawns.Where(s => s.kind == SpawnKind.Enemy))
                 foreach (var s in prefab.GetComponentsInChildren<DoorSocket>(true))
-                    if (Vector3.Distance(e.transform.position, s.transform.position) < 6f) { issues.Add($"enemy spawn {e.name} < 6 m from {s.name}"); break; }
+                    if (Vector3.Distance(e.transform.position, s.transform.position) < 4f) { issues.Add($"enemy spawn {e.name} < 4 m from {s.name}"); break; }
 
             if (prefab.GetComponent<BoxCollider>() is BoxCollider bc && !bc.isTrigger) issues.Add("RoomVolume collider must be a trigger");
             if (prefab.GetComponent<BoxCollider>() == null) issues.Add("missing RoomVolume BoxCollider trigger on root");
