@@ -10,7 +10,7 @@ Each checkbox is one git-flow feature: `git flow feature start <id>`.
 - [x] `E00-render` — pixelated ~540p Renderer Feature + dithering, Forward+, quality tiers
 - [x] `E01-core` — `Bootstrap`, `Services`, `GameEvents`, `GameStateMachine`, `SceneLoader`, scenes in build
 - [ ] `E01-pause` — pause (only `timeScale` user), confirmations
-- [ ] `E02-input` — `Heartbeat.inputactions` with 8 context maps, `InputRouter`, fixed gamepad map
+- [x] `E02-input` — `Heartbeat.inputactions` with 8 context maps, `InputRouter`, fixed gamepad map
 - [ ] `E02-player-motor` — `PH_Lukas`, CharacterController movement (crouch 0.8 / walk 1.5 / run 4 m/s), noise emitter
 - [ ] `E02-stamina-health` — pure `StaminaModel`, `HealthModel` (Fine/Injured/Critical) + tests
 - [ ] `E03-ots-camera` — Cinemachine OTS + aim (M-01)

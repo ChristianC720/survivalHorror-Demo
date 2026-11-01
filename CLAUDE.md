@@ -54,7 +54,7 @@ Assets/_Project/
   ScriptableObjects/{Balance,Enemies,Items,Rooms,Floors,Docs,Audio}
   Materials/<Floor>/, Scenes/, Timelines/, Localization/, UI/, Audio/Mixer/, Input/, Render/
 ```
-- Namespaces `Heartbeat.<System>`; asmdef `Heartbeat.Runtime` for all runtime code.
+- Namespaces `Heartbeat.<System>` (input lives in `Heartbeat.InputRouting` to avoid clashing with `UnityEngine.Input`); asmdef `Heartbeat.Runtime` for all runtime code.
 - Code, identifiers, comments, logs: English. In-game text: Localization keys only.
 - Floors: `F1` Maintenance (sodium amber), `F2` Illegal Clinic (cold fluorescent), `F3` Core (crimson). `Shared` = all floors.
 
