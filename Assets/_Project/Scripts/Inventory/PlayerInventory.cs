@@ -13,7 +13,8 @@ namespace Heartbeat.Inventory
         [SerializeField] private PlayerBalance balance;
         [SerializeField] private PlayerHealth health;
 
-        private float healTimer = -1f;
+        private float healTimer = -1f;   // shared ~1.5 s action timer: heal or discard (M-07)
+        private int pendingDiscard = -1;
 
         public InventoryModel Model { get; } = new InventoryModel();
         public bool IsUsingItem => healTimer >= 0f;
@@ -39,6 +40,7 @@ namespace Heartbeat.Inventory
             healTimer -= Time.deltaTime;
             if (healTimer > 0f) return;
             healTimer = -1f;
+            if (pendingDiscard >= 0) { FinishDiscard(); return; }
             if (health.Model.CanHeal && Model.TryConsume(ItemKind.Heal))
             {
                 health.Model.TryHeal();
@@ -69,6 +71,26 @@ namespace Heartbeat.Inventory
             }
         }
 
+        /// <summary>Right click on a slot: after ~1.5 s the item drops at Lukas's feet as a pickup (M-07).</summary>
+        public bool TryDiscardSlot(int index)
+        {
+            if (Model[index].IsEmpty || IsUsingItem) return false;
+            pendingDiscard = index;
+            healTimer = balance.healSeconds;
+            HbLog.Info("Inventory", $"Discard started: {Model[index].Kind}");
+            return true;
+        }
+
+        private void FinishDiscard()
+        {
+            var slot = Model.RemoveSlot(pendingDiscard);
+            pendingDiscard = -1;
+            if (slot.IsEmpty) return;
+            if (Services.TryGet(out Generation.FloorBuilder builder))
+                builder.DropItem(slot.Kind, slot.Count, transform.position + transform.forward * 0.5f);
+            HbLog.Info("Inventory", $"Discarded {slot.Kind} x{slot.Count}");
+        }
+
         public void TryUseFirst(ItemKind kind)
         {
             for (int i = 0; i < InventoryModel.SlotCount; i++)
@@ -79,7 +101,8 @@ namespace Heartbeat.Inventory
         {
             if (!IsUsingItem) return;
             healTimer = -1f;
-            HbLog.Info("Inventory", "Heal cancelled by a hit (item kept)");
+            pendingDiscard = -1;
+            HbLog.Info("Inventory", "Item action cancelled by a hit (item kept)");
         }
 
         private void OnChanged()

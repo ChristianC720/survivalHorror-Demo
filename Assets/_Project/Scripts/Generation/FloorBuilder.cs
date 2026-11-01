@@ -242,6 +242,15 @@ namespace Heartbeat.Generation
             _ => null,
         };
 
+        /// <summary>Discarded inventory item (M-07): a normal pickup on the floor of the current floor.</summary>
+        public void DropItem(ItemKind kind, int amount, Vector3 position)
+        {
+            var prefab = PrefabFor(kind);
+            if (prefab == null) return;
+            var go = Instantiate(prefab, position, Quaternion.identity, floorRoot);
+            if (go.TryGetComponent(out WorldItem wi)) wi.Setup(kind, amount);
+        }
+
         private void Spawn(GameObject prefab, Transform at, ItemKind kind, int amount)
         {
             if (prefab == null) return;

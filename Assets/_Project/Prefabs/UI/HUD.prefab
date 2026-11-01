@@ -150,6 +150,62 @@ MonoBehaviour:
   baseFontSize: 36
   minSeconds: 2.5
   secondsPerChar: 0.06
+--- !u!1 &4154750867581098708
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1854641386147791101}
+  - component: {fileID: 1385987892396526162}
+  m_Layer: 0
+  m_Name: Terminal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1854641386147791101
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4154750867581098708}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 110043993937844125}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1385987892396526162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4154750867581098708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3ebf16f45b01254aa592295f8de6d3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Heartbeat.Runtime::Heartbeat.UI.TerminalView
+  documents:
+  - {fileID: 11400000, guid: cd530d0f3036e1b47a9aad8b7bec3de1, type: 2}
+  - {fileID: 11400000, guid: 0b32e0d336e67dd4bac0d4d90eaffc8d, type: 2}
+  - {fileID: 11400000, guid: 9c937f11c64465843b8fbcd31d4234a4, type: 2}
+  - {fileID: 11400000, guid: 1b2837707b51ac74187fcd01b3d56d10, type: 2}
+  - {fileID: 11400000, guid: 771c3c6d9a0b1ce4fa43e484ea907790, type: 2}
+  - {fileID: 11400000, guid: 7a2a4e7dce65c0340a1a728b15025863, type: 2}
+  baseFontSize: 26
 --- !u!1 &4471065146274705019
 GameObject:
   m_ObjectHideFlags: 0
@@ -483,6 +539,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1854641386147791101}
   - {fileID: 8121105190799981181}
   - {fileID: 8757010166326243839}
   - {fileID: 6052900830772051672}

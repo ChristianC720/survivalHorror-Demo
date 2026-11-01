@@ -35,7 +35,7 @@ namespace Heartbeat.InputRouting
             // Surveillance: stand still or walk very slowly; running/aiming/shoving exit the view, so they stay readable.
             { InputContext.Surveillance, new[] { "Move", "Sprint", "Aim", "Attack", "Surveillance", "Interact" } },
             // Inventory: real time; the character can still move, but no aim/shoot/shove (Controles).
-            { InputContext.Inventory, new[] { "Move", "Look", "Sprint", "Crouch" } },
+            { InputContext.Inventory, new[] { "Move", "Sprint", "Crouch" } },   // no Look: the mouse drives the terminal
             { InputContext.IntroPlayable, new[] { "Move", "Look", "Interact" } },
         };
 
@@ -150,9 +150,9 @@ namespace Heartbeat.InputRouting
         {
             InputSystem.onActionChange -= OnActionChange;
             Actions.Disable();
-            // The generated wrapper's Dispose calls Object.Destroy, which is invalid in edit mode (tests).
-            if (UnityEngine.Application.isPlaying) Actions.Dispose();
-            else UnityEngine.Object.DestroyImmediate(Actions.asset);
+            // In play mode the asset is left to Unity: Bootstrap lives for the whole session, and destroying it here
+            // broke the OnDestroy unsubscriptions of components torn down after Bootstrap when play stops.
+            if (!UnityEngine.Application.isPlaying) UnityEngine.Object.DestroyImmediate(Actions.asset);
         }
     }
 }
