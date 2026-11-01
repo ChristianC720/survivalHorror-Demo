@@ -55,6 +55,9 @@ namespace Heartbeat.Player
             {
                 actions = router.Actions.Gameplay;
                 actions.Crouch.performed += OnCrouch;
+                actions.Crouch.canceled += OnCrouchReleased;
+                GameEvents.OptionsChanged += ReadOptions;
+                ReadOptions();
                 hasInput = true;
             }
             else HbLog.Error("Player", "InputRouter not registered (is Bootstrap loaded?)");
@@ -62,11 +65,28 @@ namespace Heartbeat.Player
 
         private void OnDestroy()
         {
-            if (hasInput) actions.Crouch.performed -= OnCrouch;
+            if (!hasInput) return;
+            actions.Crouch.performed -= OnCrouch;
+            actions.Crouch.canceled -= OnCrouchReleased;
+            GameEvents.OptionsChanged -= ReadOptions;
+        }
+
+        private bool crouchToggle = true;
+
+        private void ReadOptions()
+        {
+            if (Services.TryGet(out Save.SaveService saves)) crouchToggle = saves.LoadGlobal().crouchToggle;
+        }
+
+        /// <summary>Hold mode (Options ▸ Controls): releasing the key stands Lukas up when there is room.</summary>
+        private void OnCrouchReleased(InputAction.CallbackContext _)
+        {
+            if (!crouchToggle && IsCrouched && CanStandUp()) SetCrouched(false);
         }
 
         private void OnCrouch(InputAction.CallbackContext _)
         {
+            if (!crouchToggle) { if (!IsCrouched) SetCrouched(true); return; }
             if (IsCrouched && !CanStandUp()) return;
             SetCrouched(!IsCrouched);
         }

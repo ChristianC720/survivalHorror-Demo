@@ -68,7 +68,6 @@ namespace Heartbeat.UI
             var colors = b.colors;
             colors.highlightedColor = colors.selectedColor = new Color(3f, 3f, 3f);
             colors.disabledColor = new Color(0.5f, 0.5f, 0.5f, 0.5f);
-            colors.colorMultiplier = 3f;
             b.colors = colors;
             if (onClick != null) b.onClick.AddListener(() => onClick());
             var le = r.gameObject.AddComponent<LayoutElement>();
