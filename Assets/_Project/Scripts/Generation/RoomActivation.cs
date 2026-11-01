@@ -48,7 +48,8 @@ namespace Heartbeat.Generation
 
         public void Apply(RoomInstance room)
         {
-            if (room == null) return;
+            // Ignore rooms of a floor being torn down (their triggers can still fire during a rebuild).
+            if (room == null || !rooms.Contains(room)) return;
             current = room;
             int liveEnemies = 0;
             var candidates = new List<(Light light, float priority, bool own)>();

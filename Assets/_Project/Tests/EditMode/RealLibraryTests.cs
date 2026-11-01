@@ -17,12 +17,18 @@ namespace Heartbeat.Tests
         [TestCase("FC_F1_Full", true)]
         [TestCase("FC_F1_Showcase", false)]
         [TestCase("FC_F1_Showcase", true)]
-        public void Floor1_RealRooms_1000Seeds(string config, bool firstAttempt)
+        [TestCase("FC_F2_Full", false)]
+        [TestCase("FC_F2_Showcase", false)]
+        [TestCase("FC_F3_Full", false)]
+        [TestCase("FC_F3_Showcase", false)]
+        public void RealRooms_1000Seeds(string config, bool firstAttempt)
         {
             var lib = Lib;
             var cfg = Cfg(config);
             Assume.That(lib != null && cfg != null, "room library / floor config assets missing");
-            var templates = lib.rooms.Where(r => r.floor == 1).Select(RoomTemplate.From).ToList();
+            int floor = config[4] - '0';   // FC_F<n>_…
+            var templates = lib.rooms.Where(r => r.floor == floor).Select(RoomTemplate.From).ToList();
+            Assert.IsNotEmpty(templates, $"no rooms for floor {floor}");
             int worst = 0;
             for (int seed = 0; seed < 1000; seed++)
             {

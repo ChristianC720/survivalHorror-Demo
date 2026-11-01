@@ -36,7 +36,7 @@ Each checkbox is one git-flow feature: `git flow feature start <id>`.
 - [x] `E12-f1-lighting` — one tint per room, ≤ 16 lights / ≤ 4 shadowed (RoomActivation budget, power-aware)
 
 ## H5 — Content complete
-- [ ] `E14-f2-kit-rooms` · `E14-f3-kit-rooms` · [x] `E05-boca` · [x] `E05-mudo` (feature E05-boca-mudo)
+- [x] `E14-f2-kit-rooms` · [x] `E14-f3-kit-rooms` (F1 layouts re-dressed; unique layouts pending) · [x] `E05-boca` · [x] `E05-mudo` (feature E05-boca-mudo)
 - [ ] `E14-mother-room` · `E09-phase1-nodes` · `E09-phase2-cameras` · `E09-phase3-transformers` · `E09-final-decision`
 - [ ] `E14-intro` · [x] `E08-endings` (card sequences; staged shots with E14-intro) · [x] `E08-degradation-assimilation` (M-18 CRT + vocal pitch) · [ ] `E08-machine-faults` (M-17)
 - [x] `E15-documents` · `E15-bestiary` (36 records, corruption, first-encounter unlock) · [ ] `E15-posters` · [x] `E15-es-table` (all GDD texts EN+ES)

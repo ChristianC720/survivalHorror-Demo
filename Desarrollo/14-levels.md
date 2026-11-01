@@ -30,3 +30,9 @@ House → outside Sektor V-7 → hatch (first hack, on the phone) → elevator (
 
 ## The Mother room
 Central PA room, "machine only". Mixing tables with 3 hack nodes, archive capsules (4 releases), hostile cameras with blind spots marked for level design, the cryo core with 3 transformer sockets, ammo spawn points (12 at blind spots, 8 at the core).
+
+
+## Floors 2 and 3 (H5 state)
+- Kits `KIT_F2_*` / `KIT_F3_*` are Aura prefab variants of the F1 pieces (same geometry and pivots) with the floor materials (`MAT_F2_Floor/Tile/Trim`, `MAT_F3_Floor/Wall/Trim`), grouped in `KitSet_F2` / `KitSet_F3`. Light templates: `Light_F2_Fluorescent` (cold white), `Light_F3_Crimson`.
+- Rooms `ROOM_F2_*`, `KEY_F2_*`, `ROOM_F3_*`, `KEY_F3_*` are **prefab variants of the hand-built F1 layouts**, re-dressed: floor kit set, light tint, F1-specific props swapped for the floor's props at the same footprint (`Prefabs/Props/F2|F3`). F3 rooms carry one extra enemy spawn (placed with Aura) so the core holds its larger enemy budget. All 1 000-seed real-library tests pass for F2/F3 full and showcase.
+- shortcut: F2/F3 reuse the F1 layouts; floor-specific layouts (waiting room, operating theatre, catwalks over the core, cable gallery — OBJECT_CATALOG archetype notes) are pending level design (Victor) and drop in as new room prefabs + RoomDefinitions without code changes.
