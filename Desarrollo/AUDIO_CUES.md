@@ -11,7 +11,7 @@ Source: `GDD/05 - Arte y Audio/05 - Audio y Música.md`, S-11 in `GDD/02 - Dise�
 - Final audio = drop clips into the existing cue assets. No code changes.
 
 ## Mixer (`Assets/_Project/Audio/Mixer/Heartbeat.mixer`)
-`Master` → `Signals` (P1) · `Player&Combat` (P2) · `Ambience` (P3, includes lab heartbeat) · `Music` (P4) · `Voices` (vocal sounds + captions). A P1 cue ducks `Ambience` and `Music` through a Duck Volume effect driven by a send from `Signals`. The Options volumes map to the exposed parameters `vol_master`, `vol_music`, `vol_sfx`, `vol_ambience`, `vol_voices`.
+`Master` → `Signals` (P1) · `PlayerCombat` (P2) · `Ambience` (P3, includes lab heartbeat) · `Music` (P4) · `Voices` (vocal sounds + captions). A P1 cue ducks `Ambience` and `Music` (−8 dB, 0.6 s hold, 1.5 s release; fields on `AudioService`). The duck is done in code on the exposed params, not with a Duck Volume effect, because mixer effects cannot be created through a public API. The Options volumes map to the exposed parameters `vol_master`, `vol_music`, `vol_sfx`, `vol_ambience`, `vol_voices` (+ `vol_signals`, not in Options) through `AudioService.ApplyVolumes(GlobalData)`, applied on start.
 
 ## Cue list
 | Cue | Bus / P | Spatial | Loop | Trigger | GDD |

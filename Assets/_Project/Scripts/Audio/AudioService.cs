@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Heartbeat.Core;
 using UnityEngine;
+using UnityEngine.Audio;
 
 namespace Heartbeat.Audio
 {
@@ -17,6 +18,16 @@ namespace Heartbeat.Audio
         [Tooltip("Alert cues only for enemies this close (same scope as the AlertDirector).")]
         [SerializeField] private float alertCueRadius = 25f;
         [SerializeField] private bool showDebugCaptions = true;
+
+        [Header("Mixer (Audio/Mixer/Heartbeat.mixer)")]
+        [SerializeField] private AudioMixer mixer;
+        [Tooltip("Signals (P1) duck Ambience and Music by this many dB (M-10: signals stay readable).")]
+        [SerializeField] private float duckDb = -8f;
+        [SerializeField] private float duckHoldSeconds = 0.6f;
+        [SerializeField] private float duckReleaseSeconds = 1.5f;
+
+        private float volAmbience = 1f, volMusic = 1f;
+        private float duckUntil = -10f;
 
         private readonly Dictionary<string, AudioCue> byName = new Dictionary<string, AudioCue>();
         private AudioSource[] pool;
@@ -47,6 +58,22 @@ namespace Heartbeat.Audio
                 src.minDistance = 1f;
                 pool[i] = src;
             }
+        }
+
+        private void Start()
+        {
+            if (Services.TryGet(out Save.SaveService saves)) ApplyVolumes(saves.LoadGlobal());
+        }
+
+        /// <summary>Options volumes (0..1) → exposed mixer params. Ambience/Music go through the duck in Update.</summary>
+        public void ApplyVolumes(Save.GlobalData g)
+        {
+            if (mixer == null || g == null) return;
+            mixer.SetFloat("vol_master", MixMath.LinearToDb(g.volMaster));
+            mixer.SetFloat("vol_sfx", MixMath.LinearToDb(g.volSfx));
+            mixer.SetFloat("vol_voices", MixMath.LinearToDb(g.volVoices));
+            volAmbience = g.volAmbience;
+            volMusic = g.volMusic;
         }
 
         private void OnEnable()
@@ -134,6 +161,7 @@ namespace Heartbeat.Audio
             else if (showDebugCaptions && Debug.isDebugBuild && !string.IsNullOrEmpty(cue.debugCaption))
                 captions.Add((cue.debugCaption, Time.unscaledTime + 2f));
 
+            if (cue.priority == CuePriority.Signal) duckUntil = Mathf.Max(duckUntil, Time.unscaledTime + duckHoldSeconds);
             HbLog.Info("Audio", cue.name);
             GameEvents.RaiseCuePlayed(cue.name, spatial ? position : null);
             return src;
@@ -156,6 +184,13 @@ namespace Heartbeat.Audio
                 if (!pool[i].loop && !pool[i].isPlaying && now - started[i] > 0.5f) busy[i] = false;
             }
             captions.RemoveAll(c => c.until < now);
+
+            if (mixer != null)
+            {
+                float duck = MixMath.Duck(now - duckUntil, duckDb, duckReleaseSeconds);
+                mixer.SetFloat("vol_ambience", MixMath.LinearToDb(volAmbience) + duck);
+                mixer.SetFloat("vol_music", MixMath.LinearToDb(volMusic) + duck);
+            }
         }
 
         private void OnGUI()

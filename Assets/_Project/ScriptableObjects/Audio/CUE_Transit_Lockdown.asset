@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CUE_Transit_Lockdown
   m_EditorClassIdentifier: Heartbeat.Runtime::Heartbeat.Audio.AudioCue
   clips: []
-  bus: {fileID: 0}
+  bus: {fileID: 5292899124990059000, guid: 5e97351fc7982014ba7fbec47c6a9128, type: 2}
   priority: 1
   spatial: 1
   volume: 1

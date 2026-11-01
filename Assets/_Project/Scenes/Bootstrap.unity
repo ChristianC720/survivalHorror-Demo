@@ -249,6 +249,10 @@ MonoBehaviour:
   voices: 24
   alertCueRadius: 25
   showDebugCaptions: 1
+  mixer: {fileID: 24100000, guid: 5e97351fc7982014ba7fbec47c6a9128, type: 2}
+  duckDb: -8
+  duckHoldSeconds: 0.6
+  duckReleaseSeconds: 1.5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

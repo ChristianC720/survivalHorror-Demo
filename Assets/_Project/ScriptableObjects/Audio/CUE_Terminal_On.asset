@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CUE_Terminal_On
   m_EditorClassIdentifier: Heartbeat.Runtime::Heartbeat.Audio.AudioCue
   clips: []
-  bus: {fileID: 0}
+  bus: {fileID: -5723580548553804568, guid: 5e97351fc7982014ba7fbec47c6a9128, type: 2}
   priority: 2
   spatial: 0
   volume: 1
