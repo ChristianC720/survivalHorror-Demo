@@ -200,8 +200,8 @@ MonoBehaviour:
   powerSwitchPrefab: {fileID: 2326531091433911916, guid: 7b9bcc97d1c7583499ec02783ebcb77d, type: 3}
   altoPrefab: {fileID: 4636455638720379637, guid: a67ffd24227b7604a9eec8f0552a878c, type: 3}
   rastreroPrefab: {fileID: 4402736197546997208, guid: 7b8a78a5414b7ae4d9d01d2d06078fef, type: 3}
-  bocaPrefab: {fileID: 0}
-  mudoPrefab: {fileID: 0}
+  bocaPrefab: {fileID: 4636455638720379637, guid: b53e2c995c3350146ac9b90417a56c8e, type: 3}
+  mudoPrefab: {fileID: 4636455638720379637, guid: 0cc35bbf0a5cb084b85f058d6e10a530, type: 3}
   playerPrefab: {fileID: 2442423367564465436, guid: 1ebcff6879e93504295068212b61a496, type: 3}
   playerCameraPrefab: {fileID: 1613256690469110135, guid: d0d9526cae61ab941bdba2ced9fdb952, type: 3}
 --- !u!114 &664391584

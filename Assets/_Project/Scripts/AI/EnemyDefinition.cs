@@ -42,5 +42,19 @@ namespace Heartbeat.AI
         [Tooltip("Lateral offset used while flanking, m.")] public float flankOffset = 3f;
         [Tooltip("Patrol radius around the spawn point, m.")] public float patrolRadius = 6f;
         [Tooltip("Stagger after a weak-point hit, s (interrupts attacks and grabs).")] public float weakPointStagger = 0.6f;
+
+        [Header("La Boca (D-64)")]
+        [Tooltip("Screams on entering Search/Hunt: nearby enemies search towards her.")] public bool screams;
+        public float screamRadius = 18f;
+        public float screamCooldown = 8f;
+        [Tooltip("Blind hunters: a noise this close while already searching starts a hunt (fraction of hearing range).")]
+        [Range(0f, 1f)] public float blindHuntFraction = 0.6f;
+
+        [Header("El Mudo (D-53, D-60)")]
+        [Tooltip("Does not patrol: stands still until Lukas is this close or lights it.")] public bool dormant;
+        public float activationRange = 3f;
+        [Tooltip("Moves in bursts while hunting: seconds moving / seconds still (0 = continuous).")]
+        public float burstSeconds;
+        public float burstPauseSeconds = 0.7f;
     }
 }

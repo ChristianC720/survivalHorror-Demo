@@ -32,6 +32,9 @@ namespace Heartbeat.AI
         private float windupTimer = -1f;
         private float cooldownTimer;
         private float flankSide = 1f;
+        private float screamTimer;
+        private float burstClock;
+        private bool asleep;
         private int envMask;
 
         public EnemyDefinition Definition => definition;
@@ -67,7 +70,10 @@ namespace Heartbeat.AI
         {
             if (director == null && Services.TryGet(out director)) director.Register(this);
             agent.speed = definition.patrolSpeed;
+            asleep = definition.dormant;
         }
+
+        public bool IsDormant => asleep;
 
         private void OnDisable()
         {
@@ -81,8 +87,22 @@ namespace Heartbeat.AI
             if (IsDead) return;
             float dt = Time.deltaTime;
             cooldownTimer = Mathf.Max(0f, cooldownTimer - dt);
+            screamTimer = Mathf.Max(0f, screamTimer - dt);
 
             var p = Player;
+            if (asleep)
+            {
+                // El Mudo: still like a corpse until Lukas comes within ~3 m or lights it (D-60).
+                agent.isStopped = true;
+                if (p != null && (IsLit || Vector3.Distance(transform.position, p.position) <= definition.activationRange))
+                {
+                    asleep = false;
+                    lastKnown = p.position;
+                    HbLog.Info("AI", $"{name} activates ({(IsLit ? "lit" : "proximity")})");
+                    alert.ForceHunt();
+                }
+                return;
+            }
             float proximity = 0f;
             SeesPlayer = p != null && CanSee(p, out proximity);
             if (SeesPlayer) lastKnown = p.position;
@@ -128,10 +148,15 @@ namespace Heartbeat.AI
         public void HearNoise(NoiseInfo noise)
         {
             if (IsDead) return;
+            if (asleep) return;   // El Mudo only wakes by proximity or light
+            if (definition.screams && noise.Source == NoiseSource.Scream) return;   // La Boca ignores screams (her own too)
             float d = Vector3.Distance(transform.position, noise.Position);
-            if (d > noise.Radius || d > Mathf.Max(definition.hearingRange, noise.Source == NoiseSource.Shot ? noise.Radius : 0f)) return;
+            if (d > noise.Radius || d > Mathf.Max(definition.hearingRange, (noise.Source == NoiseSource.Shot || noise.Source == NoiseSource.Scream) ? noise.Radius : 0f)) return;   // shots and screams carry
             lastKnown = noise.Position;
-            alert.Hear(noise.Source);
+            bool blind = definition.sightRange <= 0f;
+            if (blind && alert.State >= AlertState.Search && noise.Source != NoiseSource.Scream && d <= definition.hearingRange * definition.blindHuntFraction)
+                alert.ForceHunt();   // blind: a close sound is as good as a sighting
+            else alert.Hear(noise.Source);
         }
 
         public void OnAttentionFull(Vector3 playerPos)
@@ -191,7 +216,16 @@ namespace Heartbeat.AI
             agent.stoppingDistance = SeesPlayer ? definition.grabRange * 0.8f : 0.2f;
             agent.SetDestination(chaseTarget);
 
-            if (dist <= definition.attackRange && cooldownTimer <= 0f && SeesPlayer && !(director != null && director.PlayerDead))
+            // Bursts (El Mudo): sprint, freeze, sprint.
+            if (definition.burstSeconds > 0f)
+            {
+                burstClock += Time.deltaTime;
+                float cycle = definition.burstSeconds + definition.burstPauseSeconds;
+                agent.isStopped = Mathf.Repeat(burstClock, cycle) > definition.burstSeconds;
+            }
+
+            bool blind = definition.sightRange <= 0f;   // La Boca strikes at what she hears
+            if (dist <= definition.attackRange && cooldownTimer <= 0f && (SeesPlayer || blind) && !(director != null && director.PlayerDead))
             {
                 windupTimer = definition.attackWindup;
                 agent.isStopped = true;
@@ -293,6 +327,17 @@ namespace Heartbeat.AI
             HbLog.Info("AI", $"{name} {from}->{to}");
             float d = Player != null ? Vector3.Distance(transform.position, Player.position) : 0f;
             GameEvents.RaiseEnemyAlertChanged(this, to, d);
+            if (definition.screams && to >= AlertState.Search && to > from && screamTimer <= 0f && !IsDead) Scream();
+            if (definition.dormant && to == AlertState.Patrol && !IsDead) asleep = true;   // back to stillness where it stands
+        }
+
+        /// <summary>La Boca's own scream (D-64): not the heartbeat; nearby enemies search towards her.</summary>
+        private void Scream()
+        {
+            screamTimer = definition.screamCooldown;
+            HbLog.Info("AI", $"{name} SCREAMS");
+            Sfx.Play("CUE_Boca_Scream", transform.position);
+            GameEvents.RaiseNoiseEmitted(new NoiseInfo(transform.position, definition.screamRadius, NoiseSource.Scream));
         }
 
         /// <summary>Debug / tests: force an alert state.</summary>

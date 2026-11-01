@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c6826f1fc4f54f43bcf9d1dd25d1d91, type: 3}
+  m_Name: ED_Boca
+  m_EditorClassIdentifier: Heartbeat.Runtime::Heartbeat.AI.EnemyDefinition
+  type: 2
+  shotsToKill: 3
+  recycledShotsToKill: 2
+  hitsToKillLukas: 3
+  patrolSpeed: 1
+  huntSpeed: 2.5
+  recycledSpeedMultiplier: 1.25
+  sightRange: 0
+  sightAngle: 100
+  hearingRange: 12
+  reactsToLight: 0
+  alert:
+    sightGainPerSecond: 1.2
+    farSightFactor: 0.35
+    huntLoseSeconds: 5
+    searchHoldSeconds: 6
+    decayPerSecond: 0.12
+  attackRange: 1.8
+  attackWindup: 0.7
+  attackCooldown: 1.8
+  canGrab: 0
+  grabChance: 0.4
+  grabRange: 1.6
+  flanks: 0
+  flankOffset: 3
+  patrolRadius: 6
+  weakPointStagger: 0.7
+  screams: 1
+  screamRadius: 18
+  screamCooldown: 8
+  blindHuntFraction: 0.6
+  dormant: 0
+  activationRange: 3
+  burstSeconds: 0
+  burstPauseSeconds: 0.7

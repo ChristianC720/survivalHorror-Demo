@@ -14,8 +14,8 @@ Rules
 | `PH_Lukas_Civil` | Lukas in the intro (civilian clothes) | same | same, grey | 5–8k | same | pending |
 | `PH_Alto` | El Alto | 0.8 × 2.5 × 0.6 | tall capsule, long box arms | ≤ 6k | Long reach attack, grab | placeholder done (Enemy_Alto) |
 | `PH_Rastrero` | El Rastrero | 0.6 × 1.0 × 1.4 | horizontal capsule, low | ≤ 5k | Fast quadruped crawl, flank, lunge | placeholder done (Enemy_Rastrero) |
-| `PH_Boca` | La Boca (blind, screams) | 0.7 × 1.9 × 0.5 | capsule, large sphere jaw | ≤ 5k | Scream, walk | pending |
-| `PH_Mudo` | El Mudo (still decoy, grabs) | 0.6 × 1.8 × 0.4 | capsule, slumped | ≤ 5k | Idle-still, activation, grab | pending |
+| `PH_Boca` | La Boca: emaciated blind test subject, mouth splits vertically | 0.6 × 1.9 × 0.5 (hunched) | skin boxes + crimson vertical mouth slit, rags | ≤ 6k | Scream, listen tilt, shamble/lurch | placeholder done (`Enemy_Boca`) |
+| `PH_Mudo` | El Mudo: nurse, stained Vitalis uniform, bandaged head, riveted face plate | 0.55 × 1.8 × 0.35 | dirty-white boxes, metal face plate | ≤ 6k | Frozen idle, spasm activation, burst run, grab | placeholder done (`Enemy_Mudo`) |
 | `PH_Recycled_Parts` | Metal pieces added to recycled enemies | – | small grey boxes parented to enemy | ≤ 500 | – | pending |
 | `PH_TheMother` | Cryo-archive shelf on a crane | 8 × 10 × 4 | stacked boxes + cylinders, crimson inner light | ≤ 20k | Crane movement, phase states | pending |
 | `PH_TheMother_CollectorArm` | Collector arm | 1 × 1 × 6 | box segments | ≤ 4k | Patrol, sweep, grab | pending |
