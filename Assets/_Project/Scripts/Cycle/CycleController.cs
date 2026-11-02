@@ -317,10 +317,12 @@ namespace Heartbeat.Cycle
             GameEvents.RaiseReconstructed(Data.subjectCode);
             if (Random.value < 1f / 3f) Subtitles.Say(Subtitles.Lukas, "SUB.LUKAS.CAPSULE_RETURN");   // 1 in 3 (Textos del Juego)
             HbLog.Info("Cycle", $"RECONSTRUCTION: subject {Data.SubjectLabel} (Space skips)");
+            loader.SetStatus(UI.Loc.Get("UI.INTRO.SUBJECT_REGISTER", Data.subjectCode.ToString("00")));   // The Mother's label (Textos del Juego)
             loader.Load(SceneNames.Floor, null, fadeOut: false);
             skipRequested = false;
             for (float t = 0f; t < shortReconstructionSeconds && !skipRequested; t += Time.unscaledDeltaTime) yield return null;
             while (loader.IsBusy) yield return null;
+            loader.SetStatus("");
             states.TryTransition(GameStateId.Playing);
             yield return loader.Fade(1f, 0f);
             busy = false;
