@@ -50,6 +50,7 @@ Documenta cada mecánica con suficiente detalle para que otro integrante pueda i
     - Al apuntar, la cámara se acerca al hombro, aparece la retícula (un punto pequeño cuya dispersión se cierra en ~1 s con Lukas quieto, M-04), la linterna concentra su haz (ver M-12) y la velocidad de movimiento se reduce un 30% (valor inicial, sujeto a balance).
         
     - Mientras se apunta no es posible correr.
+    - **Orientación (D-141):** Lukas mira siempre hacia donde apunta la cámara, también sin apuntar; al moverse camina de lado o de espaldas respecto a la vista.
         
     - La vista isométrica no es una vista de exploración libre: solo se obtiene mediante la vista de vigilancia (M-02).
         
@@ -677,6 +678,7 @@ stateDiagram-v2
     - El jugador puede romper el combate cruzando el marco de una puerta o cerrándola detrás de sí.
         
     - Los enemigos persiguen brevemente o golpean la puerta antes de regresar a su patrulla.
+    - **Puertas cerradas (D-142):** para un enemigo en patrulla o sospecha una puerta cerrada es una pared; en búsqueda o caza se acerca y la abre. Ninguno atraviesa una hoja cerrada. La sala de inicio no admite enemigos hasta que Lukas entra en otra sala (D-143).
         
     - El sellado rápido de puerta mediante hackeo (M-13, 2-3 entradas) corta la persecución. Un enemigo tarda ~30 s en romper un sellado; también se rompe si Lukas cruza la puerta (D-97).
         
