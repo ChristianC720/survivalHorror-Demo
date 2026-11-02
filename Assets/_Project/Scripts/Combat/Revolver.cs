@@ -87,6 +87,8 @@ namespace Heartbeat.Combat
 
         private void OnHit() => hitThisFrame = true;
 
+        private const float ChestHeight = 1.4f;   // inside Lukas's capsule: the shot never starts inside a wall
+
         public FireResult Fire()
         {
             float spreadBeforeShot = Model.Spread;   // the recoil of this shot only affects the next one
@@ -108,14 +110,25 @@ namespace Heartbeat.Combat
             Vector2 jitter = Random.insideUnitCircle * Mathf.Tan(spreadDeg * Mathf.Deg2Rad);
             Vector3 dir = (ray.direction + rayRight(ray) * jitter.x + Vector3.Cross(ray.direction, rayRight(ray)) * -jitter.y).normalized;
 
+            // The camera (over the right shoulder) only decides WHERE Lukas aims; the bullet leaves his chest. Behind
+            // cover on his left the camera could see past it and the shot landed through the wall (playtest).
+            Vector3 chest = transform.position + Vector3.up * ChestHeight;
+            float skip = Mathf.Max(0f, Vector3.Dot(chest - ray.origin, dir));   // ignore what is between camera and Lukas
+            Vector3 camOrigin = ray.origin + dir * skip;
+            Vector3 aimPoint = Physics.Raycast(camOrigin, dir, out var aimHit, balance.range, shotMask, QueryTriggerInteraction.Ignore)
+                ? aimHit.point : camOrigin + dir * balance.range;
+            Vector3 toAim = aimPoint - chest;
+            float aimDist = toAim.magnitude;
+
             string hitName = "nothing";
-            if (Physics.Raycast(ray.origin, dir, out var hit, balance.range, shotMask, QueryTriggerInteraction.Ignore))
+            if (aimDist > 0.01f && Physics.Raycast(chest, toAim / aimDist, out var hit, aimDist + 0.05f, shotMask, QueryTriggerInteraction.Ignore))
             {
+                dir = toAim / aimDist;
                 hitName = hit.collider.name;
                 var weak = hit.collider.GetComponent<WeakPoint>();
                 var target = weak != null ? weak.Owner : hit.collider.GetComponentInParent<IDamageable>();
                 if (target != null && target.IsAlive) target.ReceiveShot(new ShotHit(hit.point, dir, weak != null));
-                Debug.DrawLine(ray.origin, hit.point, Color.yellow, 0.5f);
+                Debug.DrawLine(chest, hit.point, Color.yellow, 0.5f);
             }
 
             Vector3 origin = muzzle != null ? muzzle.position : transform.position;

@@ -44,7 +44,7 @@ namespace Heartbeat.Level
         public bool Occludes => State != DoorState.Open;   // −50% through a closed or sealed door (S-11)
         public bool IsDoor => true;
 
-        public string PromptKey => IsLocked ? "UI.PROMPT.LOCKED" : State == DoorState.Open ? "UI.PROMPT.CLOSE" : "UI.PROMPT.OPEN";
+        public string PromptKey => IsLocked ? "UI.PROMPT.LOCKED" : State == DoorState.Open ? "UI.PROMPT.CLOSE" : "UI.PROMPT.OPEN";   // sealed: E opens it too
         public Vector3 InteractionPoint => transform.position + Vector3.up * 1.2f;
 
         public void Configure(DoorLock l) => lockType = l;
@@ -87,7 +87,14 @@ namespace Heartbeat.Level
                     return;
             }
 
-            if (State == DoorState.Sealed) { HbLog.Info("Door", $"{name}: sealed"); Sfx.Play(Sfx.DoorLocked, transform.position); return; }
+            if (State == DoorState.Sealed)
+            {
+                // Lukas can always undo his own seal (it also breaks when he crosses, D-97).
+                HbLog.Info("Door", $"{name}: seal released by Lukas");
+                Sfx.Play(Sfx.DoorSealBreak, transform.position);
+                SetState(DoorState.Open);
+                return;
+            }
 
             // Lukas crossed this door and turns back towards it while enemies hunt: offer the quick seal.
             bool hunting = Services.TryGet<AlertDirector>(out var d) && d.HuntingCount > 0;

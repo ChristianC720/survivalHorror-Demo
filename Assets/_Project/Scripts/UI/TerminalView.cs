@@ -60,6 +60,7 @@ namespace Heartbeat.UI
             foreach (var d in documents) if (d != null) docsById[d.id] = d;
             Build();
             ApplyTextScale();
+            gameObject.AddComponent<HackView>();   // M-13: the hack chain lives on the arm terminal
             panel.gameObject.SetActive(false);
         }
 

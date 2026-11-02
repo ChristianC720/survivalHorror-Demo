@@ -115,3 +115,5 @@ UI.OPT.LANG_EN	English	English	KEEP-EN
 UI.OPT.LANG_ES	Español	Español	KEEP-EN
 UI.PROMPT.LEAVE	Leave	Salir	
 UI.CONFIRM.QUIT_CALM_TUTORIAL	Quitting the first attempt costs no death, but the cycle still degrades.	Salir en el primer intento no suma una muerte, pero el ciclo se degrada igualmente.	
+UI.HACK.TITLE	OVERRIDE SEQUENCE	OVERRIDE SEQUENCE	KEEP-EN (D-62 terminal label)
+UI.HACK.ABORT	Abort	Abandonar	
