@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06304b79850fc154abd256660f937564, type: 3}
+  m_Name: KitSet_F3
+  m_EditorClassIdentifier: Heartbeat.Runtime::Heartbeat.Generation.KitSet
+  floor2x2: {fileID: 3503550451053762871, guid: 45328ed803e86054eb23fb09daa47f8d, type: 3}
+  ceiling2x2: {fileID: 6801496726750103636, guid: 5fb88a7e83c1f2c47b0ae9f8aa28b10a, type: 3}
+  wall2m: {fileID: 7564345821251250457, guid: 0f78c20c59bd2b64e89373ab012df159, type: 3}
+  wall2mHigh: {fileID: 4688425653001190979, guid: 5446bbdbcc6566a4dab6754d6598249a, type: 3}
+  doorway2m: {fileID: 5437053001910641560, guid: 06ffda0f388b3d644a2d63cad509755c, type: 3}
+  wallWindow2m: {fileID: 7372349374838194753, guid: 25eb4d261de837e49b11e7700f51d4b9, type: 3}
+  door: {fileID: 6207621508063174470, guid: 67ab8b256c11e584496c225501ff0f0f, type: 3}

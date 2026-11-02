@@ -14,6 +14,7 @@
 | `CONF` | 12 confiscated objects (label: code, date, owner + 1–2 cold lines) |
 | `POST` | tutorial and ambience posters (key names come from the binding, `{key}` smart string) |
 | `END` | ending texts and credits |
+| `CAP` | sound captions (D-102): `CAP.<CUE name without CUE_, upper case>` for every Signal cue, shown by `UI.SoundCaptionView` with an approximate direction |
 
 ## Workflow
 - **Source of truth:** `Assets/_Project/Localization/Source/<TABLE>.tsv`, tab-separated `key, en, es[, note]` (use `
@@ -21,6 +22,9 @@
 - Run **Heartbeat ▸ Import Localization** (`Heartbeat.EditorTools.LocalizationImporter.Import()`, callable from `execute_script`). It creates settings/locales if missing and upserts every row.
 - Runtime: `Heartbeat.UI.Loc.Get("UI.TERM.SUBJECT", "R-H-09")` (table = first key segment, `{0}` args via string.Format), `LocalizedLabel` for static TMP labels, `Loc.SetLanguage("es")` (Bootstrap applies `GlobalData.language`). Missing keys render as the key itself.
 - Localization uses Addressables: a player build needs **Addressables ▸ Build** first (E13-build).
+
+- `DOC`, `BEST` and `CONF` were generated once from `GDD/03 - Historia y Mundo/05 - Textos del Juego.md` (36 records: voice note, 6 Emilia, 12 context, 5 bestiary, 12 confiscated) with matching `DocumentDefinition` assets in `ScriptableObjects/Docs` (`DOC_VK_TERMINATION` …). From now on edit the TSV rows directly. Markup in bodies: `<c>…</c>` = corrupt passage (D-127, rendered by `Narrative.DocText`), `<i>…</i>` = German/stage directions, `{0}` = Lukas's subject number (`{n}` in the GDD).
+- Bestiary entries unlock on the first encounter (`Narrative.BestiaryUnlocker`, D-48); context documents and confiscated objects are picked per floor, unread first, seeded by the floor seed.
 
 ## Rules
 - Key format: `<table>.<area>.<id>`, e.g. `DOC.EMILIA.03`, `SUB.MOTHER.P2.01`.

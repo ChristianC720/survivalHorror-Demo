@@ -66,9 +66,13 @@ namespace Heartbeat.Player
         private void OnDestroy()
         {
             if (!hasInput) return;
-            actions.Crouch.performed -= OnCrouch;
-            actions.Crouch.canceled -= OnCrouchReleased;
             GameEvents.OptionsChanged -= ReadOptions;
+            InputAction crouch;
+            try { crouch = actions.Crouch; }
+            catch (System.NullReferenceException) { return; }   // input wrapper torn down first (leaving Play mode, recompile)
+            if (crouch == null) return;
+            crouch.performed -= OnCrouch;
+            crouch.canceled -= OnCrouchReleased;
         }
 
         private bool crouchToggle = true;
@@ -111,15 +115,33 @@ namespace Heartbeat.Player
             verticalVelocity += balance.gravity * Time.deltaTime;
             Velocity = horizontal + Vector3.up * verticalVelocity;
             controller.Move(Velocity * Time.deltaTime);
+            GuardFallOut();
 
-            if (moving && !IsAiming)
+            // Lukas always faces the camera (look input), not only when aiming: the flashlight never points into his
+            // own body and movement strafes / backpedals relative to the view.
+            if (!IsAiming && !MovementLocked && cameraTransform != null)
             {
-                var target = Quaternion.LookRotation(dir, Vector3.up);
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, target, balance.turnSpeed * Time.deltaTime);
+                Vector3 look = cameraTransform.forward; look.y = 0f;
+                if (look.sqrMagnitude > 0.0001f)
+                    transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(look), balance.turnSpeed * Time.deltaTime);
             }
 
             EmitMovementNoise(moving);
             ApplyPosture();
+        }
+
+        // Safety net, not balance: any physics tunnelling out of the floor would otherwise fall forever (blank screen).
+        private const float FallOutDepth = 10f;
+        private Vector3 lastGrounded;
+        private bool hasGrounded;
+
+        private void GuardFallOut()
+        {
+            if (controller.isGrounded) { lastGrounded = transform.position; hasGrounded = true; return; }
+            if (!hasGrounded || transform.position.y > lastGrounded.y - FallOutDepth) return;
+            HbLog.Warn("Player", $"Fell out of the level at {transform.position}: back to {lastGrounded}");
+            verticalVelocity = 0f;
+            DebugTeleport(lastGrounded.x, lastGrounded.y, lastGrounded.z, transform.eulerAngles.y);
         }
 
         /// <summary>Debug console / tests: teleport Lukas and face yaw degrees.</summary>

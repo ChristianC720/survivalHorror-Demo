@@ -75,7 +75,29 @@ namespace Heartbeat.Generation.Layout
             if (l.Enemies.GroupBy(e => e.Room).Any(g => g.Count() > 2)) errors.Add("more than 2 enemies in a room");
             if (l.Enemies.Any(e => e.Room == l.EntryRoom)) errors.Add("enemy in the entry room");
 
+            // Secondary key rooms (documents) never near the spawn room (D-new): BFS distance, loops included.
+            var dist = Distances(l, l.EntryRoom);
+            foreach (var r in l.Rooms.Where(r => r.Template.Role == RoomRole.Secondary))
+                if (dist.TryGetValue(r.Index, out int d) && d < p.MinSecondaryDistance) errors.Add($"secondary room {r.Index} only {d} doors from the entry");
+
             return errors.Count == 0;
+        }
+
+        public static Dictionary<int, int> Distances(FloorLayout l, int start)
+        {
+            var dist = new Dictionary<int, int> { [start] = 0 };
+            var q = new Queue<int>();
+            q.Enqueue(start);
+            while (q.Count > 0)
+            {
+                int r = q.Dequeue();
+                foreach (var c in l.Connections)
+                {
+                    int other = c.A == r ? c.B : c.B == r ? c.A : -1;
+                    if (other >= 0 && !dist.ContainsKey(other)) { dist[other] = dist[r] + 1; q.Enqueue(other); }
+                }
+            }
+            return dist;
         }
 
         public static HashSet<int> Reach(FloorLayout l, int start, System.Func<Connection, bool> passable)

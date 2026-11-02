@@ -22,6 +22,8 @@ MonoBehaviour:
   emptyFraction: 0.33
   unpoweredChance: 0.33
   loopChance: 0.35
+  minSecondaryDistance: 3
+  startingAmmo: 6
   heals:
     min: 2
     max: 3

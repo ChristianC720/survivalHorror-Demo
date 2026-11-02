@@ -21,6 +21,7 @@ namespace Heartbeat.CameraSystem
         [SerializeField] private GameObject reticle;
 
         private PlayerController player;
+        private Combat.Revolver revolver;
         private InputRouter router;
         private Transform target;
         private float yaw;
@@ -36,7 +37,7 @@ namespace Heartbeat.CameraSystem
         private void OnDisable() { Services.Unregister(this); GameEvents.OptionsChanged -= ReadOptions; }
 
         private float lookSensScale = 1f, aimSensScale = 1f;
-        private bool invertY;
+        private bool invertY, aimAssist;
 
         /// <summary>Options ▸ Controls: sensitivity multipliers and invert Y (D-104).</summary>
         private void ReadOptions()
@@ -46,6 +47,7 @@ namespace Heartbeat.CameraSystem
             lookSensScale = g.lookSensitivity;
             aimSensScale = g.aimSensitivity;
             invertY = g.invertY;
+            aimAssist = g.aimAssist;
         }
 
         private void Start()
@@ -59,6 +61,7 @@ namespace Heartbeat.CameraSystem
                 return;
             }
 
+            revolver = player.GetComponent<Combat.Revolver>();
             target = new GameObject("CameraTarget").transform;
             target.SetParent(player.transform, false);
             target.localPosition = Vector3.up * balance.targetHeight;
@@ -82,7 +85,7 @@ namespace Heartbeat.CameraSystem
             follow.VerticalArmLength = 0f;
             follow.CameraSide = 1f;
             follow.AvoidObstacles.Enabled = true;
-            follow.AvoidObstacles.CollisionFilter = LayerMask.GetMask("Environment");
+            follow.AvoidObstacles.CollisionFilter = LayerMask.GetMask("Environment", "Ceiling");   // S-01: never through geometry
             follow.AvoidObstacles.CameraRadius = 0.15f;
         }
 
@@ -92,7 +95,8 @@ namespace Heartbeat.CameraSystem
             var gameplay = router.Actions.Gameplay;
 
             if (gameplay.Look.enabled) ApplyLook(gameplay.Look);
-            UpdateAim(gameplay.Aim.enabled && gameplay.Aim.IsPressed() && !player.IsRunning && !player.MovementLocked);
+            bool armed = revolver == null || revolver.Owned;   // no revolver yet: nothing to aim (D-74)
+            UpdateAim(armed && gameplay.Aim.enabled && gameplay.Aim.IsPressed() && !player.IsRunning && !player.MovementLocked);
 
             float h = player.IsCrouched ? balance.crouchTargetHeight : balance.targetHeight;
             target.localPosition = Vector3.Lerp(target.localPosition, Vector3.up * h, 10f * Time.deltaTime);
@@ -108,6 +112,35 @@ namespace Heartbeat.CameraSystem
             yaw += delta.x;
             pitch += balance.invertY != invertY ? delta.y : -delta.y;
             pitch = Mathf.Clamp(pitch, balance.minPitch, balance.maxPitch);
+            if (aiming && aimAssist && router.UsingGamepad) AssistTowardWeakPoint();
+        }
+
+        /// <summary>
+        /// Aim assist (option, off by default; gamepad only): a gentle pull toward the nearest enemy weak point inside a
+        /// small cone around the reticle. Never snaps, never helps the mouse.
+        /// </summary>
+        private void AssistTowardWeakPoint()
+        {
+            if (!Services.TryGet(out AI.AlertDirector director)) return;
+            Vector3 eye = brain.transform.position;
+            Vector3 fwd = brain.transform.forward;
+            Vector3? best = null;
+            float bestAngle = balance.aimAssistCone;
+            foreach (var e in director.Enemies)
+            {
+                if (e == null || e.IsDead || !e.isActiveAndEnabled) continue;
+                var weak = e.GetComponentInChildren<Combat.WeakPoint>();
+                Vector3 p = weak != null ? weak.transform.position : e.transform.position + Vector3.up * 1.5f;
+                Vector3 to = p - eye;
+                if (to.magnitude > balance.aimAssistRange) continue;
+                float a = Vector3.Angle(fwd, to);
+                if (a < bestAngle) { bestAngle = a; best = p; }
+            }
+            if (!best.HasValue) return;
+            var want = Quaternion.LookRotation(best.Value - eye).eulerAngles;
+            float step = balance.aimAssistPull * Time.deltaTime;
+            yaw = Mathf.MoveTowardsAngle(yaw, want.y, step);
+            pitch = Mathf.Clamp(Mathf.MoveTowardsAngle(pitch, Mathf.DeltaAngle(0f, want.x), step), balance.minPitch, balance.maxPitch);
         }
 
         private void UpdateAim(bool wantsAim)

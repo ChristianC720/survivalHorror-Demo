@@ -14,8 +14,8 @@ namespace Heartbeat.Generation
     /// </summary>
     public sealed class RoomActivation : MonoBehaviour
     {
-        [Tooltip("Room lights allowed at once; one more is left for Lukas's flashlight (budget 16).")]
-        [SerializeField] private int maxRoomLights = 15;
+        [Tooltip("Room lights allowed at once; the flashlight and Lukas's rim light make 16 (budget).")]
+        [SerializeField] private int maxRoomLights = 14;
         [Tooltip("Room lights with shadows; the flashlight is the 4th shadowed light (budget 4).")]
         [SerializeField] private int maxShadowedRoomLights = 3;
 
@@ -46,25 +46,50 @@ namespace Heartbeat.Generation
             Apply(current);
         }
 
+        private RoomInstance RoomAt(Vector3 p)
+        {
+            foreach (var r in rooms)
+                if (r != null && r.TryGetComponent(out Collider c))
+                {
+                    var b = c.bounds;
+                    if (p.x >= b.min.x && p.x <= b.max.x && p.z >= b.min.z && p.z <= b.max.z) return r;
+                }
+            return null;
+        }
+
         public void Apply(RoomInstance room)
         {
-            if (room == null) return;
+            // Ignore rooms of a floor being torn down (their triggers can still fire during a rebuild).
+            if (room == null || !rooms.Contains(room)) return;
             current = room;
             int liveEnemies = 0;
+            bool LiveRoom(RoomInstance r) => r == room || room.Neighbours.Contains(r);
             var candidates = new List<(Light light, float priority, bool own)>();
             Vector3 centre = room.transform.position;
             foreach (var r in rooms)
             {
-                bool live = r == room || room.Neighbours.Contains(r);
+                bool live = LiveRoom(r);
                 float d = r == room ? -1f : Vector3.Distance(centre, r.transform.position);
                 foreach (var l in r.GetComponentsInChildren<Light>(true))
                 {
                     l.enabled = false;
                     if (live && r.IsPowered) candidates.Add((l, d, r == room));
                 }
-                if (enemies.TryGetValue(r, out var list))
-                    foreach (var e in list) if (e != null) { e.SetActive(live); if (live) liveEnemies++; }
             }
+
+            // Enemies by where they are now, not the room they spawned in: a pursuer that followed Lukas used to
+            // vanish next to him (and reappear when he stepped back). Searching/hunting enemies are never switched off.
+            foreach (var list in enemies.Values)
+                foreach (var e in list)
+                {
+                    if (e == null) continue;
+                    var brain = e.GetComponent<AI.EnemyBrain>();
+                    bool pursuing = brain != null && brain.Alert >= AlertState.Search;
+                    var at = RoomAt(e.transform.position);
+                    bool on = pursuing || at == null || LiveRoom(at);
+                    e.SetActive(on);
+                    if (on) liveEnemies++;
+                }
 
             LitCount = ShadowedCount = 0;
             foreach (var c in candidates.OrderBy(c => c.priority))

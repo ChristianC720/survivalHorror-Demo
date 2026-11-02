@@ -40,8 +40,12 @@ namespace Heartbeat.Recycle
             if (c != null && c.CanBeRecycled && !corpses.Contains(c)) corpses.Add(c);
         }
 
+        /// <summary>The Mother's room is only machine: no bodies rise there (D-28).</summary>
+        public bool Suspended { get; set; }
+
         private void Update()
         {
+            if (Suspended) return;
             for (int i = corpses.Count - 1; i >= 0; i--)
             {
                 var c = corpses[i];

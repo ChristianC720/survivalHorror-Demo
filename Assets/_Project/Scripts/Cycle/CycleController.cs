@@ -4,6 +4,7 @@ using System.Linq;
 using Heartbeat.AI;
 using Heartbeat.Combat;
 using Heartbeat.Core;
+using Heartbeat.Level;
 using Heartbeat.Generation;
 using Heartbeat.InputRouting;
 using Heartbeat.Inventory;
@@ -35,6 +36,7 @@ namespace Heartbeat.Cycle
         private bool skipRequested;
         private AttemptSave carry;            // inventory brought to the next floor
         private bool autosavePending;
+        private bool resumingFinalRoom;   // the next FloorBuilt resumes a final-room autosave (not a floor start)
         private RoomInstance savedFinalRoom;  // final key room whose autosave is current (no-cost quit)
         private readonly System.Random seeds = new System.Random();
 
@@ -56,8 +58,19 @@ namespace Heartbeat.Cycle
             GameEvents.FloorBuilt += OnFloorBuilt;
             GameEvents.HuntChanged += OnHuntChanged;
 
-            if (Data == null) LoadOrCreate(saves.LoadGlobal().lastUsedSlot, GameMode.Survival, newGame: false);
+            if (Data != null) return;
+            // Play pressed inside a gameplay/sandbox scene in the editor: a hidden dev slot, fresh every Play, so tests
+            // never touch the player's real slots. Launches through Bootstrap/MainMenu use the real slots.
+            string launch = BootstrapLoader.LaunchScene;
+            bool devLaunch = Application.isEditor && !string.IsNullOrEmpty(launch) && launch != SceneNames.Bootstrap && launch != SceneNames.MainMenu;
+            if (devLaunch) LoadOrCreate(DevSlot, GameMode.Survival, newGame: true);
+            else LoadOrCreate(saves.LoadGlobal().lastUsedSlot, GameMode.Survival, newGame: false);
+            // The floor may already be built (its FloorBuilt fired before this Start): record its start now.
+            if (Services.TryGet(out FloorBuilder fb) && fb.Layout != null) RecordFloorStart(fb.Layout.Floor);
         }
+
+        /// <summary>Hidden slot file used by editor play-from-scene (never listed in the menus, never "last used").</summary>
+        public const int DevSlot = SaveService.SlotCount;
 
         private void OnDestroy()
         {
@@ -81,18 +94,27 @@ namespace Heartbeat.Cycle
             if (Data == null)
             {
                 if (newGame) saves.Delete(slot);
-                Data = new SlotData { mode = mode };
+                // Showcase preset (×0.75 budgets, 6–8 + 2 + 1 rooms) for fairs/demos: launch the build with -showcase.
+                bool showcase = System.Array.IndexOf(System.Environment.GetCommandLineArgs(), "-showcase") >= 0;
+                Data = new SlotData { mode = mode, showcase = showcase };
+                if (showcase) HbLog.Info("Cycle", "Showcase preset for this slot");
             }
             registry.Import(Data.terminal.Select(e => (e.id, e.kind)));
-            var g = saves.LoadGlobal();
-            g.lastUsedSlot = slot;
-            saves.SaveGlobal(g);
+            Services.Get<FaultModel>().Import(Data.patchedFaults);
+            if (slot != DevSlot)
+            {
+                var g = saves.LoadGlobal();
+                g.lastUsedSlot = slot;
+                saves.SaveGlobal(g);
+            }
             HbLog.Info("Cycle", $"Slot {slot}: {Data.SubjectLabel}, deaths {Data.deathCounter}, registry {registry.Count}");
+            GameEvents.RaiseDegradationChanged(Data.degradationLevel);
         }
 
         public void SaveNow()
         {
             Data.terminal = registry.Export().Select(e => new RecordEntry { id = e.id, kind = e.kind }).ToList();
+            Data.patchedFaults = Services.Get<FaultModel>().Export();
             saves.Save(Slot, Data);
         }
 
@@ -111,8 +133,8 @@ namespace Heartbeat.Cycle
         /// <summary>
         /// Continue / Load / New game (Reglas y Estados): loads the slot and enters the floor. With an autosave it
         /// resumes in that floor's final room with the saved inventory (D-30); otherwise the cycle starts on floor 1.
-        /// After a quit during a hunt it plays the short reconstruction; a pending fifth death plays Assimilation (D-96).
-        /// shortcut: New game skips the Intro scene until E14-intro exists.
+        /// After a quit during a hunt it plays the short reconstruction; Assimilation never plays here, only on a real death (D-149).
+        /// A slot whose intro was never finished plays the Intro scene first (D-53, D-63).
         /// </summary>
         public void StartFromMenu(int slot, GameMode mode, bool newGame)
         {
@@ -126,23 +148,39 @@ namespace Heartbeat.Cycle
             LoadOrCreate(slot, mode, newGame);
             bool afterHuntQuit = Data.confirmedExit && Data.exitCost == ExitCost.Hunt;
             Data.confirmedExit = false;
+            if (Data.newCyclePending)
+            {
+                // New cycle after an ending (D-93): from the capsule, terminal kept, counter and degradation to 0, subject continues.
+                Data.newCyclePending = false;
+                Data.deathCounter = 0;
+                Data.degradationLevel = 0;
+                Data.hasAttemptSave = false;
+                Data.hasFloorStart = false;
+                Data.firstAttempt = false;
+                GameEvents.RaiseDegradationChanged(0);
+                HbLog.Info("Cycle", $"New cycle (D-93): {Data.SubjectLabel}, terminal kept ({registry.Count} records)");
+            }
             SaveNow();
 
-            states.TryTransition(GameStateId.Loading);
-            if (Data.deathCounter >= DeathCounter.AssimilationThreshold && !Data.firstAttempt)
+            if (!Data.introDone)
             {
-                states.TryTransition(GameStateId.EndingAssimilation);
-                HbLog.Info("Cycle", "Assimilation ending (M-18) on Continue");
-                GameEvents.RaiseEndingTriggered("Assimilation");
+                states.TryTransition(GameStateId.Intro);
+                HbLog.Info("Cycle", $"Start slot {slot}: intro");
+                loader.Load(SceneNames.Intro, null, fadeOut: false);
+                while (loader.IsBusy) yield return null;
                 busy = false;
-                yield break;
+                yield break;   // IntroDirector fades in and calls FinishIntro
             }
 
+            states.TryTransition(GameStateId.Loading);
+            // D-149: a counter at 5 reached by quitting is kept; Assimilation waits for Lukas's next real death.
+
             bool resume = Data.hasAttemptSave && !afterHuntQuit;
-            CurrentFloor = resume ? Data.attemptSave.floor : 1;
-            carry = resume ? Data.attemptSave : null;
+            if (resume) { CurrentFloor = Data.attemptSave.floor; carry = Data.attemptSave; }
+            else (CurrentFloor, carry) = FloorStartPoint();   // D-147: start of the saved floor, with what Lukas arrived with
             var request = NextRequest(CurrentFloor);
             request.StartInFinalRoom = resume;
+            resumingFinalRoom = resume;
             FloorSession.Pending = request;
             loader.SetStatus(UI.Loc.Get("UI.HUD.SYNC_SUBJECT", Data.SubjectLabel));
             HbLog.Info("Cycle", $"Start slot {slot} ({(newGame ? "new" : "continue")}): floor {CurrentFloor}, resume={resume}, {Data.SubjectLabel}");
@@ -155,11 +193,92 @@ namespace Heartbeat.Cycle
             busy = false;
         }
 
+        /// <summary>
+        /// End of the Intro (D-53): the phone's voice note is copied, damaged, to the arm terminal as the subject's
+        /// personal effects and the ring is registered (D-54); the cycle starts on floor 1, first attempt, from the capsule.
+        /// </summary>
+        public void FinishIntro()
+        {
+            if (busy) return;
+            StartCoroutine(FinishIntroRoutine());
+        }
+
+        public const string VoiceNoteId = "DOC.VOICE_NOTE_EMILIA", RingId = "RING";
+
+        private IEnumerator FinishIntroRoutine()
+        {
+            busy = true;
+            Data.introDone = true;
+            registry.Register(VoiceNoteId, RecordKind.Confiscated);
+            registry.Register(RingId, RecordKind.Ring);
+            Data.hasFloorStart = false;
+            SaveNow();
+            states.TryTransition(GameStateId.Loading);
+            CurrentFloor = 1;
+            carry = null;
+            FloorSession.Pending = NextRequest(1);
+            states.TryTransition(GameStateId.Reconstruction);
+            GameEvents.RaiseReconstructed(Data.subjectCode);
+            HbLog.Info("Cycle", $"Intro done: {Data.SubjectLabel}, floor 1 (first attempt {Data.firstAttempt})");
+            loader.Load(SceneNames.Floor, null, fadeOut: false);
+            while (loader.IsBusy) yield return null;
+            states.TryTransition(GameStateId.Playing);
+            yield return loader.Fade(1f, 0f);
+            Subtitles.Say(Subtitles.Lukas, "SUB.LUKAS.RING");   // he picks up the ring and cannot remember (D-54)
+            busy = false;
+        }
+
         /// <summary>Pause ▸ Restart (confirmed): counts as a death (D-32, D-96). Not available in the Intro or final decision.</summary>
         public void Restart()
         {
             if (busy || states.Current != GameStateId.Paused) return;
+            if (InSafeZone) { StartCoroutine(SafeRestartRoutine()); return; }
             GameEvents.RaisePlayerDied(DeathCause.Restart);
+        }
+
+        /// <summary>
+        /// Safe zone (D-147): the floor's spawn room or the saved final room, with no hunt. Quitting or restarting there
+        /// costs nothing; the floor is rebuilt with a new seed from the matching save.
+        /// </summary>
+        public bool InSafeZone
+        {
+            get
+            {
+                if (Services.TryGet<AlertDirector>(out var d) && d.HuntingCount > 0) return false;
+                var here = RoomInstance.Current;
+                if (here == null) return false;
+                if (savedFinalRoom != null && here == savedFinalRoom) return true;
+                return Services.TryGet(out FloorBuilder fb) && fb.Layout != null && fb.Rooms.Count > fb.Layout.EntryRoom
+                       && here == fb.Rooms[fb.Layout.EntryRoom];
+            }
+        }
+
+        private IEnumerator SafeRestartRoutine()
+        {
+            busy = true;
+            bool inFinal = savedFinalRoom != null && RoomInstance.Current == savedFinalRoom && Data.hasAttemptSave;
+            if (!Services.Get<PauseService>().TryLeavePauseTo(GameStateId.Loading)) PauseService.ResetTime();   // never stay frozen
+            yield return loader.Fade(0f, 1f);
+            if (inFinal) { CurrentFloor = Data.attemptSave.floor; carry = Data.attemptSave; }
+            else (CurrentFloor, carry) = FloorStartPoint();
+            var request = NextRequest(CurrentFloor);
+            request.StartInFinalRoom = inFinal;
+            resumingFinalRoom = inFinal;
+            FloorSession.Pending = request;
+            HbLog.Info("Cycle", $"Safe restart (no cost): floor {CurrentFloor}, {(inFinal ? "final room" : "floor start")}, new seed");
+            loader.Load(SceneNames.Floor, null, fadeOut: false);
+            while (loader.IsBusy) yield return null;
+            states.TryTransition(GameStateId.Playing);
+            yield return loader.Fade(1f, 0f);
+            busy = false;
+        }
+
+        /// <summary>Start of the saved floor and its loadout (full health); floor 1 empty-handed when there is none.</summary>
+        private (int floor, AttemptSave carry) FloorStartPoint()
+        {
+            if (!Data.hasFloorStart) return (1, null);
+            var a = Data.floorStart;
+            return (a.floor, new AttemptSave { floor = a.floor, inventory = a.inventory.ToList(), revolverLoaded = a.revolverLoaded, revolverOwned = a.revolverOwned, health = -1f });
         }
 
         // ---------- Death → reconstruction ----------
@@ -176,7 +295,8 @@ namespace Heartbeat.Cycle
             if (states.Current == GameStateId.Paused) Services.Get<PauseService>().TryLeavePauseTo(GameStateId.Death);
             else states.TryTransition(GameStateId.Death);
 
-            bool assimilate = RegisterDeath(cause);
+            RegisterDeath(cause);
+            bool assimilate = DeathCounter.Assimilates(Data.deathCounter, cause);   // only a real death plays it (D-149)
             SaveNow();                               // save before processing the death
 
             yield return loader.Fade(0f, 1f);
@@ -191,15 +311,18 @@ namespace Heartbeat.Cycle
             }
 
             states.TryTransition(GameStateId.Reconstruction);
-            CurrentFloor = 1;
-            FloorSession.Pending = NextRequest(1);
+            // D-147: back to the start of this floor (The Mother's room has none: floor 3), new layout, arrival loadout.
+            (CurrentFloor, carry) = FloorStartPoint();
+            FloorSession.Pending = NextRequest(CurrentFloor);
             GameEvents.RaiseReconstructed(Data.subjectCode);
             if (Random.value < 1f / 3f) Subtitles.Say(Subtitles.Lukas, "SUB.LUKAS.CAPSULE_RETURN");   // 1 in 3 (Textos del Juego)
             HbLog.Info("Cycle", $"RECONSTRUCTION: subject {Data.SubjectLabel} (Space skips)");
+            loader.SetStatus(UI.Loc.Get("UI.INTRO.SUBJECT_REGISTER", Data.subjectCode.ToString("00")));   // The Mother's label (Textos del Juego)
             loader.Load(SceneNames.Floor, null, fadeOut: false);
             skipRequested = false;
             for (float t = 0f; t < shortReconstructionSeconds && !skipRequested; t += Time.unscaledDeltaTime) yield return null;
             while (loader.IsBusy) yield return null;
+            loader.SetStatus("");
             states.TryTransition(GameStateId.Playing);
             yield return loader.Fade(1f, 0f);
             busy = false;
@@ -224,6 +347,7 @@ namespace Heartbeat.Cycle
             var s = CounterState;
             bool assimilate = DeathCounter.RegisterDeath(ref s, cause == DeathCause.Scripted);
             WriteCounter(s);
+            Services.Get<FaultModel>().PatchDiscovered(registry.Has);   // M-17, D-09: no fault survives a death
             Data.hasAttemptSave = false;
             carry = null;
             HbLog.Info("Cycle", $"Death ({cause}) -> {Data.SubjectLabel}, consecutive {Data.deathCounter}/{DeathCounter.AssimilationThreshold}");
@@ -233,9 +357,9 @@ namespace Heartbeat.Cycle
         // ---------- Quit (D-31) ----------
 
         /// <summary>What quitting now would cost; the pause menu's confirmation dialog shows it before quitting.</summary>
-        public ExitCost QuitCost => ExitRules.Evaluate(
-            Services.TryGet<AlertDirector>(out var d) && d.HuntingCount > 0,
-            savedFinalRoom != null && RoomInstance.Current == savedFinalRoom);
+        public ExitCost QuitCost => states.StateBeforePause == GameStateId.Intro
+            ? ExitCost.None   // the Intro never counts (D-63): quitting replays it on Continue
+            : ExitRules.Evaluate(Services.TryGet<AlertDirector>(out var d) && d.HuntingCount > 0, InSafeZone);
 
         /// <summary>Pause menu "Quit": applies the exit table, saves and returns to the main menu.</summary>
         public void QuitToMenu()
@@ -249,7 +373,6 @@ namespace Heartbeat.Cycle
                 DeathCounter.RegisterCalmExit(ref s);
                 WriteCounter(s);
             }
-            // shortcut: a counter that reaches 5 by quitting is not checked here; Continue must play Assimilation (E08-endings, H5).
             Data.exitCost = cost;
             Data.confirmedExit = true;
             SaveNow();
@@ -286,9 +409,26 @@ namespace Heartbeat.Cycle
         private void OnFloorBuilt(int floor, int seed)
         {
             CurrentFloor = floor;
+            bool resumedFinal = resumingFinalRoom;
+            resumingFinalRoom = false;
             if (carry != null) Apply(carry);
             else ResetLoadout();
             carry = null;
+            if (floor >= FloorBuilder.MotherFloor || Data == null) return;   // The Mother's room has no start save (death: floor 3)
+            if (!resumedFinal) RecordFloorStart(floor);
+        }
+
+        /// <summary>A new floor start (D-147): what Lukas arrived with; the previous floor's final-room save no longer applies.</summary>
+        private void RecordFloorStart(int floor)
+        {
+            Data.hasAttemptSave = false;
+            savedFinalRoom = null;
+            Data.floorStart = Snapshot();
+            Data.floorStart.floor = floor;
+            Data.floorStart.health = -1f;   // a death or restart always comes back at full health
+            Data.hasFloorStart = true;
+            SaveNow();
+            HbLog.Info("Cycle", $"Floor {floor} start saved: {Data.floorStart.inventory.Count(i => i.Kind != ItemKind.None)} items, revolver {Data.floorStart.revolverLoaded}");
         }
 
         private void OnRoomEntered(MonoBehaviour m)
@@ -318,6 +458,12 @@ namespace Heartbeat.Cycle
                 DeathCounter.ResetAtFloor2Final(ref s);
                 Data.deathCounter = s.Consecutive;
                 HbLog.Info("Cycle", "Floor 2 final room: death counter reset (D-35)");
+                // The finding plays once per slot; later resets are silent (D-56, D-67).
+                if (!Data.floor2PhotoSeen && Services.TryGet(out Floor2Photo photo))
+                {
+                    Data.floor2PhotoSeen = true;
+                    StartCoroutine(photo.Play());
+                }
             }
             SaveNow();
             GameEvents.RaiseAutosaved();
@@ -333,7 +479,7 @@ namespace Heartbeat.Cycle
             if (Services.TryGet<PlayerController>(out var pc))
             {
                 var rev = pc.GetComponent<Revolver>();
-                if (rev != null) a.revolverLoaded = rev.Model.Loaded;
+                if (rev != null) { a.revolverLoaded = rev.Model.Loaded; a.revolverOwned = rev.Owned; }
                 var hp = pc.GetComponent<PlayerHealth>();
                 if (hp != null) a.health = hp.Model.Value;
             }
@@ -345,7 +491,8 @@ namespace Heartbeat.Cycle
             if (Services.TryGet<PlayerInventory>(out var inv)) inv.Model.Restore(a.inventory.ToArray());
             if (Services.TryGet<PlayerController>(out var pc))
             {
-                pc.GetComponent<Revolver>()?.Model.SetLoaded(a.revolverLoaded);
+                var rev = pc.GetComponent<Revolver>();
+                if (rev != null) { rev.SetOwned(a.revolverOwned); rev.Model.SetLoaded(a.revolverLoaded); }
                 if (a.health >= 0f) pc.GetComponent<PlayerHealth>()?.Model.SetValue(a.health);
             }
             HbLog.Info("Cycle", $"Loadout carried: {(inv != null ? inv.Describe() : "-")}, revolver {a.revolverLoaded}");
@@ -355,7 +502,11 @@ namespace Heartbeat.Cycle
         private void ResetLoadout()
         {
             if (Services.TryGet<PlayerInventory>(out var inv)) inv.Model.Clear();
-            if (Services.TryGet<PlayerController>(out var pc)) pc.GetComponent<Revolver>()?.Unload();
+            if (Services.TryGet<PlayerController>(out var pc) && pc.TryGetComponent(out Revolver rev))
+            {
+                rev.Unload();
+                rev.SetOwned(false);   // it waits on the capsule tray (or, first attempt, on the Kessler guard)
+            }
         }
 
         /// <summary>Debug / tests.</summary>

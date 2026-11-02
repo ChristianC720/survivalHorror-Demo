@@ -17,7 +17,183 @@ MonoBehaviour:
   m_SharedData: {fileID: 11400000, guid: 9b5eaff2e83da124da564122270dcaf9, type: 2}
   m_Metadata:
     m_Items: []
-  m_TableData: []
+  m_TableData:
+  - m_Id: 17771982356480
+    m_Localized: "Nota de voz \u2014 Emilia"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299520
+    m_Localized: "<c>Lukas. Si est\xE1s oyendo esto, no volv\xED.</c>\nHe estado investigando lo que pas\xF3 en Vitalis. El incidente. Encontr\xE9 algo en el sonido y volv\xED por el resto.\nAlgo sali\xF3 mal. No recuerdo\u2026 no recuerdo qu\xE9 estoy olvidando.\nNo vengas a buscarme. <c>Por favor. T\xFA no. Qu\xE9date en casa. Guarda la foto.</c>\n<i>(respiraci\xF3n)</i> \u2026est\xE1 en las paredes. Lo oigo desde aqu\xED.\n<i>(pasos, corre)</i>"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299521
+    m_Localized: "Cuaderno \u2014 2080-11-02"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299522
+    m_Localized: "Subnivel C, laboratorio ac\xFAstico. El pulso bajo la planta no es un latido. Un latido se repite. Esto se desarrolla.\nLo estoy transcribiendo como una partitura: frases, silencios, retornos. El tempo es estable a 41 ppm. Cada 3 horas el material vuelve un poco cambiado, como un tema despu\xE9s de su variaci\xF3n.\nTiene forma de apertura. Despu\xE9s de una apertura viene algo.\n<c>Lukas me pregunt\xF3 por qu\xE9 llego a casa oliendo a las salas fr\xEDas. Le dije \"trabajo\". Se rio y prepar\xF3 t\xE9 de todos modos.</c>"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299523
+    m_Localized: "Cuaderno \u2014 2081-03-13"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299524
+    m_Localized: "La partitura est\xE1 completa hasta el comp\xE1s 212. Luego, una doble barra. Ah\xED termina el primer acto.\nEl segundo acto existe. Oigo d\xF3nde deber\xEDa empezar: los silencios cambian de duraci\xF3n, como si algo esperara una se\xF1al.\nPed\xED acceso a la central de megafon\xEDa para comparar la resonancia de la sala con la transcripci\xF3n. Denegado. Kessler puso un guardia en la puerta.\nDej\xE9 una copia de la partitura en la mesa de mezclas. No deb\xED hacerlo.\n<c>Ma\xF1ana es nuestro aniversario. Llegar\xE9 temprano. Lo promet\xED.</c>"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299525
+    m_Localized: "Cuaderno \u2014 2081-03-20"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299526
+    m_Localized: "Lo o\xED. Solo el primer acto, a trav\xE9s de las paredes del subnivel C. Despu\xE9s, nada.\nDespert\xE9 en una c\xE1psula. Tuve las manos fr\xEDas dos d\xEDas. La m\xE1quina dijo que mi preservaci\xF3n fue \"exitosa\".\nYo no abr\xED el canal. Estaba en el laboratorio ac\xFAstico. Estoy casi segura de que estaba en el laboratorio ac\xFAstico.\nVitalis me llama \"superviviente inestable\". Despido efectivo el 2081-04-02.\n<c>No le cont\xE9 a Lukas lo de la c\xE1psula. Le dije que me despidieron. Me abraz\xF3 toda la noche y dijo que ellos se lo perd\xEDan.</c>"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299527
+    m_Localized: "Cuaderno \u2014 2082-10-19"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299528
+    m_Localized: "Volv\xED. Mi vieja tarjeta todav\xEDa abre la escotilla de mantenimiento; nadie la revoc\xF3. Aqu\xED nadie revoca nada.\nEl pulso suena m\xE1s fuerte sin gente. El edificio se reacomoda entre visitas; marco las puertas con tiza y las marcas aparecen en las salas equivocadas.\nLa m\xE1quina me salud\xF3 con un n\xFAmero. No lo voy a escribir.\nMor\xED en las escaleras del subnivel C. Despert\xE9 otra vez en la c\xE1psula. Perd\xED algo. Revis\xE9 la partitura y est\xE1 completa. Entonces fue otra cosa.\nEscucha el latido. El segundo acto empieza en el n\xFAcleo."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299529
+    m_Localized: "Cuaderno \u2014 2083-05-09"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299530
+    m_Localized: "Tercera vez este a\xF1o. O cuarta. Las fechas est\xE1n en los m\xE1rgenes con mi letra, as\xED que debe ser cierto.\nHay una foto en mi cartera. Un hombre me abraza y yo me r\xEDo. <c>Se llama Lukas. Se llama Lukas. Se llama</c>\nS\xE9 que lo amo. Lo escribo aqu\xED para que la m\xE1quina no pueda quit\xE1rmelo.\nLa partitura tiene ahora notas que no recuerdo haber escrito. Compases 213 a 240. Debo haberlos o\xEDdo. Debo haber estado m\xE1s cerca.\nEscucha el latido. Escucha el latido. Escucha."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299531
+    m_Localized: "Cuaderno \u2014 2083-11-17"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299532
+    m_Localized: "Yo abr\xED el canal.\nYo no abr\xED el canal.\nLas dos frases tienen mi letra, en la misma p\xE1gina, con la misma pluma.\nMa\xF1ana voy al n\xFAcleo. Si suena el segundo acto, quiero estar en la sala. Si no vuelvo, el tel\xE9fono enviar\xE1 la grabaci\xF3n. <c>\xC9l vendr\xE1 igual. Siempre viene igual. Lukas, no.</c>\nLa partitura termina en el comp\xE1s 240. El resto no est\xE1 escrito. El resto hay que o\xEDrlo."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299533
+    m_Localized: "Vitalis Konzern \u2014 Aviso al personal de mantenimiento"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299534
+    m_Localized: "PARA: Mantenimiento, subniveles A\u2013C\nASUNTO: Sonido de baja frecuencia\nEl sonido r\xEDtmico reportado en las salas de calderas es resonancia de la planta y no supone ning\xFAn riesgo. Se recuerda al personal con ansiedad que escuchar el latido tiene un efecto calmante documentado.\nNo grabe el sonido. No lo tararee. No se pagar\xE1n horas extra por \"pausas de escucha\".\n<i>Ordnung ist das halbe Leben.</i>"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299535
+    m_Localized: "Kessler Sicherheit AG \u2014 Werkschutz, libro de rondas, puesto 3"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299536
+    m_Localized: "02:00 Ronda completa. Sin novedad.\n02:40 Un t\xE9cnico pregunta qu\xE9 hay detr\xE1s de la puerta C-11. Le digo que no es asunto suyo. Tampoco es nuestro.\n03:00 Ronda completa. Sin novedad. El suelo se siente tibio.\n03:12 M\xFAsica por la megafon\xEDa. Sin novedad.\n03:13"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299537
+    m_Localized: "Vitalis Konzern \u2014 Cartel publicitario"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299538
+    m_Localized: "VITALIS REGEN\u2122\nTu cuerpo. Renovado. Otra vez.\nRegeneraci\xF3n cl\xEDnicamente probada para la plantilla moderna. Pregunta a tu supervisor por la inscripci\xF3n anticipada.\n<i>Gesundheit ist Pflicht.</i>\nLos efectos secundarios pueden incluir fatiga, ac\xFAfenos y una leve p\xE9rdida de la historia personal."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299539
+    m_Localized: "The Mother \u2014 Informe autom\xE1tico de estado"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299540
+    m_Localized: "ESTADO DE LA INSTALACI\xD3N: DADA DE BAJA\nPersonal en el lugar: 0\nPersonal preservado: {0}\nInformes enviados a los servidores de Vitalis: 4112\nInformes le\xEDdos: 0\nRecomendaci\xF3n: continuar informando."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299541
+    m_Localized: "The Mother \u2014 Registro de preservaci\xF3n, serie R-H"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299542
+    m_Localized: "SERIE R-H \u2014 REGISTRO DE PRESERVACI\xD3N\nR-H-01 \xB7 2081-03-14 \xB7 Paro card\xEDaco. Exposici\xF3n ac\xFAstica.\nR-H-02 \xB7 2082-10-19 \xB7 Ca\xEDda. Escalera del subnivel C.\nR-H-03 \xB7 2083-01-27 \xB7 Hipotermia.\nR-H-04 \xB7 2083-05-09 \xB7 Traumatismo contuso.\nR-H-05 \xB7 2083-08-30 \xB7 Asfixia.\nR-H-06 \xB7 2083-11-18 \xB7 Exposici\xF3n ac\xFAstica.\nPreservaci\xF3n: exitosa. El sujeto conserva su identidad."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299543
+    m_Localized: "Vitalis Konzern \u2014 Recursos Humanos, notificaci\xF3n de despido"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299544
+    m_Localized: "Dra. E. Reiner-Hellen, Investigaci\xF3n Ac\xFAstica\nTras el evento del 2081-03-14, ha sido clasificada como superviviente inestable. Su relaci\xF3n laboral termina el 2081-04-02.\nVitalis Konzern agradece su contribuci\xF3n y le recuerda que toda investigaci\xF3n, nota y recuerdo sigue siendo propiedad de la empresa.\nPor favor, devuelva su tarjeta."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299545
+    m_Localized: "Vitalis Konzern \u2014 Direcci\xF3n, memorando interno"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299546
+    m_Localized: "CONFIDENCIAL\nEl evento del 2081-03-14 fue causado por una investigadora no autorizada que accedi\xF3 a la central de megafon\xEDa y emiti\xF3 material no aprobado.\nLa instalaci\xF3n ser\xE1 sellada y dada de baja. No se prev\xE9 recuperar al personal; la recuperaci\xF3n no es rentable.\nLa producci\xF3n de Regen contin\xFAa con las existencias actuales.\n<i>Vertraulich. Nicht kopieren.</i>"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299547
+    m_Localized: "Kessler Sicherheit AG \u2014 Informe de incidente, puesto 7"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299548
+    m_Localized: "Emisi\xF3n iniciada a las 03:12 desde la consola de la central de megafon\xEDa.\nRegistro de la consola: autenticado por el sistema de la instalaci\xF3n. No se us\xF3 ninguna tarjeta.\nEl guardia del puesto 7 (puerta de la central de megafon\xEDa) informa que nadie entr\xF3 ni sali\xF3.\nEl guardia del puesto 7 dej\xF3 de informar a las 03:14.\nEstado del contrato: activo. Se adjunta factura."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299549
+    m_Localized: "The Mother \u2014 Protocolo de preservaci\xF3n del personal (revisi\xF3n 9)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299550
+    m_Localized: "1. El personal que deja de funcionar es preservado.\n2. La preservaci\xF3n requiere identidad. La identidad se confirma por la respuesta al c\xF3digo de sujeto.\n3. El personal sin identidad no puede ser preservado. Permanece en el lugar. No es mi responsabilidad.\n4. Cada preservaci\xF3n es exitosa.\n5. El n\xFAmero de personal sin identidad aumenta. Causa: fuera del alcance de este protocolo."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299551
+    m_Localized: "The Mother \u2014 \xCDndice del archivo criog\xE9nico"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299552
+    m_Localized: "ARCHIVO CRIOG\xC9NICO \u2014 \xCDNDICE\nMuestras almacenadas: 1204\nOrigen: personal (todo)\nFinalidad: material de referencia de Vitalis Regen\u2122\nEspec\xEDmenes no conformes pendientes de recolecci\xF3n: 1\nNota: el archivo canta de noche. Registrado como ruido del compresor."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299553
+    m_Localized: "Vitalis Konzern \u2014 Acta de I+D"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299554
+    m_Localized: "Asistentes: Junta de I+D.\nPunto 1: Origen del compuesto regenerativo. Discusi\xF3n aplazada indefinidamente.\nPunto 2: El rendimiento sube un 14% desde que el turno de noche se traslad\xF3 m\xE1s cerca del n\xFAcleo.\nPunto 3: Un miembro de la junta pregunt\xF3 qu\xE9 es el compuesto. La pregunta se elimin\xF3 del acta.\nPunto 4: Se reemplaz\xF3 la m\xE1quina de caf\xE9 del subnivel B."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299555
+    m_Localized: "The Mother \u2014 Nota cl\xEDnica: exposici\xF3n ac\xFAstica"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17772024299556
+    m_Localized: "Sujetos expuestos al primer acto: preservables.\nSujetos expuestos al latido completo: dejan de ser sujetos.\nRecomendaci\xF3n al personal: escuchen el latido. No lo escuchen entero."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 224840027078656
+    m_Localized: "Ticket de mantenimiento n.\xBA 4471 \u2014 anulaci\xF3n de cerraduras"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 224840102576128
+    m_Localized: "Las puertas del subnivel a\xFAn aceptan la anulaci\xF3n de t\xE9cnico. Introduce los dos primeros c\xF3digos de la secuencia de una cerradura y se salta el resto.\nLa anulaci\xF3n solo funciona en puertas normales.\nTicket cerrado como \"no se arreglar\xE1\". El sistema registra cada anulaci\xF3n. Tras la segunda reescribe el firmware de la cerradura y el truco desaparece para siempre.\n\u2014 Turno de noche, mantenimiento"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 224840102576129
+    m_Localized: "Ingenier\xEDa de sonido \u2014 bus de pruebas de la mesa de mezcla"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 224840102576130
+    m_Localized: "Las secuencias largas del n\xFAcleo (elevador, terminales principales, los nodos de las mesas de mezcla) pueden reducirse a la mitad desde el bus de pruebas de la mesa. Lo usamos cuando la consola se cuelga.\nNo conf\xEDes en ello. El sistema parchea cada derivaci\xF3n que detecta, normalmente tras la segunda vez, y siempre las detecta.\nSi un sujeto muere en el n\xFAcleo, da el bus por cerrado.\n\u2014 S. Brandt, ingenier\xEDa de sonido"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 238198084206592
+    m_Localized: Anillo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 238198142926848
+    m_Localized: "Un aro sencillo, gastado. Estaba en el suelo de la fila de c\xE1psulas.\nTiene algo grabado por dentro. Las letras est\xE1n borradas por el roce."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

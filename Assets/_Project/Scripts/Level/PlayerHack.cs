@@ -21,10 +21,17 @@ namespace Heartbeat.Level
         private IHackTarget target;
         private InputContext previousContext;
         private int startFrame;
+        private bool faultUsed;
+        private FaultModel faults;
+        private Narrative.RegistryModel registry;
         private readonly System.Random rng = new System.Random();
 
         public HackSequence Current { get; private set; }
         public bool IsHacking => Current != null;
+
+        /// <summary>Discovered, unpatched fault the current hack may exploit (M-17), or null.</summary>
+        public string AvailableFault => IsHacking && !faultUsed && faults != null && registry != null
+            ? faults.UsableFor(target.Difficulty, registry.Has) : null;
 
         public event Action<HackSequence> Started;
         public event Action<HackStep> Stepped;
@@ -37,12 +44,15 @@ namespace Heartbeat.Level
         {
             router = Services.Get<InputRouter>();
             Services.TryGet(out states);
+            Services.TryGet(out faults);
+            Services.TryGet(out registry);
             var h = router.Actions.Hacking;
             h.Up.performed += OnUp;
             h.Down.performed += OnDown;
             h.Left.performed += OnLeft;
             h.Right.performed += OnRight;
             h.Abort.performed += OnAbort;
+            h.UseFault.performed += OnUseFault;
             if (health != null) health.Hit += OnHit;
         }
 
@@ -56,6 +66,7 @@ namespace Heartbeat.Level
             h.Left.performed -= OnLeft;
             h.Right.performed -= OnRight;
             h.Abort.performed -= OnAbort;
+            h.UseFault.performed -= OnUseFault;
         }
 
         private void OnUp(InputAction.CallbackContext _) => Feed(HackDir.Up);
@@ -68,6 +79,7 @@ namespace Heartbeat.Level
             if (IsHacking) return false;
             target = hackTarget;
             Current = fixedSequence ?? HackSequence.Generate(hackTarget.Difficulty, rng);
+            faultUsed = false;
             previousContext = router.Context;
             router.SetContext(InputContext.Hacking);
             states?.TrySetSubState(PlaySubState.Hacking);
@@ -86,6 +98,22 @@ namespace Heartbeat.Level
             Sfx.Play(step == HackStep.Error ? Sfx.HackError : step == HackStep.Complete ? Sfx.HackSuccess : Sfx.HackInput, transform.position);
             if (step == HackStep.Error) HbLog.Info("Hack", $"Error beep, sequence restarted (errors={Current.Errors})");
             if (step == HackStep.Complete) End(true, "success");
+        }
+
+        private void OnUseFault(InputAction.CallbackContext _) => UseFault();
+
+        /// <summary>M-17: exploit the available fault once per hack; the chain is cut and redrawn. Returns false if none.</summary>
+        public bool UseFault()
+        {
+            string id = AvailableFault;
+            if (id == null) return false;
+            faultUsed = true;
+            int before = Current.Steps.Count;
+            Current.Truncate(faults.ShortLength(target.Difficulty, before));
+            Started?.Invoke(Current);   // the arm terminal redraws the shorter chain
+            faults.Use(id);
+            HbLog.Info("Fault", $"{id} exploited: {before} -> {Current.Steps.Count} inputs (uses left {faults.UsesLeft(id)})");
+            return true;
         }
 
         private void OnAbort(InputAction.CallbackContext _)

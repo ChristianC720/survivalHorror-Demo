@@ -9,7 +9,7 @@ namespace Heartbeat.Audio
     /// S-11 audio service, lives on the Bootstrap object (registered by Bootstrap). Pooled AudioSources with priority
     /// voice stealing (<see cref="VoicePicker"/>). Gameplay reaches it only through events: <see cref="Sfx"/> requests,
     /// plus the event → cue table in <see cref="OnEnable"/>. Every play logs "[Heartbeat][Audio] CUE_X" and raises
-    /// CuePlayed; cues without clips show their debug caption in development builds.
+    /// CuePlayed (UI.SoundCaptionView shows captions from it).
     /// </summary>
     public sealed class AudioService : MonoBehaviour
     {
@@ -17,7 +17,6 @@ namespace Heartbeat.Audio
         [SerializeField] private int voices = 24;
         [Tooltip("Alert cues only for enemies this close (same scope as the AlertDirector).")]
         [SerializeField] private float alertCueRadius = 25f;
-        [SerializeField] private bool showDebugCaptions = true;
         [SerializeField] private AudioBalance balance;
 
         [Header("Mixer (Audio/Mixer/Heartbeat.mixer)")]
@@ -36,10 +35,13 @@ namespace Heartbeat.Audio
         private int[] prio;
         private float[] started;
         private Transform[] follow;
+        private float[] baseVolume;
+        private bool[] occluded;
+        private float nextOcclusion;
+        private AudioListener listener;
         private AudioSource surveillanceLoop;
         private AlertState signaled;
 
-        private readonly List<(string text, float until)> captions = new List<(string, float)>();
 
         private void Awake()
         {
@@ -49,6 +51,8 @@ namespace Heartbeat.Audio
             prio = new int[voices];
             started = new float[voices];
             follow = new Transform[voices];
+            baseVolume = new float[voices];
+            occluded = new bool[voices];
             for (int i = 0; i < voices; i++)
             {
                 var go = new GameObject($"Voice_{i:00}");
@@ -67,7 +71,9 @@ namespace Heartbeat.Audio
             else HbLog.Warn("Audio", "No AudioBalance: heartbeats disabled");
         }
 
-        private bool soundCaptions;
+        private int degradation;
+
+        private void OnDegradation(int level) => degradation = level;
 
         private void Start() => OnOptions();
 
@@ -76,7 +82,6 @@ namespace Heartbeat.Audio
             if (!Services.TryGet(out Save.SaveService saves)) return;
             var g = saves.LoadGlobal();
             ApplyVolumes(g);
-            soundCaptions = g.soundCaptions;
         }
 
         /// <summary>Options volumes (0..1) → exposed mixer params. Ambience/Music go through the duck in Update.</summary>
@@ -94,6 +99,7 @@ namespace Heartbeat.Audio
         {
             GameEvents.CueRequested += OnCueRequested;
             GameEvents.OptionsChanged += OnOptions;
+            GameEvents.DegradationChanged += OnDegradation;
             GameEvents.ShotFired += OnShot;
             GameEvents.EnemyAlertChanged += OnEnemyAlert;
             GameEvents.HighestAlertChanged += OnHighestAlert;
@@ -113,6 +119,7 @@ namespace Heartbeat.Audio
         {
             GameEvents.CueRequested -= OnCueRequested;
             GameEvents.OptionsChanged -= OnOptions;
+            GameEvents.DegradationChanged -= OnDegradation;
             GameEvents.ShotFired -= OnShot;
             GameEvents.EnemyAlertChanged -= OnEnemyAlert;
             GameEvents.HighestAlertChanged -= OnHighestAlert;
@@ -165,8 +172,13 @@ namespace Heartbeat.Audio
             src.spatialBlend = spatial ? 1f : 0f;
             src.maxDistance = cue.maxDistance;
             src.outputAudioMixerGroup = cue.bus;
-            src.volume = cue.volume;
+            baseVolume[i] = cue.volume;
+            // M-10 signals are never masked (D-29): only ordinary positional sounds are occluded.
+            occluded[i] = spatial && cue.priority != CuePriority.Signal;
+            src.volume = occluded[i] ? cue.volume * Occlusion(src.transform.position) : cue.volume;
             src.pitch = Random.Range(cue.pitchRange.x, cue.pitchRange.y);
+            // M-18 vocal distortion: voices drop and waver with degradation; signals are never touched (D-29).
+            if (cue.name.StartsWith("CUE_Vocal_")) src.pitch *= Mathf.Max(0.75f, 1f - 0.025f * degradation) * Random.Range(1f - 0.01f * degradation, 1f);
             src.loop = loop;
             src.clip = cue.PickClip();
             busy[i] = true;
@@ -174,15 +186,26 @@ namespace Heartbeat.Audio
             started[i] = Time.unscaledTime;
             follow[i] = target;
             if (src.clip != null) src.Play();
-            if (soundCaptions && cue.priority == CuePriority.Signal && !string.IsNullOrEmpty(cue.debugCaption))
-                captions.Add((cue.debugCaption + Direction(spatial ? position : null), Time.unscaledTime + 2.5f));   // D-102; shortcut: caption text is the English cue caption (IMGUI), move to a SUB/CAP table + uGUI before release
-            else if (src.clip == null && showDebugCaptions && Debug.isDebugBuild && !string.IsNullOrEmpty(cue.debugCaption))
-                captions.Add((cue.debugCaption, Time.unscaledTime + 2f));
 
             if (cue.priority == CuePriority.Signal) duckUntil = Mathf.Max(duckUntil, Time.unscaledTime + duckHoldSeconds);
-            HbLog.Info("Audio", cue.name);
+            LogCue(cue.name);
             GameEvents.RaiseCuePlayed(cue.name, spatial ? position : null);
             return src;
+        }
+
+        /// <summary>Share of a sound at <paramref name="source"/> that reaches the listener through walls and closed doors.</summary>
+        public float Occlusion(Vector3 source)
+        {
+            if (listener == null || !listener.isActiveAndEnabled) listener = FindAnyObjectByType<AudioListener>();
+            return listener == null ? 1f : OcclusionBetween(source, listener.transform.position);
+        }
+
+        /// <summary>Same rule between any two points (also the noise radius enemies perceive, S-02).</summary>
+        public float OcclusionBetween(Vector3 a, Vector3 b)
+        {
+            if (balance == null) return 1f;
+            SoundOcclusion.Count(a, b, out int walls, out int doors);
+            return OcclusionModel.Factor(walls, doors, balance.wallTransmission, balance.doorTransmission);
         }
 
         private void Play(string id, Vector3? position)
@@ -201,7 +224,13 @@ namespace Heartbeat.Audio
                 // One-shots free their voice when done; empty-clip one-shots hold it ~0.5 s so stealing stays realistic.
                 if (!pool[i].loop && !pool[i].isPlaying && now - started[i] > 0.5f) busy[i] = false;
             }
-            captions.RemoveAll(c => c.until < now);
+
+            if (balance != null && now >= nextOcclusion)
+            {
+                nextOcclusion = now + balance.occlusionInterval;
+                for (int i = 0; i < pool.Length; i++)
+                    if (busy[i] && occluded[i]) pool[i].volume = baseVolume[i] * Occlusion(pool[i].transform.position);
+            }
 
             if (mixer != null)
             {
@@ -209,25 +238,6 @@ namespace Heartbeat.Audio
                 mixer.SetFloat("vol_ambience", MixMath.LinearToDb(volAmbience) + duck);
                 mixer.SetFloat("vol_music", MixMath.LinearToDb(volMusic) + duck);
             }
-        }
-
-        private void OnGUI()
-        {
-            if (captions.Count == 0) return;
-            var style = new GUIStyle(GUI.skin.box) { fontSize = 14, alignment = TextAnchor.MiddleLeft };
-            for (int i = 0; i < captions.Count; i++)
-                GUI.Box(new Rect(Screen.width - 330, 10 + i * 26, 320, 24), "♪ " + captions[i].text, style);
-        }
-
-        /// <summary>Approximate direction for sound captions (D-102): never distance or screen position (D-02).</summary>
-        private static string Direction(Vector3? pos)
-        {
-            var cam = Camera.main;
-            if (!pos.HasValue || cam == null) return "";
-            Vector3 d = cam.transform.InverseTransformPoint(pos.Value);
-            float angle = Mathf.Atan2(d.x, d.z) * Mathf.Rad2Deg;
-            string key = Mathf.Abs(angle) < 45f ? "UI.DIR.AHEAD" : Mathf.Abs(angle) > 135f ? "UI.DIR.BEHIND" : angle > 0f ? "UI.DIR.RIGHT" : "UI.DIR.LEFT";
-            return ", " + UI.Loc.Get(key);
         }
 
         // ---------- Event → cue table (AUDIO_CUES.md) ----------
@@ -260,5 +270,10 @@ namespace Heartbeat.Audio
                 surveillanceLoop = StartLoop(c);
             else if (from == PlaySubState.Surveillance) { Stop(surveillanceLoop); surveillanceLoop = null; }
         }
+
+        // Same "[Heartbeat][Audio] CUE_X" line playtests assert on, but stripped from release builds: every footstep
+        // logging with a stack trace was the biggest per-frame GC source (E13-profiling).
+        [System.Diagnostics.Conditional("UNITY_EDITOR"), System.Diagnostics.Conditional("DEBUG")]
+        private static void LogCue(string name) => HbLog.Info("Audio", name);
     }
 }

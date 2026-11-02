@@ -14,9 +14,11 @@ namespace Heartbeat.Level
     /// Door between two rooms (KIT_SPEC §4, M-14, M-15, D-36, D-97). E opens/closes it; a key door consumes its key
     /// (mandatory or optional); an unpowered door stays shut until power is restored. After Lukas crosses it, E on the
     /// far side starts the quick seal hack (2-3 inputs): a sealed door blocks enemies until a hunting enemy breaks it
-    /// (~30 s next to it) or Lukas crosses back. Enemies open closed, unlocked doors by themselves.
+    /// (~30 s next to it) or Lukas crosses back. A door that is not open is a wall for the NavMesh (carved): enemies in
+    /// patrol or suspicion never cross it; in search or hunt they walk up to it and open it. An enemy barrier (the spawn
+    /// room until Lukas leaves it) is never crossed nor opened by enemies.
     /// </summary>
-    public sealed class DoorLeaf : MonoBehaviour, IInteractable, IHackTarget
+    public sealed class DoorLeaf : MonoBehaviour, IInteractable, IHackTarget, ISoundOccluder
     {
         [SerializeField] private Transform leaf;
         [SerializeField] private NavMeshObstacle obstacle;
@@ -34,12 +36,24 @@ namespace Heartbeat.Level
         public DoorState State { get; private set; } = DoorState.Closed;
         public DoorLock Lock => lockType;
         public bool IsLocked => lockType != DoorLock.None;
+        /// <summary>Enemies can never open or cross it (spawn room, until Lukas leaves it).</summary>
+        public bool EnemyBarrier { get; private set; }
+        /// <summary>Search/hunt enemies may walk up to it: to open it, or to pound on it when sealed (M-14).</summary>
+        public bool EnemyCanReach => !IsLocked && !EnemyBarrier && State != DoorState.Open;
         public HackDifficulty Difficulty => HackDifficulty.QuickSeal;
+        public bool Occludes => State != DoorState.Open;   // −50% through a closed or sealed door (S-11)
+        public bool IsDoor => true;
 
-        public string PromptKey => IsLocked ? "UI.PROMPT.LOCKED" : State == DoorState.Open ? "UI.PROMPT.CLOSE" : "UI.PROMPT.OPEN";
+        public string PromptKey => IsLocked ? "UI.PROMPT.LOCKED" : State == DoorState.Open ? "UI.PROMPT.CLOSE" : "UI.PROMPT.OPEN";   // sealed: E opens it too
         public Vector3 InteractionPoint => transform.position + Vector3.up * 1.2f;
 
         public void Configure(DoorLock l) => lockType = l;
+
+        public void SetEnemyBarrier(bool on)
+        {
+            EnemyBarrier = on;
+            SetState(State);
+        }
 
         public void RestorePower()
         {
@@ -73,7 +87,14 @@ namespace Heartbeat.Level
                     return;
             }
 
-            if (State == DoorState.Sealed) { HbLog.Info("Door", $"{name}: sealed"); Sfx.Play(Sfx.DoorLocked, transform.position); return; }
+            if (State == DoorState.Sealed)
+            {
+                // Lukas can always undo his own seal (it also breaks when he crosses, D-97).
+                HbLog.Info("Door", $"{name}: seal released by Lukas");
+                Sfx.Play(Sfx.DoorSealBreak, transform.position);
+                SetState(DoorState.Open);
+                return;
+            }
 
             // Lukas crossed this door and turns back towards it while enemies hunt: offer the quick seal.
             bool hunting = Services.TryGet<AlertDirector>(out var d) && d.HuntingCount > 0;
@@ -99,7 +120,7 @@ namespace Heartbeat.Level
         /// <summary>Enemies call this when their path crosses a closed, unlocked door.</summary>
         public bool TryOpenByEnemy()
         {
-            if (State != DoorState.Closed || IsLocked) return State == DoorState.Open;
+            if (State != DoorState.Closed || IsLocked || EnemyBarrier) return State == DoorState.Open && !EnemyBarrier;
             SetState(DoorState.Open);
             return true;
         }
@@ -113,7 +134,7 @@ namespace Heartbeat.Level
 
             TrackPlayerSide();
             if (State == DoorState.Sealed) TickSealBreak();
-            if (State == DoorState.Closed && !IsLocked) OpenForNearbyEnemies();
+            if (State == DoorState.Closed && !IsLocked && !EnemyBarrier) OpenForNearbyEnemies();
         }
 
         private void TrackPlayerSide()
@@ -162,7 +183,7 @@ namespace Heartbeat.Level
             if (s != State && (s == DoorState.Open || s == DoorState.Closed) && State != DoorState.Sealed)
                 Sfx.Play(Sfx.DoorOpen, transform.position);   // one motor cue for open and close
             State = s;
-            if (obstacle != null) obstacle.enabled = s == DoorState.Sealed || IsLocked;
+            if (obstacle != null) obstacle.enabled = s != DoorState.Open || IsLocked || EnemyBarrier;   // carved = wall for agents
             if (s != DoorState.Sealed) breakProgress = 0f;
             HbLog.Dev("Door", $"{name} -> {s}");
         }

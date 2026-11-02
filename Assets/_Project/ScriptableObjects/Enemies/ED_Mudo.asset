@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c6826f1fc4f54f43bcf9d1dd25d1d91, type: 3}
+  m_Name: ED_Mudo
+  m_EditorClassIdentifier: Heartbeat.Runtime::Heartbeat.AI.EnemyDefinition
+  type: 3
+  shotsToKill: 3
+  recycledShotsToKill: 2
+  hitsToKillLukas: 2
+  patrolSpeed: 0
+  huntSpeed: 4.5
+  recycledSpeedMultiplier: 1.25
+  sightRange: 10
+  sightAngle: 100
+  hearingRange: 4
+  reactsToLight: 1
+  alert:
+    sightGainPerSecond: 1.2
+    farSightFactor: 0.35
+    huntLoseSeconds: 5
+    searchHoldSeconds: 6
+    decayPerSecond: 0.12
+  attackRange: 2.4
+  attackWindup: 0.7
+  attackCooldown: 1.8
+  canGrab: 1
+  grabChance: 0.4
+  grabRange: 1.6
+  flanks: 0
+  flankOffset: 3
+  patrolRadius: 0
+  weakPointStagger: 0.7
+  screams: 0
+  screamRadius: 18
+  screamCooldown: 8
+  blindHuntFraction: 0.6
+  dormant: 1
+  activationRange: 3
+  burstSeconds: 0.9
+  burstPauseSeconds: 0.7

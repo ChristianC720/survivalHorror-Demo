@@ -14,8 +14,8 @@ Rules
 | `PH_Lukas_Civil` | Lukas in the intro (civilian clothes) | same | same, grey | 5–8k | same | pending |
 | `PH_Alto` | El Alto | 0.8 × 2.5 × 0.6 | tall capsule, long box arms | ≤ 6k | Long reach attack, grab | placeholder done (Enemy_Alto) |
 | `PH_Rastrero` | El Rastrero | 0.6 × 1.0 × 1.4 | horizontal capsule, low | ≤ 5k | Fast quadruped crawl, flank, lunge | placeholder done (Enemy_Rastrero) |
-| `PH_Boca` | La Boca (blind, screams) | 0.7 × 1.9 × 0.5 | capsule, large sphere jaw | ≤ 5k | Scream, walk | pending |
-| `PH_Mudo` | El Mudo (still decoy, grabs) | 0.6 × 1.8 × 0.4 | capsule, slumped | ≤ 5k | Idle-still, activation, grab | pending |
+| `PH_Boca` | La Boca: emaciated blind test subject, mouth splits vertically | 0.6 × 1.9 × 0.5 (hunched) | skin boxes + crimson vertical mouth slit, rags | ≤ 6k | Scream, listen tilt, shamble/lurch | placeholder done (`Enemy_Boca`) |
+| `PH_Mudo` | El Mudo: nurse, stained Vitalis uniform, bandaged head, riveted face plate | 0.55 × 1.8 × 0.35 | dirty-white boxes, metal face plate | ≤ 6k | Frozen idle, spasm activation, burst run, grab | placeholder done (`Enemy_Mudo`) |
 | `PH_Recycled_Parts` | Metal pieces added to recycled enemies | – | small grey boxes parented to enemy | ≤ 500 | – | pending |
 | `PH_TheMother` | Cryo-archive shelf on a crane | 8 × 10 × 4 | stacked boxes + cylinders, crimson inner light | ≤ 20k | Crane movement, phase states | pending |
 | `PH_TheMother_CollectorArm` | Collector arm | 1 × 1 × 6 | box segments | ≤ 4k | Patrol, sweep, grab | pending |
@@ -26,7 +26,10 @@ Rules
 | `PH_F3_CryoTank`, `PH_F3_Transformer`, `PH_F3_BrokenCapsule` | Floor 3 machines | see catalog | cylinders / boxes | ≤ 2k each | – | pending |
 | `PH_Revolver` | Kessler revolver (ceramic frame, green round counter) | 0.25 × 0.15 × 0.05 | boxes; counter is a TMP 3D text | ≤ 1.5k | – | placeholder done (inside Player prefab, WeaponSocket) |
 | `PH_Capsule_Reconstruction` | Reconstruction capsule (capsule row) | 1.0 × 2.2 × 1.0 | cylinder + glass box | ≤ 2k | open/close | placeholder done |
-| `PH_Intro_House`, `PH_Intro_Elevator` | Intro set pieces | room-sized | kit-like boxes | – | – | pending |
+| `PH_Intro_House`, `PH_Intro_Elevator` | Intro set pieces | room-sized | kit-like boxes | – | – | placeholder done: `Set_House`, `Set_Elevator`, `Set_Elevator2`, `Set_NonexistentFloor` in `Intro.unity` (F1/F2 kit shells + primitive table, chair, photo) |
+| `PH_KesslerGuard_Corpse` | Assimilated Kessler guard lying in the tutorial depot with the revolver (D-74) | 1.8 m lying | dark capsule + assimilated head | ≤ 5k | static | placeholder done (`ROOM_F1_Storage_A`) |
+| `PH_Lukas_Mudo` | Lukas turned into a Mudo, standing far away on the floor that does not exist (Assimilation ending, D-61) | 0.55 × 1.8 × 0.35 | assimilated capsule + metal face plate | ≤ 6k | frozen idle | placeholder done (`Cinematics.unity`) |
+| `PH_Intro_Decoy` | The Mudo decoy at the end of the floor that does not exist (D-60) | 0.55 × 1.8 × 0.35 | dirty-white capsule, no AI | – | frozen idle | placeholder done (`Intro.unity`) |
 
 Add a row whenever you create a new `PH_` prefab.
 
@@ -34,7 +37,8 @@ Add a row whenever you create a new `PH_` prefab.
 | Item | Intended asset | Current placeholder | Status |
 |---|---|---|---|
 | Title logo | "Identity Dissolution" logotype (D-90) | bold TMP text in `MenuView.ShowTitle` | pending art |
-| Fonts | VT323 (data), IBM Plex Sans (menus), OpenDyslexic (option), OFL, `.ttf` in `UI/Fonts/` | LiberationSans SDF (+ `TMP_HUD_Outline.mat` for HUD text) | pending import |
+| Fonts | VT323 (data), IBM Plex Sans (menus), OpenDyslexic (option) | imported (OFL, licences next to the files in `UI/Fonts/`), dynamic TMP assets via `UI/Resources/UiFontSet` | done |
 | Main menu backdrop | capsule-row room with the facility terminal next to Lukas's capsule (D-90) | flat black screen with green text | pending (E12-f1-lighting) |
 | Credits roll | END table credits | hard-coded lines in `MenuView.ShowCredits` | pending (E15) |
 | Arm terminal | world-space canvas on Lukas's forearm + screen mirror | screen-space panel only | pending Lukas model |
+| The Mother (crane archive, collector arm, cryo core) | cryogenic sample archive on a crane with a collector arm and an opening core (D-65) | `ROOM_Mother`: CryoTank ×1.6 core, box arm + claw, cube cameras with red lights | pending model + core-opening animation |

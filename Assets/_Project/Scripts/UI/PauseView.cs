@@ -43,9 +43,9 @@ namespace Heartbeat.UI
             title.alignment = TMPro.TextAlignmentOptions.Center;
             var resume = UiKit.Button(box, Loc.Get("UI.PAUSE.RESUME"), 30, UiKit.Teal, () => Services.Get<PauseService>().TryResume(), 56);
             UiKit.Button(box, Loc.Get("UI.MENU.OPTIONS"), 30, UiKit.Teal, ShowOptions, 56);
-            bool canRestart = pausedFrom == GameStateId.Playing;   // not in the Intro or the final decision
-            var restart = UiKit.Button(box, Loc.Get("UI.PAUSE.RESTART"), 30, UiKit.Teal, ConfirmRestart, 56);
-            restart.interactable = canRestart;
+            // No Restart in the Intro or the final decision (D-63, D-92): the button is not shown at all.
+            if (pausedFrom == GameStateId.Playing)
+                UiKit.Button(box, Loc.Get("UI.PAUSE.RESTART"), 30, UiKit.Teal, ConfirmRestart, 56);
             UiKit.Button(box, Loc.Get("UI.PAUSE.QUIT"), 30, UiKit.Teal, ConfirmQuit, 56);
             UiKit.Select(resume);
             HbLog.Info("UI", "Pause menu");
@@ -66,13 +66,17 @@ namespace Heartbeat.UI
         }
 
         private void ConfirmRestart() =>
-            ConfirmDialog.Show(root, Loc.Get("UI.CONFIRM.RESTART"), () => Services.Get<CycleController>().Restart(), null, UiKit.Amber);
+            ConfirmDialog.Show(root, Loc.Get(Services.Get<CycleController>().InSafeZone ? "UI.CONFIRM.RESTART_SAFE" : "UI.CONFIRM.RESTART"),
+                () => Services.Get<CycleController>().Restart(), null, UiKit.Amber);   // free in a safe zone (D-147)
 
         private void ConfirmQuit()
         {
             var cycle = Services.Get<CycleController>();
             var cost = cycle.QuitCost;
-            string key = cost == ExitCost.Hunt ? "UI.CONFIRM.QUIT_HUNT" : cost == ExitCost.Calm ? "UI.CONFIRM.QUIT_CALM" : "UI.CONFIRM.QUIT_FREE";
+            bool tutorial = cycle.Data != null && cycle.Data.firstAttempt;
+            string key = cost == ExitCost.Hunt ? "UI.CONFIRM.QUIT_HUNT"
+                : cost == ExitCost.Calm ? (tutorial ? "UI.CONFIRM.QUIT_CALM_TUTORIAL" : "UI.CONFIRM.QUIT_CALM")
+                : "UI.CONFIRM.QUIT_FREE";
             HbLog.Info("UI", $"Quit confirmation shows cost={cost}");
             ConfirmDialog.Show(root, Loc.Get(key), cycle.QuitToMenu, null, cost == ExitCost.Hunt ? UiKit.Red : UiKit.Amber);
         }

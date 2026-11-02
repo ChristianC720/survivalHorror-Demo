@@ -12,6 +12,7 @@
 - "Restart" from pause counts as a death. Quitting during an alert or hunt counts as a full death (exit table).
 - **Counter (M-18, Desirable):** 5 consecutive deaths → Assimilation ending, then credits. Only reaching floor 2's final key room resets it. Deaths in the first attempt (tutorial) and the scripted intro death do not count.
 - Degradation: CRT corruption and vocal distortion grow per death, capped; never hides information.
+- Editor play-from-scene (Floor, Sandbox_*) uses the hidden dev slot `slot_3.json` (`CycleController.DevSlot`), recreated every Play and never "last used"; real slots are only touched through Bootstrap/MainMenu.
 - Autosave: in the final key rooms of floors 1 and 2, only if no enemy is hunting (pending until the hunt ends). Floor 3: none.
 - **Recycling (M-20):** every dead enemy rises once after ~40 s with a ~3 s warning, unless finished. A recycled enemy uses the recycled stats.
 - **Machine faults (M-17, Desirable):** discoverable shortcuts that The Mother patches after 1–2 uses; the record stays in the terminal.

@@ -59,7 +59,9 @@ Assets/_Project/
 - Floors: `F1` Maintenance (sodium amber), `F2` Illegal Clinic (cold fluorescent), `F3` Core (crimson). `Shared` = all floors.
 
 ## Grid, pivots and rooms (see `Desarrollo/KIT_SPEC.md`)
-2 m cells, walls 3 m × 0.3 m, doorways 2 m × 2.2 m. Kit pieces are built **by hand with Aura** using grid snapping and exact pivots. Room prefabs are assembled by hand from kit pieces. At runtime the `FloorBuilder` joins room prefabs through `DoorSocket`s. Never generate kit pieces or rooms procedurally in an editor script.
+2 m cells, walls 3 m × 0.3 m, doorways 2 m × 2.2 m. At runtime the `FloorBuilder` joins room prefabs through `DoorSocket`s.
+- **By hand with Aura:** kit pieces (grid snapping, exact pivots; floor themes = Aura prefab variants with the floor's materials), room *layouts* and every unique key room (final rooms, The Mother's room `ROOM_Mother`). Never generate kit pieces or room layouts procedurally.
+- **Versioned editor tools allowed** (`Scripts/Editor`, menu `Heartbeat/…`, idempotent, never overwrite existing assets): primitive props from `OBJECT_CATALOG.md` (`PropBuilder`, then the official `PropTools` finish) and re-dressing an existing hand-made layout as another floor's prefab variant (`FloorRedress`). One-off scratchpad scripts must not create rooms or props.
 
 ## Placeholders
 - **3D models that need Blender** (characters, enemies, The Mother, complex props): primitive composites at real scale, prefab `PH_<Name>`, pivot at the feet / floor center, root has `PlaceholderInfo` (intended model, owner, notes). Register each in `Desarrollo/PLACEHOLDERS.md`. Gameplay scripts go on the *parent* prefab, never on the PH mesh, so the mesh can be swapped.

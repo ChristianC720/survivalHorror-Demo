@@ -5,7 +5,7 @@ Source: `GDD/05 - Arte y Audio/05 - Audio y Música.md`, S-11 in `GDD/02 - Dise�
 ## How placeholders work
 - Every sound is an `AudioCue` ScriptableObject in `Assets/_Project/ScriptableObjects/Audio/` named `CUE_<Group>_<Name>`.
 - Fields: `AudioClip[] clips` (**empty for now**), `AudioMixerGroup bus`, `CuePriority priority` (Signal = 1, Combat = 2, Ambience = 3, Music = 4), `bool spatial`, `float volume`, `Vector2 pitchRange`, `float maxDistance`, `bool loop`, `string debugCaption`.
-- `AudioService.Play(cue, position)` always raises `GameEvents.CuePlayed(cue, position)` and logs `[Heartbeat][Audio] <cue name>`. Playtests assert on that line. If the clip list is empty, a development build shows `debugCaption` as a small caption in the corner (toggle with the `F2` debug key). This lets QA "hear" the placeholder.
+- `AudioService.Play(cue, position)` always raises `GameEvents.CuePlayed(cue, position)` and logs `[Heartbeat][Audio] <cue name>` (editor and development builds only). Playtests assert on that line. If the clip list is empty, a development build lists `debugCaption` in the top-right corner (`UI.SoundCaptionView`). Player-facing sound captions (option, D-102) come from the `CAP` table, not from `debugCaption`; add a `CAP.*` row for every new Signal cue. This lets QA "hear" the placeholder.
 - Gameplay never touches the service: event-driven cues are mapped in `AudioService.OnEnable` (ShotFired, alerts, autosave…); local feedback uses `Sfx.Play(Sfx.DoorOpen, pos)` / `Sfx.Play2D(...)` (Core), which raises `GameEvents.CueRequested`. Loops owned by audio components use `AudioService.StartLoop/Stop`.
 - The `AudioService` component sits on the `Bootstrap` object with every cue in its `cues` list. A new cue must be added there (re-run the cue wiring script or drag it in), or it logs `Unknown cue`.
 - Final audio = drop clips into the existing cue assets. No code changes.
@@ -42,7 +42,19 @@ Source: `GDD/05 - Arte y Audio/05 - Audio y Música.md`, S-11 in `GDD/02 - Dise�
 | `CUE_Pickup` | Player&Combat / 2 | – | – | item picked up | M-07 |
 | `CUE_Heal_Use` | Player&Combat / 2 | – | – | heal animation (~1.5 s) | M-05 |
 | `CUE_Flashlight_Toggle` / `CUE_Flashlight_Flicker` | Player&Combat / 2 | – | – | flashlight | M-12 |
+| `CUE_Arm_Hydraulic` | Signals / 1 | ✔ | – | collector arm warns ~1 s before grabbing | D-98 |
+| `CUE_HostileCamera_Lock` | Signals / 1 | ✔ | – | hostile camera locks its red light on Lukas | D-28 |
+| `CUE_Transformer_Hit` / `CUE_Transformer_Destroyed` | Player&Combat / 2 | ✔ | – | phase 3 transformer shot / destroyed | D-80 |
+| `CUE_Boss_NodeHacked` | Signals / 1 | ✔ | – | phase 1 node goes offline | M-19 |
 | `CUE_Surveillance_Static` | Signals / 1 | – | ✔ | while surveillance view is open | M-02 |
 | `CUE_Amb_F1` / `CUE_Amb_F2` / `CUE_Amb_F3` / `CUE_Amb_Mother` | Ambience / 3 | – | ✔ | floor ambience drones | S-11 |
 | `CUE_Vocal_Lukas` / `CUE_Vocal_Mother` / `CUE_Vocal_Emilia` | Voices / 2 | – | – | vocal sound accompanying a subtitle line | D-52 |
 | `CUE_Music_Menu` (Emilia) · `CUE_Music_Mother_P1..P3` · `CUE_Music_Ending_*` · `CUE_Music_Awakening` | Music / 4 | – | ✔ | menu, boss phases, endings | D-87 |
+| `CUE_Intro_PhoneMessage` | PlayerCombat / 2 | – | – | Emilia's scheduled voice note arrives (intro house) | D-53 |
+| `CUE_Elevator_Hum` | PlayerCombat / 2 | – | – | intro elevator descends; the second elevator rises on its own | D-53 |
+| `CUE_Elevator_Fail` | PlayerCombat / 2 | – | – | intro elevator jolts and loses power | D-53 |
+| `CUE_Elevator_Fall` | PlayerCombat / 2 | – | – | intro elevator distorts and drops (cinematic) | D-53, D-46 |
+| `CUE_Elevator_Impact` | PlayerCombat / 2 | – | – | intro elevator stops at the floor that does not exist | D-53 |
+| `CUE_Intro_Attack` | PlayerCombat / 2 | – | – | attack from behind, cut to black (scripted death) | D-53, D-63 |
+| `CUE_Rastrero_Behind` | PlayerCombat / 2 | ✔ | – | tutorial tunnel (first attempt): a Rastrero drags itself behind the far door when Lukas is within 4 m (`TutorialCue`) | D-70 |
+| `CUE_Ending_BeatLukas` / `CUE_Ending_BeatLab` | Ambience / 3 | – | – | one-shot heartbeats of the endings: Ambiguous (out of phase, then one) and Full relief (second act) | D-61 |

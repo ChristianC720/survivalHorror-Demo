@@ -14,11 +14,10 @@ namespace Heartbeat.UI
     /// invert Y, crouch toggle/hold, aim assist, keyboard rebinding), Accessibility (text size, dyslexia font,
     /// opaque subtitles, sound captions) and Game (language). Every change is saved to GlobalData at once and
     /// broadcast with GameEvents.OptionsChanged. Used from the main menu and the pause menu.
-    /// shortcut: aim assist and the dyslexia font are stored but have no effect yet (no assist code, font not imported).
     /// </summary>
     public sealed class OptionsView : MonoBehaviour
     {
-        private static readonly string[] RebindActions = { "Interact", "Flashlight", "Reload", "Crouch", "Sprint", "Surveillance", "Terminal" };
+        private static readonly string[] RebindActions = { "Interact", "Flashlight", "Reload", "Crouch", "Sprint", "Surveillance", "Terminal", "Hacking/Abort", "Hacking/UseFault" };   // conflicts are checked inside each map (context)
         private static readonly string[] SectionKeys = { "UI.OPT.AUDIO", "UI.OPT.VIDEO", "UI.OPT.CONTROLS", "UI.OPT.ACCESSIBILITY", "UI.OPT.GAME" };
 
         private SaveService saves;
@@ -30,6 +29,7 @@ namespace Heartbeat.UI
         private RectTransform body;
         private OptionsSection section;
         private InputActionRebindingExtensions.RebindingOperation rebind;
+        private readonly System.Collections.Generic.Dictionary<string, Button> rebindButtons = new System.Collections.Generic.Dictionary<string, Button>();
 
         /// <summary>Builds the options screen inside <paramref name="parent"/> (a vertical layout).</summary>
         public static OptionsView Build(RectTransform parent, Transform dialogParent, Color color, Action onBack)
@@ -85,6 +85,7 @@ namespace Heartbeat.UI
             rebind?.Cancel();
             section = s;
             foreach (Transform c in body) Destroy(c.gameObject);
+            rebindButtons.Clear();
             switch (s)
             {
                 case OptionsSection.Audio:
@@ -190,19 +191,29 @@ namespace Heartbeat.UI
         private void RebindRow(string actionName)
         {
             var router = Services.Get<InputRouter>();
-            var action = router.Actions.asset.FindAction("Gameplay/" + actionName, true);
+            var action = router.Actions.asset.FindAction(actionName.Contains("/") ? actionName : "Gameplay/" + actionName, true);
             var r = UiKit.Rect("Row", body);
             var h = r.gameObject.AddComponent<HorizontalLayoutGroup>();
             h.spacing = 12;
             h.childControlWidth = h.childControlHeight = true;
             h.childForceExpandHeight = false;
             r.gameObject.AddComponent<LayoutElement>().preferredHeight = 36;
-            var label = UiKit.Text(r, actionName, 22, color);   // action names are English UI terms in the demo
+            var label = UiKit.Text(r, actionName.Replace("/", " · "), 22, color);   // action names are English UI terms in the demo
             label.alignment = TextAlignmentOptions.MidlineLeft;
             label.gameObject.AddComponent<LayoutElement>().preferredWidth = 420;
             Button b = null;
             b = UiKit.Button(r, Current(action), 22, color, () => StartRebind(action, b), 34);
+            rebindButtons[actionName] = b;
         }
+
+        /// <summary>Playtests: same as clicking the rebind button of a Gameplay action (Controls section must be shown).</summary>
+        public void DebugRebind(string actionName)
+        {
+            if (rebindButtons.TryGetValue(actionName, out var b) && b != null) b.onClick.Invoke();
+        }
+
+        public string DebugBinding(string actionName) =>
+            Current(Services.Get<InputRouter>().Actions.asset.FindAction("Gameplay/" + actionName, true));
 
         private static string Current(InputAction a) =>
             a.GetBindingDisplayString(InputBinding.MaskByGroup("KeyboardMouse"));

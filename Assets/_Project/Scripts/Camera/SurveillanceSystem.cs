@@ -1,8 +1,10 @@
+using System.Collections.Generic;
 using Heartbeat.Core;
 using Heartbeat.Generation;
 using Heartbeat.InputRouting;
 using Heartbeat.Player;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
@@ -21,6 +23,11 @@ namespace Heartbeat.CameraSystem
         [SerializeField, Range(0f, 1f)] private float delaySeconds = 0.3f;
         [SerializeField] private float orthoSize = 7f;
         [SerializeField] private float shotAttention = 0.15f;
+        [Tooltip("Flat ambient light while the feed is up: the camera image covers the whole screen, so only the feed sees it (M-02 legibility).")]
+        [SerializeField] private Color viewAmbient = new Color(0.32f, 0.36f, 0.34f);
+
+        private UnityEngine.Rendering.AmbientMode savedAmbientMode;
+        private Color savedAmbient;
 
         private const int RingSize = 24;
 
@@ -34,6 +41,10 @@ namespace Heartbeat.CameraSystem
         private RawImage screen;
         private Image noise;
         private RoomInstance viewingRoom;
+        // M-02: "only what the room's camera covers" — everything outside the viewed room is hidden from this camera.
+        private readonly List<Renderer> outside = new List<Renderer>();
+        private readonly List<Renderer> movers = new List<Renderer>();
+        private Bounds viewBounds;
         private bool lockedByHunt;
         private AlertState highest;
 
@@ -48,6 +59,8 @@ namespace Heartbeat.CameraSystem
             GameEvents.HighestAlertChanged += OnHighestAlert;
             GameEvents.HuntChanged += OnHunt;
             GameEvents.RoomEntered += OnRoomEntered;
+            RenderPipelineManager.beginCameraRendering += OnBeginCamera;
+            RenderPipelineManager.endCameraRendering += OnEndCamera;
             GameEvents.ShotFired += OnShot;
             GameEvents.AimChanged += OnAim;
             Attention.Full += OnAttentionFull;
@@ -59,6 +72,8 @@ namespace Heartbeat.CameraSystem
             GameEvents.HighestAlertChanged -= OnHighestAlert;
             GameEvents.HuntChanged -= OnHunt;
             GameEvents.RoomEntered -= OnRoomEntered;
+            RenderPipelineManager.beginCameraRendering -= OnBeginCamera;
+            RenderPipelineManager.endCameraRendering -= OnEndCamera;
             GameEvents.ShotFired -= OnShot;
             GameEvents.AimChanged -= OnAim;
             Attention.Full -= OnAttentionFull;
@@ -100,10 +115,15 @@ namespace Heartbeat.CameraSystem
             if (mount == null) { HbLog.Info("Surveillance", "No camera in this room"); return false; }
 
             viewingRoom = room;
+            CollectOutside(room);
             cam.transform.SetPositionAndRotation(mount.position, mount.rotation);
             cam.enabled = true;
             screen.enabled = true;
             noise.enabled = true;
+            savedAmbientMode = RenderSettings.ambientMode;
+            savedAmbient = RenderSettings.ambientLight;
+            RenderSettings.ambientMode = UnityEngine.Rendering.AmbientMode.Flat;
+            RenderSettings.ambientLight = viewAmbient;
             player.IsSurveilling = true;
             if (player.TryGetComponent(out PlayerHealth health)) health.Hit += OnPlayerHit;
             router.SetContext(InputContext.Surveillance);
@@ -119,6 +139,8 @@ namespace Heartbeat.CameraSystem
             cam.enabled = false;
             screen.enabled = false;
             noise.enabled = false;
+            RenderSettings.ambientMode = savedAmbientMode;
+            RenderSettings.ambientLight = savedAmbient;
             if (player != null)
             {
                 player.IsSurveilling = false;
@@ -177,6 +199,34 @@ namespace Heartbeat.CameraSystem
                 if (Time.time - stamps[idx] >= delaySeconds) break;
             }
             screen.texture = ring[show];
+        }
+
+        private void CollectOutside(RoomInstance room)
+        {
+            outside.Clear();
+            movers.Clear();
+            viewBounds = room.TryGetComponent(out Collider vol) ? vol.bounds : new Bounds(room.transform.position, Vector3.one * 20f);
+            viewBounds.Expand(new Vector3(1f, 100f, 1f));   // the room's own walls sit on its edge
+            foreach (var r in FindObjectsByType<Renderer>(FindObjectsInactive.Exclude))
+            {
+                if (r.GetComponentInParent<AI.EnemyBrain>() != null) { movers.Add(r); continue; }   // they walk in and out
+                if (r.transform.IsChildOf(room.transform) || r.GetComponentInParent<PlayerController>() != null) continue;
+                if (!viewBounds.Contains(r.bounds.center)) outside.Add(r);
+            }
+        }
+
+        private void OnBeginCamera(ScriptableRenderContext _, Camera c)
+        {
+            if (c != cam || !IsOpen) return;
+            foreach (var r in outside) if (r != null) r.forceRenderingOff = true;
+            foreach (var r in movers) if (r != null) r.forceRenderingOff = !viewBounds.Contains(r.bounds.center);
+        }
+
+        private void OnEndCamera(ScriptableRenderContext _, Camera c)
+        {
+            if (c != cam) return;
+            foreach (var r in outside) if (r != null) r.forceRenderingOff = false;
+            foreach (var r in movers) if (r != null) r.forceRenderingOff = false;
         }
 
         private void OnHighestAlert(AlertState s)

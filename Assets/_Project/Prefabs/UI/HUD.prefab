@@ -199,12 +199,45 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Heartbeat.Runtime::Heartbeat.UI.TerminalView
   documents:
+  - {fileID: 11400000, guid: eec72d328bb68bc4b8bfd4777b539e63, type: 2}
   - {fileID: 11400000, guid: cd530d0f3036e1b47a9aad8b7bec3de1, type: 2}
   - {fileID: 11400000, guid: 0b32e0d336e67dd4bac0d4d90eaffc8d, type: 2}
   - {fileID: 11400000, guid: 9c937f11c64465843b8fbcd31d4234a4, type: 2}
   - {fileID: 11400000, guid: 1b2837707b51ac74187fcd01b3d56d10, type: 2}
   - {fileID: 11400000, guid: 771c3c6d9a0b1ce4fa43e484ea907790, type: 2}
   - {fileID: 11400000, guid: 7a2a4e7dce65c0340a1a728b15025863, type: 2}
+  - {fileID: 11400000, guid: ed651531d3f69c24081aa813e501d554, type: 2}
+  - {fileID: 11400000, guid: 6f5ddd7744e3e9b4c82e676c71177eac, type: 2}
+  - {fileID: 11400000, guid: 8b28850e233860a4c925e7668f05b558, type: 2}
+  - {fileID: 11400000, guid: f91c0352af9f52e4587b4208bbb4c6ae, type: 2}
+  - {fileID: 11400000, guid: f3e43ff1b2219a2499d2dca586975478, type: 2}
+  - {fileID: 11400000, guid: abc3a0d812b6a5547913e4eb19de231a, type: 2}
+  - {fileID: 11400000, guid: e39c97528720d1c42aae2cf906ab8ea1, type: 2}
+  - {fileID: 11400000, guid: 415978c76c5013f43b17fef0c58b7a94, type: 2}
+  - {fileID: 11400000, guid: 8a9926e28d10baf4d9ed8a92c570d72b, type: 2}
+  - {fileID: 11400000, guid: 9b3c1a15a0f184645a754d4e00aa5656, type: 2}
+  - {fileID: 11400000, guid: 18f9966bb569432498cdd41e96062f0a, type: 2}
+  - {fileID: 11400000, guid: cd23ccfaeedd74d40bdedb35517f91ef, type: 2}
+  - {fileID: 11400000, guid: 490db1fba9cc6314fbe8d6a8301b2c09, type: 2}
+  - {fileID: 11400000, guid: 3aa721b9dbdbb834cb6743ebc6a66123, type: 2}
+  - {fileID: 11400000, guid: 1fd867b74c1c511429a0e0c6c514202c, type: 2}
+  - {fileID: 11400000, guid: 537df1c923de68a469b6e5d6e521565a, type: 2}
+  - {fileID: 11400000, guid: afdb0fbaba9a06342ba976330cf2bcd0, type: 2}
+  - {fileID: 11400000, guid: 166c4887b5d6f8e4b9f686a6571f9ea5, type: 2}
+  - {fileID: 11400000, guid: 12fc74e13655fdf49aefc051726bfe22, type: 2}
+  - {fileID: 11400000, guid: 246eda497b409ca42a4585b3f801e8c8, type: 2}
+  - {fileID: 11400000, guid: 13c1f13b27273d54ab2e81a3b6086877, type: 2}
+  - {fileID: 11400000, guid: 2ab7cad0edac91641a32f8edd6b16caa, type: 2}
+  - {fileID: 11400000, guid: 855c36002d8c8d646a17d1d416e1d7d4, type: 2}
+  - {fileID: 11400000, guid: 2e6d617732c73c74cad83fca48b6bd9b, type: 2}
+  - {fileID: 11400000, guid: 537a997909620d442a2de924a0a9ee1a, type: 2}
+  - {fileID: 11400000, guid: 16af1b7e4b164254bb4b8e5436ae60a3, type: 2}
+  - {fileID: 11400000, guid: 07010c8c12af1f34bb0e6f223e38bb6c, type: 2}
+  - {fileID: 11400000, guid: 9ea6600c3290e8c4880faddaad2325fe, type: 2}
+  - {fileID: 11400000, guid: 08dcc50b93d55864989c1736ae4eedb0, type: 2}
+  - {fileID: 11400000, guid: bb56c280d143c324eb18e19284b1f769, type: 2}
+  - {fileID: 11400000, guid: cc6b7d53e3caa984c862f89e47a0b75b, type: 2}
+  - {fileID: 11400000, guid: 2329995a0e64e30428877f95831b1372, type: 2}
   baseFontSize: 26
 --- !u!1 &4471065146274705019
 GameObject:
@@ -557,6 +590,57 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &5578121777150359221
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8105457148853384391}
+  - component: {fileID: 4857175279111597651}
+  m_Layer: 0
+  m_Name: SoundCaptions
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &8105457148853384391
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5578121777150359221}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 110043993937844125}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &4857175279111597651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5578121777150359221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9312401dbecbc64babd6dfe8a1f91ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Heartbeat.Runtime::Heartbeat.UI.SoundCaptionView
+  baseFontSize: 30
+  seconds: 2.5
+  maxLines: 3
 --- !u!1 &6539510320575829700
 GameObject:
   m_ObjectHideFlags: 0
@@ -592,6 +676,7 @@ RectTransform:
   - {fileID: 8121105190799981181}
   - {fileID: 8757010166326243839}
   - {fileID: 6052900830772051672}
+  - {fileID: 8105457148853384391}
   - {fileID: 5371802154696902504}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

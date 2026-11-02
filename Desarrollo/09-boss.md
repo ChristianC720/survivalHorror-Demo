@@ -18,3 +18,11 @@ After the fall: Awakening (lab heartbeat speeds up) → with 6 Emilia documents,
 
 ## Acceptance
 M-19: enter with no ammo → hack 3 nodes, kill the 4 with the room's 12 rounds, reach the core → phase 3 starts with 8 rounds next to it and 3 transformers of 2 shots each; destroying them drops The Mother. Death in the room returns to the start of the cycle.
+
+
+## Implementation (H5)
+- `ROOM_Mother` (`Prefabs/Rooms/F3`) is built as **floor 4** by `FloorBuilder.BuildMother()` when floor 3's exit is used (no autosave, D-30). 20 × 20 m, 6 m tall, F3 kit. Layout: 3 nodes (mixing desks), core with 3 transformers and `CoreZone`, collector arm on the crane, 3 hostile cameras, 4 archive capsules, ammo points `Ammo2_*` (12 rounds) / `Ammo3_*` (8 rounds), central terminal and exit (`DecisionPoint`).
+- `Boss/MotherFight` (pure, tested) holds the phase rules; `MotherDirector` drives the room; parts: `BossNode`, `HostileCamera`, `BossTransformer`, `CollectorArm`, `CoreZone`, `DecisionPoint`. All numbers in `ScriptableObjects/Balance/BossBalance.asset`. Recycling is suspended in the room (D-28). The fight starts 2 s after the floor transition ends.
+- Victory: `BossDefeated` → Mother's fall line, names with the 6 Emilia documents, Awakening (lab heartbeat ×1.6), then automatic Basic Relief or the `FinalDecision` state (pressure without death: flickering lights) with E on the terminal (Full Relief) or the exit (Ambiguous) → `EndingDirector`.
+- Debug: `MotherDirector.DebugHackAllNodes/DebugKillReleased/DebugDestroyTransformers`; `FloorSession.DebugRebuild(0, 4)` builds the room directly. Logs `[Heartbeat][Boss] …`.
+- shortcut: crane/arm, cameras and core are primitive placeholders (PLACEHOLDERS.md); phase-specific room transformation (speakers rising, core opening) is not animated yet. M-17: the floor-3 mixer bypass (D-150) halves the node sequences when exploited with F during the hack.

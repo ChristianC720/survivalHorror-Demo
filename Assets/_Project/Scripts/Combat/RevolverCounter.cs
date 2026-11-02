@@ -11,6 +11,7 @@ namespace Heartbeat.Combat
 
         private void Start()
         {
+            UI.UiFonts.Apply(label, data: true);   // the frame counter is a readout (VT323)
             revolver.Model.LoadedChanged += Show;
             Show(revolver.Model.Loaded);
         }

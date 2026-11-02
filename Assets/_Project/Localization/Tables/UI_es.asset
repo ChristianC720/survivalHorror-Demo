@@ -295,11 +295,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 2394030147
-    m_Localized: "Reiniciar cuenta como una muerte. \xBFContinuar?"
+    m_Localized: "Reiniciar cuenta como una muerte: vuelves al inicio de este piso con lo que ten\xEDas al llegar. \xBFContinuar?"
     m_Metadata:
       m_Items: []
   - m_Id: 2394030148
-    m_Localized: "Te est\xE1n cazando. Salir ahora cuenta como una muerte: nuevo sujeto, inventario perdido."
+    m_Localized: "Te est\xE1n cazando. Salir ahora cuenta como una muerte: nuevo sujeto, de vuelta al inicio de este piso con lo que ten\xEDas al llegar."
     m_Metadata:
       m_Items: []
   - m_Id: 2394030149
@@ -472,6 +472,62 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 6196433125381
     m_Localized: "Espa\xF1ol"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 72915524648960
+    m_Localized: Salir
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77192989114368
+    m_Localized: Salir en el primer intento no suma una muerte, pero el ciclo se degrada igualmente.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 181802575724544
+    m_Localized: OVERRIDE SEQUENCE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 181802655416320
+    m_Localized: Abandonar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 196157639884800
+    m_Localized: "Est\xE1s en una sala segura: reiniciar no tiene costo. El piso se reconstruye y conservas lo que ten\xEDas al guardar."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 224916380188672
+    m_Localized: 'FAULT ACTIVE: {0} USE(S) LEFT'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 224916426326016
+    m_Localized: FAULT PATCHED BY THE MOTHER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 224916426326017
+    m_Localized: Explotar falla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 224916426326018
+    m_Localized: FAULT EXPLOITED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 238274139521024
+    m_Localized: "TEL\xC9FONO \u2014 ACCESO DE MANTENIMIENTO"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 238274181464064
+    m_Localized: Reparar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 238274185658368
+    m_Localized: "SEKTOR V-7 \u2014 VITALIS KONZERN"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 238274185658369
+    m_Localized: 'SUBJECT R-H-{0} PRESERVED. IDENTITY: RETAINED.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 238274185658370
+    m_Localized: 'PERSONAL EFFECTS OF SUBJECT R-H-{0}: 1 VOICE RECORDING (DAMAGED).'
     m_Metadata:
       m_Items: []
   references:

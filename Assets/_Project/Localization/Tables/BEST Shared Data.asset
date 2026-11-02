@@ -14,7 +14,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.SharedTableData
   m_TableCollectionName: BEST
   m_TableCollectionNameGuidString: 189b3cf789f9ade48b074a5362f98249
-  m_Entries: []
+  m_Entries:
+  - m_Id: 17773018349568
+    m_Key: BEST.ALTO.TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17773093847040
+    m_Key: BEST.ALTO.BODY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17773093847041
+    m_Key: BEST.BOCA.TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17773093847042
+    m_Key: BEST.BOCA.BODY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17773098041344
+    m_Key: BEST.RASTRERO.TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17773098041345
+    m_Key: BEST.RASTRERO.BODY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17773098041346
+    m_Key: BEST.MUDO.TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17773098041347
+    m_Key: BEST.MUDO.BODY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17773098041348
+    m_Key: BEST.RECYCLED.TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17773098041349
+    m_Key: BEST.RECYCLED.BODY
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

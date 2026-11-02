@@ -471,6 +471,62 @@ MonoBehaviour:
     m_Key: UI.OPT.LANG_ES
     m_Metadata:
       m_Items: []
+  - m_Id: 72915524648960
+    m_Key: UI.PROMPT.LEAVE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77192989114368
+    m_Key: UI.CONFIRM.QUIT_CALM_TUTORIAL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 181802575724544
+    m_Key: UI.HACK.TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 181802655416320
+    m_Key: UI.HACK.ABORT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 196157639884800
+    m_Key: UI.CONFIRM.RESTART_SAFE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 224916380188672
+    m_Key: UI.TERM.FAULT_USES
+    m_Metadata:
+      m_Items: []
+  - m_Id: 224916426326016
+    m_Key: UI.TERM.FAULT_PATCHED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 224916426326017
+    m_Key: UI.HACK.FAULT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 224916426326018
+    m_Key: UI.HACK.FAULT_USED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 238274139521024
+    m_Key: UI.HACK.PHONE_TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 238274181464064
+    m_Key: UI.PROMPT.REPAIR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 238274185658368
+    m_Key: UI.INTRO.LOCATION
+    m_Metadata:
+      m_Items: []
+  - m_Id: 238274185658369
+    m_Key: UI.INTRO.SUBJECT_REGISTER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 238274185658370
+    m_Key: UI.INTRO.PHONE_COPY
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

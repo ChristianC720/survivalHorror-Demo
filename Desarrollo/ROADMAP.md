@@ -36,11 +36,13 @@ Each checkbox is one git-flow feature: `git flow feature start <id>`.
 - [x] `E12-f1-lighting` — one tint per room, ≤ 16 lights / ≤ 4 shadowed (RoomActivation budget, power-aware)
 
 ## H5 — Content complete
-- [ ] `E14-f2-kit-rooms` · `E14-f3-kit-rooms` · `E05-boca` · `E05-mudo`
-- [ ] `E14-mother-room` · `E09-phase1-nodes` · `E09-phase2-cameras` · `E09-phase3-transformers` · `E09-final-decision`
-- [ ] `E14-intro` · `E08-endings` · `E08-degradation-assimilation` (M-18) · `E08-machine-faults` (M-17)
-- [ ] `E15-documents` · `E15-bestiary` · `E15-posters` · `E15-es-table`
-- [ ] `E07-story-mode-showcase` — Story mode (+1 minimum) and showcase preset
+- [x] `E14-f2-kit-rooms` · [x] `E14-f3-kit-rooms` (F1 layouts re-dressed; unique layouts pending) · [x] `E05-boca` · [x] `E05-mudo` (feature E05-boca-mudo)
+- [x] `E14-mother-room` · `E09-phase1-nodes` · `E09-phase2-cameras` · `E09-phase3-transformers` · `E09-final-decision` (one feature: E09-mother)
+- [x] `E14-intro` (house, phone hack, elevator fall, floor that does not exist, full reconstruction) · [x] `E08-endings` (card sequences; staged shots with E14-intro) · [x] `E08-degradation-assimilation` (M-18 CRT + vocal pitch) · [x] `E08-machine-faults` (M-17: door backdoor F1 + mixer bypass F3, manual [F] during a hack, D-150)
+- [x] `E15-documents` · `E15-bestiary` (36 records, corruption, first-encounter unlock) · [x] `E15-posters` (7 Vitalis safety posters in the F1 tutorial rooms, bound key per device, first attempt only) · [x] `E15-es-table` (all GDD texts EN+ES)
+- [x] `E07-story-mode-showcase` — Story mode (+1 minimum) and showcase preset (new slots get it with the `-showcase` launch argument)
 
 ## H6 — Release
-- [ ] `E13-profiling` · `E13-bugfix` · `E13-build` → tag `v1.0-demo`
+- [x] `E13-profiling` (13-quality-build.md: per-cue log and revolver delegate GC fixed; floor build ≤ 200 ms)
+- [~] `E13-bugfix` — done so far: revolver found on the Kessler guard / capsule tray (D-74), dark tutorial depot, tutorial tunnel Rastrero cue, shove gasp (M-06), unique documents per floor, Intro pause (no Restart, free quit), compiler warnings, localization line breaks, teardown NREs; plus D-61 ending details (Assimilation staged shot, Full relief second act, Ambiguous heartbeats), D-90 main menu in the capsule-row room, 11 floor-specific F2/F3 rooms (all archetypes on F3), German ambience posters (D-58), floor-2 finding (D-56), R-H line, reconstruction label, legible surveillance feed, rebindable hack keys, E prompt hidden outside Interact contexts, device-aware inventory hints
+- [x] `E13-build` → tag `v1.0-demo` (Win64 Mono, 110 MB, Builds/v1.0-demo/IdentityDissolution.exe; boots to the main menu with no errors)

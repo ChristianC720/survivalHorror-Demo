@@ -1,0 +1,19 @@
+key	en	es	note
+CAP.ALERT_SUSPICION	Suspicious growl	Gruñido de sospecha
+CAP.ALERT_SEARCH	Searching sniffs	Olfateo de búsqueda
+CAP.ALERT_HUNT	Hunting screech	Chillido de caza
+CAP.HEARTBEAT_PLAYER	Your heartbeat quickens	Tu latido se acelera
+CAP.BOCA_SCREAM	Piercing scream	Grito desgarrador
+CAP.RECYCLE_WARNING	A body convulses	Un cuerpo convulsiona
+CAP.HACK_INPUT	Beep	Pitido
+CAP.HACK_ERROR	Error buzz	Zumbido de error
+CAP.HACK_SUCCESS	Access granted	Acceso concedido
+CAP.POWER_STARTUP	Machinery starts up	La maquinaria arranca
+CAP.HOSTILECAMERA_MOTOR	Camera motor turning	Motor de cámara girando
+CAP.HOSTILECAMERA_LOCK	Camera locks on	La cámara te fija
+CAP.CAPSULE_RECONSTRUCTION	Capsule hiss	Siseo de cápsula
+CAP.TRANSIT_LOCKDOWN	Lockdown alarm	Alarma de cierre
+CAP.AUTOSAVE_SYNC	Synchronizing tone	Tono de sincronización
+CAP.SURVEILLANCE_STATIC	Static	Estática
+CAP.ARM_HYDRAULIC	Hydraulic hiss	Siseo hidráulico
+CAP.BOSS_NODEHACKED	Node goes offline	Un nodo se apaga

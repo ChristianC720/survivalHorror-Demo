@@ -14,6 +14,11 @@ namespace Heartbeat.CameraSystem
         public float minPitch = -55f;
         public float maxPitch = 65f;
 
+        [Header("Aim assist (option, gamepad only, D-104)")]
+        [Tooltip("Half-angle of the cone around the reticle that attracts it, degrees.")] public float aimAssistCone = 6f;
+        [Tooltip("How fast the reticle is pulled toward the weak point, degrees per second.")] public float aimAssistPull = 30f;
+        public float aimAssistRange = 20f;
+
         [Header("Exploration camera")]
         public Vector3 exploreShoulder = new Vector3(0.45f, 0.05f, 0f);
         public float exploreDistance = 2.4f;

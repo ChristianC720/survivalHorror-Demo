@@ -133,6 +133,19 @@ namespace Heartbeat.Tests
         }
 
         [Test]
+        public void SecondaryRooms_AtLeastTwoRoomsAwayFromSpawn([Values(1, 2, 3)] int floor)
+        {
+            for (int s = 0; s < 500; s++)
+            {
+                var l = LayoutGenerator.Generate(Full(floor, s, first: s % 2 == 0), Library());
+                Assert.IsNotNull(l, $"seed {s}");
+                var dist = LayoutValidator.Distances(l, l.EntryRoom);
+                foreach (var r in l.Rooms.Where(r => r.Template.Role == RoomRole.Secondary))
+                    Assert.GreaterOrEqual(dist[r.Index], 3, $"floor {floor} seed {s}: secondary room {r.Index}");
+            }
+        }
+
+        [Test]
         public void Floor3_NeverUnpowered()
         {
             for (int s = 0; s < 200; s++)

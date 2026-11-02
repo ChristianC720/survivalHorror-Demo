@@ -30,6 +30,7 @@ Las reglas de uso de cada recurso se detallan en [[02 - Mecánicas]]; esta secci
 - **Salas clave secundarias** (2–3 por piso en la configuración completa, 2 en el showcase; D-33, D-34): documentos, llaves y, a veces, el interruptor de energía (M-08, M-15, D-72). Los 2 documentos de Emilia de cada piso siempre están en estas salas (D-52); si ya están registrados, la sala da 1 recurso extra (D-79).
 - **Salas que abren las llaves opcionales:** atajos o salas con recursos (D-36). Sus recursos forman parte del presupuesto del piso, no lo amplían.
 - **Suministro fijo de la sala de The Mother:** 20 balas: 12 en los puntos ciegos para los 4 asimilados de la fase 2 (D-115) y 8 junto al núcleo para 3 transformadores de 2 disparos más 2 de margen (M-19, D-28, D-80).
+- **Suministro inicial (D-145):** 6 balas en el suelo junto a la cápsula donde despierta Lukas al construirse el piso 1, fuera del presupuesto del piso.
 - **Regeneración automática:** la resistencia (M-06) y la carga de la linterna (M-12, D-71).
 - **Investigación:** documentos, conocimiento y fallas de la máquina, registrados en el terminal del brazo (M-08, M-16, M-17).
 - **Reconstrucción:** el personaje vuelve con la salud en Bien y la resistencia al 100%, pero con el inventario vacío (M-16).
@@ -116,6 +117,7 @@ Define límites, regeneración, acumulación, intercambio y condiciones especial
 ### Pérdida total al morir (D-18)
 
 - Al morir, el personaje se reconstruye al inicio del ciclo en el piso 1 y **pierde todo el inventario**: curas, munición, punzón de descarga y llaves. The Mother devuelve el revólver descargado (D-74).
+- **Actualizado (D-147):** al morir, el personaje vuelve al inicio del piso actual y recupera el inventario con el que llegó a ese piso; solo pierde lo recogido en él.
 - **Reiniciar** (menú de pausa) tiene el mismo costo sobre el inventario que morir (D-32). Al morir o reiniciar se descarta el autoguardado de la sala final (M-16).
 - **Salir del juego** puede contar como muerte completa o continuar desde la sala final autoguardada con el inventario guardado, según el estado al salir (D-31). Las reglas completas se documentan en [[07 - Reglas y Estados del Juego]].
 - Vuelve con la salud en Bien y la resistencia al 100%.

@@ -17,7 +17,85 @@ MonoBehaviour:
   m_SharedData: {fileID: 11400000, guid: b19fb095a3f758842bda067e84810967, type: 2}
   m_Metadata:
     m_Items: []
-  m_TableData: []
+  m_TableData:
+  - m_Id: 230949035048960
+    m_Localized: 'WELCOME BACK, VALUED COLLEAGUE.
+
+      Company property may be handled with [{0}].
+
+      <i>Sicherheit geht vor.</i>'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 230949106352128
+    m_Localized: 'YOUR ARM TERMINAL REMEMBERS SO YOU DON''T HAVE TO.
+
+      Consult it at any time: [{0}].
+
+      <i>Vitalis Konzern dankt Ihnen.</i>'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 230949110546432
+    m_Localized: 'IN CASE OF DARKNESS: PRESS [{0}].
+
+      Batteries are company property. Do not waste light.
+
+      <i>Licht aus, Ruhe bewahren.</i>'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 230949110546433
+    m_Localized: 'ALL FINDINGS MUST BE DECLARED.
+
+      Review your belongings with [{0}]. Pick up with [{1}].
+
+      <i>Fundsachen melden.</i>'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 230949114740736
+    m_Localized: 'RUNNING IN CORRIDORS IS PERMITTED IN EMERGENCIES ONLY.
+
+      Hold [{0}]. Mind your breathing.
+
+      <i>Nicht rennen.</i>'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 230949114740737
+    m_Localized: 'NOISE IS A WORKPLACE HAZARD.
+
+      Move quietly: [{0}].
+
+      <i>Ruhe im Betrieb.</i>'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 230949114740738
+    m_Localized: 'UNAUTHORISED CONTACT?
+
+      Shove: [{0}]. Hold [{1}] to aim, then [{0}] fires. Reload: [{2}].
+
+      <i>Munition sparsam verwenden.</i>'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 298167991140352
+    m_Localized: 'VITALIS KONZERN
+
+      <i>Gesundheit ist Pflicht.</i>'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 298168066637824
+    m_Localized: '<i>Ordnung ist das halbe Leben.</i>
+
+      Abteilung Instandhaltung'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 298168066637825
+    m_Localized: "<i>Ruhe ist Sicherheit.</i>\nVitalis Konzern \u2014 Werkschutz"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 298168066637826
+    m_Localized: 'VITALIS KONZERN
+
+      <i>Fortschritt durch Erhaltung.</i>'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

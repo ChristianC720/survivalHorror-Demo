@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: CAP_es
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.StringTable
+  m_LocaleId:
+    m_Code: es
+  m_SharedData: {fileID: 11400000, guid: 6d313ff78487967479acf16609a2e5e1, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 1144127488
+    m_Localized: "Gru\xF1ido de sospecha"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211236352
+    m_Localized: "Olfateo de b\xFAsqueda"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211236353
+    m_Localized: Chillido de caza
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211236354
+    m_Localized: Tu latido se acelera
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1219624960
+    m_Localized: Grito desgarrador
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1219624961
+    m_Localized: Un cuerpo convulsiona
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1219624962
+    m_Localized: Pitido
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1219624963
+    m_Localized: Zumbido de error
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1219624964
+    m_Localized: Acceso concedido
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1219624965
+    m_Localized: La maquinaria arranca
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1219624966
+    m_Localized: "Motor de c\xE1mara girando"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1219624967
+    m_Localized: "La c\xE1mara te fija"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1219624968
+    m_Localized: "Siseo de c\xE1psula"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1219624969
+    m_Localized: Alarma de cierre
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1219624970
+    m_Localized: "Tono de sincronizaci\xF3n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1219624971
+    m_Localized: "Est\xE1tica"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1219624972
+    m_Localized: "Siseo hidr\xE1ulico"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1219624973
+    m_Localized: Un nodo se apaga
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

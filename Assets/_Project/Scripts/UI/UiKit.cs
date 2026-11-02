@@ -56,6 +56,9 @@ namespace Heartbeat.UI
             t.fontSize = size;
             t.color = color;
             t.raycastTarget = false;
+            // Terminal and facility screens are data (VT323); everything else is menu text (IBM Plex Sans), D-126.
+            bool data = SameHue(color, Teal) || SameHue(color, Green);
+            UiFonts.Apply(t, data);
             return t;
         }
 
@@ -75,11 +78,18 @@ namespace Heartbeat.UI
             le.flexibleHeight = 0;
             var label = Text(r, text, size, color);
             label.alignment = TextAlignmentOptions.Center;
+            label.textWrappingMode = TextWrappingModes.NoWrap;   // a label never breaks mid-word; it shrinks instead
+            label.enableAutoSizing = true;
+            label.fontSizeMax = size;
+            label.fontSizeMin = size * 0.6f;
             Stretch((RectTransform)label.transform, Vector2.zero, Vector2.one);
             ((RectTransform)label.transform).offsetMin = new Vector2(12, 0);
             ((RectTransform)label.transform).offsetMax = new Vector2(-12, 0);
             return b;
         }
+
+        private static bool SameHue(Color a, Color b) =>
+            Mathf.Abs(a.r - b.r) < 0.02f && Mathf.Abs(a.g - b.g) < 0.02f && Mathf.Abs(a.b - b.b) < 0.02f;
 
         public static void Select(Selectable s)
         {

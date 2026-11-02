@@ -26,6 +26,8 @@ namespace Heartbeat.UI
         private static string ColorOf(string speaker) =>
             speaker == Subtitles.Mother ? "#FF5A4E" : speaker == Subtitles.Emilia ? "#F2D27A" : "#9FE8DD";
 
+        private void Awake() => UiFonts.Apply(label, data: false);
+
         private void OnEnable() { GameEvents.SubtitleRequested += OnRequest; GameEvents.OptionsChanged += Start; group.alpha = 0f; }
         private void OnDisable() { GameEvents.SubtitleRequested -= OnRequest; GameEvents.OptionsChanged -= Start; }
 

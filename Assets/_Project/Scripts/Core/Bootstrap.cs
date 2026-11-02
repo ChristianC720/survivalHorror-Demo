@@ -16,6 +16,7 @@ namespace Heartbeat.Core
     public sealed class Bootstrap : MonoBehaviour
     {
         [SerializeField] private SceneLoader sceneLoader;
+        [SerializeField] private Level.FaultBalance faultBalance;
 
         public static bool IsReady { get; private set; }
 
@@ -47,9 +48,17 @@ namespace Heartbeat.Core
             Services.Register(sceneLoader);
             Services.Register(new PauseService(states));
             Services.Register(input);
-            Services.Register(new Narrative.RegistryModel());   // persistent knowledge, loaded from the slot
+            var registry = new Narrative.RegistryModel();     // persistent knowledge, loaded from the slot
+            Services.Register(registry);
+            Services.Register(new Narrative.BestiaryUnlocker(registry));
+            var fb = faultBalance != null ? faultBalance : ScriptableObject.CreateInstance<Level.FaultBalance>();
+            var faults = new Level.FaultModel(fb.usesBeforePatch, fb.doorLength, fb.mainFraction);   // patches loaded from the slot
+            faults.Used += GameEvents.RaiseFaultUsed;
+            faults.Patched += GameEvents.RaiseFaultPatched;
+            Services.Register(faults);
             Services.Register(new Save.SaveService());
             Services.Register(gameObject.AddComponent<Cycle.CycleController>());
+            gameObject.AddComponent<Cycle.EndingDirector>();
             gameObject.AddComponent<PauseInput>();
             if (TryGetComponent(out Audio.AudioService audio)) Services.Register(audio);
             else HbLog.Warn("Core", "No AudioService on Bootstrap: sounds disabled");
@@ -58,6 +67,9 @@ namespace Heartbeat.Core
             UI.Loc.SetLanguage(global.language);
             input.LoadBindingOverrides(global.bindingOverrides);
             Render.Brightness.Apply(global.brightness);
+            Render.Degradation.Apply(0);
+            UI.UiFonts.Refresh();
+            GameEvents.DegradationChanged += Render.Degradation.Apply;
             IsReady = true;
             HbLog.Info("Core", "Services ready");
         }
@@ -89,6 +101,7 @@ namespace Heartbeat.Core
             states.StateChanged -= OnStateChanged;
             states.SubStateChanged -= GameEvents.RaisePlaySubStateChanged;
             input?.Dispose();
+            if (Services.TryGet(out Narrative.BestiaryUnlocker bestiary)) bestiary.Dispose();
             IsReady = false;
         }
 

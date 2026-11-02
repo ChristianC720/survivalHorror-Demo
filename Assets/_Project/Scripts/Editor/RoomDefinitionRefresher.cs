@@ -30,7 +30,7 @@ namespace Heartbeat.EditorTools
                 var prefab = AssetDatabase.LoadAssetAtPath<GameObject>(path);
                 var issues = new List<string>();
                 var def = Refresh(prefab, issues);
-                if (def != null) defs.Add(def);
+                if (def != null && issues.Count == 0) defs.Add(def);   // invalid rooms (and The Mother's unique room) stay out of the library
                 sb.AppendLine($"{prefab.name}: {(issues.Count == 0 ? "OK" : string.Join("; ", issues))}" +
                               (def != null ? $" | {def.size.x}x{def.size.y} cells, {def.sockets.Count} sockets, {def.enemySpawns} enemy / {def.itemSpawns} item spawns" : ""));
             }
@@ -99,7 +99,7 @@ namespace Heartbeat.EditorTools
             def.itemSpawns = items;
             def.itemSpawnTags = spawns.Where(s => s.kind == SpawnKind.Item).Select(s => s.itemTag).ToList();
             def.hasCamera = inst.CameraMount != null || n.StartsWith("KEY_");
-            def.floor = n.Contains("_F3_") ? 3 : n.Contains("_F2_") ? 2 : 1;
+            def.floor = n.Contains("_F3_") || n == "ROOM_Mother" ? 3 : n.Contains("_F2_") ? 2 : 1;   // The Mother sits under floor 3
             def.role = n.StartsWith("TUT_") ? RoomRole.Tutorial
                 : n.Contains("CapsuleRow") ? RoomRole.CapsuleRow
                 : n.Contains("Mother") ? RoomRole.Mother

@@ -46,6 +46,7 @@ namespace Heartbeat.Save
         public int floor = 1;
         public List<InventorySlot> inventory = new List<InventorySlot>();
         public int revolverLoaded;
+        public bool revolverOwned = true;   // D-74; true keeps saves written before the field armed
         public float health = -1f;   // -1 = full
     }
 
@@ -64,11 +65,16 @@ namespace Heartbeat.Save
         public int degradationLevel;
         public bool firstAttempt = true;       // tutorial attempt (D-38, D-70)
         public bool introDone;
+        public bool floor2PhotoSeen;         // the floor-2 finding plays once (D-56)
         public bool cycleCompleted;            // D-93
+        public bool newCyclePending;           // an ending was reached: the next Continue starts a new cycle (D-93)
         public List<RecordEntry> terminal = new List<RecordEntry>();
         public List<string> patchedFaults = new List<string>();
         public bool hasAttemptSave;            // JsonUtility cannot serialise null objects
         public AttemptSave attemptSave = new AttemptSave();
+        // Start of the current floor (D-147): where a death or a safe-zone restart returns, with what Lukas arrived with.
+        public bool hasFloorStart;
+        public AttemptSave floorStart = new AttemptSave();
         public bool confirmedExit;
         public ExitCost exitCost;
 

@@ -36,6 +36,7 @@ namespace Heartbeat.UI
         private TMP_Text header, healthLabel, flashLabel, logsList, readerTitle, readerBody, actionHint, emiliaCount;
         private Image flashFill;
         private readonly List<RectTransform> ecg = new List<RectTransform>();
+        private RectTransform ecgStrip;
         private readonly GameObject[] pages = new GameObject[3];
         private readonly TMP_Text[] slotLabels = new TMP_Text[InventoryModel.SlotCount];
         private readonly Image[] slotFrames = new Image[InventoryModel.SlotCount];
@@ -44,6 +45,7 @@ namespace Heartbeat.UI
         private Transform logButtons;
         private int tab, focusedSlot = -1;
         private float openTime;
+        private float textScale = 1f;
         private bool open;
 
         private PlayerInventory inventory;
@@ -57,6 +59,8 @@ namespace Heartbeat.UI
         {
             foreach (var d in documents) if (d != null) docsById[d.id] = d;
             Build();
+            ApplyTextScale();
+            gameObject.AddComponent<HackView>();   // M-13: the hack chain lives on the arm terminal
             panel.gameObject.SetActive(false);
         }
 
@@ -75,6 +79,7 @@ namespace Heartbeat.UI
             GameEvents.InventoryChanged += Refresh;
             GameEvents.ItemRegistered += OnRegistered;
             GameEvents.PlayerDied += OnDied;
+            GameEvents.OptionsChanged += ApplyTextScale;
         }
 
         private void OnDisable()
@@ -83,6 +88,7 @@ namespace Heartbeat.UI
             GameEvents.InventoryChanged -= Refresh;
             GameEvents.ItemRegistered -= OnRegistered;
             GameEvents.PlayerDied -= OnDied;
+            GameEvents.OptionsChanged -= ApplyTextScale;
         }
 
         private void OnDestroy()
@@ -108,6 +114,7 @@ namespace Heartbeat.UI
             revolver = player.GetComponentInChildren<Revolver>();
             open = true;
             openTime = Time.unscaledTime;
+            ApplyTextScale();
             panel.gameObject.SetActive(true);
             router.SetContext(InputContext.Inventory);
             Sfx.Play2D(Sfx.TerminalOn);
@@ -157,7 +164,7 @@ namespace Heartbeat.UI
         {
             if (!open) return;
             string subject = Services.TryGet(out Cycle.CycleController cycle) && cycle.Data != null ? cycle.Data.SubjectLabel : "R-H-??";
-            string drum = revolver != null ? "   ·   " + Loc.Get("UI.TERM.DRUM", revolver.Model.Loaded) : "";
+            string drum = revolver != null && revolver.Owned ? "   ·   " + Loc.Get("UI.TERM.DRUM", revolver.Model.Loaded) : "";
             header.text = Loc.Get("UI.TERM.SUBJECT", subject) + drum;
 
             if (inventory != null)
@@ -168,7 +175,7 @@ namespace Heartbeat.UI
                         : s.Kind == ItemKind.Ammo ? $"{Loc.Get("UI.ITEM." + s.Kind)}  x{s.Count}" : Loc.Get("UI.ITEM." + s.Kind);
                     slotLabels[i].color = s.IsEmpty ? TealDim : Teal;
                 }
-            actionHint.text = inventory != null && inventory.IsUsingItem ? "…" : $"[LMB] {Loc.Get("UI.TERM.USE")}    [RMB] {Loc.Get("UI.TERM.DISCARD")}";
+            actionHint.text = inventory != null && inventory.IsUsingItem ? "…" : $"[{router.KeyFor(router.Actions.Inventory.Use)}] {Loc.Get("UI.TERM.USE")}    [{router.KeyFor(router.Actions.Inventory.Discard)}] {Loc.Get("UI.TERM.DISCARD")}";   // follows the last device (D-132)
             RefreshLogs();
         }
 
@@ -201,6 +208,7 @@ namespace Heartbeat.UI
             RecordKind.Bestiary => "[B]",
             RecordKind.Rule => "[R]",
             RecordKind.Fault => "[F]",
+            RecordKind.Ring => "[O]",
             _ => "[*]",
         };
 
@@ -214,15 +222,23 @@ namespace Heartbeat.UI
         private void Read(string id)
         {
             readerTitle.text = TitleOf(id);
-            readerBody.text = docsById.TryGetValue(id, out var d) ? Loc.Get(d.bodyKey) : "";
+            // {0} = Lukas's current subject number; {c} passages stay corrupt until the ending reveals them (D-127, D-55).
+            var cycle = Services.TryGet(out Cycle.CycleController c) ? c.Data : null;
+            string n = cycle != null ? cycle.subjectCode.ToString("00") : "07";
+            bool reveal = cycle != null && cycle.cycleCompleted && Services.Get<RegistryModel>().HasAllEmilia;
+            readerBody.text = docsById.TryGetValue(id, out var d) ? DocText.Render(Loc.Get(d.bodyKey, n), reveal) : "";
+            if (Level.FaultModel.Faults.ContainsKey(id) && Services.TryGet(out Level.FaultModel faults))   // M-17 status
+                readerBody.text += "\n\n" + (faults.IsPatched(id) ? Loc.Get("UI.TERM.FAULT_PATCHED") : Loc.Get("UI.TERM.FAULT_USES", faults.UsesLeft(id)));
             HbLog.Info("Terminal", $"Read {id}");
+            if (id == Cycle.CycleController.RingId) Subtitles.Say(Subtitles.Lukas, "SUB.LUKAS.RING_EXAMINE");
+            else if (id == Cycle.CycleController.VoiceNoteId) Subtitles.Say(Subtitles.Lukas, "SUB.LUKAS.VOICE_NOTE");
         }
 
         private void Update()
         {
             if (!open) return;
             float k = Mathf.Clamp01((Time.unscaledTime - openTime) / 0.2f);   // CRT power-on
-            panel.localScale = new Vector3(1f, Mathf.Max(0.02f, k * k), 1f);
+            panel.localScale = new Vector3(textScale, textScale * Mathf.Max(0.02f, k * k), 1f);
             if (tab == 1) UpdateStatus();
             if (inventory != null && inventory.IsUsingItem) actionHint.text = new string('|', 1 + (int)(inventory.UseProgress * 20));
             else if (actionHint.text.StartsWith("|")) Refresh();
@@ -240,7 +256,9 @@ namespace Heartbeat.UI
             for (int i = 0; i < ecg.Count; i++)
             {
                 float v = EcgSample(state, t - (ecg.Count - i) * 0.03f);
-                ecg[i].sizeDelta = new Vector2(ecg[i].sizeDelta.x, 4f + 110f * v);
+                // Bars fit their strip (clipped too): they used to overflow onto the HEALTH line every beat.
+                float room = ecgStrip != null ? Mathf.Max(8f, ecgStrip.rect.height - 8f) : 110f;
+                ecg[i].sizeDelta = new Vector2(ecg[i].sizeDelta.x, 4f + (room - 4f) * v);
                 ecg[i].GetComponent<Image>().color = c;
             }
 
@@ -272,6 +290,22 @@ namespace Heartbeat.UI
             for (int p = 0; p < pages.Length; p++) pages[p].SetActive(p == i);
             if (i != 0) Focus(-1);
             Refresh();
+        }
+
+        /// <summary>
+        /// Accessibility text size (subtitles and terminal, Accesibilidad): the whole panel scales from its top-left
+        /// corner; its unscaled height shrinks by the same factor so it keeps covering 84% of the screen height.
+        /// </summary>
+        private void ApplyTextScale()
+        {
+            if (panel == null) return;
+            float k = Services.TryGet(out Save.SaveService saves) ? Mathf.Max(1f, saves.LoadGlobal().textScale) : 1f;
+            panel.pivot = new Vector2(0f, 1f);
+            panel.anchorMin = new Vector2(0.03f, 0.92f - 0.84f / k);
+            panel.anchorMax = new Vector2(0.48f, 0.92f);
+            panel.offsetMin = panel.offsetMax = Vector2.zero;
+            textScale = k;
+            panel.localScale = new Vector3(k, k, 1f);
         }
 
         // ---------- Construction ----------
@@ -327,8 +361,13 @@ namespace Heartbeat.UI
             var status = NewPage("Status");
             pages[1] = status.gameObject;
             healthLabel = MakeText(status, "", 1.4f);
+            // VT323 glyphs are taller than the size TMP lays them out with: reserve the line so the ECG never sits on it.
+            healthLabel.gameObject.AddComponent<LayoutElement>().minHeight = baseFontSize * 1.4f * 1.6f;
             var strip = NewRect("ECG", status);
-            strip.gameObject.AddComponent<LayoutElement>().preferredHeight = 130;
+            var stripLayout = strip.gameObject.AddComponent<LayoutElement>();
+            stripLayout.minHeight = stripLayout.preferredHeight = 130;
+            strip.gameObject.AddComponent<RectMask2D>();
+            ecgStrip = strip;
             var sh = strip.gameObject.AddComponent<HorizontalLayoutGroup>();
             sh.spacing = 2;
             sh.childAlignment = TextAnchor.MiddleLeft;

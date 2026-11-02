@@ -36,6 +36,13 @@ namespace Heartbeat.Level
             return new HackSequence(list);
         }
 
+        /// <summary>Machine fault (M-17): drops the tail of the chain; at least one input is always left to enter.</summary>
+        public void Truncate(int length)
+        {
+            length = Math.Max(length, Progress + 1);
+            if (length < steps.Count) steps.RemoveRange(length, steps.Count - length);
+        }
+
         public HackStep Input(HackDir dir)
         {
             if (IsComplete) return HackStep.Complete;

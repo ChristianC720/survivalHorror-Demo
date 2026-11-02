@@ -16,7 +16,7 @@ namespace Heartbeat.Player
             Model.Exhausted += OnExhausted;
         }
 
-        private void OnDestroy() => Model.Exhausted -= OnExhausted;
+        private void OnDestroy() { if (Model != null) Model.Exhausted -= OnExhausted; }
 
         private void Update() => Model.Tick(Time.deltaTime);
 
@@ -25,6 +25,7 @@ namespace Heartbeat.Player
         {
             if (Model.TrySpend(amount)) return true;
             HbLog.Info("Stamina", $"Not enough stamina ({Model.Value:0}% < {amount:0}%) -> gasp");
+            Sfx.Play("CUE_Lukas_Gasp", transform.position);   // M-06: the shove does not happen and Lukas gasps
             return false;
         }
 

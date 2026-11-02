@@ -26,6 +26,10 @@ namespace Heartbeat.Generation.Layout
         [Tooltip("~1/3 of procedural rooms are empty of enemies (D-37).")] [Range(0f, 1f)] public float emptyFraction = 0.33f;
         [Tooltip("~1/3 of floors 1-2 start with the final room unpowered (D-72).")] [Range(0f, 1f)] public float unpoweredChance = 0.33f;
         [Tooltip("Chance to connect two facing open sockets (loops).")] [Range(0f, 1f)] public float loopChance = 0.35f;
+        [Tooltip("Secondary key rooms are at least this many doors from the entry room (3 = two rooms in between).")]
+        [Min(1)] public int minSecondaryDistance = 3;
+        [Tooltip("Rounds dropped next to the spawn point when the floor is built (outside the budget). Floor 1 only: Lukas wakes there every cycle.")]
+        [Min(0)] public int startingAmmo = 0;
 
         [Header("Budget (D-17)")]
         public IntRange heals = new IntRange(2, 3);
@@ -48,7 +52,7 @@ namespace Heartbeat.Generation.Layout
             {
                 Floor = floor, Seed = seed, FirstAttempt = firstAttempt && floor == 1,
                 Procedural = proceduralRooms, Secondary = secondaryRooms,
-                EmptyFraction = emptyFraction, UnpoweredChance = floor < 3 ? unpoweredChance : 0f, LoopChance = loopChance,
+                EmptyFraction = emptyFraction, UnpoweredChance = floor < 3 ? unpoweredChance : 0f, LoopChance = loopChance, MinSecondaryDistance = minSecondaryDistance,
                 Heals = heals, Ammo = ammo, Spikes = spikes, OptionalKeys = optionalKeys, Enemies = enemies,
                 EnemyTypes = enemyTypes, ContextDocs = contextDocs, Confiscated = confiscated,
                 TutorialRoomIds = tutorialRoomIds,
@@ -69,6 +73,7 @@ namespace Heartbeat.Generation.Layout
         public float EmptyFraction = 0.33f;
         public float UnpoweredChance = 0.33f;
         public float LoopChance = 0.35f;
+        public int MinSecondaryDistance = 3;
         public IntRange Heals = new IntRange(2, 3);
         public IntRange Ammo = new IntRange(12, 16);
         public IntRange Spikes = new IntRange(2, 3);

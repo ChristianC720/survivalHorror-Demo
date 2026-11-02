@@ -16,7 +16,7 @@ namespace Heartbeat.Audio
         private AudioSource drone, lab;
         private AudioCue labCue;
         private int degradation;
-        private bool critical;
+        private bool critical, awakening;
 
         public void Init(AudioService service, AudioBalance b)
         {
@@ -31,6 +31,7 @@ namespace Heartbeat.Audio
             GameEvents.GameStateChanged += OnState;
             GameEvents.DegradationChanged += OnDegradation;
             GameEvents.HealthStateChanged += OnHealth;
+            GameEvents.BossDefeated += OnAwakening;
         }
 
         private void OnDisable()
@@ -39,6 +40,7 @@ namespace Heartbeat.Audio
             GameEvents.GameStateChanged -= OnState;
             GameEvents.DegradationChanged -= OnDegradation;
             GameEvents.HealthStateChanged -= OnHealth;
+            GameEvents.BossDefeated -= OnAwakening;
             StopAll();
         }
 
@@ -47,7 +49,9 @@ namespace Heartbeat.Audio
             StopAll();
             if (Services.TryGet(out Cycle.CycleController cycle) && cycle.Data != null) degradation = cycle.Data.degradationLevel;
             critical = false;
-            if (audioService.TryGetCue($"CUE_Amb_F{floor}", out var amb)) drone = audioService.StartLoop(amb);
+            awakening = false;
+            string ambience = floor >= 4 ? "CUE_Amb_Mother" : $"CUE_Amb_F{floor}";   // floor 4 = The Mother's room
+            if (audioService.TryGetCue(ambience, out var amb)) drone = audioService.StartLoop(amb);
             lab = audioService.StartLoop(labCue);
             Apply();
         }
@@ -62,11 +66,20 @@ namespace Heartbeat.Audio
         private void OnDegradation(int level) { degradation = level; Apply(); }
         private void OnHealth(int state) { critical = state == (int)HealthState.Critical; Apply(); }
 
+        /// <summary>Awakening (M-19 step 3): the lab heartbeat quickens after The Mother falls.</summary>
+        private void OnAwakening()
+        {
+            awakening = true;
+            HbLog.Info("Audio", "Awakening: lab heartbeat quickens");
+            Apply();
+        }
+
         private void Apply()
         {
             if (lab == null) return;
             lab.volume = labCue.volume * HeartbeatModel.LabVolume(balance, degradation, critical);
-            lab.pitch = HeartbeatModel.LabBpm(balance, degradation, critical) / balance.clipBpm;
+            lab.pitch = HeartbeatModel.LabBpm(balance, degradation, critical) * (awakening ? 1.6f : 1f) / balance.clipBpm;
+            if (awakening) lab.volume = Mathf.Max(lab.volume, balance.labMaxVolume);
             HbLog.Dev("Audio", $"Lab heartbeat degradation={degradation} critical={critical}");
         }
 

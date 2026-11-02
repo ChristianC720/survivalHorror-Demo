@@ -50,6 +50,7 @@ Documenta cada mecánica con suficiente detalle para que otro integrante pueda i
     - Al apuntar, la cámara se acerca al hombro, aparece la retícula (un punto pequeño cuya dispersión se cierra en ~1 s con Lukas quieto, M-04), la linterna concentra su haz (ver M-12) y la velocidad de movimiento se reduce un 30% (valor inicial, sujeto a balance).
         
     - Mientras se apunta no es posible correr.
+    - **Orientación (D-141):** Lukas mira siempre hacia donde apunta la cámara, también sin apuntar; al moverse camina de lado o de espaldas respecto a la vista.
         
     - La vista isométrica no es una vista de exploración libre: solo se obtiene mediante la vista de vigilancia (M-02).
         
@@ -677,6 +678,7 @@ stateDiagram-v2
     - El jugador puede romper el combate cruzando el marco de una puerta o cerrándola detrás de sí.
         
     - Los enemigos persiguen brevemente o golpean la puerta antes de regresar a su patrulla.
+    - **Puertas cerradas (D-142):** para un enemigo en patrulla o sospecha una puerta cerrada es una pared; en búsqueda o caza se acerca y la abre. Ninguno atraviesa una hoja cerrada. La sala de inicio no admite enemigos hasta que Lukas entra en otra sala (D-143).
         
     - El sellado rápido de puerta mediante hackeo (M-13, 2-3 entradas) corta la persecución. Un enemigo tarda ~30 s en romper un sellado; también se rompe si Lukas cruza la puerta (D-97).
         
@@ -811,6 +813,7 @@ flowchart TD
 - **Reglas:**
     
     - Al morir, el personaje se reconstruye en el punto de reaparición, al inicio del ciclo en el piso 1 (ciclo de muerte y reconstrucción). El autoguardado de la sala final (D-30) no cambia el punto de reaparición: solo sirve para continuar después de salir del juego o de un fallo (ver [[07 - Reglas y Estados del Juego]]).
+    - **Actualizado (D-147):** el punto de reaparición es el inicio del piso actual (semilla nueva) con el inventario con el que Lukas llegó a ese piso; morir en la sala de The Mother regresa al inicio del piso 3.
         
     - **Cinemática completa de reconstrucción (D-39, D-45, D-53):** se reproduce una sola vez, al terminar la introducción, y muestra por primera vez todo el proceso de reconstrucción en imágenes fugaces de 1–2 s con cortes a negro. Es **el momento del olvido**: Lukas recuerda a Emilia durante la introducción y la olvida de golpe en esta primera reconstrucción. Sale de su cápsula sabiendo que busca algo o a alguien, sin recordar a quién, y recoge del suelo un anillo que sabe importante; nunca se sabe si es el suyo o el de Emilia (D-54). Lukas muere al final de la introducción atacado por la espalda en un piso que no existe (D-53); el resto del contenido se documenta en [[01 - Premisa y Trama]].
         
@@ -885,6 +888,8 @@ flowchart TD
     - En otros intentos se descubren fallas nuevas.
         
     - Demo: 1-2 fallas (valor inicial, sujeto a balance).
+        
+    - Fallas de la demo, descubrimiento y uso manual durante el hackeo: D-150.
         
 - **Entrada:** N/A (se aplica al hackear o interactuar con el sistema afectado).
     

@@ -53,6 +53,7 @@ Las reglas de las señales jugables están en S-11 Audio dinámico ([[03 - Siste
 ## Audio espacial
 
 Sí. Audio 3D posicional con el sistema incluido en Unity: atenuación por distancia y oclusión simple por puertas, de modo que un enemigo tras una puerta sellada no activa el latido (M-10). Se recomiendan auriculares para leer la dirección de las amenazas; la mezcla también funciona en estéreo con altavoces. El latido del laboratorio y la música no son posicionales.
+Oclusión (D-144): cada pared entre la fuente y el oyente reduce el sonido un 70% y cada puerta cerrada o sellada un 50%, acumulables; lo mismo reduce el radio de ruido que perciben los enemigos. Las señales de M-10 no se atenúan.
 
 ## Voz
 

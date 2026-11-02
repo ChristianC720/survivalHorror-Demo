@@ -17,3 +17,6 @@
 - M-04: 6 loaded rounds, 4 hits on an Alto → it dies, the counter shows 2, enemies within ~20 m alerted.
 - M-11, M-20 rows.
 - EditMode: `RevolverModel` drum and reload tests.
+
+## Revolver ownership (D-74, E13-bugfix)
+`Revolver.Owned` hides the model and blocks aim, fire and reload until Lukas picks it up: `ITEM_Revolver` (`RevolverPickup`) lies by `PH_KesslerGuard_Corpse` in the tutorial depot (first attempt, tutorial room 2) and on the capsule-row tray on floor 1 after every reconstruction. Ownership travels in the floor-start and final-room saves (`AttemptSave.revolverOwned`); reconstruction leaves it on the tray. Sandboxes keep `ownedAtStart` = true; the Intro's Lukas has no revolver.

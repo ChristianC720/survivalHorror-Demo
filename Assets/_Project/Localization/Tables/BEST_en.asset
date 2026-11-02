@@ -17,7 +17,73 @@ MonoBehaviour:
   m_SharedData: {fileID: 11400000, guid: 189b3cf789f9ade48b074a5362f98249, type: 2}
   m_Metadata:
     m_Items: []
-  m_TableData: []
+  m_TableData:
+  - m_Id: 17773018349568
+    m_Localized: "KS-W-0193 \u2014 \"El Alto\""
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17773093847040
+    m_Localized: 'Origin: Werkschutz personnel, Kessler Sicherheit AG.
+
+      Status: non-conforming. Identity: not detected.
+
+      Observations: continues patrol routes. Sight: long range. Hearing: poor. Reach exceeds standard uniform sleeve length by 1.1 m.
+
+      Recommendation: avoid its line of sight. Uniform is still under contract.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17773093847041
+    m_Localized: "VK-P-0441 \u2014 \"La Boca\""
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17773093847042
+    m_Localized: 'Origin: clinical test subject, Vitalis Konzern.
+
+      Status: non-conforming. Identity: not detected.
+
+      Observations: blind. Hearing: exceptional. On detection it screams; nearby subjects respond to the scream.
+
+      Recommendation: reduce noise. Consent form on file.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17773098041344
+    m_Localized: "VK-T-0072 \u2014 \"El Rastrero\""
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17773098041345
+    m_Localized: 'Origin: laboratory technician, Vitalis Konzern.
+
+      Status: non-conforming. Identity: not detected.
+
+      Observations: quadrupedal. Fast. Approaches from the flanks. Fragile.
+
+      Recommendation: do not let it circle. Productivity has improved.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17773098041346
+    m_Localized: "VK-S-0009 \u2014 \"El Mudo\""
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17773098041347
+    m_Localized: 'Origin: unknown. File incomplete.
+
+      Status: non-conforming. Identity: not detected.
+
+      Observations: motionless until approached or illuminated. Often mistaken for a corpse or for a colleague.
+
+      Recommendation: do not greet colleagues.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17773098041348
+    m_Localized: "Annex \u2014 Recycled subjects"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17773098041349
+    m_Localized: 'Some non-conforming subjects rise again after ceasing to function. Faster. More fragile. Once only.
+
+      Cause: their last trace of identity is consumed. I attempted preservation. The attempt is logged as successful.'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -32,6 +32,9 @@ namespace Heartbeat.AI
         private float windupTimer = -1f;
         private float cooldownTimer;
         private float flankSide = 1f;
+        private float screamTimer;
+        private float burstClock;
+        private bool asleep;
         private int envMask;
 
         public EnemyDefinition Definition => definition;
@@ -67,7 +70,10 @@ namespace Heartbeat.AI
         {
             if (director == null && Services.TryGet(out director)) director.Register(this);
             agent.speed = definition.patrolSpeed;
+            asleep = definition.dormant;
         }
+
+        public bool IsDormant => asleep;
 
         private void OnDisable()
         {
@@ -81,8 +87,22 @@ namespace Heartbeat.AI
             if (IsDead) return;
             float dt = Time.deltaTime;
             cooldownTimer = Mathf.Max(0f, cooldownTimer - dt);
+            screamTimer = Mathf.Max(0f, screamTimer - dt);
 
             var p = Player;
+            if (asleep)
+            {
+                // El Mudo: still like a corpse until Lukas comes within ~3 m or lights it (D-60).
+                agent.isStopped = true;
+                if (p != null && (IsLit || Vector3.Distance(transform.position, p.position) <= definition.activationRange))
+                {
+                    asleep = false;
+                    lastKnown = p.position;
+                    HbLog.Info("AI", $"{name} activates ({(IsLit ? "lit" : "proximity")})");
+                    alert.ForceHunt();
+                }
+                return;
+            }
             float proximity = 0f;
             SeesPlayer = p != null && CanSee(p, out proximity);
             if (SeesPlayer) lastKnown = p.position;
@@ -128,10 +148,18 @@ namespace Heartbeat.AI
         public void HearNoise(NoiseInfo noise)
         {
             if (IsDead) return;
+            if (asleep) return;   // El Mudo only wakes by proximity or light
+            if (definition.screams && noise.Source == NoiseSource.Scream) return;   // La Boca ignores screams (her own too)
             float d = Vector3.Distance(transform.position, noise.Position);
-            if (d > noise.Radius || d > Mathf.Max(definition.hearingRange, noise.Source == NoiseSource.Shot ? noise.Radius : 0f)) return;
+            float reach = Mathf.Min(noise.Radius, Mathf.Max(definition.hearingRange, (noise.Source == NoiseSource.Shot || noise.Source == NoiseSource.Scream) ? noise.Radius : 0f));   // shots and screams carry
+            if (d > reach) return;
+            // Walls (−70%) and closed doors (−50%) shrink what reaches us (S-02/S-11).
+            if (Services.TryGet(out Audio.AudioService audio) && d > reach * audio.OcclusionBetween(noise.Position + Vector3.up, transform.position + Vector3.up * eyeHeight)) return;
             lastKnown = noise.Position;
-            alert.Hear(noise.Source);
+            bool blind = definition.sightRange <= 0f;
+            if (blind && alert.State >= AlertState.Search && noise.Source != NoiseSource.Scream && d <= definition.hearingRange * definition.blindHuntFraction)
+                alert.ForceHunt();   // blind: a close sound is as good as a sighting
+            else alert.Hear(noise.Source);
         }
 
         public void OnAttentionFull(Vector3 playerPos)
@@ -145,14 +173,63 @@ namespace Heartbeat.AI
 
         private void TickPatrol(float dt)
         {
+            agent.stoppingDistance = 0.2f;
             agent.speed = Speed(definition.patrolSpeed);
             agent.isStopped = false;
             if (agent.pathPending || agent.remainingDistance > 0.4f) return;
             waitTimer -= dt;
             if (waitTimer > 0f) return;
             waitTimer = Random.Range(1f, 3f);
+            // Closed doors are carved walls: never pick a point behind one. Left behind a closed door? This is home now.
+            if (!Reachable(home)) home = transform.position;
             Vector3 random = home + Random.insideUnitSphere * definition.patrolRadius;
-            if (NavMesh.SamplePosition(random, out var hit, 2f, NavMesh.AllAreas)) agent.SetDestination(hit.position);
+            if (NavMesh.SamplePosition(random, out var hit, 2f, NavMesh.AllAreas) && Reachable(hit.position)) agent.SetDestination(hit.position);
+        }
+
+        private NavMeshPath scratchPath;
+        private bool Reachable(Vector3 point)
+        {
+            scratchPath ??= new NavMeshPath();
+            if (!NavMesh.SamplePosition(point, out var onMesh, 1.5f, agent.areaMask)) return false;
+            return NavMesh.CalculatePath(transform.position, onMesh.position, agent.areaMask, scratchPath)
+                   && scratchPath.status == NavMeshPathStatus.PathComplete;
+        }
+
+        // ---------- Doors (M-14): search/hunt walk up to the closed door on the way and open it (or pound a seal) ----------
+
+        private Level.DoorLeaf viaDoor;
+        private float routeCheck;
+
+        /// <summary>The goal itself, or the near side of the closed door that stands between us and it.</summary>
+        private Vector3 Route(Vector3 goal)
+        {
+            if (viaDoor != null && !viaDoor.EnemyCanReach) viaDoor = null;   // it opened
+            routeCheck -= Time.deltaTime;
+            if (viaDoor == null && routeCheck <= 0f)
+            {
+                routeCheck = 0.5f;
+                if (!Reachable(goal)) viaDoor = DoorTowards(goal);
+            }
+            if (viaDoor == null) return goal;
+            var t = viaDoor.transform;
+            float side = t.InverseTransformPoint(transform.position).z >= 0f ? 1f : -1f;
+            return t.TransformPoint(new Vector3(0f, 0f, side));
+        }
+
+        private Level.DoorLeaf DoorTowards(Vector3 goal)
+        {
+            if (!Services.TryGet(out Generation.FloorBuilder builder)) return null;
+            float direct = Vector3.Distance(transform.position, goal);
+            Level.DoorLeaf best = null;
+            float bestCost = direct * 1.6f + 4f;   // only doors roughly on the way
+            foreach (var d in builder.Doors)
+            {
+                if (d == null || !d.EnemyCanReach) continue;
+                Vector3 p = d.transform.position;
+                float cost = Vector3.Distance(transform.position, p) + Vector3.Distance(p, goal);
+                if (cost < bestCost) { bestCost = cost; best = d; }
+            }
+            return best;
         }
 
         private void TickSuspicion()
@@ -163,10 +240,12 @@ namespace Heartbeat.AI
 
         private void TickSearch(float dt)
         {
+            agent.stoppingDistance = 0.2f;
             agent.isStopped = false;
             agent.speed = Speed(definition.patrolSpeed * 1.4f);
-            if (Vector3.Distance(agent.destination, lastKnown) > 0.5f) agent.SetDestination(lastKnown);
-            if (!agent.pathPending && agent.remainingDistance < 0.5f)
+            Vector3 dest = Route(lastKnown);
+            if (Vector3.Distance(agent.destination, dest) > 0.5f) agent.SetDestination(dest);
+            if (viaDoor == null && !agent.pathPending && agent.remainingDistance < 0.5f)
             {
                 transform.Rotate(0f, 60f * dt, 0f);   // look around
             }
@@ -187,11 +266,25 @@ namespace Heartbeat.AI
                 if (NavMesh.SamplePosition(flank, out var hit, 2f, NavMesh.AllAreas)) chaseTarget = hit.position;
             }
 
-            // Stop short of Lukas: walking into his CharacterController shoved him through walls (fell out of the floor).
-            agent.stoppingDistance = SeesPlayer ? definition.grabRange * 0.8f : 0.2f;
-            agent.SetDestination(chaseTarget);
+            // Never overlap Lukas, seen or not: his CharacterController depenetrates out of our collider on every Move,
+            // and near a wall that shoved him through it and out of the level (the "cyan screen").
+            float keep = agent.radius + PlayerRadius(p) + 0.2f;
+            agent.stoppingDistance = Mathf.Max(SeesPlayer ? definition.grabRange * 0.8f : 0.2f, keep);
+            Vector3 dest = Route(chaseTarget);
+            if (viaDoor != null) agent.stoppingDistance = 0.3f;
+            agent.SetDestination(dest);
 
-            if (dist <= definition.attackRange && cooldownTimer <= 0f && SeesPlayer && !(director != null && director.PlayerDead))
+            // Bursts (El Mudo): sprint, freeze, sprint.
+            if (definition.burstSeconds > 0f)
+            {
+                burstClock += Time.deltaTime;
+                float cycle = definition.burstSeconds + definition.burstPauseSeconds;
+                agent.isStopped = Mathf.Repeat(burstClock, cycle) > definition.burstSeconds;
+            }
+            if (dist < keep) agent.isStopped = true;   // avoidance from other agents can still squeeze us in
+
+            bool blind = definition.sightRange <= 0f;   // La Boca strikes at what she hears
+            if (dist <= definition.attackRange && cooldownTimer <= 0f && (SeesPlayer || blind) && !(director != null && director.PlayerDead))
             {
                 windupTimer = definition.attackWindup;
                 agent.isStopped = true;
@@ -221,6 +314,13 @@ namespace Heartbeat.AI
         }
 
         private float Speed(float baseSpeed) => health.IsRecycled ? baseSpeed * definition.recycledSpeedMultiplier : baseSpeed;
+
+        private float playerRadius = -1f;
+        private float PlayerRadius(Transform p)
+        {
+            if (playerRadius < 0f) playerRadius = p.TryGetComponent(out CharacterController cc) ? cc.radius : 0.35f;
+            return playerRadius;
+        }
 
         private void FaceTowards(Vector3 point, float degPerSec)
         {
@@ -293,6 +393,17 @@ namespace Heartbeat.AI
             HbLog.Info("AI", $"{name} {from}->{to}");
             float d = Player != null ? Vector3.Distance(transform.position, Player.position) : 0f;
             GameEvents.RaiseEnemyAlertChanged(this, to, d);
+            if (definition.screams && to >= AlertState.Search && to > from && screamTimer <= 0f && !IsDead) Scream();
+            if (definition.dormant && to == AlertState.Patrol && !IsDead) asleep = true;   // back to stillness where it stands
+        }
+
+        /// <summary>La Boca's own scream (D-64): not the heartbeat; nearby enemies search towards her.</summary>
+        private void Scream()
+        {
+            screamTimer = definition.screamCooldown;
+            HbLog.Info("AI", $"{name} SCREAMS");
+            Sfx.Play("CUE_Boca_Scream", transform.position);
+            GameEvents.RaiseNoiseEmitted(new NoiseInfo(transform.position, definition.screamRadius, NoiseSource.Scream));
         }
 
         /// <summary>Debug / tests: force an alert state.</summary>

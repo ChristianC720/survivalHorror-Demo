@@ -21,9 +21,16 @@ namespace Heartbeat.Generation
         public int NodeIndex { get; set; } = -1;
         public bool IsEmpty { get; set; }
         public bool IsPowered { get; set; } = true;
+        /// <summary>Set when the floor is torn down (rebuild, death): its trigger can still fire before Destroy runs.</summary>
+        public bool Retired { get; set; }
         public IReadOnlyList<RoomInstance> Neighbours => neighbours;
 
         public static RoomInstance Current { get; private set; }
+        /// <summary>Each floor build is a new generation; rooms of an older one (a Floor scene still unloading after a
+        /// death) never become Current — their trigger fired after the new floor's and left Current on a dying room.</summary>
+        public static int LiveGeneration { get; private set; }
+        public int Generation { get; set; }
+        public static int NextGeneration() => ++LiveGeneration;
 
         public void AddNeighbour(RoomInstance r) { if (r != null && !neighbours.Contains(r)) neighbours.Add(r); }
 
@@ -32,13 +39,13 @@ namespace Heartbeat.Generation
 
         private void OnTriggerEnter(Collider other)
         {
-            if (!other.CompareTag("Player")) return;
+            if (Retired || Generation != LiveGeneration || !other.CompareTag("Player")) return;
             Current = this;
             HbLog.Info("Room", $"Entered {name}");
             GameEvents.RaiseRoomEntered(this);
         }
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
-        private static void ResetStatics() => Current = null;
+        private static void ResetStatics() { Current = null; LiveGeneration = 0; }
     }
 }

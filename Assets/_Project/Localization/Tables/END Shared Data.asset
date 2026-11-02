@@ -14,7 +14,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.SharedTableData
   m_TableCollectionName: END
   m_TableCollectionNameGuidString: 686065fc3b577f14d8e32a1d2d6a436c
-  m_Entries: []
+  m_Entries:
+  - m_Id: 19800221941760
+    m_Key: END.CREDITS.TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19800289050624
+    m_Key: END.CREDITS.ROLL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19800297439232
+    m_Key: END.CREDITS.SKIP
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19800297439233
+    m_Key: END.ASSIM.CAPSULE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19800301633536
+    m_Key: END.ASSIM.FLOOR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19800301633537
+    m_Key: END.ASSIM.STATE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19800301633538
+    m_Key: END.RELIEF.WAKE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19800301633539
+    m_Key: END.RELIEF.BASIC
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19800301633540
+    m_Key: END.RELIEF.FULL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19800301633541
+    m_Key: END.AMBIGUOUS.SYNC
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -20,19 +20,29 @@ namespace Heartbeat.Player
             Model.StateChanged += OnStateChanged;
         }
 
-        private void OnDestroy() => Model.StateChanged -= OnStateChanged;
+        private void OnDestroy() { if (Model != null) Model.StateChanged -= OnStateChanged; }   // null after a mid-play recompile
+
+        /// <summary>Debug console / scripted playtests: hits and grabs still land (events, interrupts) but do no damage.
+        /// Resets with the Player on every scene load; compiled out of release builds.</summary>
+        public bool DebugInvulnerable { get; set; }
 
         public void ApplyHit(int hitsToKill)
         {
-            Model.ApplyHit(hitsToKill);
+            if (!Invulnerable) Model.ApplyHit(hitsToKill);
             Hit?.Invoke();
         }
 
         public void ApplyGrabWithoutSpike()
         {
-            Model.ApplyGrabWithoutSpike();
+            if (!Invulnerable) Model.ApplyGrabWithoutSpike();
             Hit?.Invoke();
         }
+
+#if UNITY_EDITOR || DEBUG
+        private bool Invulnerable => DebugInvulnerable;
+#else
+        private bool Invulnerable => false;
+#endif
 
         private void OnStateChanged(HealthState state)
         {

@@ -21,6 +21,7 @@ Shader "Hidden/Heartbeat/PixelDither"
             float _ColorSteps;      // levels per channel, e.g. 32
             float _DitherStrength;  // 0..1
             float _HbBrightness;    // global, set by Heartbeat.Render.Brightness: player brightness - 1 (0 = neutral, D-106)
+            float _HbDegradation;   // global 0..1, set by Heartbeat.Render.Degradation (M-18 CRT corruption, capped, D-29)
 
             static const float Bayer4[16] =
             {
@@ -44,6 +45,13 @@ Shader "Hidden/Heartbeat/PixelDither"
                 float steps = max(_ColorSteps, 2.0);
                 c = floor(c * steps + 0.5 + threshold * _DitherStrength) / steps;
                 col.rgb = pow(saturate(c), 2.2);
+
+                // M-18: accumulated CRT corruption. Scanlines + rolling grain + a faint purple lift; never hides
+                // information (max strength is capped in C#) and differs from the surveillance noise (green, D-23).
+                float d = _HbDegradation;
+                float scan = (p.y % 2u == 0u) ? 1.0 - 0.22 * d : 1.0;
+                float grain = frac(sin(dot(input.positionCS.xy + _Time.y * 61.0, float2(12.9898, 78.233))) * 43758.5453) - 0.5;
+                col.rgb = saturate(col.rgb * scan + grain * 0.05 * d + float3(0.005, 0.0, 0.009) * d);
                 return col;
             }
             ENDHLSL

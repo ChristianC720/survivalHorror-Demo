@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a244d34437b9e74796c4140c568c9f2, type: 3}
+  m_Name: RD_KEY_F2_Secondary_A
+  m_EditorClassIdentifier: Heartbeat.Runtime::Heartbeat.Generation.RoomDefinition
+  id: KEY_F2_Secondary_A
+  prefab: {fileID: 1930919828140842817, guid: 9efc79807bede4e4499a66a6723602e1, type: 3}
+  floor: 2
+  archetype: 0
+  role: 1
+  tutorialIndex: 0
+  size: {x: 3, y: 3}
+  sockets:
+  - cell: {x: 1, y: 0}
+    facing: 2
+    allowLocked: 1
+  - cell: {x: 0, y: 1}
+    facing: 3
+    allowLocked: 1
+  hasCamera: 1
+  canBeUnpowered: 0
+  enemySpawns: 0
+  itemSpawns: 4
+  itemSpawnTags: 02000000040000000500000000000000i
+  weight: 1

@@ -15,3 +15,8 @@
 
 ## Build (H6)
 Win64, IL2CPP or Mono (Mono if IL2CPP is not installed), scenes in order Bootstrap, MainMenu, Intro, Floor, Cinematics. Release flow: `git flow release start H6` → build → tag `v1.0-demo` → finish into `main`.
+
+## Profiling log (E13-profiling, 2026-11-02, editor, Floor 1 seed 12345)
+- Exploration ~170 FPS, surveillance view ~110 FPS in the editor (GPU wait dominates). Floor 1 built in 196 ms (budget 5 s). No mesh above 3 000 triangles. Rooms log ≤ 4 lights / 1 shadowed around the player.
+- Per-frame GC came from logging every audio cue (each footstep: ~24 KB with stack trace) and from a delegate allocated by `Revolver.Update` every frame. Fixed: the cue log keeps its `[Heartbeat][Audio] CUE_X` format but is stripped from release builds; the reload delegate is cached.
+- Remaining one-off hitches: first terminal open (~45 ms: TMP mesh generation of the log list) and entering surveillance (~12 ms). Acceptable for the demo; prewarm the terminal on floor load if they show in a release build.
