@@ -49,9 +49,13 @@ namespace Heartbeat.Generation
         private readonly List<RoomInstance> built = new List<RoomInstance>();
         private Transform floorRoot;
         private Transform doorsRoot;   // outside the NavMesh collection: doors must not cut the navmesh
+        private readonly List<DoorLeaf> doors = new List<DoorLeaf>();
+        private readonly List<DoorLeaf> spawnBarrier = new List<DoorLeaf>();
+        private RoomInstance barredRoom;
 
         public FloorLayout Layout { get; private set; }
         public IReadOnlyList<RoomInstance> Rooms => built;
+        public IReadOnlyList<DoorLeaf> Doors => doors;
         public GameObject Player { get; private set; }
         public float LastBuildMs { get; private set; }
 
@@ -61,8 +65,17 @@ namespace Heartbeat.Generation
             activation = GetComponent<RoomActivation>();
         }
 
-        private void OnEnable() => Services.Register(this);
-        private void OnDisable() => Services.Unregister(this);
+        private void OnEnable() { Services.Register(this); GameEvents.RoomEntered += OnRoomEntered; }
+        private void OnDisable() { Services.Unregister(this); GameEvents.RoomEntered -= OnRoomEntered; }
+
+        /// <summary>The spawn room is closed to enemies until Lukas first enters another room.</summary>
+        private void OnRoomEntered(MonoBehaviour room)
+        {
+            if (spawnBarrier.Count == 0 || room == barredRoom) return;
+            foreach (var d in spawnBarrier) if (d != null) d.SetEnemyBarrier(false);
+            spawnBarrier.Clear();
+            HbLog.Info("Gen", "Spawn room open to enemies (Lukas left it)");
+        }
 
         public FloorConfig ConfigFor(int floor, bool showcase)
         {
@@ -150,6 +163,7 @@ namespace Heartbeat.Generation
             int spawnRoom = startInFinalRoom && Layout.FinalRoom >= 0 ? Layout.FinalRoom : Layout.EntryRoom;
             foreach (var e in Layout.Enemies) if (!startInFinalRoom || e.Room != spawnRoom) PlaceEnemy(e);
             SpawnPlayer(spawnRoom);
+            BarSpawnRoom(spawnRoom);
             activation.Apply(built[spawnRoom]);
 
             LastBuildMs = sw.ElapsedMilliseconds;
@@ -163,6 +177,9 @@ namespace Heartbeat.Generation
         {
             foreach (var r in built) if (r != null) r.Retired = true;
             built.Clear();
+            doors.Clear();
+            spawnBarrier.Clear();
+            barredRoom = null;
             if (floorRoot != null)
             {
                 // Destroy is deferred to end of frame: detach first or the rebake below still collects the old floor.
@@ -217,7 +234,9 @@ namespace Heartbeat.Generation
             var kit = built[c.A].GetComponent<RoomShell>().kit;
             var door = Instantiate(kit.door, s.transform.position, s.transform.rotation, doorsRoot);
             door.name = $"Door_{c.A}_{c.B}";
-            door.GetComponent<DoorLeaf>().Configure(c.Lock);
+            var leaf = door.GetComponent<DoorLeaf>();
+            leaf.Configure(c.Lock);
+            doors.Add(leaf);
         }
 
         private void PlaceItem(ItemPlacement item, IReadOnlyCollection<string> registered)
@@ -341,6 +360,19 @@ namespace Heartbeat.Generation
             }
             exit.Floor = floor;
             exit.Powered = final.IsPowered;
+        }
+
+        private void BarSpawnRoom(int room)
+        {
+            barredRoom = built[room];
+            foreach (var c in Layout.Connections)
+                if (c.A == room || c.B == room)
+                {
+                    var leaf = doors.FirstOrDefault(d => d != null && d.name == $"Door_{c.A}_{c.B}");
+                    if (leaf == null) continue;
+                    leaf.SetEnemyBarrier(true);
+                    spawnBarrier.Add(leaf);
+                }
         }
 
         private void SpawnPlayer(int room)

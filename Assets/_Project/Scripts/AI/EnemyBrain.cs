@@ -177,8 +177,56 @@ namespace Heartbeat.AI
             waitTimer -= dt;
             if (waitTimer > 0f) return;
             waitTimer = Random.Range(1f, 3f);
+            // Closed doors are carved walls: never pick a point behind one. Left behind a closed door? This is home now.
+            if (!Reachable(home)) home = transform.position;
             Vector3 random = home + Random.insideUnitSphere * definition.patrolRadius;
-            if (NavMesh.SamplePosition(random, out var hit, 2f, NavMesh.AllAreas)) agent.SetDestination(hit.position);
+            if (NavMesh.SamplePosition(random, out var hit, 2f, NavMesh.AllAreas) && Reachable(hit.position)) agent.SetDestination(hit.position);
+        }
+
+        private NavMeshPath scratchPath;
+        private bool Reachable(Vector3 point)
+        {
+            scratchPath ??= new NavMeshPath();
+            if (!NavMesh.SamplePosition(point, out var onMesh, 1.5f, agent.areaMask)) return false;
+            return NavMesh.CalculatePath(transform.position, onMesh.position, agent.areaMask, scratchPath)
+                   && scratchPath.status == NavMeshPathStatus.PathComplete;
+        }
+
+        // ---------- Doors (M-14): search/hunt walk up to the closed door on the way and open it (or pound a seal) ----------
+
+        private Level.DoorLeaf viaDoor;
+        private float routeCheck;
+
+        /// <summary>The goal itself, or the near side of the closed door that stands between us and it.</summary>
+        private Vector3 Route(Vector3 goal)
+        {
+            if (viaDoor != null && !viaDoor.EnemyCanReach) viaDoor = null;   // it opened
+            routeCheck -= Time.deltaTime;
+            if (viaDoor == null && routeCheck <= 0f)
+            {
+                routeCheck = 0.5f;
+                if (!Reachable(goal)) viaDoor = DoorTowards(goal);
+            }
+            if (viaDoor == null) return goal;
+            var t = viaDoor.transform;
+            float side = t.InverseTransformPoint(transform.position).z >= 0f ? 1f : -1f;
+            return t.TransformPoint(new Vector3(0f, 0f, side));
+        }
+
+        private Level.DoorLeaf DoorTowards(Vector3 goal)
+        {
+            if (!Services.TryGet(out Generation.FloorBuilder builder)) return null;
+            float direct = Vector3.Distance(transform.position, goal);
+            Level.DoorLeaf best = null;
+            float bestCost = direct * 1.6f + 4f;   // only doors roughly on the way
+            foreach (var d in builder.Doors)
+            {
+                if (d == null || !d.EnemyCanReach) continue;
+                Vector3 p = d.transform.position;
+                float cost = Vector3.Distance(transform.position, p) + Vector3.Distance(p, goal);
+                if (cost < bestCost) { bestCost = cost; best = d; }
+            }
+            return best;
         }
 
         private void TickSuspicion()
@@ -192,8 +240,9 @@ namespace Heartbeat.AI
             agent.stoppingDistance = 0.2f;
             agent.isStopped = false;
             agent.speed = Speed(definition.patrolSpeed * 1.4f);
-            if (Vector3.Distance(agent.destination, lastKnown) > 0.5f) agent.SetDestination(lastKnown);
-            if (!agent.pathPending && agent.remainingDistance < 0.5f)
+            Vector3 dest = Route(lastKnown);
+            if (Vector3.Distance(agent.destination, dest) > 0.5f) agent.SetDestination(dest);
+            if (viaDoor == null && !agent.pathPending && agent.remainingDistance < 0.5f)
             {
                 transform.Rotate(0f, 60f * dt, 0f);   // look around
             }
@@ -218,7 +267,9 @@ namespace Heartbeat.AI
             // and near a wall that shoved him through it and out of the level (the "cyan screen").
             float keep = agent.radius + PlayerRadius(p) + 0.2f;
             agent.stoppingDistance = Mathf.Max(SeesPlayer ? definition.grabRange * 0.8f : 0.2f, keep);
-            agent.SetDestination(chaseTarget);
+            Vector3 dest = Route(chaseTarget);
+            if (viaDoor != null) agent.stoppingDistance = 0.3f;
+            agent.SetDestination(dest);
 
             // Bursts (El Mudo): sprint, freeze, sprint.
             if (definition.burstSeconds > 0f)
