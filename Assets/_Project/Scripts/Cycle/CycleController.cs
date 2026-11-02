@@ -355,8 +355,9 @@ namespace Heartbeat.Cycle
         // ---------- Quit (D-31) ----------
 
         /// <summary>What quitting now would cost; the pause menu's confirmation dialog shows it before quitting.</summary>
-        public ExitCost QuitCost => ExitRules.Evaluate(
-            Services.TryGet<AlertDirector>(out var d) && d.HuntingCount > 0, InSafeZone);
+        public ExitCost QuitCost => states.StateBeforePause == GameStateId.Intro
+            ? ExitCost.None   // the Intro never counts (D-63): quitting replays it on Continue
+            : ExitRules.Evaluate(Services.TryGet<AlertDirector>(out var d) && d.HuntingCount > 0, InSafeZone);
 
         /// <summary>Pause menu "Quit": applies the exit table, saves and returns to the main menu.</summary>
         public void QuitToMenu()

@@ -43,9 +43,9 @@ namespace Heartbeat.UI
             title.alignment = TMPro.TextAlignmentOptions.Center;
             var resume = UiKit.Button(box, Loc.Get("UI.PAUSE.RESUME"), 30, UiKit.Teal, () => Services.Get<PauseService>().TryResume(), 56);
             UiKit.Button(box, Loc.Get("UI.MENU.OPTIONS"), 30, UiKit.Teal, ShowOptions, 56);
-            bool canRestart = pausedFrom == GameStateId.Playing;   // not in the Intro or the final decision
-            var restart = UiKit.Button(box, Loc.Get("UI.PAUSE.RESTART"), 30, UiKit.Teal, ConfirmRestart, 56);
-            restart.interactable = canRestart;
+            // No Restart in the Intro or the final decision (D-63, D-92): the button is not shown at all.
+            if (pausedFrom == GameStateId.Playing)
+                UiKit.Button(box, Loc.Get("UI.PAUSE.RESTART"), 30, UiKit.Teal, ConfirmRestart, 56);
             UiKit.Button(box, Loc.Get("UI.PAUSE.QUIT"), 30, UiKit.Teal, ConfirmQuit, 56);
             UiKit.Select(resume);
             HbLog.Info("UI", "Pause menu");
