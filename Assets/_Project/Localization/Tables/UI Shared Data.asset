@@ -491,6 +491,22 @@ MonoBehaviour:
     m_Key: UI.CONFIRM.RESTART_SAFE
     m_Metadata:
       m_Items: []
+  - m_Id: 224916380188672
+    m_Key: UI.TERM.FAULT_USES
+    m_Metadata:
+      m_Items: []
+  - m_Id: 224916426326016
+    m_Key: UI.TERM.FAULT_PATCHED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 224916426326017
+    m_Key: UI.HACK.FAULT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 224916426326018
+    m_Key: UI.HACK.FAULT_USED
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

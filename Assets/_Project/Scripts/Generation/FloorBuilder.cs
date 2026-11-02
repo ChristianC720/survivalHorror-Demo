@@ -303,6 +303,10 @@ namespace Heartbeat.Generation
             var unread = registered == null ? mine : mine.Where(d => !registered.Contains(d.id)).ToList();
             var from = unread.Count > 0 ? unread : mine;
             if (from.Count == 0) return null;
+            // shortcut: an unread fault document (M-17) takes the floor's first document spawn instead of a context one;
+            // the GDD puts faults outside the per-floor budget — give them their own spawn tag if content gets tight.
+            var fault = unread.FirstOrDefault(d => d.kind == RecordKind.Fault);
+            if (fault != null) return fault;
             var rng = new System.Random(Layout.Seed * 31 + item.Room * 7 + item.Spawn);
             return from[rng.Next(from.Count)];
         }

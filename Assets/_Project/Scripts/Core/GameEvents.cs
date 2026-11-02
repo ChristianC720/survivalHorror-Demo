@@ -62,6 +62,8 @@ namespace Heartbeat.Core
         public static event Action<MonoBehaviour> RoomEntered;            // Heartbeat.Generation.RoomInstance
         public static event Action<int, int> FloorBuilt;                  // floor, seed
         public static event Action PowerRestored;
+        public static event Action<string> FaultUsed;                     // fault id (M-17)
+        public static event Action<string> FaultPatched;                  // fault id: The Mother patched it
         public static event Action<int> FloorExitRequested;               // floor being left
 
         // Cycle
@@ -119,6 +121,8 @@ namespace Heartbeat.Core
         public static void RaiseInventoryChanged() => InventoryChanged?.Invoke();
         public static void RaiseInventoryFull(string kind) => InventoryFull?.Invoke(kind);
         public static void RaiseInteractTargetChanged(MonoBehaviour target) => InteractTargetChanged?.Invoke(target);
+        public static void RaiseFaultUsed(string id) => FaultUsed?.Invoke(id);
+        public static void RaiseFaultPatched(string id) => FaultPatched?.Invoke(id);
         public static void RaiseItemRegistered(string id, int kind, bool isNew) => ItemRegistered?.Invoke(id, kind, isNew);
         public static void RaiseCueRequested(string cue, Vector3? pos) => CueRequested?.Invoke(cue, pos);
         public static void RaiseCuePlayed(string cue, Vector3? pos) => CuePlayed?.Invoke(cue, pos);

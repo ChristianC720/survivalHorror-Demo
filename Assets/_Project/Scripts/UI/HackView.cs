@@ -27,9 +27,24 @@ namespace Heartbeat.UI
 
         public bool IsShown => panel != null && panel.gameObject.activeSelf;
 
-        private void Awake() => Build();
+        private void Awake()
+        {
+            Build();
+            GameEvents.FaultUsed += OnFaultUsed;
+        }
 
-        private void OnDestroy() => Unsubscribe();
+        private void OnDestroy()
+        {
+            GameEvents.FaultUsed -= OnFaultUsed;
+            Unsubscribe();
+        }
+
+        private void OnFaultUsed(string id)
+        {
+            status.text = Loc.Get("UI.HACK.FAULT_USED");
+            status.color = UiKit.Teal;
+            flashUntil = Time.unscaledTime + GrantedSeconds * 2f;
+        }
 
         private void Update()
         {
@@ -70,6 +85,8 @@ namespace Heartbeat.UI
             if (router == null) Services.TryGet(out router);
             string key = router != null ? router.KeyFor(router.Actions.Hacking.Abort) : "E";
             hint.text = $"[{key}]  {Loc.Get("UI.HACK.ABORT")}";
+            if (hack.AvailableFault != null)   // M-17: the player decides when to spend a fault
+                hint.text += $"    [{router?.KeyFor(router.Actions.Hacking.UseFault) ?? "F"}]  {Loc.Get("UI.HACK.FAULT")}";
             float k = Services.TryGet(out Save.SaveService saves) ? Mathf.Max(1f, saves.LoadGlobal().textScale) : 1f;
             panel.localScale = new Vector3(k, k, 1f);
             panel.gameObject.SetActive(true);

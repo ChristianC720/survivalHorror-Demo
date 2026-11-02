@@ -24,6 +24,7 @@ Define la relación entre las acciones del jugador y las entradas físicas del d
 | Descartar objeto (inventario abierto) | — | `Clic derecho` sobre la casilla | `X` sobre la casilla |
 | Introducir secuencia de hackeo (personaje inmóvil) | `W` `A` `S` `D` / `Flechas` | — | Cruceta o stick izquierdo |
 | Abandonar hackeo | `E` | — | `A` |
+| Explotar una falla descubierta durante el hackeo (M-17, D-150) | `F` | — | `Y` |
 | Punzón de descarga (defensa) | Automático al ser agarrado (sin entrada) | — | Automático |
 | Remate con golpe en el suelo (a ~1.5 m mirando un cuerpo no rematado) | — | `Clic izquierdo` sin apuntar | `RT` sin apuntar |
 | Remate con punzón de descarga (a ~1.5 m mirando un cuerpo no rematado) | `E` | — | `A` |
@@ -36,7 +37,7 @@ Define la relación entre las acciones del jugador y las entradas físicas del d
 - **Exploración (OTS):** `WASD` mueve al personaje y `Clic izquierdo` ejecuta el empujón.
 - **Apuntando:** `Clic izquierdo` dispara.
 - **Inventario abierto:** el mouse controla la interfaz; apuntar, disparar y empujar no están disponibles. El juego no se pausa.
-- **Hackeo:** el personaje queda inmóvil en OTS; `WASD` / `Flechas` introducen la secuencia y `E` la abandona.
+- **Hackeo:** el personaje queda inmóvil en OTS; `WASD` / `Flechas` introducen la secuencia, `F` explota una falla descubierta si hay una compatible (D-150) y `E` la abandona.
 - **Vista de vigilancia:** el personaje solo puede permanecer quieto o caminar muy lento; correr, apuntar o empujar devuelven la vista a OTS. `Q` sale de la vista.
 - **Sobre un cuerpo (sin apuntar):** acción contextual de remate ([[02 - Mecánicas]], M-20). `Clic izquierdo` ejecuta el golpe en el suelo en lugar del empujón y `E` clava el punzón de descarga en lugar de interactuar (solo en cuerpos que pueden reciclarse). Al apuntar, `Clic izquierdo` vuelve a disparar.
     - **Frontera del contexto (D-27):** se entra en el contexto a ~1.5 m (valor inicial, sujeto a balance) mirando un cuerpo no rematado, también durante el combate con enemigos vivos cerca. Con un cuerpo ya rematado el contexto no se activa y `Clic izquierdo` y `E` recuperan el empujón y la interacción. Si hay otro elemento interactivo al lado del cuerpo (puerta, panel, escalera, elevador u objeto), gana el que está al centro de la vista; así el jugador siempre puede interactuar con la ruta garantizada hacia la sala clave final (D-33, D-36, principio 9 de [[01 - Jugabilidad]]). El caso de los cuerpos que no pueden reciclarse (enemigos reciclados y sala del jefe) se documenta en M-20.

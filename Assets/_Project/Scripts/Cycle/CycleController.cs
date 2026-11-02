@@ -4,6 +4,7 @@ using System.Linq;
 using Heartbeat.AI;
 using Heartbeat.Combat;
 using Heartbeat.Core;
+using Heartbeat.Level;
 using Heartbeat.Generation;
 using Heartbeat.InputRouting;
 using Heartbeat.Inventory;
@@ -99,6 +100,7 @@ namespace Heartbeat.Cycle
                 if (showcase) HbLog.Info("Cycle", "Showcase preset for this slot");
             }
             registry.Import(Data.terminal.Select(e => (e.id, e.kind)));
+            Services.Get<FaultModel>().Import(Data.patchedFaults);
             if (slot != DevSlot)
             {
                 var g = saves.LoadGlobal();
@@ -112,6 +114,7 @@ namespace Heartbeat.Cycle
         public void SaveNow()
         {
             Data.terminal = registry.Export().Select(e => new RecordEntry { id = e.id, kind = e.kind }).ToList();
+            Data.patchedFaults = Services.Get<FaultModel>().Export();
             saves.Save(Slot, Data);
         }
 
@@ -297,6 +300,7 @@ namespace Heartbeat.Cycle
             var s = CounterState;
             bool assimilate = DeathCounter.RegisterDeath(ref s, cause == DeathCause.Scripted);
             WriteCounter(s);
+            Services.Get<FaultModel>().PatchDiscovered(registry.Has);   // M-17, D-09: no fault survives a death
             Data.hasAttemptSave = false;
             carry = null;
             HbLog.Info("Cycle", $"Death ({cause}) -> {Data.SubjectLabel}, consecutive {Data.deathCounter}/{DeathCounter.AssimilationThreshold}");

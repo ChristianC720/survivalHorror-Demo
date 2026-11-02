@@ -683,6 +683,16 @@ namespace Heartbeat.InputRouting
                     ""interactions"": """",
                     ""initialStateCheck"": false,
                     ""priority"": 0
+                },
+                {
+                    ""name"": ""UseFault"",
+                    ""type"": ""Button"",
+                    ""id"": ""4c6193c9-4c79-43cf-a78d-ea32fc164788"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false,
+                    ""priority"": 0
                 }
             ],
             ""bindings"": [
@@ -881,6 +891,28 @@ namespace Heartbeat.InputRouting
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Abort"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""25db2ac0-73b4-40d1-95c0-96589f1e278b"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardMouse"",
+                    ""action"": ""UseFault"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d36b5995-8acc-4215-a5c4-f38d7233a2df"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""UseFault"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1266,6 +1298,7 @@ namespace Heartbeat.InputRouting
             m_Hacking_Left = m_Hacking.FindAction("Left", throwIfNotFound: true);
             m_Hacking_Right = m_Hacking.FindAction("Right", throwIfNotFound: true);
             m_Hacking_Abort = m_Hacking.FindAction("Abort", throwIfNotFound: true);
+            m_Hacking_UseFault = m_Hacking.FindAction("UseFault", throwIfNotFound: true);
             // Cinematic
             m_Cinematic = asset.FindActionMap("Cinematic", throwIfNotFound: true);
             m_Cinematic_Skip = m_Cinematic.FindAction("Skip", throwIfNotFound: true);
@@ -1706,6 +1739,7 @@ namespace Heartbeat.InputRouting
         private readonly InputAction m_Hacking_Left;
         private readonly InputAction m_Hacking_Right;
         private readonly InputAction m_Hacking_Abort;
+        private readonly InputAction m_Hacking_UseFault;
         /// <summary>
         /// Provides access to input actions defined in input action map "Hacking".
         /// </summary>
@@ -1737,6 +1771,10 @@ namespace Heartbeat.InputRouting
             /// Provides access to the underlying input action "Hacking/Abort".
             /// </summary>
             public InputAction @Abort => m_Wrapper.m_Hacking_Abort;
+            /// <summary>
+            /// Provides access to the underlying input action "Hacking/UseFault".
+            /// </summary>
+            public InputAction @UseFault => m_Wrapper.m_Hacking_UseFault;
             /// <summary>
             /// Provides access to the underlying input action map instance.
             /// </summary>
@@ -1778,6 +1816,9 @@ namespace Heartbeat.InputRouting
                 @Abort.started += instance.OnAbort;
                 @Abort.performed += instance.OnAbort;
                 @Abort.canceled += instance.OnAbort;
+                @UseFault.started += instance.OnUseFault;
+                @UseFault.performed += instance.OnUseFault;
+                @UseFault.canceled += instance.OnUseFault;
             }
 
             /// <summary>
@@ -1804,6 +1845,9 @@ namespace Heartbeat.InputRouting
                 @Abort.started -= instance.OnAbort;
                 @Abort.performed -= instance.OnAbort;
                 @Abort.canceled -= instance.OnAbort;
+                @UseFault.started -= instance.OnUseFault;
+                @UseFault.performed -= instance.OnUseFault;
+                @UseFault.canceled -= instance.OnUseFault;
             }
 
             /// <summary>
@@ -2380,6 +2424,13 @@ namespace Heartbeat.InputRouting
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnAbort(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "UseFault" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnUseFault(InputAction.CallbackContext context);
         }
         /// <summary>
         /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Cinematic" which allows adding and removing callbacks.

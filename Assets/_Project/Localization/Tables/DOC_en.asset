@@ -170,6 +170,22 @@ MonoBehaviour:
     m_Localized: 'Subjects exposed to the first act: preservable.\nSubjects exposed to the complete heartbeat: no longer subjects.\nRecommendation to personnel: listen to the heartbeat. Do not listen to all of it.'
     m_Metadata:
       m_Items: []
+  - m_Id: 224840027078656
+    m_Localized: "Maintenance ticket #4471 \u2014 door lock override"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 224840102576128
+    m_Localized: "Sublevel doors still accept the technician override. Enter the first two codes of a lock's sequence and it skips the rest.\\nThe override only works on standard doors.\\nTicket closed as \"won't fix\". The system logs every override. After the second one it rewrites the lock firmware, and the trick is gone for good.\\n\u2014 Night shift, maintenance"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 224840102576129
+    m_Localized: "Sound engineering \u2014 mixing desk test bus"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 224840102576130
+    m_Localized: "The core's long sequences (elevator, main terminals, the nodes on the mixing desks) can be cut in half from the desk's test bus. We use it when the console hangs.\\nDo not rely on it. The system patches every bypass it catches, usually after the second time, and it always catches them.\\nIf a subject dies in the core, assume the bus is closed.\\n\u2014 S. Brandt, sound engineering"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -226,6 +226,8 @@ namespace Heartbeat.UI
             string n = cycle != null ? cycle.subjectCode.ToString("00") : "07";
             bool reveal = cycle != null && cycle.cycleCompleted && Services.Get<RegistryModel>().HasAllEmilia;
             readerBody.text = docsById.TryGetValue(id, out var d) ? DocText.Render(Loc.Get(d.bodyKey, n), reveal) : "";
+            if (Level.FaultModel.Faults.ContainsKey(id) && Services.TryGet(out Level.FaultModel faults))   // M-17 status
+                readerBody.text += "\n\n" + (faults.IsPatched(id) ? Loc.Get("UI.TERM.FAULT_PATCHED") : Loc.Get("UI.TERM.FAULT_USES", faults.UsesLeft(id)));
             HbLog.Info("Terminal", $"Read {id}");
         }
 

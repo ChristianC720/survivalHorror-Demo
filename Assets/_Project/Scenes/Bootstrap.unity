@@ -218,6 +218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Heartbeat.Runtime::Heartbeat.Core.Bootstrap
   sceneLoader: {fileID: 251523369}
+  faultBalance: {fileID: 11400000, guid: e651d1f7fdab7db4f928998a6f95fecf, type: 2}
 --- !u!114 &251523369
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,7 +322,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 65abc365054c8d04dbbd72a184f41fd2, type: 2}
   voices: 24
   alertCueRadius: 25
-  showDebugCaptions: 1
   balance: {fileID: 11400000, guid: 203b2ff80255b124a9081823f5a1188b, type: 2}
   mixer: {fileID: 24100000, guid: 5e97351fc7982014ba7fbec47c6a9128, type: 2}
   duckDb: -8

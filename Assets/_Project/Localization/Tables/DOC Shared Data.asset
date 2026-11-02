@@ -167,6 +167,22 @@ MonoBehaviour:
     m_Key: DOC.MOTHER_LISTENING_NOTE.BODY
     m_Metadata:
       m_Items: []
+  - m_Id: 224840027078656
+    m_Key: DOC.FAULT_DOOR_BACKDOOR.TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 224840102576128
+    m_Key: DOC.FAULT_DOOR_BACKDOOR.BODY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 224840102576129
+    m_Key: DOC.FAULT_MIXER_BYPASS.TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 224840102576130
+    m_Key: DOC.FAULT_MIXER_BYPASS.BODY
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

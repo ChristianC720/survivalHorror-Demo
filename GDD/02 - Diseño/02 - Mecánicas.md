@@ -889,6 +889,8 @@ flowchart TD
         
     - Demo: 1-2 fallas (valor inicial, sujeto a balance).
         
+    - Fallas de la demo, descubrimiento y uso manual durante el hackeo: D-150.
+        
 - **Entrada:** N/A (se aplica al hackear o interactuar con el sistema afectado).
     
 - **Estado inicial:** Falla no descubierta.

@@ -494,6 +494,22 @@ MonoBehaviour:
     m_Localized: 'You are in a safe room: restarting costs nothing. The floor is rebuilt and you keep what you had when it was saved.'
     m_Metadata:
       m_Items: []
+  - m_Id: 224916380188672
+    m_Localized: 'FAULT ACTIVE: {0} USE(S) LEFT'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 224916426326016
+    m_Localized: FAULT PATCHED BY THE MOTHER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 224916426326017
+    m_Localized: Exploit fault
+    m_Metadata:
+      m_Items: []
+  - m_Id: 224916426326018
+    m_Localized: FAULT EXPLOITED
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

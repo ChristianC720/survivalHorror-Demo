@@ -170,6 +170,22 @@ MonoBehaviour:
     m_Localized: "Sujetos expuestos al primer acto: preservables.\\nSujetos expuestos al latido completo: dejan de ser sujetos.\\nRecomendaci\xF3n al personal: escuchen el latido. No lo escuchen entero."
     m_Metadata:
       m_Items: []
+  - m_Id: 224840027078656
+    m_Localized: "Ticket de mantenimiento n.\xBA 4471 \u2014 anulaci\xF3n de cerraduras"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 224840102576128
+    m_Localized: "Las puertas del subnivel a\xFAn aceptan la anulaci\xF3n de t\xE9cnico. Introduce los dos primeros c\xF3digos de la secuencia de una cerradura y se salta el resto.\\nLa anulaci\xF3n solo funciona en puertas normales.\\nTicket cerrado como \"no se arreglar\xE1\". El sistema registra cada anulaci\xF3n. Tras la segunda reescribe el firmware de la cerradura y el truco desaparece para siempre.\\n\u2014 Turno de noche, mantenimiento"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 224840102576129
+    m_Localized: "Ingenier\xEDa de sonido \u2014 bus de pruebas de la mesa de mezcla"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 224840102576130
+    m_Localized: "Las secuencias largas del n\xFAcleo (elevador, terminales principales, los nodos de las mesas de mezcla) pueden reducirse a la mitad desde el bus de pruebas de la mesa. Lo usamos cuando la consola se cuelga.\\nNo conf\xEDes en ello. El sistema parchea cada derivaci\xF3n que detecta, normalmente tras la segunda vez, y siempre las detecta.\\nSi un sujeto muere en el n\xFAcleo, da el bus por cerrado.\\n\u2014 S. Brandt, ingenier\xEDa de sonido"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

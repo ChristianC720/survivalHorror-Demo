@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8917d29b15432284197b86579217af45, type: 3}
+  m_Name: DOC_FAULT_DOOR_BACKDOOR
+  m_EditorClassIdentifier: Heartbeat.Runtime::Heartbeat.Narrative.DocumentDefinition
+  id: FAULT.DOOR_BACKDOOR
+  kind: 5
+  floor: 1
+  titleKey: DOC.FAULT_DOOR_BACKDOOR.TITLE
+  bodyKey: DOC.FAULT_DOOR_BACKDOOR.BODY
+  placeholderTitle: "Maintenance ticket #4471 \u2014 door lock override"
