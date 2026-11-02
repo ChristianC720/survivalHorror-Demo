@@ -56,3 +56,4 @@ Source: `GDD/05 - Arte y Audio/05 - Audio y Música.md`, S-11 in `GDD/02 - Dise�
 | `CUE_Elevator_Fall` | PlayerCombat / 2 | – | – | intro elevator distorts and drops (cinematic) | D-53, D-46 |
 | `CUE_Elevator_Impact` | PlayerCombat / 2 | – | – | intro elevator stops at the floor that does not exist | D-53 |
 | `CUE_Intro_Attack` | PlayerCombat / 2 | – | – | attack from behind, cut to black (scripted death) | D-53, D-63 |
+| `CUE_Rastrero_Behind` | PlayerCombat / 2 | ✔ | – | tutorial tunnel (first attempt): a Rastrero drags itself behind the far door when Lukas is within 4 m (`TutorialCue`) | D-70 |
