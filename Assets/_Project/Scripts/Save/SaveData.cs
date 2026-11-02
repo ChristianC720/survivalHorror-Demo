@@ -70,6 +70,9 @@ namespace Heartbeat.Save
         public List<string> patchedFaults = new List<string>();
         public bool hasAttemptSave;            // JsonUtility cannot serialise null objects
         public AttemptSave attemptSave = new AttemptSave();
+        // Start of the current floor (D-147): where a death or a safe-zone restart returns, with what Lukas arrived with.
+        public bool hasFloorStart;
+        public AttemptSave floorStart = new AttemptSave();
         public bool confirmedExit;
         public ExitCost exitCost;
 

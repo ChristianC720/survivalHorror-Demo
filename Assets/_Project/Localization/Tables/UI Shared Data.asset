@@ -487,6 +487,10 @@ MonoBehaviour:
     m_Key: UI.HACK.ABORT
     m_Metadata:
       m_Items: []
+  - m_Id: 196157639884800
+    m_Key: UI.CONFIRM.RESTART_SAFE
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

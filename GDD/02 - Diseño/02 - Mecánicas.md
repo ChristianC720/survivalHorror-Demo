@@ -813,6 +813,7 @@ flowchart TD
 - **Reglas:**
     
     - Al morir, el personaje se reconstruye en el punto de reaparición, al inicio del ciclo en el piso 1 (ciclo de muerte y reconstrucción). El autoguardado de la sala final (D-30) no cambia el punto de reaparición: solo sirve para continuar después de salir del juego o de un fallo (ver [[07 - Reglas y Estados del Juego]]).
+    - **Actualizado (D-147):** el punto de reaparición es el inicio del piso actual (semilla nueva) con el inventario con el que Lukas llegó a ese piso; morir en la sala de The Mother regresa al inicio del piso 3.
         
     - **Cinemática completa de reconstrucción (D-39, D-45, D-53):** se reproduce una sola vez, al terminar la introducción, y muestra por primera vez todo el proceso de reconstrucción en imágenes fugaces de 1–2 s con cortes a negro. Es **el momento del olvido**: Lukas recuerda a Emilia durante la introducción y la olvida de golpe en esta primera reconstrucción. Sale de su cápsula sabiendo que busca algo o a alguien, sin recordar a quién, y recoge del suelo un anillo que sabe importante; nunca se sabe si es el suyo o el de Emilia (D-54). Lukas muere al final de la introducción atacado por la espalda en un piso que no existe (D-53); el resto del contenido se documenta en [[01 - Premisa y Trama]].
         

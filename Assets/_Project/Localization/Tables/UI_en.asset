@@ -295,11 +295,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 2394030147
-    m_Localized: Restarting counts as a death. Continue?
+    m_Localized: 'Restarting counts as a death: you return to the start of this floor with what you had on arriving. Continue?'
     m_Metadata:
       m_Items: []
   - m_Id: 2394030148
-    m_Localized: 'You are being hunted. Quitting now counts as a death: new subject, inventory lost.'
+    m_Localized: 'You are being hunted. Quitting now counts as a death: new subject, back to the start of this floor with what you had on arriving.'
     m_Metadata:
       m_Items: []
   - m_Id: 2394030149
@@ -488,6 +488,10 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 181802655416320
     m_Localized: Abort
+    m_Metadata:
+      m_Items: []
+  - m_Id: 196157639884800
+    m_Localized: 'You are in a safe room: restarting costs nothing. The floor is rebuilt and you keep what you had when it was saved.'
     m_Metadata:
       m_Items: []
   references:

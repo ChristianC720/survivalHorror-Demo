@@ -35,6 +35,7 @@ namespace Heartbeat.Cycle
         private bool skipRequested;
         private AttemptSave carry;            // inventory brought to the next floor
         private bool autosavePending;
+        private bool resumingFinalRoom;   // the next FloorBuilt resumes a final-room autosave (not a floor start)
         private RoomInstance savedFinalRoom;  // final key room whose autosave is current (no-cost quit)
         private readonly System.Random seeds = new System.Random();
 
@@ -63,6 +64,8 @@ namespace Heartbeat.Cycle
             bool devLaunch = Application.isEditor && !string.IsNullOrEmpty(launch) && launch != SceneNames.Bootstrap && launch != SceneNames.MainMenu;
             if (devLaunch) LoadOrCreate(DevSlot, GameMode.Survival, newGame: true);
             else LoadOrCreate(saves.LoadGlobal().lastUsedSlot, GameMode.Survival, newGame: false);
+            // The floor may already be built (its FloorBuilt fired before this Start): record its start now.
+            if (Services.TryGet(out FloorBuilder fb) && fb.Layout != null) RecordFloorStart(fb.Layout.Floor);
         }
 
         /// <summary>Hidden slot file used by editor play-from-scene (never listed in the menus, never "last used").</summary>
@@ -149,6 +152,7 @@ namespace Heartbeat.Cycle
                 Data.deathCounter = 0;
                 Data.degradationLevel = 0;
                 Data.hasAttemptSave = false;
+                Data.hasFloorStart = false;
                 Data.firstAttempt = false;
                 GameEvents.RaiseDegradationChanged(0);
                 HbLog.Info("Cycle", $"New cycle (D-93): {Data.SubjectLabel}, terminal kept ({registry.Count} records)");
@@ -166,10 +170,11 @@ namespace Heartbeat.Cycle
             }
 
             bool resume = Data.hasAttemptSave && !afterHuntQuit;
-            CurrentFloor = resume ? Data.attemptSave.floor : 1;
-            carry = resume ? Data.attemptSave : null;
+            if (resume) { CurrentFloor = Data.attemptSave.floor; carry = Data.attemptSave; }
+            else (CurrentFloor, carry) = FloorStartPoint();   // D-147: start of the saved floor, with what Lukas arrived with
             var request = NextRequest(CurrentFloor);
             request.StartInFinalRoom = resume;
+            resumingFinalRoom = resume;
             FloorSession.Pending = request;
             loader.SetStatus(UI.Loc.Get("UI.HUD.SYNC_SUBJECT", Data.SubjectLabel));
             HbLog.Info("Cycle", $"Start slot {slot} ({(newGame ? "new" : "continue")}): floor {CurrentFloor}, resume={resume}, {Data.SubjectLabel}");
@@ -186,7 +191,53 @@ namespace Heartbeat.Cycle
         public void Restart()
         {
             if (busy || states.Current != GameStateId.Paused) return;
+            if (InSafeZone) { StartCoroutine(SafeRestartRoutine()); return; }
             GameEvents.RaisePlayerDied(DeathCause.Restart);
+        }
+
+        /// <summary>
+        /// Safe zone (D-147): the floor's spawn room or the saved final room, with no hunt. Quitting or restarting there
+        /// costs nothing; the floor is rebuilt with a new seed from the matching save.
+        /// </summary>
+        public bool InSafeZone
+        {
+            get
+            {
+                if (Services.TryGet<AlertDirector>(out var d) && d.HuntingCount > 0) return false;
+                var here = RoomInstance.Current;
+                if (here == null) return false;
+                if (savedFinalRoom != null && here == savedFinalRoom) return true;
+                return Services.TryGet(out FloorBuilder fb) && fb.Layout != null && fb.Rooms.Count > fb.Layout.EntryRoom
+                       && here == fb.Rooms[fb.Layout.EntryRoom];
+            }
+        }
+
+        private IEnumerator SafeRestartRoutine()
+        {
+            busy = true;
+            bool inFinal = savedFinalRoom != null && RoomInstance.Current == savedFinalRoom && Data.hasAttemptSave;
+            if (!Services.Get<PauseService>().TryLeavePauseTo(GameStateId.Loading)) PauseService.ResetTime();   // never stay frozen
+            yield return loader.Fade(0f, 1f);
+            if (inFinal) { CurrentFloor = Data.attemptSave.floor; carry = Data.attemptSave; }
+            else (CurrentFloor, carry) = FloorStartPoint();
+            var request = NextRequest(CurrentFloor);
+            request.StartInFinalRoom = inFinal;
+            resumingFinalRoom = inFinal;
+            FloorSession.Pending = request;
+            HbLog.Info("Cycle", $"Safe restart (no cost): floor {CurrentFloor}, {(inFinal ? "final room" : "floor start")}, new seed");
+            loader.Load(SceneNames.Floor, null, fadeOut: false);
+            while (loader.IsBusy) yield return null;
+            states.TryTransition(GameStateId.Playing);
+            yield return loader.Fade(1f, 0f);
+            busy = false;
+        }
+
+        /// <summary>Start of the saved floor and its loadout (full health); floor 1 empty-handed when there is none.</summary>
+        private (int floor, AttemptSave carry) FloorStartPoint()
+        {
+            if (!Data.hasFloorStart) return (1, null);
+            var a = Data.floorStart;
+            return (a.floor, new AttemptSave { floor = a.floor, inventory = a.inventory.ToList(), revolverLoaded = a.revolverLoaded, health = -1f });
         }
 
         // ---------- Death → reconstruction ----------
@@ -218,8 +269,9 @@ namespace Heartbeat.Cycle
             }
 
             states.TryTransition(GameStateId.Reconstruction);
-            CurrentFloor = 1;
-            FloorSession.Pending = NextRequest(1);
+            // D-147: back to the start of this floor (The Mother's room has none: floor 3), new layout, arrival loadout.
+            (CurrentFloor, carry) = FloorStartPoint();
+            FloorSession.Pending = NextRequest(CurrentFloor);
             GameEvents.RaiseReconstructed(Data.subjectCode);
             if (Random.value < 1f / 3f) Subtitles.Say(Subtitles.Lukas, "SUB.LUKAS.CAPSULE_RETURN");   // 1 in 3 (Textos del Juego)
             HbLog.Info("Cycle", $"RECONSTRUCTION: subject {Data.SubjectLabel} (Space skips)");
@@ -261,8 +313,7 @@ namespace Heartbeat.Cycle
 
         /// <summary>What quitting now would cost; the pause menu's confirmation dialog shows it before quitting.</summary>
         public ExitCost QuitCost => ExitRules.Evaluate(
-            Services.TryGet<AlertDirector>(out var d) && d.HuntingCount > 0,
-            savedFinalRoom != null && RoomInstance.Current == savedFinalRoom);
+            Services.TryGet<AlertDirector>(out var d) && d.HuntingCount > 0, InSafeZone);
 
         /// <summary>Pause menu "Quit": applies the exit table, saves and returns to the main menu.</summary>
         public void QuitToMenu()
@@ -313,9 +364,26 @@ namespace Heartbeat.Cycle
         private void OnFloorBuilt(int floor, int seed)
         {
             CurrentFloor = floor;
+            bool resumedFinal = resumingFinalRoom;
+            resumingFinalRoom = false;
             if (carry != null) Apply(carry);
             else ResetLoadout();
             carry = null;
+            if (floor >= FloorBuilder.MotherFloor || Data == null) return;   // The Mother's room has no start save (death: floor 3)
+            if (!resumedFinal) RecordFloorStart(floor);
+        }
+
+        /// <summary>A new floor start (D-147): what Lukas arrived with; the previous floor's final-room save no longer applies.</summary>
+        private void RecordFloorStart(int floor)
+        {
+            Data.hasAttemptSave = false;
+            savedFinalRoom = null;
+            Data.floorStart = Snapshot();
+            Data.floorStart.floor = floor;
+            Data.floorStart.health = -1f;   // a death or restart always comes back at full health
+            Data.hasFloorStart = true;
+            SaveNow();
+            HbLog.Info("Cycle", $"Floor {floor} start saved: {Data.floorStart.inventory.Count(i => i.Kind != ItemKind.None)} items, revolver {Data.floorStart.revolverLoaded}");
         }
 
         private void OnRoomEntered(MonoBehaviour m)
