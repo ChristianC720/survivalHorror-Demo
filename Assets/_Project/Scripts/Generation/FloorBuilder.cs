@@ -142,7 +142,7 @@ namespace Heartbeat.Generation
             // Start() of a freshly loaded scene runs before it becomes the active scene: anything instantiated at the
             // root would land in the previous (about to be unloaded) scene. Keep everything in this scene.
             UnityEngine.SceneManagement.SceneManager.MoveGameObjectToScene(doorsRoot.gameObject, gameObject.scene);
-            emiliaCursor = 0;
+            emiliaCursor = 0; placedDocs.Clear();
 
             int generation = RoomInstance.NextGeneration();
             foreach (var pr in Layout.Rooms)
@@ -314,17 +314,25 @@ namespace Heartbeat.Generation
         /// </summary>
         private DocumentDefinition Pick(DocumentDefinition[] pool, IReadOnlyCollection<string> registered, ItemPlacement item)
         {
-            var mine = (pool ?? new DocumentDefinition[0]).Where(d => d != null && d.floor == Layout.Floor).ToList();
+            // Never the same record twice on one floor (the registry only changes when Lukas reads them).
+            var mine = (pool ?? new DocumentDefinition[0]).Where(d => d != null && d.floor == Layout.Floor && !placedDocs.Contains(d.id)).ToList();
             var unread = registered == null ? mine : mine.Where(d => !registered.Contains(d.id)).ToList();
-            var from = unread.Count > 0 ? unread : mine;
-            if (from.Count == 0) return null;
             // shortcut: an unread fault document (M-17) takes the floor's first document spawn instead of a context one;
             // the GDD puts faults outside the per-floor budget — give them their own spawn tag if content gets tight.
-            var fault = unread.FirstOrDefault(d => d.kind == RecordKind.Fault);
-            if (fault != null) return fault;
-            var rng = new System.Random(Layout.Seed * 31 + item.Room * 7 + item.Spawn);
-            return from[rng.Next(from.Count)];
+            var pick = unread.FirstOrDefault(d => d.kind == RecordKind.Fault);
+            if (pick == null)
+            {
+                // Already-read records may come back to re-read, but a read (and soon patched) fault never does.
+                var from = unread.Count > 0 ? unread : mine.Where(d => d.kind != RecordKind.Fault).ToList();
+                if (from.Count == 0) return null;
+                var rng = new System.Random(Layout.Seed * 31 + item.Room * 7 + item.Spawn);
+                pick = from[rng.Next(from.Count)];
+            }
+            placedDocs.Add(pick.id);
+            return pick;
         }
+
+        private readonly HashSet<string> placedDocs = new HashSet<string>();
 
         private GameObject PrefabFor(ItemKind k) => k switch
         {
