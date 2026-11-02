@@ -83,7 +83,7 @@ namespace Heartbeat.CameraSystem
             follow.VerticalArmLength = 0f;
             follow.CameraSide = 1f;
             follow.AvoidObstacles.Enabled = true;
-            follow.AvoidObstacles.CollisionFilter = LayerMask.GetMask("Environment");
+            follow.AvoidObstacles.CollisionFilter = LayerMask.GetMask("Environment", "Ceiling");   // S-01: never through geometry
             follow.AvoidObstacles.CameraRadius = 0.15f;
         }
 

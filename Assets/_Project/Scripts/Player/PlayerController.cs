@@ -113,10 +113,13 @@ namespace Heartbeat.Player
             controller.Move(Velocity * Time.deltaTime);
             GuardFallOut();
 
-            if (moving && !IsAiming)
+            // Lukas always faces the camera (look input), not only when aiming: the flashlight never points into his
+            // own body and movement strafes / backpedals relative to the view.
+            if (!IsAiming && !MovementLocked && cameraTransform != null)
             {
-                var target = Quaternion.LookRotation(dir, Vector3.up);
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, target, balance.turnSpeed * Time.deltaTime);
+                Vector3 look = cameraTransform.forward; look.y = 0f;
+                if (look.sqrMagnitude > 0.0001f)
+                    transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(look), balance.turnSpeed * Time.deltaTime);
             }
 
             EmitMovementNoise(moving);
