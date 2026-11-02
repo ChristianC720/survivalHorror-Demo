@@ -23,6 +23,11 @@ namespace Heartbeat.CameraSystem
         [SerializeField, Range(0f, 1f)] private float delaySeconds = 0.3f;
         [SerializeField] private float orthoSize = 7f;
         [SerializeField] private float shotAttention = 0.15f;
+        [Tooltip("Flat ambient light while the feed is up: the camera image covers the whole screen, so only the feed sees it (M-02 legibility).")]
+        [SerializeField] private Color viewAmbient = new Color(0.32f, 0.36f, 0.34f);
+
+        private UnityEngine.Rendering.AmbientMode savedAmbientMode;
+        private Color savedAmbient;
 
         private const int RingSize = 24;
 
@@ -115,6 +120,10 @@ namespace Heartbeat.CameraSystem
             cam.enabled = true;
             screen.enabled = true;
             noise.enabled = true;
+            savedAmbientMode = RenderSettings.ambientMode;
+            savedAmbient = RenderSettings.ambientLight;
+            RenderSettings.ambientMode = UnityEngine.Rendering.AmbientMode.Flat;
+            RenderSettings.ambientLight = viewAmbient;
             player.IsSurveilling = true;
             if (player.TryGetComponent(out PlayerHealth health)) health.Hit += OnPlayerHit;
             router.SetContext(InputContext.Surveillance);
@@ -130,6 +139,8 @@ namespace Heartbeat.CameraSystem
             cam.enabled = false;
             screen.enabled = false;
             noise.enabled = false;
+            RenderSettings.ambientMode = savedAmbientMode;
+            RenderSettings.ambientLight = savedAmbient;
             if (player != null)
             {
                 player.IsSurveilling = false;
