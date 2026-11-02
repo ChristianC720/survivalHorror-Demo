@@ -26,6 +26,7 @@ namespace Heartbeat.Combat
         private OtsCameraRig rig;
         private int shotMask;
         private bool hitThisFrame;
+        private System.Func<bool> takeRound;
 
         public RevolverModel Model { get; private set; }
 
@@ -57,7 +58,7 @@ namespace Heartbeat.Combat
         {
             bool unsteady = player.CurrentSpeed > 0.1f || player.IsRunning || hitThisFrame;
             hitThisFrame = false;
-            Model.Tick(Time.deltaTime, TakeRound, unsteady);
+            Model.Tick(Time.deltaTime, takeRound ??= TakeRound, unsteady);   // cached: no delegate allocation per frame
         }
 
         private void OnAttack(InputAction.CallbackContext _)

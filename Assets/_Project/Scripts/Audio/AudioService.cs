@@ -188,7 +188,7 @@ namespace Heartbeat.Audio
             if (src.clip != null) src.Play();
 
             if (cue.priority == CuePriority.Signal) duckUntil = Mathf.Max(duckUntil, Time.unscaledTime + duckHoldSeconds);
-            HbLog.Info("Audio", cue.name);
+            LogCue(cue.name);
             GameEvents.RaiseCuePlayed(cue.name, spatial ? position : null);
             return src;
         }
@@ -270,5 +270,10 @@ namespace Heartbeat.Audio
                 surveillanceLoop = StartLoop(c);
             else if (from == PlaySubState.Surveillance) { Stop(surveillanceLoop); surveillanceLoop = null; }
         }
+
+        // Same "[Heartbeat][Audio] CUE_X" line playtests assert on, but stripped from release builds: every footstep
+        // logging with a stack trace was the biggest per-frame GC source (E13-profiling).
+        [System.Diagnostics.Conditional("UNITY_EDITOR"), System.Diagnostics.Conditional("DEBUG")]
+        private static void LogCue(string name) => HbLog.Info("Audio", name);
     }
 }
