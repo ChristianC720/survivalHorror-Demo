@@ -43,4 +43,6 @@ Each checkbox is one git-flow feature: `git flow feature start <id>`.
 - [x] `E07-story-mode-showcase` — Story mode (+1 minimum) and showcase preset (new slots get it with the `-showcase` launch argument)
 
 ## H6 — Release
-- [ ] `E13-profiling` · `E13-bugfix` · `E13-build` → tag `v1.0-demo`
+- [x] `E13-profiling` (13-quality-build.md: per-cue log and revolver delegate GC fixed; floor build ≤ 200 ms)
+- [~] `E13-bugfix` — done so far: revolver found on the Kessler guard / capsule tray (D-74), dark tutorial depot, tutorial tunnel Rastrero cue, shove gasp (M-06), unique documents per floor, Intro pause (no Restart, free quit), compiler warnings, localization line breaks, teardown NREs; plus D-61 ending details (Assimilation staged shot, Full relief second act, Ambiguous heartbeats), D-90 main menu in the capsule-row room, 7 floor-specific F2/F3 rooms
+- [ ] `E13-build` → tag `v1.0-demo`
