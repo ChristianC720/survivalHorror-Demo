@@ -213,8 +213,8 @@ namespace Heartbeat.UI
         {
             NewScreen(1100);
             Line(Loc.Get("UI.MENU.CREDITS"), 40);
-            // shortcut: placeholder credits until the END table (E15) holds the real roll.
-            Line("Identity Dissolution — Heartbeat\nGame design: Christian Coronel Palma\n3D models: Bryan\nAudio: Lian Daniel Sierra Vera", 28);
+            Line(Loc.Get("END.CREDITS.TITLE"), 30);
+            Line(Loc.Get("END.CREDITS.ROLL"), 26);   // the 5 members (Roles y Responsabilidades), same roll as the ending credits
             UiKit.Select(Btn(Loc.Get("UI.MENU.BACK"), ShowMain));
         }
 

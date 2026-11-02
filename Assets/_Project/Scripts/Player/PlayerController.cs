@@ -66,9 +66,11 @@ namespace Heartbeat.Player
         private void OnDestroy()
         {
             if (!hasInput) return;
-            actions.Crouch.performed -= OnCrouch;
-            actions.Crouch.canceled -= OnCrouchReleased;
             GameEvents.OptionsChanged -= ReadOptions;
+            var crouch = actions.Crouch;   // null when the input asset was torn down first (leaving Play mode)
+            if (crouch == null) return;
+            crouch.performed -= OnCrouch;
+            crouch.canceled -= OnCrouchReleased;
         }
 
         private bool crouchToggle = true;

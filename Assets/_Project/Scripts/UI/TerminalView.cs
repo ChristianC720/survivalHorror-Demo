@@ -36,6 +36,7 @@ namespace Heartbeat.UI
         private TMP_Text header, healthLabel, flashLabel, logsList, readerTitle, readerBody, actionHint, emiliaCount;
         private Image flashFill;
         private readonly List<RectTransform> ecg = new List<RectTransform>();
+        private RectTransform ecgStrip;
         private readonly GameObject[] pages = new GameObject[3];
         private readonly TMP_Text[] slotLabels = new TMP_Text[InventoryModel.SlotCount];
         private readonly Image[] slotFrames = new Image[InventoryModel.SlotCount];
@@ -44,6 +45,7 @@ namespace Heartbeat.UI
         private Transform logButtons;
         private int tab, focusedSlot = -1;
         private float openTime;
+        private float textScale = 1f;
         private bool open;
 
         private PlayerInventory inventory;
@@ -57,6 +59,7 @@ namespace Heartbeat.UI
         {
             foreach (var d in documents) if (d != null) docsById[d.id] = d;
             Build();
+            ApplyTextScale();
             panel.gameObject.SetActive(false);
         }
 
@@ -75,6 +78,7 @@ namespace Heartbeat.UI
             GameEvents.InventoryChanged += Refresh;
             GameEvents.ItemRegistered += OnRegistered;
             GameEvents.PlayerDied += OnDied;
+            GameEvents.OptionsChanged += ApplyTextScale;
         }
 
         private void OnDisable()
@@ -83,6 +87,7 @@ namespace Heartbeat.UI
             GameEvents.InventoryChanged -= Refresh;
             GameEvents.ItemRegistered -= OnRegistered;
             GameEvents.PlayerDied -= OnDied;
+            GameEvents.OptionsChanged -= ApplyTextScale;
         }
 
         private void OnDestroy()
@@ -108,6 +113,7 @@ namespace Heartbeat.UI
             revolver = player.GetComponentInChildren<Revolver>();
             open = true;
             openTime = Time.unscaledTime;
+            ApplyTextScale();
             panel.gameObject.SetActive(true);
             router.SetContext(InputContext.Inventory);
             Sfx.Play2D(Sfx.TerminalOn);
@@ -226,7 +232,7 @@ namespace Heartbeat.UI
         {
             if (!open) return;
             float k = Mathf.Clamp01((Time.unscaledTime - openTime) / 0.2f);   // CRT power-on
-            panel.localScale = new Vector3(1f, Mathf.Max(0.02f, k * k), 1f);
+            panel.localScale = new Vector3(textScale, textScale * Mathf.Max(0.02f, k * k), 1f);
             if (tab == 1) UpdateStatus();
             if (inventory != null && inventory.IsUsingItem) actionHint.text = new string('|', 1 + (int)(inventory.UseProgress * 20));
             else if (actionHint.text.StartsWith("|")) Refresh();
@@ -244,7 +250,9 @@ namespace Heartbeat.UI
             for (int i = 0; i < ecg.Count; i++)
             {
                 float v = EcgSample(state, t - (ecg.Count - i) * 0.03f);
-                ecg[i].sizeDelta = new Vector2(ecg[i].sizeDelta.x, 4f + 110f * v);
+                // Bars fit their strip (clipped too): they used to overflow onto the HEALTH line every beat.
+                float room = ecgStrip != null ? Mathf.Max(8f, ecgStrip.rect.height - 8f) : 110f;
+                ecg[i].sizeDelta = new Vector2(ecg[i].sizeDelta.x, 4f + (room - 4f) * v);
                 ecg[i].GetComponent<Image>().color = c;
             }
 
@@ -276,6 +284,22 @@ namespace Heartbeat.UI
             for (int p = 0; p < pages.Length; p++) pages[p].SetActive(p == i);
             if (i != 0) Focus(-1);
             Refresh();
+        }
+
+        /// <summary>
+        /// Accessibility text size (subtitles and terminal, Accesibilidad): the whole panel scales from its top-left
+        /// corner; its unscaled height shrinks by the same factor so it keeps covering 84% of the screen height.
+        /// </summary>
+        private void ApplyTextScale()
+        {
+            if (panel == null) return;
+            float k = Services.TryGet(out Save.SaveService saves) ? Mathf.Max(1f, saves.LoadGlobal().textScale) : 1f;
+            panel.pivot = new Vector2(0f, 1f);
+            panel.anchorMin = new Vector2(0.03f, 0.92f - 0.84f / k);
+            panel.anchorMax = new Vector2(0.48f, 0.92f);
+            panel.offsetMin = panel.offsetMax = Vector2.zero;
+            textScale = k;
+            panel.localScale = new Vector3(k, k, 1f);
         }
 
         // ---------- Construction ----------
@@ -331,8 +355,13 @@ namespace Heartbeat.UI
             var status = NewPage("Status");
             pages[1] = status.gameObject;
             healthLabel = MakeText(status, "", 1.4f);
+            // VT323 glyphs are taller than the size TMP lays them out with: reserve the line so the ECG never sits on it.
+            healthLabel.gameObject.AddComponent<LayoutElement>().minHeight = baseFontSize * 1.4f * 1.6f;
             var strip = NewRect("ECG", status);
-            strip.gameObject.AddComponent<LayoutElement>().preferredHeight = 130;
+            var stripLayout = strip.gameObject.AddComponent<LayoutElement>();
+            stripLayout.minHeight = stripLayout.preferredHeight = 130;
+            strip.gameObject.AddComponent<RectMask2D>();
+            ecgStrip = strip;
             var sh = strip.gameObject.AddComponent<HorizontalLayoutGroup>();
             sh.spacing = 2;
             sh.childAlignment = TextAnchor.MiddleLeft;
