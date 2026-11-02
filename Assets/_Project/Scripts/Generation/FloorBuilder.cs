@@ -231,7 +231,8 @@ namespace Heartbeat.Generation
             var room = go.GetComponent<RoomInstance>();
             room.NodeIndex = pr.Index;
             room.IsEmpty = pr.Empty;
-            room.IsPowered = !(pr.Index == Layout.FinalRoom && Layout.FinalUnpowered);
+            // The tutorial depot is the dark room that teaches the flashlight (D-70, Niveles: "Depósito a oscuras").
+            room.IsPowered = !(pr.Index == Layout.FinalRoom && Layout.FinalUnpowered) && pr.TutorialIndex != 2;
             return room;
         }
 
