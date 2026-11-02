@@ -98,6 +98,30 @@ MonoBehaviour:
     m_Localized: "\u2026Lukas. I'm Lukas."
     m_Metadata:
       m_Items: []
+  - m_Id: 238196427456512
+    m_Localized: Lukas. If you're hearing this, I didn't come back.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 238196469399552
+    m_Localized: I've been looking into what happened at Vitalis. The incident. I found something in the sound and I went back for the rest of it.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 238196469399553
+    m_Localized: "Something went wrong. I don't remember\u2026 I don't remember what I'm forgetting."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 238196469399554
+    m_Localized: Don't come looking for me. Please. Not you. Stay home. Keep the photo.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 238196469399555
+    m_Localized: "(breathing) \u2026it's in the walls. I can hear it from here."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 238196469399556
+    m_Localized: (footsteps, running)
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -229,6 +229,8 @@ namespace Heartbeat.UI
             if (Level.FaultModel.Faults.ContainsKey(id) && Services.TryGet(out Level.FaultModel faults))   // M-17 status
                 readerBody.text += "\n\n" + (faults.IsPatched(id) ? Loc.Get("UI.TERM.FAULT_PATCHED") : Loc.Get("UI.TERM.FAULT_USES", faults.UsesLeft(id)));
             HbLog.Info("Terminal", $"Read {id}");
+            if (id == Cycle.CycleController.RingId) Subtitles.Say(Subtitles.Lukas, "SUB.LUKAS.RING_EXAMINE");
+            else if (id == Cycle.CycleController.VoiceNoteId) Subtitles.Say(Subtitles.Lukas, "SUB.LUKAS.VOICE_NOTE");
         }
 
         private void Update()

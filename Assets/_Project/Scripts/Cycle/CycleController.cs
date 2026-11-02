@@ -134,7 +134,7 @@ namespace Heartbeat.Cycle
         /// Continue / Load / New game (Reglas y Estados): loads the slot and enters the floor. With an autosave it
         /// resumes in that floor's final room with the saved inventory (D-30); otherwise the cycle starts on floor 1.
         /// After a quit during a hunt it plays the short reconstruction; Assimilation never plays here, only on a real death (D-149).
-        /// shortcut: New game skips the Intro scene until E14-intro exists.
+        /// A slot whose intro was never finished plays the Intro scene first (D-53, D-63).
         /// </summary>
         public void StartFromMenu(int slot, GameMode mode, bool newGame)
         {
@@ -162,6 +162,16 @@ namespace Heartbeat.Cycle
             }
             SaveNow();
 
+            if (!Data.introDone)
+            {
+                states.TryTransition(GameStateId.Intro);
+                HbLog.Info("Cycle", $"Start slot {slot}: intro");
+                loader.Load(SceneNames.Intro, null, fadeOut: false);
+                while (loader.IsBusy) yield return null;
+                busy = false;
+                yield break;   // IntroDirector fades in and calls FinishIntro
+            }
+
             states.TryTransition(GameStateId.Loading);
             // D-149: a counter at 5 reached by quitting is kept; Assimilation waits for Lukas's next real death.
 
@@ -180,6 +190,41 @@ namespace Heartbeat.Cycle
             loader.SetStatus("");
             states.TryTransition(GameStateId.Playing);
             yield return loader.Fade(1f, 0f);
+            busy = false;
+        }
+
+        /// <summary>
+        /// End of the Intro (D-53): the phone's voice note is copied, damaged, to the arm terminal as the subject's
+        /// personal effects and the ring is registered (D-54); the cycle starts on floor 1, first attempt, from the capsule.
+        /// </summary>
+        public void FinishIntro()
+        {
+            if (busy) return;
+            StartCoroutine(FinishIntroRoutine());
+        }
+
+        public const string VoiceNoteId = "DOC.VOICE_NOTE_EMILIA", RingId = "RING";
+
+        private IEnumerator FinishIntroRoutine()
+        {
+            busy = true;
+            Data.introDone = true;
+            registry.Register(VoiceNoteId, RecordKind.Confiscated);
+            registry.Register(RingId, RecordKind.Ring);
+            Data.hasFloorStart = false;
+            SaveNow();
+            states.TryTransition(GameStateId.Loading);
+            CurrentFloor = 1;
+            carry = null;
+            FloorSession.Pending = NextRequest(1);
+            states.TryTransition(GameStateId.Reconstruction);
+            GameEvents.RaiseReconstructed(Data.subjectCode);
+            HbLog.Info("Cycle", $"Intro done: {Data.SubjectLabel}, floor 1 (first attempt {Data.firstAttempt})");
+            loader.Load(SceneNames.Floor, null, fadeOut: false);
+            while (loader.IsBusy) yield return null;
+            states.TryTransition(GameStateId.Playing);
+            yield return loader.Fade(1f, 0f);
+            Subtitles.Say(Subtitles.Lukas, "SUB.LUKAS.RING");   // he picks up the ring and cannot remember (D-54)
             busy = false;
         }
 

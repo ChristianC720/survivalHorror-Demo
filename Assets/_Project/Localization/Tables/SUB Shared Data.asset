@@ -95,6 +95,30 @@ MonoBehaviour:
     m_Key: SUB.LUKAS.NAME_OWN
     m_Metadata:
       m_Items: []
+  - m_Id: 238196427456512
+    m_Key: SUB.EMILIA.NOTE_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 238196469399552
+    m_Key: SUB.EMILIA.NOTE_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 238196469399553
+    m_Key: SUB.EMILIA.NOTE_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 238196469399554
+    m_Key: SUB.EMILIA.NOTE_4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 238196469399555
+    m_Key: SUB.EMILIA.NOTE_5
+    m_Metadata:
+      m_Items: []
+  - m_Id: 238196469399556
+    m_Key: SUB.EMILIA.NOTE_6
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

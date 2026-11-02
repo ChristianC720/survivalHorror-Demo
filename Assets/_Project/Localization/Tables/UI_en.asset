@@ -510,6 +510,26 @@ MonoBehaviour:
     m_Localized: FAULT EXPLOITED
     m_Metadata:
       m_Items: []
+  - m_Id: 238274139521024
+    m_Localized: "PHONE \u2014 MAINTENANCE ACCESS"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 238274181464064
+    m_Localized: Repair
+    m_Metadata:
+      m_Items: []
+  - m_Id: 238274185658368
+    m_Localized: "SEKTOR V-7 \u2014 VITALIS KONZERN"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 238274185658369
+    m_Localized: 'SUBJECT R-H-{0} PRESERVED. IDENTITY: RETAINED.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 238274185658370
+    m_Localized: 'PERSONAL EFFECTS OF SUBJECT R-H-{0}: 1 VOICE RECORDING (DAMAGED).'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

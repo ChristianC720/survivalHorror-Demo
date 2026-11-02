@@ -18,7 +18,7 @@ namespace Heartbeat.UI
         private const float CellSize = 64f, FlashSeconds = 0.6f, GrantedSeconds = 0.8f;
 
         private RectTransform panel, row;
-        private TMP_Text status, hint;
+        private TMP_Text title, status, hint;
         private readonly List<TMP_Text> cells = new List<TMP_Text>();
         private PlayerHack hack;
         private InputRouter router;
@@ -78,6 +78,9 @@ namespace Heartbeat.UI
                 t.gameObject.AddComponent<LayoutElement>().preferredWidth = CellSize;
                 cells.Add(t);
             }
+            // Intro: no arm terminal yet, the hack runs on Lukas's personal phone (D-63).
+            bool intro = Services.TryGet(out GameStateMachine sm) && sm.Current == GameStateId.Intro;
+            title.text = Loc.Get(intro ? "UI.HACK.PHONE_TITLE" : "UI.HACK.TITLE");
             granted = false;
             hideAt = -1f;
             status.text = "";
@@ -142,7 +145,7 @@ namespace Heartbeat.UI
             UiKit.Panel(panel, new Color(0.01f, 0.05f, 0.05f, 0.92f), UiKit.TealDim);
             UiKit.Column(panel, 6, 16);
 
-            var title = UiKit.Text(panel, Loc.Get("UI.HACK.TITLE"), 26, UiKit.Teal);
+            title = UiKit.Text(panel, Loc.Get("UI.HACK.TITLE"), 26, UiKit.Teal);
             title.alignment = TextAlignmentOptions.Center;
 
             row = UiKit.Rect("Sequence", panel);

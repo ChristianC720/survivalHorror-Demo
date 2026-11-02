@@ -122,3 +122,8 @@ UI.HACK.ABORT	Abort	Abandonar
 UI.HACK.FAULT	Exploit fault	Explotar falla	
 UI.HACK.FAULT_USED	FAULT EXPLOITED	FAULT EXPLOITED	KEEP-EN (D-62 terminal label)
 UI.CONFIRM.RESTART_SAFE	You are in a safe room: restarting costs nothing. The floor is rebuilt and you keep what you had when it was saved.	Estás en una sala segura: reiniciar no tiene costo. El piso se reconstruye y conservas lo que tenías al guardar.	
+UI.HACK.PHONE_TITLE	PHONE — MAINTENANCE ACCESS	TELÉFONO — ACCESO DE MANTENIMIENTO	intro hack on Lukas's phone (D-63)
+UI.PROMPT.REPAIR	Repair	Reparar	
+UI.INTRO.LOCATION	SEKTOR V-7 — VITALIS KONZERN	SEKTOR V-7 — VITALIS KONZERN	DE-NO-TRANSLATE (D-58)
+UI.INTRO.SUBJECT_REGISTER	SUBJECT R-H-{0} PRESERVED. IDENTITY: RETAINED.	SUBJECT R-H-{0} PRESERVED. IDENTITY: RETAINED.	KEEP-EN (D-62 terminal label, mother_subject_register)
+UI.INTRO.PHONE_COPY	PERSONAL EFFECTS OF SUBJECT R-H-{0}: 1 VOICE RECORDING (DAMAGED).	PERSONAL EFFECTS OF SUBJECT R-H-{0}: 1 VOICE RECORDING (DAMAGED).	KEEP-EN (D-62 terminal label, mother_phone_copy)

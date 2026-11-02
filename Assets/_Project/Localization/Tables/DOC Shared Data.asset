@@ -183,6 +183,14 @@ MonoBehaviour:
     m_Key: DOC.FAULT_MIXER_BYPASS.BODY
     m_Metadata:
       m_Items: []
+  - m_Id: 238198084206592
+    m_Key: DOC.RING.TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 238198142926848
+    m_Key: DOC.RING.BODY
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

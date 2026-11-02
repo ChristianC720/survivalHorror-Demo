@@ -237,6 +237,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 08dcc50b93d55864989c1736ae4eedb0, type: 2}
   - {fileID: 11400000, guid: bb56c280d143c324eb18e19284b1f769, type: 2}
   - {fileID: 11400000, guid: cc6b7d53e3caa984c862f89e47a0b75b, type: 2}
+  - {fileID: 11400000, guid: 2329995a0e64e30428877f95831b1372, type: 2}
   baseFontSize: 26
 --- !u!1 &4471065146274705019
 GameObject:

@@ -507,6 +507,26 @@ MonoBehaviour:
     m_Key: UI.HACK.FAULT_USED
     m_Metadata:
       m_Items: []
+  - m_Id: 238274139521024
+    m_Key: UI.HACK.PHONE_TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 238274181464064
+    m_Key: UI.PROMPT.REPAIR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 238274185658368
+    m_Key: UI.INTRO.LOCATION
+    m_Metadata:
+      m_Items: []
+  - m_Id: 238274185658369
+    m_Key: UI.INTRO.SUBJECT_REGISTER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 238274185658370
+    m_Key: UI.INTRO.PHONE_COPY
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -50,3 +50,9 @@ Source: `GDD/05 - Arte y Audio/05 - Audio y Música.md`, S-11 in `GDD/02 - Dise�
 | `CUE_Amb_F1` / `CUE_Amb_F2` / `CUE_Amb_F3` / `CUE_Amb_Mother` | Ambience / 3 | – | ✔ | floor ambience drones | S-11 |
 | `CUE_Vocal_Lukas` / `CUE_Vocal_Mother` / `CUE_Vocal_Emilia` | Voices / 2 | – | – | vocal sound accompanying a subtitle line | D-52 |
 | `CUE_Music_Menu` (Emilia) · `CUE_Music_Mother_P1..P3` · `CUE_Music_Ending_*` · `CUE_Music_Awakening` | Music / 4 | – | ✔ | menu, boss phases, endings | D-87 |
+| `CUE_Intro_PhoneMessage` | PlayerCombat / 2 | – | – | Emilia's scheduled voice note arrives (intro house) | D-53 |
+| `CUE_Elevator_Hum` | PlayerCombat / 2 | – | – | intro elevator descends; the second elevator rises on its own | D-53 |
+| `CUE_Elevator_Fail` | PlayerCombat / 2 | – | – | intro elevator jolts and loses power | D-53 |
+| `CUE_Elevator_Fall` | PlayerCombat / 2 | – | – | intro elevator distorts and drops (cinematic) | D-53, D-46 |
+| `CUE_Elevator_Impact` | PlayerCombat / 2 | – | – | intro elevator stops at the floor that does not exist | D-53 |
+| `CUE_Intro_Attack` | PlayerCombat / 2 | – | – | attack from behind, cut to black (scripted death) | D-53, D-63 |

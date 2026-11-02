@@ -320,6 +320,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 82a7744976079a643922ae4ba406c0b4, type: 2}
   - {fileID: 11400000, guid: f56e2f38e7df0804b8708995e61ddf90, type: 2}
   - {fileID: 11400000, guid: 65abc365054c8d04dbbd72a184f41fd2, type: 2}
+  - {fileID: 11400000, guid: fce119056fbc5ce46bf52e56acd54961, type: 2}
+  - {fileID: 11400000, guid: 4ade53d526c421947a2ce000dc6f3bd9, type: 2}
+  - {fileID: 11400000, guid: 74938242b25bfb54b84d8ae14788f6de, type: 2}
+  - {fileID: 11400000, guid: f4512f95d9db19841a6a3cdc56daa923, type: 2}
+  - {fileID: 11400000, guid: 583889c1c1c595e489e053fe7ee99b06, type: 2}
+  - {fileID: 11400000, guid: cb6793d82f6e8e7409d8325e6dcbe297, type: 2}
   voices: 24
   alertCueRadius: 25
   balance: {fileID: 11400000, guid: 203b2ff80255b124a9081823f5a1188b, type: 2}
