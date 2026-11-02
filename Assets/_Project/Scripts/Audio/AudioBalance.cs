@@ -28,6 +28,14 @@ namespace Heartbeat.Audio
         public float labBpmPerDegradation = 4f;
         public float labCriticalBpmBonus = 10f;
 
+        [Header("Occlusion (S-11): share of the sound that gets through")]
+        [Tooltip("Per wall between source and listener (−70% → 0.3). Also scales the noise radius enemies perceive.")]
+        [Range(0f, 1f)] public float wallTransmission = 0.3f;
+        [Tooltip("Per closed or sealed door (−50% → 0.5). Open doors do not occlude.")]
+        [Range(0f, 1f)] public float doorTransmission = 0.5f;
+        [Tooltip("Seconds between occlusion updates of playing positional sounds.")]
+        public float occlusionInterval = 0.2f;
+
         [Header("Footsteps")]
         [Tooltip("Metres travelled per step sound.")] public float strideLength = 0.8f;
         [Tooltip("Below this speed (m/s) steps are silent (crouch).")] public float minStepSpeed = 1.0f;

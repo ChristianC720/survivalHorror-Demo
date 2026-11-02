@@ -35,6 +35,10 @@ namespace Heartbeat.Audio
         private int[] prio;
         private float[] started;
         private Transform[] follow;
+        private float[] baseVolume;
+        private bool[] occluded;
+        private float nextOcclusion;
+        private AudioListener listener;
         private AudioSource surveillanceLoop;
         private AlertState signaled;
 
@@ -47,6 +51,8 @@ namespace Heartbeat.Audio
             prio = new int[voices];
             started = new float[voices];
             follow = new Transform[voices];
+            baseVolume = new float[voices];
+            occluded = new bool[voices];
             for (int i = 0; i < voices; i++)
             {
                 var go = new GameObject($"Voice_{i:00}");
@@ -166,7 +172,10 @@ namespace Heartbeat.Audio
             src.spatialBlend = spatial ? 1f : 0f;
             src.maxDistance = cue.maxDistance;
             src.outputAudioMixerGroup = cue.bus;
-            src.volume = cue.volume;
+            baseVolume[i] = cue.volume;
+            // M-10 signals are never masked (D-29): only ordinary positional sounds are occluded.
+            occluded[i] = spatial && cue.priority != CuePriority.Signal;
+            src.volume = occluded[i] ? cue.volume * Occlusion(src.transform.position) : cue.volume;
             src.pitch = Random.Range(cue.pitchRange.x, cue.pitchRange.y);
             // M-18 vocal distortion: voices drop and waver with degradation; signals are never touched (D-29).
             if (cue.name.StartsWith("CUE_Vocal_")) src.pitch *= Mathf.Max(0.75f, 1f - 0.025f * degradation) * Random.Range(1f - 0.01f * degradation, 1f);
@@ -184,6 +193,21 @@ namespace Heartbeat.Audio
             return src;
         }
 
+        /// <summary>Share of a sound at <paramref name="source"/> that reaches the listener through walls and closed doors.</summary>
+        public float Occlusion(Vector3 source)
+        {
+            if (listener == null || !listener.isActiveAndEnabled) listener = FindAnyObjectByType<AudioListener>();
+            return listener == null ? 1f : OcclusionBetween(source, listener.transform.position);
+        }
+
+        /// <summary>Same rule between any two points (also the noise radius enemies perceive, S-02).</summary>
+        public float OcclusionBetween(Vector3 a, Vector3 b)
+        {
+            if (balance == null) return 1f;
+            SoundOcclusion.Count(a, b, out int walls, out int doors);
+            return OcclusionModel.Factor(walls, doors, balance.wallTransmission, balance.doorTransmission);
+        }
+
         private void Play(string id, Vector3? position)
         {
             if (byName.TryGetValue(id, out var cue)) Play(cue, position);
@@ -199,6 +223,13 @@ namespace Heartbeat.Audio
                 if (follow[i] != null) pool[i].transform.position = follow[i].position;
                 // One-shots free their voice when done; empty-clip one-shots hold it ~0.5 s so stealing stays realistic.
                 if (!pool[i].loop && !pool[i].isPlaying && now - started[i] > 0.5f) busy[i] = false;
+            }
+
+            if (balance != null && now >= nextOcclusion)
+            {
+                nextOcclusion = now + balance.occlusionInterval;
+                for (int i = 0; i < pool.Length; i++)
+                    if (busy[i] && occluded[i]) pool[i].volume = baseVolume[i] * Occlusion(pool[i].transform.position);
             }
 
             if (mixer != null)

@@ -18,7 +18,7 @@ namespace Heartbeat.Level
     /// patrol or suspicion never cross it; in search or hunt they walk up to it and open it. An enemy barrier (the spawn
     /// room until Lukas leaves it) is never crossed nor opened by enemies.
     /// </summary>
-    public sealed class DoorLeaf : MonoBehaviour, IInteractable, IHackTarget
+    public sealed class DoorLeaf : MonoBehaviour, IInteractable, IHackTarget, ISoundOccluder
     {
         [SerializeField] private Transform leaf;
         [SerializeField] private NavMeshObstacle obstacle;
@@ -41,6 +41,8 @@ namespace Heartbeat.Level
         /// <summary>Search/hunt enemies may walk up to it: to open it, or to pound on it when sealed (M-14).</summary>
         public bool EnemyCanReach => !IsLocked && !EnemyBarrier && State != DoorState.Open;
         public HackDifficulty Difficulty => HackDifficulty.QuickSeal;
+        public bool Occludes => State != DoorState.Open;   // −50% through a closed or sealed door (S-11)
+        public bool IsDoor => true;
 
         public string PromptKey => IsLocked ? "UI.PROMPT.LOCKED" : State == DoorState.Open ? "UI.PROMPT.CLOSE" : "UI.PROMPT.OPEN";
         public Vector3 InteractionPoint => transform.position + Vector3.up * 1.2f;

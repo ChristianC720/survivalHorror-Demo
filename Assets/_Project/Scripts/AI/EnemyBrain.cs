@@ -151,7 +151,10 @@ namespace Heartbeat.AI
             if (asleep) return;   // El Mudo only wakes by proximity or light
             if (definition.screams && noise.Source == NoiseSource.Scream) return;   // La Boca ignores screams (her own too)
             float d = Vector3.Distance(transform.position, noise.Position);
-            if (d > noise.Radius || d > Mathf.Max(definition.hearingRange, (noise.Source == NoiseSource.Shot || noise.Source == NoiseSource.Scream) ? noise.Radius : 0f)) return;   // shots and screams carry
+            float reach = Mathf.Min(noise.Radius, Mathf.Max(definition.hearingRange, (noise.Source == NoiseSource.Shot || noise.Source == NoiseSource.Scream) ? noise.Radius : 0f));   // shots and screams carry
+            if (d > reach) return;
+            // Walls (−70%) and closed doors (−50%) shrink what reaches us (S-02/S-11).
+            if (Services.TryGet(out Audio.AudioService audio) && d > reach * audio.OcclusionBetween(noise.Position + Vector3.up, transform.position + Vector3.up * eyeHeight)) return;
             lastKnown = noise.Position;
             bool blind = definition.sightRange <= 0f;
             if (blind && alert.State >= AlertState.Search && noise.Source != NoiseSource.Scream && d <= definition.hearingRange * definition.blindHuntFraction)
