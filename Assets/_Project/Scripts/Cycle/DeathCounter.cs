@@ -20,7 +20,7 @@ namespace Heartbeat.Cycle
             public bool FirstAttempt;
         }
 
-        /// <summary>Applies a death. Returns true if the Assimilation ending must play.</summary>
+        /// <summary>Applies a death. Returns true if the counter has reached the threshold (see <see cref="Assimilates"/>).</summary>
         public static bool RegisterDeath(ref State s, bool scripted = false)
         {
             if (scripted) return false;                   // intro death (D-63)
@@ -41,6 +41,13 @@ namespace Heartbeat.Cycle
             s.Consecutive++;
             return s.Consecutive >= AssimilationThreshold;
         }
+
+        /// <summary>
+        /// D-149: Restart and costly quits still count, but the Assimilation ending only plays when Lukas actually dies
+        /// (health or a grab in Critical) with the counter at the threshold — never on Restart, quitting or Continue.
+        /// </summary>
+        public static bool Assimilates(int consecutive, Core.DeathCause cause) =>
+            (cause == Core.DeathCause.Health || cause == Core.DeathCause.GrabInCritical) && consecutive >= AssimilationThreshold;
 
         /// <summary>Reaching floor 2's final key room (D-35).</summary>
         public static void ResetAtFloor2Final(ref State s) => s.Consecutive = 0;

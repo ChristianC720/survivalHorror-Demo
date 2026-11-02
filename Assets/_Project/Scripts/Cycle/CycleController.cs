@@ -130,7 +130,7 @@ namespace Heartbeat.Cycle
         /// <summary>
         /// Continue / Load / New game (Reglas y Estados): loads the slot and enters the floor. With an autosave it
         /// resumes in that floor's final room with the saved inventory (D-30); otherwise the cycle starts on floor 1.
-        /// After a quit during a hunt it plays the short reconstruction; a pending fifth death plays Assimilation (D-96).
+        /// After a quit during a hunt it plays the short reconstruction; Assimilation never plays here, only on a real death (D-149).
         /// shortcut: New game skips the Intro scene until E14-intro exists.
         /// </summary>
         public void StartFromMenu(int slot, GameMode mode, bool newGame)
@@ -160,14 +160,7 @@ namespace Heartbeat.Cycle
             SaveNow();
 
             states.TryTransition(GameStateId.Loading);
-            if (Data.deathCounter >= DeathCounter.AssimilationThreshold && !Data.firstAttempt)
-            {
-                states.TryTransition(GameStateId.EndingAssimilation);
-                HbLog.Info("Cycle", "Assimilation ending (M-18) on Continue");
-                GameEvents.RaiseEndingTriggered("Assimilation");
-                busy = false;
-                yield break;
-            }
+            // D-149: a counter at 5 reached by quitting is kept; Assimilation waits for Lukas's next real death.
 
             bool resume = Data.hasAttemptSave && !afterHuntQuit;
             if (resume) { CurrentFloor = Data.attemptSave.floor; carry = Data.attemptSave; }
@@ -254,7 +247,8 @@ namespace Heartbeat.Cycle
             if (states.Current == GameStateId.Paused) Services.Get<PauseService>().TryLeavePauseTo(GameStateId.Death);
             else states.TryTransition(GameStateId.Death);
 
-            bool assimilate = RegisterDeath(cause);
+            RegisterDeath(cause);
+            bool assimilate = DeathCounter.Assimilates(Data.deathCounter, cause);   // only a real death plays it (D-149)
             SaveNow();                               // save before processing the death
 
             yield return loader.Fade(0f, 1f);
@@ -327,7 +321,6 @@ namespace Heartbeat.Cycle
                 DeathCounter.RegisterCalmExit(ref s);
                 WriteCounter(s);
             }
-            // shortcut: a counter that reaches 5 by quitting is not checked here; Continue must play Assimilation (E08-endings, H5).
             Data.exitCost = cost;
             Data.confirmedExit = true;
             SaveNow();
