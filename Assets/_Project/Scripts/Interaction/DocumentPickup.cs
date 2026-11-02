@@ -36,6 +36,8 @@ namespace Heartbeat.Interaction
             GameEvents.RaiseItemRegistered(document.id, (int)document.kind, isNew);
             if (isNew && document.kind == RecordKind.EmiliaDocument)
                 Subtitles.Say(Subtitles.Lukas, registry.EmiliaCount == 1 ? "SUB.LUKAS.FIRST_EMILIA_DOC" : "SUB.LUKAS.EMILIA_DOC");
+            else if (isNew && document.id == "DOC.MOTHER_RH_RECORDS")
+                Subtitles.Say(Subtitles.Lukas, "SUB.LUKAS.RH_RECORDS");   // "Six before me." (Textos del Juego, lukas_rh_records)
             if (!staysInWorld) gameObject.SetActive(false);
         }
     }
