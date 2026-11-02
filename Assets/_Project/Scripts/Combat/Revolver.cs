@@ -21,6 +21,10 @@ namespace Heartbeat.Combat
         [SerializeField] private PlayerHealth health;
         [Tooltip("Muzzle used for the noise origin and debug lines.")]
         [SerializeField] private Transform muzzle;
+        [Tooltip("Revolver model in Lukas's hand, hidden while he does not have it.")]
+        [SerializeField] private GameObject model;
+        [Tooltip("Sandboxes start armed; the cycle sets ownership on every floor build (D-74).")]
+        [SerializeField] private bool ownedAtStart = true;
 
         private InputRouter router;
         private OtsCameraRig rig;
@@ -30,11 +34,21 @@ namespace Heartbeat.Combat
 
         public RevolverModel Model { get; private set; }
 
+        /// <summary>D-74: found on the Kessler guard (tutorial), then left on the capsule tray at every reconstruction.</summary>
+        public bool Owned { get; private set; }
+
+        public void SetOwned(bool owned)
+        {
+            Owned = owned;
+            if (model != null) model.SetActive(owned);
+        }
+
         private void Awake()
         {
             Model = new RevolverModel(balance.drumSize, balance.secondsBetweenShots, balance.reloadSecondsPerRound,
                 balance.spreadCloseSeconds, balance.spreadPerShot);
             shotMask = LayerMask.GetMask("Environment", "Enemy", "Hitbox");
+            SetOwned(ownedAtStart);
         }
 
         private void Start()
@@ -63,7 +77,7 @@ namespace Heartbeat.Combat
 
         private void OnAttack(InputAction.CallbackContext _)
         {
-            if (!player.IsAiming) return;   // not aiming: the shove handles Attack (Shove.cs)
+            if (!Owned || !player.IsAiming) return;   // not aiming: the shove handles Attack (Shove.cs)
             if (Model.IsReloading)
             {
                 Model.CancelReload();
@@ -75,7 +89,7 @@ namespace Heartbeat.Combat
 
         private void OnReload(InputAction.CallbackContext _)
         {
-            if (Model.BeginReload(inventory.Model.Has(ItemKind.Ammo)))
+            if (Owned && Model.BeginReload(inventory.Model.Has(ItemKind.Ammo)))
                 HbLog.Info("Revolver", "Reload started");
         }
 

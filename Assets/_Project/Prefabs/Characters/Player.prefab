@@ -418,6 +418,8 @@ MonoBehaviour:
   inventory: {fileID: 7073963810229885166}
   health: {fileID: 1368415113503638425}
   muzzle: {fileID: 9197430729809118785}
+  model: {fileID: 6567365605346461787}
+  ownedAtStart: 1
 --- !u!114 &5953581016024664701
 MonoBehaviour:
   m_ObjectHideFlags: 0

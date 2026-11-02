@@ -278,7 +278,7 @@ namespace Heartbeat.Cycle
         {
             if (!Data.hasFloorStart) return (1, null);
             var a = Data.floorStart;
-            return (a.floor, new AttemptSave { floor = a.floor, inventory = a.inventory.ToList(), revolverLoaded = a.revolverLoaded, health = -1f });
+            return (a.floor, new AttemptSave { floor = a.floor, inventory = a.inventory.ToList(), revolverLoaded = a.revolverLoaded, revolverOwned = a.revolverOwned, health = -1f });
         }
 
         // ---------- Death → reconstruction ----------
@@ -470,7 +470,7 @@ namespace Heartbeat.Cycle
             if (Services.TryGet<PlayerController>(out var pc))
             {
                 var rev = pc.GetComponent<Revolver>();
-                if (rev != null) a.revolverLoaded = rev.Model.Loaded;
+                if (rev != null) { a.revolverLoaded = rev.Model.Loaded; a.revolverOwned = rev.Owned; }
                 var hp = pc.GetComponent<PlayerHealth>();
                 if (hp != null) a.health = hp.Model.Value;
             }
@@ -482,7 +482,8 @@ namespace Heartbeat.Cycle
             if (Services.TryGet<PlayerInventory>(out var inv)) inv.Model.Restore(a.inventory.ToArray());
             if (Services.TryGet<PlayerController>(out var pc))
             {
-                pc.GetComponent<Revolver>()?.Model.SetLoaded(a.revolverLoaded);
+                var rev = pc.GetComponent<Revolver>();
+                if (rev != null) { rev.SetOwned(a.revolverOwned); rev.Model.SetLoaded(a.revolverLoaded); }
                 if (a.health >= 0f) pc.GetComponent<PlayerHealth>()?.Model.SetValue(a.health);
             }
             HbLog.Info("Cycle", $"Loadout carried: {(inv != null ? inv.Describe() : "-")}, revolver {a.revolverLoaded}");
@@ -492,7 +493,11 @@ namespace Heartbeat.Cycle
         private void ResetLoadout()
         {
             if (Services.TryGet<PlayerInventory>(out var inv)) inv.Model.Clear();
-            if (Services.TryGet<PlayerController>(out var pc)) pc.GetComponent<Revolver>()?.Unload();
+            if (Services.TryGet<PlayerController>(out var pc) && pc.TryGetComponent(out Revolver rev))
+            {
+                rev.Unload();
+                rev.SetOwned(false);   // it waits on the capsule tray (or, first attempt, on the Kessler guard)
+            }
         }
 
         /// <summary>Debug / tests.</summary>

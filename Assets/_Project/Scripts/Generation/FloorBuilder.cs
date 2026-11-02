@@ -153,6 +153,11 @@ namespace Heartbeat.Generation
                 // Safety posters only in the fixed rooms of the first attempt: capsule row + tutorial chain (D-89).
                 bool tutorial = pr.TutorialIndex > 0 || (p.FirstAttempt && pr.Index == Layout.EntryRoom && floor == 1);
                 foreach (var poster in r.GetComponentsInChildren<UI.TutorialPoster>(true)) poster.gameObject.SetActive(tutorial);
+                // D-74: the guard's revolver in the tutorial depot; afterwards on the capsule tray of floor 1.
+                foreach (var gun in r.GetComponentsInChildren<Interaction.RevolverPickup>(true))
+                    gun.gameObject.SetActive(gun.Where == Interaction.RevolverPickup.Spot.TutorialGuard
+                        ? pr.TutorialIndex == 2
+                        : !p.FirstAttempt && pr.Index == Layout.EntryRoom && floor == 1);
             }
             foreach (var c in Layout.Connections)
             {

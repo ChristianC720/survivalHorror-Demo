@@ -21,6 +21,7 @@ namespace Heartbeat.CameraSystem
         [SerializeField] private GameObject reticle;
 
         private PlayerController player;
+        private Combat.Revolver revolver;
         private InputRouter router;
         private Transform target;
         private float yaw;
@@ -60,6 +61,7 @@ namespace Heartbeat.CameraSystem
                 return;
             }
 
+            revolver = player.GetComponent<Combat.Revolver>();
             target = new GameObject("CameraTarget").transform;
             target.SetParent(player.transform, false);
             target.localPosition = Vector3.up * balance.targetHeight;
@@ -93,7 +95,8 @@ namespace Heartbeat.CameraSystem
             var gameplay = router.Actions.Gameplay;
 
             if (gameplay.Look.enabled) ApplyLook(gameplay.Look);
-            UpdateAim(gameplay.Aim.enabled && gameplay.Aim.IsPressed() && !player.IsRunning && !player.MovementLocked);
+            bool armed = revolver == null || revolver.Owned;   // no revolver yet: nothing to aim (D-74)
+            UpdateAim(armed && gameplay.Aim.enabled && gameplay.Aim.IsPressed() && !player.IsRunning && !player.MovementLocked);
 
             float h = player.IsCrouched ? balance.crouchTargetHeight : balance.targetHeight;
             target.localPosition = Vector3.Lerp(target.localPosition, Vector3.up * h, 10f * Time.deltaTime);

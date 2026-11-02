@@ -280,13 +280,14 @@ PrefabInstance:
       propertyPath: m_TextStyleHashCode
       value: -1183493901
       objectReference: {fileID: 0}
+    - target: {fileID: 8905714581570685979, guid: 1ebcff6879e93504295068212b61a496, type: 3}
+      propertyPath: ownedAtStart
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1751115633216612030, guid: 1ebcff6879e93504295068212b61a496, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ebcff6879e93504295068212b61a496, type: 3}
 --- !u!114 &237666443 stripped
 MonoBehaviour:
@@ -1912,7 +1913,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4006017199468059012, guid: d0d9526cae61ab941bdba2ced9fdb952, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4006017199468059012, guid: d0d9526cae61ab941bdba2ced9fdb952, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1920,7 +1921,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4006017199468059012, guid: d0d9526cae61ab941bdba2ced9fdb952, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.5
+      value: -1.1
       objectReference: {fileID: 0}
     - target: {fileID: 4776449462022305367, guid: d0d9526cae61ab941bdba2ced9fdb952, type: 3}
       propertyPath: field of view

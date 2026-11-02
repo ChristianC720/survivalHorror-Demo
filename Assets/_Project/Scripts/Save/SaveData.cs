@@ -46,6 +46,7 @@ namespace Heartbeat.Save
         public int floor = 1;
         public List<InventorySlot> inventory = new List<InventorySlot>();
         public int revolverLoaded;
+        public bool revolverOwned = true;   // D-74; true keeps saves written before the field armed
         public float health = -1f;   // -1 = full
     }
 
