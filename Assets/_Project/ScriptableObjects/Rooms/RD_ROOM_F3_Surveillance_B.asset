@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a244d34437b9e74796c4140c568c9f2, type: 3}
+  m_Name: RD_ROOM_F3_Surveillance_B
+  m_EditorClassIdentifier: Heartbeat.Runtime::Heartbeat.Generation.RoomDefinition
+  id: ROOM_F3_Surveillance_B
+  prefab: {fileID: 2991457587272493608, guid: c6cb49782c1371e43b2b07d727d3cba0, type: 3}
+  floor: 3
+  archetype: 4
+  role: 0
+  tutorialIndex: 0
+  size: {x: 4, y: 4}
+  sockets:
+  - cell: {x: 0, y: 1}
+    facing: 3
+    allowLocked: 1
+  - cell: {x: 1, y: 3}
+    facing: 0
+    allowLocked: 1
+  - cell: {x: 2, y: 0}
+    facing: 2
+    allowLocked: 1
+  hasCamera: 1
+  canBeUnpowered: 0
+  enemySpawns: 2
+  itemSpawns: 2
+  itemSpawnTags: 0000000000000000i
+  weight: 1
