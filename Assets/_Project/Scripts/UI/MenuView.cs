@@ -17,7 +17,8 @@ namespace Heartbeat.UI
     /// lab heartbeat, any key, D-90) → main menu terminal (Continue / New game / Load / Options / Credits / Quit,
     /// D-39, D-105) → slot selection (3 slots, D-105) → mode selection (Survival / Story, D-103).
     /// Facility screens are green phosphor (D-82). Built in code on this object's canvas.
-    /// shortcut: the menu is a flat screen; the capsule-row room backdrop arrives with the F1 lighting pass.
+    /// The title and the calibration are black (D-90); from the main menu on, the screens are a green facility terminal in
+    /// the capsule-row room next to Lukas's capsule (<see cref="backdrop"/>, a hand-placed room instance in the scene).
     /// </summary>
     public sealed class MenuView : MonoBehaviour
     {
@@ -27,6 +28,8 @@ namespace Heartbeat.UI
         // Calibration symbols: linear grey levels on black. The left one must be barely visible, the right one not.
         [SerializeField] private float visibleLevel = 0.03f;
         [SerializeField] private float hiddenLevel = 0.008f;
+        [Tooltip("Capsule-row room seen behind the menu terminal (D-90); hidden on the black title and calibration.")]
+        [SerializeField] private GameObject backdrop;
 
         private Transform canvas;
         private RectTransform screen;
@@ -43,6 +46,12 @@ namespace Heartbeat.UI
             saves = Services.Get<SaveService>();
             Services.TryGet(out audioService);
             canvas = UiKit.Canvas(gameObject, 20).transform;
+            if (backdrop != null)
+            {
+                // A still room: no tutorial posters (they need a player's bindings) and no revolver on the tray.
+                foreach (var p in backdrop.GetComponentsInChildren<TutorialPoster>(true)) p.gameObject.SetActive(false);
+                foreach (var r in backdrop.GetComponentsInChildren<Interaction.RevolverPickup>(true)) r.gameObject.SetActive(false);
+            }
             brightness = saves.LoadGlobal().brightness;
             switch (states.Current)
             {
@@ -56,12 +65,15 @@ namespace Heartbeat.UI
 
         // ---------- Screens ----------
 
-        private RectTransform NewScreen(float width = 900f)
+        private RectTransform NewScreen(float width = 900f, bool inRoom = true)
         {
             if (screen != null) Destroy(screen.gameObject);
+            if (backdrop != null) backdrop.SetActive(inRoom);
             screen = UiKit.Rect("Screen", canvas);
-            screen.anchorMin = screen.anchorMax = screen.pivot = new Vector2(0.5f, 0.5f);
-            screen.sizeDelta = new Vector2(width, 0);
+            bool terminal = inRoom && backdrop != null;
+            screen.anchorMin = screen.anchorMax = screen.pivot = terminal ? new Vector2(0.7f, 0.5f) : new Vector2(0.5f, 0.5f);
+            screen.sizeDelta = new Vector2(terminal ? Mathf.Min(width, 760f) : width, 0);
+            if (terminal) UiKit.Panel(screen, new Color(0.01f, 0.04f, 0.02f, 0.88f), UiKit.Green);   // the facility terminal
             UiKit.Column(screen, 14, 28);
             screen.gameObject.AddComponent<ContentSizeFitter>().verticalFit = ContentSizeFitter.FitMode.PreferredSize;
             return screen;
@@ -79,7 +91,7 @@ namespace Heartbeat.UI
 
         private void ShowCalibration()
         {
-            NewScreen(1200);
+            NewScreen(1200, inRoom: false);
             Line(Loc.Get("UI.BRIGHT.TITLE"), 30);
             var row = UiKit.Rect("Symbols", screen);
             var h = row.gameObject.AddComponent<HorizontalLayoutGroup>();
@@ -123,7 +135,7 @@ namespace Heartbeat.UI
 
         private void ShowTitle()
         {
-            NewScreen(1200);
+            NewScreen(1200, inRoom: false);
             Line("IDENTITY DISSOLUTION", 72).fontStyle = FontStyles.Bold;   // logo placeholder (PLACEHOLDERS.md)
             Line(Loc.Get("UI.TITLE.PRESS"), 28).color = UiKit.TealDim;
             StartLoop("CUE_Heartbeat_Lab");                                 // the title only has the heartbeat (D-90)

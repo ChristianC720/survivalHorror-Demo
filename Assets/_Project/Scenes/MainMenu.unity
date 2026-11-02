@@ -165,6 +165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Heartbeat.Runtime::Heartbeat.UI.MenuView
   visibleLevel: 0.03
   hiddenLevel: 0.008
+  backdrop: {fileID: 1583799600}
 --- !u!1 &552680894
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,16 +287,85 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 552680894}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.028372508, y: 0.91132015, z: -0.06372571, w: -0.4057458}
+  m_LocalPosition: {x: 6.6, y: 1.55, z: 4.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1583799599
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1716269073170941660, guid: 551932049295b764691014d4b05a90c6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1716269073170941660, guid: 551932049295b764691014d4b05a90c6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1716269073170941660, guid: 551932049295b764691014d4b05a90c6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1716269073170941660, guid: 551932049295b764691014d4b05a90c6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1716269073170941660, guid: 551932049295b764691014d4b05a90c6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1716269073170941660, guid: 551932049295b764691014d4b05a90c6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1716269073170941660, guid: 551932049295b764691014d4b05a90c6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1716269073170941660, guid: 551932049295b764691014d4b05a90c6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1716269073170941660, guid: 551932049295b764691014d4b05a90c6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1716269073170941660, guid: 551932049295b764691014d4b05a90c6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4421599861430595760, guid: 551932049295b764691014d4b05a90c6, type: 3}
+      propertyPath: m_Name
+      value: Backdrop_CapsuleRow
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4599815519356302876, guid: 551932049295b764691014d4b05a90c6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 7547155065472512990, guid: 551932049295b764691014d4b05a90c6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+  m_SourcePrefab: {fileID: 100100000, guid: 551932049295b764691014d4b05a90c6, type: 3}
+--- !u!1 &1583799600 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4421599861430595760, guid: 551932049295b764691014d4b05a90c6, type: 3}
+  m_PrefabInstance: {fileID: 1583799599}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 552680897}
   - {fileID: 251523368}
+  - {fileID: 1583799599}

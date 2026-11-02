@@ -21,7 +21,15 @@ namespace Heartbeat.Generation
         [Tooltip("Perimeter edges that get a window wall instead of a plain wall (surveillance rooms).")]
         public List<SocketData> windows = new List<SocketData>();
 
+        [Tooltip("Build the shell on Start with every socket walled (static backdrops such as the main menu room).")]
+        public bool buildOnStart;
+
         public const string ShellName = "Shell";
+
+        private void Start()
+        {
+            if (buildOnStart && Built == null) Build(null);
+        }
 
         public Transform Built => transform.Find(ShellName);
 
