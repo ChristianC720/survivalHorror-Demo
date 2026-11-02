@@ -105,6 +105,24 @@ namespace Heartbeat.Tests
         }
 
         [Test]
+        public void RestartsAndQuits_CountButNeverPlayAssimilation() // D-149
+        {
+            var s = new DeathCounter.State();
+            for (int i = 0; i < 4; i++) DeathCounter.RegisterDeath(ref s);
+            DeathCounter.RegisterCalmExit(ref s);
+            Assert.AreEqual(5, s.Consecutive);
+            Assert.IsFalse(DeathCounter.Assimilates(s.Consecutive, Heartbeat.Core.DeathCause.Restart));
+            Assert.IsFalse(DeathCounter.Assimilates(s.Consecutive, Heartbeat.Core.DeathCause.QuitDuringAlert));
+            DeathCounter.RegisterDeath(ref s);   // Lukas dies for real
+            Assert.IsTrue(DeathCounter.Assimilates(s.Consecutive, Heartbeat.Core.DeathCause.Health));
+            Assert.IsTrue(DeathCounter.Assimilates(s.Consecutive, Heartbeat.Core.DeathCause.GrabInCritical));
+        }
+
+        [Test]
+        public void RealDeath_BelowThreshold_DoesNotAssimilate() =>
+            Assert.IsFalse(DeathCounter.Assimilates(4, Heartbeat.Core.DeathCause.Health));
+
+        [Test]
         public void ScriptedIntroDeath_ChangesNothing() // D-63
         {
             var s = new DeathCounter.State { SubjectCode = 7, FirstAttempt = true };
