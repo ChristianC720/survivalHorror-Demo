@@ -456,6 +456,12 @@ namespace Heartbeat.Cycle
                 DeathCounter.ResetAtFloor2Final(ref s);
                 Data.deathCounter = s.Consecutive;
                 HbLog.Info("Cycle", "Floor 2 final room: death counter reset (D-35)");
+                // The finding plays once per slot; later resets are silent (D-56, D-67).
+                if (!Data.floor2PhotoSeen && Services.TryGet(out Floor2Photo photo))
+                {
+                    Data.floor2PhotoSeen = true;
+                    StartCoroutine(photo.Play());
+                }
             }
             SaveNow();
             GameEvents.RaiseAutosaved();
