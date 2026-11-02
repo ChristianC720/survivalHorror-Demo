@@ -117,6 +117,7 @@ Define límites, regeneración, acumulación, intercambio y condiciones especial
 ### Pérdida total al morir (D-18)
 
 - Al morir, el personaje se reconstruye al inicio del ciclo en el piso 1 y **pierde todo el inventario**: curas, munición, punzón de descarga y llaves. The Mother devuelve el revólver descargado (D-74).
+- **Actualizado (D-147):** al morir, el personaje vuelve al inicio del piso actual y recupera el inventario con el que llegó a ese piso; solo pierde lo recogido en él.
 - **Reiniciar** (menú de pausa) tiene el mismo costo sobre el inventario que morir (D-32). Al morir o reiniciar se descarta el autoguardado de la sala final (M-16).
 - **Salir del juego** puede contar como muerte completa o continuar desde la sala final autoguardada con el inventario guardado, según el estado al salir (D-31). Las reglas completas se documentan en [[07 - Reglas y Estados del Juego]].
 - Vuelve con la salud en Bien y la resistencia al 100%.
