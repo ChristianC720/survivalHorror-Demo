@@ -111,6 +111,7 @@ namespace Heartbeat.Player
             verticalVelocity += balance.gravity * Time.deltaTime;
             Velocity = horizontal + Vector3.up * verticalVelocity;
             controller.Move(Velocity * Time.deltaTime);
+            GuardFallOut();
 
             if (moving && !IsAiming)
             {
@@ -120,6 +121,20 @@ namespace Heartbeat.Player
 
             EmitMovementNoise(moving);
             ApplyPosture();
+        }
+
+        // Safety net, not balance: any physics tunnelling out of the floor would otherwise fall forever (blank screen).
+        private const float FallOutDepth = 10f;
+        private Vector3 lastGrounded;
+        private bool hasGrounded;
+
+        private void GuardFallOut()
+        {
+            if (controller.isGrounded) { lastGrounded = transform.position; hasGrounded = true; return; }
+            if (!hasGrounded || transform.position.y > lastGrounded.y - FallOutDepth) return;
+            HbLog.Warn("Player", $"Fell out of the level at {transform.position}: back to {lastGrounded}");
+            verticalVelocity = 0f;
+            DebugTeleport(lastGrounded.x, lastGrounded.y, lastGrounded.z, transform.eulerAngles.y);
         }
 
         /// <summary>Debug console / tests: teleport Lukas and face yaw degrees.</summary>

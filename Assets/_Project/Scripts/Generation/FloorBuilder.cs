@@ -163,7 +163,13 @@ namespace Heartbeat.Generation
         {
             foreach (var r in built) if (r != null) r.Retired = true;
             built.Clear();
-            if (floorRoot != null) Destroy(floorRoot.gameObject);
+            if (floorRoot != null)
+            {
+                // Destroy is deferred to end of frame: detach first or the rebake below still collects the old floor.
+                floorRoot.gameObject.SetActive(false);
+                floorRoot.SetParent(null, false);
+                Destroy(floorRoot.gameObject);
+            }
             if (doorsRoot != null) Destroy(doorsRoot.gameObject);
             floorRoot = doorsRoot = null;
             surface.RemoveData();

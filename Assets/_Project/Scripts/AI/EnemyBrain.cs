@@ -214,8 +214,10 @@ namespace Heartbeat.AI
                 if (NavMesh.SamplePosition(flank, out var hit, 2f, NavMesh.AllAreas)) chaseTarget = hit.position;
             }
 
-            // Stop short of Lukas: walking into his CharacterController shoved him through walls (fell out of the floor).
-            agent.stoppingDistance = SeesPlayer ? definition.grabRange * 0.8f : 0.2f;
+            // Never overlap Lukas, seen or not: his CharacterController depenetrates out of our collider on every Move,
+            // and near a wall that shoved him through it and out of the level (the "cyan screen").
+            float keep = agent.radius + PlayerRadius(p) + 0.2f;
+            agent.stoppingDistance = Mathf.Max(SeesPlayer ? definition.grabRange * 0.8f : 0.2f, keep);
             agent.SetDestination(chaseTarget);
 
             // Bursts (El Mudo): sprint, freeze, sprint.
@@ -225,6 +227,7 @@ namespace Heartbeat.AI
                 float cycle = definition.burstSeconds + definition.burstPauseSeconds;
                 agent.isStopped = Mathf.Repeat(burstClock, cycle) > definition.burstSeconds;
             }
+            if (dist < keep) agent.isStopped = true;   // avoidance from other agents can still squeeze us in
 
             bool blind = definition.sightRange <= 0f;   // La Boca strikes at what she hears
             if (dist <= definition.attackRange && cooldownTimer <= 0f && (SeesPlayer || blind) && !(director != null && director.PlayerDead))
@@ -257,6 +260,13 @@ namespace Heartbeat.AI
         }
 
         private float Speed(float baseSpeed) => health.IsRecycled ? baseSpeed * definition.recycledSpeedMultiplier : baseSpeed;
+
+        private float playerRadius = -1f;
+        private float PlayerRadius(Transform p)
+        {
+            if (playerRadius < 0f) playerRadius = p.TryGetComponent(out CharacterController cc) ? cc.radius : 0.35f;
+            return playerRadius;
+        }
 
         private void FaceTowards(Vector3 point, float degPerSec)
         {
