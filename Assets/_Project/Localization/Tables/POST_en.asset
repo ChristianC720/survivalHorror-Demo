@@ -74,6 +74,28 @@ MonoBehaviour:
       <i>Munition sparsam verwenden.</i>'
     m_Metadata:
       m_Items: []
+  - m_Id: 298167991140352
+    m_Localized: 'VITALIS KONZERN
+
+      <i>Gesundheit ist Pflicht.</i>'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 298168066637824
+    m_Localized: '<i>Ordnung ist das halbe Leben.</i>
+
+      Abteilung Instandhaltung'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 298168066637825
+    m_Localized: "<i>Ruhe ist Sicherheit.</i>\nVitalis Konzern \u2014 Werkschutz"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 298168066637826
+    m_Localized: 'VITALIS KONZERN
+
+      <i>Fortschritt durch Erhaltung.</i>'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

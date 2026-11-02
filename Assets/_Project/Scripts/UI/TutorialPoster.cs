@@ -19,6 +19,10 @@ namespace Heartbeat.UI
         [Tooltip("Comma-separated actions as Map/Action, e.g. Gameplay/Attack,Gameplay/Aim (a plain string so Aura can set it).")]
         [SerializeField] private string actions = "";
         [SerializeField] private TMP_Text text;
+        [Tooltip("Tutorial safety posters exist only in the first attempt; ambience posters (German, D-58) always stay.")]
+        [SerializeField] private bool tutorialOnly = true;
+
+        public bool TutorialOnly => tutorialOnly;
 
         private InputRouter router;
 

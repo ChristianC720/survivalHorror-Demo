@@ -49,7 +49,7 @@ namespace Heartbeat.UI
             if (backdrop != null)
             {
                 // A still room: no tutorial posters (they need a player's bindings) and no revolver on the tray.
-                foreach (var p in backdrop.GetComponentsInChildren<TutorialPoster>(true)) p.gameObject.SetActive(false);
+                foreach (var p in backdrop.GetComponentsInChildren<TutorialPoster>(true)) if (p.TutorialOnly) p.gameObject.SetActive(false);
                 foreach (var r in backdrop.GetComponentsInChildren<Interaction.RevolverPickup>(true)) r.gameObject.SetActive(false);
             }
             brightness = saves.LoadGlobal().brightness;

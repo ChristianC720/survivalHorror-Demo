@@ -43,6 +43,22 @@ MonoBehaviour:
     m_Key: POST.COMBAT
     m_Metadata:
       m_Items: []
+  - m_Id: 298167991140352
+    m_Key: POST.AMBIENT_HEALTH
+    m_Metadata:
+      m_Items: []
+  - m_Id: 298168066637824
+    m_Key: POST.AMBIENT_ORDER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 298168066637825
+    m_Key: POST.AMBIENT_SILENCE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 298168066637826
+    m_Key: POST.AMBIENT_PROGRESS
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
