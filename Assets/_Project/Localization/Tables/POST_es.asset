@@ -19,31 +19,59 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 230949035048960
-    m_Localized: WELCOME BACK, VALUED COLLEAGUE.\nCompany property may be handled with [{0}].\n<i>Sicherheit geht vor.</i>
+    m_Localized: 'WELCOME BACK, VALUED COLLEAGUE.
+
+      Company property may be handled with [{0}].
+
+      <i>Sicherheit geht vor.</i>'
     m_Metadata:
       m_Items: []
   - m_Id: 230949106352128
-    m_Localized: 'YOUR ARM TERMINAL REMEMBERS SO YOU DON''T HAVE TO.\nConsult it at any time: [{0}].\n<i>Vitalis Konzern dankt Ihnen.</i>'
+    m_Localized: 'YOUR ARM TERMINAL REMEMBERS SO YOU DON''T HAVE TO.
+
+      Consult it at any time: [{0}].
+
+      <i>Vitalis Konzern dankt Ihnen.</i>'
     m_Metadata:
       m_Items: []
   - m_Id: 230949110546432
-    m_Localized: 'IN CASE OF DARKNESS: PRESS [{0}].\nBatteries are company property. Do not waste light.\n<i>Licht aus, Ruhe bewahren.</i>'
+    m_Localized: 'IN CASE OF DARKNESS: PRESS [{0}].
+
+      Batteries are company property. Do not waste light.
+
+      <i>Licht aus, Ruhe bewahren.</i>'
     m_Metadata:
       m_Items: []
   - m_Id: 230949110546433
-    m_Localized: ALL FINDINGS MUST BE DECLARED.\nReview your belongings with [{0}]. Pick up with [{1}].\n<i>Fundsachen melden.</i>
+    m_Localized: 'ALL FINDINGS MUST BE DECLARED.
+
+      Review your belongings with [{0}]. Pick up with [{1}].
+
+      <i>Fundsachen melden.</i>'
     m_Metadata:
       m_Items: []
   - m_Id: 230949114740736
-    m_Localized: RUNNING IN CORRIDORS IS PERMITTED IN EMERGENCIES ONLY.\nHold [{0}]. Mind your breathing.\n<i>Nicht rennen.</i>
+    m_Localized: 'RUNNING IN CORRIDORS IS PERMITTED IN EMERGENCIES ONLY.
+
+      Hold [{0}]. Mind your breathing.
+
+      <i>Nicht rennen.</i>'
     m_Metadata:
       m_Items: []
   - m_Id: 230949114740737
-    m_Localized: 'NOISE IS A WORKPLACE HAZARD.\nMove quietly: [{0}].\n<i>Ruhe im Betrieb.</i>'
+    m_Localized: 'NOISE IS A WORKPLACE HAZARD.
+
+      Move quietly: [{0}].
+
+      <i>Ruhe im Betrieb.</i>'
     m_Metadata:
       m_Items: []
   - m_Id: 230949114740738
-    m_Localized: 'UNAUTHORISED CONTACT?\nShove: [{0}]. Hold [{1}] to aim, then [{0}] fires. Reload: [{2}].\n<i>Munition sparsam verwenden.</i>'
+    m_Localized: 'UNAUTHORISED CONTACT?
+
+      Shove: [{0}]. Hold [{1}] to aim, then [{0}] fires. Reload: [{2}].
+
+      <i>Munition sparsam verwenden.</i>'
     m_Metadata:
       m_Items: []
   references:

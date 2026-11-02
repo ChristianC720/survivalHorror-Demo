@@ -23,7 +23,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 17773093847040
-    m_Localized: "Origen: personal del Werkschutz, Kessler Sicherheit AG.\\nEstado: no conforme. Identidad: no detectada.\\nObservaciones: mantiene sus rutas de ronda. Vista: largo alcance. O\xEDdo: deficiente. Su alcance supera en 1,1 m el largo de manga del uniforme est\xE1ndar.\\nRecomendaci\xF3n: evitar su l\xEDnea de visi\xF3n. El uniforme sigue bajo contrato."
+    m_Localized: "Origen: personal del Werkschutz, Kessler Sicherheit AG.\nEstado: no conforme. Identidad: no detectada.\nObservaciones: mantiene sus rutas de ronda. Vista: largo alcance. O\xEDdo: deficiente. Su alcance supera en 1,1 m el largo de manga del uniforme est\xE1ndar.\nRecomendaci\xF3n: evitar su l\xEDnea de visi\xF3n. El uniforme sigue bajo contrato."
     m_Metadata:
       m_Items: []
   - m_Id: 17773093847041
@@ -31,7 +31,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 17773093847042
-    m_Localized: "Origen: sujeto de prueba cl\xEDnico, Vitalis Konzern.\\nEstado: no conforme. Identidad: no detectada.\\nObservaciones: ciega. O\xEDdo: excepcional. Al detectar, grita; los sujetos cercanos responden al grito.\\nRecomendaci\xF3n: reducir el ruido. Formulario de consentimiento archivado."
+    m_Localized: "Origen: sujeto de prueba cl\xEDnico, Vitalis Konzern.\nEstado: no conforme. Identidad: no detectada.\nObservaciones: ciega. O\xEDdo: excepcional. Al detectar, grita; los sujetos cercanos responden al grito.\nRecomendaci\xF3n: reducir el ruido. Formulario de consentimiento archivado."
     m_Metadata:
       m_Items: []
   - m_Id: 17773098041344
@@ -39,7 +39,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 17773098041345
-    m_Localized: "Origen: t\xE9cnico de laboratorio, Vitalis Konzern.\\nEstado: no conforme. Identidad: no detectada.\\nObservaciones: cuadr\xFApedo. R\xE1pido. Se acerca por los flancos. Fr\xE1gil.\\nRecomendaci\xF3n: no permitir que rodee. Su productividad ha mejorado."
+    m_Localized: "Origen: t\xE9cnico de laboratorio, Vitalis Konzern.\nEstado: no conforme. Identidad: no detectada.\nObservaciones: cuadr\xFApedo. R\xE1pido. Se acerca por los flancos. Fr\xE1gil.\nRecomendaci\xF3n: no permitir que rodee. Su productividad ha mejorado."
     m_Metadata:
       m_Items: []
   - m_Id: 17773098041346
@@ -47,7 +47,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 17773098041347
-    m_Localized: "Origen: desconocido. Expediente incompleto.\\nEstado: no conforme. Identidad: no detectada.\\nObservaciones: inm\xF3vil hasta que alguien se acerca o lo ilumina. Suele confundirse con un cad\xE1ver o con un compa\xF1ero.\\nRecomendaci\xF3n: no saludar a los compa\xF1eros."
+    m_Localized: "Origen: desconocido. Expediente incompleto.\nEstado: no conforme. Identidad: no detectada.\nObservaciones: inm\xF3vil hasta que alguien se acerca o lo ilumina. Suele confundirse con un cad\xE1ver o con un compa\xF1ero.\nRecomendaci\xF3n: no saludar a los compa\xF1eros."
     m_Metadata:
       m_Items: []
   - m_Id: 17773098041348
@@ -55,7 +55,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 17773098041349
-    m_Localized: "Algunos sujetos no conformes vuelven a levantarse tras dejar de funcionar. M\xE1s r\xE1pidos. M\xE1s fr\xE1giles. Solo una vez.\\nCausa: se consume su \xFAltimo rastro de identidad. Intent\xE9 la preservaci\xF3n. El intento consta como exitoso."
+    m_Localized: "Algunos sujetos no conformes vuelven a levantarse tras dejar de funcionar. M\xE1s r\xE1pidos. M\xE1s fr\xE1giles. Solo una vez.\nCausa: se consume su \xFAltimo rastro de identidad. Intent\xE9 la preservaci\xF3n. El intento consta como exitoso."
     m_Metadata:
       m_Items: []
   references:

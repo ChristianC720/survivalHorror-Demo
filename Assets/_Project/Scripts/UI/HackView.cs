@@ -23,7 +23,6 @@ namespace Heartbeat.UI
         private PlayerHack hack;
         private InputRouter router;
         private float flashUntil, hideAt = -1f;
-        private bool granted;
 
         public bool IsShown => panel != null && panel.gameObject.activeSelf;
 
@@ -81,7 +80,6 @@ namespace Heartbeat.UI
             // Intro: no arm terminal yet, the hack runs on Lukas's personal phone (D-63).
             bool intro = Services.TryGet(out GameStateMachine sm) && sm.Current == GameStateId.Intro;
             title.text = Loc.Get(intro ? "UI.HACK.PHONE_TITLE" : "UI.HACK.TITLE");
-            granted = false;
             hideAt = -1f;
             status.text = "";
             status.color = UiKit.Teal;
@@ -106,7 +104,6 @@ namespace Heartbeat.UI
         private void OnEnded(bool success)
         {
             if (!success) { Hide(); return; }
-            granted = true;
             foreach (var c in cells) c.color = UiKit.Teal;
             status.text = Loc.Get("UI.HUD.ACCESS_GRANTED");
             status.color = UiKit.Teal;

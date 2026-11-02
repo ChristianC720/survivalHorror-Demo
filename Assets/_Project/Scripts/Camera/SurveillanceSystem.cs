@@ -196,7 +196,7 @@ namespace Heartbeat.CameraSystem
             movers.Clear();
             viewBounds = room.TryGetComponent(out Collider vol) ? vol.bounds : new Bounds(room.transform.position, Vector3.one * 20f);
             viewBounds.Expand(new Vector3(1f, 100f, 1f));   // the room's own walls sit on its edge
-            foreach (var r in FindObjectsByType<Renderer>(FindObjectsSortMode.None))
+            foreach (var r in FindObjectsByType<Renderer>(FindObjectsInactive.Exclude))
             {
                 if (r.GetComponentInParent<AI.EnemyBrain>() != null) { movers.Add(r); continue; }   // they walk in and out
                 if (r.transform.IsChildOf(room.transform) || r.GetComponentInParent<PlayerController>() != null) continue;

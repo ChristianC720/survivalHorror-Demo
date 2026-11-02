@@ -49,7 +49,7 @@ namespace Heartbeat.EditorTools
                         var table = (StringTable)col.GetTable(Codes[i]);
                         if (table == null) continue;
                         string text = keepGerman ? c[1] : c[1 + i];
-                        table.AddEntry(key, text.Replace("\n", "\n"));
+                        table.AddEntry(key, text.Replace("\\n", "\n"));   // TSV escape -> real line break (was a no-op)
                         EditorUtility.SetDirty(table);
                     }
                     rows++;

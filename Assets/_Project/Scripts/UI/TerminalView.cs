@@ -164,7 +164,7 @@ namespace Heartbeat.UI
         {
             if (!open) return;
             string subject = Services.TryGet(out Cycle.CycleController cycle) && cycle.Data != null ? cycle.Data.SubjectLabel : "R-H-??";
-            string drum = revolver != null ? "   ·   " + Loc.Get("UI.TERM.DRUM", revolver.Model.Loaded) : "";
+            string drum = revolver != null && revolver.Owned ? "   ·   " + Loc.Get("UI.TERM.DRUM", revolver.Model.Loaded) : "";
             header.text = Loc.Get("UI.TERM.SUBJECT", subject) + drum;
 
             if (inventory != null)

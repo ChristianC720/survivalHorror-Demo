@@ -38,7 +38,7 @@ namespace Heartbeat.Player
             Hit?.Invoke();
         }
 
-#if UNITY_EDITOR || DEVELOPMENT_BUILD
+#if UNITY_EDITOR || DEBUG
         private bool Invulnerable => DebugInvulnerable;
 #else
         private bool Invulnerable => false;
