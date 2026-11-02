@@ -28,6 +28,7 @@ Rules
 | `PH_Capsule_Reconstruction` | Reconstruction capsule (capsule row) | 1.0 × 2.2 × 1.0 | cylinder + glass box | ≤ 2k | open/close | placeholder done |
 | `PH_Intro_House`, `PH_Intro_Elevator` | Intro set pieces | room-sized | kit-like boxes | – | – | placeholder done: `Set_House`, `Set_Elevator`, `Set_Elevator2`, `Set_NonexistentFloor` in `Intro.unity` (F1/F2 kit shells + primitive table, chair, photo) |
 | `PH_KesslerGuard_Corpse` | Assimilated Kessler guard lying in the tutorial depot with the revolver (D-74) | 1.8 m lying | dark capsule + assimilated head | ≤ 5k | static | placeholder done (`ROOM_F1_Storage_A`) |
+| `PH_Lukas_Mudo` | Lukas turned into a Mudo, standing far away on the floor that does not exist (Assimilation ending, D-61) | 0.55 × 1.8 × 0.35 | assimilated capsule + metal face plate | ≤ 6k | frozen idle | placeholder done (`Cinematics.unity`) |
 | `PH_Intro_Decoy` | The Mudo decoy at the end of the floor that does not exist (D-60) | 0.55 × 1.8 × 0.35 | dirty-white capsule, no AI | – | frozen idle | placeholder done (`Intro.unity`) |
 
 Add a row whenever you create a new `PH_` prefab.

@@ -14,8 +14,8 @@ namespace Heartbeat.Cycle
     /// Endings (Premisa y Trama, D-42, D-51, D-61): plays the ending as a sequence of black cards with text, subtitles
     /// and cues, then the credits (skippable with Space only once seen, D-39), marks the cycle completed (D-93) and
     /// returns to the main menu. Lives on the Bootstrap object; started by GameEvents.EndingTriggered.
-    /// shortcut: endings are code-driven card sequences over black; staged 3D shots (capsule, the nonexistent floor
-    /// with Lukas as a Mudo) arrive with the Intro/Cinematics scene work (E14-intro).
+    /// shortcut: endings are mostly code-driven card sequences over black; only the Assimilation has a staged 3D shot (the nonexistent floor
+    /// with Lukas as a Mudo, Cinematics scene); add more <see cref="Narrative.CinematicStage"/> shots for the others.
     /// </summary>
     public sealed class EndingDirector : MonoBehaviour
     {
@@ -63,6 +63,18 @@ namespace Heartbeat.Cycle
                     Subtitles.Say(Subtitles.Mother, "SUB.MOTHER.ASSIMILATION", "R-H-" + n);
                     yield return Card(Loc.Get("END.ASSIM.FLOOR"), cardSeconds + 1.5f);
                     // 3. Lukas, now a Mudo, far away on the floor that does not exist; only here his text degrades (D-62).
+                    //    Staged shot in the Cinematics scene: the only time that floor comes back (D-61).
+                    var loader = Services.Get<SceneLoader>();
+                    loader.Load(SceneNames.Cinematics, null, fadeOut: false);
+                    while (loader.IsBusy) yield return null;
+                    if (Services.TryGet(out Narrative.CinematicStage stage))
+                    {
+                        card.text = "";
+                        canvas.enabled = false;
+                        loader.SetFade(0f);
+                        yield return stage.Play("Assimilation", cardSeconds + 2f);
+                        canvas.enabled = true;
+                    }
                     yield return Card(DocText.Render("<c>" + Loc.Get("SUB.LUKAS.NAME_OWN") + "</c>", false), cardSeconds);
                     yield return Card(Loc.Get("END.ASSIM.STATE"), cardSeconds);
                     break;
