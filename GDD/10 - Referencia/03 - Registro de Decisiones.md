@@ -1135,6 +1135,8 @@ Esta sección conserva las decisiones importantes del proyecto y el razonamiento
 
 **Responsable:** Christian Coronel Palma
 
+**Estado:** Modificada por D-151 (toda la animación se hace en Blender, sin Mixamo). Se conserva como histórico.
+
 ## Decisión D-95 — Latido del laboratorio en la nota de voz
 
 **Fecha:** 2026-10-16
@@ -1532,6 +1534,8 @@ Esta sección conserva las decisiones importantes del proyecto y el razonamiento
 | 2026-11-02 | D-148 Zonas seguras | La sala de inicio de cada piso y la sala clave final ya autoguardada son zonas seguras si no hay caza: salir al menú o reiniciar ahí no tiene costo (no suma al contador ni a la degradación). Al continuar o reiniciar, el piso se reconstruye con semilla nueva desde el punto guardado (inicio del piso o sala final) con el inventario de ese guardado. **Modifica D-31 y D-32** | Christian Coronel Palma |
 | 2026-11-02 | D-149 Asimilación solo al morir | Reiniciar y salir con costo siguen sumando al contador (puede llegar a 5 o más), pero el final Asimilación solo se reproduce cuando Lukas muere de verdad (salud en 0 o agarre en Crítico) con el contador en 5 o más. Continuar desde el menú nunca lo dispara. **Modifica M-18 y D-96** | Christian Coronel Palma |
 | 2026-11-02 | D-150 Fallas de la demo | Dos fallas (M-17), cada una descubierta al leer un documento de falla [F] que ocupa el primer hueco de documento del piso mientras no esté registrada: "Puerta trasera de mantenimiento" (piso 1, las puertas normales de 4-5 entradas quedan en 2) y "Bus de pruebas de la mesa de mezcla" (piso 3, las secuencias principales de 7-8 entradas, incluidos el elevador y los nodos de la fase 1 de The Mother, quedan a la mitad). Su uso es manual: durante un hackeo compatible el terminal muestra [F] Explotar falla y el jugador decide gastarla (una vez por hackeo; corta la cadena en curso). 2 usos antes del parche; al morir se parchean todas las descubiertas. El terminal muestra los usos restantes o PATCHED al leer el registro | Christian Coronel Palma |
+| 2026-11-02 | D-151 Animación solo en Blender | Se elimina Mixamo: toda la animación, incluida la locomoción base, se hace en Blender; los clips permanecen en el sitio y se ajustan a las velocidades y posturas del GDD. **Modifica D-88** | Christian Coronel Palma |
+| 2026-11-02 | D-152 Aspecto final de personajes | Enemigos normales sin placas ni piezas metálicas. Alto: restos del Werkschutz. Boca: cabeza de dos lóbulos. Rastrero: siempre a cuatro patas, cara invertida y boca horizontal. Mudo: sin rostro, con ropa gris de personal. El metal de los reciclados es maquinaria del laboratorio, y cada reciclado es un modelo completo. Lukas: terminal en la cara exterior del antebrazo izquierdo, luz teal tenue de ~50 cm en costuras y terminal sin efecto en la jugabilidad, 8k triángulos como techo. Precisa D-99 y D-130 | Christian Coronel Palma |
 
 
 > **Navegación:** [[00 - Índice]] · ← [[02 - Referencias e Inspiración]] · [[04 - Historial de Versiones]] →

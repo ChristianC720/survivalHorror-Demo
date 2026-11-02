@@ -11,12 +11,12 @@ Aspecto, rol y valores de cada personaje en [[03 - Personajes]] y [[03 - Enemigo
 | Personaje | Modelo/Sprite | Animaciones | VFX | Estado |
 | --------- | ------------- | ----------- | --- | ------ |
 | Lukas civil (introducción) | Modelo 3D low-poly; chaqueta de campo verde-gris, sin emisivos; anillo en la mano derecha (D-83) | Locomoción, interacción, hackeo con el teléfono, muerte guionizada (~8 clips) | Ninguno | Diseño de referencia |
-| Lukas R-H-07 | Mismo cuerpo; overol teal con costuras luminosas y ribetes rojos, terminal en el antebrazo izquierdo; 3–5 variantes de cuerpo ajeno (D-43) | Juego completo (~25–30 clips) | Emisivo de costuras y terminal; destello del punzón | Diseño de referencia |
+| Lukas R-H-07 | Mismo cuerpo; overol teal con costuras luminosas y ribetes rojos, terminal en el antebrazo izquierdo; 3–5 variantes de cuerpo ajeno (D-43) | Juego completo (~25–30 clips) | Emisivo de costuras y terminal, con una luz teal tenue de ~50 cm que no afecta a la jugabilidad (D-152); destello del punzón | Diseño de referencia |
 | El Alto | Humanoide de ~2.5 m, encorvado, brazos hasta el suelo; restos de uniforme | Patrulla, caza, golpe largo, agarre, aturdido, muerte (~8–10 clips) | Brillo morado iridiscente en la piel | Concepto |
 | La Boca | Humanoide, cara partida con boca vertical | Deambular, caza, mordida, grito, aturdido, muerte (~8–10 clips) | Ondas de distorsión en el grito (sutiles) | Concepto |
 | El Rastrero | Cuadrúpedo, cara invertida | Locomoción procedural con IK, flanqueo, zarpazos, muerte (~6–8 clips) | — | Concepto |
 | El Mudo | Humanoide sin cara; pose de cadáver o de persona quieta | Inmóvil, estallido, agarre, pausa, muerte (~6–8 clips) | — | Concepto |
-| Versiones recicladas | Las mismas mallas con cambios por tipo: piezas metálicas en el Alto, el Rastrero y el Mudo, y la Boca demacrada sin metal (D-130; ver [[03 - Personajes]]). El Mudo reciclado se mueve con espasmos | Las de su tipo, más rápidas | Metal oxidado de la paleta Base sobre la carne del original | Concepto |
+| Versiones recicladas | Un modelo completo por tipo, con el esqueleto de su versión normal: piezas metálicas en el Alto, el Rastrero y el Mudo, y la Boca demacrada sin metal (D-130, D-152; ver [[03 - Personajes]]). El Mudo reciclado se mueve con espasmos | Las de su tipo, más rápidas | Metal oxidado de la paleta Base sobre la carne del original | Concepto |
 | The Mother | Estantería criogénica en una grúa con brazo recolector, núcleo y 3 transformadores; solo máquina (D-65) | Patrulla de la grúa, agarre del brazo, apertura del núcleo, caída (~6–8 clips + procedural) | Niebla criogénica, chispas de transformadores, luz roja de cámaras | Concepto |
 | Cadáveres asimilados | Variantes de personal de Vitalis, guardias de Kessler y sujetos (D-77) | Ragdoll y poses fijas | — | Concepto |
 | Lukas Mudo (Asimilación) | Malla del Mudo con piezas de Lukas (D-61) | Solo cinemática | — | Concepto |
@@ -24,7 +24,7 @@ Aspecto, rol y valores de cada personaje en [[03 - Personajes]] y [[03 - Enemigo
 
 ## Animaciones
 
-**Flujo de producción (D-88):** el equipo modela, crea el esqueleto, hace el rig y anima en Blender. Solo la **locomoción base** se toma de Mixamo y se retoca en Blender; todo lo demás es propio. En Unity, con las herramientas incluidas en el motor (Animator, *Animation Rigging*, IK y ragdoll), el código mezcla y modifica los clips:
+**Flujo de producción (D-88, D-151):** el modelado, el esqueleto, el rig y todas las animaciones, incluida la locomoción base, se hacen en Blender. En Unity, con las herramientas incluidas en el motor (Animator, *Animation Rigging*, IK y ragdoll), el código mezcla y modifica los clips:
 
 - Gira el torso, los brazos y la cabeza hacia donde se apunta o se mira.
 - Apoya los pies en escalones y escombros (IK) y coloca la mano en puertas, paneles y el arma.
@@ -77,12 +77,12 @@ Valores iniciales, sujetos a pruebas de rendimiento (60 FPS en hardware medio; [
 
 - **Escala:** 1 unidad = 1 m. Lukas mide 1.78 m.
 - **Esqueleto:** un esqueleto humanoide compartido (compatible con Unity Humanoid) para Lukas, el Alto, la Boca y el Mudo, para reutilizar clips entre ellos. El Rastrero y The Mother tienen esqueletos propios.
-- **Polígonos (aprox.):** Lukas ~5–8k triángulos; enemigos ~4–8k; The Mother ~15k; cadáveres ~2–4k.
+- **Polígonos (aprox.):** Lukas hasta ~8k triángulos, sin mínimo (D-152); enemigos ~4–8k; The Mother ~15k; cadáveres ~2–4k.
 - **Texturas:** 512 px para personajes y 1024 px para The Mother, con filtro *point*.
 - **Clips:** 30 fps, cortos y en bucle cuando corresponda.
 - **Formato:** FBX exportado desde Blender.
 - **Nombres:** `CH_<Personaje>_<Variante>` para modelos (por ejemplo `CH_Lukas_RH07`, `CH_Alto_Reciclado`) y `AN_<Personaje>_<Acción>` para clips (por ejemplo `AN_Lukas_ReloadRound`).
-- **Origen:** todo el contenido es propio, salvo la locomoción base de Mixamo, retocada (D-88).
+- **Origen:** todo el contenido es propio (D-151).
 
 
 > **Navegación:** [[00 - Índice]] · ← [[01 - Dirección de Arte]] · [[03 - Entornos]] →

@@ -53,7 +53,7 @@ Cada personaje importante debe tener una función clara dentro de la historia y/
 Presenta dos estados visuales:
 
 - **Estado Humano / Original (introducción):** chaqueta de campo civil verde-gris apagada y desaturada (no militar), camiseta oscura, pantalón de trabajo y botas gastadas; muy sucio y vivido; ambos brazos limpios, sin tecnología ni acentos luminiscentes.
-- **Estado de reconstrucción (resto del juego):** mono / overol de trabajo industrial de una pieza en gris oscuro con tonos teal, con cinturón utilitario de hebilla y bolsillos de muslo flexibles; guantes técnicos sin dedos y botas de trabajo; acentos luminiscentes teal en costuras del pecho, brazos y piernas, con detalles rojos en cuello, puños y bordes de las botas; dos conectores / tubos tech en la parte alta de la espalda (detalle estético); terminal embebida luminiscente en el antebrazo izquierdo (zona medial), con diseño de placa integrada, persistente en cada reconstrucción.
+- **Estado de reconstrucción (resto del juego):** mono / overol de trabajo industrial de una pieza en gris oscuro con tonos teal, con cinturón utilitario de hebilla y bolsillos de muslo flexibles; guantes técnicos sin dedos y botas de trabajo; acentos luminiscentes teal en costuras del pecho, brazos y piernas, con detalles rojos en cuello, puños y bordes de las botas; dos conectores / tubos tech en la parte alta de la espalda (detalle estético); terminal embebida luminiscente en la cara exterior del antebrazo izquierdo (D-152), con diseño de placa integrada, persistente en cada reconstrucción. Las costuras y la terminal dan una luz teal tenue de ~50 cm de alcance, sin efecto en la jugabilidad (D-152).
 
 **Personalidad:** Hombre común, desgastado y obstinado. Entereza cansada antes que heroísmo. No es un combatiente; su fortaleza es el conocimiento técnico, la improvisación y la capacidad de leer su entorno. Desde la primera reconstrucción vive frustrado por no recordar a quién busca (D-45). Tono emocional al estilo Silent Hill / Resident Evil / Alan Wake: una persona corriente fuera de lugar en un entorno frío y hostil.
 
@@ -209,10 +209,10 @@ No hay NPC con diálogo en la demo. Las voces que aparecen (Emilia, The Mother, 
 
 | Tipo | Aspecto | Comportamiento | Pisos |
 |---|---|---|---|
-| El Alto | ~2.5 m, encorvado, brazos que llegan al suelo | Lento; golpe de alcance largo; vigila pasillos | 1–3 |
-| La Boca | Cara partida, boca abierta en vertical | Lenta y ciega; su grito propio (no el latido) pone a los enemigos cercanos en búsqueda hacia ella (D-64) | 2–3 |
-| El Rastrero | En cuatro patas, cara invertida | Rápido; flanquea | 1–3 |
-| El Mudo | Inmóvil y sin cara; parece un cadáver o una persona quieta | Se activa cuando el jugador se acerca; sirve de señuelo (D-53) | 3 |
+| El Alto | ~2.5 m, encorvado, brazos que llegan al suelo; restos del uniforme del Werkschutz y piel morada iridiscente (D-152) | Lento; golpe de alcance largo; vigila pasillos | 1–3 |
+| La Boca | Cabeza partida en dos lóbulos, boca abierta en vertical (D-152) | Lenta y ciega; su grito propio (no el latido) pone a los enemigos cercanos en búsqueda hacia ella (D-64) | 2–3 |
+| El Rastrero | Siempre en cuatro patas, cara invertida con la barbilla hacia arriba y boca horizontal (D-152) | Rápido; flanquea | 1–3 |
+| El Mudo | Inmóvil y sin cara, con ropa gris de personal de Vitalis; parece un cadáver o una persona quieta (D-152) | Se activa cuando el jugador se acerca; sirve de señuelo (D-53) | 3 |
 
 La distribución por piso es un valor inicial, sujeto a balance (D-76): el piso 1 tiene el Alto y el Rastrero, el piso 2 suma la Boca y el piso 3 suma el Mudo. El Mudo de la introducción es un señuelo guionizado (D-53).
 
@@ -258,7 +258,7 @@ Los reciclados mueren con 2 disparos, o con 1 si son un Rastrero (M-20). Detecci
 
 **Función narrativa:** Materializan el rastro de identidad: después del reciclaje ya no les queda identidad, por eso solo ocurre una vez (D-47, M-20).
 
-**Descripción física:** Versión de cada uno de los 4 tipos (D-60), sin rasgos del laboratorio ni carne nueva (D-130). Donde hay piezas metálicas, son el intento fallido de The Mother de preservar su último rastro de identidad (D-47, M-20). Cada tipo cambia su silueta de forma distinta:
+**Descripción física:** Versión de cada uno de los 4 tipos (D-60), sin rasgos del laboratorio ni carne nueva (D-130). Donde hay piezas metálicas, son maquinaria del laboratorio, que este funde en el cuerpo al consumir su último rastro de identidad (D-47, D-99, D-152). Las versiones normales no llevan placas ni piezas metálicas. Cada tipo cambia su silueta de forma distinta:
 
 | Tipo | Aspecto del reciclado |
 |---|---|

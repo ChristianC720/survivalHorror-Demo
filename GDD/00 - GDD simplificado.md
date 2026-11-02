@@ -357,11 +357,11 @@ Fuente: [[01 - Dirección de Arte]].
 
 ### Character Appearance
 
-- **Lukas:** proporciones realistas, 1.78 m, ~5–8k triángulos, 3–5 variantes de cuerpo ajeno. Su postura cambia con la salud: erguido en Bien, cojea en Herido, arrastra el paso en Crítico.
-- **Asimilados:** figuras grotescas con restos de uniformes y brillo morado iridiscente. Los reciclados añaden piezas metálicas: el intento fallido de The Mother de preservarlos.
+- **Lukas:** proporciones realistas, 1.78 m, hasta ~8k triángulos, 3–5 variantes de cuerpo ajeno. Su postura cambia con la salud: erguido en Bien, cojea en Herido, arrastra el paso en Crítico.
+- **Asimilados:** figuras grotescas con restos de uniformes y brillo morado iridiscente. Los reciclados añaden piezas metálicas de la maquinaria del laboratorio, que este funde en el cuerpo al consumir su último rastro de identidad (D-99, D-152).
 - **The Mother:** "estantería-catedral" criogénica colgada de una grúa, con viales escarchados y luz carmesí interna.
 - **Emilia:** sin modelo 3D; solo la foto familiar.
-- **Animación:** Blender (más locomoción base de Mixamo, retocada), con IK, *Animation Rigging*, ruido procedural y ragdoll en Unity.
+- **Animación:** Blender, con IK, *Animation Rigging*, ruido procedural y ragdoll en Unity.
 
 Fuente: [[02 - Personajes y Animación]].
 
@@ -435,7 +435,7 @@ Fuente: [[05 - Audio y Música]].
 | Motor        | **Unity 6.6** (`6000.6.6f1`, no LTS), URP *Forward+*                                                                                                     |
 | Lenguaje     | C#; ShaderGraph/HLSL; JSON para guardado                                                                                                                 |
 | Paquetes     | Solo oficiales: URP, Input System, Cinemachine 3, AI Navigation, Timeline, Animation Rigging, Localization, TextMeshPro, Test Framework. Sin Asset Store |
-| Herramientas | Blender 4.x, Mixamo, Blockbench, FL Studio, Obsidian, Git + GitHub + Git LFS                                                                             |
+| Herramientas | Blender 5.x, Blockbench, FL Studio, Obsidian, Git + GitHub + Git LFS                                                                             |
 | Ramas        | `main` (entregas), `develop` (integración), `feature/<sistema>-<tema>` con PR probado por otra persona                                                   |
 
 **Requisitos (provisionales):**

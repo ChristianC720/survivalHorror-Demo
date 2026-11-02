@@ -31,8 +31,7 @@ Documenta las herramientas utilizadas para crear el videojuego y por qué fueron
 |---|---|---|
 | Unity Editor | Motor | 6000.6.6f1 |
 | Visual Studio 2022 / Rider | IDE de C# (`.vsconfig` del repositorio) | Última estable |
-| Blender | Modelado, rig y animación (D-88) | 4.x |
-| Mixamo | Locomoción base, retocada en Blender (D-88) | Web |
+| Blender | Modelado, rig y animación (D-151) | 5.x |
 | Blockbench | Modelos low-poly de objetos y utilería | Última estable |
 | FL Studio | Música y diseño sonoro (D-87) | La del equipo |
 | Obsidian | GDD | Última estable |

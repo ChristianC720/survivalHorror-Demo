@@ -75,7 +75,7 @@ namespace Heartbeat.Recycle
             GameEvents.RaiseEnemyRecycled(c.GetComponent<EnemyBrain>());
         }
 
-        /// <summary>Placeholder for the metal pieces The Mother adds (PLACEHOLDERS.md: PH_Recycled_Parts).</summary>
+        /// <summary>Placeholder for the metal pieces the laboratory fuses in (PLACEHOLDERS.md: PH_Recycled_Parts).</summary>
         private void AddMetalPieces(Transform enemy)
         {
             var mat = metal;

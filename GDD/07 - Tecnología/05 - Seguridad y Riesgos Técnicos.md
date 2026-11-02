@@ -15,7 +15,6 @@ Documenta riesgos técnicos y medidas para reducir fallos, pérdida de datos o a
 | Corrupción o pérdida del guardado | Baja | Alto | Escritura atómica con `.tmp` y `.bak`, `saveVersion` y migraciones ([[04 - Datos y Persistencia]]) |
 | Conflictos de merge en escenas y prefabs | Alta | Medio | Una persona por escena o prefab; salas como prefabs independientes; *Force Text*; ramas cortas |
 | Binarios grandes en Git | Media | Medio | Git LFS ya configurado en `.gitattributes`; nunca subir `Library/` |
-| Animaciones de Mixamo incompatibles con el esqueleto compartido | Baja | Medio | Validar un clip por personaje en la semana 1 con el *Avatar* Humanoid (D-88) |
 | Estados combinados no previstos (morir en hackeo, salir en caza, quinta muerte por Reiniciar) | Media | Medio | Una única `GameStateMachine` con la tabla de transiciones de [[07 - Reglas y Estados del Juego]] y casos de prueba por caso especial |
 | Unity 6.6 no es LTS: deja de recibir parches cuando sale la siguiente versión | Alta | Bajo | Fijar `6000.6.6f1` hasta terminar la demo; cambiar de versión solo al inicio de un hito y como solicitud de cambio ([[05 - Gestión de Cambios]]) |
 | Comportamiento de la IA difícil de reproducir | Media | Medio | Semilla del piso visible y consola de depuración con el estado de alerta de cada enemigo y la atención de The Mother ([[03 - Bugs y Seguimiento]]) |
