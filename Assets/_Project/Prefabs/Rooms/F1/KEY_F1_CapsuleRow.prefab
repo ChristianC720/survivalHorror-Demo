@@ -79,6 +79,7 @@ MonoBehaviour:
   tall: 0
   ceiling: 1
   windows: []
+  buildOnStart: 0
 --- !u!65 &9094348056651476176
 BoxCollider:
   m_ObjectHideFlags: 0
