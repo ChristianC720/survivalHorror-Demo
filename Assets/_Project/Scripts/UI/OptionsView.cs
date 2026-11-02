@@ -17,7 +17,7 @@ namespace Heartbeat.UI
     /// </summary>
     public sealed class OptionsView : MonoBehaviour
     {
-        private static readonly string[] RebindActions = { "Interact", "Flashlight", "Reload", "Crouch", "Sprint", "Surveillance", "Terminal" };
+        private static readonly string[] RebindActions = { "Interact", "Flashlight", "Reload", "Crouch", "Sprint", "Surveillance", "Terminal", "Hacking/Abort", "Hacking/UseFault" };   // conflicts are checked inside each map (context)
         private static readonly string[] SectionKeys = { "UI.OPT.AUDIO", "UI.OPT.VIDEO", "UI.OPT.CONTROLS", "UI.OPT.ACCESSIBILITY", "UI.OPT.GAME" };
 
         private SaveService saves;
@@ -191,14 +191,14 @@ namespace Heartbeat.UI
         private void RebindRow(string actionName)
         {
             var router = Services.Get<InputRouter>();
-            var action = router.Actions.asset.FindAction("Gameplay/" + actionName, true);
+            var action = router.Actions.asset.FindAction(actionName.Contains("/") ? actionName : "Gameplay/" + actionName, true);
             var r = UiKit.Rect("Row", body);
             var h = r.gameObject.AddComponent<HorizontalLayoutGroup>();
             h.spacing = 12;
             h.childControlWidth = h.childControlHeight = true;
             h.childForceExpandHeight = false;
             r.gameObject.AddComponent<LayoutElement>().preferredHeight = 36;
-            var label = UiKit.Text(r, actionName, 22, color);   // action names are English UI terms in the demo
+            var label = UiKit.Text(r, actionName.Replace("/", " · "), 22, color);   // action names are English UI terms in the demo
             label.alignment = TextAlignmentOptions.MidlineLeft;
             label.gameObject.AddComponent<LayoutElement>().preferredWidth = 420;
             Button b = null;
