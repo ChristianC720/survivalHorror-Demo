@@ -164,6 +164,12 @@ namespace Heartbeat.Generation
             foreach (var e in Layout.Enemies) if (!startInFinalRoom || e.Room != spawnRoom) PlaceEnemy(e);
             SpawnPlayer(spawnRoom);
             BarSpawnRoom(spawnRoom);
+            if (!startInFinalRoom && cfg.startingAmmo > 0)
+            {
+                // Starting supplies (D-new): a few rounds on the floor next to where Lukas wakes; outside the budget.
+                var t = Player.transform;
+                DropItem(ItemKind.Ammo, cfg.startingAmmo, t.position + t.forward * 1.2f);
+            }
             activation.Apply(built[spawnRoom]);
 
             LastBuildMs = sw.ElapsedMilliseconds;

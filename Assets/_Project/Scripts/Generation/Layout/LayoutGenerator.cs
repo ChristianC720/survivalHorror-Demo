@@ -77,14 +77,14 @@ namespace Heartbeat.Generation.Layout
             }
             if (placed < target) return null;
 
-            // 4. Secondary key rooms at depth >= 2 (their parent at depth >= 1).
+            // 4. Secondary key rooms at depth >= MinSecondaryDistance (leaves; the validator re-checks after loops).
             int secCount = Math.Min(p.Secondary.Pick(rng), Math.Max(2, secondaries.Count * 3));
             for (int i = 0; i < secCount; i++)
             {
                 bool ok = false;
                 for (int tries = 0; tries < PlaceTries && !ok; tries++)
                 {
-                    var parent = PickOpenRoom(layout, rng, minDepth: 1);
+                    var parent = PickOpenRoom(layout, rng, minDepth: Math.Max(0, p.MinSecondaryDistance - 1));
                     if (parent == null) break;
                     ok = AttachFrom(layout, occupied, parent, secondaries[rng.Next(secondaries.Count)], rng, leaf: true);
                 }
