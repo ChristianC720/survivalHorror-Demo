@@ -20,7 +20,7 @@ namespace Heartbeat.Player
             Model.StateChanged += OnStateChanged;
         }
 
-        private void OnDestroy() => Model.StateChanged -= OnStateChanged;
+        private void OnDestroy() { if (Model != null) Model.StateChanged -= OnStateChanged; }   // null after a mid-play recompile
 
         /// <summary>Debug console / scripted playtests: hits and grabs still land (events, interrupts) but do no damage.
         /// Resets with the Player on every scene load; compiled out of release builds.</summary>

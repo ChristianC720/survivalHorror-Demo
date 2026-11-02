@@ -16,7 +16,7 @@ namespace Heartbeat.Player
             Model.Exhausted += OnExhausted;
         }
 
-        private void OnDestroy() => Model.Exhausted -= OnExhausted;
+        private void OnDestroy() { if (Model != null) Model.Exhausted -= OnExhausted; }
 
         private void Update() => Model.Tick(Time.deltaTime);
 
