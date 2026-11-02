@@ -82,8 +82,27 @@ namespace Heartbeat.Cycle
                     Sfx.Play2D("CUE_Music_Ending_" + id);
                     yield return Card(Loc.Get("END.RELIEF.WAKE"), cardSeconds);
                     if (id == "BasicRelief") yield return Card(Loc.Get("END.RELIEF.BASIC"), cardSeconds);
-                    if (id == "FullRelief") yield return Card(Loc.Get("END.RELIEF.FULL"), cardSeconds);
-                    if (id == "Ambiguous") yield return Card(Loc.Get("END.AMBIGUOUS.SYNC"), cardSeconds);
+                    if (id == "FullRelief")
+                    {
+                        yield return Card(Loc.Get("END.RELIEF.FULL"), cardSeconds);
+                        // He hears the second act: on screen only total glitch, never readable (D-61, D-16).
+                        Sfx.Play2D("CUE_Ending_BeatLab");
+                        yield return Card(DocText.Render("<c>" + Loc.Get("END.RELIEF.BASIC") + " " + Loc.Get("END.AMBIGUOUS.SYNC") + "</c>", false), cardSeconds);
+                    }
+                    if (id == "Ambiguous")
+                    {
+                        // In black: Lukas's heartbeat and the lab's, out of phase, closing in until they beat as one (D-61).
+                        card.text = "";
+                        for (float gap = 0.6f; gap > 0.02f; gap *= 0.6f)
+                        {
+                            Sfx.Play2D("CUE_Ending_BeatLukas");
+                            for (float t = 0f; t < gap; t += Time.unscaledDeltaTime) yield return null;
+                            Sfx.Play2D("CUE_Ending_BeatLab");
+                            for (float t = 0f; t < 1.1f - gap; t += Time.unscaledDeltaTime) yield return null;
+                        }
+                        yield return Card(Loc.Get("END.AMBIGUOUS.SYNC"), cardSeconds);
+                        yield return Card("", 2f);   // silence before the hook
+                    }
                     // Open hook: a new arrival and The Mother starting the protocol (D-51).
                     Subtitles.Say(Subtitles.Mother, "SUB.MOTHER.HOOK");
                     yield return Card("", cardSeconds);
