@@ -45,4 +45,4 @@ Each checkbox is one git-flow feature: `git flow feature start <id>`.
 ## H6 — Release
 - [x] `E13-profiling` (13-quality-build.md: per-cue log and revolver delegate GC fixed; floor build ≤ 200 ms)
 - [~] `E13-bugfix` — done so far: revolver found on the Kessler guard / capsule tray (D-74), dark tutorial depot, tutorial tunnel Rastrero cue, shove gasp (M-06), unique documents per floor, Intro pause (no Restart, free quit), compiler warnings, localization line breaks, teardown NREs; plus D-61 ending details (Assimilation staged shot, Full relief second act, Ambiguous heartbeats), D-90 main menu in the capsule-row room, 11 floor-specific F2/F3 rooms (all archetypes on F3), German ambience posters (D-58), floor-2 finding (D-56), R-H line, reconstruction label, legible surveillance feed, rebindable hack keys, E prompt hidden outside Interact contexts, device-aware inventory hints
-- [ ] `E13-build` → tag `v1.0-demo`
+- [x] `E13-build` → tag `v1.0-demo` (Win64 Mono, 110 MB, Builds/v1.0-demo/IdentityDissolution.exe; boots to the main menu with no errors)
