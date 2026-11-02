@@ -175,7 +175,7 @@ namespace Heartbeat.UI
                         : s.Kind == ItemKind.Ammo ? $"{Loc.Get("UI.ITEM." + s.Kind)}  x{s.Count}" : Loc.Get("UI.ITEM." + s.Kind);
                     slotLabels[i].color = s.IsEmpty ? TealDim : Teal;
                 }
-            actionHint.text = inventory != null && inventory.IsUsingItem ? "…" : $"[LMB] {Loc.Get("UI.TERM.USE")}    [RMB] {Loc.Get("UI.TERM.DISCARD")}";
+            actionHint.text = inventory != null && inventory.IsUsingItem ? "…" : $"[{router.KeyFor(router.Actions.Inventory.Use)}] {Loc.Get("UI.TERM.USE")}    [{router.KeyFor(router.Actions.Inventory.Discard)}] {Loc.Get("UI.TERM.DISCARD")}";   // follows the last device (D-132)
             RefreshLogs();
         }
 
@@ -208,6 +208,7 @@ namespace Heartbeat.UI
             RecordKind.Bestiary => "[B]",
             RecordKind.Rule => "[R]",
             RecordKind.Fault => "[F]",
+            RecordKind.Ring => "[O]",
             _ => "[*]",
         };
 
