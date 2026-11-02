@@ -68,8 +68,8 @@ UI.CONFIRM.CANCEL	Cancel	Cancelar
 UI.CONFIRM.OK	Confirm	Confirmar
 UI.CONFIRM.OVERWRITE	This slot will be erased, including its terminal records. Continue?	Se borrará esta ranura, incluidos los registros del terminal. ¿Continuar?
 UI.CONFIRM.DELETE	Delete this slot? This cannot be undone.	¿Borrar esta ranura? No se puede deshacer.
-UI.CONFIRM.RESTART	Restarting counts as a death. Continue?	Reiniciar cuenta como una muerte. ¿Continuar?
-UI.CONFIRM.QUIT_HUNT	You are being hunted. Quitting now counts as a death: new subject, inventory lost.	Te están cazando. Salir ahora cuenta como una muerte: nuevo sujeto, inventario perdido.
+UI.CONFIRM.RESTART	Restarting counts as a death: you return to the start of this floor with what you had on arriving. Continue?	Reiniciar cuenta como una muerte: vuelves al inicio de este piso con lo que tenías al llegar. ¿Continuar?
+UI.CONFIRM.QUIT_HUNT	You are being hunted. Quitting now counts as a death: new subject, back to the start of this floor with what you had on arriving.	Te están cazando. Salir ahora cuenta como una muerte: nuevo sujeto, de vuelta al inicio de este piso con lo que tenías al llegar.
 UI.CONFIRM.QUIT_CALM	Quitting outside a saved room adds one death to the counter and degrades the cycle. The autosave is kept.	Salir fuera de una sala guardada suma una muerte al contador y degrada el ciclo. Se conserva el autoguardado.
 UI.CONFIRM.QUIT_FREE	Progress is saved. Quit to the main menu?	El progreso está guardado. ¿Salir al menú principal?
 UI.CONFIRM.QUIT_GAME	Close the game?	¿Cerrar el juego?
@@ -117,3 +117,4 @@ UI.PROMPT.LEAVE	Leave	Salir
 UI.CONFIRM.QUIT_CALM_TUTORIAL	Quitting the first attempt costs no death, but the cycle still degrades.	Salir en el primer intento no suma una muerte, pero el ciclo se degrada igualmente.	
 UI.HACK.TITLE	OVERRIDE SEQUENCE	OVERRIDE SEQUENCE	KEEP-EN (D-62 terminal label)
 UI.HACK.ABORT	Abort	Abandonar	
+UI.CONFIRM.RESTART_SAFE	You are in a safe room: restarting costs nothing. The floor is rebuilt and you keep what you had when it was saved.	Estás en una sala segura: reiniciar no tiene costo. El piso se reconstruye y conservas lo que tenías al guardar.	

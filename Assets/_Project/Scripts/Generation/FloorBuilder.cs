@@ -98,6 +98,7 @@ namespace Heartbeat.Generation
             floorRoot = new GameObject("MotherRoom").transform;
             floorRoot.SetParent(transform, false);
             var room = Instantiate(motherRoomPrefab, floorRoot).GetComponent<RoomInstance>();
+            room.Generation = RoomInstance.NextGeneration();
             room.name = "ROOM_Mother";
             room.GetComponent<RoomShell>().Build(new List<SocketData>());
             built.Add(room);
@@ -143,7 +144,8 @@ namespace Heartbeat.Generation
             UnityEngine.SceneManagement.SceneManager.MoveGameObjectToScene(doorsRoot.gameObject, gameObject.scene);
             emiliaCursor = 0;
 
-            foreach (var pr in Layout.Rooms) built.Add(PlaceRoom(pr));
+            int generation = RoomInstance.NextGeneration();
+            foreach (var pr in Layout.Rooms) { var r = PlaceRoom(pr); r.Generation = generation; built.Add(r); }
             foreach (var c in Layout.Connections)
             {
                 built[c.A].AddNeighbour(built[c.B]);

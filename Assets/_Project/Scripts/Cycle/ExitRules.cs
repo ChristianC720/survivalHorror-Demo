@@ -9,7 +9,7 @@ namespace Heartbeat.Cycle
     /// </summary>
     public static class ExitRules
     {
-        public static ExitCost Evaluate(bool hunting, bool inSavedFinalRoom) =>
-            hunting ? ExitCost.Hunt : inSavedFinalRoom ? ExitCost.None : ExitCost.Calm;
+        public static ExitCost Evaluate(bool hunting, bool inSafeZone) =>
+            hunting ? ExitCost.Hunt : inSafeZone ? ExitCost.None : ExitCost.Calm;   // safe zone: spawn room or saved final room (D-147)
     }
 }

@@ -19,7 +19,7 @@ namespace Heartbeat.Core
             { GameStateId.Intro, new[] { GameStateId.Loading, GameStateId.Paused } },
             { GameStateId.Loading, new[] { GameStateId.Playing, GameStateId.Reconstruction, GameStateId.EndingAssimilation } },
             { GameStateId.Playing, new[] { GameStateId.Paused, GameStateId.FloorTransition, GameStateId.Death, GameStateId.Victory } },
-            { GameStateId.Paused, new[] { GameStateId.Playing, GameStateId.Intro, GameStateId.Death, GameStateId.MainMenu } },
+            { GameStateId.Paused, new[] { GameStateId.Playing, GameStateId.Intro, GameStateId.Death, GameStateId.MainMenu, GameStateId.Loading } },   // Loading: free restart in a safe zone (D-147)
             { GameStateId.FloorTransition, new[] { GameStateId.Playing } },
             { GameStateId.Death, new[] { GameStateId.Reconstruction, GameStateId.EndingAssimilation, GameStateId.MainMenu } },
             { GameStateId.Reconstruction, new[] { GameStateId.Playing } },
