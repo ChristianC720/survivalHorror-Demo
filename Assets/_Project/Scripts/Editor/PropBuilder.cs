@@ -36,6 +36,8 @@ public static class PropBuilder
             ["PROP_F2_SampleFridge"] = ("F2", new[] { C("Body", 0, 1.0f, 0, 0.8f, 2.0f, 0.7f, "MAT_Base_Light"), C("Glass", 0, 1.1f, 0.36f, 0.65f, 1.5f, 0.02f, "MAT_Glass"), C("Seal", 0, 1.9f, 0.36f, 0.7f, 0.05f, 0.03f, "MAT_Crimson") }, null),
             ["PROP_F2_SurgeryTable"] = ("F2", new[] { C("Top", 0, 0.85f, 0, 0.8f, 0.08f, 2.0f, "MAT_Base_Metal"), Cy("Pillar", 0, 0.42f, 0, 0.25f, 0.8f, "MAT_Base_Mid"), C("Base", 0, 0.03f, 0, 0.6f, 0.06f, 0.8f, "MAT_Base_Dark") }, null),
             ["PROP_F2_LabChair"] = ("F2", new[] { C("Seat", 0, 0.45f, 0, 0.5f, 0.06f, 0.5f, "MAT_Base_Mid"), C("Back", 0, 0.75f, -0.22f, 0.5f, 0.55f, 0.05f, "MAT_Base_Mid"), Cy("Leg", 0, 0.22f, 0, 0.06f, 0.44f, "MAT_Base_Metal"), Cy("Foot", 0, 0.02f, 0, 0.55f, 0.04f, "MAT_Base_Dark") }, null),
+            ["PROP_F2_SurgicalLamp"] = ("F2", new[] { Cy("Arm", 0, 2.75f, 0, 0.06f, 0.5f, "MAT_Base_Metal"), Cy("Head", 0, 2.42f, 0, 0.8f, 0.14f, "MAT_Base_Light"), Cy("Lens", 0, 2.34f, 0, 0.6f, 0.02f, "MAT_Glass") }, null),
+            ["PROP_F2_SurgicalTools"] = ("F2", new[] { Cy("Stand", 0, 0.45f, 0, 0.05f, 0.9f, "MAT_Base_Metal"), C("Tray", 0, 0.92f, 0, 0.6f, 0.03f, 0.4f, "MAT_Base_Metal"), C("Scalpel", -0.1f, 0.95f, 0.05f, 0.2f, 0.01f, 0.02f, "MAT_Base_Light"), C("Clamp", 0.12f, 0.95f, -0.05f, 0.15f, 0.02f, 0.05f, "MAT_Base_Light") }, null),
             ["PH_F2_HumanCapsule"] = ("F2", new[] { Cy("Shell", 0, 1.1f, 0, 1.0f, 2.2f, "MAT_Glass"), Cy("Cap", 0, 2.15f, 0, 1.0f, 0.1f, "MAT_Base_Metal"), Cy("Plinth", 0, 0.08f, 0, 1.0f, 0.16f, "MAT_Base_Dark"), C("Body", 0, 1.0f, 0, 0.35f, 1.6f, 0.25f, "MAT_Skin") },
                 "Glass human capsule (Vitalis clinical), body floating inside; 1.0 × 2.2 × 1.0"),
             // ---- F3 core
