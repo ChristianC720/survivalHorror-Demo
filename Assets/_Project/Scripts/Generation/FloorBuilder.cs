@@ -145,7 +145,15 @@ namespace Heartbeat.Generation
             emiliaCursor = 0;
 
             int generation = RoomInstance.NextGeneration();
-            foreach (var pr in Layout.Rooms) { var r = PlaceRoom(pr); r.Generation = generation; built.Add(r); }
+            foreach (var pr in Layout.Rooms)
+            {
+                var r = PlaceRoom(pr);
+                r.Generation = generation;
+                built.Add(r);
+                // Safety posters only in the fixed rooms of the first attempt: capsule row + tutorial chain (D-89).
+                bool tutorial = pr.TutorialIndex > 0 || (p.FirstAttempt && pr.Index == Layout.EntryRoom && floor == 1);
+                foreach (var poster in r.GetComponentsInChildren<UI.TutorialPoster>(true)) poster.gameObject.SetActive(tutorial);
+            }
             foreach (var c in Layout.Connections)
             {
                 built[c.A].AddNeighbour(built[c.B]);

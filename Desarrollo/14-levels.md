@@ -23,7 +23,7 @@ Add `_B` variants of the procedural rooms if time allows. More variety per arche
 2. Dark depot (Storage): flashlight, pickup, inventory; dead Kessler guard with the revolver; 1 ammo blister + 1 heal.
 3. Long tunnel (Corridor): running and stamina; a Rastrero is heard behind a door at the end.
 4. Boiler room (Open): stealth, shove, shooting; 1 real Rastrero (counts toward the floor's enemies; its kill of Lukas does not add to the counter).
-Vitalis safety posters show the bound key (`IN CASE OF DARKNESS: PRESS [F]`).
+Vitalis safety posters show the bound key (`IN CASE OF DARKNESS: PRESS [F]`): `PROP_Shared_VitalisPoster` + `TutorialPoster` (POST table, actions as `Map/Action` list), placed by hand in `KEY_F1_CapsuleRow` (interact, terminal), `ROOM_F1_Storage_A` (flashlight, inventory), `ROOM_F1_Corridor_A` (sprint) and `ROOM_F1_Open_A` (stealth, combat). `FloorBuilder` keeps them only in the first-attempt tutorial rooms. Unlit photoluminescent paper so they read in the dark; English in both languages (D-89), German closing line in italics (D-58).
 
 ## Intro (`Intro` scene, D-53, D-63)
 House → outside Sektor V-7 → hatch (first hack, on the phone) → elevator (cinematic, distorts and falls) → the floor that does not exist → figure in the distance → attack from behind → full reconstruction cinematic. Built with the kit plus `PH_Intro_*`; minimal HUD; pause without Restart; the death does not count.

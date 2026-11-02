@@ -14,7 +14,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.SharedTableData
   m_TableCollectionName: POST
   m_TableCollectionNameGuidString: b19fb095a3f758842bda067e84810967
-  m_Entries: []
+  m_Entries:
+  - m_Id: 230949035048960
+    m_Key: POST.INTERACT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 230949106352128
+    m_Key: POST.TERMINAL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 230949110546432
+    m_Key: POST.FLASHLIGHT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 230949110546433
+    m_Key: POST.INVENTORY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 230949114740736
+    m_Key: POST.SPRINT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 230949114740737
+    m_Key: POST.STEALTH
+    m_Metadata:
+      m_Items: []
+  - m_Id: 230949114740738
+    m_Key: POST.COMBAT
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
