@@ -3,16 +3,17 @@ import bpy
 
 
 def export(path, rig, mesh=None, keep_prefix="AN_"):
-    """Only actions named `keep_prefix`* reach the FBX. Others are deleted from memory: reopen the file afterwards."""
+    """mesh: one object or a list sharing the rig. Only actions named `keep_prefix`* reach the FBX. Others are deleted
+    from memory: reopen the file afterwards."""
     vl = bpy.context.view_layer
     for o in vl.objects:
         o.select_set(False)
     rig.hide_set(False)
     rig.select_set(True)
     kinds = {"ARMATURE"}
-    if mesh is not None:
-        mesh.hide_set(False)
-        mesh.select_set(True)
+    for one in ([mesh] if isinstance(mesh, bpy.types.Object) else (mesh or [])):
+        one.hide_set(False)
+        one.select_set(True)
         kinds.add("MESH")
     vl.objects.active = rig
     # The FBX default pose must be the bind pose, not a frame of whichever clip was assigned last.

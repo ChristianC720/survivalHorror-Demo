@@ -18,12 +18,48 @@ namespace Heartbeat.Player
         [SerializeField] private Transform weaponSocket;
         [SerializeField] private PlayerHealth health;
         [SerializeField] private TMP_FontAsset terminalFont;
+        [Tooltip("Intro: civilian clothes, nothing luminous, no terminal (GDD Personajes).")]
+        [SerializeField] private bool civilian;
+        [Tooltip("D-43: one more foreign piece per reconstruction, cumulative. Index 0 is the second reconstruction.")]
+        [SerializeField] private Texture2D[] bodyVariants;
 
         private TextMeshPro screen;
         private int shownState = -1;
 
+        private const int FirstSubjectCode = 7;   // R-H-07 still has his own body
+        private static readonly int BaseMap = Shader.PropertyToID("_BaseMap");
+        private SkinnedMeshRenderer suit;
+        private MaterialPropertyBlock block;
+
+        private void OnEnable() => GameEvents.Reconstructed += ApplyBody;
+        private void OnDisable() => GameEvents.Reconstructed -= ApplyBody;
+
+        private void Start()
+        {
+            if (!civilian && Services.TryGet<Cycle.CycleController>(out var cycle) && cycle.Data != null) ApplyBody(cycle.Data.subjectCode);
+        }
+
+        private void ApplyBody(int subjectCode)
+        {
+            if (civilian || suit == null || bodyVariants == null || bodyVariants.Length == 0) return;
+            int index = subjectCode - FirstSubjectCode - 1;
+            block ??= new MaterialPropertyBlock();
+            suit.GetPropertyBlock(block);
+            if (index >= 0) block.SetTexture(BaseMap, bodyVariants[Mathf.Min(index, bodyVariants.Length - 1)]);
+            else block.Clear();
+            suit.SetPropertyBlock(block);
+        }
+
         private void Awake()
         {
+            foreach (var r in animator.GetComponentsInChildren<SkinnedMeshRenderer>(true))
+            {
+                bool isCivil = r.name.EndsWith("_Civil");
+                r.enabled = isCivil == civilian;
+                if (!isCivil) suit = r;
+            }
+            if (civilian) return;
+
             Transform hand = animator.GetBoneTransform(HumanBodyBones.RightHand);
             Transform fingers = animator.GetBoneTransform(HumanBodyBones.RightMiddleProximal);
             Transform forearm = animator.GetBoneTransform(HumanBodyBones.LeftLowerArm);
@@ -70,6 +106,7 @@ namespace Heartbeat.Player
 
         private void Update()
         {
+            if (civilian) return;
             int s = (int)health.State;
             if (s == shownState) return;
             shownState = s;

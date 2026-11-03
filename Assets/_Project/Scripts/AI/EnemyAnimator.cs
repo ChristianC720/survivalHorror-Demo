@@ -31,6 +31,7 @@ namespace Heartbeat.AI
         private float attackLength = 1f, overrideTimer;
         private string overrideState;
         private float seed;
+        private int shownBody = -1;   // -1 until the first frame picks a mesh
 
         private void Awake()
         {
@@ -68,12 +69,22 @@ namespace Heartbeat.AI
 
         private void Update()
         {
+            ShowBody(health.IsRecycled);
             overrideTimer -= Time.deltaTime;
             string state = Wanted(out float rate);
             animator.SetFloat(RateId, rate);
             if (state == current) return;
             animator.CrossFadeInFixedTime(state, Fade, 0);
             current = state;
+        }
+
+        private void ShowBody(bool recycled)
+        {
+            int body = recycled ? 1 : 0;
+            if (body == shownBody) return;
+            shownBody = body;
+            foreach (var r in animator.GetComponentsInChildren<SkinnedMeshRenderer>(true))
+                r.enabled = r.name.EndsWith("_Recycled") == recycled;
         }
 
         private string Wanted(out float rate)

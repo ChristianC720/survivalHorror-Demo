@@ -184,6 +184,15 @@ def blob(bm, center, rx, ry, rz, part, faces, rings=6, seg=10):
             faces.append((bm.faces.new((grid[i][j], grid[i][k], grid[i + 1][k], grid[i + 1][j])), part))
 
 
+def bmesh_box(bm, c, size, part, faces):
+    """Axis-aligned box tagged as `part`; size is width, depth, height."""
+    cx, cy, cz = c
+    w, d, h = size[0] / 2, size[1] / 2, size[2] / 2
+    vs = [bm.verts.new((cx + sx * w, cy + sy * d, cz + sz * h)) for sz in (-1, 1) for sy in (-1, 1) for sx in (-1, 1)]
+    for q in ((0, 2, 3, 1), (4, 5, 7, 6), (0, 1, 5, 4), (2, 6, 7, 3), (0, 4, 6, 2), (1, 3, 7, 5)):
+        faces.append((bm.faces.new([vs[i] for i in q]), part))
+
+
 def claws(bm, t, faces, length, r, part="claw"):
     """Four fingers and a thumb on each hand: the palm alone reads as a mitten."""
     for side, s in (("Left", 1), ("Right", -1)):
@@ -352,7 +361,7 @@ def assemble(name, rig, skin_mesh_data, extras_fn, collection):
 
     extras_fn(bm, Tagger(), rng)
     for f in bm.faces:
-        if names[f[tag]] in ("claw", "finger"):
+        if names[f[tag]] in ("claw", "finger", "armmetal"):
             for v in f.verts:
                 v[limb] = 1 if v.co.x > 0 else 2
     bmesh.ops.triangulate(bm, faces=[f for f in bm.faces if len(f.verts) > 4])

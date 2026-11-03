@@ -42,3 +42,6 @@ Add a row whenever you create a new `PH_` prefab.
 | Credits roll | END table credits | hard-coded lines in `MenuView.ShowCredits` | pending (E15) |
 | Arm terminal | world-space canvas on Lukas's forearm + screen mirror | `LukasAttachments` screen on the forearm + screen-space panel | done |
 | The Mother (crane archive, collector arm, cryo core) | cryogenic sample archive on a crane with a collector arm and an opening core (D-65) | `ROOM_Mother`: CryoTank ×1.6 core, box arm + claw, cube cameras with red lights | pending model + core-opening animation |
+
+## Replaced by real models (E16, `BLENDER_PLAN.md`)
+All rows above marked pending or placeholder done are now real models in `Assets/_Project/Models`, except what `BLENDER_PLAN.md` section 6 lists. The `PH_` prefab names stay so room references keep working.

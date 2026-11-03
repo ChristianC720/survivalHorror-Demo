@@ -126,9 +126,10 @@ def build_mudo(col):
     return t, skin, extras, color, {}, ()
 
 
-def build_boca(col):
+def build_boca(col, thin=1.0):
     t = hm.humanoid_bones(hip=.86, spine=.56, neck=.08, head=.3, shoulder=.2, upper_arm=.3, lower_arm=.32, hand=.12, finger=.13, hip_w=.11, upper_leg=.4, lower_leg=.42, foot=.22)
     r = dict(hips=(.115, .09), waist=(.09, .07), ribs=(.125, .09), chest=(.145, .1), neck=(.075, .075), shoulder=(.05, .05), elbow=(.032, .034), wrist=(.028, .026), palm=(.04, .02), thigh=(.066, .07), knee=(.055, .058), ankle=(.04, .044), foot=(.05, .06), toe=(.046, .03), finger=(.014, .014))
+    r = {k: (v[0] * thin, v[1] * thin) for k, v in r.items()}
     chains = hm.body_chains(t, r)
     hd = Vector(t["Head"][0])
     # Two lobes split from the neck: the head opens along the middle (D-152).
@@ -209,6 +210,62 @@ def build_rastrero(col):
     return t, skin, extras, color, {}, ("bone", "tooth")
 
 
+METAL = (.34, .28, .25)
+RUST = (.30, .17, .11)
+
+
+def recycled(name, base, t):
+    """Each recycled type changes its silhouette (GDD Personajes, D-130); the metal is the laboratory's (D-152)."""
+    extras0, color0 = base
+    hd = Vector(t["Head"][0])
+
+    def spine_metal(bm, faces, z0, z1, n):
+        for i in range(n):
+            z = z0 + (z1 - z0) * i / max(n - 1, 1)
+            hm.bmesh_box(bm, (0, .1, z), (.09, .05, (z1 - z0) / n * .8), "metal", faces)
+
+    if name == "Alto":
+        def extras(bm, faces, rng):
+            extras0(bm, faces, rng)
+            spine_metal(bm, faces, 1.3, 2.32, 11)   # vertebra lengthens the spine
+            for side, s_ in (("Left", 1), ("Right", -1)):
+                el = Vector(t[side + "UpperArm"][1])
+                hm.cone(bm, el, el + Vector((s_ * .05, .1, -.5)), .03, "armmetal", sides=4, faces=faces)
+    elif name == "Rastrero":
+        def extras(bm, faces, rng):
+            extras0(bm, faces, rng)
+            spine_metal(bm, faces, .98, 1.5, 6)
+            for s_ in (-1, 1):                       # pincers fused to the inverted face, like chelicerae
+                hm.cone(bm, (s_ * .05, -.1, hd.z + .12), (s_ * .012, -.3, hd.z + .03), .022, "metal", sides=4, faces=faces)
+    elif name == "Mudo":
+        def extras(bm, faces, rng):
+            extras0(bm, faces, rng)
+            hm.blob(bm, (0, 0, .78), .2, .17, .28, "skirt", faces, rings=4, seg=8)
+            hm.bmesh_box(bm, (0, -.1, hd.z + .12), (.15, .03, .2), "metal", faces)
+            for x in (-.06, .06):
+                for z in (.05, .19):
+                    hm.bmesh_box(bm, (x, -.118, hd.z + z), (.014, .01, .014), "rust", faces)
+    else:
+        extras = extras0
+
+    def color(c, n, part):
+        if part in ("metal", "armmetal"):
+            return METAL
+        if part == "rust":
+            return RUST
+        if name == "Mudo":
+            shade = .8 + .2 * max(0, n.z)
+            if part in ("shirt", "skirt"):
+                return tuple(x * shade for x in ((.55, .53, .47) if not stain(c, 6, .12) else BLOOD))
+            if part == "trousers":
+                return tuple(x * shade for x in (.42, .38, .36))
+            if part == "skin" and c.z > hd.z:
+                return (.6, .57, .5) if int(c.z * 45) % 2 == 0 else (.42, .38, .33)   # bandages
+        return color0(c, n, part)
+
+    return extras, color
+
+
 def build(name):
     path = ROOT + rf"\Monsters\{name}\{name}.blend"
     bpy.ops.wm.open_mainfile(filepath=path)
@@ -222,16 +279,26 @@ def build(name):
     fn = {"Alto": build_alto, "Mudo": build_mudo, "Boca": build_boca, "Rastrero": build_rastrero}[name]
     t, skin, extras, color, extra_bones, over = fn(col)
     rig = hm.make_rig("Rig_" + name, t, col, extra_bones)
-    ob, parts, tris = hm.assemble("CH_" + name, rig, skin, extras, col)
-    overrides = {}
-    if isinstance(over, dict):
-        for bone, ps in over.items():
-            overrides[bone] = hm.verts_of_parts(ob, parts, ps)
-    hm.auto_weights(ob, rig, overrides)
     os.makedirs(ROOT + rf"\Monsters\{name}\Texture", exist_ok=True)
-    tex = ROOT + rf"\Monsters\{name}\Texture\CH_{name}_Albedo.png"
-    im = hm.paint(ob, parts, color, tex)
-    hm.finish_material(ob, im)
+    tris = {}
+
+    def finish(mesh_name, skin_data, ex, co):
+        ob, parts, n = hm.assemble(mesh_name, rig, skin_data, ex, col)
+        overrides = {}
+        if isinstance(over, dict):
+            for bone, ps in over.items():
+                overrides[bone] = hm.verts_of_parts(ob, parts, ps)
+        hm.auto_weights(ob, rig, overrides)
+        im = hm.paint(ob, parts, co, ROOT + rf"\Monsters\{name}\Texture\{mesh_name}_Albedo.png")
+        hm.finish_material(ob, im)
+        tris[mesh_name] = n
+        return parts
+
+    finish("CH_" + name, skin, extras, color)
+    # Recycled Boca is bone-thin: same chains with slimmer radii. The others keep the body and gain metal.
+    _, skin2, ex2, co2, _, _ = fn(col) if name != "Boca" else build_boca(col, thin=.72)
+    ex3, co3 = recycled(name, (ex2, co2), t)
+    finish(f"CH_{name}_Recycled", skin2, ex3, co3)
     bpy.context.scene.render.fps = 30
     bpy.ops.wm.save_mainfile()
-    return tris, sorted(set(parts))
+    return tris, []
