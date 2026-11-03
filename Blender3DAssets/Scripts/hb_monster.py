@@ -1,8 +1,7 @@
 """Builds organic low-poly creatures on the shared humanoid skeleton (fallback of BLENDER_PLAN.md section 2).
 
 The body is a Skin-modifier graph along the bones, softened and decimated to budget, which gives the flat faceted look of
-Lukas. Each triangle gets its own small tile in a 512 px texture, painted by a per-character colour rule, so stains,
-mouths and clothing are per-face paint with no UV seams to hide. Blender axes: facing -Y, +X is the character's left.
+Lukas. hb_paint.py then paints it texel by texel. Blender axes: facing -Y, +X is the character's left.
 """
 import math
 import random
@@ -167,15 +166,20 @@ def body_chains(t, r):
     return chains
 
 
-def blob(bm, center, rx, ry, rz, part, faces, rings=6, seg=10):
-    """Low-poly ellipsoid: heads need controlled volume, which the skin modifier cannot give."""
+def blob(bm, center, rx, ry, rz, part, faces, rings=6, seg=10, tilt=0.0):
+    """Low-poly ellipsoid: heads need controlled volume, which the skin modifier cannot give. tilt turns it around Y."""
     c = Vector(center)
-    top = bm.verts.new(c + Vector((0, 0, rz)))
-    bot = bm.verts.new(c - Vector((0, 0, rz)))
+    ct, st = math.cos(tilt), math.sin(tilt)
+
+    def at(x, y, z):
+        return c + Vector((x * ct + z * st, y, -x * st + z * ct))
+
+    top = bm.verts.new(at(0, 0, rz))
+    bot = bm.verts.new(at(0, 0, -rz))
     grid = []
     for i in range(1, rings):
         a = math.pi * i / rings
-        grid.append([bm.verts.new(c + Vector((rx * math.sin(a) * math.sin(2 * math.pi * j / seg), -ry * math.sin(a) * math.cos(2 * math.pi * j / seg), rz * math.cos(a)))) for j in range(seg)])
+        grid.append([bm.verts.new(at(rx * math.sin(a) * math.sin(2 * math.pi * j / seg), -ry * math.sin(a) * math.cos(2 * math.pi * j / seg), rz * math.cos(a))) for j in range(seg)])
     for j in range(seg):
         k = (j + 1) % seg
         faces.append((bm.faces.new((top, grid[0][k], grid[0][j])), part))
@@ -191,6 +195,20 @@ def bmesh_box(bm, c, size, part, faces):
     vs = [bm.verts.new((cx + sx * w, cy + sy * d, cz + sz * h)) for sz in (-1, 1) for sy in (-1, 1) for sx in (-1, 1)]
     for q in ((0, 2, 3, 1), (4, 5, 7, 6), (0, 1, 5, 4), (2, 6, 7, 3), (0, 4, 6, 2), (1, 3, 7, 5)):
         faces.append((bm.faces.new([vs[i] for i in q]), part))
+
+
+def skirt(bm, z_top, z_low, r_top, r_low, part, faces, seg=12, depth=.74, rng=None):
+    """Open tube, wider below, with a torn hem. Reads as cloth where a closed blob reads as a balloon."""
+    top, low = [], []
+    for i in range(seg):
+        a = 2 * math.pi * i / seg
+        d = Vector((math.cos(a), math.sin(a) * depth, 0))
+        top.append(bm.verts.new(d * r_top + Vector((0, 0, z_top))))
+        tear = rng.uniform(0, .1) if rng else 0
+        low.append(bm.verts.new(d * r_low + Vector((0, 0, z_low + tear))))
+    for i in range(seg):
+        j = (i + 1) % seg
+        faces.append((bm.faces.new((low[i], low[j], top[j], top[i])), part))
 
 
 def claws(bm, t, faces, length, r, part="claw"):
@@ -285,38 +303,6 @@ def auto_weights(ob, rig, overrides=None):
                 groups[bone].add([vi], 1.0, "REPLACE")
 
 
-def paint(ob, parts, color_fn, path):
-    """One tile per triangle; returns nothing but writes `path` (albedo). parts[i] tags polygon i."""
-    m = ob.data
-    if not m.uv_layers:
-        m.uv_layers.new(name="UVMap")
-    uv = m.uv_layers.active.data
-    n = len(m.polygons)
-    cols = int(math.ceil(math.sqrt(n)))
-    tile = TEX // cols
-    img = np.zeros((TEX, TEX, 4), dtype=np.float32)
-    img[:, :, 3] = 1
-    rng = np.random.default_rng(7)
-    for i, p in enumerate(m.polygons):
-        cx, cy = (i % cols) * tile, (i // cols) * tile
-        c = np.array(color_fn(Vector(p.center), Vector(p.normal), parts[i]), dtype=np.float32)
-        noise = rng.normal(0, 0.012, (tile, tile, 1)).astype(np.float32)
-        img[cy:cy + tile, cx:cx + tile, :3] = np.clip(c + noise, 0, 1)
-        ls = list(p.loop_indices)
-        inset = 1.0 / TEX
-        corners = [(0.1, 0.1), (0.9, 0.1), (0.9, 0.9), (0.1, 0.9)]
-        for k, li in enumerate(ls[:4]):
-            a, b = corners[k] if len(ls) == 4 else [(0.1, 0.1), (0.9, 0.1), (0.5, 0.9)][k]
-            uv[li].uv = ((cx + a * tile) / TEX + inset * 0, (cy + b * tile) / TEX)
-    im = bpy.data.images.get(ob.name + "_Albedo") or bpy.data.images.new(ob.name + "_Albedo", TEX, TEX)
-    im.scale(TEX, TEX)
-    im.pixels.foreach_set(img.ravel())
-    im.filepath_raw = path
-    im.file_format = "PNG"
-    im.save()
-    return im
-
-
 def finish_material(ob, im):
     mat = bpy.data.materials.get("M_" + ob.name) or bpy.data.materials.new("M_" + ob.name)
     mat.use_nodes = True
@@ -389,7 +375,3 @@ def verts_of_parts(ob, parts, wanted):
         if parts[i] in wanted:
             out.update(p.vertices)
     return list(out)
-
-
-def hsv_noise(c, k, amount=0.03):
-    return tuple(max(0, min(1, x + math.sin(k * 12.9898 + i * 4.1) * amount)) for i, x in enumerate(c))

@@ -8,7 +8,7 @@ Define la identidad visual del videojuego y las reglas que deben seguir los recu
 
 **Estilo:** Low-poly con luz moderna (D-81). Modelos de pocos polígonos y texturas de baja resolución con filtro *point* (sin suavizado), sobre iluminación dinámica, sombras y niebla de Unity. La imagen se renderiza a una resolución interna de ~540p, se reescala a la resolución de pantalla y lleva un *dithering* suave. Sin temblor de vértices ni texturas afines (no es PSX puro): la luz por píxel es necesaria para que la linterna y la oscuridad funcionen como mecánica (M-12).
 
-**Referencias:** *Signalis* (atmósfera, low-poly y texturas crudas) y el terror físico de *Silent Hill* (D-60). Ver [[02 - Referencias e Inspiración]].
+**Referencias:** *Signalis* (inspiración visual principal: atmósfera, low-poly y texturas crudas con detalle gráfico, D-153) y el terror físico de *Silent Hill* (D-60). Ver [[02 - Referencias e Inspiración]].
 
 **Sensación buscada:** Vulnerabilidad y frío (Pilar 1). Una instalación en estado de emergencia, casi a oscuras, donde la poca luz que existe delata tanto como revela.
 

@@ -8,11 +8,16 @@ import bpy
 
 ROOT = r"C:\Users\Chris\Heartbeat"
 sys.path.insert(0, ROOT + r"\Blender3DAssets\Scripts")
+import enemy_paint as ep
 import hb_anim
 import hb_monster as hm
+import hb_paint as hp
 
 importlib.reload(hm)
+importlib.reload(hp)
+importlib.reload(ep)
 importlib.reload(hb_anim)
+X = hp.hex_col
 from hb_anim import Author
 
 OUT = ROOT + r"\Assets\_Project\Models\Statics"
@@ -20,13 +25,13 @@ OUT = ROOT + r"\Assets\_Project\Models\Statics"
 FALLEN = {"Hips": (-84, 0, 10), "Chest": (6, 0, 0), "Head": (4, 0, -24), "LeftUpperArm": (-10, -56, 0), "RightUpperArm": (-8, 34, 0), "LeftLowerArm": (-24, 0, 0), "RightLowerArm": (-10, 0, 0), "LeftUpperLeg": (-20, -8, 0), "RightUpperLeg": (-2, 8, 0), "LeftLowerLeg": (32, 0, 0), "RightLowerLeg": (4, 0, 0), "LeftFoot": (28, 0, 0), "RightFoot": (24, 0, 0), "loc": (0, 0.3, -.84)}
 STILL = {"Neck": (10, 0, 2), "Head": (20, 6, 0), "LeftShoulder": (4, 0, 0), "RightShoulder": (6, 0, 0)}
 
-# name: (pose, shirt, trousers, skin)
+# name: (pose, shirt, trousers, skin, back stencil, chest tag)
 VARIANTS = {
-    "CH_Corpse_Staff": (FALLEN, (.30, .30, .30), (.20, .20, .21), (.44, .40, .38)),
-    "CH_Corpse_Guard": (FALLEN, (.10, .12, .14), (.09, .10, .12), (.42, .37, .40)),
-    "CH_Corpse_Subject": (FALLEN, (.42, .44, .46), (.30, .31, .33), (.46, .41, .38)),
-    "CH_Mudo_Still": (STILL, (.30, .30, .30), (.20, .20, .21), (.50, .46, .43)),
-    "CH_Lukas_Mudo": (STILL, (.21, .34, .33), (.21, .34, .33), (.40, .34, .40)),
+    "CH_Corpse_Staff": (FALLEN, ep.STAFF, ep.STAFF_DK, ep.PALE * .8, "VITALIS", "VK-0233"),
+    "CH_Corpse_Guard": (FALLEN, ep.GUARD, ep.GUARD_DK, ep.PALE * .78, "WERKSCHUTZ", "KS-118"),
+    "CH_Corpse_Subject": (FALLEN, ep.GOWN, ep.GOWN * .7, ep.PALE * .82, "SUBJEKT", "SUBJ 12"),
+    "CH_Mudo_Still": (STILL, ep.STAFF, ep.STAFF_DK, ep.PALE * .95, "VITALIS", "VK-0417"),
+    "CH_Lukas_Mudo": (STILL, X("#355654"), X("#1a2527"), X("#6a5e6a"), "R-H-07", "R-H-07"),
 }
 
 
@@ -34,7 +39,7 @@ def make():
     os.makedirs(OUT + r"\Textures", exist_ok=True)
     ns = {}
     report = {}
-    for name, (pose, shirt, trousers, skin) in VARIANTS.items():
+    for name, (pose, shirt, trousers, skin, label, tag) in VARIANTS.items():
         bpy.ops.wm.read_homefile(use_empty=True)
         col = bpy.data.collections.new(name)
         bpy.context.scene.collection.children.link(col)
@@ -49,15 +54,12 @@ def make():
             bm.normal_update()
             hm.shell(bm, lambda c: .1 < c.z < 1.02 and abs(c.x) < .2, .009, "trousers", .06, rng, faces)
 
-        def color(c, n, part):
-            k = .8 + .2 * max(0, n.z)
-            base = {"shirt": shirt, "trousers": trousers}.get(part, skin)
-            return tuple(x * k for x in base)
-
         rig = hm.make_rig("Rig", t, col)
         ob, parts, tris = hm.assemble(name, rig, skin_data, extras, col)
         hm.auto_weights(ob, rig)
-        im = hm.paint(ob, parts, color, OUT + rf"\Textures\{name}_Albedo.png")
+        B = hp.bake(ob.data, parts, 512, align_longest=True)
+        path = OUT + rf"\Textures\{name}_Albedo.png"
+        im = hp.save(path, name + "_Albedo", hp.write(path, name + "_Albedo", 512, [(B, ep.mudo(B, hz, shirt, trousers, skin, label, tag, blood_cov=.62))]))
         hm.finish_material(ob, im)
         A = Author(rig)
         A.clip("pose", 2, {1: pose})

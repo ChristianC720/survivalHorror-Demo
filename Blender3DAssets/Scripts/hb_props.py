@@ -1,11 +1,14 @@
-"""Hard-surface models by code (BLENDER_PLAN.md section 2): The Mother, machines, the revolver, items, confiscated objects.
+"""Hard-surface models by code (BLENDER_PLAN.md sections 2 and 7): The Mother, machines, the revolver, items, confiscated objects.
 
-Every model shares one 256 px palette and one material, so all of it batches. Run build_all(). Blender axes: the front of a
-model faces -Y (+Z in Unity), origin at the floor center, metres.
+Every model shares one 2048 px atlas and one material, so all of it batches. Each model paints its own tile from model space:
+ink edges, panel seams, wear, plus its own stencils, hazard bands and lamps (the Signalis lesson: low polygons carry graphic
+detail, the same way a real machine carries signage). Run build_all(). Blender axes: the front of a model faces -Y (+Z in
+Unity), origin at the floor center, metres.
 """
+import importlib
 import math
 import os
-import random
+import sys
 
 import bmesh
 import bpy
@@ -13,6 +16,11 @@ import numpy as np
 from mathutils import Vector
 
 ROOT = r"C:\Users\Chris\Heartbeat"
+sys.path.insert(0, ROOT + r"\Blender3DAssets\Scripts")
+import hb_paint as hp
+
+importlib.reload(hp)
+
 OUT = ROOT + r"\Assets\_Project\Models\Props"
 SOURCE = ROOT + r"\Blender3DAssets\Props\Props.blend"
 
@@ -27,58 +35,63 @@ COLORS = {
     "frost": (.62, .68, .72),
 }
 GLOW = {"glow_crimson", "glow_green", "glow_red", "glow_amber"}
-NAMES = list(COLORS)
-CELL = 8       # each colour takes one row of 3 shades; 256 / 8 leaves room for 32 colours
-TEX = 256
-assert len(NAMES) <= TEX // CELL
-
-
-def palette_uv(name, shade):
-    row = NAMES.index(name)
-    return ((shade + .5) * CELL / TEX, (row + .5) * CELL / TEX)
-
-
-def write_palette():
-    os.makedirs(OUT + r"\Textures", exist_ok=True)
-    a = np.zeros((TEX, TEX, 4), dtype=np.float32)
-    e = np.zeros((TEX, TEX, 4), dtype=np.float32)
-    a[:, :, 3] = 1
-    e[:, :, 3] = 1
-    for r, n in enumerate(NAMES):
-        for s, k in enumerate((.82, 1.0, 1.14)):
-            a[r * CELL:(r + 1) * CELL, s * CELL:(s + 1) * CELL, :3] = [min(1, c * k) for c in COLORS[n]]
-            if n in GLOW:
-                e[r * CELL:(r + 1) * CELL, s * CELL:(s + 1) * CELL, :3] = COLORS[n]
-    for arr, nm in ((a, "T_Palette"), (e, "T_Palette_Emission")):
-        im = bpy.data.images.get(nm) or bpy.data.images.new(nm, TEX, TEX)
-        im.pixels.foreach_set(arr.ravel())
-        im.filepath_raw = OUT + rf"\Textures\{nm}.png"
-        im.file_format = "PNG"
-        im.save()
+NAMES = list(COLORS) + ["glass"]
+ATLAS = 2048
+SEAMED = {"metal", "steel", "rust", "yellow", "white", "ceramic", "crimson", "dark"}
+INK = np.array((.045, .025, .03), dtype=np.float32)
+BARE = np.array((.59, .57, .55), dtype=np.float32)
+RED = np.array(COLORS["crimson"], dtype=np.float32)
+GREEN = np.array(COLORS["glow_green"], dtype=np.float32)
+PAPER = np.array(COLORS["paper"], dtype=np.float32)
+AMBER = np.array(COLORS["amber"], dtype=np.float32)
+F = (0, -1, 0)
+UP = (0, 0, 1)
 
 
 class Model:
     def __init__(self, name):
         self.name = name
         self.bm = bmesh.new()
-        self.uv = self.bm.loops.layers.uv.new("UVMap")
-        self.glass = []
-        self.rng = random.Random(hash(name) & 0xffff)
+        self.tag = self.bm.faces.layers.int.new("col")
+        self.marks = []
+        self.pitch = .5                # panel seam spacing, metres
 
     def _face(self, verts, col):
         f = self.bm.faces.new(verts)
         f.smooth = False
-        if col == "glass":
-            f.material_index = 1
-            uv = palette_uv("frost", 1)
-            for l in f.loops:
-                l[self.uv].uv = uv
-            return f
-        f.material_index = 0
-        uv = palette_uv(col, self.rng.randint(0, 2))
-        for l in f.loops:
-            l[self.uv].uv = uv
+        f.material_index = 1 if col == "glass" else 0
+        f[self.tag] = NAMES.index(col)
         return f
+
+    # Marks are applied in model space, so they cross faces the way paint does.
+    def text(self, center, normal, height, string, col=INK, wear=.0, glow=False):
+        self.marks.append(("bitmap", center, normal, height, hp.text_bitmap(string), col, wear, glow))
+        return self
+
+    def plate(self, center, normal, size, col=PAPER):
+        self.marks.append(("bitmap", center, normal, tuple(size), np.ones((4, 4), dtype=bool), col, 0, False))
+        return self
+
+    def code(self, center, normal, height, seed=1, col=INK):
+        """Data-matrix label: reads as machine-printed at any distance."""
+        bits = np.random.default_rng(seed).random((8, 8)) > .5
+        bits[:, 0] = bits[7, :] = True
+        self.marks.append(("bitmap", center, normal, (height, height), bits, col, 0, False))
+        return self
+
+    def hazard(self, center, normal, size, pitch=.14):
+        self.marks.append(("hazard", center, normal, tuple(size), pitch))
+        return self
+
+    def lamps(self, center, normal, cols, rows, pitch, seed=1):
+        """Indicator field: mostly dark tiles, a few lit in the room's accent."""
+        self.marks.append(("lamps", center, normal, cols, rows, pitch, seed))
+        return self
+
+    def screen(self, center, normal, size, seed=1, col=GREEN):
+        """CRT: bezel, phosphor ground, a few lines of lit data."""
+        self.marks.append(("screen", center, normal, tuple(size), seed, col))
+        return self
 
     def box(self, c, size, col, taper=1.0, rot=0.0):
         """c: center of the box; size: width (x), depth (y), height (z). taper scales the top."""
@@ -124,7 +137,101 @@ class Model:
         me.materials.append(mat("M_Palette"))
         me.materials.append(mat("MAT_Glass"))
         me.calc_loop_triangles()
+        layer = me.attributes["col"].data
+        self.parts = [NAMES[layer[i].value] for i in range(len(me.polygons))]
         return ob, len(me.loop_triangles)
+
+    def paint(self, me, tile, offset):
+        B = hp.bake(me, self.parts, tile, offset, ATLAS, margin=1, edges=True, skip=("glass",))
+        base = np.array([COLORS.get(n, (0, 0, 0)) for n in B.names], dtype=np.float32)   # glass has its own material
+        c = base[B.part].copy()
+        e = np.zeros_like(c)
+        seam = np.isin(B.part, [i for i, n in enumerate(B.names) if n in SEAMED])
+        P, d = B.P, B.density
+        extent = float(np.ptp(P[:, 2])) if B.n else 1.0
+        E = B.E * d
+        if extent > .5:                # a machine, not something that fits in a pocket
+            n = hp.fbm(P, 2.4, 2, 5)
+            k = 1 - np.clip((n - .45) * 2, 0, 1) * .34
+            c[seam] *= k[seam, None]
+            # Soil settles low on the machine; rust runs down from what is above.
+            low = np.clip((P[:, 2] - P[:, 2].min()) / max(extent * .3, 1e-3), .62, 1)
+            c *= low[:, None]
+            runs = (hp.noise(P, (34, 34, 1.5), 8) > .84) & seam
+            c[runs] *= .78
+            # Panel seams and rivets on large faces.
+            flat = seam & (B.size > (self.pitch * .6) ** 2)
+            p = self.pitch
+            gu, gv = np.abs(((B.U + p / 2) % p) - p / 2), np.abs(((B.V + p / 2) % p) - p / 2)
+            px = 1 / d
+            c[flat & ((gu < px * .75) | (gv < px * .75))] *= .5
+            rv = flat & (gu > px * 2) & (gu < px * 3.6) & (gv > px * 2) & (gv < px * 3.6)
+            c[rv] = c[rv] * 1.5
+        # Chipped paint at the edges, then the ink line every model shares.
+        solid = B.size * d * d > 36
+        chip = solid & seam & (E < 2.5) & (hp.noise(P, 30, 11) > .78)
+        c[chip] = c[chip] * .45 + BARE * .55
+        c[solid & (E >= 1) & (E < 2)] *= 1.14
+        line = solid & (E < 1)
+        c[line] = c[line] * .35 + INK * .65
+        for m in self.marks:
+            kind = m[0]
+            if kind == "bitmap":
+                _, ct, n, size, bits, col, wear, glow = m
+                hp.stamp(B, c, ct, n, size, col, bits, wear=wear, seed=3)
+                if glow:
+                    hp.stamp(B, e, ct, n, size, col, bits)
+            elif kind == "hazard":
+                _, ct, n, size, pitch = m
+                hp.stripes(B, c, ct, n, size, np.array(COLORS["amber"]) * .85, INK, pitch=pitch, wear=.6, seed=7)
+            elif kind == "lamps":
+                self._lamps(B, c, e, *m[1:])
+            elif kind == "screen":
+                self._screen(B, c, e, *m[1:])
+        c = hp.posterize(B, c, levels=12)
+        for i, n in enumerate(B.names):
+            if n in GLOW:
+                c[B.part == i] = base[i]
+                e[B.part == i] = base[i]
+        return B, np.clip(c, 0, 1), e
+
+    @staticmethod
+    def _lamps(B, c, e, center, normal, cols, rows, pitch, seed):
+        lit = np.random.default_rng(seed).random((rows, cols))
+        hit, s, t, _ = hp.decal(B, center, normal, (cols * pitch, rows * pitch), None)
+        if not hit.any():
+            return
+        fx, fy = s[hit] * cols, t[hit] * rows
+        ix, iy = fx.astype(int), fy.astype(int)
+        tile = ((fx % 1) > .14) & ((fx % 1) < .86) & ((fy % 1) > .22) & ((fy % 1) < .78)
+        idx = np.nonzero(hit)[0]
+        c[idx] = INK
+        v = lit[np.clip(iy, 0, rows - 1), np.clip(ix, 0, cols - 1)]
+        on, warm = tile & (v > .72), tile & (v > .9)
+        amber = np.array(COLORS["glow_amber"], dtype=np.float32)
+        c[idx[tile]] = np.array((.16, .15, .15), dtype=np.float32)
+        c[idx[on]] = GREEN
+        e[idx[on]] = GREEN
+        c[idx[warm]] = amber
+        e[idx[warm]] = amber
+
+    @staticmethod
+    def _screen(B, c, e, center, normal, size, seed, col):
+        hit, s, t, _ = hp.decal(B, center, normal, size, None)
+        if not hit.any():
+            return
+        idx = np.nonzero(hit)[0]
+        ss, tt = s[hit], t[hit]
+        inner = (ss > .08) & (ss < .92) & (tt > .1) & (tt < .9)
+        c[idx] = INK
+        c[idx[inner]] = col * .12
+        e[idx[inner]] = col * .05
+        rows = 9
+        ln = np.random.default_rng(seed).random(rows) * .7 + .1
+        ry = (tt - .1) / .8 * rows
+        on = inner & ((ry % 1) < .45) & (ss < .1 + ln[np.clip(ry.astype(int), 0, rows - 1)]) & (((ss * 46).astype(int) % 5) != 4)
+        c[idx[on]] = col
+        e[idx[on]] = col
 
 
 def mat(name):
@@ -136,9 +243,8 @@ def mat(name):
     tree = m.node_tree
     b = next(n for n in tree.nodes if n.type == "BSDF_PRINCIPLED")
     if name == "M_Palette":
-        t = bpy.data.images["T_Palette"]
         n = tree.nodes.new("ShaderNodeTexImage")
-        n.image = t
+        n.image = bpy.data.images["T_Palette"]
         n.interpolation = "Closest"
         tree.links.new(n.outputs["Color"], b.inputs["Base Color"])
     else:
@@ -152,10 +258,15 @@ def mat(name):
 def generator(M):
     M.box((0, 0, .12), (2.0, 1.5, .24), "dark").box((0, 0, 1.05), (1.9, 1.3, 1.62), "metal").box((0, -.66, 1.3), (.9, .04, .7), "dark")
     M.cyl((.55, -.67, 1.25), .03, .1, "steel", axis="y").cyl((.3, -.67, 1.25), .03, .1, "steel", axis="y")
-    M.box((-.55, -.67, .9), (.5, .02, .3), "yellow").cyl((0, .0, 1.86), .14, .25, "rust")
+    M.box((-.55, -.67, .9), (.7, .02, .34), "yellow").cyl((0, .0, 1.86), .14, .25, "rust")
     for i in range(6):
         M.box((-.96, -.45 + i * .18, 1.0), (.04, .1, 1.1), "dark")
     M.box((0, -.68, 1.62), (.12, .02, .06), "glow_amber")
+    M.cyl((-.7, .3, 1.86), .5, .06, "steel").cyl((-.4, .3, 1.86), .35, .06, "steel").box((-.55, .3, 2.34), (.5, .1, .1), "dark")
+    M.cyl((.95, -.3, .5), 1.1, .03, "black", sides=6)
+    M.plate((-.55, -.69, .9), F, (.66, .32), AMBER).text((-.55, -.7, .97), F, .09, "GEFAHR").text((-.55, -.7, .83), F, .09, "VORSICHT")
+    M.text((0, -.66, 1.72), F, .12, "AGGREGAT 3", PAPER * .55, wear=.5).hazard((0, -.76, .13), F, (2.0, .2))
+    M.lamps((0, -.685, 1.3), F, 8, 5, .09, 3).code((.75, -.66, .55), F, .14, 4, PAPER)
 
 
 def boiler(M):
@@ -165,6 +276,9 @@ def boiler(M):
         M.cyl((0, 0, z), .06, .74, "dark", sides=14)
     M.cyl((0, -.7, 1.0), .05, .3, "steel", axis="y", sides=10).cyl((.5, -.55, 1.8), .04, .1, "steel", axis="y", sides=8)
     M.box((.5, -.6, 1.8), (.06, .01, .06), "glow_amber")
+    M.cyl((.72, 0, 2.0), .9, .06, "steel", axis="x", sides=6).cyl((1.55, 0, 0), 2.0, .07, "metal", sides=6)
+    M.text((0, -.72, 1.55), F, .1, "KESSEL 2", PAPER * .8, wear=.45).text((0, -.72, .9), F, .09, "HEISS", AMBER, wear=.3)
+    M.hazard((0, -.76, .05), F, (1.5, .09))
 
 
 def forklift(M):
@@ -177,6 +291,8 @@ def forklift(M):
         M.box((x, -1.1, .1), (.12, .8, .05), "steel")
         M.box((x, -.75, 1.1), (.12, .06, 2.0), "metal")
     M.box((0, .25, .85), (.5, .5, .1), "black")
+    M.text((.0, -.46, .55), F, .07, "VK-14", INK, wear=.4)
+    M.hazard((0, .4, 2.23), UP, (1.1, 1.3), pitch=.2).hazard((0, -.78, .3), F, (.12, .6), pitch=.1)
 
 
 def gantry(M):
@@ -184,12 +300,15 @@ def gantry(M):
     M.box((.6, 0, -.1), (.6, .5, .3), "metal").cyl((.6, 0, -1.2), .95, .02, "black", sides=4).box((.6, 0, -1.25), (.1, .1, .12), "rust")
     for x in (-2.9, 2.9):
         M.box((x, 0, .3), (.2, .7, .7), "metal")
+    M.hazard((0, -.18, .3), F, (6, .35), pitch=.28).text((-1.6, -.18, .3), F, .16, "5 T", INK)
 
 
 def pump(M):
     M.box((0, 0, .1), (1.0, 1.5, .2), "dark").cyl((0, -.65, .55), 1.0, .24, "rust", axis="y", sides=10)
     M.cyl((0, -.05, .9), .3, .1, "metal").cyl((0, -.05, 1.2), .05, .16, "steel")
     M.cyl((-.5, .15, .55), .4, .07, "copper", axis="x", sides=8).cyl((.1, .15, .55), .4, .07, "copper", axis="x", sides=8)
+    M.cyl((.5, .15, .55), .35, .07, "copper", axis="z", sides=8).cyl((.0, -.72, .55), .1, .3, "dark", axis="y", sides=10)
+    M.text((0, -.25, .78), F, .05, "PUMPE B", PAPER * .9, wear=.3).hazard((0, -.76, .1), F, (1.0, .2))
 
 
 def capsule_base(M, r, h, lid="metal", body=None):
@@ -204,6 +323,8 @@ def capsule_base(M, r, h, lid="metal", body=None):
 def human_capsule(M):
     capsule_base(M, .5, 2.2, body=.5)
     M.box((.3, -.45, .95), (.14, .02, .08), "glow_green")
+    M.text((0, -.5, .08), F, .09, "P-07", PAPER * .9, wear=.2).cyl((.0, .5, 1.1), 1.0, .03, "black", sides=6)
+    M.screen((.3, -.46, 1.1), F, (.2, .14), 2)
 
 
 def reconstruction(M):
@@ -211,11 +332,14 @@ def reconstruction(M):
     M.box((0, -.46, .08), (.5, .1, .14), "crimson")
     M.box((.3, -.45, 1.0), (.14, .02, .08), "glow_green")
     M.cyl((0, 0, 2.1), .1, .22, "steel", sides=8)
+    M.text((0, -.52, .08), F, .09, "R-H", PAPER, wear=.1).cyl((.48, .3, 1.5), .7, .03, "black", sides=6).cyl((-.48, .3, 1.5), .7, .03, "black", sides=6)
+    M.screen((.3, -.46, 1.14), F, (.2, .14), 5).hazard((0, -.51, .015), F, (1.0, .03), pitch=.08)
 
 
 def monster_capsule(M):
     capsule_base(M, .7, 2.6, lid="rust", body=.8)
     M.cyl((.45, 0, 1.0), .7, .05, "dark", sides=6)
+    M.text((0, -.7, .08), F, .09, "S-12", AMBER, wear=.3).hazard((0, -.71, .015), F, (1.4, .03), pitch=.1)
 
 
 def resonance(M):
@@ -223,6 +347,7 @@ def resonance(M):
     M.cyl((0, -1.2, .75), 2.4, .55, "glass", axis="y", sides=12)
     M.cyl((0, -1.25, .75), .1, .6, "metal", axis="y", sides=12).cyl((0, 1.15, .75), .1, .6, "metal", axis="y", sides=12)
     M.box((0, 0, 1.36), (.4, 2.2, .06), "crimson")
+    M.text((0, -.62, .12), F, .055, "RESONANZ", PAPER, wear=.2).hazard((0, -1.31, .1), F, (1.2, .2)).text((0, 0, 1.4), UP, .05, "R-07", PAPER)
 
 
 def cryo_tank(M):
@@ -230,6 +355,8 @@ def cryo_tank(M):
     M.cyl((0, 0, 2.15), .12, .84, "crimson", sides=14).cyl((0, 0, 1.2), .6, .82, "glass", sides=14)
     M.cyl((0, 0, .9), .3, .84, "frost", sides=14)
     M.box((.55, -.55, 1.0), (.14, .02, .08), "glow_crimson", rot=.78)
+    M.text((0, -.84, 2.21), F, .06, "KRYO 12", PAPER).text((0, -.84, .34), F, .09, "KALT", AMBER, wear=.2)
+    M.cyl((.8, .0, 2.4), .3, .05, "dark", axis="x", sides=6).cyl((1.1, .0, 0), 2.4, .05, "dark", sides=6)
 
 
 def transformer(M):
@@ -239,7 +366,9 @@ def transformer(M):
         M.box((-.7, y, 1.1), (.12, .05, 1.6), "dark").box((.7, y, 1.1), (.12, .05, 1.6), "dark")
     for x in (-.35, .35):
         M.cyl((x, 0, 2.0), .1, .1, "steel", sides=8).cyl((x, 0, 2.1), .1, .07, "glow_crimson", sides=8)
-    M.box((0, -.66, 1.5), (.5, .02, .36), "yellow")
+    M.box((0, -.66, 1.5), (.66, .02, .38), "yellow")
+    M.plate((0, -.66, 1.5), F, (.62, .34), AMBER).text((0, -.67, 1.57), F, .09, "GEFAHR").text((0, -.67, 1.43), F, .09, "TRAFO 1")
+    M.hazard((0, -.76, .1), F, (1.5, .2)).code((0, -.655, .9), F, .16, 9, PAPER)
 
 
 def broken_capsule(M):
@@ -275,12 +404,19 @@ def mother(M):
     for x in (-3, 3):
         M.box((x, 0, h + .5), (.3, .3, 1.0), "yellow")
     M.box((0, 0, h + 1.0), (w + 2, .5, .4), "yellow")
+    M.pitch = 1.33
+    for row in range(4):
+        for bay in range(6):
+            M.text((-3.33 + bay * 1.33, -1.0, .1 + row), F, .07, f"{'ABCDEF'[bay]}{row + 1}", PAPER, wear=.2)
+    M.text((0, -1.0, 4.1), F, .09, "VITALIS KONZERN", RED, wear=.1)
+    M.hazard((0, -.25, 6.2), F, (10, .4), pitch=.3).hazard((-3, -.15, 5.7), F, (.3, 1.0), pitch=.2).hazard((3, -.15, 5.7), F, (.3, 1.0), pitch=.2)
 
 
 def collector_arm(M):
     # Hangs from the origin, downward; the claw is a separate child model that opens.
     M.box((0, 0, 3.0), (.8, .8, .4), "yellow").cyl((0, 0, .75), 2.1, .16, "steel", sides=8).cyl((0, 0, 0), .85, .22, "metal", sides=8)
     M.box((0, 0, .1), (.5, .5, .24), "dark").cyl((.22, 0, .9), 1.2, .05, "black", sides=6)
+    M.hazard((0, -.4, 3.0), F, (.8, .4), pitch=.14).text((0, -.22, .45), F, .06, "M-01", PAPER * .9, wear=.3)
 
 
 def claw(M):
@@ -294,6 +430,7 @@ def claw(M):
 def hostile_cam(M):
     M.box((0, .05, 0), (.34, .5, .3), "dark").cyl((0, -.2, 0), .22, .11, "metal", axis="y", sides=10)
     M.cyl((0, -.27, 0), .08, .09, "glow_red", axis="y", sides=8).box((0, .15, .26), (.08, .08, .3), "metal")
+    M.text((0, -.2, .12), F, .03, "K-07", PAPER)
 
 
 def mixing_table(M):
@@ -302,6 +439,9 @@ def mixing_table(M):
         x = -.65 + i * .145
         M.box((x, -.15, 1.06), (.06, .4, .03), "steel").box((x, -.1 - (i * 7 % 5) * .05, 1.09), (.04, .05, .03), "black")
     M.box((0, .25, 1.2), (1.5, .08, .36), "black").box((-.3, .2, 1.22), (.4, .02, .2), "glow_green").box((.35, .2, 1.22), (.3, .02, .2), "glow_crimson")
+    M.text((0, -.4, .75), F, .05, "MISCHPULT 1", PAPER * .9, wear=.25).code((.55, -.4, .4), F, .14, 2, PAPER)
+    M.lamps((-.45, -.36, 1.04), UP, 6, 2, .04, 8)
+    M.screen((-.3, .19, 1.22), F, (.4, .2), 3).screen((.35, .19, 1.22), F, (.3, .2), 6, np.array(COLORS["glow_crimson"], dtype=np.float32))
 
 
 # ---------- revolver and items ----------
@@ -313,12 +453,17 @@ def revolver(M):
     M.box((0, -.135, -.018), (.022, .1, .012), "polymer").box((0, .02, -.055), (.03, .045, .1), "polymer", rot=0)
     M.box((0, .012, -.11), (.028, .05, .02), "ceramic").box((0, -.03, .033), (.012, .03, .008), "black")
     M.box((.017, -.05, .018), (.001, .03, .014), "glow_green")
+    for sx in (-1, 1):
+        M.text((sx * .012, -.18, .012), (sx, 0, 0), .005, "KS-M5", PAPER * .9)
+    M.box((-.017, -.05, .018), (.001, .03, .014), "glow_green")
 
 
 def heal(M):
     M.box((0, 0, .075), (.3, .09, .15), "white").box((0, -.046, .075), (.31, .004, .02), "crimson")
     M.box((0, 0, .165), (.13, .02, .03), "dark").box((-.055, 0, .155), (.02, .02, .02), "dark").box((.055, 0, .155), (.02, .02, .02), "dark")
     M.box((.1, -.046, .1), (.05, .004, .05), "crimson")
+    M.marks.append(("bitmap", (-.08, -.046, .09), F, (.06, .06), np.array([[0, 1, 0], [1, 1, 1], [0, 1, 0]], dtype=bool), RED, 0, False))
+    M.text((.0, -.046, .135), F, .012, "VK-MED", INK).code((.0, .046, .08), (0, 1, 0), .05, 3)
 
 
 def ammo(M):
@@ -332,16 +477,19 @@ def spike(M):
     M.cyl((0, -.2, .03), .3, .02, "black", axis="y", sides=8).cyl((0, .1, .03), .1, .024, "dark", axis="y", sides=8)
     M.cyl((0, -.25, .03), .05, .004, "steel", axis="y", sides=6, r2=.02).cyl((0, .0, .03), .03, .021, "amber", axis="y", sides=8)
     M.box((.02, .05, .03), (.003, .012, .012), "glow_green")
+    M.hazard((0, .1, .054), UP, (.05, .1), pitch=.018).text((0, -.05, .05), UP, .009, "800V", AMBER)
 
 
 def key_mandatory(M):
     M.box((0, 0, .01), (.16, .1, .012), "white").box((0, .03, .017), (.16, .03, .002), "crimson")
     for i in range(3):
         M.box((-.03 + i * .018, -.02 + i * .0, .017), (.016, .018 + i * .012, .002), "dark")
+    M.text((.03, .03, .018), UP, .012, "R-H", PAPER).code((.055, -.02, .016), UP, .028, 7)
 
 
 def key_optional(M):
     M.box((0, 0, .008), (.09, .055, .004), "white").box((0, .016, .011), (.09, .014, .002), "metal")
+    M.text((0, -.01, .0105), UP, .007, "K-07", INK).code((.03, -.012, .0105), UP, .018, 5)
 
 
 def ring(M):
@@ -355,12 +503,15 @@ def document(M):
     M.box((0, 0, .004), (.21, .29, .006), "paper").box((0, .1, .008), (.14, .012, .001), "dark")
     for i in range(5):
         M.box((-.01, .06 - i * .03, .008), (.16 - i * .012, .008, .001), "brown")
+    M.text((0, .1, .009), UP, .009, "VITALIS", PAPER)
 
 
 # ---------- confiscated objects (GDD Objetos y Coleccionables): everyday things with an inventory tag ----------
 
 def tag(M, x=0.0, y=.0, z=.02):
+    """Inventory tag: the object is a file now (GDD Objetos y Coleccionables)."""
     M.box((x, y, z), (.05, .03, .002), "paper")
+    M.text((x, y + .004, z + .0012), UP, .0045, "KONF", INK).text((x, y - .006, z + .0012), UP, .0035, "0417", RED)
 
 
 def watch(M):
@@ -444,27 +595,49 @@ SETS = {
 }
 
 
+TILE = {"Machines": 384, "Boss": 192, "Items": 192, "Confiscated": 128}
+TILE_FOR = {"CH_TheMother": 768, "CH_F3_MixingTable": 384, "CH_Revolver": 256}
+
+
 def build_all():
     bpy.ops.wm.read_homefile(use_empty=True)
-    write_palette()
+    os.makedirs(OUT + r"\Textures", exist_ok=True)
+    albedo = np.zeros((ATLAS, ATLAS, 4), dtype=np.float32)
+    emission = np.zeros((ATLAS, ATLAS, 4), dtype=np.float32)
+    albedo[:, :, 3] = emission[:, :, 3] = 1
+    hp.save(OUT + r"\Textures\T_Palette.png", "T_Palette", albedo)
     report = {}
     win = bpy.context.window_manager.windows[0]
-    for group, models in SETS.items():
-        col = bpy.data.collections.new(group)
-        bpy.context.scene.collection.children.link(col)
-        os.makedirs(OUT, exist_ok=True)
-        for name, fn in models.items():
-            M = Model(name)
-            fn(M)
-            ob, tris = M.finish(col)
-            report[name] = tris
-            vl = bpy.context.view_layer
-            for o in vl.objects:
-                o.select_set(False)
-            ob.select_set(True)
-            vl.objects.active = ob
-            with bpy.context.temp_override(window=win):
-                bpy.ops.export_scene.fbx(filepath=OUT + rf"\{name}.fbx", use_selection=True, object_types={"MESH"}, apply_unit_scale=True, apply_scale_options="FBX_SCALE_ALL", axis_forward="-Z", axis_up="Y", bake_space_transform=True, bake_anim=False, mesh_smooth_type="FACE")
+    x = y = row = 0
+    jobs = [(g, n, f, TILE_FOR.get(n, TILE[g])) for g, ms in SETS.items() for n, f in ms.items()]
+    jobs.sort(key=lambda j: -j[3])
+    cols = {}
+    for group, name, fn, tile in jobs:
+        col = cols.get(group)
+        if col is None:
+            col = cols[group] = bpy.data.collections.new(group)
+            bpy.context.scene.collection.children.link(col)
+        if x + tile > ATLAS:
+            x, y, row = 0, y + row, 0
+        assert y + tile <= ATLAS, name
+        M = Model(name)
+        fn(M)
+        ob, tris = M.finish(col)
+        B, c, e = M.paint(ob.data, tile, (x, y))
+        albedo[B.py, B.px, :3] = c
+        emission[B.py, B.px, :3] = e
+        report[name] = tris
+        x += tile
+        row = max(row, tile)
+        vl = bpy.context.view_layer
+        for o in vl.objects:
+            o.select_set(False)
+        ob.select_set(True)
+        vl.objects.active = ob
+        with bpy.context.temp_override(window=win):
+            bpy.ops.export_scene.fbx(filepath=OUT + rf"\{name}.fbx", use_selection=True, object_types={"MESH"}, apply_unit_scale=True, apply_scale_options="FBX_SCALE_ALL", axis_forward="-Z", axis_up="Y", bake_space_transform=True, bake_anim=False, mesh_smooth_type="FACE")
+    hp.save(OUT + r"\Textures\T_Palette.png", "T_Palette", albedo)
+    hp.save(OUT + r"\Textures\T_Palette_Emission.png", "T_Palette_Emission", emission)
     os.makedirs(os.path.dirname(SOURCE), exist_ok=True)
     bpy.ops.wm.save_as_mainfile(filepath=SOURCE)
     return report
