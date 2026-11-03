@@ -31,6 +31,9 @@ MonoBehaviour:
   exhaustionSeconds: 2
   maxHealth: 90
   healSeconds: 1.5
+  glowRange: 0.5
+  glowIntensity: 0.025
+  glowColor: {r: 0.431, g: 0.624, b: 0.627, a: 1}
   walkNoiseRadius: 3
   runNoiseRadius: 10
   noiseInterval: 0.5

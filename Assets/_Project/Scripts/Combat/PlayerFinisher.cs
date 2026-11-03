@@ -102,6 +102,7 @@ namespace Heartbeat.Combat
             IsFinishing = true;
             player.MovementLocked = true;
             HbLog.Info("Combat", $"Finisher started: {how}");
+            GameEvents.RaisePlayerGesture(noisy ? "GroundStrike" : "Finisher");
             if (noisy)
                 GameEvents.RaiseNoiseEmitted(new NoiseInfo(corpse.transform.position, balance.groundStrikeNoiseRadius, NoiseSource.GroundStrike));
             yield return new WaitForSeconds(seconds);

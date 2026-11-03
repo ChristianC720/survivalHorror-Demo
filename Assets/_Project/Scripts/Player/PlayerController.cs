@@ -16,8 +16,6 @@ namespace Heartbeat.Player
         [SerializeField] private PlayerBalance balance;
         [SerializeField] private PlayerStamina stamina;
         [SerializeField] private PlayerHealth health;
-        [Tooltip("Placeholder mesh root (PH_Lukas). Used for crouch / injured posture until the animator exists.")]
-        [SerializeField] private Transform visual;
         [Tooltip("Camera used for camera-relative movement. Defaults to Camera.main at start.")]
         [SerializeField] private Transform cameraTransform;
 
@@ -127,7 +125,6 @@ namespace Heartbeat.Player
             }
 
             EmitMovementNoise(moving);
-            ApplyPosture();
         }
 
         // Safety net, not balance: any physics tunnelling out of the floor would otherwise fall forever (blank screen).
@@ -204,16 +201,6 @@ namespace Heartbeat.Player
             Vector3 bottom = transform.position + Vector3.up * (balance.crouchHeight - r);
             Vector3 top = transform.position + Vector3.up * (balance.standHeight - r);
             return !Physics.CheckCapsule(bottom, top, r, LayerMask.GetMask("Environment"), QueryTriggerInteraction.Ignore);
-        }
-
-        /// <summary>Placeholder posture until the animator exists: crouch squash and a forward lean when hurt.</summary>
-        private void ApplyPosture()
-        {
-            if (visual == null) return;
-            float yScale = IsCrouched ? balance.crouchHeight / balance.standHeight : 1f;
-            float lean = health.State == HealthState.Critical ? 18f : health.State == HealthState.Injured ? 8f : 0f;
-            visual.localScale = Vector3.Lerp(visual.localScale, new Vector3(1f, yScale, 1f), 12f * Time.deltaTime);
-            visual.localRotation = Quaternion.Slerp(visual.localRotation, Quaternion.Euler(lean, 0f, 0f), 6f * Time.deltaTime);
         }
     }
 }

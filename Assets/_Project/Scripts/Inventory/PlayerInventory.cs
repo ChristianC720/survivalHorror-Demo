@@ -63,6 +63,7 @@ namespace Heartbeat.Inventory
                     }
                     healTimer = balance.healSeconds;
                     HbLog.Info("Inventory", "Heal started");
+                    GameEvents.RaisePlayerGesture("Heal");
                     Sfx.Play2D(Sfx.HealUse);
                     return true;
                 default:

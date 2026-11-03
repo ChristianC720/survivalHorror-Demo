@@ -89,7 +89,19 @@ namespace Heartbeat.Interaction
             if (Current == null || player.MovementLocked) return;
             if (router.Context == InputContext.OverBody && Services.TryGet<Combat.PlayerFinisher>(out var f) && f.HasTarget) return;
             HbLog.Info("Interact", $"Interact {((MonoBehaviour)Current).name}");
+            GameEvents.RaisePlayerGesture(GestureFor(Current));
             Current.Interact(this);
+        }
+
+        private string GestureFor(IInteractable target)
+        {
+            if (target is DocumentPickup) return "Examine";
+            float height = target.InteractionPoint.y - transform.position.y;
+            if (height < 0.6f) return "Pick_Floor";
+            string kind = target.GetType().Name;
+            if (kind.Contains("Door")) return "Use_Door";
+            if (kind.Contains("Switch")) return "PowerSwitch";
+            return height > 1.2f ? "Pick_Shelf" : "Use_Panel";
         }
     }
 }

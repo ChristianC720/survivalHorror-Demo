@@ -31,6 +31,11 @@ namespace Heartbeat.Player
         [Tooltip("Hidden health split in 3 equal bands (Fine/Injured/Critical).")] public float maxHealth = 90f;
         [Tooltip("Heal animation length, s (M-07: ~1.5 s).")] public float healSeconds = 1.5f;
 
+        [Header("Seam and terminal glow (D-152: no gameplay effect)")]
+        [Tooltip("Reach of each teal light, m.")] public float glowRange = 0.5f;
+        public float glowIntensity = 0.025f;
+        public Color glowColor = new Color(0.431f, 0.624f, 0.627f);
+
         [Header("Noise (M-09)")]
         [Tooltip("Walking: low noise radius, m.")] public float walkNoiseRadius = 3f;
         [Tooltip("Running: area pulse radius, m.")] public float runNoiseRadius = 10f;

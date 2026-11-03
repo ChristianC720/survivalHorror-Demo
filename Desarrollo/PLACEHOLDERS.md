@@ -10,7 +10,7 @@ Rules
 
 | Prefab | Stands for | Real size (W×H×D m) | Primitive build | Tri budget (final) | Rig / anim needed | Status |
 |---|---|---|---|---|---|---|
-| `PH_Lukas` | Lukas R-H-07 (teal overalls, arm terminal on left forearm) | 0.75 × 1.78 × 0.37 | capsule body, sphere head, box arm terminal (left) | ≤ 8k | Humanoid, all clips in Blender: locomotion, aim, reload, shove, grab, injured/critical gaits | placeholder done |
+| `PH_Lukas` | Lukas R-H-07 (teal overalls, arm terminal on left forearm) | 0.75 × 1.78 × 0.37 | capsule body, sphere head, box arm terminal (left) | ≤ 8k | Humanoid, all clips in Blender: locomotion, aim, reload, shove, grab, injured/critical gaits | **replaced by `CH_Lukas_RH07` in `Player.prefab`** (`PH_Lukas` stays only for the intro until `CH_Lukas_Civil`) |
 | `PH_Lukas_Civil` | Lukas in the intro (civilian clothes) | same | same, grey | 5–8k | same | pending |
 | `PH_Alto` | El Alto | 0.8 × 2.5 × 0.6 | tall capsule, long box arms | ~4–8k | Long reach attack, grab | placeholder done (Enemy_Alto) |
 | `PH_Rastrero` | El Rastrero | 0.6 × 1.0 × 1.4 | horizontal capsule, low | ~4–8k | Fast quadruped crawl, flank, lunge | placeholder done (Enemy_Rastrero) |
@@ -40,5 +40,5 @@ Add a row whenever you create a new `PH_` prefab.
 | Fonts | VT323 (data), IBM Plex Sans (menus), OpenDyslexic (option) | imported (OFL, licences next to the files in `UI/Fonts/`), dynamic TMP assets via `UI/Resources/UiFontSet` | done |
 | Main menu backdrop | capsule-row room with the facility terminal next to Lukas's capsule (D-90) | flat black screen with green text | pending (E12-f1-lighting) |
 | Credits roll | END table credits | hard-coded lines in `MenuView.ShowCredits` | pending (E15) |
-| Arm terminal | world-space canvas on Lukas's forearm + screen mirror | screen-space panel only | pending Lukas model |
+| Arm terminal | world-space canvas on Lukas's forearm + screen mirror | `LukasAttachments` screen on the forearm + screen-space panel | done |
 | The Mother (crane archive, collector arm, cryo core) | cryogenic sample archive on a crane with a collector arm and an opening core (D-65) | `ROOM_Mother`: CryoTank ×1.6 core, box arm + claw, cube cameras with red lights | pending model + core-opening animation |

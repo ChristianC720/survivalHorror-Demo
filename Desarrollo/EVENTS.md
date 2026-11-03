@@ -13,6 +13,7 @@
 | `EnemyAlertChanged` | `MonoBehaviour enemy (EnemyBrain), AlertState state, float distance` | S-02 → S-11 | S-11 |
 | `HuntChanged` | `bool hunting` (first enemy enters Hunt / last one leaves) | S-02 → S-01 (cut + lock), S-07 (pending autosave, exit cost), Level (transit lockdown) | M-03, D-96 |
 | `PlayerAttacked` | `AttackInfo info` | S-02 → S-03 | S-03 |
+| `PlayerGesture` | `string gesture` (animation name: Shove, Use_Door, Heal...) | S-03, Interaction, S-05 → PlayerAnimator | D-151 |
 | `GrabResolved` | `bool spikeUsed` (grabs arrive as `PlayerAttacked` with `IsGrab`) | S-03 → UI, S-11 | M-11 |
 | `HealthStateChanged` | `HealthState state` | S-03 → UI, Player (posture), S-11 | M-05 |
 | `PlayerDied` | `DeathCause cause` | S-03 → S-08 | S-08 |

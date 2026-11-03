@@ -61,6 +61,7 @@ namespace Heartbeat.Combat
                 if (target != null) break;
             }
             Sfx.Play(Sfx.Shove, origin);
+            GameEvents.RaisePlayerGesture("Shove");
             if (target != null)
             {
                 target.Stagger(transform.position, balance.shoveStaggerSeconds);

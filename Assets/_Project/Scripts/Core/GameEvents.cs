@@ -40,6 +40,7 @@ namespace Heartbeat.Core
         public static event Action StaminaExhausted;
         public static event Action<int> HealthStateChanged;   // Heartbeat.Player.HealthState
         public static event Action<DeathCause> PlayerDied;
+        public static event Action<string> PlayerGesture;     // one-shot animation name, e.g. Shove, Use_Door, Heal
 
         // Camera / surveillance
         public static event Action<bool> AimChanged;
@@ -99,6 +100,7 @@ namespace Heartbeat.Core
         public static void RaiseStaminaExhausted() => StaminaExhausted?.Invoke();
         public static void RaiseHealthStateChanged(int state) => HealthStateChanged?.Invoke(state);
         public static void RaisePlayerDied(DeathCause cause) => PlayerDied?.Invoke(cause);
+        public static void RaisePlayerGesture(string gesture) => PlayerGesture?.Invoke(gesture);
         public static void RaiseAimChanged(bool aiming) => AimChanged?.Invoke(aiming);
         public static void RaiseAttentionFull(Vector3 playerPos) => AttentionFull?.Invoke(playerPos);
         public static void RaiseShotFired(Vector3 origin) => ShotFired?.Invoke(origin);
