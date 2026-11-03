@@ -42,3 +42,6 @@ Thumbs.db
 # Obsidian workspace noise
 GDD/.obsidian/workspace*.json
 GDD/.obsidian/.obsidian/
+
+# Blender's Python cache
+__pycache__/

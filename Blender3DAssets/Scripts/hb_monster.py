@@ -1,7 +1,7 @@
 """Builds organic low-poly creatures on the shared humanoid skeleton (fallback of BLENDER_PLAN.md section 2).
 
-The body is a Skin-modifier graph along the bones, softened and decimated to budget, which gives the flat faceted look of
-Lukas. hb_paint.py then paints it texel by texel. Blender axes: facing -Y, +X is the character's left.
+hb_sculpt.py makes the closed organic body; this module has the skeleton, the hard parts, the weights and the assembly.
+hb_paint.py then paints it texel by texel. Blender axes: facing -Y, +X is the character's left.
 """
 import math
 import random
@@ -11,8 +11,7 @@ import bpy
 import numpy as np
 from mathutils import Vector
 
-TEX = 512
-RADIUS_GAIN = 1.5
+TEX = 1024
 
 
 def mirror(p):
@@ -85,109 +84,6 @@ def make_rig(name, table, collection, extra=None):
     return rig
 
 
-def skin_mesh(name, chains, collection, subdiv=2, target_tris=4000):
-    """chains: list of [(point, rx, ry), ...]; points shared by value are welded, which builds the branches."""
-    me = bpy.data.meshes.new(name + "_skin")
-    verts, edges, radii, index = [], [], [], {}
-    for chain in chains:
-        prev = None
-        for (p, rx, ry) in chain:
-            key = tuple(round(c, 4) for c in p)
-            if key not in index:
-                index[key] = len(verts)
-                verts.append(p)
-                radii.append((rx, ry))
-            cur = index[key]
-            if prev is not None and prev != cur:
-                edges.append((prev, cur))
-            prev = cur
-    me.from_pydata(verts, list(set(edges)), [])
-    ob = bpy.data.objects.new(name + "_skin", me)
-    collection.objects.link(ob)
-    sk = ob.modifiers.new("skin", "SKIN")
-    sk.branch_smoothing = 0.3
-    sk.use_x_symmetry = False
-    for i, d in enumerate(me.skin_vertices[0].data):
-        d.radius = (radii[i][0] * RADIUS_GAIN, radii[i][1] * RADIUS_GAIN)
-        d.use_root = i == 0
-    ob.modifiers.new("sub", "SUBSURF").levels = subdiv
-    dec = ob.modifiers.new("dec", "DECIMATE")
-    dec.ratio = 1.0
-    dg = bpy.context.evaluated_depsgraph_get()
-    probe = bpy.data.meshes.new_from_object(ob.evaluated_get(dg))
-    probe.calc_loop_triangles()
-    n = len(probe.loop_triangles)
-    bpy.data.meshes.remove(probe)
-    dec.ratio = min(1.0, target_tris / max(n, 1))
-    bpy.context.view_layer.update()
-    dg = bpy.context.evaluated_depsgraph_get()
-    out = bpy.data.meshes.new_from_object(ob.evaluated_get(dg))
-    bpy.data.objects.remove(ob)
-    bpy.data.meshes.remove(me)
-    return out
-
-
-def skin_parts(name, chains, collection, target_tris):
-    """Arms are skinned apart from the body, so a sleeve can never be bound to the ribs beside it (or the reverse)."""
-    width = max(abs(p[0][0]) for c in chains for p in c if p[0][2] > 0) * 0.45
-    arms = {1: [], 2: []}
-    body = []
-    for c in chains:
-        first = c[0][0]
-        if abs(first[0]) > width and first[2] > 0.6:
-            arms[1 if first[0] > 0 else 2].append(c)
-        else:
-            body.append(c)
-    return [(skin_mesh(name + "_b", body, collection, target_tris=int(target_tris * .64)), 0),
-            (skin_mesh(name + "_l", arms[1], collection, target_tris=int(target_tris * .18)), 1),
-            (skin_mesh(name + "_r", arms[2], collection, target_tris=int(target_tris * .18)), 2)]
-
-
-def body_chains(t, r):
-    """Standard limbs from the bone table. r holds radii by region: (rx, ry) pairs."""
-    H = lambda n: t[n][0]
-    T = lambda n: t[n][1]
-    chains = [[(H("Hips"), *r["hips"]), (H("Spine"), *r["waist"]), (H("Chest"), *r["ribs"]), (T("Chest"), *r["chest"]), (T("Neck"), *r["neck"])]]
-    for side in ("Left", "Right"):
-        def L(a, b, k):
-            return tuple(x + (y - x) * k for x, y in zip(a, b))
-
-        def S(pair, k):
-            return (pair[0] * k, pair[1] * k)
-
-        sh, el, wr = T(side + "Shoulder"), T(side + "UpperArm"), T(side + "LowerArm")
-        chains.append([(sh, *r["shoulder"]), (L(sh, el, .35), *S(r["shoulder"], .85)), (el, *r["elbow"]), (L(el, wr, .3), *S(r["elbow"], 1.2)), (wr, *r["wrist"]), (T(side + "Hand"), *r["palm"])])
-        th, kn, an = H(side + "UpperLeg"), T(side + "UpperLeg"), T(side + "LowerLeg")
-        chains.append([(H("Hips"), *r["hips"]), (th, *r["thigh"]), (L(th, kn, .5), *S(r["thigh"], .85)), (kn, *r["knee"]), (L(kn, an, .3), *S(r["knee"], 1.2)), (an, *r["ankle"]), (T(side + "Foot"), *r["foot"]), (T(side + "Toes"), *r["toe"])])
-        f = r["finger"]
-        chains.append([(H(side + "Hand"), *r["wrist"]), (H(side + "ThumbProximal"), *f), (T(side + "ThumbDistal"), f[0] * .55, f[1] * .55)])
-        chains.append([(T(side + "Hand"), *r["palm"]), (T(side + "IndexDistal"), f[0] * .5, f[1] * .5)])
-        chains.append([(T(side + "Hand"), *r["palm"]), (T(side + "Fingers"), f[0] * 1.3, f[1] * .6)])
-    return chains
-
-
-def blob(bm, center, rx, ry, rz, part, faces, rings=6, seg=10, tilt=0.0):
-    """Low-poly ellipsoid: heads need controlled volume, which the skin modifier cannot give. tilt turns it around Y."""
-    c = Vector(center)
-    ct, st = math.cos(tilt), math.sin(tilt)
-
-    def at(x, y, z):
-        return c + Vector((x * ct + z * st, y, -x * st + z * ct))
-
-    top = bm.verts.new(at(0, 0, rz))
-    bot = bm.verts.new(at(0, 0, -rz))
-    grid = []
-    for i in range(1, rings):
-        a = math.pi * i / rings
-        grid.append([bm.verts.new(at(rx * math.sin(a) * math.sin(2 * math.pi * j / seg), -ry * math.sin(a) * math.cos(2 * math.pi * j / seg), rz * math.cos(a))) for j in range(seg)])
-    for j in range(seg):
-        k = (j + 1) % seg
-        faces.append((bm.faces.new((top, grid[0][k], grid[0][j])), part))
-        faces.append((bm.faces.new((bot, grid[-1][j], grid[-1][k])), part))
-        for i in range(rings - 2):
-            faces.append((bm.faces.new((grid[i][j], grid[i][k], grid[i + 1][k], grid[i + 1][j])), part))
-
-
 def bmesh_box(bm, c, size, part, faces):
     """Axis-aligned box tagged as `part`; size is width, depth, height."""
     cx, cy, cz = c
@@ -195,31 +91,6 @@ def bmesh_box(bm, c, size, part, faces):
     vs = [bm.verts.new((cx + sx * w, cy + sy * d, cz + sz * h)) for sz in (-1, 1) for sy in (-1, 1) for sx in (-1, 1)]
     for q in ((0, 2, 3, 1), (4, 5, 7, 6), (0, 1, 5, 4), (2, 6, 7, 3), (0, 4, 6, 2), (1, 3, 7, 5)):
         faces.append((bm.faces.new([vs[i] for i in q]), part))
-
-
-def skirt(bm, z_top, z_low, r_top, r_low, part, faces, seg=12, depth=.74, rng=None):
-    """Open tube, wider below, with a torn hem. Reads as cloth where a closed blob reads as a balloon."""
-    top, low = [], []
-    for i in range(seg):
-        a = 2 * math.pi * i / seg
-        d = Vector((math.cos(a), math.sin(a) * depth, 0))
-        top.append(bm.verts.new(d * r_top + Vector((0, 0, z_top))))
-        tear = rng.uniform(0, .1) if rng else 0
-        low.append(bm.verts.new(d * r_low + Vector((0, 0, z_low + tear))))
-    for i in range(seg):
-        j = (i + 1) % seg
-        faces.append((bm.faces.new((low[i], low[j], top[j], top[i])), part))
-
-
-def claws(bm, t, faces, length, r, part="claw"):
-    """Four fingers and a thumb on each hand: the palm alone reads as a mitten."""
-    for side, s in (("Left", 1), ("Right", -1)):
-        tip = Vector(t[side + "Hand"][1])
-        for y, k in ((-.027, .95), (-.009, 1.0), (.009, .95), (.027, .8)):
-            base = tip + Vector((0, y, .015))
-            cone(bm, base, base + Vector((s * .012, y * .25, -length * k)), r, part, sides=4, faces=faces)
-        hd = Vector(t[side + "ThumbProximal"][0])
-        cone(bm, hd, Vector(t[side + "ThumbDistal"][1]) + Vector((0, -.012, -.01)), r * 1.1, part, sides=4, faces=faces)
 
 
 def cone(bm, base, tip, r, part, sides=4, faces=None):
@@ -235,25 +106,19 @@ def cone(bm, base, tip, r, part, sides=4, faces=None):
         faces.append((f, part))
 
 
-def shell(bm, select, offset, part, tear, rng, faces):
-    """Clothing: a duplicate of the body faces chosen by select(center), pushed out, with random tears."""
-    src = [f for f in bm.faces if select(f.calc_center_median()) and f.normal.length > 0]
-    made = {}
-    limb = bm.verts.layers.int.get("limb")
-    for f in src:
-        if rng.random() < tear:
-            continue
-        vs = []
-        for v in f.verts:
-            if v.index not in made or made[v.index] is None:
-                made[v.index] = bm.verts.new(v.co + v.normal * offset)
-                made[v.index][limb] = v[limb]
-            vs.append(made[v.index])
-        try:
-            nf = bm.faces.new(vs)
-            faces.append((nf, part))
-        except ValueError:
-            pass
+def tube(bm, pts, r, part, faces, sides=5):
+    """Cable through pts; both ends sink into the body, so it needs no caps."""
+    pts = [Vector(p) for p in pts]
+    rings = []
+    for i, p in enumerate(pts):
+        d = (pts[min(i + 1, len(pts) - 1)] - pts[max(i - 1, 0)]).normalized()
+        u = d.orthogonal().normalized()
+        v = d.cross(u)
+        rings.append([bm.verts.new(p + (u * math.cos(2 * math.pi * j / sides) + v * math.sin(2 * math.pi * j / sides)) * r) for j in range(sides)])
+    for a, b in zip(rings, rings[1:]):
+        for j in range(sides):
+            k = (j + 1) % sides
+            faces.append((bm.faces.new((a[j], a[k], b[k], b[j])), part))
 
 
 def segment_distance(p, a, b):
@@ -346,13 +211,15 @@ def assemble(name, rig, skin_mesh_data, extras_fn, collection):
             f[tag] = names.index(p)
 
     extras_fn(bm, Tagger(), rng)
+    # URP culls back faces: hand-built parts must wind outward whatever order they were made in.
+    bmesh.ops.recalc_face_normals(bm, faces=bm.faces)
     for f in bm.faces:
         if names[f[tag]] in ("claw", "finger", "armmetal"):
             for v in f.verts:
                 v[limb] = 1 if v.co.x > 0 else 2
     bmesh.ops.triangulate(bm, faces=[f for f in bm.faces if len(f.verts) > 4])
     for f in bm.faces:
-        f.smooth = False
+        f.smooth = names[f[tag]] == "skin"   # sculpted surface reads smooth; teeth, claws and metal keep hard facets
     me = bpy.data.meshes.new(name)
     bm.to_mesh(me)
     bm.free()

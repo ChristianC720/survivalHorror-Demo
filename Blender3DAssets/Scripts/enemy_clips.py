@@ -77,7 +77,7 @@ def mudo(A):
 
 def boca(A):
     # Blind: the head tilts listening. Stooped, slow, lurching.
-    P = {"Spine": (14, 0, 0), "Chest": (12, 2, 0), "Neck": (-4, 0, 0), "Head": (-8, 0, 8), "LeftUpperArm": (-10, -4, 0), "RightUpperArm": (-10, 4, 0), "LeftLowerArm": (-14, 0, 0), "RightLowerArm": (-14, 0, 0), "LeftUpperLeg": (-14, 0, 0), "RightUpperLeg": (-14, 0, 0), "LeftLowerLeg": (24, 0, 0), "RightLowerLeg": (24, 0, 0), "LeftFoot": (-10, 0, 0), "RightFoot": (-10, 0, 0), "loc": (0, 0, -.06)}
+    P = {"Spine": (14, 0, 0), "Chest": (12, 2, 0), "Neck": (-4, 0, 0), "Head": (-8, 0, 8), "LeftUpperArm": (-10, -4, 0), "RightUpperArm": (-10, 4, 0), "LeftLowerArm": (-14, 0, 0), "RightLowerArm": (-14, 0, 0), "LeftUpperLeg": (-34, 0, 0), "RightUpperLeg": (-34, 0, 0), "LeftLowerLeg": (58, 0, 0), "RightLowerLeg": (58, 0, 0), "LeftFoot": (-24, 0, 0), "RightFoot": (-24, 0, 0), "loc": (0, 0, -.11)}
     A.clip("AN_Boca_Idle", 91, {1: P, 45: m(P, {"Head": (-8, 4, -10)}), 91: P}, base="src_Idle", loop=True)
 
     def lurch(t):
@@ -97,7 +97,7 @@ def boca(A):
 
 def rastrero(A):
     # Always on four legs (D-152): torso horizontal, the arms are the front legs, head turned up to look forward.
-    B = {"Hips": (72, 0, 0), "Spine": (6, 0, 0), "Chest": (6, 0, 0), "Neck": (-36, 0, 0), "Head": (-28, 0, 0), "LeftUpperArm": (-84, -6, 0), "RightUpperArm": (-84, 6, 0), "LeftLowerArm": (6, 0, 0), "RightLowerArm": (6, 0, 0), "LeftHand": (-10, 0, 0), "RightHand": (-10, 0, 0), "LeftUpperLeg": (-112, 0, 0), "RightUpperLeg": (-112, 0, 0), "LeftLowerLeg": (118, 0, 0), "RightLowerLeg": (118, 0, 0), "LeftFoot": (-30, 0, 0), "RightFoot": (-30, 0, 0), "loc": (0, .3, -.42)}
+    B = {"Hips": (72, 0, 0), "Spine": (6, 0, 0), "Chest": (6, 0, 0), "Neck": (-30, 0, 0), "Head": (-34, 0, 0), "LeftUpperArm": (-41, -6, 0), "RightUpperArm": (-41, 6, 0), "LeftLowerArm": (-85, 0, 0), "RightLowerArm": (-85, 0, 0), "LeftHand": (-48, 0, 0), "RightHand": (-48, 0, 0), "LeftUpperLeg": (-112, 0, 0), "RightUpperLeg": (-112, 0, 0), "LeftLowerLeg": (118, 0, 0), "RightLowerLeg": (118, 0, 0), "LeftFoot": (-53, 0, 0), "RightFoot": (-53, 0, 0), "loc": (0, .3, -.4)}
 
     def add(d, **kw):
         o = dict(d)

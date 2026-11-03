@@ -97,7 +97,7 @@ Deambular → Oír ruido → Gritar (alerta a otros) → Caza → Atacar
 
 **Ataques:** Zarpazos rápidos. No agarra.
 
-**Debilidades:** Fragilidad. Punto débil: la cara invertida.
+**Debilidades:** Fragilidad. Punto débil: la cabeza y su mandíbula colgante (D-154).
 
 **Recompensa:** Ninguna.
 

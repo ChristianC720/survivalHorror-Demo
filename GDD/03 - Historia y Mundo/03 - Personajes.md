@@ -211,7 +211,7 @@ No hay NPC con diálogo en la demo. Las voces que aparecen (Emilia, The Mother, 
 |---|---|---|---|
 | El Alto | ~2.5 m, encorvado, brazos que llegan al suelo; restos del uniforme del Werkschutz y piel morada iridiscente (D-152) | Lento; golpe de alcance largo; vigila pasillos | 1–3 |
 | La Boca | Cabeza partida en dos lóbulos, boca abierta en vertical (D-152) | Lenta y ciega; su grito propio (no el latido) pone a los enemigos cercanos en búsqueda hacia ella (D-64) | 2–3 |
-| El Rastrero | Siempre en cuatro patas, cara invertida con la barbilla hacia arriba y boca horizontal (D-152) | Rápido; flanquea | 1–3 |
+| El Rastrero | Siempre en cuatro patas, cabeza calva sin ojos y mandíbula enorme que cuelga, abierta en vertical y llena de dientes; camisa rayada hecha jirones y pantalón oscuro roto (D-154) | Rápido; flanquea | 1–3 |
 | El Mudo | Inmóvil y sin cara, con ropa gris de personal de Vitalis; parece un cadáver o una persona quieta (D-152) | Se activa cuando el jugador se acerca; sirve de señuelo (D-53) | 3 |
 
 La distribución por piso es un valor inicial, sujeto a balance (D-76): el piso 1 tiene el Alto y el Rastrero, el piso 2 suma la Boca y el piso 3 suma el Mudo. El Mudo de la introducción es un señuelo guionizado (D-53).
@@ -264,7 +264,7 @@ Los reciclados mueren con 2 disparos, o con 1 si son un Rastrero (M-20). Detecci
 |---|---|
 | El Alto | Vértebra metálica que alarga la columna y extensiones metálicas en los codos que alargan los brazos. Sin máscara: la cabeza queda a la vista. Conserva restos del uniforme del Werkschutz |
 | La Boca | Sin piezas metálicas. Delgada hasta los huesos, ciega, con restos de ropa de experimentación. Su boca se abre en vertical, separándose de abajo hacia arriba |
-| El Rastrero | El más orgánico, con menos metal. A cuatro patas, como una araña. Una vértebra metálica sustituida le impide ponerse de pie. En su cara invertida lleva fundidas unas pinzas metálicas, como los quelíceros de una araña |
+| El Rastrero | El más orgánico, con menos metal. A cuatro patas, como una araña. Una vértebra metálica sustituida le impide ponerse de pie. En la cara lleva fundidas unas pinzas metálicas, como los quelíceros de una araña |
 | El Mudo | Inspirado en las enfermeras de *Silent Hill*: uniforme clínico de Vitalis manchado, cabeza envuelta en vendas y una placa metálica remachada que le tapa la cara. Cuerpo rígido que se mueve con espasmos al activarse |
 
 

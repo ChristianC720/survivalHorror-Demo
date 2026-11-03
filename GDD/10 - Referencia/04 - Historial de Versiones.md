@@ -29,6 +29,7 @@ Registra los cambios importantes realizados al GDD. Esto permite conocer cómo e
 | 0.13.1 | 2026-10-29 | GDD Estructurado (`00 - GDD Estructurado.md`) con el formato clásico de GDD; tagline oficial; interfaz visual repartida y coordinada por Victor; clasificación PEGI 16 / ESRB M; monetización confirmada como demo gratuita; prototipo `feature/heartbeatPrueba` desechable con reutilización de código y fechas sin cambio; erratas: corte de la vigilancia en caza en Pilares (D-23), transformadores expuestos por el núcleo criogénico en M-19 (D-65) y mando básico en Público y Plataforma (D-120); registro de decisiones D-136..D-140 | Christian Coronel Palma |
 | 0.14.0 | 2026-11-02 | Producción de modelos: se elimina Mixamo (D-151); aspecto final de enemigos y Lukas, metal de los reciclados atribuido al laboratorio, terminal en la cara exterior y luz teal de ~50 cm (D-152). | Christian Coronel Palma |
 | 0.15.0 | 2026-11-03 | Método visual de *Signalis* en los modelos y atlas común de 2048 px para máquinas y objetos (D-153). | Christian Coronel Palma |
+| 0.16.0 | 2026-11-03 | Enemigos rehechos según sus láminas de referencia, con texturas de 1024 px y ~11k triángulos; nuevo aspecto del Rastrero (D-154). | Christian Coronel Palma |
 
 ## Convención sugerida
 

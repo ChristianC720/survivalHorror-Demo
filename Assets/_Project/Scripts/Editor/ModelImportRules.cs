@@ -78,7 +78,7 @@ namespace Heartbeat.EditorTools
             t.filterMode = FilterMode.Point;
             t.mipmapEnabled = false;
             t.textureCompression = TextureImporterCompression.Uncompressed;
-            t.maxTextureSize = assetPath.Contains("T_Palette") ? 2048 : assetPath.Contains("TheMother") ? 1024 : assetPath.Contains("/Characters/") || assetPath.Contains("/Enemies/") || assetPath.Contains("/Statics/") || assetPath.Contains("/Items/") ? 512 : 256;
+            t.maxTextureSize = assetPath.Contains("T_Palette") ? 2048 : assetPath.Contains("TheMother") || assetPath.Contains("/Enemies/") || assetPath.Contains("/Statics/") ? 1024 : assetPath.Contains("/Characters/") || assetPath.Contains("/Items/") ? 512 : 256;
         }
 
         private void OnPreprocessModel()

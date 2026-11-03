@@ -14,7 +14,7 @@ Aspecto, rol y valores de cada personaje en [[03 - Personajes]] y [[03 - Enemigo
 | Lukas R-H-07 | Mismo cuerpo; overol teal con costuras luminosas y ribetes rojos, terminal en el antebrazo izquierdo; 3–5 variantes de cuerpo ajeno (D-43) | Juego completo (~25–30 clips) | Emisivo de costuras y terminal, con una luz teal tenue de ~50 cm que no afecta a la jugabilidad (D-152); destello del punzón | Diseño de referencia |
 | El Alto | Humanoide de ~2.5 m, encorvado, brazos hasta el suelo; restos de uniforme | Patrulla, caza, golpe largo, agarre, aturdido, muerte (~8–10 clips) | Brillo morado iridiscente en la piel | Concepto |
 | La Boca | Humanoide, cara partida con boca vertical | Deambular, caza, mordida, grito, aturdido, muerte (~8–10 clips) | Ondas de distorsión en el grito (sutiles) | Concepto |
-| El Rastrero | Cuadrúpedo, cara invertida | Locomoción procedural con IK, flanqueo, zarpazos, muerte (~6–8 clips) | — | Concepto |
+| El Rastrero | Cuadrúpedo, mandíbula colgante (D-154) | Locomoción procedural con IK, flanqueo, zarpazos, muerte (~6–8 clips) | — | Concepto |
 | El Mudo | Humanoide sin cara; pose de cadáver o de persona quieta | Inmóvil, estallido, agarre, pausa, muerte (~6–8 clips) | — | Concepto |
 | Versiones recicladas | Un modelo completo por tipo, con el esqueleto de su versión normal: piezas metálicas en el Alto, el Rastrero y el Mudo, y la Boca demacrada sin metal (D-130, D-152; ver [[03 - Personajes]]). El Mudo reciclado se mueve con espasmos | Las de su tipo, más rápidas | Metal oxidado de la paleta Base sobre la carne del original | Concepto |
 | The Mother | Estantería criogénica en una grúa con brazo recolector, núcleo y 3 transformadores; solo máquina (D-65) | Patrulla de la grúa, agarre del brazo, apertura del núcleo, caída (~6–8 clips + procedural) | Niebla criogénica, chispas de transformadores, luz roja de cámaras | Concepto |
@@ -77,8 +77,8 @@ Valores iniciales, sujetos a pruebas de rendimiento (60 FPS en hardware medio; [
 
 - **Escala:** 1 unidad = 1 m. Lukas mide 1.78 m.
 - **Esqueleto:** un esqueleto humanoide compartido (compatible con Unity Humanoid) para Lukas, el Alto, la Boca y el Mudo, para reutilizar clips entre ellos. El Rastrero y The Mother tienen esqueletos propios.
-- **Polígonos (aprox.):** Lukas hasta ~8k triángulos, sin mínimo (D-152); enemigos ~4–8k; The Mother ~15k; cadáveres ~2–4k.
-- **Texturas:** 512 px para personajes y 1024 px para The Mother, con filtro *point*.
+- **Polígonos (aprox.):** Lukas hasta ~8k triángulos, sin mínimo (D-152); enemigos ~11k (D-154); The Mother ~15k; cadáveres ~3.5k.
+- **Texturas:** 1024 px para enemigos, cadáveres y The Mother (D-154), 512 px para Lukas, con filtro *point*.
 - **Clips:** 30 fps, cortos y en bucle cuando corresponda.
 - **Formato:** FBX exportado desde Blender.
 - **Nombres:** `CH_<Personaje>_<Variante>` para modelos (por ejemplo `CH_Lukas_RH07`, `CH_Alto_Reciclado`) y `AN_<Personaje>_<Acción>` para clips (por ejemplo `AN_Lukas_ReloadRound`).

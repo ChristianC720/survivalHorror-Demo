@@ -2,7 +2,7 @@
 
 Plan for replacing the `PH_` placeholders with real models, closed with the project owner on 2026-11-02. Sources: `GDD/05 - Arte y Audio/02 - Personajes y Animación.md`, `GDD/03 - Historia y Mundo/03 - Personajes.md`, `GDD/04 - Contenido/04 - Objetos y Coleccionables.md`, `OBJECT_CATALOG.md`, `PLACEHOLDERS.md`, decisions D-151 and D-152. Where they disagree, the GDD wins.
 
-The reference sheets in `Blender3DAssets/Image_References/` were generated with a free image model and their captions are unreliable. They are a loose guide; the GDD, the game's style and this plan win over them.
+The reference sheets in `Blender3DAssets/Image_References/` were generated with a free image model and their captions are unreliable. The owner made them the guide for the enemies' forms (D-154, section 8); for everything else they stay a loose guide.
 
 ## 1. Specification
 
@@ -11,9 +11,9 @@ The reference sheets in `Blender3DAssets/Image_References/` were generated with 
 | Scale | 1 unit = 1 m; Lukas 1.78 m |
 | Pivot | Feet / floor center, scale (1,1,1) |
 | Skeleton | One shared Unity Humanoid hierarchy (`PJ_Rig` bone names plus fingers: thumb, index, one bone for the other three) for Lukas, Alto, Boca, Mudo. Extra bones only where needed (Boca jaw lobes), with their clips kept separate. Rastrero and The Mother have their own |
-| Triangles | Lukas ≤8k (no minimum) · enemies ~4–8k · The Mother ~15k · corpses ~2–4k · machines ≤2k · revolver ≤1.5k |
-| Textures | Characters 512 px · hard-surface models share a 2048 px atlas (The Mother 768 px, machines 384 px, items 128–256 px of it); point filter, no mipmaps |
-| Style | Flat shading, one material per model, painted texture with dark edge lines, no PBR maps. Everything follows Lukas's look and the Signalis method (section 7) |
+| Triangles | Lukas ≤8k (no minimum) · enemies ~11k (D-154) · The Mother ~15k · corpses ~3.5k · machines ≤2k · revolver ≤1.5k |
+| Textures | Enemies and corpses 1024 px · Lukas 512 px · hard-surface models share a 2048 px atlas (The Mother 768 px, machines 384 px, items 128–256 px of it); point filter, no mipmaps |
+| Style | Flat shading (enemies: smooth skin, flat hard parts), one material per model, painted texture with dark edge lines, no PBR maps. Everything follows Lukas's look and the Signalis method (section 7) |
 | Clips | 30 fps, in place (no root motion), stride matched to `PlayerBalance`: walk 1.5, run 4, crouch 0.8 m/s; ×0.85 injured, ×0.70 critical |
 | Animation source | Everything in Blender; no Mixamo (D-151) |
 | Format | FBX from Blender into `Assets/_Project/Models/<Group>/`; `.blend` sources stay in `Blender3DAssets/` (Git LFS) |
@@ -24,7 +24,7 @@ The reference sheets in `Blender3DAssets/Image_References/` were generated with 
 
 | Asset | Method |
 |---|---|
-| The 4 enemies | Planned: Aura generation. **Actual: Blender by code** (`Scripts/hb_monster.py`, `build_enemy.py`, `enemy_clips.py`), because Aura answered that 3D generation is not in the current plan and the image subscription has expired |
+| The 4 enemies | Planned: Aura generation. **Actual: Blender by code** (`Scripts/hb_sculpt.py`, `hb_anatomy.py`, `enemy_sculpt.py`, `hb_monster.py`, `build_enemy.py`, `enemy_clips.py`; section 8), because Aura answered that 3D generation is not in the current plan and the image subscription has expired |
 | Organic objects (plush rabbit) | Planned: Aura generation. Same limit: Blender by code |
 | The Mother, machines, revolver, rigid items | Blender by code, exact measures |
 | Corpses | Derived from Lukas's or the Mudo's body, with clothing per group |
@@ -38,11 +38,11 @@ The reference sheets in `Blender3DAssets/Image_References/` were generated with 
 |---|---|
 | Lukas | Keep the model. Add merged low-poly curtain hair, round the top of the head, darken the boots with red edge, add a ring on the right hand. Keep the terminal on the outer forearm. Seams and overalls per GDD teal. Keep 512 px; thicken details only if the in-game test demands it |
 | Light | 2 teal point lights (chest, forearm), 0.5 m range, no shadows, no gameplay effect, values in `PlayerBalance`. Not on civil Lukas |
-| Alto | ~2.5 m, hunched, arms to the floor, Werkschutz vest and torn straps, iridescent purple on bare skin |
-| Boca | Two-lobed split head, more body mass than the sheet; jaw opens with own bones |
-| Rastrero | Always on four legs, head turned 180° with chin up, horizontal toothed mouth, no vertical mouth |
+| Alto | ~2.5 m, hunched, arms to the floor, torn Werkschutz vest and trousers, pale skin with purple only in its shadows, spines and cables |
+| Boca | Two-lobed head split to the chest, deep crouch, spines, back plate and cables; lobes open with own bones |
+| Rastrero | Always on four legs, bald eyeless head, huge hanging vertical jaw, striped rags and torn dark trousers, spines, back plate and cables |
 | Mudo | Faceless, grey Vitalis staff clothing, reads as a corpse or a still person |
-| All normals | No plates or riveted metal; bone spines and thin cables allowed. Dark palette blood (`#270a16`, `#51111f`), muted skin, fewer stains |
+| All normals | Metal only where the sheet shows it (D-154); bone spines and thin cables allowed. Dark palette blood (`#270a16`, `#51111f`), muted skin, fewer stains |
 | Recycled | Complete model per type on the same skeleton, swapped when the body rises (replaces `RecycleSystem.AddMetalPieces`). Metal comes from the laboratory |
 | Body variants (D-43) | 4 cumulative: right forearm → neck and jaw patch → left hand → ring hand assimilated. Texture plus a slight shape change on one mesh |
 
@@ -90,7 +90,7 @@ Each model has its own branch (`E16-<model>`).
 ## 6. Open items for the owner
 
 - **Aura plan.** 3D generation is not included in the plan and the image subscription has expired. If it is renewed, the enemies can be regenerated from `Image_References` and re-bound to the same skeleton, without touching the Animators.
-- **Enemy look.** Built by code, so they are simpler than the reference sheets: smooth limbs and little facial detail, now with painted uniforms, stencils and blood (section 7). Silhouette, height and clips follow the GDD. Worth a look in-game.
+- **Enemy look.** Sculpted by code after the sheets (section 8), so anatomy is coarser than the painted sheets. Height and skeleton are unchanged.
 - **Enemy rig type.** They use Unity's Generic rig, not Humanoid: each has its clips on its own proportions, and the crawl exceeds the Humanoid muscle limits. The bone hierarchy is still the shared one.
 - **Hand-made clips.** All clips are generated by code from key poses. Review them in `Blender3DAssets/Review` and in play; anything stiff can be retouched in the scripts.
 - **Not placed in rooms.** New prefabs with no room yet: `PH_F1_Forklift`, `PH_F1_GantryCrane`, `PH_F1_WaterPump`, `PH_F2_MonsterCapsule`, `PH_F2_ResonanceCapsule`, `PH_Shared_Corpse`, `PH_Shared_Corpse_Subject`, `PROP_F3_MixingTable` (the boss room nodes use its model directly). Room layouts are hand-made work, so they were left alone.
@@ -120,3 +120,15 @@ The owner named *Signalis* (rose-engine, 2022) the main visual inspiration. GDD 
 - `Scripts/review.py` renders the sheets into `Review/`, neutral and under a flashlight.
 
 **Not in this pass.** `CH_Lukas_RH07` keeps its hand-painted texture, which already fits this look. `KIT_*`, `PROP_*` and the intro sets stay primitive (section 2).
+
+## 8. Enemies after their reference sheets (2026-11-03)
+
+The owner rejected the first models: low quality, flat faces, parts showing through. Two causes: URP culls back faces while the hand-built heads and cones had mixed winding (Blender renders hid it), and the bodies were Skin-modifier tubes with no anatomy.
+
+**Method.** `hb_sculpt.py` sculpts a signed distance volume (5 mm voxels) from anatomy primitives in `hb_anatomy.py` and per-enemy forms in `enemy_sculpt.py`, then extracts one closed surface with surface nets.
+- Clothing is a thickness added to the volume where a mask holds, so holes and hems are real and nothing can show through. Teeth, claws, spines, cables and metal stay hand-built and are re-wound outward on assembly (`hm.assemble`).
+- Decimation has a budget per region: 30% head, 20% hands and feet, 50% the rest. Blender's weighted decimate collapsed thin limbs into spikes, so it is not used.
+- The full volume is kept for the 1024 px bake: each texel gets the sculpt's normal, occlusion and crease lines (`hs.bake_fields`), so the anatomy survives on ~11k triangles in any light.
+- The bone tables are unchanged, so clips, prefabs and avatars keep working. Postures stay in the clips. Boca's crouch and the Rastrero's arms and feet were changed in `enemy_clips.py`.
+
+**Check.** Unity captures with real culling, front and back, normal and recycled; idle clips sampled with `AnimationMode`, reading bone heights.
