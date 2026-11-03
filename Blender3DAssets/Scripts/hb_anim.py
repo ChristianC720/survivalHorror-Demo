@@ -54,8 +54,10 @@ def smooth(t):
 
 
 class Author:
-    def __init__(self, rig):
+    def __init__(self, rig, source_rest=None):
+        """source_rest: {bone: rest quaternion} of the rig the base actions were made on, when it is not this one."""
         self.rig = rig
+        self.source_rest = source_rest
         self.rest = {b.name: b.bone.matrix_local.to_quaternion() for b in rig.pose.bones}
         for b in rig.pose.bones:
             b.rotation_mode = "QUATERNION"
@@ -92,13 +94,14 @@ class Author:
             out[n] = qa.slerp(qb, t)
         return out, loc
 
-    def clip(self, name, frames, keys=None, base=None, warp=None, swing=None, loop=False):
+    def clip(self, name, frames, keys=None, base=None, warp=None, swing=None, loop=False, still=()):
         """Creates (or replaces) action `name`.
 
         keys:  {frame: {bone: (x, y, z), "loc": (x, y, z)}}; a single key means a constant offset.
         base:  source action name, sampled across the whole clip and looped over `frames`.
         warp:  fn(t in 0..1) -> t, to hold or hurry part of a base cycle (limps).
         swing: {bone: factor}: scales the base motion around its average, to lengthen or shorten a stride.
+        still: bones that ignore the base cycle (long arms cannot pump like a runner's).
         """
         keys = keys or {1: {}}
         rig = self.rig
@@ -131,10 +134,14 @@ class Author:
             for b in rig.pose.bones:
                 q = Quaternion()
                 l = Vector()
-                if src:
+                if src and b.name not in still:
                     tt = warp(t) if warp else t
                     sf = src.start + (src.end - src.start) * tt
                     q = src.rot(b.name, sf)
+                    if self.source_rest and b.name in self.source_rest:
+                        # Same motion in armature space, whatever the bone rolls of the two rigs.
+                        change = self.rest[b.name].inverted() @ self.source_rest[b.name]
+                        q = change @ q @ change.inverted()
                     if b.name in means:
                         if q.dot(means[b.name]) < 0:
                             q = -q

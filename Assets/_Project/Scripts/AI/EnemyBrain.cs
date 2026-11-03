@@ -18,8 +18,6 @@ namespace Heartbeat.AI
         [SerializeField] private EnemyDefinition definition;
         [Tooltip("Eye height for sight checks.")]
         [SerializeField] private float eyeHeight = 1.6f;
-        [Tooltip("Visual root (PH_ mesh) tilted when the body falls.")]
-        [SerializeField] private Transform visual;
 
         private NavMeshAgent agent;
         private EnemyHealth health;
@@ -36,6 +34,8 @@ namespace Heartbeat.AI
         private float burstClock;
         private bool asleep;
         private int envMask;
+
+        public event System.Action Screamed;
 
         public EnemyDefinition Definition => definition;
         public AlertState Alert => alert != null ? alert.State : AlertState.Patrol;
@@ -364,7 +364,6 @@ namespace Heartbeat.AI
             agent.isStopped = true;
             agent.enabled = false;
             windupTimer = -1f;
-            if (visual != null) visual.localRotation = Quaternion.Euler(-90f, 0f, 0f);   // placeholder fall
             gameObject.layer = LayerMask.NameToLayer("Corpse");
             foreach (var c in GetComponents<Collider>()) c.isTrigger = true;   // the body does not block movement
             if (alert.State != AlertState.Patrol) OnAlertChanged(alert.State, AlertState.Patrol);
@@ -376,7 +375,6 @@ namespace Heartbeat.AI
         {
             gameObject.layer = LayerMask.NameToLayer("Enemy");
             foreach (var c in GetComponents<Collider>()) c.isTrigger = false;
-            if (visual != null) visual.localRotation = Quaternion.identity;
             agent.enabled = true;
             if (agent.isOnNavMesh) agent.Warp(transform.position);
             agent.isStopped = false;
@@ -402,6 +400,7 @@ namespace Heartbeat.AI
         {
             screamTimer = definition.screamCooldown;
             HbLog.Info("AI", $"{name} SCREAMS");
+            Screamed?.Invoke();
             Sfx.Play("CUE_Boca_Scream", transform.position);
             GameEvents.RaiseNoiseEmitted(new NoiseInfo(transform.position, definition.screamRadius, NoiseSource.Scream));
         }

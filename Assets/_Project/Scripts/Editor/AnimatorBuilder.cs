@@ -93,6 +93,26 @@ namespace Heartbeat.EditorTools
             Debug.Log($"[Heartbeat][Models] Built {LukasController}, {clips.Count} clips");
         }
 
+        /// <summary>One state per brain activity; EnemyAnimator crossfades between them by name.</summary>
+        public static void BuildEnemy(string enemy, (string state, string clip, bool rated)[] map)
+        {
+            string fbx = $"Assets/_Project/Models/Enemies/CH_{enemy}.fbx";
+            var clips = AssetDatabase.LoadAllAssetsAtPath(fbx).OfType<AnimationClip>().Where(c => !c.name.StartsWith("__preview")).ToDictionary(c => c.name);
+            var ctrl = Fresh($"Assets/_Project/Models/Enemies/AC_{enemy}.controller");
+            ctrl.AddParameter("Rate", AnimatorControllerParameterType.Float);
+            ctrl.parameters = ctrl.parameters.Select(p => { p.defaultFloat = 1f; return p; }).ToArray();
+            var sm = ctrl.layers[0].stateMachine;
+            foreach (var (state, clip, rated) in map)
+            {
+                var s = sm.AddState(state);
+                s.motion = clips[$"AN_{enemy}_{clip}"];
+                if (rated) { s.speedParameter = "Rate"; s.speedParameterActive = true; }
+                if (state == "Idle") sm.defaultState = s;
+            }
+            EditorUtility.SetDirty(ctrl);
+            AssetDatabase.SaveAssets();
+        }
+
         public static AnimatorController Fresh(string path)
         {
             var ctrl = AssetDatabase.LoadAssetAtPath<AnimatorController>(path);

@@ -12,10 +12,10 @@ Rules
 |---|---|---|---|---|---|---|
 | `PH_Lukas` | Lukas R-H-07 (teal overalls, arm terminal on left forearm) | 0.75 × 1.78 × 0.37 | capsule body, sphere head, box arm terminal (left) | ≤ 8k | Humanoid, all clips in Blender: locomotion, aim, reload, shove, grab, injured/critical gaits | **replaced by `CH_Lukas_RH07` in `Player.prefab`** (`PH_Lukas` stays only for the intro until `CH_Lukas_Civil`) |
 | `PH_Lukas_Civil` | Lukas in the intro (civilian clothes) | same | same, grey | 5–8k | same | pending |
-| `PH_Alto` | El Alto | 0.8 × 2.5 × 0.6 | tall capsule, long box arms | ~4–8k | Long reach attack, grab | placeholder done (Enemy_Alto) |
-| `PH_Rastrero` | El Rastrero | 0.6 × 1.0 × 1.4 | horizontal capsule, low | ~4–8k | Fast quadruped crawl, flank, lunge | placeholder done (Enemy_Rastrero) |
-| `PH_Boca` | La Boca: blind test subject, two-lobed split head, vertical mouth (emaciated only when recycled) | 0.6 × 1.9 × 0.5 (hunched) | skin boxes + crimson vertical mouth slit, rags | ~4–8k | Scream, listen tilt, shamble/lurch | placeholder done (`Enemy_Boca`) |
-| `PH_Mudo` | El Mudo: faceless, grey Vitalis staff clothing (nurse, bandages and face plate only when recycled) | 0.55 × 1.8 × 0.35 | dirty-white boxes, metal face plate | ~4–8k | Frozen idle, spasm activation, burst run, grab | placeholder done (`Enemy_Mudo`) |
+| `PH_Alto` | El Alto | 0.8 × 2.5 × 0.6 | tall capsule, long box arms | ~4–8k | Long reach attack, grab | **replaced by `CH_Alto`** |
+| `PH_Rastrero` | El Rastrero | 0.6 × 1.0 × 1.4 | horizontal capsule, low | ~4–8k | Fast quadruped crawl, flank, lunge | **replaced by `CH_Rastrero`** |
+| `PH_Boca` | La Boca: blind test subject, two-lobed split head, vertical mouth (emaciated only when recycled) | 0.6 × 1.9 × 0.5 (hunched) | skin boxes + crimson vertical mouth slit, rags | ~4–8k | Scream, listen tilt, shamble/lurch | **replaced by `CH_Boca`** |
+| `PH_Mudo` | El Mudo: faceless, grey Vitalis staff clothing (nurse, bandages and face plate only when recycled) | 0.55 × 1.8 × 0.35 | dirty-white boxes, metal face plate | ~4–8k | Frozen idle, spasm activation, burst run, grab | **replaced by `CH_Mudo`** |
 | `PH_Recycled_Parts` | Metal pieces added to recycled enemies | – | small grey boxes parented to enemy | ≤ 500 | – | pending |
 | `PH_TheMother` | Cryo-archive shelf on a crane | 8 × 10 × 4 | stacked boxes + cylinders, crimson inner light | ~15k | Crane movement, phase states | pending |
 | `PH_TheMother_CollectorArm` | Collector arm | 1 × 1 × 6 | box segments | ≤ 4k | Patrol, sweep, grab | pending |
