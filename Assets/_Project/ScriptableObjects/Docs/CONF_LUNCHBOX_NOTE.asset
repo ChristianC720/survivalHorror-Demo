@@ -18,3 +18,4 @@ MonoBehaviour:
   titleKey: CONF.LUNCHBOX_NOTE.TITLE
   bodyKey: CONF.LUNCHBOX_NOTE.BODY
   placeholderTitle: Lunchbox with a child's note
+  model: {fileID: 4960419466988496163, guid: 79dde9e2f4498334789344c16cfda6d3, type: 3}

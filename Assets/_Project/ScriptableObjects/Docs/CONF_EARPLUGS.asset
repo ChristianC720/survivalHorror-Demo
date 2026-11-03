@@ -18,3 +18,4 @@ MonoBehaviour:
   titleKey: CONF.EARPLUGS.TITLE
   bodyKey: CONF.EARPLUGS.BODY
   placeholderTitle: Bloodied earplugs
+  model: {fileID: 509257096090315082, guid: 1e24d4b9f8843cb4584c18b3fa0ef018, type: 3}

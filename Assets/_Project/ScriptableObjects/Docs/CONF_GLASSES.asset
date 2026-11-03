@@ -18,3 +18,4 @@ MonoBehaviour:
   titleKey: CONF.GLASSES.TITLE
   bodyKey: CONF.GLASSES.BODY
   placeholderTitle: Reading glasses with one cracked lens
+  model: {fileID: 3707419971695228365, guid: 01c2f796cb68a044089eb9e9b75dee63, type: 3}

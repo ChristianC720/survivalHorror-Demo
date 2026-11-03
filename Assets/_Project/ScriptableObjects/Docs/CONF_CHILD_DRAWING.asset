@@ -18,3 +18,4 @@ MonoBehaviour:
   titleKey: CONF.CHILD_DRAWING.TITLE
   bodyKey: CONF.CHILD_DRAWING.BODY
   placeholderTitle: Drawing of a house with a sun
+  model: {fileID: 1477898227102213768, guid: 8969e0ad0f1793d48830f9b249f01b74, type: 3}

@@ -18,3 +18,4 @@ MonoBehaviour:
   titleKey: CONF.BADGE_KS.TITLE
   bodyKey: CONF.BADGE_KS.BODY
   placeholderTitle: Werkschutz badge, post 7
+  model: {fileID: 2948124407939609454, guid: d1772494fd9cc7b44abd312271735283, type: 3}

@@ -18,3 +18,4 @@ MonoBehaviour:
   titleKey: CONF.CASSETTE.TITLE
   bodyKey: CONF.CASSETTE.BODY
   placeholderTitle: Cassette hand-labelled "AKT I"
+  model: {fileID: 2213314613663596028, guid: 55b482ad841e66a4c91f126399b5c5d1, type: 3}

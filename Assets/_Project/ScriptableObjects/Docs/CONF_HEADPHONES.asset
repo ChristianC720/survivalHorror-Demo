@@ -18,3 +18,4 @@ MonoBehaviour:
   titleKey: CONF.HEADPHONES.TITLE
   bodyKey: CONF.HEADPHONES.BODY
   placeholderTitle: Melted studio headphones
+  model: {fileID: 8563505304603169508, guid: 3e8dcdf675ae663428569251002f96ed, type: 3}

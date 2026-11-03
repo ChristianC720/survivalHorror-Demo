@@ -18,3 +18,4 @@ MonoBehaviour:
   titleKey: DOC.RING.TITLE
   bodyKey: DOC.RING.BODY
   placeholderTitle: Ring
+  model: {fileID: 7904821481668801241, guid: 3b91e0939af2c4d4691ded8c7df0aa18, type: 3}

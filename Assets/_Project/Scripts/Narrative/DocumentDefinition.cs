@@ -20,5 +20,7 @@ namespace Heartbeat.Narrative
         public string bodyKey;
         [Tooltip("Placeholder text shown until localization tables exist.")]
         [TextArea] public string placeholderTitle;
+        [Tooltip("What it looks like in the world. Empty keeps the sheet of paper of the pickup prefab.")]
+        public GameObject model;
     }
 }

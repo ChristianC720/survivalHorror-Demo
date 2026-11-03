@@ -18,3 +18,4 @@ MonoBehaviour:
   titleKey: CONF.WALLET.TITLE
   bodyKey: CONF.WALLET.BODY
   placeholderTitle: Wallet with an ID card
+  model: {fileID: 5816716803749306951, guid: 2cf0a22d16cc03e4a876b1dee9b568ff, type: 3}

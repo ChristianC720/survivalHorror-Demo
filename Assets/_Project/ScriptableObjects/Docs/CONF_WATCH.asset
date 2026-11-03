@@ -18,3 +18,4 @@ MonoBehaviour:
   titleKey: CONF.WATCH.TITLE
   bodyKey: CONF.WATCH.BODY
   placeholderTitle: Stopped wristwatch
+  model: {fileID: 6015791677847788837, guid: 2ac04de4208dac74da21e2f7892dab61, type: 3}

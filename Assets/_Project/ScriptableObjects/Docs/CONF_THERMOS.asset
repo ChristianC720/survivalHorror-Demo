@@ -18,3 +18,4 @@ MonoBehaviour:
   titleKey: CONF.THERMOS.TITLE
   bodyKey: CONF.THERMOS.BODY
   placeholderTitle: Thermos with a scratched-out name
+  model: {fileID: 8232384253384553107, guid: c00a9a258c8e28741ba214abf2c8a0ea, type: 3}

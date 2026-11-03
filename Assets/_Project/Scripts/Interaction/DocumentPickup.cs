@@ -23,6 +23,19 @@ namespace Heartbeat.Interaction
         {
             document = doc;
             staysInWorld = stays;
+            ShowModel();
+        }
+
+        private void Start() => ShowModel();
+
+        private GameObject shown;
+
+        /// <summary>Confiscated objects look like themselves, not like the sheet of paper of the shared prefab.</summary>
+        private void ShowModel()
+        {
+            if (shown != null || document == null || document.model == null) return;
+            foreach (var r in GetComponentsInChildren<Renderer>()) r.enabled = false;
+            shown = Instantiate(document.model, transform);
         }
 
         public bool CanInteract(Interactor who) => document != null && isActiveAndEnabled;

@@ -18,3 +18,4 @@ MonoBehaviour:
   titleKey: CONF.ROSARY.TITLE
   bodyKey: CONF.ROSARY.BODY
   placeholderTitle: Plastic rosary
+  model: {fileID: 9133142967582872300, guid: e08e1efdaf83aef4291c435f9301186b, type: 3}
