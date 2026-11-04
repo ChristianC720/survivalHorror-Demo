@@ -19,6 +19,17 @@ namespace Heartbeat.Tests
         }
 
         [Test]
+        public void ResetVideoAndAccessibility_RestoreTheirNewFields()
+        {
+            var g = new GlobalData { fpsLimit = 60, shadowQuality = 0, vsync = false, screenMode = 1, resolutionWidth = 800, terminalScale = 1.2f, reduceCrt = true, reduceFlashes = true, reduceMotion = true };
+            OptionsDefaults.Reset(g, OptionsSection.Video);
+            Assert.AreEqual(0, g.fpsLimit); Assert.AreEqual(2, g.shadowQuality); Assert.IsTrue(g.vsync); Assert.AreEqual(0, g.screenMode); Assert.AreEqual(0, g.resolutionWidth);
+            Assert.IsTrue(g.reduceCrt, "Video does not touch accessibility");
+            OptionsDefaults.Reset(g, OptionsSection.Accessibility);
+            Assert.AreEqual(1f, g.terminalScale); Assert.IsFalse(g.reduceCrt); Assert.IsFalse(g.reduceFlashes); Assert.IsFalse(g.reduceMotion);
+        }
+
+        [Test]
         public void ResetControls_ClearsRebinds()
         {
             var g = new GlobalData { bindingOverrides = "{json}", crouchToggle = false };

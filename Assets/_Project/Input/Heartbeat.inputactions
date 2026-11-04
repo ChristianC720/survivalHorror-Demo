@@ -983,6 +983,15 @@
                     "interactions": "",
                     "initialStateCheck": false,
                     "priority": 0
+                },
+                {
+                    "name": "Delete",
+                    "type": "Button",
+                    "id": "5b0d3c7e-1a42-4c55-9a11-7f0a2c1d9e01",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -1148,6 +1157,28 @@
                     "processors": "",
                     "groups": "KeyboardMouse",
                     "action": "ScrollWheel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5b0d3c7e-1a42-4c55-9a11-7f0a2c1d9e02",
+                    "path": "<Keyboard>/delete",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "Delete",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5b0d3c7e-1a42-4c55-9a11-7f0a2c1d9e03",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Delete",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

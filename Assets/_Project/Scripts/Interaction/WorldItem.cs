@@ -7,7 +7,7 @@ namespace Heartbeat.Interaction
     /// <summary>
     /// A slot item lying in the world (M-07, M-08): heal, ammo blister (4 rounds), spike, keys. Picking up adds what
     /// fits; the rest stays on the floor. With a full inventory a key can replace another item: that choice is made in
-    /// the arm terminal (E-10); until then the key stays on the floor and the player is told the inventory is full.
+    /// the arm terminal; if the player declines, the key stays on the floor. Other items just report the full inventory.
     /// </summary>
     public sealed class WorldItem : MonoBehaviour, IInteractable
     {
@@ -34,6 +34,8 @@ namespace Heartbeat.Interaction
             int taken = amount - left;
             if (taken == 0)
             {
+                bool key = kind == ItemKind.KeyMandatory || kind == ItemKind.KeyOptional;
+                if (key && GameEvents.RaiseKeySwapOffered(kind, amount, () => { amount = 0; gameObject.SetActive(false); })) return;
                 HbLog.Info("Interact", $"Inventory full: {kind} stays on the floor");
                 GameEvents.RaiseInventoryFull(kind.ToString());
                 return;

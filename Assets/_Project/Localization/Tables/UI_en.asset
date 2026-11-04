@@ -119,11 +119,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 2394030103
-    m_Localized: Use
+    m_Localized: USE
     m_Metadata:
       m_Items: []
   - m_Id: 2394030104
-    m_Localized: Discard
+    m_Localized: DISCARD
     m_Metadata:
       m_Items: []
   - m_Id: 2394030105
@@ -183,7 +183,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 2394030119
-    m_Localized: Adjust the brightness until the left symbol is barely visible and the right one is not.
+    m_Localized: Adjust the brightness until the middle symbol is barely visible and the right one is not.
     m_Metadata:
       m_Items: []
   - m_Id: 2394030120
@@ -532,6 +532,206 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 1094028883001344
     m_Localized: Out of order
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124349997350912
+    m_Localized: CLOSE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431296
+    m_Localized: OPEN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431297
+    m_Localized: VITALIS KONZERN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431298
+    m_Localized: LIGHT {0}%
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431299
+    m_Localized: DRUM {0}/6
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431300
+    m_Localized: DRUM --
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431301
+    m_Localized: RESERVE {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431302
+    m_Localized: 'CONFISCATED: {0}/12'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431303
+    m_Localized: ROUNDS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431304
+    m_Localized: STABILIZER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431305
+    m_Localized: SPIKE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431306
+    m_Localized: ACCESS KEY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431307
+    m_Localized: SERVICE KEY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431308
+    m_Localized: "INVENTORY FULL \u2014 REPLACE WITH {0}?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431309
+    m_Localized: REPLACE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431310
+    m_Localized: LEAVE IT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431311
+    m_Localized: PAGE {0}/{1}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431312
+    m_Localized: PAGE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431313
+    m_Localized: "VITALIS KONZERN \u2014 STATION 3"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431314
+    m_Localized: "VITALIS KONZERN \u2014 STATION 3 - FLOOR: {0}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431315
+    m_Localized: SELECT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431316
+    m_Localized: Floor {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431317
+    m_Localized: Emilia {0}/6
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431318
+    m_Localized: 'COST: +1 death on the counter - the cycle degrades'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431319
+    m_Localized: 'COST: the cycle degrades'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431320
+    m_Localized: LOCKED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431321
+    m_Localized: KEY REQUIRED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431322
+    m_Localized: NO POWER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431323
+    m_Localized: RESTORE MAINS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431324
+    m_Localized: OUT OF ORDER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431325
+    m_Localized: AUSSER BETRIEB
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431326
+    m_Localized: CAM  LIVE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431327
+    m_Localized: NO SIGNAL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431328
+    m_Localized: Resolution
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431329
+    m_Localized: Screen mode
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431330
+    m_Localized: Fullscreen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431331
+    m_Localized: Window
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431332
+    m_Localized: Borderless
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431333
+    m_Localized: V-Sync
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431334
+    m_Localized: FPS limit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431335
+    m_Localized: None
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431336
+    m_Localized: Shadow quality
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350089625600
+    m_Localized: Low
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350089625601
+    m_Localized: Medium
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350089625602
+    m_Localized: High
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350089625603
+    m_Localized: Terminal scale
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350089625604
+    m_Localized: Reduce motion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350089625605
+    m_Localized: Reduce flashes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350089625606
+    m_Localized: Reduce CRT and glitch effects
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350089625607
+    m_Localized: 'LUKAS: I have to keep moving.'
     m_Metadata:
       m_Items: []
   references:

@@ -3,8 +3,8 @@ using UnityEngine;
 namespace Heartbeat.Core
 {
     /// <summary>
-    /// The only code allowed to write Time.timeScale (GDD global rule 1: only Pause stops time;
-    /// inventory, terminal and hacking never do).
+    /// The only code allowed to write Time.timeScale (GDD global rule 1: only Pause and reading a document or poster
+    /// stop time, D-159; inventory, the terminal's lists and hacking never do).
     /// </summary>
     public sealed class PauseService
     {
@@ -35,6 +35,28 @@ namespace Heartbeat.Core
             GameEvents.RaisePauseChanged(false);
             HbLog.Info("Pause", "Resumed");
             return true;
+        }
+
+        public bool IsReading { get; private set; }
+        /// <summary>The key that closes a reading also fires interact and pause in that frame: they must ignore it.</summary>
+        public int ReadingEndedFrame { get; private set; } = -1;
+
+        /// <summary>D-159: stops the world while a document or poster is on screen, without the pause menu or a state change.</summary>
+        public void BeginReading()
+        {
+            if (IsReading) return;
+            IsReading = true;
+            Time.timeScale = 0f;
+            AudioListener.pause = true;
+        }
+
+        public void EndReading()
+        {
+            if (!IsReading) return;
+            IsReading = false;
+            ReadingEndedFrame = Time.frameCount;
+            Time.timeScale = 1f;
+            AudioListener.pause = false;
         }
 
         /// <summary>Leaves pause towards another state (Restart → Death, Quit → MainMenu) and restores time.</summary>

@@ -67,6 +67,8 @@ namespace Heartbeat.Core
             UI.Loc.SetLanguage(global.language);
             input.LoadBindingOverrides(global.bindingOverrides);
             Render.Brightness.Apply(global.brightness);
+            Render.VideoSettings.Apply(global);
+            Render.Degradation.SetReduced(global.reduceCrt);
             Render.Degradation.Apply(0);
             UI.UiFonts.Refresh();
             GameEvents.DegradationChanged += Render.Degradation.Apply;

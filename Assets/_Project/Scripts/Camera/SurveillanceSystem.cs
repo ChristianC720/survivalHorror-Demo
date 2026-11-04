@@ -40,6 +40,9 @@ namespace Heartbeat.CameraSystem
         private int head;
         private RawImage screen;
         private Image noise;
+        private GameObject live, noSignal;
+        private float noiseScale = 1f, noSignalUntil;
+        private const float NoSignalSeconds = 0.6f;
         private RoomInstance viewingRoom;
         // M-02: "only what the room's camera covers" — everything outside the viewed room is hidden from this camera.
         private readonly List<Renderer> outside = new List<Renderer>();
@@ -109,7 +112,7 @@ namespace Heartbeat.CameraSystem
         public bool TryOpen()
         {
             if (player == null && !Services.TryGet(out player)) return false;
-            if (lockedByHunt || highest == AlertState.Hunt) { HbLog.Info("Surveillance", "Locked: hunt in progress"); return false; }
+            if (lockedByHunt || highest == AlertState.Hunt) { HbLog.Info("Surveillance", "Locked: hunt in progress"); ShowNoSignal(); return false; }
             var room = RoomInstance.Current;
             var mount = MountFor(room);
             if (mount == null) { HbLog.Info("Surveillance", "No camera in this room"); return false; }
@@ -120,6 +123,8 @@ namespace Heartbeat.CameraSystem
             cam.enabled = true;
             screen.enabled = true;
             noise.enabled = true;
+            live.SetActive(true);
+            noiseScale = Services.TryGet(out Save.SaveService saves) && saves.LoadGlobal().reduceCrt ? 0.5f : 1f;   // the signal difference stays
             savedAmbientMode = RenderSettings.ambientMode;
             savedAmbient = RenderSettings.ambientLight;
             RenderSettings.ambientMode = UnityEngine.Rendering.AmbientMode.Flat;
@@ -139,6 +144,7 @@ namespace Heartbeat.CameraSystem
             cam.enabled = false;
             screen.enabled = false;
             noise.enabled = false;
+            live.SetActive(false);
             RenderSettings.ambientMode = savedAmbientMode;
             RenderSettings.ambientLight = savedAmbient;
             if (player != null)
@@ -172,13 +178,14 @@ namespace Heartbeat.CameraSystem
         private void Update()
         {
             Attention.Tick(Time.deltaTime, IsOpen);
+            if (noSignal.activeSelf && Time.unscaledTime >= noSignalUntil) noSignal.SetActive(false);
             if (!IsOpen) return;
             if (player != null && player.IsRunning) { Close("Run"); return; }
 
             float baseNoise = 0.15f + Attention.Value * 0.35f;
             Noise = highest == AlertState.Search ? baseNoise + 0.35f : baseNoise;
             var c = noise.color;
-            c.a = Mathf.Clamp01(Noise * 0.5f * (0.7f + 0.3f * Random.value));
+            c.a = Mathf.Clamp01(Noise * 0.5f * noiseScale * (0.7f + 0.3f * Random.value));
             noise.color = c;
         }
 
@@ -239,7 +246,15 @@ namespace Heartbeat.CameraSystem
         private void OnHunt(bool hunting)
         {
             lockedByHunt = hunting;
-            if (hunting) Close("Hunt");
+            if (!hunting) return;
+            if (IsOpen) ShowNoSignal();
+            Close("Hunt");
+        }
+
+        private void ShowNoSignal()
+        {
+            noSignal.SetActive(true);
+            noSignalUntil = Time.unscaledTime + NoSignalSeconds;
         }
 
         private void OnRoomEntered(MonoBehaviour room)
@@ -288,15 +303,32 @@ namespace Heartbeat.CameraSystem
 
             var canvasGo = new GameObject("SurveillanceOverlay", typeof(Canvas));
             canvasGo.transform.SetParent(transform, false);
-            var canvas = canvasGo.GetComponent<Canvas>();
-            canvas.renderMode = RenderMode.ScreenSpaceOverlay;
-            canvas.sortingOrder = 50;
+            UI.UiKit.Canvas(canvasGo, 50);
             screen = MakeFull<RawImage>(canvasGo.transform, "Feed");
             screen.color = new Color(0.75f, 1f, 0.8f);   // phosphor tint
+            screen.raycastTarget = false;
             noise = MakeFull<Image>(canvasGo.transform, "CRTNoise");
             noise.color = new Color(0.6f, 0.9f, 0.7f, 0.2f);
             noise.raycastTarget = false;
             screen.enabled = noise.enabled = false;
+
+            var liveRoot = UI.UiKit.Stretch(UI.UiKit.Rect("Live", canvasGo.transform), Vector2.zero, Vector2.one);
+            UI.UiKit.Scanlines(liveRoot);
+            var label = UI.UiKit.Text(liveRoot, UI.Loc.Get("UI.SURV.LIVE"), 32, UI.UiKit.Green, true);
+            label.rectTransform.anchorMin = label.rectTransform.anchorMax = label.rectTransform.pivot = new Vector2(0f, 1f);
+            label.rectTransform.anchoredPosition = new Vector2(48f, -36f);
+            label.rectTransform.sizeDelta = new Vector2(400f, 48f);
+            live = liveRoot.gameObject;
+            live.SetActive(false);
+
+            var cut = MakeFull<Image>(canvasGo.transform, "NoSignal");
+            cut.color = new Color(0f, 0f, 0f, 0.55f);   // brief and see-through: a hunt has just started
+            cut.raycastTarget = false;
+            var text = UI.UiKit.Text(cut.transform, UI.Loc.Get("UI.SURV.NO_SIGNAL"), 64, UI.UiKit.Red, true);
+            UI.UiKit.Stretch(text.rectTransform, Vector2.zero, Vector2.one);
+            text.alignment = TMPro.TextAlignmentOptions.Center;
+            noSignal = cut.gameObject;
+            noSignal.SetActive(false);
         }
 
         private static T MakeFull<T>(Transform parent, string name) where T : Graphic

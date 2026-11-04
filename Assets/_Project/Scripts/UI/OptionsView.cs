@@ -10,8 +10,8 @@ using UnityEngine.UI;
 namespace Heartbeat.UI
 {
     /// <summary>
-    /// Options (Guardado y Configuración, Accesibilidad, D-104, D-106, D-120): Audio, Video, Controls (sensitivity,
-    /// invert Y, crouch toggle/hold, aim assist, keyboard rebinding), Accessibility (text size, dyslexia font,
+    /// Options (Guardado y Configuración, Accesibilidad, D-104, D-106, D-120): Audio, Video (resolution, mode, V-Sync, FPS, brightness, shadows), Controls (sensitivity,
+    /// invert Y, crouch toggle/hold, aim assist, keyboard rebinding), Accessibility (subtitle size, terminal scale, reduced motion/flashes/CRT, dyslexia font,
     /// opaque subtitles, sound captions) and Game (language). Every change is saved to GlobalData at once and
     /// broadcast with GameEvents.OptionsChanged. Used from the main menu and the pause menu.
     /// </summary>
@@ -28,6 +28,9 @@ namespace Heartbeat.UI
         private RectTransform parent;
         private RectTransform body;
         private OptionsSection section;
+        private readonly Button[] sectionButtons = new Button[SectionKeys.Length];
+        private TMP_Text preview;
+        private int rebindEndedFrame = -1;
         private InputActionRebindingExtensions.RebindingOperation rebind;
         private readonly System.Collections.Generic.Dictionary<string, Button> rebindButtons = new System.Collections.Generic.Dictionary<string, Button>();
 
@@ -43,34 +46,30 @@ namespace Heartbeat.UI
             v.parent = parent;
 
             var tabs = UiKit.Rect("Sections", parent);
-            var h = tabs.gameObject.AddComponent<HorizontalLayoutGroup>();
-            h.spacing = 6;
-            h.childControlWidth = h.childControlHeight = true;
-            h.childForceExpandHeight = false;
-            tabs.gameObject.AddComponent<LayoutElement>().preferredHeight = 44;
+            UiKit.Row(tabs, 6).childForceExpandWidth = true;
             Button first = null;
             for (int i = 0; i < SectionKeys.Length; i++)
             {
                 var s = (OptionsSection)i;
-                var b = UiKit.Button(tabs, Loc.Get(SectionKeys[i]), 22, color, () => v.Show(s));
+                var b = UiKit.Button(tabs, Loc.Get(SectionKeys[i]), 26, color, () => v.Show(s), 48);
+                v.sectionButtons[i] = b;
                 if (first == null) first = b;
             }
             v.body = UiKit.Rect("Body", parent);
             UiKit.Column(v.body, 6);
             var row = UiKit.Rect("Footer", parent);
-            var fh = row.gameObject.AddComponent<HorizontalLayoutGroup>();
-            fh.spacing = 12;
-            fh.childControlWidth = fh.childControlHeight = true;
-            fh.childForceExpandHeight = false;
-            row.gameObject.AddComponent<LayoutElement>().preferredHeight = 48;
-            UiKit.Button(row, Loc.Get("UI.OPT.RESET"), 24, UiKit.Amber, v.ConfirmReset);
-            UiKit.Button(row, Loc.Get("UI.MENU.BACK"), 24, color, v.Back);
+            UiKit.Row(row, 12).childForceExpandWidth = true;
+            UiKit.Button(row, Loc.Get("UI.OPT.RESET"), 28, UiKit.Amber, v.ConfirmReset, 52);
+            UiKit.Button(row, Loc.Get("UI.MENU.BACK"), 28, color, v.Back, 52);
             v.Show(OptionsSection.Audio);
             UiKit.Select(first);
             return v;
         }
 
         private void OnDestroy() => rebind?.Dispose();
+
+        /// <summary>Esc belongs to the rebind in progress, not to the screen behind it.</summary>
+        public bool IsRebinding => rebind != null || rebindEndedFrame == Time.frameCount;
 
         private void Back()
         {
@@ -84,8 +83,10 @@ namespace Heartbeat.UI
         {
             rebind?.Cancel();
             section = s;
+            for (int i = 0; i < sectionButtons.Length; i++) sectionButtons[i].GetComponent<UiFocusStyle>().SetPinned(i == (int)s);
             foreach (Transform c in body) Destroy(c.gameObject);
             rebindButtons.Clear();
+            preview = null;
             switch (s)
             {
                 case OptionsSection.Audio:
@@ -96,7 +97,7 @@ namespace Heartbeat.UI
                     SliderRow("UI.OPT.VOL_VOICES", 0f, 1f, g.volVoices, x => g.volVoices = x);
                     break;
                 case OptionsSection.Video:
-                    SliderRow("UI.OPT.BRIGHTNESS", Render.Brightness.Min, Render.Brightness.Max, g.brightness, x => { g.brightness = x; Render.Brightness.Apply(x); });
+                    BuildVideo();
                     break;
                 case OptionsSection.Controls:
                     SliderRow("UI.OPT.LOOK_SENS", 0.25f, 3f, g.lookSensitivity, x => g.lookSensitivity = x);
@@ -107,17 +108,73 @@ namespace Heartbeat.UI
                     foreach (var a in RebindActions) RebindRow(a);
                     break;
                 case OptionsSection.Accessibility:
-                    SliderRow("UI.OPT.TEXT_SCALE", 1f, 1.6f, g.textScale, x => g.textScale = x);
-                    ToggleRow("UI.OPT.DYSLEXIA_FONT", g.dyslexiaFont, x => g.dyslexiaFont = x);
-                    ToggleRow("UI.OPT.SUB_OPAQUE", g.subtitleOpaque, x => g.subtitleOpaque = x);
+                    SliderRow("UI.OPT.TEXT_SCALE", 1f, 1.6f, g.textScale, x => { g.textScale = x; RefreshPreview(); });
+                    ToggleRow("UI.OPT.SUB_OPAQUE", g.subtitleOpaque, x => { g.subtitleOpaque = x; RefreshPreview(); });
+                    SliderRow("UI.OPT.TERMINAL_SCALE", 1f, 1.25f, g.terminalScale, x => g.terminalScale = x);
                     ToggleRow("UI.OPT.SOUND_CAPTIONS", g.soundCaptions, x => g.soundCaptions = x);
+                    ToggleRow("UI.OPT.REDUCE_MOTION", g.reduceMotion, x => g.reduceMotion = x);
+                    ToggleRow("UI.OPT.REDUCE_FLASHES", g.reduceFlashes, x => g.reduceFlashes = x);
+                    ToggleRow("UI.OPT.REDUCE_CRT", g.reduceCrt, x => { g.reduceCrt = x; Render.Degradation.SetReduced(x); });
+                    ToggleRow("UI.OPT.DYSLEXIA_FONT", g.dyslexiaFont, x => g.dyslexiaFont = x);
+                    preview = UiKit.Text(body, Loc.Get("UI.OPT.PREVIEW"), 32, UiKit.Text1, false);
+                    preview.alignment = TextAlignmentOptions.Center;
+                    RefreshPreview();
                     break;
                 case OptionsSection.Game:
                     var lang = Row("UI.OPT.LANGUAGE");
-                    UiKit.Button(lang, Loc.Get("UI.OPT.LANG_EN"), 22, color, () => SetLanguage("en"), 36);
-                    UiKit.Button(lang, Loc.Get("UI.OPT.LANG_ES"), 22, color, () => SetLanguage("es"), 36);
+                    UiKit.Button(lang, Loc.Get("UI.OPT.LANG_EN"), 24, color, () => SetLanguage("en"), 36).GetComponent<LayoutElement>().flexibleWidth = 1;
+                    UiKit.Button(lang, Loc.Get("UI.OPT.LANG_ES"), 24, color, () => SetLanguage("es"), 36).GetComponent<LayoutElement>().flexibleWidth = 1;
                     break;
             }
+        }
+
+        private void RefreshPreview()
+        {
+            if (preview == null) return;
+            preview.fontSize = 32f * g.textScale;
+            preview.text = g.subtitleOpaque ? $"<mark=#000000FF padding=\"12,12,4,4\">{Loc.Get("UI.OPT.PREVIEW")}</mark>" : Loc.Get("UI.OPT.PREVIEW");
+        }
+
+        private void BuildVideo()
+        {
+            var sizes = new System.Collections.Generic.List<Resolution>();
+            foreach (var r in Screen.resolutions)
+                if (!sizes.Exists(x => x.width == r.width && x.height == r.height)) sizes.Add(r);
+            if (sizes.Count > 0)
+            {
+                var names = sizes.ConvertAll(r => $"{r.width}\u00D7{r.height}").ToArray();
+                int current = sizes.FindIndex(r => r.width == g.resolutionWidth && r.height == g.resolutionHeight);
+                CycleRow("UI.OPT.RESOLUTION", names, current >= 0 ? current : sizes.Count - 1, i =>
+                {
+                    g.resolutionWidth = sizes[i].width;
+                    g.resolutionHeight = sizes[i].height;
+                    Render.VideoSettings.Apply(g);
+                });
+            }
+            CycleRow("UI.OPT.SCREEN_MODE", new[] { Loc.Get("UI.OPT.MODE_FULL"), Loc.Get("UI.OPT.MODE_WINDOW"), Loc.Get("UI.OPT.MODE_BORDERLESS") }, g.screenMode,
+                i => { g.screenMode = i; Render.VideoSettings.Apply(g); });
+            ToggleRow("UI.OPT.VSYNC", g.vsync, x => { g.vsync = x; Render.VideoSettings.Apply(g); });
+            int[] limits = { 0, 30, 60, 120, 144 };
+            CycleRow("UI.OPT.FPS", new[] { Loc.Get("UI.OPT.FPS_NONE"), "30", "60", "120", "144" }, Mathf.Max(0, System.Array.IndexOf(limits, g.fpsLimit)),
+                i => { g.fpsLimit = limits[i]; Render.VideoSettings.Apply(g); });
+            SliderRow("UI.OPT.BRIGHTNESS", Render.Brightness.Min, Render.Brightness.Max, g.brightness, x => { g.brightness = x; Render.Brightness.Apply(x); });
+            CycleRow("UI.OPT.SHADOWS", new[] { Loc.Get("UI.OPT.LOW"), Loc.Get("UI.OPT.MEDIUM"), Loc.Get("UI.OPT.HIGH") }, g.shadowQuality, i => g.shadowQuality = i);
+        }
+
+        /// <summary>A value that advances with each press and wraps around.</summary>
+        private void CycleRow(string key, string[] values, int index, Action<int> set)
+        {
+            var r = Row(key);
+            int current = Mathf.Clamp(index, 0, values.Length - 1);
+            Button b = null;
+            b = UiKit.Button(r, $"< {values[current]} >", 24, color, () =>
+            {
+                current = (current + 1) % values.Length;
+                b.GetComponentInChildren<TMP_Text>().text = $"< {values[current]} >";
+                set(current);
+                Commit();
+            }, 36, true);
+            b.GetComponent<LayoutElement>().flexibleWidth = 1;
         }
 
         private void SetLanguage(string code)
@@ -126,7 +183,7 @@ namespace Heartbeat.UI
             Loc.SetLanguage(code);
             Commit();
             // Rebuild the whole screen so section tabs and footer switch language too.
-            foreach (Transform c in parent) Destroy(c.gameObject);
+            foreach (Transform c in parent) if (c.name != "Scanlines" && c.name != "Text") Destroy(c.gameObject);
             var again = Build(parent, dialogParent, color, onBack);
             again.Show(OptionsSection.Game);
             Destroy(this);
@@ -143,25 +200,23 @@ namespace Heartbeat.UI
             {
                 OptionsDefaults.Reset(g, section);
                 if (section == OptionsSection.Controls) Services.Get<InputRouter>().Actions.asset.RemoveAllBindingOverrides();
-                if (section == OptionsSection.Video) Render.Brightness.Apply(g.brightness);
+                if (section == OptionsSection.Video) { Render.Brightness.Apply(g.brightness); Render.VideoSettings.Apply(g); }
+                if (section == OptionsSection.Accessibility) Render.Degradation.SetReduced(g.reduceCrt);
                 if (section == OptionsSection.Game) Loc.SetLanguage(g.language);
                 Commit();
                 HbLog.Info("Options", $"Reset {section}");
                 Show(section);
-            }, null, UiKit.Amber);
+            }, null, color);
 
         // ---------- Rows ----------
 
         private RectTransform Row(string labelKey)
         {
             var r = UiKit.Rect("Row", body);
-            var h = r.gameObject.AddComponent<HorizontalLayoutGroup>();
-            h.spacing = 12;
-            h.childControlWidth = h.childControlHeight = true;
-            h.childForceExpandHeight = false;
-            h.childAlignment = TextAnchor.MiddleLeft;
-            r.gameObject.AddComponent<LayoutElement>().preferredHeight = 40;
-            var label = UiKit.Text(r, Loc.Get(labelKey), 24, color);
+            UiKit.Row(r, 12).padding = new RectOffset(12, 12, 0, 0);
+            r.gameObject.AddComponent<LayoutElement>().preferredHeight = 44;
+            r.gameObject.AddComponent<Image>().color = new Color(color.r * 0.12f, color.g * 0.12f, color.b * 0.12f, 0.8f);
+            var label = UiKit.Text(r, Loc.Get(labelKey), 26, color);
             label.alignment = TextAlignmentOptions.MidlineLeft;
             label.gameObject.AddComponent<LayoutElement>().preferredWidth = 420;
             return r;
@@ -184,7 +239,8 @@ namespace Heartbeat.UI
                 b.GetComponentInChildren<TMP_Text>().text = Loc.Get(now ? "UI.OPT.ON" : "UI.OPT.OFF");
                 set(now);
                 Commit();
-            }, 36);
+            }, 36, true);
+            b.GetComponent<LayoutElement>().flexibleWidth = 1;
         }
 
         /// <summary>Keyboard rebinding (D-120: the gamepad map is fixed). A key already used in Gameplay is refused.</summary>
@@ -193,16 +249,15 @@ namespace Heartbeat.UI
             var router = Services.Get<InputRouter>();
             var action = router.Actions.asset.FindAction(actionName.Contains("/") ? actionName : "Gameplay/" + actionName, true);
             var r = UiKit.Rect("Row", body);
-            var h = r.gameObject.AddComponent<HorizontalLayoutGroup>();
-            h.spacing = 12;
-            h.childControlWidth = h.childControlHeight = true;
-            h.childForceExpandHeight = false;
+            UiKit.Row(r, 12).padding = new RectOffset(12, 12, 0, 0);
             r.gameObject.AddComponent<LayoutElement>().preferredHeight = 36;
-            var label = UiKit.Text(r, actionName.Replace("/", " · "), 22, color);   // action names are English UI terms in the demo
+            r.gameObject.AddComponent<Image>().color = new Color(color.r * 0.12f, color.g * 0.12f, color.b * 0.12f, 0.8f);
+            var label = UiKit.Text(r, actionName.Replace("/", " · "), 24, color);   // action names are English UI terms in the demo
             label.alignment = TextAlignmentOptions.MidlineLeft;
             label.gameObject.AddComponent<LayoutElement>().preferredWidth = 420;
             Button b = null;
-            b = UiKit.Button(r, Current(action), 22, color, () => StartRebind(action, b), 34);
+            b = UiKit.Button(r, Current(action), 24, color, () => StartRebind(action, b), 34, true);
+            b.GetComponent<LayoutElement>().flexibleWidth = 1;
             rebindButtons[actionName] = b;
         }
 
@@ -259,6 +314,7 @@ namespace Heartbeat.UI
         {
             op.Dispose();
             if (rebind == op) rebind = null;
+            rebindEndedFrame = Time.frameCount;
             if (wasEnabled) action.Enable();
         }
     }

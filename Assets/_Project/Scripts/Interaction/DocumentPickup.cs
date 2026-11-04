@@ -6,7 +6,7 @@ namespace Heartbeat.Interaction
 {
     /// <summary>
     /// A document or confiscated object (M-08, D-73, D-79). E registers it in the arm terminal ("REGISTERED"; Emilia's
-    /// count n/6) without pausing. Documents are taken (disappear); confiscated objects are only examined and stay.
+    /// count n/6) and opens it to read, which stops the world (D-159). Documents are taken (disappear); confiscated objects are only examined and stay.
     /// Already-registered records can still be read but are not counted twice.
     /// </summary>
     public sealed class DocumentPickup : MonoBehaviour, IInteractable
@@ -47,11 +47,14 @@ namespace Heartbeat.Interaction
             string extra = document.kind == RecordKind.EmiliaDocument ? $" (Emilia {registry.EmiliaCount}/{RegistryModel.EmiliaTotal})" : "";
             HbLog.Info("Registry", isNew ? $"REGISTERED {document.id}{extra}" : $"Already registered {document.id}");
             GameEvents.RaiseItemRegistered(document.id, (int)document.kind, isNew);
-            if (isNew && document.kind == RecordKind.EmiliaDocument)
-                Subtitles.Say(Subtitles.Lukas, registry.EmiliaCount == 1 ? "SUB.LUKAS.FIRST_EMILIA_DOC" : "SUB.LUKAS.EMILIA_DOC");
-            else if (isNew && document.id == "DOC.MOTHER_RH_RECORDS")
-                Subtitles.Say(Subtitles.Lukas, "SUB.LUKAS.RH_RECORDS");   // "Six before me." (Textos del Juego, lukas_rh_records)
-            if (!staysInWorld) gameObject.SetActive(false);
+            GameEvents.RaiseReadDocument(document, () =>   // the world is stopped while reading (D-159): Lukas speaks after
+            {
+                if (isNew && document.kind == RecordKind.EmiliaDocument)
+                    Subtitles.Say(Subtitles.Lukas, registry.EmiliaCount == 1 ? "SUB.LUKAS.FIRST_EMILIA_DOC" : "SUB.LUKAS.EMILIA_DOC");
+                else if (isNew && document.id == "DOC.MOTHER_RH_RECORDS")
+                    Subtitles.Say(Subtitles.Lukas, "SUB.LUKAS.RH_RECORDS");   // "Six before me." (Textos del Juego, lukas_rh_records)
+                if (!staysInWorld && this != null) gameObject.SetActive(false);
+            });
         }
     }
 }

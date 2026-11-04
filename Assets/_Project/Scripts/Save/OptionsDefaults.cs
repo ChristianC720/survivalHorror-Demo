@@ -14,7 +14,8 @@ namespace Heartbeat.Save
                     g.volMaster = d.volMaster; g.volMusic = d.volMusic; g.volSfx = d.volSfx; g.volAmbience = d.volAmbience; g.volVoices = d.volVoices;
                     break;
                 case OptionsSection.Video:
-                    g.brightness = d.brightness;
+                    g.brightness = d.brightness; g.resolutionWidth = d.resolutionWidth; g.resolutionHeight = d.resolutionHeight;
+                    g.screenMode = d.screenMode; g.vsync = d.vsync; g.fpsLimit = d.fpsLimit; g.shadowQuality = d.shadowQuality;
                     break;
                 case OptionsSection.Controls:
                     g.lookSensitivity = d.lookSensitivity; g.aimSensitivity = d.aimSensitivity; g.invertY = d.invertY;
@@ -22,6 +23,7 @@ namespace Heartbeat.Save
                     break;
                 case OptionsSection.Accessibility:
                     g.textScale = d.textScale; g.dyslexiaFont = d.dyslexiaFont; g.subtitleOpaque = d.subtitleOpaque; g.soundCaptions = d.soundCaptions;
+                    g.terminalScale = d.terminalScale; g.reduceMotion = d.reduceMotion; g.reduceFlashes = d.reduceFlashes; g.reduceCrt = d.reduceCrt;
                     break;
                 case OptionsSection.Game:
                     g.language = d.language;

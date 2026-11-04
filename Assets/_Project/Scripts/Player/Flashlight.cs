@@ -25,6 +25,7 @@ namespace Heartbeat.Player
         private CameraSystem.OtsCameraRig rig;
         private int envMask;
         private float flickerTimer;
+        private bool steadyFlicker;
 
         public FlashlightModel Model { get; } = new FlashlightModel();
         public bool IsOn => Model.IsOn;
@@ -58,6 +59,7 @@ namespace Heartbeat.Player
         {
             HbLog.Info("Flashlight", "Depleted: flicker and off, locked ~10 s");
             flickerTimer = 0.8f;
+            steadyFlicker = Services.TryGet(out Save.SaveService saves) && saves.LoadGlobal().reduceFlashes;
             Sfx.Play2D(Sfx.FlashlightFlicker);
         }
 
@@ -67,7 +69,7 @@ namespace Heartbeat.Player
             if (flickerTimer > 0f)
             {
                 flickerTimer -= Time.deltaTime;
-                spot.enabled = flickerTimer > 0f && Random.value > 0.5f;
+                spot.enabled = flickerTimer > 0f && (steadyFlicker || Random.value > 0.5f);   // reduce flashes: just goes out
             }
             else Apply();
 

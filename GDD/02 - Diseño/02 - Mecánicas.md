@@ -382,7 +382,7 @@ stateDiagram-v2
     
 - **Casos límite:**
     
-    - Si el inventario está lleno e intentas recoger un objeto clave, el sistema permite reemplazar un objeto del inventario por el objeto clave; si se decide no cambiar, el objeto permanece en el suelo.
+    - Si el inventario está lleno e intentas recoger un objeto clave, el sistema permite reemplazar un objeto del inventario por el objeto clave; si se decide no cambiar, el objeto permanece en el suelo. El terminal se abre con el aviso `INVENTORY FULL — REPLACE WITH ACCESS KEY?` y el objeto reemplazado cae a los pies de Lukas, como al descartarlo; esto solo ocurre con objetos clave (D-159).
         
     - Al morir o reiniciar se pierden las llaves junto con el resto del inventario; el piso se regenera con una llave obligatoria alcanzable nueva (D-36).
         
@@ -417,7 +417,7 @@ stateDiagram-v2
         
     - **Reacción de Lukas (D-52):** al encontrar un documento, Lukas puede reaccionar con una frase corta o un murmullo, representado con sonido más texto en pantalla (sin actuación de voz).
         
-    - Leer un documento no pausa el juego.
+    - **Leer detiene el juego (D-159, modifica la regla anterior):** abrir un documento o un póster lo muestra en una vista de lectura propia y congela el recorrido hasta cerrarla (`E` o `Esc`). La lista del terminal del brazo no pausa: solo la lectura.
         
 - **Entrada:** `E` frente al elemento.
     
@@ -838,7 +838,7 @@ flowchart TD
         
     - Los terminales de sala solo sirven para hackear (M-13).
         
-    - Consultar la base de datos del terminal del brazo **no pausa la partida**.
+    - Consultar la base de datos del terminal del brazo **no pausa la partida**; abrir una entrada para leerla sí (D-159).
         
     - Lo que persiste no hace más fuerte al personaje, solo más informado.
         

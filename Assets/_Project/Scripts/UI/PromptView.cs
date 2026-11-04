@@ -59,7 +59,7 @@ namespace Heartbeat.UI
             group.alpha = visible ? 1f : 0f;
             if (!visible) return;
             string key = router != null ? router.KeyFor(router.Actions.Gameplay.Interact) : "E";
-            label.text = $"[{key}]  {Loc.Get(t.PromptKey)}";
+            label.text = $"<mark=#000000A0 padding=\"12,12,4,4\">[{key}]  {Loc.Get(t.PromptKey)}</mark>";
         }
     }
 }

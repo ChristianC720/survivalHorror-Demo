@@ -27,7 +27,7 @@ Cada sistema tiene además su lista detallada en [[03 - Sistemas]]; aquí va un 
 | M-05 Salud y estados | Lukas está en Bien | Recibe un golpe de un Alto y espera 60 s | Pasa a Herido, camina un 15% más lento y no recupera salud sola |
 | M-06 Resistencia y empujón | La resistencia está al 30% | Intenta empujar (35%) | El empujón no ocurre y suena un jadeo |
 | M-07 Inventario | El inventario está abierto con un enemigo en caza | Usa una cura (~1.5 s) | El enemigo sigue moviéndose y atacando; si golpea durante la animación, la cura no se consume |
-| M-08 Interacción y documentos | Lukas está a ~1.5 m de un documento de Emilia | Pulsa `E` | Aparece `REGISTERED`, el expediente sube a n/6 en el terminal y el juego nunca se detiene |
+| M-08 Interacción y documentos | Lukas está a ~1.5 m de un documento de Emilia | Pulsa `E` | Se abre la vista de lectura y el juego se detiene hasta cerrarla (D-159); al cerrar aparece `REGISTERED` y el expediente sube a n/6 en el terminal |
 | M-09 Sigilo y ruido | Lukas va agachado tras una cobertura sólida con la linterna apagada | Un Alto pasa a 5 m | El Alto no lo detecta |
 | M-10 Señales diegéticas | Un Rastrero pasa de patrulla a sospecha, búsqueda y caza | Lukas escucha | Suena un sonido distinto en cada estado y no aparece ningún indicador en pantalla |
 | M-11 Punzón de descarga | Lukas tiene un punzón y un Alto lo agarra | Se resuelve el agarre | El punzón se consume solo, el Alto queda aturdido 2 s y Lukas no pierde salud |

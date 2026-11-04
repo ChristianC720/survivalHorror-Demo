@@ -26,6 +26,18 @@ namespace Heartbeat.Tests
         }
 
         [Test]
+        public void Reading_OnlyClosesAndTurnsPages()
+        {
+            router.SetContext(InputContext.Reading);
+            Assert.IsTrue(Enabled("Gameplay/Interact"));
+            Assert.IsTrue(Enabled("UI/Cancel"));
+            Assert.IsTrue(Enabled("UI/Navigate"));
+            Assert.IsFalse(Enabled("Gameplay/Move"));
+            Assert.IsFalse(Enabled("Gameplay/Look"));
+            Assert.IsFalse(Enabled("Gameplay/Terminal"));
+        }
+
+        [Test]
         public void Inventory_DisablesAimAndAttack_KeepsMovement()
         {
             router.SetContext(InputContext.Inventory);

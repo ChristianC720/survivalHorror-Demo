@@ -12,8 +12,26 @@ namespace Heartbeat.UI
     /// (pivot on the wall face, local +Z into the wall); <see cref="Generation.FloorBuilder"/> keeps it only in the fixed
     /// rooms of the first attempt and switches it off everywhere else (procedural reuse, F2/F3 re-dressed variants).
     /// </summary>
-    public sealed class TutorialPoster : MonoBehaviour
+    public sealed class TutorialPoster : MonoBehaviour, Interaction.IInteractable
     {
+        public string PromptKey => "UI.PROMPT.READ";
+        public Vector3 InteractionPoint => transform.position;
+        public bool CanInteract(Interaction.Interactor who) => text != null && isActiveAndEnabled;
+
+        /// <summary>Read up close like any document: the world stops (D-159).</summary>
+        public void Interact(Interaction.Interactor who) => GameEvents.RaiseReadPoster(text.text, null);
+
+        private void Awake()
+        {
+            if (text == null) return;
+            var trigger = new GameObject("ReadTrigger", typeof(BoxCollider));
+            trigger.layer = LayerMask.NameToLayer("Interactable");
+            trigger.transform.SetParent(transform, false);
+            var box = trigger.GetComponent<BoxCollider>();
+            box.isTrigger = true;
+            box.size = new Vector3(0.8f, 0.8f, 0.2f);
+        }
+
         [Tooltip("POST table key; {0}, {1}… are the keys of the actions below.")]
         [SerializeField] private string textKey;
         [Tooltip("Comma-separated actions as Map/Action, e.g. Gameplay/Attack,Gameplay/Aim (a plain string so Aura can set it).")]

@@ -78,6 +78,9 @@ namespace Heartbeat.Core
         public static event Action<string> InventoryFull;                 // item kind that did not fit
         public static event Action<MonoBehaviour> InteractTargetChanged;  // null = nothing to interact with
         public static event Action<string, int, bool> ItemRegistered;     // record id, RecordKind, isNew
+        public static event Action<Narrative.DocumentDefinition, Action> ReadDocument;   // document, called once it is closed (D-159)
+        public static event Action<string, Action> ReadPoster;            // poster text, called once it is closed
+        public static event Action<Inventory.ItemKind, int, Action> KeySwapOffered;      // kind, amount, called if it replaced a slot (M-08)
 
         // Audio (S-11)
         public static event Action<string, Vector3?> CueRequested;        // cue id, world position (null = 2D)
@@ -126,6 +129,27 @@ namespace Heartbeat.Core
         public static void RaiseFaultUsed(string id) => FaultUsed?.Invoke(id);
         public static void RaiseFaultPatched(string id) => FaultPatched?.Invoke(id);
         public static void RaiseItemRegistered(string id, int kind, bool isNew) => ItemRegistered?.Invoke(id, kind, isNew);
+
+        // Without a reader on screen (no HUD in this scene) the game must go on: closed at once.
+        public static void RaiseReadDocument(Narrative.DocumentDefinition doc, Action onClosed)
+        {
+            if (ReadDocument != null) ReadDocument(doc, onClosed);
+            else onClosed?.Invoke();
+        }
+
+        public static void RaiseReadPoster(string text, Action onClosed)
+        {
+            if (ReadPoster != null) ReadPoster(text, onClosed);
+            else onClosed?.Invoke();
+        }
+
+        /// <returns>False if nobody can offer the swap (no terminal in this scene).</returns>
+        public static bool RaiseKeySwapOffered(Inventory.ItemKind kind, int amount, Action onReplaced)
+        {
+            if (KeySwapOffered == null) return false;
+            KeySwapOffered(kind, amount, onReplaced);
+            return true;
+        }
         public static void RaiseCueRequested(string cue, Vector3? pos) => CueRequested?.Invoke(cue, pos);
         public static void RaiseCuePlayed(string cue, Vector3? pos) => CuePlayed?.Invoke(cue, pos);
         public static void RaiseSubtitleRequested(string speaker, string key, object[] args) => SubtitleRequested?.Invoke(speaker, key, args);
@@ -166,6 +190,9 @@ namespace Heartbeat.Core
             InventoryFull = null;
             InteractTargetChanged = null;
             ItemRegistered = null;
+            ReadDocument = null;
+            ReadPoster = null;
+            KeySwapOffered = null;
             CueRequested = null;
             CuePlayed = null;
             SubtitleRequested = null;

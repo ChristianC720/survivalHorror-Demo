@@ -37,6 +37,7 @@ Define la relación entre las acciones del jugador y las entradas físicas del d
 - **Exploración (OTS):** `WASD` mueve al personaje y `Clic izquierdo` ejecuta el empujón.
 - **Apuntando:** `Clic izquierdo` dispara.
 - **Inventario abierto:** el mouse controla la interfaz; apuntar, disparar y empujar no están disponibles. El juego no se pausa.
+- **Lectura (D-159):** el juego está detenido. `E` o `Esc` / `B` cierran; las direcciones cambian de página. `Esc` aquí no abre el menú de pausa.
 - **Hackeo:** el personaje queda inmóvil en OTS; `WASD` / `Flechas` introducen la secuencia, `F` explota una falla descubierta si hay una compatible (D-150) y `E` la abandona.
 - **Vista de vigilancia:** el personaje solo puede permanecer quieto o caminar muy lento; correr, apuntar o empujar devuelven la vista a OTS. `Q` sale de la vista.
 - **Sobre un cuerpo (sin apuntar):** acción contextual de remate ([[02 - Mecánicas]], M-20). `Clic izquierdo` ejecuta el golpe en el suelo en lugar del empujón y `E` clava el punzón de descarga en lugar de interactuar (solo en cuerpos que pueden reciclarse). Al apuntar, `Clic izquierdo` vuelve a disparar.

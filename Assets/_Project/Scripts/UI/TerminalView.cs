@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using Heartbeat.Combat;
 using Heartbeat.Core;
 using Heartbeat.InputRouting;
@@ -14,39 +16,57 @@ using UnityEngine.UI;
 namespace Heartbeat.UI
 {
     /// <summary>
-    /// The arm terminal (M-07, M-08, M-16, D-86): Tab opens it in real time (never pauses), Inventory context.
-    /// Tabs: INVENTORY (6 slots; left click / A = use, right click / X = discard, ~1.5 s), STATUS (ECG by health
-    /// state + HEALTH label, flashlight charge) and LOGS (registry by category, reader). Teal phosphor screen with a
-    /// ~0.2 s CRT power-on. The widget tree is built in code under this RectTransform; the prefab only holds the root.
+    /// The arm terminal (M-07, M-08, M-16, D-86): Tab opens it in real time (never pauses), Inventory context. A strip
+    /// with pulse, health, light and drum stays visible in every tab. Tabs: INVENTORY (3×2 slots; use, discard, ~1.5 s;
+    /// also the key swap of M-08), STATUS (ECG by health state, flashlight, counters) and LOGS (categories and entries;
+    /// reading happens in <see cref="ReaderView"/>, which does stop the world, D-159). Teal phosphor with a ~0.2 s CRT
+    /// power-on. The widget tree is built in code under this RectTransform; the prefab only holds the root.
     /// shortcut: screen-space panel only; the world-space forearm canvas (10-ui.md) comes with the Lukas model.
     /// </summary>
     public sealed class TerminalView : MonoBehaviour
     {
         [SerializeField] private DocumentDefinition[] documents = new DocumentDefinition[0];
-        [SerializeField] private float baseFontSize = 26f;
 
         private static Color Teal => UiKit.Teal;
-        private static Color TealDim => UiKit.TealDim;
+        private static readonly Color Dim = new Color(0.165f, 0.498f, 0.459f);   // teal/dim of the design: opaque, still legible
         private static Color Amber => UiKit.Amber;
         private static Color Red => UiKit.Red;
-        private const int EcgBars = 64;
+        private const int SlotSize = 176, EcgBars = 64;
+        private const float ToastSeconds = 3f;
 
         private InputRouter router;
-        private RectTransform panel;
-        private TMP_Text header, healthLabel, flashLabel, logsList, readerTitle, readerBody, actionHint, emiliaCount;
+        private RectTransform panel, footer, toast;
+        private TMP_Text header, stripHealth, stripLight, stripDrum, healthLabel, flashLabel, emiliaCount, confiscatedCount;
+        private TMP_Text detailName, detailInfo, actionHint, swapAlert, noLogs, toastText;
+        private UiEcg stripEcg, bigEcg;
         private Image flashFill;
-        private readonly List<RectTransform> ecg = new List<RectTransform>();
-        private RectTransform ecgStrip;
+        private ReaderView reader;
         private readonly GameObject[] pages = new GameObject[3];
-        private readonly TMP_Text[] slotLabels = new TMP_Text[InventoryModel.SlotCount];
-        private readonly Image[] slotFrames = new Image[InventoryModel.SlotCount];
-        private readonly List<string> logIds = new List<string>();
+        private readonly Button[] tabButtons = new Button[3];
+        private readonly Button[] slotButtons = new Button[InventoryModel.SlotCount];
+        private readonly TMP_Text[] slotNames = new TMP_Text[InventoryModel.SlotCount];
+        private readonly TMP_Text[] slotCounts = new TMP_Text[InventoryModel.SlotCount];
+        private readonly TMP_Text[] slotEmpty = new TMP_Text[InventoryModel.SlotCount];
+        private readonly Image[] slotIcons = new Image[InventoryModel.SlotCount];
+        private readonly Dictionary<RecordKind, Button> categoryButtons = new Dictionary<RecordKind, Button>();
         private readonly Dictionary<string, DocumentDefinition> docsById = new Dictionary<string, DocumentDefinition>();
         private Transform logButtons;
+        private Button firstEntry;
+        private RecordKind category;
+        private int logsShownCount = -1;
+        private RecordKind logsShownCategory;
         private int tab, focusedSlot = -1;
-        private float openTime;
-        private float textScale = 1f;
-        private bool open;
+        private float openTime, toastUntil, scale = 1f;
+        private bool open, reduceMotion, toastPending;
+
+        // Key swap of M-08: which key is waiting on the floor.
+        private bool swapping;
+        private ItemKind swapKind;
+        private int swapAmount;
+        private Action swapDone;
+
+        private int lastLight = -1, lastDrum = -2;
+        private HealthState lastState = (HealthState)(-1);
 
         private PlayerInventory inventory;
         private PlayerHealth health;
@@ -59,8 +79,9 @@ namespace Heartbeat.UI
         {
             foreach (var d in documents) if (d != null) docsById[d.id] = d;
             Build();
-            ApplyTextScale();
+            ApplyScale();
             gameObject.AddComponent<HackView>();   // M-13: the hack chain lives on the arm terminal
+            reader = gameObject.AddComponent<ReaderView>();
             panel.gameObject.SetActive(false);
         }
 
@@ -79,7 +100,8 @@ namespace Heartbeat.UI
             GameEvents.InventoryChanged += Refresh;
             GameEvents.ItemRegistered += OnRegistered;
             GameEvents.PlayerDied += OnDied;
-            GameEvents.OptionsChanged += ApplyTextScale;
+            GameEvents.OptionsChanged += ApplyScale;
+            GameEvents.KeySwapOffered += OnKeySwap;
         }
 
         private void OnDisable()
@@ -88,7 +110,8 @@ namespace Heartbeat.UI
             GameEvents.InventoryChanged -= Refresh;
             GameEvents.ItemRegistered -= OnRegistered;
             GameEvents.PlayerDied -= OnDied;
-            GameEvents.OptionsChanged -= ApplyTextScale;
+            GameEvents.OptionsChanged -= ApplyScale;
+            GameEvents.KeySwapOffered -= OnKeySwap;
         }
 
         private void OnDestroy()
@@ -114,10 +137,11 @@ namespace Heartbeat.UI
             revolver = player.GetComponentInChildren<Revolver>();
             open = true;
             openTime = Time.unscaledTime;
-            ApplyTextScale();
+            ApplyScale();
             panel.gameObject.SetActive(true);
             router.SetContext(InputContext.Inventory);
             Sfx.Play2D(Sfx.TerminalOn);
+            lastLight = -1; lastDrum = -2; lastState = (HealthState)(-1);
             ShowTab(tab);
             HbLog.Info("Terminal", "Open");
             return true;
@@ -127,6 +151,11 @@ namespace Heartbeat.UI
         {
             if (!open) return;
             open = false;
+            if (swapping)
+            {
+                HbLog.Info("Interact", $"{swapKind} stays on the floor");
+                EndSwap();
+            }
             panel.gameObject.SetActive(false);
             if (router.Context == InputContext.Inventory) router.SetContext(InputContext.Exploration);
             EventSystem.current?.SetSelectedGameObject(null);
@@ -138,137 +167,254 @@ namespace Heartbeat.UI
 
         // ---------- Inventory actions ----------
 
+        private bool SlotUnderFocus =>
+            focusedSlot >= 0 && EventSystem.current != null && EventSystem.current.currentSelectedGameObject == slotButtons[focusedSlot].gameObject;
+
         private void OnUse(InputAction.CallbackContext _)
         {
-            if (!open || tab != 0 || focusedSlot < 0 || inventory == null) return;
-            if (inventory.TryUseSlot(focusedSlot)) Refresh();
+            if (!open || tab != 0 || inventory == null || !SlotUnderFocus) return;
+            if (swapping) ReplaceFocused();
+            else if (inventory.TryUseSlot(focusedSlot)) Refresh();
         }
 
         private void OnDiscard(InputAction.CallbackContext _)
         {
-            if (!open || tab != 0 || focusedSlot < 0 || inventory == null) return;
+            if (!open || tab != 0 || swapping || inventory == null || !SlotUnderFocus) return;
             if (inventory.TryDiscardSlot(focusedSlot)) Refresh();
         }
 
         private void Focus(int slot)
         {
             focusedSlot = slot;
-            for (int i = 0; i < slotFrames.Length; i++) slotFrames[i].color = i == slot ? TealDim : new Color(0, 0, 0, 0.4f);
+            RefreshDetail();
+        }
+
+        // ---------- Key swap (M-08) ----------
+
+        private void OnKeySwap(ItemKind kind, int amount, Action replaced)
+        {
+            if (!TryOpen())
+            {
+                HbLog.Info("Interact", $"Inventory full: {kind} stays on the floor");
+                GameEvents.RaiseInventoryFull(kind.ToString());
+                return;
+            }
+            swapping = true;
+            swapKind = kind;
+            swapAmount = amount;
+            swapDone = replaced;
+            swapAlert.text = Loc.Get("UI.TERM.FULL_SWAP", Loc.Get("UI.TERM.SLOT_" + kind));
+            swapAlert.gameObject.SetActive(true);
+            foreach (var b in tabButtons) b.interactable = false;
+            ShowTab(0);
+            HbLog.Info("Interact", $"Inventory full: offering to replace a slot with {kind}");
+        }
+
+        private void ReplaceFocused()
+        {
+            var s = inventory.Model.Replace(focusedSlot, swapKind, swapAmount);
+            // Like a discard, the replaced item lands at Lukas's feet: nothing is lost, not even another key.
+            if (!s.IsEmpty && Services.TryGet(out Generation.FloorBuilder builder))
+                builder.DropItem(s.Kind, s.Count, inventory.transform.position + inventory.transform.forward * 0.5f);
+            HbLog.Info("Interact", $"{swapKind} replaced {s.Kind} x{s.Count}");
+            Sfx.Play2D(Sfx.Pickup);
+            var done = swapDone;
+            EndSwap();
+            done?.Invoke();
+            Close();
+        }
+
+        private void EndSwap()
+        {
+            swapping = false;
+            swapDone = null;
+            swapAlert.gameObject.SetActive(false);
+            foreach (var b in tabButtons) b.interactable = true;
         }
 
         // ---------- Refresh ----------
 
-        private void OnRegistered(string id, int kind, bool isNew) { if (open) Refresh(); }
+        private void OnRegistered(string id, int kind, bool isNew)
+        {
+            if (open) Refresh();
+            if (!isNew) return;
+            var registry = Services.Get<RegistryModel>();
+            string count = (RecordKind)kind == RecordKind.EmiliaDocument ? "\n" + Loc.Get("UI.TERM.EMILIA_COUNT", registry.EmiliaCount)
+                : (RecordKind)kind == RecordKind.Confiscated ? "\n" + Loc.Get("UI.TERM.CONFISCATED_COUNT", CountOf(registry, RecordKind.Confiscated)) : "";
+            toastText.text = Loc.Get("UI.TERM.REGISTERED") + count;
+            toastPending = true;   // shown when the reading it opened is closed
+        }
+
+        private static int CountOf(RegistryModel registry, RecordKind kind) => registry.Order.Count(id => registry.KindOf(id) == kind);
 
         private void Refresh()
         {
             if (!open) return;
             string subject = Services.TryGet(out Cycle.CycleController cycle) && cycle.Data != null ? cycle.Data.SubjectLabel : "R-H-??";
-            string drum = revolver != null && revolver.Owned ? "   ·   " + Loc.Get("UI.TERM.DRUM", revolver.Model.Loaded) : "";
-            header.text = Loc.Get("UI.TERM.SUBJECT", subject) + drum;
+            header.text = Loc.Get("UI.TERM.SUBJECT", subject);
 
             if (inventory != null)
                 for (int i = 0; i < InventoryModel.SlotCount; i++)
                 {
                     var s = inventory.Model[i];
-                    slotLabels[i].text = s.IsEmpty ? Loc.Get("UI.TERM.EMPTY_SLOT")
-                        : s.Kind == ItemKind.Ammo ? $"{Loc.Get("UI.ITEM." + s.Kind)}  x{s.Count}" : Loc.Get("UI.ITEM." + s.Kind);
-                    slotLabels[i].color = s.IsEmpty ? TealDim : Teal;
+                    slotNames[i].text = s.IsEmpty ? "" : Loc.Get("UI.TERM.SLOT_" + s.Kind);
+                    slotCounts[i].text = !s.IsEmpty && s.Count > 1 ? "x" + s.Count : "";
+                    slotEmpty[i].text = s.IsEmpty ? Loc.Get("UI.TERM.EMPTY_SLOT") : "";
+                    slotIcons[i].enabled = !s.IsEmpty;
+                    if (!s.IsEmpty) slotIcons[i].sprite = UiIcons.For(s.Kind);
+                    slotButtons[i].GetComponent<UiFocusStyle>().SetColor(s.IsEmpty ? Dim : Teal);
                 }
-            actionHint.text = inventory != null && inventory.IsUsingItem ? "…" : $"[{router.KeyFor(router.Actions.Inventory.Use)}] {Loc.Get("UI.TERM.USE")}    [{router.KeyFor(router.Actions.Inventory.Discard)}] {Loc.Get("UI.TERM.DISCARD")}";   // follows the last device (D-132)
+            RefreshDetail();
+            RefreshFooter();
             RefreshLogs();
+        }
+
+        private void RefreshDetail()
+        {
+            if (inventory == null || detailName == null) return;
+            if (focusedSlot < 0 || inventory.Model[focusedSlot].IsEmpty) { detailName.text = ""; detailInfo.text = ""; return; }
+            var s = inventory.Model[focusedSlot];
+            detailName.text = Loc.Get("UI.ITEM." + s.Kind);
+            detailInfo.text = s.Kind != ItemKind.Ammo ? ""
+                : Loc.Get("UI.TERM.RESERVE", inventory.Model.Count(ItemKind.Ammo))
+                  + (revolver != null && revolver.Owned ? "\n" + Loc.Get("UI.TERM.DRUM_SHORT", revolver.Model.Loaded) : "");
+        }
+
+        private void RefreshFooter()
+        {
+            foreach (Transform c in footer) Destroy(c.gameObject);
+            var a = router.Actions.Inventory;   // keys follow the last device (D-132)
+            if (swapping)
+            {
+                UiKit.KeyHint(footer, router.KeyFor(a.Use), Loc.Get("UI.TERM.REPLACE"), Amber);
+                UiKit.KeyHint(footer, router.KeyFor(a.Close), Loc.Get("UI.TERM.LEAVE_IT"), Amber);
+                return;
+            }
+            if (tab == 0)
+            {
+                UiKit.KeyHint(footer, router.KeyFor(a.Use), Loc.Get("UI.TERM.USE"), Teal);
+                UiKit.KeyHint(footer, router.KeyFor(a.Discard), Loc.Get("UI.TERM.DISCARD"), Teal);
+            }
+            else if (tab == 2) UiKit.KeyHint(footer, router.KeyFor(router.Actions.UI.Submit), Loc.Get("UI.TERM.OPEN"), Teal);
+            UiKit.KeyHint(footer, router.KeyFor(a.Close), Loc.Get("UI.TERM.CLOSE"), Teal);
         }
 
         private void RefreshLogs()
         {
             var registry = Services.Get<RegistryModel>();
             emiliaCount.text = Loc.Get("UI.TERM.EMILIA_COUNT", registry.EmiliaCount);
-            if (logIds.Count == registry.Count) return;
-            logIds.Clear();
+            confiscatedCount.text = Loc.Get("UI.TERM.CONFISCATED_COUNT", CountOf(registry, RecordKind.Confiscated));
+
+            if (CountOf(registry, category) == 0)
+                foreach (var k in categoryButtons.Keys)
+                    if (CountOf(registry, k) > 0) { category = k; break; }
+
+            foreach (var pair in categoryButtons)
+            {
+                int n = CountOf(registry, pair.Key);
+                pair.Value.GetComponentInChildren<TMP_Text>().text = $"{CategoryName(pair.Key)}  {n}";
+                pair.Value.interactable = n > 0;
+                pair.Value.GetComponent<UiFocusStyle>().SetPinned(pair.Key == category && n > 0);
+            }
+            noLogs.gameObject.SetActive(registry.Count == 0);
+            if (logsShownCount == registry.Count && logsShownCategory == category) return;
+            logsShownCount = registry.Count;
+            logsShownCategory = category;
             foreach (Transform c in logButtons) Destroy(c.gameObject);
-            // Grouped by category, in registration order inside each.
-            foreach (RecordKind kind in System.Enum.GetValues(typeof(RecordKind)))
-                foreach (var id in registry.Order)
-                {
-                    if (registry.KindOf(id) != kind) continue;
-                    logIds.Add(id);
-                    string captured = id;
-                    var b = MakeButton(logButtons, $"{CategoryTag(kind)}  {TitleOf(id)}", () => Read(captured), 0.82f);
-                    b.GetComponent<LayoutElement>().preferredHeight = 34;
-                    b.GetComponentInChildren<TMP_Text>().alignment = TextAlignmentOptions.MidlineLeft;
-                }
-            logsList.text = registry.Count == 0 ? Loc.Get("UI.TERM.NO_LOGS") : "";
+            firstEntry = null;
+            foreach (var id in registry.Order)
+            {
+                if (registry.KindOf(id) != category) continue;
+                string captured = id;
+                var b = UiKit.Button(logButtons, TitleOf(id), 24, Teal, () => Read(captured), 36, true);
+                b.GetComponentInChildren<TMP_Text>().alignment = TextAlignmentOptions.MidlineLeft;
+                if (firstEntry == null) firstEntry = b;
+            }
         }
 
-        private static string CategoryTag(RecordKind k) => k switch
+        private void SelectCategory(RecordKind k)
         {
-            RecordKind.EmiliaDocument => "[E]",
-            RecordKind.ContextDocument => "[D]",
-            RecordKind.Confiscated => "[C]",
-            RecordKind.Bestiary => "[B]",
-            RecordKind.Rule => "[R]",
-            RecordKind.Fault => "[F]",
-            RecordKind.Ring => "[O]",
-            _ => "[*]",
-        };
-
-        private string TitleOf(string id)
-        {
-            if (!docsById.TryGetValue(id, out var d)) return id;
-            string t = Loc.Get(d.titleKey);
-            return t == d.titleKey && !string.IsNullOrEmpty(d.placeholderTitle) ? d.placeholderTitle : t;
+            category = k;
+            RefreshLogs();
         }
+
+        private static string CategoryName(RecordKind k) => Loc.Get(k switch
+        {
+            RecordKind.EmiliaDocument => "UI.TERM.CAT_EMILIA",
+            RecordKind.ContextDocument => "UI.TERM.CAT_DOCS",
+            RecordKind.Confiscated => "UI.TERM.CAT_CONFISCATED",
+            RecordKind.Bestiary => "UI.TERM.CAT_BESTIARY",
+            RecordKind.Rule => "UI.TERM.CAT_RULES",
+            RecordKind.Fault => "UI.TERM.CAT_FAULTS",
+            _ => "UI.TERM.CAT_RING",
+        });
+
+        private string TitleOf(string id) => docsById.TryGetValue(id, out var d) ? ReaderView.TitleOf(d) : id;
 
         private void Read(string id)
         {
-            readerTitle.text = TitleOf(id);
-            // {0} = Lukas's current subject number; {c} passages stay corrupt until the ending reveals them (D-127, D-55).
-            var cycle = Services.TryGet(out Cycle.CycleController c) ? c.Data : null;
-            string n = cycle != null ? cycle.subjectCode.ToString("00") : "07";
-            bool reveal = cycle != null && cycle.cycleCompleted && Services.Get<RegistryModel>().HasAllEmilia;
-            readerBody.text = docsById.TryGetValue(id, out var d) ? DocText.Render(Loc.Get(d.bodyKey, n), reveal) : "";
-            if (Level.FaultModel.Faults.ContainsKey(id) && Services.TryGet(out Level.FaultModel faults))   // M-17 status
-                readerBody.text += "\n\n" + (faults.IsPatched(id) ? Loc.Get("UI.TERM.FAULT_PATCHED") : Loc.Get("UI.TERM.FAULT_USES", faults.UsesLeft(id)));
-            HbLog.Info("Terminal", $"Read {id}");
-            if (id == Cycle.CycleController.RingId) Subtitles.Say(Subtitles.Lukas, "SUB.LUKAS.RING_EXAMINE");
-            else if (id == Cycle.CycleController.VoiceNoteId) Subtitles.Say(Subtitles.Lukas, "SUB.LUKAS.VOICE_NOTE");
+            if (!docsById.TryGetValue(id, out var d)) { HbLog.Warn("Terminal", $"No document asset for {id}"); return; }
+            reader.OpenDocument(d, () =>
+            {
+                if (id == Cycle.CycleController.RingId) Subtitles.Say(Subtitles.Lukas, "SUB.LUKAS.RING_EXAMINE");
+                else if (id == Cycle.CycleController.VoiceNoteId) Subtitles.Say(Subtitles.Lukas, "SUB.LUKAS.VOICE_NOTE");
+            });
         }
 
         private void Update()
         {
+            UpdateToast();
             if (!open) return;
-            float k = Mathf.Clamp01((Time.unscaledTime - openTime) / 0.2f);   // CRT power-on
-            panel.localScale = new Vector3(textScale, textScale * Mathf.Max(0.02f, k * k), 1f);
-            if (tab == 1) UpdateStatus();
-            if (inventory != null && inventory.IsUsingItem) actionHint.text = new string('|', 1 + (int)(inventory.UseProgress * 20));
-            else if (actionHint.text.StartsWith("|")) Refresh();
+            float k = reduceMotion ? 1f : Mathf.Clamp01((Time.unscaledTime - openTime) / 0.2f);   // CRT power-on
+            panel.localScale = new Vector3(scale, scale * Mathf.Max(0.02f, k * k), 1f);
+            UpdateStatus();
+            actionHint.text = inventory != null && inventory.IsUsingItem ? new string('|', 1 + (int)(inventory.UseProgress * 20)) : "";
+        }
+
+        private void UpdateToast()
+        {
+            if (toastPending && !reader.IsOpen)
+            {
+                toastPending = false;
+                toast.gameObject.SetActive(true);
+                toastUntil = Time.unscaledTime + ToastSeconds;
+                HbLog.Info("Terminal", toastText.text.Replace('\n', ' '));
+            }
+            if (toast.gameObject.activeSelf && Time.unscaledTime >= toastUntil) toast.gameObject.SetActive(false);
         }
 
         private void UpdateStatus()
         {
             var state = health != null ? health.State : HealthState.Fine;
             Color c = state == HealthState.Critical ? Red : state == HealthState.Injured ? Amber : Teal;
-            bool blink = state != HealthState.Fine && Mathf.Repeat(Time.unscaledTime, 1f) < 0.5f;
-            healthLabel.text = Loc.Get(state == HealthState.Critical ? "UI.TERM.HEALTH_CRITICAL"
-                : state == HealthState.Injured ? "UI.TERM.HEALTH_INJURED" : "UI.TERM.HEALTH_FINE");
-            healthLabel.color = blink ? c * 0.6f : c;
-            float t = Time.unscaledTime;
-            for (int i = 0; i < ecg.Count; i++)
+            stripEcg.State = bigEcg.State = state;
+            stripEcg.Color = bigEcg.Color = c;
+            if (state != lastState)
             {
-                float v = EcgSample(state, t - (ecg.Count - i) * 0.03f);
-                // Bars fit their strip (clipped too): they used to overflow onto the HEALTH line every beat.
-                float room = ecgStrip != null ? Mathf.Max(8f, ecgStrip.rect.height - 8f) : 110f;
-                ecg[i].sizeDelta = new Vector2(ecg[i].sizeDelta.x, 4f + (room - 4f) * v);
-                ecg[i].GetComponent<Image>().color = c;
+                lastState = state;
+                string label = Loc.Get(state == HealthState.Critical ? "UI.TERM.HEALTH_CRITICAL"
+                    : state == HealthState.Injured ? "UI.TERM.HEALTH_INJURED" : "UI.TERM.HEALTH_FINE");
+                stripHealth.text = healthLabel.text = label;
+                stripHealth.color = healthLabel.color = c;
             }
 
-            if (flashlight != null)
+            int drum = revolver != null && revolver.Owned ? revolver.Model.Loaded : -1;
+            if (drum != lastDrum)
             {
-                var m = flashlight.Model;
-                flashFill.fillAmount = m.Charge;
-                flashFill.color = m.IsLocked ? Red : m.Charge < 0.2f ? Amber : Teal;
-                flashLabel.text = m.IsLocked ? Loc.Get("UI.TERM.FLASHLIGHT_LOCKED") : Loc.Get("UI.TERM.FLASHLIGHT", Mathf.RoundToInt(m.Charge * 100f));
+                lastDrum = drum;
+                stripDrum.text = drum >= 0 ? Loc.Get("UI.TERM.DRUM_SHORT", drum) : Loc.Get("UI.TERM.DRUM_NONE");
             }
+
+            if (flashlight == null) return;
+            var m = flashlight.Model;
+            flashFill.fillAmount = m.Charge;
+            Color fc = m.IsLocked ? Red : m.Charge < 0.2f ? Amber : Teal;
+            flashFill.color = stripLight.color = fc;
+            int light = m.IsLocked ? -2 : Mathf.RoundToInt(m.Charge * 100f);
+            if (light == lastLight) return;
+            lastLight = light;
+            stripLight.text = Loc.Get("UI.TERM.LIGHT", Mathf.Max(0, light));
+            flashLabel.text = m.IsLocked ? Loc.Get("UI.TERM.FLASHLIGHT_LOCKED") : Loc.Get("UI.TERM.FLASHLIGHT", light);
         }
 
         /// <summary>ECG shape (Interfaz Visual): regular when Fine, irregular when Injured, erratic when Critical.</summary>
@@ -287,149 +433,210 @@ namespace Heartbeat.UI
         private void ShowTab(int i)
         {
             tab = i;
-            for (int p = 0; p < pages.Length; p++) pages[p].SetActive(p == i);
-            if (i != 0) Focus(-1);
+            for (int p = 0; p < pages.Length; p++)
+            {
+                pages[p].SetActive(p == i);
+                tabButtons[p].GetComponent<UiFocusStyle>().SetPinned(p == i);
+            }
             Refresh();
+            if (i == 0) UiKit.Select(slotButtons[Mathf.Max(0, focusedSlot)]);
+            else UiKit.Select(i == 2 && firstEntry != null ? firstEntry : tabButtons[i]);
         }
 
-        /// <summary>
-        /// Accessibility text size (subtitles and terminal, Accesibilidad): the whole panel scales from its top-left
-        /// corner; its unscaled height shrinks by the same factor so it keeps covering 84% of the screen height.
-        /// </summary>
-        private void ApplyTextScale()
+        /// <summary>Terminal scale (Accesibilidad, independent from the subtitle size): the panel grows from its left edge.</summary>
+        private void ApplyScale()
         {
             if (panel == null) return;
-            float k = Services.TryGet(out Save.SaveService saves) ? Mathf.Max(1f, saves.LoadGlobal().textScale) : 1f;
-            panel.pivot = new Vector2(0f, 1f);
-            panel.anchorMin = new Vector2(0.03f, 0.92f - 0.84f / k);
-            panel.anchorMax = new Vector2(0.48f, 0.92f);
-            panel.offsetMin = panel.offsetMax = Vector2.zero;
-            textScale = k;
-            panel.localScale = new Vector3(k, k, 1f);
+            if (Services.TryGet(out Save.SaveService saves))
+            {
+                var g = saves.LoadGlobal();
+                scale = Mathf.Max(1f, g.terminalScale);
+                reduceMotion = g.reduceMotion;
+            }
+            panel.localScale = new Vector3(scale, scale, 1f);
         }
 
         // ---------- Construction ----------
 
         private void Build()
         {
-            panel = NewRect("Screen", (RectTransform)transform);
-            panel.anchorMin = new Vector2(0.03f, 0.08f);
-            panel.anchorMax = new Vector2(0.48f, 0.92f);
-            panel.offsetMin = panel.offsetMax = Vector2.zero;
-            panel.pivot = new Vector2(0.5f, 0.5f);
-            var bg = panel.gameObject.AddComponent<Image>();
-            bg.color = new Color(0.01f, 0.05f, 0.05f, 0.92f);
-            var outline = panel.gameObject.AddComponent<Outline>();
-            outline.effectColor = TealDim;
-            outline.effectDistance = new Vector2(2, -2);
+            panel = UiKit.Rect("Screen", transform);
+            panel.anchorMin = panel.anchorMax = panel.pivot = new Vector2(0f, 0.5f);
+            panel.anchoredPosition = new Vector2(64f, 0f);
+            panel.sizeDelta = new Vector2(880f, 760f);
+            UiKit.Crt(panel, UiKit.BgTerminal, Dim);
+            var v = UiKit.Column(panel, 12, 24);
+            v.childForceExpandWidth = true;
 
-            var v = panel.gameObject.AddComponent<VerticalLayoutGroup>();
-            v.padding = new RectOffset(24, 24, 18, 18);
-            v.spacing = 12;
-            v.childControlHeight = v.childControlWidth = true;
-            v.childForceExpandHeight = false;
+            var head = UiKit.Rect("Header", panel);
+            UiKit.Row(head, 12);
+            header = UiKit.Text(head, "", 30, Teal);
+            header.gameObject.AddComponent<LayoutElement>().flexibleWidth = 1;
+            UiKit.Text(head, Loc.Get("UI.TERM.BRAND"), 24, UiKit.Cyan, true);
 
-            header = MakeText(panel, "", 1f);
-            var tabs = NewRect("Tabs", panel);
-            var h = tabs.gameObject.AddComponent<HorizontalLayoutGroup>();
-            h.spacing = 8;
-            h.childControlWidth = h.childControlHeight = true;
-            h.childForceExpandHeight = false;
-            var tabsLe = tabs.gameObject.AddComponent<LayoutElement>();
-            tabsLe.preferredHeight = 44;
-            tabsLe.flexibleHeight = 0;
+            var tabs = UiKit.Rect("Tabs", panel);
+            UiKit.Row(tabs, 8).childForceExpandWidth = true;
             string[] keys = { "UI.TERM.TAB_INVENTORY", "UI.TERM.TAB_STATUS", "UI.TERM.TAB_LOGS" };
-            for (int i = 0; i < 3; i++) { int ix = i; MakeButton(tabs, Loc.Get(keys[i]), () => ShowTab(ix), 1f); }
+            for (int i = 0; i < 3; i++)
+            {
+                int ix = i;
+                tabButtons[i] = UiKit.Button(tabs, Loc.Get(keys[i]), 28, Teal, () => ShowTab(ix), 48, true);
+            }
 
-            // Inventory page
-            pages[0] = NewPage("Inventory").gameObject;
+            var strip = UiKit.Rect("Strip", panel);
+            UiKit.Row(strip, 24);
+            strip.gameObject.AddComponent<LayoutElement>().minHeight = 40;
+            stripEcg = UiEcg.Build(strip, 28, 36);
+            var ecgSize = stripEcg.GetComponent<LayoutElement>();
+            ecgSize.preferredWidth = 150;
+            ecgSize.flexibleWidth = 0;
+            stripHealth = UiKit.Text(strip, "", 24, Teal);
+            stripHealth.gameObject.AddComponent<LayoutElement>().flexibleWidth = 1;
+            stripLight = UiKit.Text(strip, "", 24, Teal);
+            stripDrum = UiKit.Text(strip, "", 24, Teal);
+
+            BuildInventory();
+            BuildStatus();
+            BuildLogs();
+
+            footer = UiKit.Rect("Keys", panel);
+            UiKit.Row(footer, 24);
+            footer.gameObject.AddComponent<LayoutElement>().minHeight = 40;
+            UiKit.Scanlines(panel);
+
+            toast = UiKit.Rect("Registered", transform);
+            toast.anchorMin = toast.anchorMax = toast.pivot = new Vector2(0f, 1f);
+            toast.anchoredPosition = new Vector2(64f, -36f);   // above the terminal's panel, which may be open
+            toast.sizeDelta = new Vector2(420f, 100f);
+            UiKit.Panel(toast, UiKit.BgTerminal, Dim);
+            toastText = UiKit.Text(toast, "", 28, Teal);
+            UiKit.Stretch(toastText.rectTransform, Vector2.zero, Vector2.one);
+            toastText.margin = new Vector4(20, 10, 20, 10);
+            toastText.alignment = TextAlignmentOptions.MidlineLeft;
+            toast.gameObject.SetActive(false);
+        }
+
+        private void BuildInventory()
+        {
+            var page = NewPage("Inventory");
+            pages[0] = page.gameObject;
+            swapAlert = UiKit.Text(page, "", 28, Amber, true);
+            swapAlert.textWrappingMode = TextWrappingModes.Normal;
+            swapAlert.gameObject.SetActive(false);
+
+            var row = UiKit.Rect("Row", page);
+            UiKit.Row(row, 20, TextAnchor.UpperLeft);
+            row.gameObject.AddComponent<LayoutElement>().flexibleHeight = 1;
+
+            var grid = UiKit.Rect("Slots", row);
+            var g = grid.gameObject.AddComponent<GridLayoutGroup>();
+            g.cellSize = new Vector2(SlotSize, SlotSize);
+            g.spacing = new Vector2(8, 8);
+            g.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
+            g.constraintCount = 3;
+            var gridSize = grid.gameObject.AddComponent<LayoutElement>();
+            gridSize.preferredWidth = 3 * SlotSize + 16;
+            gridSize.preferredHeight = 2 * SlotSize + 8;
+
             for (int i = 0; i < InventoryModel.SlotCount; i++)
             {
                 int ix = i;
-                var b = MakeButton(pages[0].transform, "", () => Focus(ix), 1f);
-                b.GetComponent<LayoutElement>().preferredHeight = 52;
-                slotLabels[i] = b.GetComponentInChildren<TMP_Text>();
-                slotLabels[i].alignment = TextAlignmentOptions.MidlineLeft;
-                slotFrames[i] = b.GetComponent<Image>();
-                var trigger = b.gameObject.AddComponent<EventTrigger>();
-                AddTrigger(trigger, EventTriggerType.PointerEnter, () => Focus(ix));
-                AddTrigger(trigger, EventTriggerType.Select, () => Focus(ix));
-            }
-            actionHint = MakeText(pages[0].transform, "", 0.8f);
+                var b = UiKit.Button(grid, "", 22, Teal, null, SlotSize, true);
+                slotButtons[i] = b;
+                slotEmpty[i] = b.GetComponentInChildren<TMP_Text>();
 
-            // Status page
-            var status = NewPage("Status");
-            pages[1] = status.gameObject;
-            healthLabel = MakeText(status, "", 1.4f);
-            // VT323 glyphs are taller than the size TMP lays them out with: reserve the line so the ECG never sits on it.
-            healthLabel.gameObject.AddComponent<LayoutElement>().minHeight = baseFontSize * 1.4f * 1.6f;
-            var strip = NewRect("ECG", status);
-            var stripLayout = strip.gameObject.AddComponent<LayoutElement>();
-            stripLayout.minHeight = stripLayout.preferredHeight = 130;
-            strip.gameObject.AddComponent<RectMask2D>();
-            ecgStrip = strip;
-            var sh = strip.gameObject.AddComponent<HorizontalLayoutGroup>();
-            sh.spacing = 2;
-            sh.childAlignment = TextAnchor.MiddleLeft;
-            sh.childControlHeight = false;
-            sh.childControlWidth = true;
-            sh.childForceExpandHeight = false;
-            for (int i = 0; i < EcgBars; i++)
-            {
-                var bar = NewRect("b", strip);
-                bar.sizeDelta = new Vector2(4, 4);
-                bar.gameObject.AddComponent<Image>().color = Teal;
-                ecg.Add(bar);
+                var icon = UiKit.Rect("Icon", b.transform);
+                icon.anchorMin = icon.anchorMax = icon.pivot = new Vector2(0.5f, 0.62f);
+                icon.sizeDelta = new Vector2(72f, 72f);
+                slotIcons[i] = icon.gameObject.AddComponent<Image>();
+                slotIcons[i].raycastTarget = false;
+                slotIcons[i].enabled = false;
+
+                slotNames[i] = UiKit.Text(b.transform, "", 24, Teal, true);
+                UiKit.Stretch(slotNames[i].rectTransform, Vector2.zero, new Vector2(1f, 0.28f));
+                slotNames[i].alignment = TextAlignmentOptions.Center;
+                slotCounts[i] = UiKit.Text(b.transform, "", 24, Teal, true);
+                UiKit.Stretch(slotCounts[i].rectTransform, new Vector2(0f, 0.8f), new Vector2(0.94f, 1f));
+                slotCounts[i].alignment = TextAlignmentOptions.MidlineRight;
+
+                var trigger = b.gameObject.AddComponent<EventTrigger>();
+                var e = new EventTrigger.Entry { eventID = EventTriggerType.Select };
+                e.callback.AddListener(_ => Focus(ix));
+                trigger.triggers.Add(e);
             }
-            flashLabel = MakeText(status, "", 1f);
-            var barBg = NewRect("FlashBar", status);
+
+            var detail = UiKit.Rect("Detail", row);
+            UiKit.Column(detail, 10);
+            detail.gameObject.AddComponent<LayoutElement>().flexibleWidth = 1;
+            detailName = Line(detail, 28);
+            detailName.textWrappingMode = TextWrappingModes.Normal;
+            detailInfo = UiKit.Text(detail, "", 24, Teal);
+            actionHint = Line(detail, 24);
+        }
+
+        private void BuildStatus()
+        {
+            var page = NewPage("Status");
+            pages[1] = page.gameObject;
+            healthLabel = UiKit.Text(page, "", 48, Teal);
+            // VT323 glyphs are taller than the size TMP lays them out with: reserve the line so the ECG never sits on it.
+            healthLabel.gameObject.AddComponent<LayoutElement>().minHeight = 72;
+            bigEcg = UiEcg.Build(page, EcgBars, 150);
+            flashLabel = Line(page, 28);
+            var barBg = UiKit.Rect("FlashBar", page);
             barBg.gameObject.AddComponent<LayoutElement>().preferredHeight = 18;
             barBg.gameObject.AddComponent<Image>().color = new Color(0, 0, 0, 0.6f);
-            var fill = NewRect("Fill", barBg);
-            fill.anchorMin = Vector2.zero; fill.anchorMax = Vector2.one; fill.offsetMin = fill.offsetMax = Vector2.zero;
+            var fill = UiKit.Stretch(UiKit.Rect("Fill", barBg), Vector2.zero, Vector2.one);
             flashFill = fill.gameObject.AddComponent<Image>();
             flashFill.sprite = Sprite.Create(Texture2D.whiteTexture, new Rect(0, 0, 4, 4), Vector2.zero);
             flashFill.type = Image.Type.Filled;
             flashFill.fillMethod = Image.FillMethod.Horizontal;
+            emiliaCount = Line(page, 28);
+            confiscatedCount = Line(page, 28);
+        }
 
-            // Logs page
-            var logs = NewPage("Logs");
-            pages[2] = logs.gameObject;
-            emiliaCount = MakeText(logs, "", 1f);
-            logsList = MakeText(logs, "", 0.9f);
-            logButtons = NewRect("Entries", logs);
-            var lv = logButtons.gameObject.AddComponent<VerticalLayoutGroup>();
-            lv.spacing = 4;
-            lv.childControlHeight = lv.childControlWidth = true;
-            lv.childForceExpandHeight = false;
-            readerTitle = MakeText(logs, "", 1.1f);
-            readerBody = MakeText(logs, "", 0.9f);
-            readerBody.textWrappingMode = TextWrappingModes.Normal;
+        private void BuildLogs()
+        {
+            var page = NewPage("Logs");
+            pages[2] = page.gameObject;
+            noLogs = UiKit.Text(page, Loc.Get("UI.TERM.NO_LOGS"), 26, Dim, true);
+            var row = UiKit.Rect("Row", page);
+            UiKit.Row(row, 16, TextAnchor.UpperLeft);
+            row.gameObject.AddComponent<LayoutElement>().flexibleHeight = 1;
+
+            var cats = UiKit.Rect("Categories", row);
+            UiKit.Column(cats, 4);
+            var catSize = cats.gameObject.AddComponent<LayoutElement>();
+            catSize.preferredWidth = 290;
+            catSize.flexibleWidth = 0;
+            foreach (RecordKind k in Enum.GetValues(typeof(RecordKind)))
+            {
+                var kind = k;
+                var b = UiKit.Button(cats, CategoryName(k), 22, Teal, () => SelectCategory(kind), 38, true);
+                b.GetComponentInChildren<TMP_Text>().alignment = TextAlignmentOptions.MidlineLeft;
+                categoryButtons[k] = b;
+            }
+
+            var entries = UiKit.Rect("Entries", row);
+            UiKit.Column(entries, 2);
+            entries.gameObject.AddComponent<LayoutElement>().flexibleWidth = 1;
+            logButtons = entries;
+        }
+
+        /// <summary>A text line that keeps its height: VT323 lays out shorter than it draws, so plain lines overlap.</summary>
+        private static TMP_Text Line(Transform parent, float size)
+        {
+            var t = UiKit.Text(parent, "", size, Teal);
+            t.gameObject.AddComponent<LayoutElement>().minHeight = size * 1.3f;
+            return t;
         }
 
         private RectTransform NewPage(string name)
         {
-            var p = NewRect(name, panel);
-            var v = p.gameObject.AddComponent<VerticalLayoutGroup>();
-            v.spacing = 8;
-            v.childControlHeight = v.childControlWidth = true;
-            v.childForceExpandHeight = false;
+            var p = UiKit.Rect(name, panel);
+            UiKit.Column(p, 8);
             p.gameObject.AddComponent<LayoutElement>().flexibleHeight = 1;
             return p;
-        }
-
-        private static RectTransform NewRect(string name, Transform parent) => UiKit.Rect(name, parent);
-
-        private TMP_Text MakeText(Transform parent, string text, float scale) => UiKit.Text(parent, text, baseFontSize * scale, Teal);
-
-        private Button MakeButton(Transform parent, string text, System.Action onClick, float scale) =>
-            UiKit.Button(parent, text, baseFontSize * scale, Teal, onClick);
-
-        private static void AddTrigger(EventTrigger t, EventTriggerType type, System.Action a)
-        {
-            var e = new EventTrigger.Entry { eventID = type };
-            e.callback.AddListener(_ => a());
-            t.triggers.Add(e);
         }
     }
 }

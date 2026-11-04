@@ -45,7 +45,7 @@ Define cómo se presenta la historia al jugador y cómo funcionan los diálogos.
 
 - Sin actuación de voz: cada línea se presenta como **sonido vocal + texto en pantalla**.
 - Subtítulos o texto en pantalla obligatorios en todas las líneas.
-- Leer un documento no pausa el juego (M-08).
+- Leer un documento detiene el juego hasta cerrarlo (M-08, D-159); la reacción de Lukas se oye al cerrar.
 - Ninguna línea ofrece opciones de respuesta; las únicas decisiones del jugador son espaciales e interactivas (ver "Decisiones narrativas").
 - **Documentos corruptos (D-45, D-58):** algunos documentos, sobre todo los relacionados con la memoria de Lukas, se registran con partes del texto ilegibles. La corrupción es un **glitch de realidad** provocado por el laboratorio o el latido: el texto se distorsiona con símbolos y letras corruptas. No es una censura. "Corrupto" es un término distinto de las fallas de la máquina (M-17). La corrupción **nunca** oculta información necesaria para avanzar (rutas, reglas): esa parte siempre es legible y solo se corrompe el contenido narrativo (M-08). Se completan en el desenlace solo si Lukas reunió los 6 documentos de Emilia (M-19, D-55). Regla (D-127): todo pasaje que nombra a Lukas, se dirige a él o habla de su vida con Emilia sale corrupto, en cualquier documento; el resto es legible. Textos en [[05 - Textos del Juego]].
 - **Frase clave (D-58):** **"Escucha el latido"** se repite entre las dos voces y cambia de sentido según quién la dice: indicación médica de calma (Vitalis), dato clínico (The Mother) u obsesión (Emilia).

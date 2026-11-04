@@ -87,6 +87,7 @@ namespace Heartbeat.Interaction
         private void OnInteract(InputAction.CallbackContext _)
         {
             if (Current == null || player.MovementLocked) return;
+            if (Services.TryGet(out PauseService pause) && (pause.IsReading || pause.ReadingEndedFrame == Time.frameCount)) return;   // that E closes the reading
             if (router.Context == InputContext.OverBody && Services.TryGet<Combat.PlayerFinisher>(out var f) && f.HasTarget) return;
             HbLog.Info("Interact", $"Interact {((MonoBehaviour)Current).name}");
             GameEvents.RaisePlayerGesture(GestureFor(Current));
@@ -95,7 +96,7 @@ namespace Heartbeat.Interaction
 
         private string GestureFor(IInteractable target)
         {
-            if (target is DocumentPickup) return "Examine";
+            if (target is DocumentPickup || target is UI.TutorialPoster) return "Examine";
             float height = target.InteractionPoint.y - transform.position.y;
             if (height < 0.6f) return "Pick_Floor";
             string kind = target.GetType().Name;

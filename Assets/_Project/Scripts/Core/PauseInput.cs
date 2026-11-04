@@ -27,6 +27,8 @@ namespace Heartbeat.Core
 
         private void OnPause(InputAction.CallbackContext _)
         {
+            if (pause.IsReading || pause.ReadingEndedFrame == Time.frameCount) return;   // Esc closes the reading, not opens the menu
+            if (UI.ConfirmDialog.AnyOpen) return;   // Esc cancels the dialog, it does not resume behind it
             if (pause.IsPaused) pause.TryResume();
             else pause.TryPause();
         }

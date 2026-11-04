@@ -112,7 +112,7 @@ Terminal del brazo (Tab)
 
 ### Terminal del brazo
 
-**Propósito:** Gestionar recursos y consultar estados y registros sin pausar (M-07, M-16, D-86).
+**Propósito:** Gestionar recursos y consultar estados y registros sin pausar (M-07, M-16, D-86). Abrir una entrada lleva a la vista de lectura, que sí detiene el juego (D-159). Una tira con pulso, salud, luz y tambor queda visible en todas las pestañas.
 
 **Elementos:** Pestañas Inventario, Estado y Registros; contadores de las secundarias.
 

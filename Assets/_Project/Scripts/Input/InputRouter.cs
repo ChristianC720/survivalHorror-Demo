@@ -18,6 +18,7 @@ namespace Heartbeat.InputRouting
         Menu,
         Cinematic,
         IntroPlayable,   // D-63: only move, look, interact (+ pause)
+        Reading,         // D-159: the world is stopped; turn pages and close
     }
 
     /// <summary>
@@ -37,6 +38,7 @@ namespace Heartbeat.InputRouting
             // Inventory: real time; the character can still move, but no aim/shoot/shove (Controles).
             { InputContext.Inventory, new[] { "Move", "Sprint", "Crouch" } },   // no Look: the mouse drives the terminal
             { InputContext.IntroPlayable, new[] { "Move", "Look", "Interact" } },
+            { InputContext.Reading, new[] { "Interact" } },   // the same key that opened it closes it
         };
 
         public HeartbeatInput Actions { get; }
@@ -95,6 +97,7 @@ namespace Heartbeat.InputRouting
                     AddMap(wanted, Actions.Hacking.Get());
                     break;
                 case InputContext.Menu:
+                case InputContext.Reading:
                     AddMap(wanted, Actions.UI.Get());
                     break;
                 case InputContext.Cinematic:

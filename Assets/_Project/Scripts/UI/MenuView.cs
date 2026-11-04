@@ -1,11 +1,14 @@
+using System.Collections.Generic;
 using System.Linq;
 using Heartbeat.Audio;
 using Heartbeat.Core;
 using Heartbeat.Cycle;
+using Heartbeat.InputRouting;
 using Heartbeat.Narrative;
 using Heartbeat.Save;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 using UnityEngine.UI;
@@ -24,8 +27,9 @@ namespace Heartbeat.UI
     {
         private const float Size = 32f;
         private static Color Green => UiKit.Green;
+        private static readonly Color TitlePulse = new Color(0.286f, 0.129f, 0.325f);   // #492153, the game's purple
 
-        // Calibration symbols: linear grey levels on black. The left one must be barely visible, the right one not.
+        // Calibration symbols: linear grey levels on black. Left visible, middle barely, right not.
         [SerializeField] private float visibleLevel = 0.03f;
         [SerializeField] private float hiddenLevel = 0.008f;
         [Tooltip("Capsule-row room seen behind the menu terminal (D-90); hidden on the black title and calibration.")]
@@ -35,15 +39,23 @@ namespace Heartbeat.UI
         private RectTransform screen;
         private GameStateMachine states;
         private SaveService saves;
+        private InputRouter router;
         private AudioService audioService;
         private AudioSource loop;
         private Image[] symbols;
         private float brightness = 1f;
+        private System.Action onEscape;
+        private OptionsView options;
+        private readonly Dictionary<GameObject, int> slotRows = new Dictionary<GameObject, int>();
+        private bool slotsNewGame;
 
         private void Start()
         {
             states = Services.Get<GameStateMachine>();
             saves = Services.Get<SaveService>();
+            router = Services.Get<InputRouter>();
+            router.Actions.UI.Cancel.performed += OnCancel;
+            router.Actions.UI.Delete.performed += OnDelete;
             Services.TryGet(out audioService);
             canvas = UiKit.Canvas(gameObject, 20).transform;
             if (backdrop != null)
@@ -61,27 +73,69 @@ namespace Heartbeat.UI
             }
         }
 
-        private void OnDestroy() => StopLoop();
+        private void OnDestroy()
+        {
+            StopLoop();
+            if (router == null) return;
+            router.Actions.UI.Cancel.performed -= OnCancel;
+            router.Actions.UI.Delete.performed -= OnDelete;
+        }
+
+        private void OnCancel(InputAction.CallbackContext _)
+        {
+            if (ConfirmDialog.AnyOpen || (options != null && options.IsRebinding)) return;
+            onEscape?.Invoke();
+        }
+
+        private void OnDelete(InputAction.CallbackContext _)
+        {
+            if (ConfirmDialog.AnyOpen || EventSystem.current == null) return;
+            var selected = EventSystem.current.currentSelectedGameObject;
+            if (selected == null || !slotRows.TryGetValue(selected, out int slot) || saves.Status(slot) == SlotStatus.Empty) return;
+            ConfirmDialog.Show(canvas, Loc.Get("UI.CONFIRM.DELETE"), () =>
+            {
+                saves.Delete(slot);
+                HbLog.Info("Menu", $"Slot {slot} deleted");
+                ShowSlots(slotsNewGame);
+            }, null, Green);
+        }
 
         // ---------- Screens ----------
 
-        private RectTransform NewScreen(float width = 900f, bool inRoom = true)
+        private RectTransform NewScreen(float width = 760f, bool inRoom = true)
         {
             if (screen != null) Destroy(screen.gameObject);
             if (backdrop != null) backdrop.SetActive(inRoom);
+            onEscape = null;
+            options = null;
+            slotRows.Clear();
             screen = UiKit.Rect("Screen", canvas);
             bool terminal = inRoom && backdrop != null;
-            screen.anchorMin = screen.anchorMax = screen.pivot = terminal ? new Vector2(0.7f, 0.5f) : new Vector2(0.5f, 0.5f);
-            screen.sizeDelta = new Vector2(terminal ? Mathf.Min(width, 760f) : width, 0);
-            if (terminal) UiKit.Panel(screen, new Color(0.01f, 0.04f, 0.02f, 0.88f), UiKit.Green);   // the facility terminal
-            UiKit.Column(screen, 14, 28);
+            screen.anchorMin = screen.anchorMax = screen.pivot = terminal ? new Vector2(0.65f, 0.5f) : new Vector2(0.5f, 0.5f);
+            screen.sizeDelta = new Vector2(width, 0);
+            if (terminal) UiKit.Crt(screen, UiKit.BgFacility, Green);   // the facility terminal
+            UiKit.Column(screen, 14, 28).childForceExpandWidth = true;
             screen.gameObject.AddComponent<ContentSizeFitter>().verticalFit = ContentSizeFitter.FitMode.PreferredSize;
+            if (terminal)
+            {
+                var head = UiKit.Text(screen, StationLine(), 26, UiKit.Cyan, true);
+                head.alignment = TextAlignmentOptions.MidlineLeft;
+                UiKit.Scanlines(screen);
+            }
             return screen;
         }
 
-        private TMP_Text Line(string text, float size = Size, TextAlignmentOptions align = TextAlignmentOptions.Center)
+        private string StationLine()
         {
-            var t = UiKit.Text(screen, text, size, Green);
+            int last = saves.LoadGlobal().lastUsedSlot;
+            return saves.Status(last) == SlotStatus.Ok ? Loc.Get("UI.MENU.STATION_FLOOR", FloorOf(saves.Load(last))) : Loc.Get("UI.MENU.STATION");
+        }
+
+        private static int FloorOf(SlotData d) => d.hasAttemptSave ? d.attemptSave.floor : d.hasFloorStart ? d.floorStart.floor : 1;   // D-147: Continue starts on the saved floor
+
+        private TMP_Text Line(string text, float size = Size, TextAlignmentOptions align = TextAlignmentOptions.Center, bool data = false)
+        {
+            var t = UiKit.Text(screen, text, size, Green, data);
             t.alignment = align;
             t.textWrappingMode = TextWrappingModes.Normal;
             return t;
@@ -89,22 +143,33 @@ namespace Heartbeat.UI
 
         private Button Btn(string text, System.Action onClick) => UiKit.Button(screen, text, Size, Green, onClick, 56);
 
+        private RectTransform Keys()
+        {
+            var r = UiKit.Rect("Keys", screen);
+            UiKit.Row(r, 24);
+            r.gameObject.AddComponent<LayoutElement>().minHeight = 40;
+            return r;
+        }
+
+        private string KeyName(InputAction action, string keyboard) => router.UsingGamepad ? router.KeyFor(action) : keyboard;
+
         private void ShowCalibration()
         {
             NewScreen(1200, inRoom: false);
-            Line(Loc.Get("UI.BRIGHT.TITLE"), 30);
+            Line(Loc.Get("UI.BRIGHT.TITLE"), 32);
             var row = UiKit.Rect("Symbols", screen);
             var h = row.gameObject.AddComponent<HorizontalLayoutGroup>();
-            h.spacing = 160;
+            h.spacing = 120;
             h.childAlignment = TextAnchor.MiddleCenter;
             h.childControlWidth = h.childControlHeight = false;
             row.gameObject.AddComponent<LayoutElement>().preferredHeight = 220;
-            symbols = new Image[2];
-            for (int i = 0; i < 2; i++)
+            symbols = new Image[3];
+            for (int i = 0; i < symbols.Length; i++)
             {
                 var s = UiKit.Rect("Symbol", row);
                 s.sizeDelta = new Vector2(180, 180);
                 symbols[i] = s.gameObject.AddComponent<Image>();
+                symbols[i].sprite = UiIcons.Get("Pulse");
             }
             var slider = MakeSlider(screen, Render.Brightness.Min, Render.Brightness.Max, brightness, v => { brightness = v; ApplyBrightnessPreview(); });
             ApplyBrightnessPreview();
@@ -116,10 +181,12 @@ namespace Heartbeat.UI
         private void ApplyBrightnessPreview()
         {
             Render.Brightness.Apply(brightness);
-            float a = Render.Brightness.Perceived(visibleLevel, brightness);
-            float b = Render.Brightness.Perceived(hiddenLevel, brightness);
-            symbols[0].color = new Color(a, a, a);
-            symbols[1].color = new Color(b, b, b);
+            float[] levels = { visibleLevel, Mathf.Sqrt(visibleLevel * hiddenLevel), hiddenLevel };
+            for (int i = 0; i < symbols.Length; i++)
+            {
+                float v = Render.Brightness.Perceived(levels[i], brightness);
+                symbols[i].color = new Color(v, v, v);
+            }
         }
 
         private void AcceptCalibration()
@@ -136,8 +203,12 @@ namespace Heartbeat.UI
         private void ShowTitle()
         {
             NewScreen(1200, inRoom: false);
-            Line("IDENTITY DISSOLUTION", 72).fontStyle = FontStyles.Bold;   // logo placeholder (PLACEHOLDERS.md)
-            Line(Loc.Get("UI.TITLE.PRESS"), 28).color = UiKit.TealDim;
+            var logo = Line("IDENTITY DISSOLUTION", 72);   // logo placeholder (PLACEHOLDERS.md)
+            logo.fontStyle = FontStyles.Bold;
+            logo.color = UiKit.Text1;
+            var pulse = UiEcg.Build(screen, 96, 110);
+            pulse.Color = TitlePulse;
+            Line(Loc.Get("UI.TITLE.PRESS"), 28).color = UiKit.Text1;
             StartLoop("CUE_Heartbeat_Lab");                                 // the title only has the heartbeat (D-90)
             InputSystem.onAnyButtonPress.CallOnce(_ =>
             {
@@ -168,38 +239,58 @@ namespace Heartbeat.UI
 
         private void ShowSlots(bool newGame)
         {
-            NewScreen(1300);
+            slotsNewGame = newGame;
+            NewScreen(1180);
+            onEscape = ShowMain;
             Line(Loc.Get("UI.SLOT.TITLE"), 36);
             Button first = null;
             for (int i = 0; i < SaveService.SlotCount; i++)
             {
                 int slot = i;
                 var status = saves.Status(slot);
-                string label = $"{slot + 1}.  " + (status == SlotStatus.Empty ? Loc.Get("UI.SLOT.EMPTY")
-                    : status == SlotStatus.Damaged ? Loc.Get("UI.SLOT.DAMAGED") : Summary(saves.Load(slot)));
-                var b = Btn(label, () => PickSlot(slot, status, newGame));
-                b.GetComponentInChildren<TMP_Text>().alignment = TextAlignmentOptions.MidlineLeft;
-                b.GetComponentInChildren<TMP_Text>().fontSize = 26;
+                var b = SlotRow(slot, status, () => PickSlot(slot, status, newGame));
                 b.interactable = newGame || status == SlotStatus.Ok;       // empty slots cannot be loaded
+                slotRows[b.gameObject] = slot;
                 if (first == null && b.interactable) first = b;
-                if (status != SlotStatus.Empty)
-                {
-                    var del = UiKit.Button(screen, Loc.Get("UI.SLOT.DELETE") + $" {slot + 1}", 22, UiKit.Amber, () =>
-                        ConfirmDialog.Show(canvas, Loc.Get("UI.CONFIRM.DELETE"), () => { saves.Delete(slot); HbLog.Info("Menu", $"Slot {slot} deleted"); ShowSlots(newGame); }, null, Green), 36);
-                    del.GetComponent<LayoutElement>().preferredHeight = 36;
-                }
             }
             var back = Btn(Loc.Get("UI.MENU.BACK"), ShowMain);
+            var keys = Keys();
+            UiKit.KeyHint(keys, KeyName(router.Actions.UI.Submit, "ENTER"), Loc.Get("UI.SLOT.PICK"), Green);
+            UiKit.KeyHint(keys, KeyName(router.Actions.UI.Delete, "DEL"), Loc.Get("UI.SLOT.DELETE"), Green);
+            UiKit.KeyHint(keys, KeyName(router.Actions.UI.Cancel, "ESC"), Loc.Get("UI.MENU.BACK"), Green);
             UiKit.Select(first != null ? first : back);
         }
 
-        private static string Summary(SlotData d)
+        /// <summary>One slot as a row of columns, so saves can be compared at a glance.</summary>
+        private Button SlotRow(int slot, SlotStatus status, System.Action onClick)
         {
-            int emilia = d.terminal.Count(e => e.kind == RecordKind.EmiliaDocument);
-            string mode = Loc.Get("UI.MODE_LABEL." + d.mode);
-            int floor = d.hasAttemptSave ? d.attemptSave.floor : d.hasFloorStart ? d.floorStart.floor : 1;   // D-147: Continue starts on the saved floor
-            string date = string.IsNullOrEmpty(d.updatedAt) ? "" : d.updatedAt.Substring(0, Mathf.Min(16, d.updatedAt.Length)).Replace('T', ' ');
-            return Loc.Get("UI.SLOT.SUMMARY", d.SubjectLabel, mode, floor, emilia, date);
+            var b = UiKit.Button(screen, "", 28, status == SlotStatus.Damaged ? UiKit.Amber : Green, onClick, 64, true);
+            var cols = UiKit.Stretch(UiKit.Rect("Columns", b.transform), Vector2.zero, Vector2.one);
+            cols.offsetMin = new Vector2(44, 0);
+            cols.offsetMax = new Vector2(-12, 0);
+            UiKit.Row(cols, 16);
+            Column(cols, (slot + 1).ToString(), 40);
+            if (status == SlotStatus.Ok)
+            {
+                var d = saves.Load(slot);
+                string date = string.IsNullOrEmpty(d.updatedAt) ? "" : d.updatedAt.Substring(0, Mathf.Min(16, d.updatedAt.Length)).Replace('T', ' ');
+                Column(cols, d.SubjectLabel, 130);
+                Column(cols, Loc.Get("UI.MODE_LABEL." + d.mode), 200);
+                Column(cols, Loc.Get("UI.SLOT.FLOOR", FloorOf(d)), 120);
+                Column(cols, Loc.Get("UI.SLOT.EMILIA", d.terminal.Count(e => e.kind == RecordKind.EmiliaDocument)), 170);
+                Column(cols, date, 280);
+            }
+            else Column(cols, Loc.Get(status == SlotStatus.Empty ? "UI.SLOT.EMPTY" : "UI.SLOT.DAMAGED"), 500);
+            b.GetComponent<UiFocusStyle>().Apply();
+            return b;
+        }
+
+        private static void Column(Transform parent, string text, float width)
+        {
+            var t = UiKit.Text(parent, text, 28, Green, true);
+            t.textWrappingMode = TextWrappingModes.NoWrap;
+            t.alignment = TextAlignmentOptions.MidlineLeft;
+            t.gameObject.AddComponent<LayoutElement>().preferredWidth = width;
         }
 
         private void PickSlot(int slot, SlotStatus status, bool newGame)
@@ -211,19 +302,21 @@ namespace Heartbeat.UI
 
         private void ShowMode(int slot)
         {
-            NewScreen(1100);
+            NewScreen(1000);
+            onEscape = () => ShowSlots(true);
             Line(Loc.Get("UI.MODE.TITLE"), 36);
             var survival = Btn(Loc.Get("UI.MODE.SURVIVAL"), () => StartGame(slot, GameMode.Survival, true));
-            Line(Loc.Get("UI.MODE.SURVIVAL_DESC"), 24).color = UiKit.TealDim;
+            Line(Loc.Get("UI.MODE.SURVIVAL_DESC"), 26, TextAlignmentOptions.Center, true);
             Btn(Loc.Get("UI.MODE.STORY"), () => StartGame(slot, GameMode.Story, true));
-            Line(Loc.Get("UI.MODE.STORY_DESC"), 24).color = UiKit.TealDim;
+            Line(Loc.Get("UI.MODE.STORY_DESC"), 26, TextAlignmentOptions.Center, true);
             Btn(Loc.Get("UI.MENU.BACK"), () => ShowSlots(true));
             UiKit.Select(survival);
         }
 
         private void ShowCredits()
         {
-            NewScreen(1100);
+            NewScreen(1000);
+            onEscape = ShowMain;
             Line(Loc.Get("UI.MENU.CREDITS"), 40);
             Line(Loc.Get("END.CREDITS.TITLE"), 30);
             Line(Loc.Get("END.CREDITS.ROLL"), 26);   // the 5 members (Roles y Responsabilidades), same roll as the ending credits
@@ -233,13 +326,16 @@ namespace Heartbeat.UI
         private void ShowOptions()
         {
             NewScreen(1300);
-            OptionsView.Build(screen, canvas, Green, ShowMain);
+            options = OptionsView.Build(screen, canvas, Green, ShowMain);
+            onEscape = ShowMain;
             HbLog.Info("Menu", "Options");
         }
 
         private void StartGame(int slot, GameMode mode, bool newGame)
         {
             StopLoop();
+            onEscape = null;
+            slotRows.Clear();
             if (screen != null) Destroy(screen.gameObject);
             Services.Get<CycleController>().StartFromMenu(slot, mode, newGame);
         }
@@ -278,7 +374,7 @@ namespace Heartbeat.UI
             fill.gameObject.AddComponent<Image>().color = UiKit.Green * 0.8f;
             var handleArea = UiKit.Stretch(UiKit.Rect("Handle Area", r), Vector2.zero, Vector2.one);
             var handle = UiKit.Rect("Handle", handleArea);
-            handle.sizeDelta = new Vector2(20, 0);
+            handle.sizeDelta = new Vector2(16, 0);
             handle.anchorMin = new Vector2(0, 0); handle.anchorMax = new Vector2(0, 1);
             var himg = handle.gameObject.AddComponent<Image>();
             himg.color = UiKit.Green;
@@ -290,7 +386,18 @@ namespace Heartbeat.UI
             s.maxValue = max;
             s.value = value;
             s.onValueChanged.AddListener(v => onChange(v));
+            // Focus is shape, not only colour: the handle doubles in width.
+            var t = r.gameObject.AddComponent<EventTrigger>();
+            AddFocus(t, EventTriggerType.Select, handle, 32f);
+            AddFocus(t, EventTriggerType.Deselect, handle, 16f);
             return s;
+        }
+
+        private static void AddFocus(EventTrigger t, EventTriggerType type, RectTransform handle, float width)
+        {
+            var e = new EventTrigger.Entry { eventID = type };
+            e.callback.AddListener(_ => handle.sizeDelta = new Vector2(width, handle.sizeDelta.y));
+            t.triggers.Add(e);
         }
     }
 }

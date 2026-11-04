@@ -531,6 +531,206 @@ MonoBehaviour:
     m_Key: UI.PROMPT.OUT_OF_ORDER
     m_Metadata:
       m_Items: []
+  - m_Id: 1124349997350912
+    m_Key: UI.TERM.CLOSE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431296
+    m_Key: UI.TERM.OPEN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431297
+    m_Key: UI.TERM.BRAND
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431298
+    m_Key: UI.TERM.LIGHT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431299
+    m_Key: UI.TERM.DRUM_SHORT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431300
+    m_Key: UI.TERM.DRUM_NONE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431301
+    m_Key: UI.TERM.RESERVE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431302
+    m_Key: UI.TERM.CONFISCATED_COUNT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431303
+    m_Key: UI.TERM.SLOT_Ammo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431304
+    m_Key: UI.TERM.SLOT_Heal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431305
+    m_Key: UI.TERM.SLOT_Spike
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431306
+    m_Key: UI.TERM.SLOT_KeyMandatory
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431307
+    m_Key: UI.TERM.SLOT_KeyOptional
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431308
+    m_Key: UI.TERM.FULL_SWAP
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431309
+    m_Key: UI.TERM.REPLACE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431310
+    m_Key: UI.TERM.LEAVE_IT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431311
+    m_Key: UI.READ.PAGE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431312
+    m_Key: UI.READ.TURN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431313
+    m_Key: UI.MENU.STATION
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431314
+    m_Key: UI.MENU.STATION_FLOOR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431315
+    m_Key: UI.SLOT.PICK
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431316
+    m_Key: UI.SLOT.FLOOR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431317
+    m_Key: UI.SLOT.EMILIA
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431318
+    m_Key: UI.CONFIRM.COST_DEATH
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431319
+    m_Key: UI.CONFIRM.COST_DEGRADE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431320
+    m_Key: UI.PANEL.LOCKED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431321
+    m_Key: UI.PANEL.KEY_REQUIRED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431322
+    m_Key: UI.PANEL.NO_POWER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431323
+    m_Key: UI.PANEL.RESTORE_MAINS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431324
+    m_Key: UI.PANEL.OUT_OF_ORDER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431325
+    m_Key: UI.PANEL.AUSSER_BETRIEB
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431326
+    m_Key: UI.SURV.LIVE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431327
+    m_Key: UI.SURV.NO_SIGNAL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431328
+    m_Key: UI.OPT.RESOLUTION
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431329
+    m_Key: UI.OPT.SCREEN_MODE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431330
+    m_Key: UI.OPT.MODE_FULL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431331
+    m_Key: UI.OPT.MODE_WINDOW
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431332
+    m_Key: UI.OPT.MODE_BORDERLESS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431333
+    m_Key: UI.OPT.VSYNC
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431334
+    m_Key: UI.OPT.FPS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431335
+    m_Key: UI.OPT.FPS_NONE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350085431336
+    m_Key: UI.OPT.SHADOWS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350089625600
+    m_Key: UI.OPT.LOW
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350089625601
+    m_Key: UI.OPT.MEDIUM
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350089625602
+    m_Key: UI.OPT.HIGH
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350089625603
+    m_Key: UI.OPT.TERMINAL_SCALE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350089625604
+    m_Key: UI.OPT.REDUCE_MOTION
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350089625605
+    m_Key: UI.OPT.REDUCE_FLASHES
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350089625606
+    m_Key: UI.OPT.REDUCE_CRT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1124350089625607
+    m_Key: UI.OPT.PREVIEW
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

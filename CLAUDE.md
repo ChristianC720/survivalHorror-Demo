@@ -32,10 +32,10 @@ The decision log is 175 KB — grep it for a `D-xx` id instead of reading it who
 - **Cross-system communication goes through `GameEvents`** (static C# events, one per row of the "Relaciones entre sistemas" table in Sistemas). The emitter never knows the listener. A system may *read* another system's state, but only changes it through a public method or an event.
 - **Every balance number lives in a ScriptableObject** (`Assets/_Project/ScriptableObjects/Balance/`). No magic numbers in gameplay code. Valores are "initial, subject to balance".
 - **Pure logic in plain C# classes** (no `MonoBehaviour`) so it is EditMode-testable: floor graph, validator, inventory rules, stamina, health states, save model, death counter, hack sequences.
-- **Only Pause sets `Time.timeScale = 0`.** Inventory, terminal and hacking never pause.
+- **Only `PauseService` sets `Time.timeScale = 0`: the pause menu and reading a document or poster (D-159).** Inventory, the terminal's lists and hacking never pause.
 - **Generation is deterministic**: same seed + same config = same floor. Log the seed on every floor build.
-- Input: one `InputActionAsset` (`Assets/_Project/Input/Heartbeat.inputactions`) with one action map per context (Exploration, Aiming, Inventory, Hacking, Surveillance, OverBody, Menu, Cinematic). Only `InputRouter` enables/disables maps. **Never read `Keyboard.current` / `Mouse.current` in gameplay code.**
-- Diegetic UI (D-86): no permanent HUD. On screen only: reticle, `E` prompt, subtitles, "SYNCHRONIZING…". Health is read from posture + arm terminal.
+- Input: one `InputActionAsset` (`Assets/_Project/Input/Heartbeat.inputactions`) with one action map per context (Exploration, Aiming, Inventory, Hacking, Surveillance, OverBody, Menu, Cinematic, Reading). Only `InputRouter` enables/disables maps. **Never read `Keyboard.current` / `Mouse.current` in gameplay code.**
+- Diegetic UI (D-86): no permanent HUD. On screen only: reticle, `E` prompt, subtitles, "SYNCHRONIZING…", and the brief `REGISTERED` notice (D-159). Health is read from posture + arm terminal.
 - Text: Unity Localization string tables, English (primary) + Spanish. **German strings are never translated** — keep them identical in both tables. Edit `Assets/_Project/Localization/Source/*.tsv`, then run `Heartbeat ▸ Import Localization`; read text with `Heartbeat.UI.Loc.Get(key)`.
 - Official Unity packages only (no Asset Store).
 

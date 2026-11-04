@@ -87,4 +87,13 @@ Todos los estados combinan color con texto, forma o sonido (regla visual 1 de [[
   - Final Asimilación: cinemática y créditos (D-61).
 
 
+## Rediseño aplicado (D-159)
+
+- **Foco:** la fila enfocada se ilumina, con texto oscuro y el marcador `>`; el estado nunca depende solo del color.
+- **Terminal del brazo:** pantalla CRT con carcasa, cabecera con el sujeto y `VITALIS KONZERN` en cian, y una tira con pulso, salud, luz y tambor en todas las pestañas. Inventario en cuadrícula de 3×2 con iconos de línea.
+- **Lectura:** vista propia, separada de la lista. Documentos en la pantalla del terminal; pósters en papel crema con la banda cian de Vitalis.
+- **Hackeo:** cajas de tecla (introducida rellena, siguiente con marco, resto tenue) abajo a la izquierda; en la introducción, teléfono vertical claro (D-63).
+- **Mundo:** paneles pequeños sobre la puerta (`LOCKED / KEY REQUIRED`, `NO POWER / RESTORE MAINS`) y junto al elevador (`OUT OF ORDER / AUSSER BETRIEB`).
+- **Vigilancia:** `CAM  LIVE` en la imagen; `NO SIGNAL` breve y translúcido al cortarse o negarse por una caza.
+
 > **Navegación:** [[00 - Índice]] · ← [[03 - Entornos]] · [[05 - Audio y Música]] →

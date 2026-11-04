@@ -539,6 +539,14 @@ Sonido vocal más texto en pantalla (D-52). El texto se mantiene limpio y solo s
 | `lukas_name_own` | Justo después | …Lukas. I'm Lukas. | …Lukas. Soy Lukas. |
 
 
+## Textos añadidos con el rediseño (D-159)
+
+Etiquetas del terminal y de la instalación, iguales en ambos idiomas: `LIGHT {0}%`, `DRUM {0}/6`, `RESERVE {0}`, `CONFISCATED: {0}/12`, `ROUNDS`, `STABILIZER`, `SPIKE`, `ACCESS KEY`, `SERVICE KEY`, `INVENTORY FULL — REPLACE WITH {0}?`, `REPLACE`, `LEAVE IT`, `PAGE {0}/{1}`, `CAM  LIVE`, `NO SIGNAL`, `LOCKED`, `KEY REQUIRED`, `NO POWER`, `RESTORE MAINS`, `OUT OF ORDER`. En alemán, sin traducir: `AUSSER BETRIEB`.
+
+Menú principal: `VITALIS KONZERN — STATION 3 - FLOOR: {0}` / `VITALIS KONZERN — STATION 3 - PISO: {0}`.
+
+Confirmaciones: `COST: +1 death on the counter - the cycle degrades` / `COSTO: +1 muerte al contador - el ciclo se degrada`; `COST: the cycle degrades` / `COSTO: el ciclo se degrada`.
+
 > **Navegación:** [[00 - Índice]] · ← [[04 - Diálogos y Narrativa]] · [[01 - Estructura del Contenido]] →
 
 ## Elevador averiado (D-158)

@@ -28,6 +28,13 @@ namespace Heartbeat.Save
         public bool invertY;
         public float lookSensitivity = 1f, aimSensitivity = 1f;
         public bool aimAssist;
+        public int resolutionWidth, resolutionHeight;   // 0 = native
+        public int screenMode;                 // 0 fullscreen, 1 window, 2 borderless
+        public bool vsync = true;
+        public int fpsLimit;                   // 0 = none
+        public int shadowQuality = 2;          // 0 low, 1 medium, 2 high: shadowed room lights
+        public float terminalScale = 1f;
+        public bool reduceMotion, reduceFlashes, reduceCrt;
         public List<string> seenCinematics = new List<string>();
         public bool creditsSeen;
     }

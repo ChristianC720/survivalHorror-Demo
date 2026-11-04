@@ -34,8 +34,29 @@ namespace Heartbeat.Generation
 
         public void SetRooms(IEnumerable<RoomInstance> all) { rooms.Clear(); rooms.AddRange(all); }
 
-        private void OnEnable() { GameEvents.RoomEntered += OnRoomEntered; GameEvents.PowerRestored += OnPowerRestored; }
-        private void OnDisable() { GameEvents.RoomEntered -= OnRoomEntered; GameEvents.PowerRestored -= OnPowerRestored; }
+        private void OnEnable()
+        {
+            GameEvents.RoomEntered += OnRoomEntered;
+            GameEvents.PowerRestored += OnPowerRestored;
+            GameEvents.OptionsChanged += ReadShadowQuality;
+            ReadShadowQuality();
+        }
+
+        private void OnDisable()
+        {
+            GameEvents.RoomEntered -= OnRoomEntered;
+            GameEvents.PowerRestored -= OnPowerRestored;
+            GameEvents.OptionsChanged -= ReadShadowQuality;
+        }
+
+        // Options → Video: High is the whole budget; each step down costs one shadowed light. Applies from the next room.
+        private int shadowBudget;
+
+        private void ReadShadowQuality()
+        {
+            int quality = Services.TryGet(out Save.SaveService saves) ? saves.LoadGlobal().shadowQuality : 2;
+            shadowBudget = Mathf.Max(1, maxShadowedRoomLights - (2 - quality));
+        }
 
         private void OnRoomEntered(MonoBehaviour m) => Apply(m as RoomInstance);
 
@@ -95,7 +116,7 @@ namespace Heartbeat.Generation
             foreach (var c in candidates.OrderBy(c => c.priority))
             {
                 // A light without shadows crosses walls and lights the wrong room, so past the shadow budget a light stays off.
-                if (LitCount >= maxRoomLights || ShadowedCount >= maxShadowedRoomLights) break;
+                if (LitCount >= maxRoomLights || ShadowedCount >= shadowBudget) break;
                 c.light.enabled = true;
                 LitCount++;
                 c.light.shadows = LightShadows.Hard;

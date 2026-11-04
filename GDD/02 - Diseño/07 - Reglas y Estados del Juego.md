@@ -159,8 +159,8 @@ La salida durante alerta o caza pasa por Muerte para aplicar su costo y termina 
 
 ## Reglas globales
 
-1. **Tiempo real:** el inventario (M-07), el terminal del brazo (M-16), la lectura de documentos (M-08), el hackeo (M-13), la vista de vigilancia (M-02) y el aviso de autoguardado (D-30) no detienen el juego. La IA enemiga sigue activa.
-2. **Solo la pausa detiene el recorrido:** `Esc` congela la IA, los temporizadores (regeneración de resistencia, alertas, atención de The Mother, aviso de reciclaje) y las animaciones en curso. Los estados de cinemática y menú no forman parte del recorrido.
+1. **Tiempo real:** el inventario (M-07), el terminal del brazo (M-16), el hackeo (M-13), la vista de vigilancia (M-02) y el aviso de autoguardado (D-30) no detienen el juego. La IA enemiga sigue activa.
+2. **Solo la pausa y la lectura detienen el recorrido (D-159):** leer un documento o póster congela el juego como la pausa, sin menú y sin cambiar de estado; `Esc` congela la IA, los temporizadores (regeneración de resistencia, alertas, atención de The Mother, aviso de reciclaje) y las animaciones en curso. Los estados de cinemática y menú no forman parte del recorrido.
 3. **Guardado (D-30, modifica D-22):** no existe guardado manual ni suspensión.
     - El autoguardado se crea al llegar a la **sala clave final** de los pisos 1 y 2, solo si no hay enemigos en caza; si el jugador llega perseguido, espera a que la caza termine. Las salas clave secundarias y la sala de The Mother no guardan.
     - Guarda el estado al llegar, incluido el inventario (M-07). Al continuar se restaura ese estado, no el del momento de salir.

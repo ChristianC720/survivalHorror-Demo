@@ -14,6 +14,20 @@ namespace Heartbeat.Render
 
         public static float Strength(int level) => Mathf.Clamp01(level / (float)MaxLevel) * MaxStrength;
 
-        public static void Apply(int level) => Shader.SetGlobalFloat(Id, Strength(level));
+        private static int current;
+        private static bool reduced;
+
+        public static void Apply(int level)
+        {
+            current = level;
+            Shader.SetGlobalFloat(Id, Strength(level) * (reduced ? 0.5f : 1f));
+        }
+
+        /// <summary>Options "reduce CRT effects": softer, but the corruption still grows with the level.</summary>
+        public static void SetReduced(bool on)
+        {
+            reduced = on;
+            Apply(current);
+        }
     }
 }

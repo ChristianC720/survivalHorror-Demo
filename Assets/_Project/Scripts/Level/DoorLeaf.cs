@@ -53,7 +53,40 @@ namespace Heartbeat.Level
         public string PromptKey => IsLocked ? "UI.PROMPT.LOCKED" : State == DoorState.Open ? "UI.PROMPT.CLOSE" : "UI.PROMPT.OPEN";   // sealed: E opens it too
         public Vector3 InteractionPoint => transform.position + Vector3.up * 1.2f;
 
-        public void Configure(DoorLock l) => lockType = l;
+        public void Configure(DoorLock l)
+        {
+            lockType = l;
+            RefreshPanel();
+        }
+
+        private GameObject panel;
+        private const float PanelHeight = 1.5f, PanelGap = 0.03f;   // above the band some door models carry at waist height
+
+        /// <summary>Local Z of the leaf's face, whatever the floor's door model is.</summary>
+        private float LeafFace()
+        {
+            float face = 0f;
+            foreach (var r in leaf.GetComponentsInChildren<Renderer>())
+            {
+                var b = r.bounds;
+                var f = transform.forward;
+                float extent = Mathf.Abs(f.x) * b.extents.x + Mathf.Abs(f.y) * b.extents.y + Mathf.Abs(f.z) * b.extents.z;
+                face = Mathf.Max(face, Mathf.Abs(Vector3.Dot(b.center - transform.position, f)) + extent);
+            }
+            return face + PanelGap;
+        }
+
+        /// <summary>Beside the door, the reason it does not open; gone once it can (approved UI, Interfaz Visual).</summary>
+        private void RefreshPanel()
+        {
+            if (panel != null) Destroy(panel);
+            panel = null;
+            if (lockType == DoorLock.None) return;
+            bool noPower = lockType == DoorLock.NoPower;
+            // On the leaf itself, not beside it: in a generated floor a door can sit right next to a corner.
+            panel = UI.StatusPanel.Create(transform, UI.Loc.Get(noPower ? "UI.PANEL.NO_POWER" : "UI.PANEL.LOCKED"),
+                UI.Loc.Get(noPower ? "UI.PANEL.RESTORE_MAINS" : "UI.PANEL.KEY_REQUIRED"), UI.UiKit.Amber, new Vector3(0f, PanelHeight, LeafFace()), true);
+        }
 
         public void SetEnemyBarrier(bool on)
         {
@@ -65,6 +98,7 @@ namespace Heartbeat.Level
         {
             if (lockType != DoorLock.NoPower) return;
             lockType = DoorLock.None;
+            RefreshPanel();
             HbLog.Info("Door", $"{name} power restored");
         }
 
@@ -88,6 +122,7 @@ namespace Heartbeat.Level
                         return;
                     }
                     lockType = DoorLock.None;
+                    RefreshPanel();
                     HbLog.Info("Door", $"{name}: unlocked with {kind}");
                     SetState(DoorState.Open);
                     return;
@@ -209,7 +244,11 @@ namespace Heartbeat.Level
             if (secondLeaf != null) closedSecondX = secondLeaf.localPosition.x;
         }
 
-        private void Start() => SetState(State);
+        private void Start()
+        {
+            SetState(State);
+            RefreshPanel();
+        }
 
         /// <summary>Debug / tests.</summary>
         public void DebugSetState(string s) => SetState((DoorState)System.Enum.Parse(typeof(DoorState), s, true));
