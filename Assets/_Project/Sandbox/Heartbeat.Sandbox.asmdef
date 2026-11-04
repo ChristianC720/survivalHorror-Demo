@@ -1,0 +1,14 @@
+{
+    "name": "Heartbeat.Sandbox",
+    "rootNamespace": "Heartbeat.Sandbox",
+    "references": ["Unity.InputSystem"],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": ["UNITY_EDITOR"],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -27,7 +27,7 @@ Status: rebuilt from scratch on 2026-10-31. The old prototype is only in git: `g
 The decision log is 175 KB — grep it for a `D-xx` id instead of reading it whole.
 
 ## Architecture rules (non-negotiable)
-- Scenes: `Bootstrap` (persistent services, first in build) · `MainMenu` · `Intro` · `Floor` (empty shell; rooms are instantiated by the generator) · `Cinematics` (additive). `Sandbox_*` scenes are for building and are never in the build.
+- Scenes: `Bootstrap` (persistent services, first in build) · `MainMenu` · `Intro` · `Floor` (empty shell; rooms are instantiated by the generator) · `Cinematics` (additive). `Sandbox_*` scenes are for building and are never in the build. `Sandbox_Gallery` (code in `Assets/_Project/Sandbox`, an assembly compiled only in the editor) shows every asset by type and floor with developer options: open it and press Play; it runs without `Bootstrap` or any game script.
 - **No singletons outside `Bootstrap` services.** Services are reached through `Services.Get<T>()` (a registry populated by `Bootstrap`), never `FindObjectOfType` in `Update`.
 - **Cross-system communication goes through `GameEvents`** (static C# events, one per row of the "Relaciones entre sistemas" table in Sistemas). The emitter never knows the listener. A system may *read* another system's state, but only changes it through a public method or an event.
 - **Every balance number lives in a ScriptableObject** (`Assets/_Project/ScriptableObjects/Balance/`). No magic numbers in gameplay code. Valores are "initial, subject to balance".

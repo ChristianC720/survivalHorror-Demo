@@ -176,6 +176,9 @@ namespace Heartbeat.Core
         {
             LaunchScene = SceneManager.GetActiveScene().name;
             if (LaunchScene == SceneNames.Bootstrap) return;
+#if UNITY_EDITOR
+            if (LaunchScene == "Sandbox_Gallery") return;   // the asset gallery runs with no game services at all
+#endif
             if (!Application.CanStreamedLevelBeLoaded(SceneNames.Bootstrap))
             {
                 Debug.LogWarning("[Heartbeat][Core] Bootstrap scene is not in the build settings");
