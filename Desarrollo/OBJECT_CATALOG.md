@@ -73,3 +73,7 @@ Legend:
 
 ## Boss — `Prefabs/PH/`
 `PH_TheMother` (cryo-archive "cathedral shelf" on a crane, ≈ 8 × 10 × 4), `PH_TheMother_CollectorArm`, `PH_TheMother_HostileCamera`, `PROP_F3_MixingTable` (hack node host ×3).
+
+## CRT monitors (D-157)
+
+`PROP_F1_CRT` (steel), `PROP_F2_CRT` (yellowed plastic), both set on desks and crates; `PROP_F3_CRTBank` (floor-standing rack of six, one red). Placement: `Scripts/Editor/RoomDress.cs`.

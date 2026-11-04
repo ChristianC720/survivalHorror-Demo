@@ -20,7 +20,7 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.025, g: 0.02, b: 0.025, a: 1}
+  m_AmbientSkyColor: {r: 0.05, g: 0.043, b: 0.048, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
@@ -328,7 +328,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Heartbeat.Runtime::Heartbeat.Recycle.RecycleSystem
   riseAfterSeconds: 40
   warningSeconds: 3
-  metal: {fileID: 2100000, guid: 6082adaba89a82042911f74d7610cd30, type: 2}
 --- !u!1 &1894999164
 GameObject:
   m_ObjectHideFlags: 0

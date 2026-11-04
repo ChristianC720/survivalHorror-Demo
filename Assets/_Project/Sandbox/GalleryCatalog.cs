@@ -295,7 +295,7 @@ namespace Heartbeat.Sandbox
             Object.Destroy(sphere);
         }
 
-        /// <summary>Models no prefab uses yet, such as the team's Aturdidor and the scene-only statics.</summary>
+        /// <summary>Models no prefab uses, such as the scene-only statics and the earlier Alto.</summary>
         private void AddLooseModels()
         {
             foreach (var guid in AssetDatabase.FindAssets("t:Model", new[] { Models }))
@@ -309,10 +309,12 @@ namespace Heartbeat.Sandbox
                 string name = System.IO.Path.GetFileNameWithoutExtension(path);
                 string dir = System.IO.Path.GetDirectoryName(path).Replace('\\', '/');
                 var mat = AssetDatabase.LoadAssetAtPath<Material>($"{dir}/M_{name}.mat")
-                    ?? AssetDatabase.LoadAssetAtPath<Material>(name.StartsWith("CH_Item_") ? Models + "Props/M_Herramientas.mat" : Models + "Props/M_Palette.mat");
+                    ?? AssetDatabase.LoadAssetAtPath<Material>(Models + "Props/M_Palette.mat");
+                // A body with clothing has a second material slot: the earlier Alto kept for comparison.
+                var cloth = AssetDatabase.LoadAssetAtPath<Material>($"{dir}/M_{name}_Cloth.mat");
                 Add(asset, name, path, "Modelos sueltos", FloorOf(path), go =>
                 {
-                    foreach (var r in go.GetComponentsInChildren<Renderer>(true)) r.sharedMaterial = mat;
+                    foreach (var r in go.GetComponentsInChildren<Renderer>(true)) r.sharedMaterials = cloth != null ? new[] { mat, cloth } : new[] { mat };
                     return true;
                 });
             }

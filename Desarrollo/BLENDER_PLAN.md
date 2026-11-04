@@ -167,3 +167,18 @@ The owner asked for identity per floor and no Unity primitives. `Scripts/env_mod
 Measured in `Floor` on floor 1: 71.6k triangles per frame, 18 set-pass calls, 42 shadow casters, 120 fps in the editor. 12 generated floors: 0 failures, 0 agents off the mesh.
 
 Enemies: the delivered body plus a clothing shell in `team_models.add_clothing`, on the same weights, second material slot. Recycled forms are pending. Open questions for the owner: `DUDAS_MODELOS.md`.
+
+## 11. Owner review (2026-11-04, D-157)
+
+| Topic | What exists now |
+|---|---|
+| One `.blend` per model | `Scripts/blend_sweep.py` re-imports each game FBX into `Blender3DAssets/Blends/<same folders as Models>/`. Textures are linked by relative path. Run it after any export. A builder run overwrites hand edits on its FBX, so a change meant to last goes in the builder |
+| Black triangles on walls | F2 and F3 kit prefabs still held F1's model, coplanar with their own. `EnvWire.DropOtherModels` removes it; `PrefabOverlapTests` fails if two renderers share bounds in a prefab or a floor shows another floor's model |
+| Light through walls | `RoomActivation`: a light past the shadow budget stays off instead of lighting without shadows |
+| Black upper walls | Ceiling lamps are 165/100 degree spots at lower intensity; ambient raised to (.05, .043, .048). Floors and ceilings cast no shadow |
+| Room dressing | `RoomDress` (`Heartbeat/Rooms/Dress Rooms`): authored coordinates per layout, in a `Dress_F#` child. It reports solid props on spawns and sockets |
+| More rooms | `FloorRedress.ExecuteF1` re-dresses the F2 B layouts as `ROOM_F1_*_B` |
+| Door | `DoorLeaf.sideSlide` and `secondLeaf`; `Door_F2` has two leaves |
+| Alto | `CH_Alto` has the improved clothing; `CH_Alto_V1` keeps the earlier one, visible in `Sandbox_Gallery` under Modelos sueltos |
+
+Measured in `Floor`, floor 1, with three shadowed lights: 172k triangles per frame, 25 set-pass calls, 200 shadow casters, about 108 fps in the editor (was 71.6k, 18, 42 and 120 with one shadowed light).

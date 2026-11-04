@@ -64,7 +64,7 @@ namespace Heartbeat.Generation
             current = room;
             int liveEnemies = 0;
             bool LiveRoom(RoomInstance r) => r == room || room.Neighbours.Contains(r);
-            var candidates = new List<(Light light, float priority, bool own)>();
+            var candidates = new List<(Light light, float priority)>();
             Vector3 centre = room.transform.position;
             foreach (var r in rooms)
             {
@@ -73,7 +73,7 @@ namespace Heartbeat.Generation
                 foreach (var l in r.GetComponentsInChildren<Light>(true))
                 {
                     l.enabled = false;
-                    if (live && r.IsPowered) candidates.Add((l, d, r == room));
+                    if (live && r.IsPowered) candidates.Add((l, d));
                 }
             }
 
@@ -94,12 +94,12 @@ namespace Heartbeat.Generation
             LitCount = ShadowedCount = 0;
             foreach (var c in candidates.OrderBy(c => c.priority))
             {
-                if (LitCount >= maxRoomLights) break;
+                // A light without shadows crosses walls and lights the wrong room, so past the shadow budget a light stays off.
+                if (LitCount >= maxRoomLights || ShadowedCount >= maxShadowedRoomLights) break;
                 c.light.enabled = true;
                 LitCount++;
-                bool shadow = c.own && ShadowedCount < maxShadowedRoomLights;
-                c.light.shadows = shadow ? LightShadows.Hard : LightShadows.None;
-                if (shadow) ShadowedCount++;
+                c.light.shadows = LightShadows.Hard;
+                ShadowedCount++;
             }
             HbLog.Info("Rooms", $"Active around {room.name}: {liveEnemies} enemies, lights={LitCount} shadowed={ShadowedCount}{(room.IsPowered ? "" : " (no power)")}");
         }

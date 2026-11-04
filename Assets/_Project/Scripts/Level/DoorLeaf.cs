@@ -26,12 +26,18 @@ namespace Heartbeat.Level
         [SerializeField] private float sealBreakSeconds = 30f;
         [SerializeField] private float openHeight = 2.3f;
         [SerializeField] private float slideSpeed = 4f;
+        [Tooltip("Set on a door that parts sideways into the walls (hospital door, D-157): each leaf travels this far along local X. 0 = the leaf rises.")]
+        [SerializeField] private float sideSlide;
+        [Tooltip("The other half of a door that parts sideways; it travels the opposite way.")]
+        [SerializeField] private Transform secondLeaf;
 
         private float breakProgress;
         private int lastSide;               // +1 / -1: side of the door Lukas was last on (local Z)
         private Transform player;
         private bool sealPending;
         private float closedY;
+        private float closedX;
+        private float closedSecondX;
 
         public DoorState State { get; private set; } = DoorState.Closed;
         public DoorLock Lock => lockType;
@@ -127,9 +133,17 @@ namespace Heartbeat.Level
 
         private void Update()
         {
-            float targetY = State == DoorState.Open ? closedY + openHeight : closedY;
+            bool open = State == DoorState.Open;
+            float step = slideSpeed * Time.deltaTime;
             var p = leaf.localPosition;
-            p.y = Mathf.MoveTowards(p.y, targetY, slideSpeed * Time.deltaTime);
+            if (sideSlide > 0f)
+            {
+                p.x = Mathf.MoveTowards(p.x, open ? closedX + sideSlide : closedX, step);
+                var q = secondLeaf.localPosition;
+                q.x = Mathf.MoveTowards(q.x, open ? closedSecondX - sideSlide : closedSecondX, step);
+                secondLeaf.localPosition = q;
+            }
+            else p.y = Mathf.MoveTowards(p.y, open ? closedY + openHeight : closedY, step);
             leaf.localPosition = p;
 
             TrackPlayerSide();
@@ -188,7 +202,12 @@ namespace Heartbeat.Level
             HbLog.Dev("Door", $"{name} -> {s}");
         }
 
-        private void Awake() => closedY = leaf.localPosition.y;
+        private void Awake()
+        {
+            closedY = leaf.localPosition.y;
+            closedX = leaf.localPosition.x;
+            if (secondLeaf != null) closedSecondX = secondLeaf.localPosition.x;
+        }
 
         private void Start() => SetState(State);
 

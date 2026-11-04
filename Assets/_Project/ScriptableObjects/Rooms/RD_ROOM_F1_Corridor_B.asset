@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a244d34437b9e74796c4140c568c9f2, type: 3}
+  m_Name: RD_ROOM_F1_Corridor_B
+  m_EditorClassIdentifier: Heartbeat.Runtime::Heartbeat.Generation.RoomDefinition
+  id: ROOM_F1_Corridor_B
+  prefab: {fileID: 7504283940330947570, guid: c9a72a03e1454a44ebf9c6118fae5a77, type: 3}
+  floor: 1
+  archetype: 1
+  role: 0
+  tutorialIndex: 0
+  size: {x: 2, y: 7}
+  sockets:
+  - cell: {x: 0, y: 0}
+    facing: 2
+    allowLocked: 1
+  - cell: {x: 1, y: 6}
+    facing: 0
+    allowLocked: 1
+  hasCamera: 0
+  canBeUnpowered: 0
+  enemySpawns: 1
+  itemSpawns: 2
+  itemSpawnTags: 0100000000000000i
+  weight: 1

@@ -87,6 +87,13 @@ namespace Heartbeat.EditorTools
             }
         }
 
+        /// <summary>F2 and F3 prefabs copy or inherit F1's: its model would stay under theirs, coplanar, and z-fight in black triangles.</summary>
+        private static void DropOtherModels(Transform parent, string keep)
+        {
+            foreach (var t in parent.Cast<Transform>().Where(c => c.name.StartsWith(ModelChild + "_") && c.name != ModelChild + "_" + keep).ToArray())
+                Object.DestroyImmediate(t.gameObject);
+        }
+
         private static GameObject AddModel(Transform parent, string modelName, Vector3 localPos, Quaternion localRot, bool shadows = true)
         {
             string fbx = FindModel(modelName);
@@ -117,12 +124,14 @@ namespace Heartbeat.EditorTools
             PrefabUtility.UnloadPrefabContents(root);
         }
 
-        private static void SwapPrefab(string path, string modelName)
+        /// <summary>Floors and ceilings cast nothing: a beam next to a ceiling lamp threw long straight black wedges down the walls.</summary>
+        private static void SwapPrefab(string path, string modelName, bool shadows = true)
         {
             WithPrefab(path, root =>
             {
                 DropPrimitives(root);
-                AddModel(root.transform, modelName, Vector3.zero, Quaternion.identity);
+                DropOtherModels(root.transform, modelName);
+                AddModel(root.transform, modelName, Vector3.zero, Quaternion.identity, shadows);
             });
         }
 
@@ -157,7 +166,7 @@ namespace Heartbeat.EditorTools
                 PrefabUtility.SaveAsPrefabAsset(root, path);
                 Object.DestroyImmediate(root);
             }
-            SwapPrefab(path, name);
+            SwapPrefab(path, name, name != "PROP_Shared_Puddle" && name != "PROP_Shared_Grate");
         }
 
         private static void WireDoors()
@@ -191,12 +200,51 @@ namespace Heartbeat.EditorTools
                     mf.sharedMesh = mesh;
                     if (!leaf.TryGetComponent<MeshRenderer>(out var mr)) mr = leaf.gameObject.AddComponent<MeshRenderer>();
                     mr.sharedMaterials = MaterialsFor(mesh, f);
+                    DropOtherModels(root.transform, $"Door_{f}_Frame");
                     AddModel(root.transform, $"Door_{f}_Frame", Vector3.zero, Quaternion.identity);
+                    if (f == "F2") SplitSlidingDoor(root, leaf, mesh, f);
                 });
                 var kit = AssetDatabase.LoadAssetAtPath<KitSet>($"Assets/_Project/ScriptableObjects/Rooms/KitSet_{f}.asset");
                 kit.door = AssetDatabase.LoadAssetAtPath<GameObject>(path);
                 EditorUtility.SetDirty(kit);
             }
+        }
+
+        /// <summary>F2's hospital door parts sideways: two leaves, each half the opening, sliding into the walls on either side.</summary>
+        private static void SplitSlidingDoor(GameObject root, Transform leaf, Mesh mesh, string floor)
+        {
+            const float half = .475f;
+            var p = leaf.localPosition;
+            p.x = half;
+            leaf.localPosition = p;
+            // The carve stays on the first leaf and still covers the whole opening; each collider covers its own half.
+            var box = leaf.GetComponent<BoxCollider>();
+            box.center = new Vector3(0f, box.center.y, box.center.z);
+            box.size = new Vector3(.95f, box.size.y, box.size.z);
+            var carve = leaf.GetComponent<UnityEngine.AI.NavMeshObstacle>();
+            if (carve != null) carve.center = new Vector3(-half, carve.center.y, carve.center.z);
+
+            var second = root.transform.Find("LeafB");
+            if (second == null)
+            {
+                second = new GameObject("LeafB").transform;
+                second.SetParent(root.transform, false);
+                second.gameObject.layer = leaf.gameObject.layer;
+            }
+            second.localPosition = new Vector3(-half, p.y, p.z);
+            second.localRotation = Quaternion.Euler(0, 180, 0);
+            if (!second.TryGetComponent<MeshFilter>(out var mf)) mf = second.gameObject.AddComponent<MeshFilter>();
+            mf.sharedMesh = mesh;
+            if (!second.TryGetComponent<MeshRenderer>(out var mr)) mr = second.gameObject.AddComponent<MeshRenderer>();
+            mr.sharedMaterials = MaterialsFor(mesh, floor);
+            if (!second.TryGetComponent<BoxCollider>(out var b2)) b2 = second.gameObject.AddComponent<BoxCollider>();
+            b2.center = box.center;
+            b2.size = box.size;
+
+            var so = new SerializedObject(root.GetComponent<Heartbeat.Level.DoorLeaf>());
+            so.FindProperty("sideSlide").floatValue = .95f;
+            so.FindProperty("secondLeaf").objectReferenceValue = second;
+            so.ApplyModifiedPropertiesWithoutUndo();
         }
 
         private static void WireLamps()
@@ -205,6 +253,7 @@ namespace Heartbeat.EditorTools
                 WithPrefab($"{Prefabs}Level/{light}.prefab", root =>
                 {
                     // The light points down through a rotated root; the fixture stays upright and casts no shadow, so it never blocks its own lamp.
+                    DropOtherModels(root.transform, "CH_Lamp_" + f);
                     AddModel(root.transform, "CH_Lamp_" + f, Vector3.zero, Quaternion.Inverse(root.transform.localRotation), false);
                 });
         }
@@ -258,6 +307,9 @@ namespace Heartbeat.EditorTools
             foreach (var f in FloorNames)
                 WithPrefab($"{Prefabs}Rooms/{f}/KEY_{f}_Final.prefab", root =>
                 {
+                    // F2 and F3 are variants of F1's layout: the F1 stairs and exit they inherit would z-fight with their own.
+                    foreach (var t in root.GetComponentsInChildren<Transform>(true).Where(x => (x.name.StartsWith("Model_CH_Exit_") || x.name.StartsWith("Model_CH_Stairs_")) && !x.name.EndsWith(f)).ToArray())
+                        Object.DestroyImmediate(t.gameObject);
                     var stairs = root.transform.Find("Stairs");
                     if (stairs != null)
                     {
@@ -268,6 +320,30 @@ namespace Heartbeat.EditorTools
                     var exit = root.transform.Find("StairsExit");
                     if (exit != null) AddModel(exit, "CH_Exit_" + f, Vector3.zero, Quaternion.identity);
                 });
+        }
+
+        /// <summary>A ceiling lamp reaches the walls up to near its own height: a narrower cone left them black above a hard line.</summary>
+        public static void WireRoomLights()
+        {
+            foreach (var (f, intensity) in new[] { ("F1", 8f), ("F2", 7f), ("F3", 10f) })
+                foreach (var g in AssetDatabase.FindAssets("t:Prefab", new[] { Prefabs + "Rooms/" + f }))
+                    WithPrefab(AssetDatabase.GUIDToAssetPath(g), root =>
+                    {
+                        // Rooms re-dressed from another floor keep that floor's lamp prefab: only its fixture changes.
+                        var lamp = MeshOf(FindModel("CH_Lamp_" + f));
+                        foreach (var m in root.GetComponentsInChildren<MeshFilter>(true).Where(x => x.name.StartsWith("Model_CH_Lamp_") && x.sharedMesh != lamp))
+                        {
+                            m.sharedMesh = lamp;
+                            m.GetComponent<MeshRenderer>().sharedMaterials = MaterialsFor(lamp, f);
+                        }
+                        foreach (var l in root.GetComponentsInChildren<Light>(true))
+                        {
+                            if (l.type != LightType.Spot || l.spotAngle < 100f) continue;
+                            l.spotAngle = 165f;
+                            l.innerSpotAngle = 100f;
+                            l.intensity = intensity;
+                        }
+                    });
         }
 
         private static Transform FindDeep(GameObject root, string name) => root.GetComponentsInChildren<Transform>(true).FirstOrDefault(t => t.name == name);
@@ -309,7 +385,7 @@ namespace Heartbeat.EditorTools
             foreach (var f in FloorNames)
             {
                 foreach (var piece in new[] { "Wall_2m", "Wall_2m_High", "WallWindow_2m", "Doorway_2m", "Floor_2x2", "Ceiling_2x2" })
-                    SwapPrefab($"{Prefabs}Kit/{f}/KIT_{f}_{piece}.prefab", $"KIT_{f}_{piece}");
+                    SwapPrefab($"{Prefabs}Kit/{f}/KIT_{f}_{piece}.prefab", $"KIT_{f}_{piece}", piece != "Floor_2x2" && piece != "Ceiling_2x2");
                 string column = $"{Prefabs}Kit/{f}/KIT_{f}_Column.prefab";
                 if (AssetDatabase.LoadAssetAtPath<GameObject>(column) == null) AssetDatabase.CopyAsset($"{Prefabs}Kit/F1/KIT_F1_Column.prefab", column);
                 SwapPrefab(column, $"KIT_{f}_Column");
@@ -328,6 +404,11 @@ namespace Heartbeat.EditorTools
             foreach (var (n, c) in new[] { ("PROP_Shared_Speaker", false), ("PROP_Shared_CableBundle", false), ("PROP_Shared_Pipe_2m", true), ("PROP_Shared_Pipe_Elbow", true), ("PROP_Shared_TrashPile", false), ("PROP_Shared_MetalCrate_Half", true), ("PROP_Shared_Grate", false), ("PROP_Shared_Puddle", false), ("PROP_Shared_HackPanel", true) }) CreateProp("Shared", n, c);
             foreach (var (n, c) in new[] { ("PROP_F1_WaterTank", true), ("PROP_F1_PressureValve", false), ("PROP_F1_Tools", false), ("PROP_F1_Gauge", false), ("PROP_F1_BigContainer", true), ("PROP_F1_PersonalTray", true) }) CreateProp("F1", n, c);
             CreateProp("F2", "PROP_F2_LabCoatRack", false);
+            CreateProp("F1", "PROP_F1_CRT", false);
+            CreateProp("F2", "PROP_F2_CRT", false);
+            CreateProp("F3", "PROP_F3_CRTBank", true);
+            foreach (var (p, m) in new[] { ("ITEM_Heal", "CH_Item_Heal"), ("ITEM_AmmoBlister", "CH_Item_Ammo"), ("ITEM_Spike", "CH_Item_Spike"), ("ITEM_KeyMandatory", "CH_Item_KeyMandatory"), ("ITEM_KeyOptional", "CH_Item_KeyOptional") })
+                Rematerial($"{Prefabs}Items/{p}.prefab", m);
 
             WithPrefab(Prefabs + "Items/INT_PowerSwitch.prefab", root =>
             {
@@ -338,6 +419,7 @@ namespace Heartbeat.EditorTools
             });
 
             WireRoomsOneOffs();
+            WireRoomLights();
             WireScenes();
             AssetDatabase.SaveAssets();
             return $"{swapped} models wired\n{log}";

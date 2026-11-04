@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a244d34437b9e74796c4140c568c9f2, type: 3}
+  m_Name: RD_ROOM_F1_Open_B
+  m_EditorClassIdentifier: Heartbeat.Runtime::Heartbeat.Generation.RoomDefinition
+  id: ROOM_F1_Open_B
+  prefab: {fileID: 3002004526046628358, guid: e901d5d1fadf8744c861b5510c56054e, type: 3}
+  floor: 1
+  archetype: 3
+  role: 0
+  tutorialIndex: 0
+  size: {x: 5, y: 5}
+  sockets:
+  - cell: {x: 4, y: 1}
+    facing: 1
+    allowLocked: 1
+  - cell: {x: 2, y: 0}
+    facing: 2
+    allowLocked: 1
+  - cell: {x: 2, y: 4}
+    facing: 0
+    allowLocked: 1
+  hasCamera: 0
+  canBeUnpowered: 0
+  enemySpawns: 2
+  itemSpawns: 3
+  itemSpawnTags: 010000000000000000000000i
+  weight: 1

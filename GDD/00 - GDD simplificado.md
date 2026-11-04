@@ -336,7 +336,8 @@ Sin narrador ni actuación de voz. Se cuenta con el entorno, los documentos (Emi
 | Color | Significado |
 |---|---|
 | Base (grises cálidos con matiz ciruela) | Estructura, ~70% de la pantalla |
-| Carmesí `#922235` | Vitalis, carne, peligro, The Mother |
+| Cian | Vitalis Konzern (D-157) |
+| Carmesí `#922235` | Carne, peligro, The Mother |
 | Teal | Lukas y su terminal |
 | Morado | Lo cósmico y no humano |
 | Verde fósforo | Pantallas de la instalación |

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3465569318502583333
+--- !u!1 &7552612854961856141
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,9 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 722636049894024088}
-  - component: {fileID: 7988571934286763459}
-  - component: {fileID: 7344179950081209350}
+  - component: {fileID: 6714628129269318186}
+  - component: {fileID: 5899780872620765046}
+  - component: {fileID: 6416192318962781490}
   m_Layer: 8
   m_Name: Model_PROP_F1_PressureValve
   m_TagString: Untagged
@@ -18,13 +18,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
---- !u!4 &722636049894024088
+--- !u!4 &6714628129269318186
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3465569318502583333}
+  m_GameObject: {fileID: 7552612854961856141}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -33,21 +33,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 247431461523619101}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &7988571934286763459
+--- !u!33 &5899780872620765046
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3465569318502583333}
+  m_GameObject: {fileID: 7552612854961856141}
   m_Mesh: {fileID: 7490760564661775905, guid: ba9f7ac15264bd343a6516bac8d679b8, type: 3}
---- !u!23 &7344179950081209350
+--- !u!23 &6416192318962781490
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3465569318502583333}
+  m_GameObject: {fileID: 7552612854961856141}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -119,6 +119,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 722636049894024088}
+  - {fileID: 6714628129269318186}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

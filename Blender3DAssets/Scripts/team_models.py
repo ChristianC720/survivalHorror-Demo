@@ -69,7 +69,7 @@ def _category(bone):
 
 def add_clothing(body, garments, thick=.012, torn=.0, seed=4, body_filter=None, limits=None):
     """Shell over the body's own faces with the same bone weights, so cloth can never part from the skin it covers.
-    garments: {part: set of regions}. torn: share of faces ripped out. limits: {part: fn(face center) -> bool} for a hem at a height.
+    garments: {part: set of regions}. thick: metres, or {part: metres}. torn: share of faces ripped out. limits: {part: fn(face center) -> bool} for a hem at a height.
     A strip back to the body closes every hem and tear.
     The result goes on material slot 2; returns the per-polygon part names."""
     me = body.data
@@ -92,9 +92,10 @@ def add_clothing(body, garments, thick=.012, torn=.0, seed=4, body_filter=None, 
     fold = hp.noise(co, (9, 9, 3), seed) - .5
     made = {}
 
-    def lifted(v):
+    def lifted(v, part):
         if v.index not in made:
-            nv = bm.verts.new(v.co + v.normal * (thick + float(fold[v.index]) * thick * 1.1))
+            t = thick[part] if isinstance(thick, dict) else thick
+            nv = bm.verts.new(v.co + v.normal * (t + float(fold[v.index]) * t * 1.1))
             for k, w in v[dl].items():
                 nv[dl][k] = w
             made[v.index] = nv
@@ -115,7 +116,7 @@ def add_clothing(body, garments, thick=.012, torn=.0, seed=4, body_filter=None, 
     cloth = []
     for f, i in chosen.items():
         try:
-            nf = bm.faces.new([lifted(v) for v in f.verts])
+            nf = bm.faces.new([lifted(v, keys[i]) for v in f.verts])
         except ValueError:
             continue
         nf[tag] = i + 1
@@ -167,25 +168,6 @@ def _worn(B, c, region, seed):
     """Frayed dark edge at rips: hard and thin, the Signalis way."""
     hp.grime(B, c, region, seed, .45)
     hp.folds(B, c, region, seed + 1, strength=.34)
-
-
-def cloth_mudo(B):
-    """Grey Vitalis staff clothing (GDD Personajes)."""
-    P, c = B.P, B.fill(ep.STAFF)
-    S, T = B.is_("shirt"), B.is_("pants")
-    k = (ep._value(B) * 1.15 + .15)[:, None]
-    c[S] = (ep.STAFF * 1.05 * k)[S]
-    c[T] = (ep.STAFF_DK * 1.25 * k)[T]
-    _worn(B, c, S | T, 6)
-    m = S & (P[:, 1] < -.03) & (np.abs(P[:, 0]) < .007)
-    c[m] = c[m] * .4
-    hp.stamp(B, c, (.1, -.14, 1.46), (0, -1, .1), (.09, .05), X("#c4bfae"), np.ones((5, 8), dtype=bool))
-    hp.stamp(B, c, (.1, -.14, 1.46), (0, -1, .1), (.08, .018), ep.INK, hp.text_bitmap("VK-0417"))
-    hp.stamp(B, c, (0, .13, 1.44), (0, 1, 0), .05, ep.STAFF * .42, hp.text_bitmap("VITALIS"), wear=.15, seed=2)
-    m = S & (np.abs(P[:, 0]) > .3) & (np.abs(P[:, 2] - 1.44) < .03)
-    c[m] = ep.CRIMSON
-    hp.blood(B, c, S | T, 8, coverage=.74)
-    return hp.posterize(B, c, levels=20)
 
 
 def cloth_alto(B):
@@ -251,7 +233,10 @@ def alto():
     body.name = body.data.name = "CH_Alto"
     idle_from(rig, "Patrulla", "AN_Alto_Idle")
     rename_actions({"Patrulla": "AN_Alto_Patrol", "Caza": "AN_Alto_Hunt", "Golpe largo derecho": "AN_Alto_Attack", "Golpe largo izquierdo": "AN_Alto_Attack_Left", "Agarre": "AN_Alto_Grab", "Aturdido": "AN_Alto_Stunned", "Grito": "AN_Alto_Scream", "Muerte": "AN_Alto_Death"})
-    parts = add_clothing(body, {"vest": {"chest", "spine"}, "pants": {"hips", "thigh", "shin"}}, thick=.016, torn=.2, seed=12)
+    # Full padded vest down to the waist and loose trousers. The earlier version stays as CH_Alto_V1.fbx for the owner to compare.
+    waist = max(b.head_local.z for b in rig.data.bones if _category(b.name) == "hips") + .08
+    parts = add_clothing(body, {"vest": {"chest", "spine", "hips", "uarm"}, "pants": {"hips", "thigh", "shin"}}, thick={"vest": .03, "pants": .032}, torn=.09, seed=12,
+                         limits={"vest": lambda c: c.z > waist, "pants": lambda c: c.z <= waist})
     paint_cloth(body, parts, "CH_Alto_Cloth", cloth_alto)
     return finish("Alto", rig, [body])
 
@@ -334,8 +319,8 @@ MUDO_J = {"hips": (0, 0, 1.02), "spine": (0, 0, 1.14), "chest": (0, 0, 1.36), "n
           "hip": (.1, 0, 1.0), "knee": (.195, 0, .63), "ankle": (.285, 0, .1), "ball": (.31, 0, .03), "toe": (.325, 0, .015)}
 
 
-def _mudo_body():
-    """The delivered Mudo, rigged and dressed. Returns (body, rig, cloth parts)."""
+def _mudo_body(garments=None, torn=.03, thick=.012):
+    """The delivered Mudo, rigged; dressed only if garments are given. Returns (body, rig, cloth parts)."""
     open_new(r"Monsters\Monster1\Monster1.blend")
     body = bpy.data.objects["Monster1_Body"]
     body.name = body.data.name = "CH_Mudo"
@@ -353,13 +338,12 @@ def _mudo_body():
     body.parent = rig
     body.modifiers.new("Armature", "ARMATURE").object = rig
     hm.auto_weights(body, rig)
-    parts = add_clothing(body, {"shirt": {"chest", "spine", "uarm"}, "pants": {"hips", "thigh", "shin"}}, thick=.012, torn=.03, seed=7)
+    parts = add_clothing(body, garments, thick=thick, torn=torn, seed=7) if garments else ["skin"] * len(me.polygons)
     return body, rig, parts
 
 
 def mudo():
     body, rig, parts = _mudo_body()
-    paint_cloth(body, parts, "CH_Mudo_Cloth", cloth_mudo)
     A = _author(rig)
     enemy_mudo(A)
     rig.animation_data.action = None
@@ -632,7 +616,7 @@ def _pixels(name):
 
 # ------------------------------------------------------------ props
 
-PROPS = {"Municion": "CH_Item_Ammo", "Autoinyector": "CH_Item_Heal", "Stunject": "CH_Item_Spike", "Llave_Maestra": "CH_Item_KeyMandatory", "Tarjeta_Acceso": "CH_Item_KeyOptional", "Aturdidor": "CH_Item_Aturdidor", "Terminal": "CH_Item_Terminal"}
+PROPS = {"Municion": "CH_Item_Ammo", "Autoinyector": "CH_Item_Heal", "Stunject": "CH_Item_Spike", "Llave_Maestra": "CH_Item_KeyMandatory", "Tarjeta_Acceso": "CH_Item_KeyOptional", "Terminal": "CH_Item_Terminal"}
 
 
 def _export_static(ob, path):
@@ -842,9 +826,12 @@ STATICS = {
     "CH_Corpse_Staff": (FALLEN, "#6d6866", "#332b2c", "VITALIS", "VK-0233", .78),
     "CH_Corpse_Guard": (FALLEN, "#2c343a", "#191d21", "WERKSCHUTZ", "KS-118", .76),
     "CH_Corpse_Subject": (FALLEN, "#8d8a82", "#6a6862", "SUBJEKT", "SUBJ 12", .8),
-    "CH_Mudo_Still": (STILL, "#6d6866", "#332b2c", "VITALIS", "VK-0417", 1.0),
+    "CH_Mudo_Still": (STILL, None, None, None, None, 1.0),   # bare, like the enemy
     "CH_Lukas_Mudo": (STILL, "#355654", "#1a2527", "R-H-07", "R-H-07", .8),
 }
+DRESSED = {"shirt": {"chest", "spine", "uarm"}, "pants": {"hips", "thigh", "shin"}}
+# Lukas become a Mudo keeps what he wore: the whole R-H-07 overall, torn open.
+OVERALL = {"shirt": {"chest", "spine", "uarm", "farm"}, "pants": {"hips", "thigh", "shin"}}
 STATIC_TRIS = 3500
 
 
@@ -853,24 +840,34 @@ def statics():
     left half, clothing in the right, so scenes keep their single material."""
     out = {}
     for name, (pose, top, bottom, label, tag_text, tone) in STATICS.items():
-        body, rig, parts = _mudo_body()
+        lukas_body = name == "CH_Lukas_Mudo"
+        body, rig, parts = _mudo_body(OVERALL if lukas_body else DRESSED, torn=.3, thick=.016) if lukas_body else _mudo_body(DRESSED if top else None)
         me = body.data
         uv = me.uv_layers.active.data
         for p in me.polygons:
             if parts[p.index] == "skin":
                 for li in p.loop_indices:
                     uv[li].uv = (uv[li].uv[0] * .5, uv[li].uv[1])
-        B = hp.bake(me, parts, 1024, offset=(1024, 0), atlas=2048, align_longest=True, skip=("skin",))
-        B.Ns, B.ao, B.crease, B.mat = B.N, np.full(B.n, .9, dtype=np.float32), np.zeros(B.n, dtype=np.float32), np.zeros(B.n, dtype=np.uint8)
-        S, T = B.is_("shirt"), B.is_("pants")
-        c = B.fill(X(top))
-        k = (ep._value(B) * 1.15 + .15)[:, None]
-        c[S] = (X(top) * k)[S]
-        c[T] = (X(bottom) * 1.25 * k)[T]
-        _worn(B, c, S | T, 6)
-        hp.stamp(B, c, (0, .13, 1.44), (0, 1, 0), .05, X("#9d9a90"), hp.text_bitmap(label), wear=.15, seed=2)
-        hp.stamp(B, c, (.1, -.14, 1.46), (0, -1, .1), (.08, .018), X("#c4bfae"), hp.text_bitmap(tag_text))
-        hp.blood(B, c, S | T, 8, coverage=.66)
+        layers = []
+        if top:
+            B = hp.bake(me, parts, 1024, offset=(1024, 0), atlas=2048, align_longest=True, skip=("skin",))
+            B.Ns, B.ao, B.crease, B.mat = B.N, np.full(B.n, .9, dtype=np.float32), np.zeros(B.n, dtype=np.float32), np.zeros(B.n, dtype=np.uint8)
+            S, T = B.is_("shirt"), B.is_("pants")
+            c = B.fill(X(top))
+            k = (ep._value(B) * 1.15 + .15)[:, None]
+            c[S] = (X(top) * k)[S]
+            c[T] = (X(bottom) * 1.25 * k)[T]
+            _worn(B, c, S | T, 6)
+            if lukas_body:
+                # The overall's red trim at the belt and its seams, gone dark; soot and old blood where it tore.
+                P = B.P
+                c[(S | T) & (np.abs(P[:, 2] - 1.02) < .03)] = ep.CRIMSON * .8
+                c[S & (np.abs(np.abs(P[:, 0]) - .1) < .006)] = X("#6e9fa0") * .5
+                hp.grime(B, c, S | T, 14, .7)
+            hp.stamp(B, c, (0, .13, 1.44), (0, 1, 0), .05, X("#9d9a90"), hp.text_bitmap(label), wear=.15, seed=2)
+            hp.stamp(B, c, (.1, -.14, 1.46), (0, -1, .1), (.08, .018), X("#c4bfae"), hp.text_bitmap(tag_text))
+            hp.blood(B, c, S | T, 8, coverage=.58 if lukas_body else .66)
+            layers = [(B, hp.posterize(B, c, levels=20))]
         img = np.zeros((2048, 2048, 4), dtype=np.float32)
         img[:, :, 3] = 1
         src = bpy.data.images["Monster1_Albedo"].copy()
@@ -880,7 +877,7 @@ def statics():
         half[:, :, :3] *= tone
         img[:, :1024] = half
         path = MODELS + rf"\Statics\Textures\{name}_Albedo.png"
-        hp.write(path, name + "_Albedo", 2048, [(B, hp.posterize(B, c, levels=20))], existing=img)
+        hp.write(path, name + "_Albedo", 2048, layers, existing=img)
         A = hb_anim.Author(rig)
         A.clip("pose", 2, {1: pose})
         bpy.context.scene.frame_set(1)

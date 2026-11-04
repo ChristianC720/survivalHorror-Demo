@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7531130439130871081
+--- !u!1 &7950099745672704059
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,9 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4442817391465267019}
-  - component: {fileID: 1394940357067035170}
-  - component: {fileID: 5509175536324962196}
+  - component: {fileID: 7991844246678983245}
+  - component: {fileID: 2484116214773057941}
+  - component: {fileID: 1858433461650312365}
   m_Layer: 8
   m_Name: Model_KIT_F3_Doorway_2m
   m_TagString: Untagged
@@ -18,13 +18,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 23
   m_IsActive: 1
---- !u!4 &4442817391465267019
+--- !u!4 &7991844246678983245
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7531130439130871081}
+  m_GameObject: {fileID: 7950099745672704059}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -33,21 +33,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4964544278230514036}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1394940357067035170
+--- !u!33 &2484116214773057941
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7531130439130871081}
+  m_GameObject: {fileID: 7950099745672704059}
   m_Mesh: {fileID: 1502287118456232746, guid: 57d33be77b0508c4cab6e8d94c74e694, type: 3}
---- !u!23 &5509175536324962196
+--- !u!23 &1858433461650312365
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7531130439130871081}
+  m_GameObject: {fileID: 7950099745672704059}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -147,11 +147,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 6dbce34c3c81b884ab38c107d1a63993, type: 2}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 4473747540431235799, guid: 94b98fcd01d815841af63dd83d91627b, type: 3}
+    - {fileID: 8933618907586917817, guid: 94b98fcd01d815841af63dd83d91627b, type: 3}
+    - {fileID: 185073967528332607, guid: 94b98fcd01d815841af63dd83d91627b, type: 3}
+    - {fileID: 1690441192453165386, guid: 94b98fcd01d815841af63dd83d91627b, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2603861581817465695, guid: 94b98fcd01d815841af63dd83d91627b, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4442817391465267019}
+      addedObject: {fileID: 7991844246678983245}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94b98fcd01d815841af63dd83d91627b, type: 3}
 --- !u!4 &4964544278230514036 stripped

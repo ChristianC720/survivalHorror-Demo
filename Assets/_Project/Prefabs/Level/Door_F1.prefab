@@ -182,7 +182,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.9
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &4430222003925048738
+--- !u!1 &5000728070459190450
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -190,9 +190,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2419402389503657402}
-  - component: {fileID: 9006945707154121750}
-  - component: {fileID: 6954394264137286659}
+  - component: {fileID: 4410932440391875993}
+  - component: {fileID: 4747638228045358498}
+  - component: {fileID: 8301786286923895918}
   m_Layer: 0
   m_Name: Model_Door_F1_Frame
   m_TagString: Untagged
@@ -200,13 +200,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2419402389503657402
+--- !u!4 &4410932440391875993
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4430222003925048738}
+  m_GameObject: {fileID: 5000728070459190450}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -215,21 +215,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6908690925698024815}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &9006945707154121750
+--- !u!33 &4747638228045358498
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4430222003925048738}
+  m_GameObject: {fileID: 5000728070459190450}
   m_Mesh: {fileID: 953250512481670588, guid: e5682fe8209a74b4fa4938ad7eab9a30, type: 3}
---- !u!23 &6954394264137286659
+--- !u!23 &8301786286923895918
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4430222003925048738}
+  m_GameObject: {fileID: 5000728070459190450}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -304,7 +304,7 @@ Transform:
   m_Children:
   - {fileID: 4243851094198437903}
   - {fileID: 1274227071100194212}
-  - {fileID: 2419402389503657402}
+  - {fileID: 4410932440391875993}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8095230811138489578
@@ -325,3 +325,5 @@ MonoBehaviour:
   sealBreakSeconds: 30
   openHeight: 2.3
   slideSpeed: 4
+  sideSlide: 0
+  secondLeaf: {fileID: 0}

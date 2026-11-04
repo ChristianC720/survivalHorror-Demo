@@ -32,16 +32,23 @@ BACK = (0, 1, 0)
 INK = hbp.INK
 PAPER, AMBER, RED, GREEN = hbp.PAPER, hbp.AMBER, hbp.RED, hbp.GREEN
 ATLAS = 2048
+CYAN = np.array((.05, .52, .62), dtype=np.float32)   # Vitalis Konzern (D-157); Lukas's teal is a different, greyer colour
 
 hbp.COLORS.update({
-    "hidden": (.02, .015, .015), "concrete": (.34, .32, .29), "plate": (.27, .25, .23), "tile": (.66, .68, .64), "plaster": (.55, .56, .52),
+    "hidden": (.085, .08, .075), "wet": (.27, .28, .27), "cyan": (.05, .52, .62), "glow_cyan": (.25, .92, 1.0), "concrete": (.34, .32, .29), "plate": (.27, .25, .23), "tile": (.66, .68, .64), "plaster": (.55, .56, .52),
     "vinyl": (.35, .4, .38), "rubber": (.1, .2, .17), "chrome": (.62, .64, .66), "plastic": (.74, .76, .72), "machine": (.13, .11, .12),
     "machine2": (.2, .17, .18), "grate": (.12, .11, .11), "cable": (.05, .045, .05), "tape": (.7, .6, .28), "mattress": (.4, .42, .4),
     "coat": (.72, .73, .68), "blue": (.2, .32, .4), "glow_white": (.86, .95, 1.0), "glow_teal": (.3, .95, .85), "bulb": (1.0, .68, .3),
 })
-hbp.GLOW.update({"glow_white", "glow_teal", "bulb"})
+hbp.GLOW.update({"glow_white", "glow_teal", "bulb", "glow_cyan"})
 hbp.SEAMED.update({"plate", "machine", "machine2", "concrete"})
 hbp.NAMES[:] = list(hbp.COLORS) + ["glass"]
+
+
+def vitalis(M, center, normal, w):
+    """The corporate mark: a cyan label with the name."""
+    M.plate(center, normal, (w, w * .28), CYAN)
+    return M.text(tuple(a + b * .0005 for a, b in zip(center, normal)), normal, w * .12, "VITALIS", PAPER)
 
 
 def env_material(floor):
@@ -539,22 +546,24 @@ def leaf_f1(M):
         v = F if n < 0 else BACK
         M.hazard((0, y + d * 1.05, -.9), v, (1.7, .3), pitch=.24)
         M.text((0, y + d * .1, .7), v, .08, "SCHOTT 4", PAPER * .6, wear=.4)
+        vitalis(M, (0, y + d * .1, .4), v, .36)
 
 
 def leaf_f2(M):
-    """Hospital double door: seam down the middle, two round windows, kick and push plates."""
-    _leaf_body(M, "plaster")
+    """One half of the hospital sliding door; the pivot is its own centre and the meeting edge carries a rubber strip."""
+    M.pitch = 99
+    M.bx((-.465, -.04, -1.075), (.465, .04, 1.075), "plaster")
     for y, n in ((-.04, -1), (.04, 1)):
         a, b = sorted((y, y + .004 * n))
-        M.bx((-.006, a, -1.075), (.006, b, 1.075), "dark")
-        for sx in (-1, 1):
-            cx = sx * .48
-            M.bx((cx - .4, a, -1.07), (cx + .4, b, -.72), "steel")
-            M.bx((cx + sx * .34 - .05, a, -.1), (cx + sx * .34 + .05, b, .2), "steel")
-            M.cyl((cx, y, .52), .012 * n, .2, "dark", sides=12, axis="y")
-            M.cyl((cx, y + .012 * n, .52), .001 * n, .16, "glass", sides=12, axis="y")
+        M.bx((-.455, a, -1.07), (.455, b, -.72), "steel")
+        M.cyl((0, y, .52), .012 * n, .2, "dark", sides=12, axis="y")
+        M.cyl((0, y + .012 * n, .52), .001 * n, .16, "glass", sides=12, axis="y")
         v = F if n < 0 else BACK
-        M.text((.48, y + .001 * n, .04), v, .06, "OP 2", INK, wear=.25)
+        M.bx((-.34, a, .1), (.34, b, .14), "cyan")
+        vitalis(M, (0, y + .001 * n, -.1), v, .3)
+        M.text((0, y + .001 * n, -.4), v, .06, "OP 2", INK, wear=.25)
+    for x in (-.47, .47):
+        M.bx((x - .005, -.045, -1.075), (x + .005, .045, 1.075), "rubber")
 
 
 def leaf_f3(M):
@@ -645,17 +654,17 @@ def crate(M, s=1.0):
         for y in (-s / 2, s / 2 - b):
             M.bx((x - .005, y - .005, 0), (x + b + .005, y + b + .005, h), "dark")
     M.bx((-s * .4, -s / 2 - .01, h * .1), (s * .4, -s / 2, h * .9), "plate")
-    M.text((0, -s / 2 - .012, h * .6), F, .12 * s, "VK-KG", PAPER * .6, wear=.5)
+    vitalis(M, (0, -s / 2 - .012, h * .62), F, .8 * s)
     M.code((-.22 * s, -s / 2 - .012, h * .28), F, .1 * s, 3, PAPER * .7)
     M.hazard((.2 * s, -s / 2 - .012, h * .28), F, (.3 * s, .12 * s), pitch=.08)
 
 
 def poster(M):
     M.bx((-.4, -.012, 0), (.4, 0, 1.1), "paper")
-    M.bx((-.34, -.013, .86), (.34, -.012, 1.02), "crimson")
+    M.bx((-.34, -.013, .86), (.34, -.012, 1.02), "cyan")
     M.text((0, -.0135, .94), F, .1, "VITALIS", PAPER)
-    M.text((0, -.0135, .72), F, .05, "IHRE GESUNDHEIT", INK, wear=.1)
-    M.text((0, -.0135, .62), F, .05, "IST UNSER AUFTRAG", INK, wear=.1)
+    M.text((0, -.0135, .72), F, .04, "IHRE GESUNDHEIT", INK, wear=.1)
+    M.text((0, -.0135, .62), F, .04, "IST UNSER AUFTRAG", INK, wear=.1)
     M.code((-.24, -.0135, .2), F, .14, 2)
     M.bx((-.04, -.014, 1.06), (.04, -.012, 1.1), "tape").bx((-.4, -.014, 0), (-.3, -.012, .04), "tape")
 
@@ -676,8 +685,9 @@ def puddle(M):
     v1 = [M.bm.verts.new((x * 1.02, y * 1.02, .008)) for x, y in pts]
     for i in range(len(pts)):
         j = (i + 1) % len(pts)
-        M._face((v0[i], v0[j], v1[j], v1[i]), "black")
-    M._face(v1, "black")
+        M._face((v0[i], v0[j], v1[j], v1[i]), "wet")
+    # Dark water, not black: a black shape on the floor reads as a broken shadow.
+    M._face(v1, "wet")
     M._face(list(reversed(v0)), "hidden")
 
 
@@ -687,7 +697,7 @@ def hack_panel(M):
     M.screen((0, -.053, 1.24), F, (.22, .2), 4)
     M.lamps((0, -.053, 1.03), F, 3, 3, .05, 2)
     M.tube([(.1, -.02, .9), (.1, -.02, .3), (.1, 0, .1)], .012, "cable", sides=4)
-    M.text((0, -.052, .93), F, .025, "SCHLEUSE", PAPER * .8)
+    M.text((0, -.052, .93), F, .02, "SCHLEUSE", PAPER * .8)
 
 
 def power_switch(M):
@@ -696,6 +706,7 @@ def power_switch(M):
     M.bx((-.24, -.205, .2), (.24, -.2, 1.45), "plate")
     M.bx((-.08, -.21, .96), (.08, -.205, 1.34), "dark")
     M.plate((0, -.206, .62), F, (.34, .2), AMBER).text((0, -.207, .66), F, .05, "STROM", INK).text((0, -.207, .57), F, .05, "HAUPT", INK)
+    vitalis(M, (0, -.207, 1.42), F, .26)
     M.lamps((0, -.206, .32), F, 4, 2, .07, 6)
     M.hazard((0, -.211, .05), F, (.6, .09), pitch=.1)
     M.tube([(.2, .1, 1.6), (.2, .1, 2.2)], .025, "cable", sides=5)
@@ -966,7 +977,7 @@ def recon_capsule(M):
     M.cyl((0, 0, .16), 1.89, .47, "glass", sides=14)
     for a in (.52, 2.62, 4.71):
         M.bx((.48 * math.cos(a) - .03, .48 * math.sin(a) - .03, .1), (.48 * math.cos(a) + .03, .48 * math.sin(a) + .03, 2.1), "steel")
-    M.bx((-.25, -.51, .03), (.25, -.45, .14), "crimson")
+    M.bx((-.25, -.51, .03), (.25, -.45, .14), "cyan")
     M.text((0, -.512, .085), F, .05, "R-H", PAPER, wear=.1)
     M.bx((.2, -.49, .95), (.4, -.44, 1.25), "dark").screen((.3, -.491, 1.1), F, (.18, .26), 5)
     M.tube([(.42, .25, 2.2), (.42, .25, 2.5)], .03, "cable", sides=5).tube([(-.42, .25, 2.2), (-.42, .25, 2.5)], .03, "cable", sides=5)
@@ -1007,6 +1018,7 @@ def human_capsule(M):
     M.tube([(.2, .05, 1.3), (.25, .05, .7)], .045, "skin", sides=6).tube([(-.2, .05, 1.3), (-.25, .05, .7)], .045, "skin", sides=6)
     M.bx((.18, -.52, .95), (.42, -.45, 1.25), "dark").screen((.3, -.521, 1.1), F, (.22, .26), 2)
     M.tube([(0, .48, 1.0), (0, .6, .1)], .03, "cable", sides=5)
+    vitalis(M, (0, -.502, .3), F, .3)
     M.text((0, -.502, .09), F, .07, "P-07", INK, wear=.2).bx((-.2, -.502, .14), (.2, -.5, .16), "tape")
 
 
@@ -1056,7 +1068,8 @@ def console(M):
     M.bx((-.42, -.31, .76), (.42, -.3, .96), "dark").lamps((0, -.311, .86), F, 10, 3, .07, 11)
     M.bx((-.42, -.151, .99), (.42, -.15, 1.17), "dark").screen((-.18, -.152, 1.08), F, (.4, .16), 12).screen((.24, -.152, 1.08), F, (.3, .16), 13)
     M.bx((-.42, -.31, 0), (.42, -.15, .06), "rubber")
-    M.text((0, -.152, .4), F, .06, "STATION 3", INK, wear=.25).code((.3, -.152, .2), F, .12, 2)
+    vitalis(M, (0, -.152, .5), F, .34)
+    M.text((0, -.152, .36), F, .06, "STATION 3", INK, wear=.25).code((.3, -.152, .2), F, .12, 2)
     M.tube([(.45, .3, .3), (.5, .4, .1), (.55, .5, .02)], .02, "cable", sides=4)
 
 
@@ -1171,6 +1184,7 @@ def sample_fridge(M):
         for k in range(5):
             M.cyl((-.22 + k * .11, -.2, z + .02), .11, .018, ("crimson", "paper", "teal", "crimson", "paper")[k], sides=6)
     M.bx((-.36, -.36, 1.45), (.36, -.35, 1.95), "plate").bx((.28, -.38, .6), (.31, -.36, 1.1), "chrome")
+    vitalis(M, (.14, -.361, 1.8), F, .24)
     M.screen((-.12, -.361, 1.75), F, (.3, .14), 8).text((.12, -.361, 1.55), F, .04, "-20 C", INK)
     M.bx((-.36, -.362, .78), (-.1, -.36, .84), "tape")
 
@@ -1198,6 +1212,7 @@ def cryo_tank(M):
     M.bx((.45, -.72, 1.0), (.6, -.68, 1.08), "glow_crimson")
     M.tube([(.8, 0, 2.4), (1.0, 0, 2.4), (1.0, 0, 0)], .05, "cable", sides=6).tube([(-.8, .1, 2.2), (-1.0, .1, 2.2), (-1.0, .1, 0)], .05, "cable", sides=6)
     M.text((0, -.83, 2.21), F, .09, "KRYO 12", PAPER, wear=.15).text((0, -.83, .3), F, .09, "KALT", AMBER, wear=.2)
+    vitalis(M, (0, -.83, 2.48), F, .46)
 
 
 def transformer(M):
@@ -1236,7 +1251,8 @@ def containment_console(M):
     M.bx((-.5, -.201, .97), (.5, -.2, 1.17), "dark")
     M.screen((-.22, -.202, 1.07), F, (.46, .18), 14, np.array(hbp.COLORS["glow_crimson"], dtype=np.float32)).screen((.26, -.202, 1.07), F, (.4, .18), 16)
     M.bx((-.45, -.21, .1), (.45, -.2, .6), "machine2")
-    M.text((0, -.211, .4), F, .06, "EINSCHLUSS", PAPER * .6, wear=.3).hazard((0, -.211, .17), F, (.9, .08), pitch=.1)
+    vitalis(M, (0, -.211, .52), F, .32)
+    M.text((0, -.211, .34), F, .06, "EINSCHLUSS", PAPER * .6, wear=.3).hazard((0, -.211, .17), F, (.9, .08), pitch=.1)
     M.bx((-.58, -.42, .96), (-.5, -.2, 1.0), "dark")
     M.tube([(.55, .4, .5), (.65, .55, .3), (.7, .7, .02)], .03, "cable", sides=5)
 
@@ -1436,7 +1452,7 @@ def intro_hatch(M):
             M.bx((-.92, a, z - .05), (.92, b, z + .05), "plate")
         v = F if n < 0 else BACK
         M.hazard((0, y + .021 * n, -1.0), v, (1.8, .16), pitch=.2)
-        M.text((0, y + .021 * n, .35), v, .16, "VITALIS", RED, wear=.2)
+        M.text((0, y + .021 * n, .35), v, .16, "VITALIS", CYAN, wear=.2)
         M.text((0, y + .021 * n, .1), v, .07, "SEKTOR V-7", PAPER * .7, wear=.3)
 
 
@@ -1457,6 +1473,118 @@ def wall_panel(M):
     M.bx((-.15, -.04, -.2), (.15, .04, .2), "dark")
     M.bx((-.12, -.042, .02), (.12, -.04, .17), "black").screen((0, -.043, .095), F, (.22, .13), 7)
     M.lamps((0, -.043, -.09), F, 3, 3, .055, 4)
+
+
+# ------------------------------------------------------------ CRT monitors: green phosphor is the facility's information
+
+def _tube_back(M, y0, y1, x, hw0, hh0, hw1, hh1, zc, col):
+    """The tapering back of a tube monitor, closed at both ends."""
+    a = [M.bm.verts.new((x + u, y0, zc + v)) for u, v in ((-hw0, -hh0), (hw0, -hh0), (hw0, hh0), (-hw0, hh0))]
+    b = [M.bm.verts.new((x + u, y1, zc + v)) for u, v in ((-hw1, -hh1), (hw1, -hh1), (hw1, hh1), (-hw1, hh1))]
+    for i in range(4):
+        j = (i + 1) % 4
+        M._face((a[i], a[j], b[j], b[i]), col)
+    M._face(list(reversed(a)), col)
+    M._face(b, col)
+
+
+def crt_unit(M, x, z, w, h, col, seed, screen=None):
+    """One monitor. x: centre, z: its bottom, w/h: front size. The screen faces -Y."""
+    zc = z + h / 2
+    M.bx((x - w / 2, -.2, z), (x + w / 2, -.1, z + h), col)
+    _tube_back(M, -.1, .24, x, w * .46, h * .46, w * .28, h * .28, zc, col)
+    M.bx((x - w * .4, -.206, zc - h * .34), (x + w * .4, -.2, zc + h * .38), "black")
+    M.screen((x, -.207, zc + h * .02), F, (w * .74, h * .66), seed, screen if screen is not None else GREEN)
+    M.bx((x - w * .4, -.204, z + h * .03), (x + w * .4, -.2, z + h * .13), "dark")
+    for k in range(3):
+        M.cyl((x + w * (.1 + k * .11), -.215, z + h * .08), .012, .012, "steel", sides=6, axis="y")
+    M.bx((x - w * .05, -.21, z + h * .05), (x + w * .02, -.204, z + h * .11), "glow_green")
+
+
+def crt_f1(M):
+    """Maintenance terminal: dented steel, a service sticker."""
+    M.pitch = 99
+    M.bx((-.14, -.16, 0), (.14, .14, .03), "dark").bx((-.05, -.06, .03), (.05, .06, .07), "dark")
+    crt_unit(M, 0, .07, .42, .36, "metal", 21)
+    M.plate((-.1, -.2005, .405), F, (.12, .018), AMBER)
+    M.tube([(.05, .24, .2), (.09, .32, .06), (.12, .34, .01)], .012, "cable", sides=4)
+
+
+def crt_f2(M):
+    """Clinic monitor: yellowed plastic, a strip of tape, the Vitalis label."""
+    M.pitch = 99
+    M.bx((-.16, -.17, 0), (.16, .15, .025), "plastic").cyl((0, 0, .025), .05, .09, "plastic", sides=8)
+    crt_unit(M, 0, .075, .46, .38, "plastic", 22)
+    vitalis(M, (-.13, -.2005, .1), F, .13)
+    M.bx((-.2, -.203, .428), (-.06, -.2, .445), "tape")
+    M.tube([(-.05, .24, .2), (-.09, .32, .06), (-.12, .34, .01)], .012, "cable", sides=4)
+
+
+def crt_bank(M):
+    """Core monitor bank: a rack of black tubes, one showing a red alarm. Stands on the floor against a wall."""
+    M.pitch = 99
+    M.bx((-.78, -.18, 0), (-.74, .28, 1.74), "machine2").bx((.74, -.18, 0), (.78, .28, 1.74), "machine2")
+    M.bx((-.74, .24, 0), (.74, .28, 1.74), "machine")
+    for z in (0, .56, 1.14, 1.7):
+        M.bx((-.74, -.18, z), (.74, .24, z + .04), "machine2")
+    red = np.array(hbp.COLORS["glow_crimson"], dtype=np.float32)
+    for row, z in enumerate((.04, .6, 1.18)):
+        for col, x in enumerate((-.37, .37)):
+            crt_unit(M, x, z, .68, .5, "machine", 30 + row * 2 + col, red if (row, col) == (1, 1) else None)
+    M.tube([(.6, .28, 1.7), (.66, .36, .9), (.7, .38, .02)], .03, "cable", sides=5)
+
+
+# ------------------------------------------------------------ pickups per GDD Objetos y Coleccionables
+
+def item_heal(M):
+    """Dirty white rigid case with a handle, cyan trim and the Vitalis mark; the handle is the silhouette."""
+    M.pitch = 99
+    M.bx((-.15, -.045, 0), (.15, .045, .15), "plastic")
+    M.bx((-.155, -.05, .06), (.155, .05, .09), "cyan")
+    for x in (-.055, .055):
+        M.bx((x - .012, -.012, .15), (x + .012, .012, .185), "dark")
+    M.bx((-.07, -.014, .178), (.07, .014, .2), "dark")
+    for x in (-.11, .11):
+        M.bx((x - .015, -.052, .05), (x + .015, -.05, .1), "steel")
+    vitalis(M, (-.06, -.0455, .12), F, .12)
+    M.text((0, -.0455, .03), F, .008, "REGENERATIONSMITTEL", INK)
+    M.code((.0, .0455, .12), BACK, .04, 3)
+
+
+def item_ammo(M):
+    """Clear blister of 4 copper caseless rounds on an aluminium lid with the Vitalis stock code."""
+    M.bx((-.065, -.045, 0), (.065, .045, .006), "chrome")
+    for x in (-.045, -.015, .015, .045):
+        M.cyl((x, -.03, .015), .06, .009, "copper", sides=6, axis="y")
+    # The clear blister is only a rim: an opaque-looking pane would hide the rounds the GDD wants seen.
+    for x0, x1 in ((-.065, -.061), (.061, .065)):
+        M.bx((x0, -.045, .006), (x1, .045, .012), "steel")
+    M.text((0, -.0455, .003), F, .004, "VK-MUN-4", INK)
+
+
+def item_spike(M):
+    """Matte black cylinder as long as a forearm: rubber grip, metal tip, amber band, green charge LED."""
+    M.cyl((0, -.2, .03), .3, .02, "black", axis="y", sides=8).cyl((0, .1, .03), .1, .024, "rubber", axis="y", sides=8)
+    M.cyl((0, -.25, .03), .05, .004, "steel", axis="y", sides=6, r2=.02).cyl((0, .0, .03), .03, .021, "yellow", axis="y", sides=8)
+    M.bx((.019, .05, .024), (.023, .062, .036), "glow_green")
+    M.text((0, -.1, .05), UP, .009, "KESSLER WERKSCHUTZ", PAPER * .7)
+
+
+def item_key_mandatory(M):
+    """Large plate: cyan band and a stair icon. Shape and icon tell it apart, not only the colour."""
+    M.bx((-.08, -.05, 0), (.08, .05, .012), "plastic")
+    M.bx((-.08, .015, .012), (.08, .045, .014), "cyan")
+    for i in range(3):
+        M.bx((-.05 + i * .018, -.035, .012), (-.034 + i * .018, -.017 + i * .012, .014), "dark")
+    M.text((.03, .03, .0145), UP, .012, "R-H", PAPER).code((.05, -.02, .0125), UP, .028, 7)
+
+
+def item_key_optional(M):
+    """Standard magnetic card with a grey band."""
+    M.bx((-.045, -.0275, 0), (.045, .0275, .004), "plastic")
+    M.bx((-.045, .009, .004), (.045, .023, .005), "metal")
+    vitalis(M, (-.018, -.012, .0042), UP, .036)
+    M.code((.03, -.012, .0042), UP, .018, 5)
 
 
 # ------------------------------------------------------------ catalogue: name -> (floor, tile px, builder, output folder)
@@ -1485,13 +1613,13 @@ for f, wall, window, doorway, floor_, ceil_, col, frame, leaf, lamp in (
     _add(f, f"KIT_{f}_Ceiling_2x2", 256, ceil_, post_for(f, "ceiling"))
     _add(f, f"KIT_{f}_Column", 128, col, post_for(f, "wall"))
     _add(f, f"Door_{f}_Frame", 192, frame)
-    _add(f, f"Door_{f}_Leaf", 320, leaf, post_for(f, "wall"))
+    _add(f, f"Door_{f}_Leaf", 192 if f == "F2" else 320, leaf, post_for(f, "wall"))
     _add(f, f"CH_Lamp_{f}", 64, lamp)
 
 for name, tile, fn in (
     ("PROP_Shared_Speaker", 96, speaker), ("PROP_Shared_CableBundle", 64, cable_bundle), ("PROP_Shared_Pipe_2m", 128, pipe2m), ("PROP_Shared_Pipe_Elbow", 128, pipe_elbow),
-    ("PROP_Shared_TrashPile", 128, trash), ("PROP_Shared_MetalCrate", 192, crate), ("PROP_Shared_MetalCrate_Half", 128, lambda M: crate(M, .5)), ("PROP_Shared_VitalisPoster", 192, poster),
-    ("PROP_Shared_Grate", 96, grate), ("PROP_Shared_Puddle", 64, puddle), ("PROP_Shared_HackPanel", 128, hack_panel), ("CH_INT_PowerSwitch", 192, power_switch), ("CH_INT_Lever", 48, switch_lever),
+    ("PROP_Shared_TrashPile", 128, trash), ("PROP_Shared_MetalCrate", 256, crate), ("PROP_Shared_MetalCrate_Half", 128, lambda M: crate(M, .5)), ("PROP_Shared_VitalisPoster", 192, poster),
+    ("PROP_Shared_Grate", 96, grate), ("PROP_Shared_Puddle", 64, puddle), ("PROP_Shared_HackPanel", 192, hack_panel), ("CH_INT_PowerSwitch", 192, power_switch), ("CH_INT_Lever", 48, switch_lever),
     ("KIT_Shared_Platform_2x2", 256, platform), ("KIT_Shared_Ramp_2x4", 256, ramp), ("CH_Env_HostileCamera", 96, hostile_cam_env), ("CH_Env_MotherExit", 192, exit_door), ("CH_Env_Mezzanine", 256, mezzanine), ("CH_Env_Catwalk", 320, catwalk),
 ):
     _add("Shared", name, tile, fn)
@@ -1516,6 +1644,12 @@ for name, tile, fn, folder in (
     ("PROP_F3_CoolingColumn", 320, cooling_column, None), ("PROP_F3_ContainmentConsole", 192, containment_console, None), ("PROP_F3_PAHorn", 96, pa_horn, None), ("PROP_F3_HeavyCabling", 96, heavy_cabling, None),
 ):
     _add("F3", name, tile, fn, folder=folder)
+
+_add("F1", "PROP_F1_CRT", 128, crt_f1)
+_add("F2", "PROP_F2_CRT", 192, crt_f2)
+_add("F3", "PROP_F3_CRTBank", 320, crt_bank)
+for name, tile, fn in (("CH_Item_Heal", 256, item_heal), ("CH_Item_Ammo", 96, item_ammo), ("CH_Item_Spike", 128, item_spike), ("CH_Item_KeyMandatory", 128, item_key_mandatory), ("CH_Item_KeyOptional", 128, item_key_optional)):
+    _add("Shared", name, tile, fn, folder="Props")
 
 for f, st, ex in (("F1", stairs_f1, exit_f1), ("F2", stairs_f2, exit_f2), ("F3", stairs_f3, exit_f3)):
     _add(f, f"CH_Stairs_{f}", 256, st)

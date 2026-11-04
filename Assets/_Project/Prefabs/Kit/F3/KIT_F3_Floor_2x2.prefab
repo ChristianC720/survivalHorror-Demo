@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6674547708557655063
+--- !u!1 &3624199479275283516
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,9 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 396847409720370085}
-  - component: {fileID: 873397434512618118}
-  - component: {fileID: 6756305347875946620}
+  - component: {fileID: 4202178883446537145}
+  - component: {fileID: 4697168895930782756}
+  - component: {fileID: 5804789620769349500}
   m_Layer: 8
   m_Name: Model_KIT_F3_Floor_2x2
   m_TagString: Untagged
@@ -18,13 +18,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 23
   m_IsActive: 1
---- !u!4 &396847409720370085
+--- !u!4 &4202178883446537145
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6674547708557655063}
+  m_GameObject: {fileID: 3624199479275283516}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -33,23 +33,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 201153307475848446}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &873397434512618118
+--- !u!33 &4697168895930782756
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6674547708557655063}
+  m_GameObject: {fileID: 3624199479275283516}
   m_Mesh: {fileID: 5631817538908759436, guid: 945b2dcd8b4efed478bab95d85a099c1, type: 3}
---- !u!23 &6756305347875946620
+--- !u!23 &5804789620769349500
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6674547708557655063}
+  m_GameObject: {fileID: 3624199479275283516}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -147,11 +147,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: fbefc80635118ec4c850712a49e275d0, type: 2}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2364140447003892883, guid: 7da49d635afa12b478949dd47024b537, type: 3}
+    - {fileID: 3976764879384400680, guid: 7da49d635afa12b478949dd47024b537, type: 3}
+    - {fileID: 7059931190615823150, guid: 7da49d635afa12b478949dd47024b537, type: 3}
+    - {fileID: 1841023296137659719, guid: 7da49d635afa12b478949dd47024b537, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 3828464921391416214, guid: 7da49d635afa12b478949dd47024b537, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 396847409720370085}
+      addedObject: {fileID: 4202178883446537145}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7da49d635afa12b478949dd47024b537, type: 3}
 --- !u!4 &201153307475848446 stripped

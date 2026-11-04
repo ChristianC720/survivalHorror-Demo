@@ -92,7 +92,7 @@ En la demo no se vende ni se intercambia nada. El inventario tiene 6 casillas y 
 
 **Interacciones:** M-05, M-07.
 
-**Representación visual:** estuche rectangular de plástico rígido blanco sucio con asa, ribete carmesí y logotipo de Vitalis; dentro, un autoinyector. Etiqueta en alemán *Regenerationsmittel*. Silueta reconocible por el asa.
+**Representación visual:** estuche rectangular de plástico rígido blanco sucio con asa, ribete cian y logotipo de Vitalis; dentro, un autoinyector. Etiqueta en alemán *Regenerationsmittel*. Silueta reconocible por el asa.
 
 ### Munición
 
@@ -164,7 +164,7 @@ En la demo no se vende ni se intercambia nada. El inventario tiene 6 casillas y 
 
 **Interacciones:** M-07, M-08, M-15.
 
-**Representación visual:** tarjeta magnética de Vitalis con número de sala. La obligatoria es una placa más grande con banda carmesí y un icono de escalera; la opcional es una tarjeta estándar con banda gris. Se distinguen por forma e icono, no solo por color.
+**Representación visual:** tarjeta magnética de Vitalis con número de sala. La obligatoria es una placa más grande con banda cian y un icono de escalera; la opcional es una tarjeta estándar con banda gris. Se distinguen por forma e icono, no solo por color.
 
 ### Anillo
 

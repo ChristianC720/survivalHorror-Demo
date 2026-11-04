@@ -102,6 +102,61 @@ public static class FloorRedress
         return log.ToString();
     }
 
+    /// <summary>F1 only had one layout per archetype. Its B rooms re-dress the hand-built F2 B layouts as maintenance rooms.</summary>
+    static readonly (string prefix, string prop)[] ToF1 =
+    {
+        ("ResearchBed", "PROP_F1_ToolShelf"), ("Bed", "PROP_F1_Workbench"), ("IVCart", "PROP_Shared_MetalCrate_Half"), ("PatientScreen", "PROP_F1_ThickPipe"),
+        ("SurgicalLamp", null), ("SurgicalTools", "PROP_F1_Tools"), ("SurgeryTable", "PROP_F1_Workbench"), ("SampleFridge", "PH_F1_WaterPump"),
+        ("FilingCabinet", "PROP_F1_ToolShelf"), ("CabinetAisle", "PROP_Shared_MetalCrate"), ("CabinetN", "PROP_Shared_MetalCrate_Half"), ("Fridge", "PROP_F1_ToolShelf"),
+        ("NurseConsole", "PH_F1_Generator"), ("Console", "PH_F1_Generator"), ("NurseDesk", "PROP_F1_Workbench"), ("Desk", "PROP_F1_Workbench"),
+        ("NurseChair", "PROP_Shared_MetalCrate_Half"), ("Chair", "PROP_Shared_MetalCrate_Half"), ("Monitor", "PROP_Shared_MetalCrate_Half"),
+    };
+
+    [MenuItem("Heartbeat/Rooms/Re-dress F2 B Layouts as F1")]
+    public static void MenuF1() => Debug.Log(ExecuteF1());
+
+    public static string ExecuteF1()
+    {
+        var log = new System.Text.StringBuilder();
+        var kit = AssetDatabase.LoadAssetAtPath<Heartbeat.Generation.KitSet>($"{Defs}/KitSet_F1.asset");
+        var sodium = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/_Project/Prefabs/Level/Light_F1_Sodium.prefab").GetComponentInChildren<Light>(true).color;
+        foreach (var layout in new[] { "Corridor_B", "Hack_B", "Open_B", "Storage_B", "Surveillance_B" })
+        {
+            string newPath = $"{Rooms}/F1/ROOM_F1_{layout}.prefab";
+            if (AssetDatabase.LoadAssetAtPath<GameObject>(newPath) != null) continue;   // never overwrite
+            var inst = (GameObject)PrefabUtility.InstantiatePrefab(AssetDatabase.LoadAssetAtPath<GameObject>($"{Rooms}/F2/ROOM_F2_{layout}.prefab"));
+            inst.name = $"ROOM_F1_{layout}";
+            PrefabUtility.SaveAsPrefabAsset(inst, newPath);
+            Object.DestroyImmediate(inst);
+
+            var root = PrefabUtility.LoadPrefabContents(newPath);
+            root.GetComponent<Heartbeat.Generation.RoomShell>().kit = kit;
+            foreach (var l in root.GetComponentsInChildren<Light>(true)) l.color = sodium;
+            var props = root.transform.Find("Props");
+            int swapped = 0;
+            foreach (var t in props.Cast<Transform>().ToList())
+            {
+                var (prefix, prop) = ToF1.FirstOrDefault(m => t.name.StartsWith(m.prefix));
+                if (prefix == null) { log.AppendLine($"{root.name}: no match for {t.name}"); continue; }
+                if (prop != null)
+                {
+                    var src = AssetDatabase.LoadAssetAtPath<GameObject>($"{Props}/F1/{prop}.prefab") ?? AssetDatabase.LoadAssetAtPath<GameObject>($"{Props}/Shared/{prop}.prefab");
+                    var p = (GameObject)PrefabUtility.InstantiatePrefab(src, props);
+                    p.name = t.name;
+                    p.transform.localPosition = new Vector3(t.localPosition.x, 0f, t.localPosition.z);
+                    p.transform.localRotation = t.localRotation;
+                }
+                Object.DestroyImmediate(t.gameObject);
+                swapped++;
+            }
+            PrefabUtility.SaveAsPrefabAsset(root, newPath);
+            PrefabUtility.UnloadPrefabContents(root);
+            log.AppendLine($"ROOM_F1_{layout}: {swapped} props swapped");
+        }
+        AssetDatabase.SaveAssets();
+        return log.ToString();
+    }
+
     static Heartbeat.Generation.KitSet MakeKitSet(string F)
     {
         string path = $"{Defs}/KitSet_{F}.asset";
@@ -114,7 +169,7 @@ public static class FloorRedress
         k.wall2mHigh = G("Wall_2m_High");
         k.doorway2m = G("Doorway_2m");
         k.wallWindow2m = G("WallWindow_2m");
-        k.door = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/_Project/Prefabs/Level/Door_F1.prefab");
+        k.door = AssetDatabase.LoadAssetAtPath<GameObject>($"Assets/_Project/Prefabs/Level/Door_{F}.prefab");
         EditorUtility.SetDirty(k);
         return k;
     }

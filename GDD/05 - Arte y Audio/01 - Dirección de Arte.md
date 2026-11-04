@@ -27,7 +27,8 @@ Cuatro paletas de referencia más un ámbar sacado de la imagen de ambientación
 **Colores principales:**
 
 - **Base (estructura):** `#0f0607` `#2c1f20` `#4b3f3e` `#746a68` `#96928c`. Grises cálidos con matiz ciruela. Estructura de todo el juego: hormigón, metal, ropa, cadáveres y sombras. Ocupa ~70% de la pantalla en cualquier piso. `#0f0607` sustituye al negro puro: la oscuridad conserva matiz.
-- **Carmesí (Vitalis, carne y peligro):** `#090205` `#270a16` `#51111f` `#922235` `#452635`. Logotipo y ribetes de Vitalis (incluidos los del overol de Lukas), carne de los asimilados, tinte del piso 3 y de la sala de The Mother, luz roja de las cámaras hostiles (D-28) y avisos de The Mother en el terminal.
+- **Cian (Vitalis Konzern, D-157):** `#0d8ba0` `#19c4dc`. Logotipo, etiquetas y bandas corporativas de Vitalis. Es un color distinto del teal de Lukas, más saturado y luminoso.
+- **Carmesí (carne y peligro):** `#090205` `#270a16` `#51111f` `#922235` `#452635`. Ribetes del overol de Lukas, carne de los asimilados, tinte del piso 3 y de la sala de The Mother, luz roja de las cámaras hostiles (D-28) y avisos de The Mother en el terminal.
 
 **Colores secundarios:**
 
@@ -50,7 +51,8 @@ Cuatro paletas de referencia más un ámbar sacado de la imagen de ambientación
 
 - **Teal:** información de Lukas (terminal, inventario, estados).
 - **Verde:** información de la instalación (cámaras, paneles, contador del revólver).
-- **Rojo `#922235`:** amenaza, Vitalis o The Mother. Nunca decoración neutra.
+- **Rojo `#922235`:** amenaza o The Mother. Nunca decoración neutra.
+- **Cian:** la marca de Vitalis, nunca información del jugador.
 - **Morado:** algo no es humano. Nunca aparece en lo cotidiano.
 - **Blanco cálido:** solo la linterna.
 
@@ -59,7 +61,7 @@ Cuatro paletas de referencia más un ámbar sacado de la imagen de ambientación
 1. **El color nunca es la única señal (D-82).** Todo estado comunicado con color tiene también forma, texto, parpadeo o sonido; rojo y verde son el par más difícil con deuteranopía (ver [[03 - Accesibilidad]]).
 2. **Un tinte de luz por sala y como máximo un acento de información.** Carmesí, morado, verde, teal y ámbar juntos saturan la imagen.
 3. **El verde `#02DF8B` solo en emisivos pequeños** (texto y lecturas de pantallas), nunca en superficies grandes.
-4. **El rojo saturado significa amenaza o Vitalis;** el morado, lo cósmico. Ninguno se usa como decoración.
+4. **El rojo saturado significa amenaza; el cian, Vitalis;** el morado, lo cósmico. Ninguno se usa como decoración.
 5. **La oscuridad es mecánica, no un filtro.** Las salas son legibles con la linterna; sin ella solo se leen siluetas, focos de emergencia y pantallas.
 6. **Los recogibles solo destacan bajo la luz (D-84):** un destello especular sutil al iluminarlos con la linterna o un foco; ningún brillo propio visible a oscuras.
 7. **La silueta de Lukas siempre se separa del fondo.** Por eso la clínica no usa luz teal (D-82).

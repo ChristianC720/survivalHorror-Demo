@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &878217030969880357
+--- !u!1 &3886279034621001515
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,9 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1653169125130606415}
-  - component: {fileID: 8456678454033166582}
-  - component: {fileID: 4599007782487763564}
+  - component: {fileID: 8247335455784891785}
+  - component: {fileID: 6491630825003356953}
+  - component: {fileID: 628085629021840047}
   m_Layer: 8
   m_Name: Model_PROP_Shared_Puddle
   m_TagString: Untagged
@@ -18,13 +18,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
---- !u!4 &1653169125130606415
+--- !u!4 &8247335455784891785
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 878217030969880357}
+  m_GameObject: {fileID: 3886279034621001515}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -33,23 +33,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3922216485516443406}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &8456678454033166582
+--- !u!33 &6491630825003356953
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 878217030969880357}
+  m_GameObject: {fileID: 3886279034621001515}
   m_Mesh: {fileID: 7594358167364120356, guid: dc354286d6cd9114bb5745e7b386a6c4, type: 3}
---- !u!23 &4599007782487763564
+--- !u!23 &628085629021840047
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 878217030969880357}
+  m_GameObject: {fileID: 3886279034621001515}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -119,6 +119,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1653169125130606415}
+  - {fileID: 8247335455784891785}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
