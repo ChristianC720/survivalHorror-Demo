@@ -197,7 +197,7 @@ namespace Heartbeat.UI
         {
             int emilia = d.terminal.Count(e => e.kind == RecordKind.EmiliaDocument);
             string mode = Loc.Get("UI.MODE_LABEL." + d.mode);
-            int floor = d.hasAttemptSave ? d.attemptSave.floor : 1;
+            int floor = d.hasAttemptSave ? d.attemptSave.floor : d.hasFloorStart ? d.floorStart.floor : 1;   // D-147: Continue starts on the saved floor
             string date = string.IsNullOrEmpty(d.updatedAt) ? "" : d.updatedAt.Substring(0, Mathf.Min(16, d.updatedAt.Length)).Replace('T', ' ');
             return Loc.Get("UI.SLOT.SUMMARY", d.SubjectLabel, mode, floor, emilia, date);
         }

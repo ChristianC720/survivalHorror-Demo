@@ -283,6 +283,7 @@ namespace Heartbeat.Sandbox
 
         private void DrawGoTo()
         {
+            if (GUILayout.Button("Iniciar el juego (menú y partidas)")) GalleryStart.PlayGame();
             GUILayout.BeginHorizontal();
             GUILayout.Label("", GUILayout.Width(130));
             foreach (var f in GalleryCatalog.Floors) GUILayout.Label(f, GUILayout.Width(42));
