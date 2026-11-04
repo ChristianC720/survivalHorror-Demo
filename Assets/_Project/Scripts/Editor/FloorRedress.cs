@@ -114,7 +114,7 @@ public static class FloorRedress
         k.wall2mHigh = G("Wall_2m_High");
         k.doorway2m = G("Doorway_2m");
         k.wallWindow2m = G("WallWindow_2m");
-        k.door = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/_Project/Prefabs/Level/Door_2m.prefab");
+        k.door = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/_Project/Prefabs/Level/Door_F1.prefab");
         EditorUtility.SetDirty(k);
         return k;
     }

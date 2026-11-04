@@ -18,4 +18,4 @@ MonoBehaviour:
   wall2mHigh: {fileID: 4688425653001190979, guid: 5446bbdbcc6566a4dab6754d6598249a, type: 3}
   doorway2m: {fileID: 5437053001910641560, guid: 06ffda0f388b3d644a2d63cad509755c, type: 3}
   wallWindow2m: {fileID: 7372349374838194753, guid: 25eb4d261de837e49b11e7700f51d4b9, type: 3}
-  door: {fileID: 6207621508063174470, guid: 67ab8b256c11e584496c225501ff0f0f, type: 3}
+  door: {fileID: 6207621508063174470, guid: f2b87456d82e7194e83c2e9230b7635e, type: 3}

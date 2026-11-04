@@ -150,3 +150,20 @@ The owner rejected the first models: low quality, flat faces, parts showing thro
 Every enemy also gets a `_Recycled` mesh on the delivered body (D-130): metal pieces on a second material slot, except the Boca, which only gets thinner.
 
 Not delivered, so the code-built models stay: The Mother, machines, capsules, confiscated objects, ring, document, corpses, `CH_Lukas_Mudo`.
+
+## 10. Environment by floor (2026-11-04, D-156)
+
+The owner asked for identity per floor and no Unity primitives. `Scripts/env_models.py` builds 101 models; `EnvWire` (`Heartbeat ▸ Models ▸ Wire Environment Models`) swaps them in and keeps pivots, colliders, layers and scripts.
+
+| Rule | How |
+|---|---|
+| One draw setup per floor | Atlas `T_Env_<floor>` (2048 px) plus emission, material `M_Env_<floor>` |
+| No light leaks | Closed `core` block past each kit piece's edges; door frames close the leaf gap; `audit()` reports open edges and degenerate faces on every export (currently 0) |
+| No texture waste | Faces nobody sees use `hidden`, which samples one dark texel |
+| Lamps | No shadow casting, so a fixture never blocks its own light |
+| Budgets | Kit up to 400 triangles (they repeat by the dozen); largest prop 946 |
+| NavMesh | `FloorBuilder` bakes from render meshes, so Env, Props and Statics import as readable; players would fail otherwise |
+
+Measured in `Floor` on floor 1: 71.6k triangles per frame, 18 set-pass calls, 42 shadow casters, 120 fps in the editor. 12 generated floors: 0 failures, 0 agents off the mesh.
+
+Enemies: the delivered body plus a clothing shell in `team_models.add_clothing`, on the same weights, second material slot. Recycled forms are pending. Open questions for the owner: `DUDAS_MODELOS.md`.

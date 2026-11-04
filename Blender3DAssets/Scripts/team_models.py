@@ -1,6 +1,6 @@
 """Turns the team's delivery (Assets/_Project/Models/ModelsNew) into the FBX files the game uses. The delivered .blend files are
 opened and never saved; their designs stay as delivered. This adds only what each one lacks to run in the game:
-Mudo a rig and clips; Rastrero one mesh, UVs, paint, rig and clips; every enemy an Idle and a recycled form (D-130)."""
+Mudo a rig and clips; Rastrero one mesh, UVs, paint, rig and clips; every enemy an Idle and the clothing layer the GDD asks for."""
 import math
 import os
 import sys
@@ -21,138 +21,12 @@ import export_fbx
 import hb_anim
 import hb_monster as hm
 import hb_paint as hp
-from hb_sculpt import MOUTH  # noqa: F401  (painters share the id)
 
 X = hp.hex_col
-PARTS_TEX = MODELS + r"\Enemies\Textures\T_RecycledParts.png"
-SWATCH = {"metal": (0, X("#6d6a68")), "rust": (1, X("#5c2f1c")), "bandage": (2, X("#b6ae96")), "cloth": (3, X("#8d8a82")), "rivet": (4, X("#9a9894")), "dark": (5, X("#2a2c2e"))}
-
-
 def open_new(rel):
     bpy.ops.wm.open_mainfile(filepath=NEW + "\\" + rel)
     bpy.context.scene.render.fps = 30
     bpy.context.scene.frame_set(1)
-
-
-def parts_texture():
-    """One small swatch per colour: recycled pieces need flat colour only, on a second material slot."""
-    img = np.ones((8, 48, 4), dtype=np.float32)
-    for i, c in SWATCH.values():
-        img[:, i * 8:(i + 1) * 8, :3] = c
-    hp.save(PARTS_TEX, "T_RecycledParts", img)
-
-
-class Pieces:
-    """Hand-built recycled pieces: each is rigid on one bone and winds outward. Joined as a second material slot."""
-
-    def __init__(self):
-        self.bm = bmesh.new()
-        self.uv = self.bm.loops.layers.uv.new("UVMap")
-        self.bones = []  # one per vertex
-
-    def _face(self, verts, sw):
-        f = self.bm.faces.new(verts)
-        i = SWATCH[sw][0]
-        for l in f.loops:
-            l[self.uv].uv = ((i + .5) / 6, .5)
-        return f
-
-    def _v(self, p, bone):
-        self.bones.append(bone)
-        return self.bm.verts.new(p)
-
-    def box(self, c, size, sw, bone):
-        cx, cy, cz = c
-        w, d, h = size[0] / 2, size[1] / 2, size[2] / 2
-        vs = [self._v((cx + sx * w, cy + sy * d, cz + sz * h), bone) for sz in (-1, 1) for sy in (-1, 1) for sx in (-1, 1)]
-        for q in ((0, 2, 3, 1), (4, 5, 7, 6), (0, 1, 5, 4), (2, 6, 7, 3), (0, 4, 6, 2), (1, 3, 7, 5)):
-            self._face([vs[i] for i in q], sw)
-
-    def spike(self, a, b, r, sw, bone, sides=5):
-        a, b = Vector(a), Vector(b)
-        d = (b - a).normalized()
-        u = d.orthogonal().normalized()
-        v = d.cross(u)
-        ring = [self._v(a + (u * math.cos(2 * math.pi * i / sides) + v * math.sin(2 * math.pi * i / sides)) * r, bone) for i in range(sides)]
-        tip = self._v(b, bone)
-        for i in range(sides):
-            self._face((ring[i], ring[(i + 1) % sides], tip), sw)
-
-    def ring(self, c, rx, ry, h, sw, bone, tilt=0.0, seg=12):
-        """Band around a body part. Two-sided, because the inside can show past a loose edge."""
-        cx, cy, cz = c
-        lo, hi = [], []
-        for i in range(seg):
-            a = 2 * math.pi * i / seg
-            x, y = cx + rx * math.cos(a), cy + ry * math.sin(a)
-            lo.append(self._v((x, y, cz - h / 2 + tilt * x), bone))
-            hi.append(self._v((x, y, cz + h / 2 + tilt * x), bone))
-        for i in range(seg):
-            j = (i + 1) % seg
-            self._face((lo[i], lo[j], hi[j], hi[i]), sw)
-
-    def cone_band(self, z0, r0, z1, r1, c, sw, bone, seg=14, depth=.8):
-        """Skirt: open and two-sided, so it never vanishes when seen from below."""
-        for flip in (False, True):
-            a_, b_ = [], []
-            for i in range(seg):
-                a = 2 * math.pi * i / seg
-                ca, sa = math.cos(a), math.sin(a) * depth
-                a_.append(self._v((c[0] + ca * r0, c[1] + sa * r0, z0), bone))
-                b_.append(self._v((c[0] + ca * r1, c[1] + sa * r1, z1), bone))
-            for i in range(seg):
-                j = (i + 1) % seg
-                q = (a_[i], a_[j], b_[j], b_[i])
-                self._face(q[::-1] if flip else q, sw)
-
-    def attach(self, body, keep_winding=True):
-        """Joins into `body` (a skinned object) as slot 2 with rigid weights."""
-        for f in self.bm.faces:
-            f.material_index = 1
-        if not keep_winding:
-            bmesh.ops.recalc_face_normals(self.bm, faces=self.bm.faces)
-        me = bpy.data.meshes.new("pieces")
-        self.bm.to_mesh(me)
-        self.bm.free()
-        # Vertex indices keep creation order, so bones[i] still names vertex i.
-        base = len(body.data.vertices)
-        tmp = bpy.data.objects.new("pieces", me)
-        body.users_collection[0].objects.link(tmp)
-        for name in set(self.bones):
-            g = tmp.vertex_groups.new(name=name)
-            g.add([i for i, b in enumerate(self.bones) if b == name], 1.0, "REPLACE")
-        mat = bpy.data.materials.get("M_RecycledParts") or bpy.data.materials.new("M_RecycledParts")
-        while len(body.data.materials) < 1:
-            body.data.materials.append(mat)
-        body.data.materials.append(mat)
-        tmp.data.materials.append(body.data.materials[0])
-        tmp.data.materials.append(mat)
-        vl = bpy.context.view_layer
-        for o in vl.objects:
-            o.select_set(False)
-        body.select_set(True)
-        tmp.select_set(True)
-        vl.objects.active = body
-        tmp.matrix_world = body.matrix_world
-        with bpy.context.temp_override(window=bpy.context.window_manager.windows[0]):
-            bpy.ops.object.join()
-        return base
-
-
-def recycled_copy(body, name):
-    ob = body.copy()
-    ob.data = body.data.copy()
-    ob.name = ob.data.name = name
-    body.users_collection[0].objects.link(ob)
-    return ob
-
-
-def thin(ob, amount):
-    """Recycled Boca: 'bone-thin' (D-130). Vertices sink along their normals; the outline stays hers."""
-    me = ob.data
-    me.update()
-    for v in me.vertices:
-        v.co -= v.normal * amount
 
 
 def idle_from(rig, src, name, frames=91, breathe_bone="chest", deg=1.5):
@@ -182,6 +56,181 @@ def idle_from(rig, src, name, frames=91, breathe_bone="chest", deg=1.5):
     rig.animation_data.action = None
 
 
+# ------------------------------------------------------------ clothing layer
+
+def _category(bone):
+    """Team and shared rigs name bones differently; clothing only needs the body region."""
+    n = bone.lower()
+    for key, cat in (("clavicle", "chest"), ("shoulder", "chest"), ("upperarm", "uarm"), ("forearm", "farm"), ("lowerarm", "farm"), ("thigh", "thigh"), ("upperleg", "thigh"), ("shin", "shin"), ("lowerleg", "shin"), ("ankle", "foot"), ("foot", "foot"), ("toe", "foot"), ("hand", "hand"), ("thumb", "hand"), ("finger", "hand"), ("index", "hand"), ("jaw", "head"), ("lobe", "head"), ("head", "head"), ("neck", "neck"), ("chest", "chest"), ("spine", "spine"), ("hips", "hips")):
+        if key in n:
+            return cat
+    return "other"
+
+
+def add_clothing(body, garments, thick=.012, torn=.0, seed=4, body_filter=None, limits=None):
+    """Shell over the body's own faces with the same bone weights, so cloth can never part from the skin it covers.
+    garments: {part: set of regions}. torn: share of faces ripped out. limits: {part: fn(face center) -> bool} for a hem at a height.
+    A strip back to the body closes every hem and tear.
+    The result goes on material slot 2; returns the per-polygon part names."""
+    me = body.data
+    me.update()
+    names = {g.index: g.name for g in body.vertex_groups}
+    region = {}
+    for v in me.vertices:
+        best = max(v.groups, key=lambda g: g.weight, default=None)
+        region[v.index] = _category(names[best.group]) if best is not None else "other"
+    bm = bmesh.new()
+    bm.from_mesh(me)
+    bm.verts.ensure_lookup_table()
+    bm.normal_update()
+    dl = bm.verts.layers.deform.verify()
+    tag = bm.faces.layers.int.new("cloth_part")
+    keys = list(garments)
+    for f in bm.faces:
+        f[tag] = 0
+    co = np.array([v.co[:] for v in bm.verts], dtype=np.float32)
+    fold = hp.noise(co, (9, 9, 3), seed) - .5
+    made = {}
+
+    def lifted(v):
+        if v.index not in made:
+            nv = bm.verts.new(v.co + v.normal * (thick + float(fold[v.index]) * thick * 1.1))
+            for k, w in v[dl].items():
+                nv[dl][k] = w
+            made[v.index] = nv
+        return made[v.index]
+
+    src = list(bm.faces)
+    rips = hp.fbm(np.array([f.calc_center_median()[:] for f in src], dtype=np.float32), 9, 2, seed + 1)
+    chosen = {}
+    for f, r in zip(src, rips):
+        if body_filter is not None and not body_filter(f):
+            continue
+        regs = [region[v.index] for v in f.verts]
+        for i, part in enumerate(keys):
+            ok = limits is None or part not in limits or limits[part](f.calc_center_median())
+            if ok and all(x in garments[part] for x in regs) and r < 1 - torn:
+                chosen[f] = i
+                break
+    cloth = []
+    for f, i in chosen.items():
+        try:
+            nf = bm.faces.new([lifted(v) for v in f.verts])
+        except ValueError:
+            continue
+        nf[tag] = i + 1
+        nf.material_index = 1
+        nf.smooth = True
+        cloth.append(nf)
+    # Hems and tears: an edge with one chosen face gets a strip down to the skin.
+    for f, i in chosen.items():
+        for e in f.edges:
+            if sum(1 for lf in e.link_faces if lf in chosen) != 1:
+                continue
+            a, b = e.verts
+            if a.index in made and b.index in made:
+                try:
+                    nf = bm.faces.new((a, b, made[b.index], made[a.index]))
+                except ValueError:
+                    continue
+                nf[tag] = i + 1
+                nf.material_index = 1
+                nf.smooth = False
+                cloth.append(nf)
+    # Cloth winds with its source face; strips are the only ones that may not.
+    bmesh.ops.recalc_face_normals(bm, faces=cloth)
+    bm.to_mesh(me)
+    bm.free()
+    labels = ["skin"] + keys
+    layer = me.attributes["cloth_part"].data
+    return [labels[layer[i].value] for i in range(len(me.polygons))]
+
+
+def paint_cloth(body, parts, name, painter, folder=r"\Enemies\Textures", size=1024):
+    """Bakes only the clothing polygons: the delivered body keeps its UVs and its maps."""
+    B = hp.bake(body.data, parts, size, align_longest=True, skip=("skin",))
+    B.Ns, B.ao, B.crease, B.mat = B.N, np.full(B.n, .9, dtype=np.float32), np.zeros(B.n, dtype=np.float32), np.zeros(B.n, dtype=np.uint8)
+    tex = MODELS + folder + rf"\{name}.png"
+    hp.write(tex, name, size, [(B, painter(B))])
+    # Slot 2 must exist or the FBX merges cloth into the body's submesh.
+    mat = bpy.data.materials.new("M_" + name)
+    mat.use_nodes = True
+    node = mat.node_tree.nodes.new("ShaderNodeTexImage")
+    node.image = bpy.data.images[name]
+    node.interpolation = "Closest"
+    mat.node_tree.links.new(node.outputs["Color"], next(n for n in mat.node_tree.nodes if n.type == "BSDF_PRINCIPLED").inputs["Base Color"])
+    body.data.materials.append(mat)
+    return B
+
+
+def _worn(B, c, region, seed):
+    """Frayed dark edge at rips: hard and thin, the Signalis way."""
+    hp.grime(B, c, region, seed, .45)
+    hp.folds(B, c, region, seed + 1, strength=.34)
+
+
+def cloth_mudo(B):
+    """Grey Vitalis staff clothing (GDD Personajes)."""
+    P, c = B.P, B.fill(ep.STAFF)
+    S, T = B.is_("shirt"), B.is_("pants")
+    k = (ep._value(B) * 1.15 + .15)[:, None]
+    c[S] = (ep.STAFF * 1.05 * k)[S]
+    c[T] = (ep.STAFF_DK * 1.25 * k)[T]
+    _worn(B, c, S | T, 6)
+    m = S & (P[:, 1] < -.03) & (np.abs(P[:, 0]) < .007)
+    c[m] = c[m] * .4
+    hp.stamp(B, c, (.1, -.14, 1.46), (0, -1, .1), (.09, .05), X("#c4bfae"), np.ones((5, 8), dtype=bool))
+    hp.stamp(B, c, (.1, -.14, 1.46), (0, -1, .1), (.08, .018), ep.INK, hp.text_bitmap("VK-0417"))
+    hp.stamp(B, c, (0, .13, 1.44), (0, 1, 0), .05, ep.STAFF * .42, hp.text_bitmap("VITALIS"), wear=.15, seed=2)
+    m = S & (np.abs(P[:, 0]) > .3) & (np.abs(P[:, 2] - 1.44) < .03)
+    c[m] = ep.CRIMSON
+    hp.blood(B, c, S | T, 8, coverage=.74)
+    return hp.posterize(B, c, levels=20)
+
+
+def cloth_alto(B):
+    """Remains of the Werkschutz uniform: ripped quilted vest, torn trousers with a service stripe."""
+    P, c = B.P, B.fill(ep.GUARD)
+    V, T = B.is_("vest"), B.is_("pants")
+    k = (ep._value(B) * 1.15 + .15)[:, None]
+    c[V] = (ep.GUARD * 1.3 * k)[V]
+    c[T] = (ep.GUARD_DK * 1.5 * k)[T]
+    _worn(B, c, V | T, 7)
+    m = V & (((P[:, 2] * 11) % 1) < .07)
+    c[m] = c[m] * .55
+    m = T & (np.abs(np.abs(P[:, 0]) - .2) < .012)
+    c[m] = ep.CRIMSON * .8
+    hp.stamp(B, c, (0, .2, 1.85), (0, 1, 0), .06, X("#9d9a90"), hp.text_bitmap("WERKSCHUTZ"), wear=.2, seed=4)
+    hp.stamp(B, c, (.09, -.25, 1.85), (0, -1, 0), .035, X("#9d9a90"), hp.text_bitmap("KS"), wear=.25, seed=5)
+    hp.blood(B, c, V | T, 9, coverage=.7)
+    return hp.posterize(B, c, levels=20)
+
+
+def cloth_boca(B):
+    """Rags of the experiment gown (GDD: restos de ropa de experimentacion)."""
+    P, c = B.P, B.fill(ep.GOWN)
+    R = B.is_("rags")
+    k = (ep._value(B) * 1.15 + .15)[:, None]
+    c[R] = (ep.GOWN * .82 * k)[R]
+    _worn(B, c, R, 8)
+    hp.stamp(B, c, (0, -.2, 1.0), (0, -1, 0), .04, ep.INK * 2, hp.text_bitmap("SUBJ 31"), wear=.15, seed=6)
+    hp.blood(B, c, R, 11, coverage=.64)
+    return hp.posterize(B, c, levels=20)
+
+
+def cloth_rastrero(B):
+    """Striped subject shirt and dark torn trousers, the colours of its sheet."""
+    P, c = B.P, B.fill(ep.GOWN)
+    S, T = B.is_("shirt"), B.is_("pants")
+    k = (ep._value(B) * 1.2 + .12)[:, None]
+    stripe = ((P[:, 0] * 26) % 1) < .4
+    c[S] = (np.where(stripe[:, None], X("#5d7382"), X("#b5b6ae")) * k)[S]
+    c[T] = (X("#232c31") * 1.3 * k)[T]
+    _worn(B, c, S | T, 3)
+    hp.blood(B, c, S | T, 17, coverage=.74)
+    return hp.posterize(B, c, levels=20)
+
+
 def rename_actions(table):
     for src, dst in table.items():
         bpy.data.actions[src].name = dst
@@ -202,20 +251,9 @@ def alto():
     body.name = body.data.name = "CH_Alto"
     idle_from(rig, "Patrulla", "AN_Alto_Idle")
     rename_actions({"Patrulla": "AN_Alto_Patrol", "Caza": "AN_Alto_Hunt", "Golpe largo derecho": "AN_Alto_Attack", "Golpe largo izquierdo": "AN_Alto_Attack_Left", "Agarre": "AN_Alto_Grab", "Aturdido": "AN_Alto_Stunned", "Grito": "AN_Alto_Scream", "Muerte": "AN_Alto_Death"})
-    rec = recycled_copy(body, "CH_Alto_Recycled")
-    # Metal vertebra along the spine, metal extensions at the elbows (D-130). Measured on the delivered rest pose.
-    P = Pieces()
-    B = lambda n: rig.data.bones[n]
-    a, b = B("spine").head_local, B("neck").tail_local
-    for i in range(10):
-        k = i / 9
-        c = a.lerp(b, k)
-        P.box((0, c.y + .1, c.z), (.08, .05, .06), "rust" if i % 3 == 2 else "metal", "spine" if k < .3 else "chest" if k < .8 else "neck")
-    for s, side in ((1, "L"), (-1, "R")):
-        el, wr = B("forearm_" + side).head_local, B("forearm_" + side).tail_local
-        P.spike(el, el + (wr - el).normalized() * .05 + Vector((s * .03, .11, -.42)), .03, "metal", "forearm_" + side)
-    P.attach(rec)
-    return finish("Alto", rig, [body, rec])
+    parts = add_clothing(body, {"vest": {"chest", "spine"}, "pants": {"hips", "thigh", "shin"}}, thick=.016, torn=.2, seed=12)
+    paint_cloth(body, parts, "CH_Alto_Cloth", cloth_alto)
+    return finish("Alto", rig, [body])
 
 
 def boca():
@@ -226,9 +264,9 @@ def boca():
     body.name = body.data.name = "CH_Boca"
     idle_from(rig, "Deambular", "AN_Boca_Idle")
     rename_actions({"Deambular": "AN_Boca_Wander", "Caza": "AN_Boca_Hunt", "Mordida": "AN_Boca_Attack", "Atacar": "AN_Boca_Attack_Claw", "Grito": "AN_Boca_Scream", "Aturdido": "AN_Boca_Stunned", "Muerte": "AN_Boca_Death"})
-    rec = recycled_copy(body, "CH_Boca_Recycled")
-    thin(rec, .014)
-    return finish("Boca", rig, [body, rec])
+    parts = add_clothing(body, {"rags": {"hips", "thigh"}}, thick=.014, torn=.26, seed=4)
+    paint_cloth(body, parts, "CH_Boca_Cloth", cloth_boca)
+    return finish("Boca", rig, [body])
 
 
 # ------------------------------------------------------------ Mudo: delivered as a bare mesh
@@ -296,7 +334,8 @@ MUDO_J = {"hips": (0, 0, 1.02), "spine": (0, 0, 1.14), "chest": (0, 0, 1.36), "n
           "hip": (.1, 0, 1.0), "knee": (.195, 0, .63), "ankle": (.285, 0, .1), "ball": (.31, 0, .03), "toe": (.325, 0, .015)}
 
 
-def mudo():
+def _mudo_body():
+    """The delivered Mudo, rigged and dressed. Returns (body, rig, cloth parts)."""
     open_new(r"Monsters\Monster1\Monster1.blend")
     body = bpy.data.objects["Monster1_Body"]
     body.name = body.data.name = "CH_Mudo"
@@ -306,36 +345,25 @@ def mudo():
     j["ball"] = (.31, float(co[(np.abs(co[:, 0] - .31) < .05) & (co[:, 2] < .05), 1].mean()), .03)
     j["toe"] = (.325, float(co[(np.abs(co[:, 0] - .32) < .08) & (co[:, 2] < .04), 1].min()) + .01, .015)
     t = _table(co, j)
-    col = body.users_collection[0]
-    rig = hm.make_rig("Rig_Mudo", t, col)
+    rig = hm.make_rig("Rig_Mudo", t, body.users_collection[0])
     # Arm or torso: nearer the arm's bones, measured against each part's own thickness.
     arms = [(np.array(t[s + b][0]), np.array(t[s + b][1])) for s in ("Left", "Right") for b in ("UpperArm", "LowerArm", "Hand", "Fingers")]
     da = np.min([hm.segment_distance(co.astype(np.float64), a, b) for a, b in arms], axis=0)
-    limb = np.where((da < .085) & (np.abs(co[:, 0]) > .17), np.where(co[:, 0] > 0, 1, 2), 0)
-    _limb_attr(me, limb)
+    _limb_attr(me, np.where((da < .085) & (np.abs(co[:, 0]) > .17), np.where(co[:, 0] > 0, 1, 2), 0))
     body.parent = rig
-    mod = body.modifiers.new("Armature", "ARMATURE")
-    mod.object = rig
+    body.modifiers.new("Armature", "ARMATURE").object = rig
     hm.auto_weights(body, rig)
-    rec = recycled_copy(body, "CH_Mudo_Recycled")
-    hz = 1.8
-    P = Pieces()
-    # Silent-Hill-nurse form of D-130: riveted plate over the face, bandaged head, clinical skirt.
-    fy = float(co[(np.abs(co[:, 0]) < .03) & (np.abs(co[:, 2] - 1.96) < .06), 1].min())
-    P.box((0, fy - .004, 1.95), (.15, .02, .2), "metal", "Head")
-    for x in (-.058, .058):
-        for z in (1.87, 2.03):
-            P.box((x, fy - .016, z), (.014, .01, .014), "rivet", "Head")
-    for i in range(7):
-        z = 1.84 + i * .042
-        r = .118 - abs(i - 2.6) * .009
-        P.ring((0, -.03, z), r, r * 1.04, .036, "bandage", "Head", tilt=.14 if i % 2 else -.12)
-    P.cone_band(1.04, .19, .56, .3, (0, -.005), "cloth", "Hips")
-    P.attach(rec)
+    parts = add_clothing(body, {"shirt": {"chest", "spine", "uarm"}, "pants": {"hips", "thigh", "shin"}}, thick=.012, torn=.03, seed=7)
+    return body, rig, parts
+
+
+def mudo():
+    body, rig, parts = _mudo_body()
+    paint_cloth(body, parts, "CH_Mudo_Cloth", cloth_mudo)
     A = _author(rig)
     enemy_mudo(A)
     rig.animation_data.action = None
-    return finish("Mudo", rig, [body, rec])
+    return finish("Mudo", rig, [body])
 
 
 def _author(rig):
@@ -365,7 +393,14 @@ def _join_parts():
         ob = bpy.data.objects[src]
         if part not in names:
             names.append(part)
-        tmp = ob.data.copy()
+        # The delivery runs 11.5k triangles; the enemy limit is 8k. Only the big organic parts give up polygons.
+        if part in ("head", "torso", "arm", "leg"):
+            dec = ob.modifiers.new("dec", "DECIMATE")
+            dec.ratio = .42
+            bpy.context.view_layer.update()
+            tmp = bpy.data.meshes.new_from_object(ob.evaluated_get(bpy.context.evaluated_depsgraph_get()))
+        else:
+            tmp = ob.data.copy()
         tmp.transform(ob.matrix_world)
         before = set(bm.faces)
         bm.from_mesh(tmp)
@@ -413,15 +448,13 @@ def paint_rastrero(B, part_ao):
     H, Tr, Ar, Lg, Tt = B.is_("head"), B.is_("torso"), B.is_("arm"), B.is_("leg"), B.is_("tatter")
     skin = H | Tr | Ar | Lg
     ep._skin(B, c, skin, ep.FLESH, 7)
-    holes = hp.fbm(P, 8, 3, 14) > .58
-    sh = ((Tr & (P[:, 2] > 1.02)) | (Ar & (P[:, 2] > 1.2)) | (Tt & (P[:, 2] > .98))) & ~holes
-    tr = ((Lg & (P[:, 2] > .3)) | (Tr & (P[:, 2] <= 1.02)) | (Tt & (P[:, 2] <= .98))) & ~(hp.fbm(P, 7, 3, 6) > .66)
     t = (ep._value(B) * 1.2 + .12)[:, None]
+    # The hanging tatters of the delivery stay cloth; the rest of the clothing is the shell on top (cloth_rastrero).
+    up = Tt & (P[:, 2] > .98)
     stripe = ((P[:, 0] * 26) % 1) < .4
-    c[sh] = (np.where(stripe[:, None], X("#5d7382"), X("#b5b6ae")) * t)[sh]
-    hp.grime(B, c, sh, 2, .55)
-    c[tr] = (X("#232c31") * t)[tr]
-    hp.grime(B, c, tr, 3, .4)
+    c[up] = (np.where(stripe[:, None], X("#5d7382"), X("#b5b6ae")) * t)[up]
+    low = Tt & ~up
+    c[low] = (X("#232c31") * t)[low]
     # Bandage on the forearm, from the sheet.
     m = Ar & (np.abs(P[:, 2] - .9) < .055)
     c[m] = (X("#b6ae96") * t)[m]
@@ -433,7 +466,6 @@ def paint_rastrero(B, part_ao):
     lip = H & (P[:, 1] < -.5) & ~maw & (((P[:, 0] / .205) ** 2 + ((P[:, 2] - 1.08) / .38) ** 2) < 1)
     c[lip] = c[lip] * .4 + ep.BLOOD * .6
     ep._gashes(B, c, skin & ~maw, 12, 16)
-    hp.blood(B, c, sh | tr, 17, coverage=.8)
     ep._dirty_hands(B, c, Ar | Lg, 9, .78)
     ep._hard(B, c)
     return hp.posterize(B, c, levels=24)
@@ -471,18 +503,13 @@ def rastrero():
     tex = MODELS + r"\Enemies\Textures\CH_Rastrero_Albedo.png"
     im = hp.save(tex, "CH_Rastrero_Albedo", hp.write(tex, "CH_Rastrero_Albedo", 2048, [(B, paint_rastrero(B, B.ao))]))
     hm.finish_material(body, im)
-    rec = recycled_copy(body, "CH_Rastrero_Recycled")
-    P = Pieces()
-    for i in range(7):
-        k = i / 6
-        P.box((0, .135 - k * .3, 1.12 + k * .62), (.08, .05, .07), "rust" if i % 3 == 2 else "metal", "Spine" if k < .3 else "Chest")
-    for s in (-1, 1):
-        P.spike((s * .1, -.68, 1.36), (s * .03, -.92, 1.2), .026, "metal", "Head")
-    P.attach(rec)
+    # Clothing covers torso, arms and legs only: the jaw and head never get a sleeve.
+    cloth = add_clothing(body, {"shirt": {"chest", "spine", "uarm"}, "pants": {"hips", "thigh", "shin"}}, thick=.012, torn=.24, seed=14, body_filter=lambda f: parts[f.index] in ("torso", "arm", "leg"))
+    paint_cloth(body, cloth, "CH_Rastrero_Cloth", cloth_rastrero)
     A = _author(rig)
     enemy_rastrero(A)
     rig.animation_data.action = None
-    return finish("Rastrero", rig, [body, rec])
+    return finish("Rastrero", rig, [body])
 
 
 def _texel_ao(me, parts, B, ao):
@@ -680,7 +707,7 @@ class Gun:
 
 
 # Where RevolverCounter's number sits: the centre of the screen on the frame, read by the Unity wiring. Blender axes.
-COUNTER_SCREEN = (.0147, -.123, .032)
+COUNTER_SCREEN = (.0135, -.128, .049)
 
 
 def revolver():
@@ -716,26 +743,28 @@ def revolver():
         a = 2 * math.pi * (i + .5) / 6
         G.prism(-.0888, -.0896, axis_z + .019 * math.sin(a), .0068, .0068, "bore", sides=6, x=.019 * math.cos(a))
     G.prism(-.089, -.094, axis_z, .007, .007, "metal", sides=6)                               # crane pin
-    # Long barrel under a square shroud with ventilation cuts, and a muzzle crown ahead of it.
-    length = .155
+    # Long barrel: one slab with the frame, as tall as the front post where they meet and tapering to the muzzle, so it reads
+    # as the gun's own body. The bore stays low, level with the lower chamber (D-74).
+    length = .17
     y0, y1 = -.104, -.104 - length
-    G.box((-W / 2 + .001, y1, bz - .016), (W / 2 - .001, y0, bz + .018), "ceramic")
-    G.prism(y1 + .002, y1 - .012, bz, .0125, .0115, "metal", sides=10)
-    G.prism(y1 - .012, y1 - .0125, bz, .0065, .0065, "bore", sides=8)
-    # Rib and sights.
-    G.box((-.005, y1 + .002, bz + .018), (.005, y0 + .012, bz + .023), "polymer")
-    G.wedge([(y1 + .003, bz + .022), (y1 + .003, bz + .037), (y1 + .018, bz + .022)], .005, "sight")
+    G.wedge([(y0 + .002, .08), (y0 + .002, -.006), (y1, bz - .022), (y1, bz + .03), (y1 + .05, .066), (y0 - .03, .08)], W * .92, "ceramic")
+    G.prism(y1 + .004, y1 - .012, bz, .0185, .0175, "metal", sides=12)
+    G.prism(y1 - .012, y1 - .0125, bz, .0105, .0105, "bore", sides=10)
+    # Rib along the top, with the sight at its end, level with the top strap.
+    # It follows the barrel's top line exactly, sunk into it, so no gap can open above the slab.
+    G.wedge([(y0 + .002, .092), (y0 + .002, .074), (y0 - .03, .074), (y1 + .05, .06), (y1 + .004, .055), (y1 + .004, .066), (y1 + .05, .071), (y0 - .03, .085)], .009, "polymer")
+    G.wedge([(y1 + .004, .062), (y1 + .004, .08), (y1 + .022, .068)], .006, "sight")
     G.box((-.009, -.03, .094), (-.004, -.016, .102), "polymer")
     G.box((.004, -.03, .094), (.009, -.016, .102), "polymer")
-    # Ejector rod under the barrel, shrouded at the front.
-    G.prism(-.104, y1 + .05, bz - .023, .0052, .0052, "metal", sides=8)
-    G.box((-.009, y1 + .05, bz - .03), (.009, y1 + .08, bz - .016), "ceramic")
+    # Ejector rod in a channel under the barrel.
+    G.prism(y0, y1 + .06, -.006, .0058, .0058, "metal", sides=8)
+    G.box((-.0095, y1 + .06, -.016), (.0095, y1 + .085, .004), "ceramic")
     # Shrouded hammer spur.
     G.wedge([(.03, .056), (.042, .07), (.04, .08), (.03, .074)], .009, "polymer")
     # Counter screen and biometric plate stand proud of the frame on both sides.
     for s in (-1, 1):
         x0, x1 = sorted((s * W / 2, s * (W / 2 + .0012)))
-        G.box((x0, -.104 - .036, bz - .01), (x1, -.104 - .006, bz + .012), "counter")
+        G.box((x0 * .92 if s > 0 else x0, -.104 - .04, .036), (x1 if s > 0 else x1 * .92, -.104 - .008, .062), "counter")
         G.box((x0, -.01, .034), (x1, .018, .056), "bio")
     bmesh.ops.recalc_face_normals(bm, faces=bm.faces)
     for f in bm.faces:
@@ -791,11 +820,11 @@ def paint_revolver(B, bz, y0, y1):
     # Stippled polymer on the grip, ventilation cuts along the shroud.
     st = kept & (P[:, 2] < -.008) & ((((P[:, 1] * 260).astype(int) + (P[:, 2] * 260).astype(int)) % 2) == 0)
     c[st] *= .68
-    vent = cer & (P[:, 1] < y0 - .045) & (P[:, 1] > y1 + .006) & (np.abs(B.N[:, 0]) > .7) & (np.abs(P[:, 2] - (bz + .004)) < .0052) & (((P[:, 1] * 62) % 1) < .55)
+    vent = cer & (P[:, 1] < y0 - .05) & (P[:, 1] > y1 + .012) & (np.abs(B.N[:, 0]) > .7) & (np.abs(P[:, 2] - (bz + .008)) < .006) & (((P[:, 1] * 62) % 1) < .55)
     c[vent] = X("#08080a")
     # Stencils: maker on the shroud, service number on the frame.
     for s in (-1, 1):
-        hp.stamp(B, c, (s * .0135, y1 + .05, bz - .009), (s, 0, 0), .0052, X("#c4bfae"), hp.text_bitmap("KESSLER"), wear=.1, seed=3)
+        hp.stamp(B, c, (s * .0125, y1 + .05, bz - .012), (s, 0, 0), .0058, X("#c4bfae"), hp.text_bitmap("KESSLER"), wear=.1, seed=3)
         hp.stamp(B, c, (s * .0135, -.012, .012), (s, 0, 0), .0042, X("#c4bfae"), hp.text_bitmap("KS-M5"), wear=.1, seed=4)
     # Counter screen stays dark: RevolverCounter draws the live round count over it.
     c[B.is_("counter")] = X("#08241E")
@@ -807,35 +836,71 @@ def paint_revolver(B, bz, y0, y1):
     return hp.posterize(B, c, levels=20)
 
 
-def mudo_still():
-    """The intro's decoy: the delivered Mudo, frozen in its Still pose."""
-    mudo()
-    open_new(r"Monsters\Monster1\Monster1.blend")
-    body = bpy.data.objects["Monster1_Body"]
-    body.name = body.data.name = "CH_Mudo_Still"
-    co = np.array([v.co[:] for v in body.data.vertices], dtype=np.float32)
-    j = {k: _snap(co, v) if k not in ("hips", "spine", "chest", "neck", "head", "crown") else v for k, v in MUDO_J.items()}
-    j["ball"] = (.31, float(co[(np.abs(co[:, 0] - .31) < .05) & (co[:, 2] < .05), 1].mean()), .03)
-    j["toe"] = (.325, float(co[(np.abs(co[:, 0] - .32) < .08) & (co[:, 2] < .04), 1].min()) + .01, .015)
-    t = _table(co, j)
-    rig = hm.make_rig("Rig", t, body.users_collection[0])
-    arms = [(np.array(t[s + b][0]), np.array(t[s + b][1])) for s in ("Left", "Right") for b in ("UpperArm", "LowerArm", "Hand", "Fingers")]
-    da = np.min([hm.segment_distance(co.astype(np.float64), a, b) for a, b in arms], axis=0)
-    _limb_attr(body.data, np.where((da < .085) & (np.abs(co[:, 0]) > .17), np.where(co[:, 0] > 0, 1, 2), 0))
-    body.parent = rig
-    body.modifiers.new("Armature", "ARMATURE").object = rig
-    hm.auto_weights(body, rig)
-    A = hb_anim.Author(rig)
-    A.clip("pose", 2, {1: {"Neck": (10, 0, 2), "Head": (20, 6, 0), "LeftShoulder": (4, 0, 0), "RightShoulder": (6, 0, 0)}})
-    bpy.context.scene.frame_set(1)
-    bpy.context.view_layer.update()
-    baked = bpy.data.meshes.new_from_object(body.evaluated_get(bpy.context.evaluated_depsgraph_get()))
-    st = bpy.data.objects.new("CH_Mudo_Still", baked)
-    body.name = "src"
-    st.name = "CH_Mudo_Still"
-    body.users_collection[0].objects.link(st)
-    _export_static(st, MODELS + r"\Statics\CH_Mudo_Still.fbx")
-    return len(baked.polygons)
+FALLEN = {"Hips": (-84, 0, 10), "Chest": (6, 0, 0), "Head": (4, 0, -24), "LeftUpperArm": (-10, -56, 0), "RightUpperArm": (-8, 34, 0), "LeftLowerArm": (-24, 0, 0), "RightLowerArm": (-10, 0, 0), "LeftUpperLeg": (-20, 8, 0), "RightUpperLeg": (-2, -8, 0), "LeftLowerLeg": (32, 0, 0), "RightLowerLeg": (4, 0, 0), "LeftFoot": (28, 0, 0), "RightFoot": (24, 0, 0), "loc": (0, 0.3, -.92)}
+STILL = {"Neck": (10, 0, 2), "Head": (20, 6, 0), "LeftShoulder": (4, 0, 0), "RightShoulder": (6, 0, 0)}
+STATICS = {
+    "CH_Corpse_Staff": (FALLEN, "#6d6866", "#332b2c", "VITALIS", "VK-0233", .78),
+    "CH_Corpse_Guard": (FALLEN, "#2c343a", "#191d21", "WERKSCHUTZ", "KS-118", .76),
+    "CH_Corpse_Subject": (FALLEN, "#8d8a82", "#6a6862", "SUBJEKT", "SUBJ 12", .8),
+    "CH_Mudo_Still": (STILL, "#6d6866", "#332b2c", "VITALIS", "VK-0417", 1.0),
+    "CH_Lukas_Mudo": (STILL, "#355654", "#1a2527", "R-H-07", "R-H-07", .8),
+}
+STATIC_TRIS = 3500
+
+
+def statics():
+    """Corpses and decoys: the delivered Mudo in clothes of each group, posed and frozen. One texture: delivered albedo in the
+    left half, clothing in the right, so scenes keep their single material."""
+    out = {}
+    for name, (pose, top, bottom, label, tag_text, tone) in STATICS.items():
+        body, rig, parts = _mudo_body()
+        me = body.data
+        uv = me.uv_layers.active.data
+        for p in me.polygons:
+            if parts[p.index] == "skin":
+                for li in p.loop_indices:
+                    uv[li].uv = (uv[li].uv[0] * .5, uv[li].uv[1])
+        B = hp.bake(me, parts, 1024, offset=(1024, 0), atlas=2048, align_longest=True, skip=("skin",))
+        B.Ns, B.ao, B.crease, B.mat = B.N, np.full(B.n, .9, dtype=np.float32), np.zeros(B.n, dtype=np.float32), np.zeros(B.n, dtype=np.uint8)
+        S, T = B.is_("shirt"), B.is_("pants")
+        c = B.fill(X(top))
+        k = (ep._value(B) * 1.15 + .15)[:, None]
+        c[S] = (X(top) * k)[S]
+        c[T] = (X(bottom) * 1.25 * k)[T]
+        _worn(B, c, S | T, 6)
+        hp.stamp(B, c, (0, .13, 1.44), (0, 1, 0), .05, X("#9d9a90"), hp.text_bitmap(label), wear=.15, seed=2)
+        hp.stamp(B, c, (.1, -.14, 1.46), (0, -1, .1), (.08, .018), X("#c4bfae"), hp.text_bitmap(tag_text))
+        hp.blood(B, c, S | T, 8, coverage=.66)
+        img = np.zeros((2048, 2048, 4), dtype=np.float32)
+        img[:, :, 3] = 1
+        src = bpy.data.images["Monster1_Albedo"].copy()
+        src.scale(1024, 2048)
+        half = np.array(src.pixels[:], dtype=np.float32).reshape(2048, 1024, 4)
+        bpy.data.images.remove(src)
+        half[:, :, :3] *= tone
+        img[:, :1024] = half
+        path = MODELS + rf"\Statics\Textures\{name}_Albedo.png"
+        hp.write(path, name + "_Albedo", 2048, [(B, hp.posterize(B, c, levels=20))], existing=img)
+        A = hb_anim.Author(rig)
+        A.clip("pose", 2, {1: pose})
+        bpy.context.scene.frame_set(1)
+        bpy.context.view_layer.update()
+        baked = bpy.data.meshes.new_from_object(body.evaluated_get(bpy.context.evaluated_depsgraph_get()))
+        st = bpy.data.objects.new("static", baked)
+        body.users_collection[0].objects.link(st)
+        n = sum(len(p.vertices) - 2 for p in baked.polygons)
+        if n > STATIC_TRIS:
+            st.modifiers.new("dec", "DECIMATE").ratio = STATIC_TRIS / n
+            bpy.context.view_layer.update()
+            lean = bpy.data.meshes.new_from_object(st.evaluated_get(bpy.context.evaluated_depsgraph_get()))
+            st.modifiers.clear()
+            st.data = lean
+        st.data.materials.clear()
+        body.name = "src"
+        st.name = st.data.name = name
+        _export_static(st, MODELS + rf"\Statics\{name}.fbx")
+        out[name] = sum(len(p.vertices) - 2 for p in st.data.polygons)
+    return out
 
 
 def metal_smooth():
@@ -871,4 +936,4 @@ def metal_smooth():
     return out
 
 
-FN = {"Alto": alto, "Boca": boca, "Mudo": mudo, "Rastrero": rastrero, "Props": props, "Revolver": revolver, "MudoStill": mudo_still, "MetalSmooth": metal_smooth}
+FN = {"Alto": alto, "Boca": boca, "Mudo": mudo, "Rastrero": rastrero, "Props": props, "Revolver": revolver, "Statics": statics, "MetalSmooth": metal_smooth}

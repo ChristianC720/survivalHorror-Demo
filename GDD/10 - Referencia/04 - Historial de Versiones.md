@@ -31,6 +31,7 @@ Registra los cambios importantes realizados al GDD. Esto permite conocer cómo e
 | 0.15.0 | 2026-11-03 | Método visual de *Signalis* en los modelos y atlas común de 2048 px para máquinas y objetos (D-153). | Christian Coronel Palma |
 | 0.16.0 | 2026-11-03 | Enemigos rehechos según sus láminas de referencia, con texturas de 1024 px y ~11k triángulos; nuevo aspecto del Rastrero (D-154). | Christian Coronel Palma |
 | 0.17.0 | 2026-11-03 | Modelos del equipo integrados en el juego y nuevo revólver de cañón largo (D-155). | Christian Coronel Palma |
+| 0.18.0 | 2026-11-04 | Entorno con identidad por piso modelado en Blender y ropa en los enemigos; reciclados pendientes (D-156). | Christian Coronel Palma |
 
 ## Convención sugerida
 

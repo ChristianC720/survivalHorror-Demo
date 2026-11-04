@@ -49,6 +49,9 @@ UP = (0, 0, 1)
 
 
 class Model:
+    SKIP = ("glass",)
+    post = None   # optional fn(B, c, e): surface paint per floor, applied before the final colour cut
+
     def __init__(self, name):
         self.name = name
         self.bm = bmesh.new()
@@ -142,7 +145,7 @@ class Model:
         return ob, len(me.loop_triangles)
 
     def paint(self, me, tile, offset):
-        B = hp.bake(me, self.parts, tile, offset, ATLAS, margin=1, edges=True, skip=("glass",))
+        B = hp.bake(me, self.parts, tile, offset, ATLAS, margin=1, edges=True, skip=self.SKIP)
         base = np.array([COLORS.get(n, (0, 0, 0)) for n in B.names], dtype=np.float32)   # glass has its own material
         c = base[B.part].copy()
         e = np.zeros_like(c)
@@ -188,6 +191,8 @@ class Model:
                 self._lamps(B, c, e, *m[1:])
             elif kind == "screen":
                 self._screen(B, c, e, *m[1:])
+        if self.post is not None:
+            self.post(B, c, e)
         c = hp.posterize(B, c, levels=12)
         for i, n in enumerate(B.names):
             if n in GLOW:

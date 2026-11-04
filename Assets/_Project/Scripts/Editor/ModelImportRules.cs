@@ -88,7 +88,7 @@ namespace Heartbeat.EditorTools
                 return;
             }
             if (assetPath.Contains("_MetalSmooth")) { t.sRGBTexture = false; t.maxTextureSize = 1024; return; }
-            t.maxTextureSize = assetPath.Contains("T_Palette") || assetPath.Contains("CH_Rastrero_Albedo") || assetPath.Contains("/Characters/") ? 2048 : assetPath.Contains("T_Revolver") ? 1024 : assetPath.Contains("TheMother") || assetPath.Contains("/Enemies/") || assetPath.Contains("/Statics/") ? 1024 : assetPath.Contains("/Items/") ? 512 : 256;
+            t.maxTextureSize = assetPath.Contains("T_Palette") || assetPath.Contains("T_Env_") || assetPath.Contains("CH_Rastrero_Albedo") || assetPath.Contains("/Characters/") || assetPath.Contains("/Statics/") ? 2048 : assetPath.Contains("T_Revolver") ? 1024 : assetPath.Contains("TheMother") || assetPath.Contains("/Enemies/") || assetPath.Contains("/Statics/") ? 1024 : assetPath.Contains("/Items/") ? 512 : 256;
         }
 
         private void OnPreprocessModel()
@@ -99,7 +99,8 @@ namespace Heartbeat.EditorTools
             m.importCameras = false;
             m.importLights = false;
             m.importBlendShapes = true;
-            m.isReadable = false;
+            // FloorBuilder bakes the NavMesh from render meshes at runtime, which needs read access in a player build.
+            m.isReadable = assetPath.Contains("/Env/") || assetPath.Contains("/Props/") || assetPath.Contains("/Statics/");
             m.importNormals = ModelImporterNormals.Import;
             m.resampleCurves = false;
         }

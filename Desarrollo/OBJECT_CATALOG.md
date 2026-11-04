@@ -3,7 +3,7 @@
 Source: `GDD/00 - Ideas de objetos por sala.md` (revised 2026-10-31), cross-checked with `GDD/04 - Contenido/02 - Niveles.md` (archetype themes) and `GDD/05 - Arte y Audio/03 - Entornos.md`.
 
 Legend:
-- **Kind**: `PROP` = final-quality-enough primitive build (simple box/cylinder shapes, stays as is until art pass) · `PH` = needs a Blender model; build a primitive placeholder and log it in `PLACEHOLDERS.md`.
+- **Kind**: naming only since D-156: both `PROP` and `PH` are Blender models (`Blender3DAssets/Scripts/env_models.py`).
 - **Cover**: the prop blocks enemy line of sight and the player can crouch behind it (gets a `Cover` marker and a collider ≥ 1.0 m high).
 - **Archetypes**: where the room builder should prefer it (Cor = Corridor, Sto = Storage, Opn = Open, Sur = Surveillance, Hck = Hack, Ver = Vertical, Key = key rooms).
 - Sizes are W × H × D in metres, pivot at the floor center of the footprint, on the 0.5 m sub-grid.

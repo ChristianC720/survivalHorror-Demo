@@ -26,7 +26,7 @@ namespace Heartbeat.Sandbox
     /// </summary>
     public sealed class GalleryCatalog
     {
-        public static readonly string[] Types = { "Personajes", "Enemigos", "Objetos", "Confiscados", "Props", "Máquinas", "Nivel", "Kit", "Salas", "Materiales", "Modelos sueltos" };
+        public static readonly string[] Types = { "Sala de muestra", "Personajes", "Enemigos", "Objetos", "Confiscados", "Props", "Máquinas", "Nivel", "Kit", "Salas", "Materiales", "Modelos sueltos" };
         public static readonly string[] Floors = { "Shared", "F1", "F2", "F3" };
 
         private const string Prefabs = "Assets/_Project/Prefabs/";
@@ -51,6 +51,7 @@ namespace Heartbeat.Sandbox
             hidden.SetActive(false);
             holder = hidden.transform;
 
+            AddSampleRooms();
             AddLukas();
             AddEnemies();
             AddFolder(Prefabs + "Items", "Objetos", false);
@@ -66,6 +67,51 @@ namespace Heartbeat.Sandbox
 
             Layout(parent);
             Object.Destroy(hidden);
+        }
+
+        /// <summary>A small room per floor, built from the kit by the KIT_SPEC rules with one shadowed light inside: any seam that leaks shows on the ground outside.</summary>
+        private void AddSampleRooms()
+        {
+            const int cells = 3;
+            foreach (var f in new[] { "F1", "F2", "F3" })
+            {
+                string kit = $"{Prefabs}Kit/{f}/KIT_{f}_";
+                GameObject P(string n) => AssetDatabase.LoadAssetAtPath<GameObject>(n);
+                var room = new GameObject("Sala " + f);
+                room.transform.SetParent(holder, false);
+                void Put(GameObject asset, Vector3 at, float yaw)
+                {
+                    if (asset == null) return;
+                    var go = Object.Instantiate(asset, room.transform);
+                    go.transform.SetLocalPositionAndRotation(at, Quaternion.Euler(0, yaw, 0));
+                }
+                for (int x = 0; x < cells; x++)
+                    for (int z = 0; z < cells; z++)
+                    {
+                        Put(P(kit + "Floor_2x2.prefab"), new Vector3(x * 2, 0, z * 2), 0);
+                        Put(P(kit + "Ceiling_2x2.prefab"), new Vector3(x * 2, 0, z * 2), 0);
+                    }
+                for (int k = 0; k < cells; k++)
+                {
+                    // South: wall, door, wall. North: window in the middle. East and west closed.
+                    Put(P(kit + (k == 1 ? "Doorway_2m.prefab" : "Wall_2m.prefab")), new Vector3(2 * k + 1, 0, 0), 0);
+                    Put(P(kit + (k == 1 ? "WallWindow_2m.prefab" : "Wall_2m.prefab")), new Vector3(2 * k + 1, 0, 2 * cells), 180);
+                    Put(P(kit + "Wall_2m.prefab"), new Vector3(0, 0, 2 * k + 1), 90);
+                    Put(P(kit + "Wall_2m.prefab"), new Vector3(2 * cells, 0, 2 * k + 1), 270);
+                }
+                Put(P($"{Prefabs}Level/Door_{f}.prefab"), new Vector3(3, 0, 0), 0);
+                Put(P(kit + "Column.prefab"), new Vector3(2, 0, 4), 0);
+                string lamp = f == "F1" ? "Light_F1_Sodium" : f == "F2" ? "Light_F2_Fluorescent" : "Light_F3_Crimson";
+                var lampAsset = P($"{Prefabs}Level/{lamp}.prefab");
+                if (lampAsset != null)
+                {
+                    var go = Object.Instantiate(lampAsset, room.transform);
+                    go.transform.localPosition = new Vector3(3, 2.8f, 3);
+                    foreach (var l in go.GetComponentsInChildren<Light>(true)) { l.shadows = LightShadows.Soft; l.range = 12f; }
+                }
+                Add(room, "Sala " + f, "kit de " + f, "Sala de muestra", f);
+                Object.Destroy(room);
+            }
         }
 
         private static string FloorOf(string path)
@@ -93,7 +139,7 @@ namespace Heartbeat.Sandbox
             Strip(go);
             if (prepare != null && !prepare(go)) { Object.Destroy(go); Skipped.Add(path); return null; }
             // Models are authored facing away from the first view; rooms and kit keep their grid orientation.
-            if (type != "Kit" && type != "Salas" && type != "Nivel") go.transform.localRotation *= Quaternion.Euler(0, 180, 0);
+            if (type != "Kit" && type != "Salas" && type != "Nivel" && type != "Sala de muestra") go.transform.localRotation *= Quaternion.Euler(0, 180, 0);
             var renderers = go.GetComponentsInChildren<Renderer>(true).Where(r => r.enabled).ToArray();
             if (renderers.Length == 0)
             {
@@ -214,16 +260,8 @@ namespace Heartbeat.Sandbox
                 string path = $"{Prefabs}Characters/Enemy_{pair.Key}.prefab";
                 var asset = AssetDatabase.LoadAssetAtPath<GameObject>(path);
                 var clips = ClipsOf($"{Models}Enemies/CH_{pair.Key}.fbx");
-                foreach (bool recycled in new[] { false, true })
-                {
-                    var item = Add(asset, pair.Key + (recycled ? " reciclado" : ""), path, "Enemigos", pair.Value, go =>
-                    {
-                        foreach (var r in go.GetComponentsInChildren<SkinnedMeshRenderer>(true))
-                            r.enabled = r.name.EndsWith("_Recycled") == recycled;
-                        return true;
-                    });
-                    if (item != null) SetAnim(item, clips);
-                }
+                var item = Add(asset, pair.Key, path, "Enemigos", pair.Value);
+                if (item != null) SetAnim(item, clips);
             }
         }
 

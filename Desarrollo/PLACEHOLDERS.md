@@ -8,6 +8,8 @@ Rules
 - Colour = role colour from the palette (`GDD/05 - Arte y Audio/01 - Dirección de Arte.md`): Lukas teal, assimilated purple-grey with iridescent purple, The Mother crimson, props base warm grey.
 - Mark the facing direction with a small cube on the +Z side (characters) so orientation is readable.
 
+**Status 2026-11-04:** every entry below now has a Blender model (BLENDER_PLAN.md section 10), except `PH_Recycled_Parts`: recycled forms are pending, and a recycled enemy looks like its normal form for now. `PH_Lukas` was deleted, unused.
+
 | Prefab | Stands for | Real size (W×H×D m) | Primitive build | Tri budget (final) | Rig / anim needed | Status |
 |---|---|---|---|---|---|---|
 | `PH_Lukas` | Lukas R-H-07 (teal overalls, arm terminal on left forearm) | 0.75 × 1.78 × 0.37 | capsule body, sphere head, box arm terminal (left) | ≤ 8k | Humanoid, all clips in Blender: locomotion, aim, reload, shove, grab, injured/critical gaits | **replaced by `CH_Lukas_RH07` in `Player.prefab`** (`PH_Lukas` stays only for the intro until `CH_Lukas_Civil`) |

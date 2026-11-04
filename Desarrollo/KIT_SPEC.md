@@ -21,7 +21,7 @@ Aura snapping (run before building, in the Sandbox scene): move snap 2 m for kit
 Axes: +X east, +Z north, +Y up. All rotations are multiples of 90° around Y for kit pieces.
 
 ## 2. Kit pieces
-All kit pieces: static, `MeshRenderer` + `BoxCollider`/`MeshCollider`, layer `Environment` (ceilings: `Ceiling`), no scripts. Built from Unity primitives (scaled children) under an empty root whose **pivot is the reference point below**. Children carry the scale; **the root is always scale (1,1,1)**.
+All kit pieces: static, one Blender model (`Blender3DAssets/Scripts/env_models.py`, D-156) plus the `BoxCollider`s on scaled children, layer `Environment` (ceilings: `Ceiling`), no scripts, under an empty root whose **pivot is the reference point below**. **The root is always scale (1,1,1)**. Re-export, then run `Heartbeat ▸ Models ▸ Wire Environment Models`.
 
 | Piece | Name | Root pivot | Local extent at rotation 0 |
 |---|---|---|---|
@@ -46,7 +46,7 @@ Wall placement inside a room of W × D cells (room origin at its min corner):
 
 Corners: the inset walls overlap in the 0.3 × 0.3 corner square, which is intended (no gap and no corner piece needed). Adjacent rooms therefore have a 0.6 m double wall between them, and doorways are 0.6 m deep.
 
-Each floor theme has its own kit (`F1`, `F2`, `F3`) with **identical geometry** and different materials. Build `F1` first, then duplicate the prefabs (`duplicate_asset`) and swap materials for `F2` and `F3`.
+Each floor theme has its own kit (`F1`, `F2`, `F3`) with **identical colliders and pivots** and its own models, atlas and material. Every model has a closed core reaching past its edges into floors, ceilings and neighbours, so a seam never lets light through.
 
 ## 3. Room prefabs
 
@@ -79,7 +79,7 @@ Rules:
 - Transform at the **midpoint of the boundary edge**, y = 0, **forward (+Z) pointing out of the room**.
 - Fields: `Vector2Int cell`, `Facing facing` (N/E/S/W, derived), `bool allowLocked` (the socket can receive a key door or a hack panel).
 - Alignment: to connect room B to room A, the builder rotates B so `B.socket.forward == -A.socket.forward`, then translates B so both socket positions coincide. Because walls are inset, the rooms meet boundary to boundary without overlapping.
-- At a connected pair the builder spawns **one** `DoorLeaf` (prefab `Prefabs/Level/Door_2m`) centered on the shared point, plus a doorway lintel in each room. `DoorLeaf` variants: plain, key-locked (mandatory / optional key), hack-sealable, power-locked.
+- At a connected pair the builder spawns **one** `DoorLeaf` (prefab `Prefabs/Level/Door_F<n>`, from `KitSet.door`: a fixed frame that closes the gap around the leaf, plus the sliding leaf) centered on the shared point, plus a doorway lintel in each room. `DoorLeaf` variants: plain, key-locked (mandatory / optional key), hack-sealable, power-locked.
 - Unused sockets get `KIT_<F>_Wall_2m`.
 
 ## 5. Layout grid at floor level
