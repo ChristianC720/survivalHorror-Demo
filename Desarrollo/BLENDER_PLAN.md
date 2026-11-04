@@ -132,3 +132,21 @@ The owner rejected the first models: low quality, flat faces, parts showing thro
 - The bone tables are unchanged, so clips, prefabs and avatars keep working. Postures stay in the clips. Boca's crouch and the Rastrero's arms and feet were changed in `enemy_clips.py`.
 
 **Check.** Unity captures with real culling, front and back, normal and recycled; idle clips sampled with `AnimationMode`, reading bone heights.
+
+## 9. The team's delivery (2026-11-03, D-155)
+
+`Assets/_Project/Models/ModelsNew` holds the modeler's files. Do not edit them: `Scripts/team_models.py` opens them, never saves, and exports to the FBX files the prefabs already use. It replaces section 8 for Lukas, the 4 enemies and the items it lists.
+
+| Delivered | Becomes | Added so it runs |
+|---|---|---|
+| Lukas (`Player.blend`) | `CH_Lukas_RH07` | 21 action clips from the previous rig (rest poses match); grip markers on the right hand; civil mesh and 4 body-variant textures |
+| Monster1 | `CH_Mudo`, `CH_Mudo_Still` | Rig, weights, clips |
+| Monster2 | `CH_Boca` | Idle clip |
+| Monster3 | `CH_Alto` | Idle clip |
+| Monster4 | `CH_Rastrero` | One mesh from its parts, UVs, 2048 px paint from its sheet, rig, weights, clips |
+| `Pistola` | `CH_Revolver` | New revolver body on the delivered grip, trigger and guard |
+| Other props | `CH_Item_*` | `Aturdidor` is exported but has no use in the GDD yet |
+
+Every enemy also gets a `_Recycled` mesh on the delivered body (D-130): metal pieces on a second material slot, except the Boca, which only gets thinner.
+
+Not delivered, so the code-built models stay: The Mother, machines, capsules, confiscated objects, ring, document, corpses, `CH_Lukas_Mudo`.

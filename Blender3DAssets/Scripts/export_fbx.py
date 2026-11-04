@@ -2,7 +2,7 @@
 import bpy
 
 
-def export(path, rig, mesh=None, keep_prefix="AN_"):
+def export(path, rig, mesh=None, keep_prefix="AN_", markers=()):
     """mesh: one object or a list sharing the rig. Only actions named `keep_prefix`* reach the FBX. Others are deleted
     from memory: reopen the file afterwards."""
     vl = bpy.context.view_layer
@@ -15,6 +15,9 @@ def export(path, rig, mesh=None, keep_prefix="AN_"):
         one.hide_set(False)
         one.select_set(True)
         kinds.add("MESH")
+    for m in markers:   # empties parented to bones: attachment points read by the game
+        m.select_set(True)
+        kinds.add("EMPTY")
     vl.objects.active = rig
     # The FBX default pose must be the bind pose, not a frame of whichever clip was assigned last.
     if rig.animation_data:

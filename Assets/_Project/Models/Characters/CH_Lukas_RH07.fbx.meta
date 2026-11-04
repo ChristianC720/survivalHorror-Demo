@@ -33,8 +33,8 @@ ModelImporter:
     clipAnimations:
     - serializedVersion: 16
       name: AN_000_Bind
-      takeName: Rig_Lukas|AN_000_Bind
-      internalID: -3872185818467381633
+      takeName: PJ_Rig|AN_000_Bind
+      internalID: 5732433877098972982
       firstFrame: 0
       lastFrame: 1
       wrapMode: 0
@@ -62,10 +62,10 @@ ModelImporter:
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: AN_Lukas_Aim
-      takeName: Rig_Lukas|AN_Lukas_Aim
-      internalID: 7064637673944330730
+      takeName: PJ_Rig|AN_Lukas_Aim
+      internalID: -1323842798077679809
       firstFrame: 0
-      lastFrame: 30
+      lastFrame: 47
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -91,10 +91,10 @@ ModelImporter:
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: AN_Lukas_Crouch_Idle
-      takeName: Rig_Lukas|AN_Lukas_Crouch_Idle
-      internalID: 5563657229463093692
+      takeName: PJ_Rig|AN_Lukas_Crouch_Idle
+      internalID: -5577643145506337530
       firstFrame: 0
-      lastFrame: 60
+      lastFrame: 71
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -120,10 +120,10 @@ ModelImporter:
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: AN_Lukas_Crouch_Walk
-      takeName: Rig_Lukas|AN_Lukas_Crouch_Walk
-      internalID: 7389065431509225203
+      takeName: PJ_Rig|AN_Lukas_Crouch_Walk
+      internalID: 8601455071473788399
       firstFrame: 0
-      lastFrame: 36
+      lastFrame: 31
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -149,8 +149,8 @@ ModelImporter:
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: AN_Lukas_Death_Grab
-      takeName: Rig_Lukas|AN_Lukas_Death_Grab
-      internalID: -619590547812160763
+      takeName: PJ_Rig|AN_Lukas_Death_Grab
+      internalID: -3227622501451118665
       firstFrame: 0
       lastFrame: 49
       wrapMode: 0
@@ -178,8 +178,8 @@ ModelImporter:
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: AN_Lukas_Death_Hit
-      takeName: Rig_Lukas|AN_Lukas_Death_Hit
-      internalID: 4891713538328395165
+      takeName: PJ_Rig|AN_Lukas_Death_Hit
+      internalID: 3169348002760424954
       firstFrame: 0
       lastFrame: 44
       wrapMode: 0
@@ -207,8 +207,8 @@ ModelImporter:
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: AN_Lukas_Examine
-      takeName: Rig_Lukas|AN_Lukas_Examine
-      internalID: -9136532151677649362
+      takeName: PJ_Rig|AN_Lukas_Examine
+      internalID: -4536585977999626182
       firstFrame: 0
       lastFrame: 39
       wrapMode: 0
@@ -236,8 +236,8 @@ ModelImporter:
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: AN_Lukas_Finisher
-      takeName: Rig_Lukas|AN_Lukas_Finisher
-      internalID: -7878292302200370177
+      takeName: PJ_Rig|AN_Lukas_Finisher
+      internalID: -9142959009568265584
       firstFrame: 0
       lastFrame: 44
       wrapMode: 0
@@ -265,8 +265,8 @@ ModelImporter:
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: AN_Lukas_Fire
-      takeName: Rig_Lukas|AN_Lukas_Fire
-      internalID: 607742950367123270
+      takeName: PJ_Rig|AN_Lukas_Fire
+      internalID: 1263493301503471508
       firstFrame: 0
       lastFrame: 11
       wrapMode: 0
@@ -294,8 +294,8 @@ ModelImporter:
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: AN_Lukas_Grab_Lifted
-      takeName: Rig_Lukas|AN_Lukas_Grab_Lifted
-      internalID: 3737814951710787262
+      takeName: PJ_Rig|AN_Lukas_Grab_Lifted
+      internalID: -6865362808986827241
       firstFrame: 0
       lastFrame: 23
       wrapMode: 0
@@ -323,8 +323,8 @@ ModelImporter:
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: AN_Lukas_Grab_Release
-      takeName: Rig_Lukas|AN_Lukas_Grab_Release
-      internalID: 5036300986524849092
+      takeName: PJ_Rig|AN_Lukas_Grab_Release
+      internalID: -5472452557097234046
       firstFrame: 0
       lastFrame: 23
       wrapMode: 0
@@ -352,8 +352,8 @@ ModelImporter:
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: AN_Lukas_Grab_Struggle
-      takeName: Rig_Lukas|AN_Lukas_Grab_Struggle
-      internalID: 2255477738268677169
+      takeName: PJ_Rig|AN_Lukas_Grab_Struggle
+      internalID: 1450398393219545588
       firstFrame: 0
       lastFrame: 23
       wrapMode: 0
@@ -381,8 +381,8 @@ ModelImporter:
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: AN_Lukas_GroundStrike
-      takeName: Rig_Lukas|AN_Lukas_GroundStrike
-      internalID: -2647774605391336715
+      takeName: PJ_Rig|AN_Lukas_GroundStrike
+      internalID: 581218550858918771
       firstFrame: 0
       lastFrame: 25
       wrapMode: 0
@@ -410,8 +410,8 @@ ModelImporter:
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: AN_Lukas_Hack_Loop
-      takeName: Rig_Lukas|AN_Lukas_Hack_Loop
-      internalID: 3548558142127488943
+      takeName: PJ_Rig|AN_Lukas_Hack_Loop
+      internalID: 8777308913076453251
       firstFrame: 0
       lastFrame: 30
       wrapMode: 0
@@ -439,8 +439,8 @@ ModelImporter:
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: AN_Lukas_Heal
-      takeName: Rig_Lukas|AN_Lukas_Heal
-      internalID: -7071575621743852739
+      takeName: PJ_Rig|AN_Lukas_Heal
+      internalID: 8534241047526283558
       firstFrame: 0
       lastFrame: 44
       wrapMode: 0
@@ -468,8 +468,8 @@ ModelImporter:
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: AN_Lukas_Hit
-      takeName: Rig_Lukas|AN_Lukas_Hit
-      internalID: -4461385764099228916
+      takeName: PJ_Rig|AN_Lukas_Hit
+      internalID: -1924493378662061928
       firstFrame: 0
       lastFrame: 13
       wrapMode: 0
@@ -497,10 +497,10 @@ ModelImporter:
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: AN_Lukas_Idle_Critical
-      takeName: Rig_Lukas|AN_Lukas_Idle_Critical
-      internalID: 691182859572131890
+      takeName: PJ_Rig|AN_Lukas_Idle_Critical
+      internalID: -8239659965792662551
       firstFrame: 0
-      lastFrame: 90
+      lastFrame: 47
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -526,10 +526,10 @@ ModelImporter:
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: AN_Lukas_Idle_Fine
-      takeName: Rig_Lukas|AN_Lukas_Idle_Fine
-      internalID: -3219532128859169092
+      takeName: PJ_Rig|AN_Lukas_Idle_Fine
+      internalID: 5953417498849408376
       firstFrame: 0
-      lastFrame: 90
+      lastFrame: 71
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -555,10 +555,10 @@ ModelImporter:
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: AN_Lukas_Idle_Injured
-      takeName: Rig_Lukas|AN_Lukas_Idle_Injured
-      internalID: 7609935051270656849
+      takeName: PJ_Rig|AN_Lukas_Idle_Injured
+      internalID: 5186246546639326782
       firstFrame: 0
-      lastFrame: 90
+      lastFrame: 59
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -584,8 +584,8 @@ ModelImporter:
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: AN_Lukas_Pick_Floor
-      takeName: Rig_Lukas|AN_Lukas_Pick_Floor
-      internalID: 2684030717127434913
+      takeName: PJ_Rig|AN_Lukas_Pick_Floor
+      internalID: -646825869325595604
       firstFrame: 0
       lastFrame: 25
       wrapMode: 0
@@ -613,8 +613,8 @@ ModelImporter:
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: AN_Lukas_Pick_Shelf
-      takeName: Rig_Lukas|AN_Lukas_Pick_Shelf
-      internalID: -3061659767092437008
+      takeName: PJ_Rig|AN_Lukas_Pick_Shelf
+      internalID: -3473620146287372560
       firstFrame: 0
       lastFrame: 19
       wrapMode: 0
@@ -642,8 +642,8 @@ ModelImporter:
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: AN_Lukas_PowerSwitch
-      takeName: Rig_Lukas|AN_Lukas_PowerSwitch
-      internalID: 7189727196961645742
+      takeName: PJ_Rig|AN_Lukas_PowerSwitch
+      internalID: 4628913658483340105
       firstFrame: 0
       lastFrame: 29
       wrapMode: 0
@@ -671,8 +671,8 @@ ModelImporter:
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: AN_Lukas_Reload_Round
-      takeName: Rig_Lukas|AN_Lukas_Reload_Round
-      internalID: -1134805871013232034
+      takeName: PJ_Rig|AN_Lukas_Reload_Round
+      internalID: -8626777456400129127
       firstFrame: 0
       lastFrame: 20
       wrapMode: 0
@@ -700,10 +700,10 @@ ModelImporter:
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: AN_Lukas_Run
-      takeName: Rig_Lukas|AN_Lukas_Run
-      internalID: -2880552565533802864
+      takeName: PJ_Rig|AN_Lukas_Run
+      internalID: 1267040406241774664
       firstFrame: 0
-      lastFrame: 20
+      lastFrame: 15
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -729,8 +729,8 @@ ModelImporter:
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: AN_Lukas_Shove
-      takeName: Rig_Lukas|AN_Lukas_Shove
-      internalID: -7867675028751126273
+      takeName: PJ_Rig|AN_Lukas_Shove
+      internalID: 1460062489759855801
       firstFrame: 0
       lastFrame: 17
       wrapMode: 0
@@ -757,9 +757,618 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
+      name: AN_Lukas_Team_Agachado_Critico
+      takeName: PJ_Rig|AN_Lukas_Team_Agachado_Critico
+      internalID: -2844950086406558741
+      firstFrame: 0
+      lastFrame: 47
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000u
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: AN_Lukas_Team_Agachado_Herido
+      takeName: PJ_Rig|AN_Lukas_Team_Agachado_Herido
+      internalID: 58159419615846338
+      firstFrame: 0
+      lastFrame: 59
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000u
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: AN_Lukas_Team_Apuntar_Critico
+      takeName: PJ_Rig|AN_Lukas_Team_Apuntar_Critico
+      internalID: 3103483637395424232
+      firstFrame: 0
+      lastFrame: 47
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000u
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: AN_Lukas_Team_Apuntar_Herido
+      takeName: PJ_Rig|AN_Lukas_Team_Apuntar_Herido
+      internalID: -1974105002097286037
+      firstFrame: 0
+      lastFrame: 47
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000u
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: AN_Lukas_Team_ApuntarCaminando_Bien
+      takeName: PJ_Rig|AN_Lukas_Team_ApuntarCaminando_Bien
+      internalID: -5265992633668692326
+      firstFrame: 0
+      lastFrame: 27
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000u
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: AN_Lukas_Team_ApuntarCaminando_Critico
+      takeName: PJ_Rig|AN_Lukas_Team_ApuntarCaminando_Critico
+      internalID: -6444213738487522782
+      firstFrame: 0
+      lastFrame: 39
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000u
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: AN_Lukas_Team_ApuntarCaminando_Herido
+      takeName: PJ_Rig|AN_Lukas_Team_ApuntarCaminando_Herido
+      internalID: -5286152115195833654
+      firstFrame: 0
+      lastFrame: 31
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000u
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: AN_Lukas_Team_ApuntarCorriendo_Bien
+      takeName: PJ_Rig|AN_Lukas_Team_ApuntarCorriendo_Bien
+      internalID: 7831804319387515739
+      firstFrame: 0
+      lastFrame: 17
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000u
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: AN_Lukas_Team_ApuntarCorriendo_Critico
+      takeName: PJ_Rig|AN_Lukas_Team_ApuntarCorriendo_Critico
+      internalID: 7322890268513341994
+      firstFrame: 0
+      lastFrame: 25
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000u
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: AN_Lukas_Team_ApuntarCorriendo_Herido
+      takeName: PJ_Rig|AN_Lukas_Team_ApuntarCorriendo_Herido
+      internalID: -1932466652971866553
+      firstFrame: 0
+      lastFrame: 19
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000u
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: AN_Lukas_Team_CaminarAgachado_Critico
+      takeName: PJ_Rig|AN_Lukas_Team_CaminarAgachado_Critico
+      internalID: 1522298800257098360
+      firstFrame: 0
+      lastFrame: 43
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000u
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: AN_Lukas_Team_CaminarAgachado_Herido
+      takeName: PJ_Rig|AN_Lukas_Team_CaminarAgachado_Herido
+      internalID: 2861849268816056382
+      firstFrame: 0
+      lastFrame: 35
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000u
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: AN_Lukas_Team_Correr_Critico
+      takeName: PJ_Rig|AN_Lukas_Team_Correr_Critico
+      internalID: 49115946330605699
+      firstFrame: 0
+      lastFrame: 23
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000u
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: AN_Lukas_Team_Correr_Herido
+      takeName: PJ_Rig|AN_Lukas_Team_Correr_Herido
+      internalID: 1216456005348558660
+      firstFrame: 0
+      lastFrame: 17
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000u
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: AN_Lukas_Team_GirarDer_Bien
+      takeName: PJ_Rig|AN_Lukas_Team_GirarDer_Bien
+      internalID: 4755476099136040198
+      firstFrame: 0
+      lastFrame: 23
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000u
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: AN_Lukas_Team_GirarDer_Critico
+      takeName: PJ_Rig|AN_Lukas_Team_GirarDer_Critico
+      internalID: 34828058974353984
+      firstFrame: 0
+      lastFrame: 35
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000u
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: AN_Lukas_Team_GirarDer_Herido
+      takeName: PJ_Rig|AN_Lukas_Team_GirarDer_Herido
+      internalID: 2707473844704062117
+      firstFrame: 0
+      lastFrame: 29
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000u
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: AN_Lukas_Team_GirarIzq_Bien
+      takeName: PJ_Rig|AN_Lukas_Team_GirarIzq_Bien
+      internalID: -7871648230417065302
+      firstFrame: 0
+      lastFrame: 23
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000u
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: AN_Lukas_Team_GirarIzq_Critico
+      takeName: PJ_Rig|AN_Lukas_Team_GirarIzq_Critico
+      internalID: -4019167624135566489
+      firstFrame: 0
+      lastFrame: 35
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000u
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: AN_Lukas_Team_GirarIzq_Herido
+      takeName: PJ_Rig|AN_Lukas_Team_GirarIzq_Herido
+      internalID: -185125405137036909
+      firstFrame: 0
+      lastFrame: 29
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000u
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: AN_Lukas_Team_SubirEscalones_Bien
+      takeName: PJ_Rig|AN_Lukas_Team_SubirEscalones_Bien
+      internalID: -8558083670365548659
+      firstFrame: 0
+      lastFrame: 31
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000u
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
       name: AN_Lukas_Terminal_Hold
-      takeName: Rig_Lukas|AN_Lukas_Terminal_Hold
-      internalID: 7864307644824223350
+      takeName: PJ_Rig|AN_Lukas_Terminal_Hold
+      internalID: -4860887010114806792
       firstFrame: 0
       lastFrame: 60
       wrapMode: 0
@@ -787,8 +1396,8 @@ ModelImporter:
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: AN_Lukas_Terminal_Open
-      takeName: Rig_Lukas|AN_Lukas_Terminal_Open
-      internalID: -6337520620724291095
+      takeName: PJ_Rig|AN_Lukas_Terminal_Open
+      internalID: 9065550409933207691
       firstFrame: 0
       lastFrame: 11
       wrapMode: 0
@@ -816,8 +1425,8 @@ ModelImporter:
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: AN_Lukas_Use_Door
-      takeName: Rig_Lukas|AN_Lukas_Use_Door
-      internalID: 4293962682735170910
+      takeName: PJ_Rig|AN_Lukas_Use_Door
+      internalID: 4025307044885243237
       firstFrame: 0
       lastFrame: 19
       wrapMode: 0
@@ -845,8 +1454,8 @@ ModelImporter:
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: AN_Lukas_Use_Panel
-      takeName: Rig_Lukas|AN_Lukas_Use_Panel
-      internalID: 7284407597538515786
+      takeName: PJ_Rig|AN_Lukas_Use_Panel
+      internalID: -6700162787370198019
       firstFrame: 0
       lastFrame: 23
       wrapMode: 0
@@ -874,10 +1483,10 @@ ModelImporter:
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: AN_Lukas_Walk_Critical
-      takeName: Rig_Lukas|AN_Lukas_Walk_Critical
-      internalID: -8842800790460819306
+      takeName: PJ_Rig|AN_Lukas_Walk_Critical
+      internalID: 8543633280332701208
       firstFrame: 0
-      lastFrame: 45
+      lastFrame: 39
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -903,10 +1512,10 @@ ModelImporter:
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: AN_Lukas_Walk_Fine
-      takeName: Rig_Lukas|AN_Lukas_Walk_Fine
-      internalID: -1486639077453398823
+      takeName: PJ_Rig|AN_Lukas_Walk_Fine
+      internalID: -7679588682195930175
       firstFrame: 0
-      lastFrame: 30
+      lastFrame: 23
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -932,10 +1541,10 @@ ModelImporter:
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: AN_Lukas_Walk_Injured
-      takeName: Rig_Lukas|AN_Lukas_Walk_Injured
-      internalID: -5312046426992550369
+      takeName: PJ_Rig|AN_Lukas_Walk_Injured
+      internalID: -2187385618739281858
       firstFrame: 0
-      lastFrame: 36
+      lastFrame: 29
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1185,86 +1794,6 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
-    - boneName: LeftThumbProximal
-      humanName: Left Thumb Proximal
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: LeftThumbDistal
-      humanName: Left Thumb Distal
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: LeftIndexProximal
-      humanName: Left Index Proximal
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: LeftIndexDistal
-      humanName: Left Index Distal
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: LeftFingers
-      humanName: Left Middle Proximal
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: RightThumbProximal
-      humanName: Right Thumb Proximal
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: RightThumbDistal
-      humanName: Right Thumb Distal
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: RightIndexProximal
-      humanName: Right Index Proximal
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: RightIndexDistal
-      humanName: Right Index Distal
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: RightFingers
-      humanName: Right Middle Proximal
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
     skeleton:
     - name: CH_Lukas_RH07
       parentName: 
@@ -1281,7 +1810,7 @@ ModelImporter:
       position: {x: -0, y: 0, z: 0}
       rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
       scale: {x: 1, y: 1, z: 1}
-    - name: Rig_Lukas
+    - name: PJ_Rig
       parentName: 
       position: {x: -0, y: 0, z: 0}
       rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
@@ -1290,157 +1819,122 @@ ModelImporter:
       parentName: 
       position: {x: -0, y: 0.008358507, z: 0.8915742}
       rotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071067}
-      scale: {x: 0.99999994, y: 0.99999994, z: 1}
+      scale: {x: 0.99999994, y: 0.9999999, z: 1}
     - name: LeftUpperLeg
       parentName: 
-      position: {x: -0.12537761, y: -0.05572331, z: -0.0027861707}
-      rotation: {x: -0.00012981598, y: -0.000000059604645, z: 1, w: 0.00000001812441}
-      scale: {x: 1.0000002, y: 1.0000001, z: 1.0000001}
+      position: {x: -0.12537761, y: -0.05572337, z: -0.0027861698}
+      rotation: {x: -0.00012981583, y: -0.000000059604645, z: 1, w: -0.000000011670636}
+      scale: {x: 1.0000001, y: 0.9999998, z: 0.9999998}
     - name: LeftLowerLeg
       parentName: 
-      position: {x: -0.000000008427319, y: 0.34570965, z: -0.0000000026848284}
-      rotation: {x: 0.00000005961321, y: -0.00061723456, z: 0.00000002010352, w: 0.9999998}
-      scale: {x: 0.99999994, y: 0.9999998, z: 1}
+      position: {x: -0.0000000028393852, y: 0.3457096, z: -8.0035534e-10}
+      rotation: {x: 0.00000005959724, y: -0.0006172357, z: 0.0000000014697967, w: 0.9999998}
+      scale: {x: 0.99999994, y: 1, z: 0.99999994}
     - name: LeftFoot
       parentName: 
-      position: {x: -0.000000010012219, y: 0.363507, z: 0.0000000066138455}
-      rotation: {x: 0.4734894, y: 0.11673103, z: -0.047073863, w: 0.87176013}
-      scale: {x: 1, y: 0.9999996, z: 0.9999999}
+      position: {x: 0.00000000546826, y: 0.36350703, z: 0.0000000011132215}
+      rotation: {x: 0.4734894, y: 0.11673103, z: -0.04707386, w: 0.87176013}
+      scale: {x: 1, y: 0.9999999, z: 0.9999999}
     - name: LeftToes
       parentName: 
-      position: {x: 4.208054e-10, y: 0.16378225, z: -0.000000007450581}
-      rotation: {x: 0.29287407, y: -0.0018490951, z: 0.004884918, w: 0.95613676}
-      scale: {x: 1.0000001, y: 0.99999994, z: 1.0000004}
+      position: {x: 0.000000012011861, y: 0.16378224, z: 0.000000009313226}
+      rotation: {x: 0.29287404, y: -0.0018490927, z: 0.0048849196, w: 0.95613676}
+      scale: {x: 1, y: 0.99999994, z: 0.99999994}
     - name: RightUpperLeg
       parentName: 
-      position: {x: 0.12537761, y: -0.05572331, z: -0.0027861707}
-      rotation: {x: 0.000129816, y: -0.000000059604645, z: 1, w: -0.000000016269041}
-      scale: {x: 1.0000001, y: 1, z: 0.99999994}
+      position: {x: 0.12537761, y: -0.05572337, z: -0.0027861698}
+      rotation: {x: 0.00012981598, y: -0.000000059604645, z: 1, w: -0.000000012536475}
+      scale: {x: 1.0000002, y: 0.99999994, z: 0.99999994}
     - name: RightLowerLeg
       parentName: 
-      position: {x: 0.0000000065646746, y: 0.34570962, z: 1.1641532e-10}
-      rotation: {x: 0.00000005961025, y: 0.00061723415, z: -0.000000034095187, w: 0.9999998}
-      scale: {x: 0.99999994, y: 1.0000001, z: 1.0000001}
+      position: {x: 0.0000000065646746, y: 0.34570962, z: -8.076313e-10}
+      rotation: {x: 0.000000059614834, y: 0.00061723293, z: 0.000000018982924, w: 0.9999998}
+      scale: {x: 0.99999994, y: 1.0000001, z: 0.99999994}
     - name: RightFoot
       parentName: 
-      position: {x: -0.0000000043041095, y: 0.363507, z: 0.0000000028740033}
-      rotation: {x: 0.4734894, y: -0.11673103, z: 0.047073863, w: 0.87176013}
-      scale: {x: 1.0000001, y: 0.9999997, z: 1}
+      position: {x: 0.000000025032552, y: 0.363507, z: 0.0000000010986696}
+      rotation: {x: 0.47348946, y: -0.11673105, z: 0.047073863, w: 0.87176013}
+      scale: {x: 0.9999999, y: 0.99999994, z: 0.9999999}
     - name: RightToes
       parentName: 
-      position: {x: 0.0000000012342614, y: 0.16378224, z: -0.0000000055879354}
-      rotation: {x: 0.29287407, y: 0.0018491041, z: -0.0048849233, w: 0.95613676}
-      scale: {x: 0.99999994, y: 1, z: 1}
+      position: {x: 0.0000000066146058, y: 0.16378225, z: 0}
+      rotation: {x: 0.29287407, y: 0.0018491007, z: -0.004884917, w: 0.95613676}
+      scale: {x: 0.9999999, y: 1, z: 1}
     - name: Spine
       parentName: 
-      position: {x: -0, y: 0.11701918, z: -9.313226e-10}
-      rotation: {x: -0.01723371, y: -0.000000035139102, z: 6.05667e-10, w: 0.9998515}
-      scale: {x: 0.99999994, y: 0.99999994, z: 1.0000002}
+      position: {x: -0, y: 0.11701912, z: 0}
+      rotation: {x: -0.017233713, y: -0.000000035139102, z: 6.0566707e-10, w: 0.9998515}
+      scale: {x: 1, y: 0.9999999, z: 0.99999994}
     - name: Chest
       parentName: 
-      position: {x: 1.110223e-16, y: 0.16169384, z: 0.000000004656613}
-      rotation: {x: 0.027755763, y: -0.000000025724646, z: -0.000000002665197, w: 0.9996148}
-      scale: {x: 0.99999994, y: 0.9999998, z: 0.99999964}
+      position: {x: 1.110223e-16, y: 0.16169384, z: 9.313226e-10}
+      rotation: {x: 0.027755763, y: -0.00000002572464, z: -0.0000000026651967, w: 0.9996148}
+      scale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
     - name: LeftShoulder
       parentName: 
-      position: {x: -0.03343403, y: 0.23659617, z: -0.013341332}
-      rotation: {x: -0.04962581, y: -0.03476828, z: 0.7062515, w: 0.7053632}
-      scale: {x: 1, y: 1.0000001, z: 0.9999999}
+      position: {x: -0.03343403, y: 0.23659617, z: -0.013341326}
+      rotation: {x: -0.049625814, y: -0.034768283, z: 0.7062515, w: 0.7053632}
+      scale: {x: 0.9999999, y: 0.9999998, z: 0.9999996}
     - name: LeftUpperArm
       parentName: 
-      position: {x: -0.019503115, y: 0.17383575, z: 0.0012171839}
-      rotation: {x: 0.059664637, y: -0.021848634, z: -0.0013063236, w: 0.9979785}
-      scale: {x: 1, y: 1.0000001, z: 1}
+      position: {x: -0.019503353, y: 0.17383575, z: 0.0012171806}
+      rotation: {x: 0.059664793, y: -0.021848725, z: -0.0013064712, w: 0.9979785}
+      scale: {x: 0.9999976, y: 0.9999964, z: 0.9999956}
     - name: LeftLowerArm
       parentName: 
-      position: {x: -0.00000007126578, y: 0.28981513, z: 0.000000005122274}
-      rotation: {x: 0.00000015646218, y: 0.0008710249, z: 0.00000017217825, w: 0.99999964}
-      scale: {x: 1, y: 1, z: 0.99999994}
+      position: {x: -0.00000004157256, y: 0.2898151, z: -0.0000000088475645}
+      rotation: {x: 0.00000021606681, y: 0.0008710342, z: 0.00000020314471, w: 0.99999964}
+      scale: {x: 1.0000535, y: 0.9999341, z: 1.000023}
     - name: LeftHand
       parentName: 
-      position: {x: -0.000000004359304, y: 0.2455311, z: -0.0000000013969839}
+      position: {x: 0.000000010167959, y: 0.2455309, z: -0.000000006519258}
       rotation: {x: 0.10498604, y: 0.014545374, z: 0.06900367, w: 0.9919702}
-      scale: {x: 1, y: 1.0000001, z: 1.0000001}
-    - name: LeftFingers
-      parentName: 
-      position: {x: -0.02088712, y: 0.13847765, z: -0.039601423}
-      rotation: {x: -0.13766778, y: 0.69550693, z: 0.1590193, w: 0.6870448}
-      scale: {x: 1.0000001, y: 1, z: 1}
-    - name: LeftIndexProximal
-      parentName: 
-      position: {x: -0.0198071, y: 0.14661872, z: 0.0014110049}
-      rotation: {x: -0.24068189, y: 0.69454384, z: 0.14948104, w: 0.6613143}
-      scale: {x: 1.0000001, y: 1.0000002, z: 1.0000001}
-    - name: LeftIndexDistal
-      parentName: 
-      position: {x: 0.00000000233727, y: 0.030914584, z: 0.000000029220246}
-      rotation: {x: -0.00000007078051, y: -0.00000006873097, z: 0.0000001915519, w: 1}
-      scale: {x: 1, y: 1.0000001, z: 1.0000001}
-    - name: LeftThumbProximal
-      parentName: 
-      position: {x: -0.056195475, y: 0.082361974, z: 0.05867531}
-      rotation: {x: -0.18585733, y: 0.70761085, z: 0.049012747, w: 0.67995715}
-      scale: {x: 1, y: 0.9999998, z: 0.99999994}
-    - name: LeftThumbDistal
-      parentName: 
-      position: {x: -0.000000011631579, y: 0.027682915, z: -0.000000038882717}
-      rotation: {x: -0.0000005287002, y: 0.000000067294444, z: -0.000000103698405, w: 1}
-      scale: {x: 0.99999994, y: 1, z: 1}
+      scale: {x: 0.99989855, y: 1.0003507, z: 0.99974036}
     - name: Neck
       parentName: 
-      position: {x: 0.0000000020349746, y: 0.26509663, z: 0.01671331}
-      rotation: {x: 0.026901925, y: -0.000000040445343, z: -0.000000004363968, w: 0.9996381}
-      scale: {x: 1, y: 0.9999998, z: 0.9999998}
+      position: {x: 0.000000002034975, y: 0.26509663, z: 0.016713316}
+      rotation: {x: 0.026901929, y: -0.000000040445336, z: -0.000000004363968, w: 0.9996381}
+      scale: {x: 1, y: 0.9999997, z: 0.9999998}
     - name: Head
       parentName: 
-      position: {x: -7.157654e-16, y: 0.11175978, z: 0}
-      rotation: {x: -0.037421186, y: 0.00000010126789, z: 0.0000000037922194, w: 0.9992996}
-      scale: {x: 1.0000002, y: 1.0000001, z: 1}
+      position: {x: -2.8369486e-15, y: 0.11175978, z: -0.000000013038516}
+      rotation: {x: -0.03742119, y: 0.00000010126789, z: 0.00000000379222, w: 0.9992996}
+      scale: {x: 0.99999994, y: 1, z: 1}
     - name: RightShoulder
       parentName: 
-      position: {x: 0.03343403, y: 0.23659617, z: -0.013341337}
+      position: {x: 0.03343403, y: 0.23659617, z: -0.013341334}
       rotation: {x: -0.049625896, y: 0.034768365, z: -0.7062515, w: 0.7053632}
-      scale: {x: 1, y: 1.0000001, z: 0.9999999}
+      scale: {x: 0.99999994, y: 1.0000001, z: 0.99999976}
     - name: RightUpperArm
       parentName: 
-      position: {x: 0.019503115, y: 0.17383575, z: 0.0012171802}
-      rotation: {x: 0.059664655, y: 0.02184865, z: 0.0013063285, w: 0.9979785}
-      scale: {x: 1, y: 1, z: 1}
+      position: {x: 0.019503234, y: 0.17383577, z: 0.0012171769}
+      rotation: {x: 0.059664723, y: 0.021848686, z: 0.001306208, w: 0.9979785}
+      scale: {x: 1.0000011, y: 0.99999166, z: 0.999997}
     - name: RightLowerArm
       parentName: 
-      position: {x: 0.000000041136513, y: 0.28981513, z: -0.0000000069849193}
-      rotation: {x: 0.000000096857526, y: -0.00087104714, z: -0.00000017101407, w: 0.99999964}
-      scale: {x: 1.0000001, y: 1, z: 1}
+      position: {x: 0.000000012097165, y: 0.28981513, z: -4.656613e-10}
+      rotation: {x: -0.00000044330955, y: -0.0008710213, z: 0.00000025331974, w: 0.99999964}
+      scale: {x: 1.0000533, y: 0.9998766, z: 1.0000855}
     - name: RightHand
       parentName: 
-      position: {x: -0.000000040344183, y: 0.24553093, z: -0.000000009778887}
-      rotation: {x: 0.10498608, y: -0.014545373, z: -0.06900367, w: 0.9919702}
-      scale: {x: 0.9999999, y: 1, z: 0.99999994}
-    - name: RightFingers
+      position: {x: 0.00000001876258, y: 0.24553095, z: -0.0000000037252903}
+      rotation: {x: 0.10498606, y: -0.01454537, z: -0.06900367, w: 0.9919702}
+      scale: {x: 0.9999033, y: 1.0003872, z: 0.99969536}
+    - name: WeaponGrip
       parentName: 
-      position: {x: 0.020887097, y: 0.13847767, z: -0.039601468}
-      rotation: {x: 0.15901926, y: 0.6870448, z: -0.13766773, w: 0.69550693}
-      scale: {x: 1, y: 1, z: 1}
-    - name: RightIndexProximal
+      position: {x: -0.0021118522, y: 0.07123717, z: 0.0377808}
+      rotation: {x: 0.07369534, y: -0.16336301, z: -0.6521992, w: 0.736558}
+      scale: {x: 1.0000004, y: 1, z: 1.0000005}
+    - name: WeaponGrip_Barrel
       parentName: 
-      position: {x: 0.019807076, y: 0.14661874, z: 0.001410964}
-      rotation: {x: 0.1494811, y: 0.6613142, z: -0.24068199, w: 0.69454384}
-      scale: {x: 1, y: 1.0000004, z: 1}
-    - name: RightIndexDistal
+      position: {x: -0.011701614, y: 0.16972154, z: 0.02332833}
+      rotation: {x: 0.07369534, y: -0.16336301, z: -0.6521992, w: 0.736558}
+      scale: {x: 1.0000004, y: 1, z: 1.0000005}
+    - name: WeaponGrip_Up
       parentName: 
-      position: {x: -0.000000012125142, y: 0.030914657, z: -0.000000030733645}
-      rotation: {x: 0.00000004353933, y: 0.0000002329306, z: 0.00000018180087, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: RightThumbProximal
-      parentName: 
-      position: {x: 0.056195453, y: 0.08236186, z: 0.058675315}
-      rotation: {x: 0.0490127, y: 0.67995715, z: -0.18585728, w: 0.70761085}
-      scale: {x: 1.0000001, y: 1.0000002, z: 1}
-    - name: RightThumbDistal
-      parentName: 
-      position: {x: 0.0000000016347856, y: 0.027682945, z: 0.000000005820766}
-      rotation: {x: 0.00000061880564, y: -0.000000072545376, z: -0.00000011440326, w: 1}
-      scale: {x: 0.99999994, y: 0.99999994, z: 1}
+      position: {x: -0.035789967, y: 0.08169003, z: 0.13135712}
+      rotation: {x: 0.07369534, y: -0.16336301, z: -0.6521992, w: 0.736558}
+      scale: {x: 1.0000004, y: 1, z: 1.0000005}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5

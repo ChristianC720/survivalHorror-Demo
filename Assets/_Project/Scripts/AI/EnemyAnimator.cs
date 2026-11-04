@@ -41,8 +41,9 @@ namespace Heartbeat.AI
             seed = Random.value * 100f;
             foreach (var t in animator.GetComponentsInChildren<Transform>(true))
             {
-                if (t.name == "Chest") spine = t;
-                else if (t.name == "Head") head = t;
+                // The team's rigs name these in lower case.
+                if (string.Equals(t.name, "Chest", System.StringComparison.OrdinalIgnoreCase)) spine = t;
+                else if (string.Equals(t.name, "Head", System.StringComparison.OrdinalIgnoreCase)) head = t;
             }
             if (head != null && headAttachments != null)
                 foreach (var a in headAttachments)

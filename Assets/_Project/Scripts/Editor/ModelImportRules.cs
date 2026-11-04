@@ -78,7 +78,17 @@ namespace Heartbeat.EditorTools
             t.filterMode = FilterMode.Point;
             t.mipmapEnabled = false;
             t.textureCompression = TextureImporterCompression.Uncompressed;
-            t.maxTextureSize = assetPath.Contains("T_Palette") ? 2048 : assetPath.Contains("TheMother") || assetPath.Contains("/Enemies/") || assetPath.Contains("/Statics/") ? 1024 : assetPath.Contains("/Characters/") || assetPath.Contains("/Items/") ? 512 : 256;
+            if (assetPath.Contains("/ModelsNew/"))
+            {
+                // The team's PBR maps: 4096 px sources, kept at 2048 and compressed; data maps stay linear.
+                t.maxTextureSize = 2048;
+                t.textureCompression = TextureImporterCompression.Compressed;
+                if (assetPath.EndsWith("_Normal.png")) t.textureType = TextureImporterType.NormalMap;
+                else if (assetPath.EndsWith("_Roughness.png") || assetPath.EndsWith("_Metallic.png")) t.sRGBTexture = false;
+                return;
+            }
+            if (assetPath.Contains("_MetalSmooth")) { t.sRGBTexture = false; t.maxTextureSize = 1024; return; }
+            t.maxTextureSize = assetPath.Contains("T_Palette") || assetPath.Contains("CH_Rastrero_Albedo") || assetPath.Contains("/Characters/") ? 2048 : assetPath.Contains("T_Revolver") ? 1024 : assetPath.Contains("TheMother") || assetPath.Contains("/Enemies/") || assetPath.Contains("/Statics/") ? 1024 : assetPath.Contains("/Items/") ? 512 : 256;
         }
 
         private void OnPreprocessModel()

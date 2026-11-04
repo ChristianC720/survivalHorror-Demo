@@ -26,7 +26,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1751115633216612030}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0.04}
+  m_LocalPosition: {x: 0, y: 0, z: 0.122999996}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.027, y: 0.02}
+  m_AnchoredPosition: {x: 0.015500009, y: 0.031999946}
   m_SizeDelta: {x: 0.06, y: 0.04}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &6958030805319245295
@@ -475,6 +475,7 @@ MonoBehaviour:
   weaponSocket: {fileID: 7661644456193248908}
   health: {fileID: 1368415113503638425}
   terminalFont: {fileID: 0}
+  terminalModel: {fileID: 7132450088741912209, guid: 2d330f5ef206b7149b258cbe2d660db9, type: 3}
   civilian: 0
   bodyVariants:
   - {fileID: 2800000, guid: ae16b1e6fe42dbe4c867bce7689acb1e, type: 3}
@@ -603,7 +604,7 @@ Transform:
   m_GameObject: {fileID: 5790803089912618396}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.02, z: 0.3}
+  m_LocalPosition: {x: 0, y: 0.031000018, z: 0.2715}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1112,7 +1113,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 201e2eee2e0c76244b482ef3eb899cbf, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 1abfec9c627e53c4b8b7bb77b3109325, type: 2}
+      objectReference: {fileID: 2100000, guid: 643aa1d3a38d63b4f881d4617cc70e16, type: 2}
     - target: {fileID: 919132149155446097, guid: 201e2eee2e0c76244b482ef3eb899cbf, type: 3}
       propertyPath: m_Name
       value: Model

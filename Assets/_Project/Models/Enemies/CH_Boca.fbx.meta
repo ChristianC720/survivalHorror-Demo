@@ -65,7 +65,36 @@ ModelImporter:
       takeName: Rig_Boca|AN_Boca_Attack
       internalID: 4650338693421569568
       firstFrame: 0
-      lastFrame: 25
+      lastFrame: 39
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000u
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: AN_Boca_Attack_Claw
+      takeName: Rig_Boca|AN_Boca_Attack_Claw
+      internalID: 7421941443267333269
+      firstFrame: 0
+      lastFrame: 61
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -94,7 +123,7 @@ ModelImporter:
       takeName: Rig_Boca|AN_Boca_Death
       internalID: 5727412103683024251
       firstFrame: 0
-      lastFrame: 44
+      lastFrame: 79
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -123,7 +152,7 @@ ModelImporter:
       takeName: Rig_Boca|AN_Boca_Hunt
       internalID: 537325651604635355
       firstFrame: 0
-      lastFrame: 30
+      lastFrame: 56
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -181,7 +210,7 @@ ModelImporter:
       takeName: Rig_Boca|AN_Boca_Scream
       internalID: 3457495844995960650
       firstFrame: 0
-      lastFrame: 59
+      lastFrame: 74
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -210,7 +239,7 @@ ModelImporter:
       takeName: Rig_Boca|AN_Boca_Stunned
       internalID: -5553200691634044837
       firstFrame: 0
-      lastFrame: 30
+      lastFrame: 90
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -239,7 +268,7 @@ ModelImporter:
       takeName: Rig_Boca|AN_Boca_Wander
       internalID: -1508091719819050439
       firstFrame: 0
-      lastFrame: 45
+      lastFrame: 60
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

@@ -212,7 +212,7 @@ No hay NPC con diálogo en la demo. Las voces que aparecen (Emilia, The Mother, 
 | El Alto | ~2.5 m, encorvado, brazos que llegan al suelo; restos del uniforme del Werkschutz y piel morada iridiscente (D-152) | Lento; golpe de alcance largo; vigila pasillos | 1–3 |
 | La Boca | Cabeza partida en dos lóbulos, boca abierta en vertical (D-152) | Lenta y ciega; su grito propio (no el latido) pone a los enemigos cercanos en búsqueda hacia ella (D-64) | 2–3 |
 | El Rastrero | Siempre en cuatro patas, cabeza calva sin ojos y mandíbula enorme que cuelga, abierta en vertical y llena de dientes; camisa rayada hecha jirones y pantalón oscuro roto (D-154) | Rápido; flanquea | 1–3 |
-| El Mudo | Inmóvil y sin cara, con ropa gris de personal de Vitalis; parece un cadáver o una persona quieta (D-152) | Se activa cuando el jugador se acerca; sirve de señuelo (D-53) | 3 |
+| El Mudo | Inmóvil y sin cara, cuerpo desnudo del modelo entregado; parece un cadáver o una persona quieta (D-155) | Se activa cuando el jugador se acerca; sirve de señuelo (D-53) | 3 |
 
 La distribución por piso es un valor inicial, sujeto a balance (D-76): el piso 1 tiene el Alto y el Rastrero, el piso 2 suma la Boca y el piso 3 suma el Mudo. El Mudo de la introducción es un señuelo guionizado (D-53).
 

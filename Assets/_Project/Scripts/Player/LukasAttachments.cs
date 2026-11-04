@@ -11,13 +11,15 @@ namespace Heartbeat.Player
     public sealed class LukasAttachments : MonoBehaviour
     {
         // Rest-pose center of the terminal panel in model space, measured from the Blender mesh (BLENDER_PLAN.md).
-        private static readonly Vector3 TerminalRest = new Vector3(-0.363f, 0.99f, -0.049f);
+        private static readonly Vector3 TerminalRest = new Vector3(-0.355f, 0.99f, -0.045f);
 
         [SerializeField] private Animator animator;
         [SerializeField] private PlayerBalance balance;
         [SerializeField] private Transform weaponSocket;
         [SerializeField] private PlayerHealth health;
         [SerializeField] private TMP_FontAsset terminalFont;
+        [Tooltip("The team's terminal model, worn on the left forearm. The screen text sits on its panel.")]
+        [SerializeField] private GameObject terminalModel;
         [Tooltip("Intro: civilian clothes, nothing luminous, no terminal (GDD Personajes).")]
         [SerializeField] private bool civilian;
         [Tooltip("D-43: one more foreign piece per reconstruction, cumulative. Index 0 is the second reconstruction.")]
@@ -61,21 +63,27 @@ namespace Heartbeat.Player
             if (civilian) return;
 
             Transform hand = animator.GetBoneTransform(HumanBodyBones.RightHand);
-            Transform fingers = animator.GetBoneTransform(HumanBodyBones.RightMiddleProximal);
             Transform forearm = animator.GetBoneTransform(HumanBodyBones.LeftLowerArm);
             Transform chest = animator.GetBoneTransform(HumanBodyBones.Chest);
 
-            if (weaponSocket != null && hand != null && fingers != null)
+            if (weaponSocket != null && hand != null)
             {
-                // Arms hang in the bind pose: the barrel follows the fingers, the sights face the way Lukas looks.
-                Vector3 barrel = (fingers.position - hand.position).normalized;
+                // The team's grip: three markers exported on the hand give origin, barrel and top of the gun.
+                Transform grip = hand.Find("WeaponGrip"), toward = hand.Find("WeaponGrip_Barrel"), up = hand.Find("WeaponGrip_Up");
                 weaponSocket.SetParent(hand, true);
-                weaponSocket.SetPositionAndRotation(hand.position + barrel * 0.07f, Quaternion.LookRotation(barrel, animator.transform.forward));
+                weaponSocket.SetPositionAndRotation(grip.position, Quaternion.LookRotation(toward.position - grip.position, up.position - grip.position));
             }
 
             Vector3 panel = animator.transform.TransformPoint(TerminalRest);
             AddGlow("Glow_Chest", chest, chest.position + animator.transform.up * 0.1f + animator.transform.forward * 0.2f);
             AddGlow("Glow_Terminal", forearm, panel);
+
+            if (terminalModel != null)
+            {
+                var device = Instantiate(terminalModel, forearm, true);
+                // The device's screen faces -Z as imported; turn it out of the arm with its long side along the forearm.
+                device.transform.SetPositionAndRotation(panel, Quaternion.LookRotation(-animator.transform.right, animator.transform.up));
+            }
 
             var go = new GameObject("ArmTerminalScreen");
             go.transform.SetParent(forearm, true);

@@ -77,8 +77,8 @@ Valores iniciales, sujetos a pruebas de rendimiento (60 FPS en hardware medio; [
 
 - **Escala:** 1 unidad = 1 m. Lukas mide 1.78 m.
 - **Esqueleto:** un esqueleto humanoide compartido (compatible con Unity Humanoid) para Lukas, el Alto, la Boca y el Mudo, para reutilizar clips entre ellos. El Rastrero y The Mother tienen esqueletos propios.
-- **Polígonos (aprox.):** Lukas hasta ~8k triángulos, sin mínimo (D-152); enemigos ~11k (D-154); The Mother ~15k; cadáveres ~3.5k.
-- **Texturas:** 1024 px para enemigos, cadáveres y The Mother (D-154), 512 px para Lukas, con filtro *point*.
+- **Polígonos (aprox.):** Lukas hasta ~8k triángulos, sin mínimo (D-152); enemigos según el modelo entregado, ~3–12k (D-155); The Mother ~15k; cadáveres ~3.5k.
+- **Texturas:** 2048 px para enemigos y Lukas entregados (D-155), 1024 px para cadáveres y The Mother, con filtro *point*.
 - **Clips:** 30 fps, cortos y en bucle cuando corresponda.
 - **Formato:** FBX exportado desde Blender.
 - **Nombres:** `CH_<Personaje>_<Variante>` para modelos (por ejemplo `CH_Lukas_RH07`, `CH_Alto_Reciclado`) y `AN_<Personaje>_<Acción>` para clips (por ejemplo `AN_Lukas_ReloadRound`).

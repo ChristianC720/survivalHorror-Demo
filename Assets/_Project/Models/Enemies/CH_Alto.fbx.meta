@@ -65,7 +65,36 @@ ModelImporter:
       takeName: Rig_Alto|AN_Alto_Attack
       internalID: 8688045603036146713
       firstFrame: 0
-      lastFrame: 33
+      lastFrame: 44
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000u
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: AN_Alto_Attack_Left
+      takeName: Rig_Alto|AN_Alto_Attack_Left
+      internalID: -8776676241939899284
+      firstFrame: 0
+      lastFrame: 44
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -94,7 +123,7 @@ ModelImporter:
       takeName: Rig_Alto|AN_Alto_Death
       internalID: 3554496348582734181
       firstFrame: 0
-      lastFrame: 44
+      lastFrame: 69
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -123,7 +152,7 @@ ModelImporter:
       takeName: Rig_Alto|AN_Alto_Grab
       internalID: -8107224698207821673
       firstFrame: 0
-      lastFrame: 29
+      lastFrame: 63
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -152,7 +181,7 @@ ModelImporter:
       takeName: Rig_Alto|AN_Alto_Hunt
       internalID: -5866782748604630948
       firstFrame: 0
-      lastFrame: 30
+      lastFrame: 24
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -210,7 +239,7 @@ ModelImporter:
       takeName: Rig_Alto|AN_Alto_Patrol
       internalID: -1233105520794848164
       firstFrame: 0
-      lastFrame: 45
+      lastFrame: 235
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -235,11 +264,40 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
+      name: AN_Alto_Scream
+      takeName: Rig_Alto|AN_Alto_Scream
+      internalID: -4865390135635395388
+      firstFrame: 0
+      lastFrame: 74
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000u
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
       name: AN_Alto_Stunned
       takeName: Rig_Alto|AN_Alto_Stunned
       internalID: 5097694480273396643
       firstFrame: 0
-      lastFrame: 30
+      lastFrame: 60
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
