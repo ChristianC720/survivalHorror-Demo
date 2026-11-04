@@ -8,7 +8,7 @@ namespace Heartbeat.Generation
     public enum RoomArchetype { None, Corridor, Storage, Open, Surveillance, Hack, Vertical }
 
     /// <summary>Role of a room in a floor (S-06, D-33).</summary>
-    public enum RoomRole { Procedural, Secondary, Final, CapsuleRow, Tutorial, Mother }
+    public enum RoomRole { Procedural, Secondary, Final, CapsuleRow, Tutorial, Mother, Arrival }
 
     /// <summary>Socket direction pointing OUT of the room, in room-local axes (KIT_SPEC §4).</summary>
     public enum Facing { North, East, South, West }

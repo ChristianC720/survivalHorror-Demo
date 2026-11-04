@@ -37,6 +37,22 @@ namespace Heartbeat.Tests
             Assert.IsEmpty(bad, string.Join("\n", bad));
         }
 
+        /// <summary>URP clears _EMISSION when it validates a material whose GI flags are not emissive: seams and screens went dark.</summary>
+        [Test]
+        public void MaterialsWithAnEmissionMapStayEmissive()
+        {
+            var bad = new List<string>();
+            foreach (var g in AssetDatabase.FindAssets("t:Material", new[] { "Assets/_Project/Models" }))
+            {
+                string path = AssetDatabase.GUIDToAssetPath(g);
+                if (path.Contains("/ModelsNew/")) continue;
+                var m = AssetDatabase.LoadAssetAtPath<Material>(path);
+                if (!m.HasProperty("_EmissionMap") || m.GetTexture("_EmissionMap") == null) continue;
+                if ((m.globalIlluminationFlags & MaterialGlobalIlluminationFlags.AnyEmissive) == 0) bad.Add(path);
+            }
+            Assert.IsEmpty(bad, string.Join("\n", bad));
+        }
+
         [Test]
         public void NoFloorShowsAnotherFloorsModel()
         {

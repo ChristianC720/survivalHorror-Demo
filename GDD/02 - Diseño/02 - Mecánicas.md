@@ -738,6 +738,7 @@ stateDiagram-v2
 - **Enemigos por piso (configuración completa, D-37):** piso 1: 6–9; piso 2: 9–12; piso 3: 12–15 + The Mother. Máximo 2 enemigos activos por sala; ~1/3 de las salas quedan vacías a propósito (valores iniciales, sujetos a balance). Si el piso generado tiene pocas salas, el número de enemigos se limita a 2 por sala ocupada aunque quede por debajo del rango (D-118). La curva de dificultad se documenta en [[05 - Progresión]].
         
     - Las escaleras y los elevadores existen **solo dentro de las salas clave finales** (D-33).
+    - La excepción es de escenario: la sala de inicio de los pisos 2 y 3 tiene el elevador que trajo a Lukas, averiado y sin arreglo posible (D-158).
         
     - La posición de las salas clave dentro de cada piso varía por intento; el resto del piso se compone de salas procedurales.
         

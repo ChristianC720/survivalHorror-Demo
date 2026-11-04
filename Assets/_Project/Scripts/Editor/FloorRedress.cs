@@ -157,6 +157,39 @@ public static class FloorRedress
         return log.ToString();
     }
 
+    /// <summary>F2 and F3 start in the room the elevator opens on (D-158): the capsule room's layout without its capsules and tutorial.</summary>
+    public static string ExecuteArrival()
+    {
+        var log = new System.Text.StringBuilder();
+        for (int fi = 0; fi < 2; fi++)
+        {
+            string F = "F" + (fi + 2);
+            string newPath = $"{Rooms}/{F}/KEY_{F}_Arrival.prefab";
+            if (AssetDatabase.LoadAssetAtPath<GameObject>(newPath) != null) continue;   // never overwrite
+            var inst = (GameObject)PrefabUtility.InstantiatePrefab(AssetDatabase.LoadAssetAtPath<GameObject>($"{Rooms}/F1/KEY_F1_CapsuleRow.prefab"));
+            inst.name = $"KEY_{F}_Arrival";
+            PrefabUtility.SaveAsPrefabAsset(inst, newPath);
+            Object.DestroyImmediate(inst);
+
+            var root = PrefabUtility.LoadPrefabContents(newPath);
+            root.GetComponent<Heartbeat.Generation.RoomShell>().kit = AssetDatabase.LoadAssetAtPath<Heartbeat.Generation.KitSet>($"{Defs}/KitSet_{F}.asset");
+            foreach (var l in root.GetComponentsInChildren<Light>(true)) l.color = Tint[fi];
+            foreach (var t in root.transform.Cast<Transform>().Where(t => t.name.StartsWith("Capsule_") || t.name.StartsWith("Poster_") || t.name.Contains("Tray")).ToList())
+                Object.DestroyImmediate(t.gameObject);
+            var spawn = root.transform.Find("PlayerSpawn");
+            spawn.localPosition = new Vector3(4f, spawn.localPosition.y, 2f);
+            spawn.localRotation = Quaternion.identity;   // back to the elevator, facing the room
+            var lift = (GameObject)PrefabUtility.InstantiatePrefab(AssetDatabase.LoadAssetAtPath<GameObject>($"{Props}/{F}/CH_Elevator_{F}.prefab"), root.transform);
+            lift.name = "Elevator";
+            lift.transform.localPosition = new Vector3(4f, 0f, .3f);   // on the south wall's face
+            PrefabUtility.SaveAsPrefabAsset(root, newPath);
+            PrefabUtility.UnloadPrefabContents(root);
+            log.AppendLine($"KEY_{F}_Arrival created");
+        }
+        AssetDatabase.SaveAssets();
+        return log.ToString();
+    }
+
     static Heartbeat.Generation.KitSet MakeKitSet(string F)
     {
         string path = $"{Defs}/KitSet_{F}.asset";

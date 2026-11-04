@@ -102,6 +102,7 @@ namespace Heartbeat.EditorTools
             def.floor = n.Contains("_F3_") || n == "ROOM_Mother" ? 3 : n.Contains("_F2_") ? 2 : 1;   // The Mother sits under floor 3
             def.role = n.StartsWith("TUT_") ? RoomRole.Tutorial
                 : n.Contains("CapsuleRow") ? RoomRole.CapsuleRow
+                : n.Contains("Arrival") ? RoomRole.Arrival
                 : n.Contains("Mother") ? RoomRole.Mother
                 : n.Contains("_Final") ? RoomRole.Final
                 : n.Contains("_Secondary") ? RoomRole.Secondary

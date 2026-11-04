@@ -46,8 +46,9 @@ namespace Heartbeat.Generation.Layout
             var finals = templates.Where(t => t.Role == RoomRole.Final).ToList();
             if (procedural.Count == 0 || secondaries.Count == 0 || finals.Count == 0) return null;
 
-            // 1. Entry: the capsule row on floor 1, otherwise a procedural room.
-            var entryT = p.Floor == 1 ? templates.FirstOrDefault(t => t.Role == RoomRole.CapsuleRow) : null;
+            // 1. Entry: the capsule row on floor 1, the dead elevator's room below it (D-158).
+            var entryRole = p.Floor == 1 ? RoomRole.CapsuleRow : RoomRole.Arrival;
+            var entryT = templates.FirstOrDefault(t => t.Role == entryRole);
             entryT ??= Pick(procedural, rng, null);
             Add(layout, occupied, new PlacedRoom(entryT) { Origin = Vector2Int.zero, Rotation = 0, Depth = 0 });
             layout.EntryRoom = 0;

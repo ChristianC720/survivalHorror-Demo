@@ -119,6 +119,10 @@ MonoBehaviour:
     m_Key: SUB.EMILIA.NOTE_6
     m_Metadata:
       m_Items: []
+  - m_Id: 1093951087050752
+    m_Key: SUB.LUKAS.ELEVATOR_DEAD
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

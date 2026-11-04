@@ -8,6 +8,7 @@ UI.PROMPT.EXAMINE	Examine	Examinar
 UI.PROMPT.HACK	Hack	Hackear
 UI.PROMPT.POWER	Restore power	Restaurar energía
 UI.PROMPT.NOPOWER	No power	Sin energía
+UI.PROMPT.OUT_OF_ORDER	Out of order	Fuera de servicio
 UI.PROMPT.DESCEND	Descend	Descender
 UI.PROMPT.LOCKDOWN	LOCKDOWN	LOCKDOWN	KEEP-EN (D-62 terminal label)
 UI.HUD.SYNC	SYNCHRONIZING…	SYNCHRONIZING…	KEEP-EN (D-62 terminal label)

@@ -57,6 +57,8 @@ namespace Heartbeat.EditorTools
                     return new[] { new P("PROP_Shared_Puddle", 4f, 2.6f), new P("PROP_Shared_TrashPile", 7.1f, 5.1f), new P(f == "F1" ? "PROP_F1_Gauge" : "PROP_Shared_Speaker", 3.8f, 5.5f, North, f == "F1" ? Gauge : Speaker) };
                 case "KEY_#_Final":
                     return new[] { new P("PROP_Shared_Speaker", 2f, 7.5f, North, Speaker), new P("PROP_Shared_TrashPile", 7.2f, 1f), new P("PROP_Shared_Grate", 3f, 5f) };
+                case "KEY_#_Arrival":
+                    return new[] { new P("PROP_Shared_Speaker", 7.5f, .6f, South, Speaker), new P("PROP_Shared_CableBundle", 1.4f, 1.1f), new P("PROP_Shared_TrashPile", 7.1f, 5.1f), f == "F2" ? new P("PROP_F2_IVCart", 1.1f, 4.8f, 40f) : new P("PROP_F3_HeavyCabling", 7.5f, 1.6f, East) };
                 case "KEY_#_CapsuleRow":
                     return new[] { new P("PROP_Shared_Speaker", .5f, 4.5f, West, Speaker), new P("PROP_Shared_CableBundle", 4f, 4f) };
                 // B layouts: F2's by hand, F1's re-dressed from them (FloorRedress).

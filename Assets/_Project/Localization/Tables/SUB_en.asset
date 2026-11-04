@@ -122,6 +122,10 @@ MonoBehaviour:
     m_Localized: (footsteps, running)
     m_Metadata:
       m_Items: []
+  - m_Id: 1093951087050752
+    m_Localized: Dead. No way back.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

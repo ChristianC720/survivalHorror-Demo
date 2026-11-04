@@ -122,6 +122,10 @@ MonoBehaviour:
     m_Localized: (pasos, corre)
     m_Metadata:
       m_Items: []
+  - m_Id: 1093951087050752
+    m_Localized: "Muerto. No hay vuelta atr\xE1s."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

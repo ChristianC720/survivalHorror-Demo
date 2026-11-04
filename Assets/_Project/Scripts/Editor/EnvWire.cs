@@ -41,7 +41,7 @@ namespace Heartbeat.EditorTools
             mat.SetTexture("_EmissionMap", AssetDatabase.LoadAssetAtPath<Texture2D>($"{Env}Textures/T_Env_{floor}_Emission.png"));
             mat.SetColor("_EmissionColor", Color.white);
             mat.EnableKeyword("_EMISSION");
-            mat.globalIlluminationFlags = MaterialGlobalIlluminationFlags.None;
+            mat.globalIlluminationFlags = MaterialGlobalIlluminationFlags.RealtimeEmissive;   // with None, URP drops _EMISSION on validation
             EditorUtility.SetDirty(mat);
             return mat;
         }
@@ -167,6 +167,16 @@ namespace Heartbeat.EditorTools
                 Object.DestroyImmediate(root);
             }
             SwapPrefab(path, name, name != "PROP_Shared_Puddle" && name != "PROP_Shared_Grate");
+        }
+
+        private static void CreateElevator(string floor)
+        {
+            CreateProp(floor, "CH_Elevator_" + floor, true);
+            WithPrefab($"{Prefabs}Props/{floor}/CH_Elevator_{floor}.prefab", root =>
+            {
+                root.layer = LayerMask.NameToLayer("Interactable");
+                if (!root.TryGetComponent<Heartbeat.Level.BrokenElevator>(out _)) root.AddComponent<Heartbeat.Level.BrokenElevator>();
+            });
         }
 
         private static void WireDoors()
@@ -407,6 +417,8 @@ namespace Heartbeat.EditorTools
             CreateProp("F1", "PROP_F1_CRT", false);
             CreateProp("F2", "PROP_F2_CRT", false);
             CreateProp("F3", "PROP_F3_CRTBank", true);
+            CreateElevator("F2");
+            CreateElevator("F3");
             foreach (var (p, m) in new[] { ("ITEM_Heal", "CH_Item_Heal"), ("ITEM_AmmoBlister", "CH_Item_Ammo"), ("ITEM_Spike", "CH_Item_Spike"), ("ITEM_KeyMandatory", "CH_Item_KeyMandatory"), ("ITEM_KeyOptional", "CH_Item_KeyOptional") })
                 Rematerial($"{Prefabs}Items/{p}.prefab", m);
 

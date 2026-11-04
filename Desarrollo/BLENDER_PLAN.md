@@ -182,3 +182,7 @@ Enemies: the delivered body plus a clothing shell in `team_models.add_clothing`,
 | Alto | `CH_Alto` has the improved clothing; `CH_Alto_V1` keeps the earlier one, visible in `Sandbox_Gallery` under Modelos sueltos |
 
 Measured in `Floor`, floor 1, with three shadowed lights: 172k triangles per frame, 25 set-pass calls, 200 shadow casters, about 108 fps in the editor (was 71.6k, 18, 42 and 120 with one shadowed light).
+
+Emission: URP clears `_EMISSION` when it validates a material whose GI flags are not emissive, so emissive materials use `RealtimeEmissive` (no realtime GI is baked, it costs nothing). `PrefabOverlapTests` guards it.
+
+Arrival rooms (D-158): `KEY_F2_Arrival` and `KEY_F3_Arrival` (`FloorRedress.ExecuteArrival`, role `Arrival`) are the entry room of floors 2 and 3, with `CH_Elevator_F#` and `BrokenElevator`.

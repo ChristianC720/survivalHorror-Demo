@@ -1534,6 +1534,68 @@ def crt_bank(M):
     M.tube([(.6, .28, 1.7), (.66, .36, .9), (.7, .38, .02)], .03, "cable", sides=5)
 
 
+# ------------------------------------------------------------ the elevator Lukas arrived in: dead behind him on floors 2 and 3 (D-158)
+
+def _elevator(M, frame, door, gap):
+    """Mounted on a wall face: back at y=0, front toward -Y, pivot on the floor at its centre. gap: half opening between the jammed doors."""
+    M.pitch = 99
+    M.core((-1.3, -.1, 0), (1.3, .03, 2.9))
+    # The shaft behind the doors stays black: nothing is coming.
+    M.bx((-1.15, -.16, .02), (1.15, -.1, 2.45), "black")
+    for s_ in (-1, 1):
+        a, b = sorted((s_ * 1.15, s_ * 1.4))
+        M.bx((a, -.3, 0), (b, 0, 2.95), frame)
+        a, b = sorted((s_ * gap, s_ * 1.15))
+        M.bx((a, -.22, .02), (b, -.16, 2.45), door)
+        for z in (.5, 1.25, 2.0):
+            M.bx((a + .05, -.225, z - .02), (b - .05, -.22, z + .02), "dark")
+    M.bx((-1.15, -.3, 2.45), (1.15, 0, 2.95), frame)
+    M.bx((-1.15, -.3, -.01), (1.15, 0, .02), "steel")
+    # Dead floor indicator: every lamp off.
+    M.bx((-.5, -.32, 2.58), (.5, -.3, 2.84), "black")
+    for i in range(4):
+        M.cyl((-.36 + i * .24, -.33, 2.71), .012, .05, "dark", sides=8, axis="y")
+
+
+def _call_panel(M, x, seed):
+    """Call panel with its cover hanging open and the wiring pulled out."""
+    M.bx((x - .13, -.32, 1.0), (x + .13, -.3, 1.5), "dark")
+    M.bx((x - .1, -.325, 1.28), (x + .1, -.32, 1.44), "black")
+    M.tube([(x - .05, -.33, 1.05), (x - .08, -.38, .85), (x - .03, -.36, .62)], .009, "crimson", sides=4)
+    M.tube([(x + .04, -.33, 1.05), (x + .07, -.37, .9), (x + .1, -.35, .7)], .009, "yellow", sides=4)
+    M.code((x, -.326, 1.14), F, .1, seed, PAPER * .5)
+
+
+def elevator_f2(M):
+    """Clinic lift: corporate, sealed from the far side, a taped notice and nobody coming to read it."""
+    _elevator(M, "plastic", "steel", .004)
+    M.bx((-.004, -.225, .02), (.004, -.16, 2.45), "dark")
+    M.bx((-1.15, -.227, 1.5), (1.15, -.222, 1.56), "cyan")
+    vitalis(M, (0, -.301, 2.52), F, .6)
+    _call_panel(M, 1.27, 12)
+    # Crossed tape and the notice.
+    M.tube([(-1.05, -.235, .55), (1.05, -.235, 2.2)], .012, "tape", sides=4)
+    M.tube([(-1.05, -.24, 2.2), (1.05, -.24, .55)], .012, "tape", sides=4)
+    M.bx((-.34, -.25, 1.05), (.34, -.246, 1.5), "paper")
+    M.text((0, -.2505, 1.36), F, .05, "AUSSER", INK)
+    M.text((0, -.2505, 1.2), F, .05, "BETRIEB", INK)
+    M.bx((-.12, -.252, 1.48), (.12, -.25, 1.53), "tape")
+
+
+def elevator_f3(M):
+    """Core freight lift: blast doors wrenched a hand apart and jammed, a dead red alarm, cables torn out of the header."""
+    _elevator(M, "machine2", "machine", .1)
+    M.hazard((0, -.301, 2.55), F, (2.3, .12), pitch=.2)
+    M.hazard((0, -.223, .25), F, (2.3, .3), pitch=.26)
+    _call_panel(M, 1.27, 13)
+    # A steel bar jammed across the gap: it will not open further, or close.
+    M.tube([(-.45, -.28, .95), (.45, -.29, 1.2)], .03, "rust", sides=6)
+    M.text((-.62, -.223, 1.75), F, .05, "GESPERRT", PAPER * .6, wear=.3)
+    M.bx((.5, -.32, 2.62), (.72, -.3, 2.78), "glow_crimson")
+    for x in (-.7, -.2, .4):
+        M.tube([(x, -.15, 2.46), (x + .05, -.2, 2.2), (x - .03, -.18, 1.95)], .02, "cable", sides=5)
+
+
 # ------------------------------------------------------------ pickups per GDD Objetos y Coleccionables
 
 def item_heal(M):
@@ -1648,6 +1710,8 @@ for name, tile, fn, folder in (
 _add("F1", "PROP_F1_CRT", 128, crt_f1)
 _add("F2", "PROP_F2_CRT", 192, crt_f2)
 _add("F3", "PROP_F3_CRTBank", 320, crt_bank)
+_add("F2", "CH_Elevator_F2", 320, elevator_f2)
+_add("F3", "CH_Elevator_F3", 320, elevator_f3)
 for name, tile, fn in (("CH_Item_Heal", 256, item_heal), ("CH_Item_Ammo", 96, item_ammo), ("CH_Item_Spike", 128, item_spike), ("CH_Item_KeyMandatory", 128, item_key_mandatory), ("CH_Item_KeyOptional", 128, item_key_optional)):
     _add("Shared", name, tile, fn, folder="Props")
 

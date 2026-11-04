@@ -540,3 +540,7 @@ Sonido vocal más texto en pantalla (D-52). El texto se mantiene limpio y solo s
 
 
 > **Navegación:** [[00 - Índice]] · ← [[04 - Diálogos y Narrativa]] · [[01 - Estructura del Contenido]] →
+
+## Elevador averiado (D-158)
+
+Al intentar usar el elevador de la sala de llegada de los pisos 2 y 3. Aviso: `Fuera de servicio` / `Out of order`. Lukas: «Muerto. No hay vuelta atrás.» / "Dead. No way back."
