@@ -2,6 +2,8 @@
 
 English guides that turn the GDD (`GDD/`, Spanish) into build steps for Claude Code and Aura. Read `CLAUDE.md` first.
 
+**Equipo:** para entender y modificar el proyecto en Unity, empieza por [GUIA_EQUIPO_UNITY.md](GUIA_EQUIPO_UNITY.md) (en español).
+
 | Guide | Epic | Milestone |
 |---|---|---|
 | [00-project.md](00-project.md) | E-00 Project setup, packages, render | H1 |
