@@ -543,8 +543,12 @@ def enemy_rastrero(A):
     crawl("AN_Rastrero_Hunt", 15, 34)
     A.clip("AN_Rastrero_Attack", 24, {1: B, 8: add(B, Hips=(-14, 0, 0), RightUpperArm=(-46, 0, 0), RightLowerArm=(-26, 0, 0)), 13: add(B, Hips=(6, 0, 0), RightUpperArm=(30, 0, 0), Head=(-12, 0, 0)), 24: B})
     A.clip("AN_Rastrero_Stunned", 31, {1: add(B, Head=(18, 12, 0)), 15: add(B, Head=(12, -10, 0)), 31: add(B, Head=(18, 12, 0))}, loop=True)
-    F = {"Hips": (-40, 0, 10), "Chest": (6, 0, 0), "Head": (10, 0, -24), "LeftUpperArm": (-30, -56, 0), "RightUpperArm": (-20, 34, 0), "LeftLowerLeg": (32, 0, 0), "RightLowerLeg": (4, 0, 0), "loc": (0, .3, -.72)}
-    A.clip("AN_Rastrero_Death", 45, {1: B, 26: F, 45: F})
+    # Collapses forward onto its belly; the sheet's rest already leans ~40 degrees, so Hips 42 lies it flat.
+    BUCKLE = dict(B, Hips=(46, 0, 4), Head=(-8, 0, 0), LeftUpperArm=(-20, -10, 0), RightUpperArm=(-14, 10, 0), LeftLowerArm=(0, 0, 0), RightLowerArm=(0, 0, 0), loc=(0, .12, -.5))
+    F = {"Hips": (42, 0, 8), "Spine": (-4, 0, 0), "Chest": (-12, 0, 6), "Neck": (-32, 0, 0), "Head": (-38, 0, 32),
+         "LeftUpperArm": (-15, -55, 0), "RightUpperArm": (-10, 55, 0), "LeftLowerArm": (-10, 0, 0), "RightLowerArm": (-6, 0, 0), "LeftHand": (-10, 0, 0), "RightHand": (-10, 0, 0),
+         "LeftUpperLeg": (50, -8, 0), "RightUpperLeg": (46, 6, 0), "LeftLowerLeg": (10, 0, 0), "RightLowerLeg": (6, 0, 0), "LeftFoot": (34, 0, 0), "RightFoot": (30, 0, 0), "loc": (0, .2, -.77)}
+    A.clip("AN_Rastrero_Death", 45, {1: B, 10: BUCKLE, 26: F, 45: F})
 
 
 # ------------------------------------------------------------ Lukas
@@ -577,6 +581,9 @@ def lukas(old_blend):
                     k.handle_left.x *= 1.25
                     k.handle_right.x *= 1.25
                 fc.update()
+            # The range must stretch too, or the export cuts each cycle at 80% (and a cyclic one also needs its closing frame).
+            if a.use_frame_range:
+                a.frame_start, a.frame_end = a.frame_start * 1.25, (a.frame_end + (1 if a.use_cyclic else 0)) * 1.25
     table = {"Idle_Bien": "Idle_Fine", "Idle_Herido": "Idle_Injured", "Idle_Critico": "Idle_Critical", "Caminar_Bien": "Walk_Fine", "Caminar_Herido": "Walk_Injured", "Caminar_Critico": "Walk_Critical", "Correr_Bien": "Run", "Agachado_Bien": "Crouch_Idle", "CaminarAgachado_Bien": "Crouch_Walk", "Apuntar_Bien": "Aim"}
     for a in list(bpy.data.actions):
         if a.name.startswith("Lukas_"):

@@ -38,8 +38,8 @@ def export(path, rig, mesh=None, keep_prefix="AN_", markers=()):
     vl.update()
     for a in [a for a in bpy.data.actions if not a.name.startswith(keep_prefix)]:
         bpy.data.actions.remove(a)
-    win = bpy.context.window_manager.windows[0]
-    with bpy.context.temp_override(window=win):
+    wins = bpy.context.window_manager.windows      # none when Blender runs in the background
+    with bpy.context.temp_override(**({"window": wins[0]} if wins else {})):
         bpy.ops.export_scene.fbx(
             filepath=path, use_selection=True, object_types=kinds, apply_unit_scale=True,
             apply_scale_options="FBX_SCALE_ALL", axis_forward="-Z", axis_up="Y", add_leaf_bones=False,
