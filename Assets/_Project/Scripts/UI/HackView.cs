@@ -100,14 +100,22 @@ namespace Heartbeat.UI
             status.text = "";
             status.color = fg;
 
-            foreach (Transform c in keys) Destroy(c.gameObject);
-            UiKit.KeyHint(keys, router != null ? router.KeyFor(router.Actions.Hacking.Abort) : "E", Loc.Get("UI.HACK.ABORT"), fg, ink);
-            if (hack.AvailableFault != null)   // M-17: the player decides when to spend a fault
-                UiKit.KeyHint(keys, router != null ? router.KeyFor(router.Actions.Hacking.UseFault) : "F", Loc.Get("UI.HACK.FAULT"), fg, ink);
+            if (router != null) { router.DeviceChanged -= OnDevice; router.DeviceChanged += OnDevice; }
+            ShowKeys();
 
             scale = Services.TryGet(out Save.SaveService saves) ? Mathf.Max(1f, saves.LoadGlobal().terminalScale) : 1f;
             panel.localScale = new Vector3(scale, scale, 1f);
             panel.gameObject.SetActive(true);
+        }
+
+        private void OnDevice(bool _) { if (IsShown && hack != null && hack.IsHacking) ShowKeys(); }   // D-132
+
+        private void ShowKeys()
+        {
+            foreach (Transform c in keys) Destroy(c.gameObject);
+            UiKit.KeyHint(keys, router != null ? router.KeyFor(router.Actions.Hacking.Abort) : "E", Loc.Get("UI.HACK.ABORT"), fg, ink);
+            if (hack.AvailableFault != null)   // M-17: the player decides when to spend a fault
+                UiKit.KeyHint(keys, router != null ? router.KeyFor(router.Actions.Hacking.UseFault) : "F", Loc.Get("UI.HACK.FAULT"), fg, ink);
         }
 
         private void AddCell(HackDir d, float size)
@@ -164,13 +172,14 @@ namespace Heartbeat.UI
 
         private void Unsubscribe()
         {
+            if (router != null) router.DeviceChanged -= OnDevice;
             if (hack == null) return;
             hack.Started -= OnStarted;
             hack.Stepped -= OnStepped;
             hack.Ended -= OnEnded;
         }
 
-        /// <summary>The letter of the bound key when it is short (WASD); otherwise a direction, also for the gamepad.</summary>
+        /// <summary>The letter of the bound key when it is short; otherwise a direction (arrows and D-pad, the only hack keys).</summary>
         private string KeyLabel(HackDir d)
         {
             if (router != null)

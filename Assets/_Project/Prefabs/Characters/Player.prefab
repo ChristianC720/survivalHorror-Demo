@@ -395,6 +395,7 @@ MonoBehaviour:
   range: 1.8
   player: {fileID: 5604194892502960124}
   inventory: {fileID: 7073963810229885166}
+  balance: {fileID: 11400000, guid: 700426a2ac4d41848b6e4a139964ffa9, type: 2}
 --- !u!114 &707460425346237199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -939,6 +940,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 526c8b901de9936469a00f3069660146, type: 2}
+    - target: {fileID: -4565251039084985055, guid: dd58c0fa5f4150445b9d6098ce7dbfb7, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 250d73245044b1d4ba0dca2c6ffcd146, type: 2}
     - target: {fileID: -713029041907407720, guid: dd58c0fa5f4150445b9d6098ce7dbfb7, type: 3}
       propertyPath: m_Layer
       value: 10

@@ -221,6 +221,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Heartbeat.Runtime::Heartbeat.Generation.RoomActivation
   maxRoomLights: 14
   maxShadowedRoomLights: 3
+  visibleDepth: 2
+  enemyCheckInterval: 0.2
 --- !u!114 &664391585
 MonoBehaviour:
   m_ObjectHideFlags: 0

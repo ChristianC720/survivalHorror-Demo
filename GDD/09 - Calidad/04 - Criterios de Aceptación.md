@@ -28,6 +28,8 @@ Cada sistema tiene además su lista detallada en [[03 - Sistemas]]; aquí va un 
 | M-06 Resistencia y empujón | La resistencia está al 30% | Intenta empujar (35%) | El empujón no ocurre y suena un jadeo |
 | M-07 Inventario | El inventario está abierto con un enemigo en caza | Usa una cura (~1.5 s) | El enemigo sigue moviéndose y atacando; si golpea durante la animación, la cura no se consume |
 | M-08 Interacción y documentos | Lukas está a ~1.5 m de un documento de Emilia | Pulsa `E` | Se abre la vista de lectura y el juego se detiene hasta cerrarla (D-159); al cerrar aparece `REGISTERED` y el expediente sube a n/6 en el terminal |
+| M-08 Cono de interacción (D-161) | Una puerta está a ~1 m detrás de Lukas y la cámara mira al frente | Pulsa `E` | No aparece el aviso y la puerta no se abre; al girar la cámara hacia ella, aparece `[E]` y se abre |
+| D-160 Tutorial sin muerte | Primer intento, sala de calderas, Lukas en Crítico frente al Rastrero | El Rastrero lo golpea o lo agarra sin punzón | Lukas sigue vivo en Crítico; no hay cinemática de muerte ni se suma al contador |
 | M-09 Sigilo y ruido | Lukas va agachado tras una cobertura sólida con la linterna apagada | Un Alto pasa a 5 m | El Alto no lo detecta |
 | M-10 Señales diegéticas | Un Rastrero pasa de patrulla a sospecha, búsqueda y caza | Lukas escucha | Suena un sonido distinto en cada estado y no aparece ningún indicador en pantalla |
 | M-11 Punzón de descarga | Lukas tiene un punzón y un Alto lo agarra | Se resuelve el agarre | El punzón se consume solo, el Alto queda aturdido 2 s y Lukas no pierde salud |

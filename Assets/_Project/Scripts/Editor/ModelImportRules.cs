@@ -11,7 +11,7 @@ namespace Heartbeat.EditorTools
     public sealed class ModelImportRules : AssetPostprocessor
     {
         private const string Root = "Assets/_Project/Models/";
-        private static readonly string[] Looping = { "Idle", "Walk", "Run", "Crawl", "Patrol", "Hunt", "Wander", "Hack", "Still", "Aim", "Reload", "Hold", "Struggle", "Lifted", "Flank" };
+        private static readonly string[] Looping = { "Idle", "Walk", "Run", "Crawl", "Patrol", "Hunt", "Wander", "Hack", "Still", "Aim", "Reload", "Hold", "Struggle", "Lifted", "Flank", "Stunned" };   // a stagger can outlast its clip
 
         private static readonly (string human, string bone)[] Extra =
         {

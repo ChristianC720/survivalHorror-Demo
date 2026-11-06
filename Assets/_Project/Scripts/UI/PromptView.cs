@@ -8,7 +8,8 @@ using UnityEngine.Localization.Settings;
 namespace Heartbeat.UI
 {
     /// <summary>
-    /// The contextual "E" prompt (D-84, D-86): "[E] Open" bottom-centre while an interactable is in range.
+    /// The contextual "E" prompt (D-84, D-86): "[E] Open" bottom-centre while an interactable is in range, or the two
+    /// finisher actions while Lukas stands over a body (Controles, D-27).
     /// The key follows the last used device (D-132). One of the four elements allowed on screen.
     /// </summary>
     public sealed class PromptView : MonoBehaviour
@@ -53,13 +54,26 @@ namespace Heartbeat.UI
         private void Show(IInteractable t)
         {
             target = t;
-            bool visible = t != null && (t as MonoBehaviour) != null
-                           && (!Services.TryGet(out GameStateMachine states) || Playable(states.Current))
-                           && (router == null || router.Actions.Gameplay.Interact.enabled);
-            group.alpha = visible ? 1f : 0f;
-            if (!visible) return;
-            string key = router != null ? router.KeyFor(router.Actions.Gameplay.Interact) : "E";
-            label.text = $"<mark=#000000A0 padding=\"12,12,4,4\">[{key}]  {Loc.Get(t.PromptKey)}</mark>";
+            string text = null;
+            if (!Services.TryGet(out GameStateMachine states) || Playable(states.Current))
+            {
+                // Over a body (D-27) the click and E finish it instead of shoving and interacting, so the prompt says so.
+                if (router != null && router.Context == InputContext.OverBody) text = FinisherText();
+                else if (t != null && (t as MonoBehaviour) != null && (router == null || router.Actions.Gameplay.Interact.enabled))
+                    text = $"[{Key(router?.Actions.Gameplay.Interact, "E")}]  {Loc.Get(t.PromptKey)}";
+            }
+            group.alpha = text != null ? 1f : 0f;
+            if (text != null) label.text = $"<mark=#000000A0 padding=\"12,12,4,4\">{text}</mark>";
         }
+
+        private string FinisherText()
+        {
+            string text = $"[{Key(router.Actions.Gameplay.Attack, "LMB")}]  {Loc.Get("UI.PROMPT.STRIKE")}";
+            if (Services.TryGet(out Interactor who) && who.Inventory.Model.Has(Inventory.ItemKind.Spike))
+                text += $"    [{Key(router.Actions.Gameplay.Interact, "E")}]  {Loc.Get("UI.PROMPT.SPIKE")}";
+            return text;
+        }
+
+        private string Key(UnityEngine.InputSystem.InputAction action, string fallback) => router != null && action != null ? router.KeyFor(action) : fallback;
     }
 }

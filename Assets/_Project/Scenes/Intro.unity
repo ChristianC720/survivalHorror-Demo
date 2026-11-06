@@ -1568,6 +1568,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 526c8b901de9936469a00f3069660146, type: 2}
+    - target: {fileID: -4565251039084985055, guid: dd58c0fa5f4150445b9d6098ce7dbfb7, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 526c8b901de9936469a00f3069660146, type: 2}
     - target: {fileID: 919132149155446097, guid: dd58c0fa5f4150445b9d6098ce7dbfb7, type: 3}
       propertyPath: m_Name
       value: CH_Lukas_Civil_Figure

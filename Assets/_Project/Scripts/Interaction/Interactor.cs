@@ -9,8 +9,9 @@ using UnityEngine.InputSystem;
 namespace Heartbeat.Interaction
 {
     /// <summary>
-    /// Finds the interactable Lukas is looking at (M-08) and runs it on E / A. Among candidates within range, the one
-    /// closest to the centre of the view wins (D-27), which also decides between a body finisher and a door/item.
+    /// Finds the interactable Lukas is looking at (M-08) and runs it on E / A. Only what lies inside the camera's cone and
+    /// in front of Lukas counts (a door at his back is never used); among those, the one closest to the centre of the
+    /// view wins (D-27), which also decides between a body finisher and a door/item.
     /// Never pauses the game. Raises InteractTargetChanged for the diegetic E prompt (E-10).
     /// </summary>
     public sealed class Interactor : MonoBehaviour
@@ -18,6 +19,7 @@ namespace Heartbeat.Interaction
         [SerializeField] private float range = 1.8f;
         [SerializeField] private PlayerController player;
         [SerializeField] private PlayerInventory inventory;
+        [SerializeField] private PlayerBalance balance;
 
         private InputRouter router;
         private OtsCameraRig rig;
@@ -71,13 +73,17 @@ namespace Heartbeat.Interaction
 
         private IInteractable FindBest(out float bestScore)
         {
-            bestScore = 0.3f;   // must be roughly in view
+            bestScore = Mathf.Cos(balance.interactConeDegrees * Mathf.Deg2Rad);
             IInteractable best = null;
+            Transform view = rig != null ? rig.Brain.transform : transform;
+            Vector3 ahead = Vector3.ProjectOnPlane(view.forward, Vector3.up).normalized;
             int n = Physics.OverlapSphereNonAlloc(transform.position + Vector3.up * 0.9f, range, buffer, mask, QueryTriggerInteraction.Collide);
             for (int i = 0; i < n; i++)
             {
                 var it = buffer[i].GetComponentInParent<IInteractable>();
                 if (it == null || !it.CanInteract(this)) continue;
+                // The camera sits behind Lukas, so something behind him can still be near the centre of the view.
+                if (Vector3.Dot(it.InteractionPoint - transform.position, ahead) < 0f) continue;
                 float s = ViewScore(it.InteractionPoint);
                 if (s > bestScore) { bestScore = s; best = it; }
             }

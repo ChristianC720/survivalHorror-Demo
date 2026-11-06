@@ -448,7 +448,7 @@ Fuente: [[05 - Audio y Música]].
 
 - Build ≤ 2 GB.
 - Generación de piso + NavMesh ≤ 5 s.
-- ≤ 6 enemigos con IA activa; ≤ 16 luces dinámicas y ≤ 4 con sombra.
+- Enemigos siempre activos, sin dibujarse fuera de la vista (D-162); ≤ 16 luces dinámicas y ≤ 4 con sombra.
 - Solo la sala actual y sus adyacentes activas.
 
 **Riesgos técnicos:**

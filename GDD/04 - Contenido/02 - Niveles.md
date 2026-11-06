@@ -91,14 +91,14 @@ Cápsula → [Tutorial: 4 salas, solo el primer intento] → Salas procedurales 
 
 #### Tutorial (primer intento, D-70)
 
-Las 4 salas son fijas solo en el primer intento y forman parte de las salas procedurales del piso 1; desde el segundo intento son procedurales (D-38). Sus recursos cuentan dentro del presupuesto del piso 1. Los controles se enseñan con carteles de seguridad de Vitalis en las paredes de estas salas, que incluyen la tecla de cada acción (D-89; ver [[04 - Interfaz Visual]]).
+Las 4 salas son fijas solo en el primer intento y forman parte de las salas procedurales del piso 1; desde el segundo intento son procedurales (D-38). Sus recursos cuentan dentro del presupuesto del piso 1. Los controles se enseñan con carteles de seguridad de Vitalis en las paredes de estas salas, que incluyen la tecla de cada acción (D-89; ver [[04 - Interfaz Visual]]). Entre todos enseñan **todas** las acciones del juego (D-160). **Lukas no puede morir en estas salas ni en la fila de cápsulas:** el daño lo deja como mucho en el borde de Crítico (D-160).
 
 | Sala | Arquetipo | Enseña | Contenido |
 |---|---|---|---|
-| 1. Fila de cápsulas | — (sala de reconstrucción) | Interactuar y abrir el terminal del brazo | Anillo en el suelo (D-54); bandeja de efectos personales vacía |
-| 2. Depósito a oscuras | Almacén | Linterna, recoger, inventario | Cadáver de un guardia de Kessler ya asimilado con el revólver; 1 blíster de munición y 1 cura |
-| 3. Túnel largo | Pasillo | Correr y resistencia | Al final se oye al Rastrero tras una puerta |
-| 4. Sala de calderas | Sala abierta | Sigilo, empujón y disparo | 1 Rastrero real (D-70): puede matar, cuenta dentro de los 6–9 enemigos del piso y su muerte no suma al contador (D-35) |
+| 1. Fila de cápsulas | — (sala de reconstrucción) | Interactuar, abrir el terminal del brazo y pausar | Anillo en el suelo (D-54); bandeja de efectos personales vacía |
+| 2. Depósito a oscuras | Almacén | Linterna, recoger, inventario, usar y descartar objetos (curarse) | Cadáver de un guardia de Kessler ya asimilado con el revólver; 1 blíster de munición y 1 cura |
+| 3. Túnel largo | Pasillo | Correr y resistencia; vigilancia y hackeo (D-160) | Al final se oye al Rastrero tras una puerta |
+| 4. Sala de calderas | Sala abierta | Sigilo, empujón, apuntar, disparar, recargar y remate | 1 Rastrero real (D-70): hace daño pero no puede matar (D-160) y cuenta dentro de los 6–9 enemigos del piso |
 
 ### Piso 2 — Clínica ilegal
 

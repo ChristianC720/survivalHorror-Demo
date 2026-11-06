@@ -552,3 +552,15 @@ Confirmaciones: `COST: +1 death on the counter - the cycle degrades` / `COSTO: +
 ## Elevador averiado (D-158)
 
 Al intentar usar el elevador de la sala de llegada de los pisos 2 y 3. Aviso: `Fuera de servicio` / `Out of order`. Lukas: «Muerto. No hay vuelta atrás.» / "Dead. No way back."
+
+## Carteles del tutorial y avisos de remate (D-160, D-161)
+
+Carteles de seguridad nuevos, en inglés en ambos idiomas con su línea en alemán sin traducir (D-89); `[…]` es la tecla del dispositivo en uso:
+
+- `FIRST AID IS A PRIVILEGE, NOT A RIGHT.` — Open your terminal [Tab], then use an item [Clic izq.] or discard it [Clic der.]. *Erste Hilfe nur im Notfall.* (depósito a oscuras)
+- `THE COMPANY SEES WHAT YOU SEE.` — Tap into nearby cameras: [Q]. Stand still while connected. *Kameraüberwachung aktiv.* (túnel largo)
+- `MAINTENANCE PANELS: AUTHORISED STAFF ONLY.` — At a panel [E], enter the code with [↑] [↓] [←] [→]. Abort: [E]. Known fault: [F]. *Unbefugter Zugriff verboten.* (túnel largo)
+- `DECEASED COLLEAGUES MAY NOT BE LEFT UNATTENDED.` — Over a body: strike [Clic izq.], or drive a discharge spike [E]. *Nichts darf zurückbleiben.* (sala de calderas)
+- El cartel del terminal añade: `Scheduled breaks: [Esc].`
+
+Aviso contextual sobre un cuerpo: `Ground strike` / `Golpe en el suelo`; `Discharge spike` / `Punzón de descarga`.

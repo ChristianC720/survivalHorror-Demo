@@ -19,6 +19,10 @@ namespace Heartbeat.Player
         [Tooltip("Capsule height standing / crouched.")] public float standHeight = 1.8f;
         public float crouchHeight = 1.2f;
 
+        [Header("Interaction (M-08)")]
+        [Tooltip("Half-angle of the camera's interaction cone, degrees: only what the camera faces can be used.")]
+        public float interactConeDegrees = 35f;
+
         [Header("Stamina (M-06, D-37, D-123)")]
         [Tooltip("Stamina cost per second while running (10%/s).")] public float sprintCostPerSecond = 10f;
         [Tooltip("Shove / butt strike cost (35%).")] public float shoveCost = 35f;

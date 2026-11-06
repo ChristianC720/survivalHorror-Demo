@@ -65,7 +65,7 @@ ModelImporter:
       takeName: PJ_Rig|AN_Lukas_Aim
       internalID: -1323842798077679809
       firstFrame: 0
-      lastFrame: 47
+      lastFrame: 60
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -94,7 +94,7 @@ ModelImporter:
       takeName: PJ_Rig|AN_Lukas_Crouch_Idle
       internalID: -5577643145506337530
       firstFrame: 0
-      lastFrame: 71
+      lastFrame: 90
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -123,7 +123,7 @@ ModelImporter:
       takeName: PJ_Rig|AN_Lukas_Crouch_Walk
       internalID: 8601455071473788399
       firstFrame: 0
-      lastFrame: 31
+      lastFrame: 40
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -500,7 +500,7 @@ ModelImporter:
       takeName: PJ_Rig|AN_Lukas_Idle_Critical
       internalID: -8239659965792662551
       firstFrame: 0
-      lastFrame: 47
+      lastFrame: 60
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -529,7 +529,7 @@ ModelImporter:
       takeName: PJ_Rig|AN_Lukas_Idle_Fine
       internalID: 5953417498849408376
       firstFrame: 0
-      lastFrame: 71
+      lastFrame: 90
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -558,7 +558,7 @@ ModelImporter:
       takeName: PJ_Rig|AN_Lukas_Idle_Injured
       internalID: 5186246546639326782
       firstFrame: 0
-      lastFrame: 59
+      lastFrame: 75
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -703,7 +703,7 @@ ModelImporter:
       takeName: PJ_Rig|AN_Lukas_Run
       internalID: 1267040406241774664
       firstFrame: 0
-      lastFrame: 15
+      lastFrame: 20
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -761,7 +761,7 @@ ModelImporter:
       takeName: PJ_Rig|AN_Lukas_Team_Agachado_Critico
       internalID: -2844950086406558741
       firstFrame: 0
-      lastFrame: 47
+      lastFrame: 60
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -790,7 +790,7 @@ ModelImporter:
       takeName: PJ_Rig|AN_Lukas_Team_Agachado_Herido
       internalID: 58159419615846338
       firstFrame: 0
-      lastFrame: 59
+      lastFrame: 75
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -819,7 +819,7 @@ ModelImporter:
       takeName: PJ_Rig|AN_Lukas_Team_Apuntar_Critico
       internalID: 3103483637395424232
       firstFrame: 0
-      lastFrame: 47
+      lastFrame: 60
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -848,7 +848,7 @@ ModelImporter:
       takeName: PJ_Rig|AN_Lukas_Team_Apuntar_Herido
       internalID: -1974105002097286037
       firstFrame: 0
-      lastFrame: 47
+      lastFrame: 60
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -877,7 +877,7 @@ ModelImporter:
       takeName: PJ_Rig|AN_Lukas_Team_ApuntarCaminando_Bien
       internalID: -5265992633668692326
       firstFrame: 0
-      lastFrame: 27
+      lastFrame: 35
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -906,7 +906,7 @@ ModelImporter:
       takeName: PJ_Rig|AN_Lukas_Team_ApuntarCaminando_Critico
       internalID: -6444213738487522782
       firstFrame: 0
-      lastFrame: 39
+      lastFrame: 50
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -935,7 +935,7 @@ ModelImporter:
       takeName: PJ_Rig|AN_Lukas_Team_ApuntarCaminando_Herido
       internalID: -5286152115195833654
       firstFrame: 0
-      lastFrame: 31
+      lastFrame: 40
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -964,7 +964,7 @@ ModelImporter:
       takeName: PJ_Rig|AN_Lukas_Team_ApuntarCorriendo_Bien
       internalID: 7831804319387515739
       firstFrame: 0
-      lastFrame: 17
+      lastFrame: 23
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -993,7 +993,7 @@ ModelImporter:
       takeName: PJ_Rig|AN_Lukas_Team_ApuntarCorriendo_Critico
       internalID: 7322890268513341994
       firstFrame: 0
-      lastFrame: 25
+      lastFrame: 33
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1022,7 +1022,7 @@ ModelImporter:
       takeName: PJ_Rig|AN_Lukas_Team_ApuntarCorriendo_Herido
       internalID: -1932466652971866553
       firstFrame: 0
-      lastFrame: 19
+      lastFrame: 25
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1051,7 +1051,7 @@ ModelImporter:
       takeName: PJ_Rig|AN_Lukas_Team_CaminarAgachado_Critico
       internalID: 1522298800257098360
       firstFrame: 0
-      lastFrame: 43
+      lastFrame: 55
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1080,7 +1080,7 @@ ModelImporter:
       takeName: PJ_Rig|AN_Lukas_Team_CaminarAgachado_Herido
       internalID: 2861849268816056382
       firstFrame: 0
-      lastFrame: 35
+      lastFrame: 45
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1109,7 +1109,7 @@ ModelImporter:
       takeName: PJ_Rig|AN_Lukas_Team_Correr_Critico
       internalID: 49115946330605699
       firstFrame: 0
-      lastFrame: 23
+      lastFrame: 30
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1138,7 +1138,7 @@ ModelImporter:
       takeName: PJ_Rig|AN_Lukas_Team_Correr_Herido
       internalID: 1216456005348558660
       firstFrame: 0
-      lastFrame: 17
+      lastFrame: 23
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1167,7 +1167,7 @@ ModelImporter:
       takeName: PJ_Rig|AN_Lukas_Team_GirarDer_Bien
       internalID: 4755476099136040198
       firstFrame: 0
-      lastFrame: 23
+      lastFrame: 29
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1196,7 +1196,7 @@ ModelImporter:
       takeName: PJ_Rig|AN_Lukas_Team_GirarDer_Critico
       internalID: 34828058974353984
       firstFrame: 0
-      lastFrame: 35
+      lastFrame: 44
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1225,7 +1225,7 @@ ModelImporter:
       takeName: PJ_Rig|AN_Lukas_Team_GirarDer_Herido
       internalID: 2707473844704062117
       firstFrame: 0
-      lastFrame: 29
+      lastFrame: 36
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1254,7 +1254,7 @@ ModelImporter:
       takeName: PJ_Rig|AN_Lukas_Team_GirarIzq_Bien
       internalID: -7871648230417065302
       firstFrame: 0
-      lastFrame: 23
+      lastFrame: 29
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1283,7 +1283,7 @@ ModelImporter:
       takeName: PJ_Rig|AN_Lukas_Team_GirarIzq_Critico
       internalID: -4019167624135566489
       firstFrame: 0
-      lastFrame: 35
+      lastFrame: 44
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1312,7 +1312,7 @@ ModelImporter:
       takeName: PJ_Rig|AN_Lukas_Team_GirarIzq_Herido
       internalID: -185125405137036909
       firstFrame: 0
-      lastFrame: 29
+      lastFrame: 36
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1341,7 +1341,7 @@ ModelImporter:
       takeName: PJ_Rig|AN_Lukas_Team_SubirEscalones_Bien
       internalID: -8558083670365548659
       firstFrame: 0
-      lastFrame: 31
+      lastFrame: 40
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1486,7 +1486,7 @@ ModelImporter:
       takeName: PJ_Rig|AN_Lukas_Walk_Critical
       internalID: 8543633280332701208
       firstFrame: 0
-      lastFrame: 39
+      lastFrame: 50
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1515,7 +1515,7 @@ ModelImporter:
       takeName: PJ_Rig|AN_Lukas_Walk_Fine
       internalID: -7679588682195930175
       firstFrame: 0
-      lastFrame: 23
+      lastFrame: 30
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1544,7 +1544,7 @@ ModelImporter:
       takeName: PJ_Rig|AN_Lukas_Walk_Injured
       internalID: -2187385618739281858
       firstFrame: 0
-      lastFrame: 29
+      lastFrame: 37
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

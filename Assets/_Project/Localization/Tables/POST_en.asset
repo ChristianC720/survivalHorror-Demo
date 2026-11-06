@@ -29,7 +29,7 @@ MonoBehaviour:
   - m_Id: 230949106352128
     m_Localized: 'YOUR ARM TERMINAL REMEMBERS SO YOU DON''T HAVE TO.
 
-      Consult it at any time: [{0}].
+      Consult it at any time: [{0}]. Scheduled breaks: [{1}].
 
       <i>Vitalis Konzern dankt Ihnen.</i>'
     m_Metadata:
@@ -94,6 +94,30 @@ MonoBehaviour:
     m_Localized: 'VITALIS KONZERN
 
       <i>Fortschritt durch Erhaltung.</i>'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1528817867948032
+    m_Localized: 'FIRST AID IS A PRIVILEGE, NOT A RIGHT.
+
+      Open your terminal [{0}], then use an item [{1}] or discard it [{2}].
+
+      <i>Erste Hilfe nur im Notfall.</i>'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1528817951834112
+    m_Localized: "THE COMPANY SEES WHAT YOU SEE.\nTap into nearby cameras: [{0}]. Stand still while connected.\n<i>Kamera\xFCberwachung aktiv.</i>"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1528817951834113
+    m_Localized: 'MAINTENANCE PANELS: AUTHORISED STAFF ONLY.
+
+      At a panel [{0}], enter the code with [{1}] [{2}] [{3}] [{4}]. Abort: [{5}]. Known fault: [{6}].
+
+      <i>Unbefugter Zugriff verboten.</i>'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1528817951834114
+    m_Localized: "DECEASED COLLEAGUES MAY NOT BE LEFT UNATTENDED.\nOver a body: strike [{0}], or drive a discharge spike [{1}].\n<i>Nichts darf zur\xFCckbleiben.</i>"
     m_Metadata:
       m_Items: []
   references:

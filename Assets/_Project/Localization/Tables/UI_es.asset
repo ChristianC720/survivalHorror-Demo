@@ -734,6 +734,14 @@ MonoBehaviour:
     m_Localized: 'LUKAS: Tengo que seguir.'
     m_Metadata:
       m_Items: []
+  - m_Id: 1497652423426048
+    m_Localized: Golpe en el suelo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1497652515700736
+    m_Localized: "Punz\xF3n de descarga"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

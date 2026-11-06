@@ -92,7 +92,10 @@ namespace Heartbeat.UI
             router.Actions.Inventory.Close.performed += OnToggle;
             router.Actions.Inventory.Use.performed += OnUse;
             router.Actions.Inventory.Discard.performed += OnDiscard;
+            router.DeviceChanged += OnDevice;
         }
+
+        private void OnDevice(bool _) { if (open) RefreshFooter(); }   // keys follow the device on the fly (D-132)
 
         private void OnEnable()
         {
@@ -121,6 +124,7 @@ namespace Heartbeat.UI
             router.Actions.Inventory.Close.performed -= OnToggle;
             router.Actions.Inventory.Use.performed -= OnUse;
             router.Actions.Inventory.Discard.performed -= OnDiscard;
+            router.DeviceChanged -= OnDevice;
         }
 
         // ---------- Open / close ----------

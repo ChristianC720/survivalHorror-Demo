@@ -789,7 +789,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1990336681484712960, guid: 8c2e027e87fc49e409829fa850091769, type: 3}
       propertyPath: actions
-      value: Gameplay/Terminal
+      value: Gameplay/Terminal,System/Pause
       objectReference: {fileID: 0}
     - target: {fileID: 1990336681484712960, guid: 8c2e027e87fc49e409829fa850091769, type: 3}
       propertyPath: textKey

@@ -214,7 +214,7 @@ namespace Heartbeat.Sandbox
                     foreach (var r in go.GetComponentsInChildren<SkinnedMeshRenderer>(true))
                     {
                         bool rCivil = r.name.EndsWith("_Civil");
-                        r.enabled = rCivil == isCivil;
+                        r.enabled = rCivil == isCivil || r.name.EndsWith("_Hair");
                         r.sharedMaterial = rCivil ? civil : suit;
                     }
                     if (!isCivil) Equip(go);

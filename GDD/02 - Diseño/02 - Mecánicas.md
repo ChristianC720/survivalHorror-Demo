@@ -419,7 +419,7 @@ stateDiagram-v2
         
     - **Leer detiene el juego (D-159, modifica la regla anterior):** abrir un documento o un póster lo muestra en una vista de lectura propia y congela el recorrido hasta cerrarla (`E` o `Esc`). La lista del terminal del brazo no pausa: solo la lectura.
         
-- **Entrada:** `E` frente al elemento.
+- **Entrada:** `E` frente al elemento. Solo cuenta lo que está dentro de un cono de ~35° frente a la cámara y delante de Lukas: una puerta a su espalda no se puede usar aunque esté al alcance (D-161).
     
 - **Estado inicial:** Elemento sin interactuar.
     
@@ -643,7 +643,7 @@ stateDiagram-v2
         
     - Los terminales de sala solo sirven para hackear; no almacenan información persistente (M-16).
         
-- **Entrada:** `W` `A` `S` `D` / `Flechas` para introducir la secuencia; `E` para iniciar y abandonar.
+- **Entrada:** solo `Flechas` (cruceta en mando) para introducir la secuencia (D-161); `E` para iniciar y abandonar.
     
 - **Estado inicial:** Panel bloqueado.
     

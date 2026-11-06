@@ -734,6 +734,14 @@ MonoBehaviour:
     m_Localized: 'LUKAS: I have to keep moving.'
     m_Metadata:
       m_Items: []
+  - m_Id: 1497652423426048
+    m_Localized: Ground strike
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1497652515700736
+    m_Localized: Discharge spike
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

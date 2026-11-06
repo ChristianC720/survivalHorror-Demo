@@ -27,11 +27,12 @@ namespace Heartbeat.EditorTools
             var layer = ctrl.layers[0];
             layer.name = "Locomotion";
             var sm = layer.stateMachine;
-            // timeScale makes the stride match the speed (D-151): natural clip speed vs. PlayerBalance speed.
-            var fine = Tree(ctrl, sm, "Fine", new[] { (C("Idle_Fine"), 0f, 1f), (C("Walk_Fine"), 1.5f, 1.25f), (C("Run"), 4f, 1.14f) });
-            var injured = Tree(ctrl, sm, "Injured", new[] { (C("Idle_Injured"), 0f, 1f), (C("Walk_Injured"), 1.275f, 1.45f), (C("Run"), 3.4f, 0.97f) });
-            var critical = Tree(ctrl, sm, "Critical", new[] { (C("Idle_Critical"), 0f, 1f), (C("Walk_Critical"), 1.05f, 1.7f), (C("Run"), 2.8f, 0.8f) });
-            var crouch = Tree(ctrl, sm, "Crouch", new[] { (C("Crouch_Idle"), 0f, 1f), (C("Crouch_Walk"), 0.8f, 1.5f) });
+            // timeScale makes the stride match the speed (D-151): PlayerBalance speed / the clip's natural ground speed
+            // (planted foot speed of the full cycle: walk 1.03, run 3.05, crouch 0.45 m/s). Limps keep their hand-tuned values.
+            var fine = Tree(ctrl, sm, "Fine", new[] { (C("Idle_Fine"), 0f, 1f), (C("Walk_Fine"), 1.5f, 1.45f), (C("Run"), 4f, 1.31f) });
+            var injured = Tree(ctrl, sm, "Injured", new[] { (C("Idle_Injured"), 0f, 1f), (C("Walk_Injured"), 1.275f, 1.45f), (C("Run"), 3.4f, 1.11f) });
+            var critical = Tree(ctrl, sm, "Critical", new[] { (C("Idle_Critical"), 0f, 1f), (C("Walk_Critical"), 1.05f, 1.7f), (C("Run"), 2.8f, 0.92f) });
+            var crouch = Tree(ctrl, sm, "Crouch", new[] { (C("Crouch_Idle"), 0f, 1f), (C("Crouch_Walk"), 0.8f, 1.78f) });
             sm.defaultState = fine;
 
             foreach (var (state, health) in new[] { (fine, 0), (injured, 1), (critical, 2) })

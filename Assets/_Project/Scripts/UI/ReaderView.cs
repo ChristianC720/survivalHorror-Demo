@@ -68,6 +68,15 @@ namespace Heartbeat.UI
             router.Actions.UI.Cancel.performed += OnCloseInput;
             router.Actions.UI.Navigate.performed += OnNavigate;
             router.Actions.UI.Navigate.canceled += OnNavigate;
+            router.DeviceChanged += OnDevice;
+        }
+
+        private void OnDevice(bool _) { if (IsOpen) ShowCloseHint(); }
+
+        private void ShowCloseHint()
+        {
+            foreach (Transform c in footer) Destroy(c.gameObject);
+            UiKit.KeyHint(footer, router.KeyFor(router.Actions.Gameplay.Interact), Loc.Get("UI.TERM.CLOSE"), footerColor, panelImage.color);
         }
 
         private void OnEnable() { GameEvents.ReadDocument += OpenDocument; GameEvents.ReadPoster += OpenPoster; }
@@ -82,6 +91,7 @@ namespace Heartbeat.UI
             router.Actions.UI.Cancel.performed -= OnCloseInput;
             router.Actions.UI.Navigate.performed -= OnNavigate;
             router.Actions.UI.Navigate.canceled -= OnNavigate;
+            router.DeviceChanged -= OnDevice;
         }
 
         public bool IsOpen => root != null && root.gameObject.activeSelf;
@@ -140,7 +150,7 @@ namespace Heartbeat.UI
             navHeld = false;
             pause.BeginReading();
             router.SetContext(InputContext.Reading);
-            UiKit.KeyHint(footer, router.KeyFor(router.Actions.Gameplay.Interact), Loc.Get("UI.TERM.CLOSE"), footerColor, panelImage.color);
+            ShowCloseHint();
             Canvas.ForceUpdateCanvases();
             ShowPage();
         }

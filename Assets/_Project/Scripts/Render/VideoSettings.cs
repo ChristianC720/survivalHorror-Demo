@@ -1,5 +1,7 @@
 using Heartbeat.Save;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 namespace Heartbeat.Render
 {
@@ -18,6 +20,17 @@ namespace Heartbeat.Render
 #endif
             QualitySettings.vSyncCount = g.vsync ? 1 : 0;
             Application.targetFrameRate = g.fpsLimit > 0 ? g.fpsLimit : -1;
+        }
+
+        /// <summary>
+        /// The pixel look (D-81) keeps ~540 lines, so the scene is rendered at that height and point-upscaled: same image,
+        /// a fraction of the pixels to shade (SSAO, lights, dither). Called by PixelationFeature whenever the screen height changes.
+        /// </summary>
+        public static void ApplyRenderScale(int screenHeight)
+        {
+            if (!(GraphicsSettings.currentRenderPipeline is UniversalRenderPipelineAsset urp) || screenHeight <= 0) return;
+            urp.renderScale = Mathf.Clamp(PixelationFeature.TargetHeight / (float)screenHeight, 0.1f, 1f);   // URP's own limits
+            urp.upscalingFilter = UpscalingFilterSelection.Point;
         }
     }
 }

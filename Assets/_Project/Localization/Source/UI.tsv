@@ -178,3 +178,5 @@ UI.OPT.REDUCE_MOTION	Reduce motion	Reducir movimiento
 UI.OPT.REDUCE_FLASHES	Reduce flashes	Reducir destellos
 UI.OPT.REDUCE_CRT	Reduce CRT and glitch effects	Reducir efectos CRT y glitch
 UI.OPT.PREVIEW	LUKAS: I have to keep moving.	LUKAS: Tengo que seguir.	sample of the subtitle size option
+UI.PROMPT.STRIKE	Ground strike	Golpe en el suelo	finisher over a body, click (D-27)
+UI.PROMPT.SPIKE	Discharge spike	Punzón de descarga	finisher over a body, E (D-27)

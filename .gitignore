@@ -46,3 +46,6 @@ GDD/.obsidian/.obsidian/
 # Blender's Python cache
 __pycache__/
 Blender3DAssets/Review/
+
+# Blender auto-backups
+*.blend1

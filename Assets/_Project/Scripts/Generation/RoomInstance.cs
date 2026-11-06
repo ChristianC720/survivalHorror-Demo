@@ -21,6 +21,8 @@ namespace Heartbeat.Generation
         public int NodeIndex { get; set; } = -1;
         public bool IsEmpty { get; set; }
         public bool IsPowered { get; set; } = true;
+        /// <summary>Capsule row and the fixed tutorial chain of the first attempt (D-70): damage there never kills (D-160).</summary>
+        public bool IsTutorial { get; set; }
         /// <summary>Set when the floor is torn down (rebuild, death): its trigger can still fire before Destroy runs.</summary>
         public bool Retired { get; set; }
         public IReadOnlyList<RoomInstance> Neighbours => neighbours;

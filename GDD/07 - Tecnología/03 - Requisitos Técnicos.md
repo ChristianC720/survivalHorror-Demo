@@ -53,7 +53,9 @@ Los requisitos son **objetivos provisionales** (D-112) y se confirman con el per
 | Elemento | Presupuesto |
 |---|---|
 | Salas activas | La sala actual y sus adyacentes; el resto del piso desactivado (`SetActive(false)`) |
-| Enemigos con IA activa | ≤ 6 (2 por sala, D-37, en 3 salas activas) |
+| Enemigos con IA activa | Todos los del piso (6–12): nunca se desactivan; fuera de la vista no se dibujan (D-162) |
+| Salas dibujadas | La actual y las que están a 2 puertas o menos (D-162) |
+| Resolución interna | ~540 líneas, escalado sin suavizado (estilo pixelado, D-81, D-162) |
 | Luces dinámicas visibles | ≤ 16 (Forward+) |
 | Luces con sombra | ≤ 4 a la vez (linterna + 3); el resto sin sombra |
 | Triángulos en pantalla | ≤ 300 000 |

@@ -59,6 +59,22 @@ MonoBehaviour:
     m_Key: POST.AMBIENT_PROGRESS
     m_Metadata:
       m_Items: []
+  - m_Id: 1528817867948032
+    m_Key: POST.USE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1528817951834112
+    m_Key: POST.SURVEILLANCE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1528817951834113
+    m_Key: POST.HACK
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1528817951834114
+    m_Key: POST.FINISHER
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

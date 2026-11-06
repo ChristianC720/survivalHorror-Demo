@@ -28,15 +28,20 @@ namespace Heartbeat.Player
 
         public void ApplyHit(int hitsToKill)
         {
+            Model.Lethal = !InTutorial;
             if (!Invulnerable) Model.ApplyHit(hitsToKill);
             Hit?.Invoke();
         }
 
         public void ApplyGrabWithoutSpike()
         {
+            Model.Lethal = !InTutorial;
             if (!Invulnerable) Model.ApplyGrabWithoutSpike();
             Hit?.Invoke();
         }
+
+        /// <summary>D-160: the tutorial teaches without killing; Lukas stays at the edge of Critical instead.</summary>
+        private static bool InTutorial => Generation.RoomInstance.Current != null && Generation.RoomInstance.Current.IsTutorial;
 
 #if UNITY_EDITOR || DEBUG
         private bool Invulnerable => DebugInvulnerable;

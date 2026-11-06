@@ -32,12 +32,17 @@ namespace Heartbeat.Render
 
         private Material material;
         private PixelationPass pass;
+        private static int scaledForHeight;
 
         /// <summary>Runtime override used by surveillance / degradation effects (null = use the asset settings).</summary>
         public static int? HeightOverride;
 
+        /// <summary>Lines the look keeps; <see cref="VideoSettings"/> renders the scene at this height instead of throwing pixels away.</summary>
+        public static int TargetHeight { get; private set; } = 540;
+
         public override void Create()
         {
+            TargetHeight = settings.targetHeight;
             if (shader == null) shader = Shader.Find("Hidden/Heartbeat/PixelDither");
             if (shader != null && material == null) material = CoreUtils.CreateEngineMaterial(shader);
             pass = new PixelationPass { renderPassEvent = settings.passEvent };
@@ -49,6 +54,11 @@ namespace Heartbeat.Render
             var camType = renderingData.cameraData.cameraType;
             if (camType == CameraType.Preview || camType == CameraType.Reflection) return;
             if (camType == CameraType.SceneView && !settings.applyInSceneView) return;
+            if (camType == CameraType.Game && Application.isPlaying && Screen.height != scaledForHeight)
+            {
+                scaledForHeight = Screen.height;   // resolution option, window resize, Game view size
+                VideoSettings.ApplyRenderScale(scaledForHeight);
+            }
 
             pass.Setup(material, settings);
             renderer.EnqueuePass(pass);

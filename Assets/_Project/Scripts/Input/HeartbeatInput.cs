@@ -698,17 +698,6 @@ namespace Heartbeat.InputRouting
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""c0fd2c1c-de22-4bd8-9c42-3141efd17d86"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""KeyboardMouse"",
-                    ""action"": ""Up"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""c30e802e-103e-4a12-8d1e-2080df7137b7"",
                     ""path"": ""<Keyboard>/upArrow"",
                     ""interactions"": """",
@@ -726,28 +715,6 @@ namespace Heartbeat.InputRouting
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Up"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""83a0e84a-61a7-4206-a9a7-418e9a653af0"",
-                    ""path"": ""<Gamepad>/leftStick/up"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Up"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""ee4119a9-7d88-44eb-a3ab-02348a3f673f"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""KeyboardMouse"",
-                    ""action"": ""Down"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -775,28 +742,6 @@ namespace Heartbeat.InputRouting
                 },
                 {
                     ""name"": """",
-                    ""id"": ""a64e67e0-c48d-4cc7-bace-4209b02b5499"",
-                    ""path"": ""<Gamepad>/leftStick/down"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Down"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""5f76759e-3b66-4787-9ce9-7e6203db6bb0"",
-                    ""path"": ""<Keyboard>/a"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""KeyboardMouse"",
-                    ""action"": ""Left"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""22a388da-df31-461f-93a7-ea19b0bab0de"",
                     ""path"": ""<Keyboard>/leftArrow"",
                     ""interactions"": """",
@@ -819,28 +764,6 @@ namespace Heartbeat.InputRouting
                 },
                 {
                     ""name"": """",
-                    ""id"": ""79b10d1c-dc35-407b-a5b7-98891ba63a17"",
-                    ""path"": ""<Gamepad>/leftStick/left"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Left"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""cbeef40a-1675-4627-b90b-da7270b89d1e"",
-                    ""path"": ""<Keyboard>/d"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""KeyboardMouse"",
-                    ""action"": ""Right"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""48ce864f-f93e-4180-8f40-62bd695e043e"",
                     ""path"": ""<Keyboard>/rightArrow"",
                     ""interactions"": """",
@@ -854,17 +777,6 @@ namespace Heartbeat.InputRouting
                     ""name"": """",
                     ""id"": ""5b420d7d-78f6-4768-8876-9816fa16f906"",
                     ""path"": ""<Gamepad>/dpad/right"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Right"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""6d95838a-ad04-450e-8725-ad0d4fa8555e"",
-                    ""path"": ""<Gamepad>/leftStick/right"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",

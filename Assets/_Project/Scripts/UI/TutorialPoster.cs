@@ -67,7 +67,16 @@ namespace Heartbeat.UI
                 var action = router?.Actions.asset.FindAction(a.Trim());
                 return (object)(action != null ? router.KeyFor(action) : "?");
             }).ToArray();
-            text.text = Loc.Get(textKey, keys);
+            text.text = Headline(Loc.Get(textKey, keys));
+        }
+
+        /// <summary>The first line is the headline, bold in deep Vitalis cyan (D-157), so a safety poster reads at a glance.
+        /// (TMP's mark tag draws over the glyphs, so a solid band would hide them.)</summary>
+        private static string Headline(string s)
+        {
+            int br = s.IndexOf('\n');
+            string head = br < 0 ? s : s.Substring(0, br), rest = br < 0 ? "" : s.Substring(br);
+            return $"<color=#0B5E6B><size=120%><b>{head}</b></size></color>{rest}";
         }
     }
 }

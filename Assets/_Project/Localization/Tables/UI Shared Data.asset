@@ -731,6 +731,14 @@ MonoBehaviour:
     m_Key: UI.OPT.PREVIEW
     m_Metadata:
       m_Items: []
+  - m_Id: 1497652423426048
+    m_Key: UI.PROMPT.STRIKE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1497652515700736
+    m_Key: UI.PROMPT.SPIKE
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

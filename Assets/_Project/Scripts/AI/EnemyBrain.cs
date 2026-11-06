@@ -366,8 +366,15 @@ namespace Heartbeat.AI
             windupTimer = -1f;
             gameObject.layer = LayerMask.NameToLayer("Corpse");
             foreach (var c in GetComponents<Collider>()) c.isTrigger = true;   // the body does not block movement
+            SetChildColliders(false);   // nor do its weak points: a solid head sphere on the floor soft-locked corridors
             if (alert.State != AlertState.Patrol) OnAlertChanged(alert.State, AlertState.Patrol);
             GameEvents.RaiseEnemyKilled(this, transform.position);
+        }
+
+        private void SetChildColliders(bool on)
+        {
+            foreach (var c in GetComponentsInChildren<Collider>(true))
+                if (c.gameObject != gameObject) c.enabled = on;
         }
 
         /// <summary>The lab raised this body (M-20): stand up, collide again, back on the NavMesh, searching.</summary>
@@ -375,6 +382,7 @@ namespace Heartbeat.AI
         {
             gameObject.layer = LayerMask.NameToLayer("Enemy");
             foreach (var c in GetComponents<Collider>()) c.isTrigger = false;
+            SetChildColliders(true);
             agent.enabled = true;
             if (agent.isOnNavMesh) agent.Warp(transform.position);
             agent.isStopped = false;

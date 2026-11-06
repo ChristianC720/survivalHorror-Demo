@@ -57,8 +57,9 @@ namespace Heartbeat.Player
             foreach (var r in animator.GetComponentsInChildren<SkinnedMeshRenderer>(true))
             {
                 bool isCivil = r.name.EndsWith("_Civil");
-                r.enabled = isCivil == civilian;
-                if (!isCivil) suit = r;
+                bool isHair = r.name.EndsWith("_Hair");   // the same hair in both outfits
+                r.enabled = isHair || isCivil == civilian;
+                if (!isCivil && !isHair) suit = r;
             }
             if (civilian) return;
 

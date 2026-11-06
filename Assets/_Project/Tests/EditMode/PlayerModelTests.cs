@@ -74,6 +74,18 @@ namespace Heartbeat.Tests
         }
 
         [Test]
+        public void NotLethal_HitsAndGrabsStopAtCritical() // D-160 tutorial
+        {
+            var h = new HealthModel(90f) { Lethal = false };
+            for (int i = 0; i < 6; i++) h.ApplyHit(2);
+            h.ApplyGrabWithoutSpike();
+            Assert.IsFalse(h.IsDead);
+            Assert.AreEqual(HealthState.Critical, h.State);
+            Assert.IsTrue(h.TryHeal());
+            Assert.AreEqual(HealthState.Injured, h.State);
+        }
+
+        [Test]
         public void Rastrero_FourHits_StatesProgress()
         {
             var h = new HealthModel(90f);

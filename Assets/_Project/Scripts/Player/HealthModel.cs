@@ -9,6 +9,7 @@ namespace Heartbeat.Player
     /// A hit removes max/hitsToKill (Alto and Mudo 2, Boca 3, Rastrero 4).
     /// A heal raises to the top of the next state, or to full when Fine with damage.
     /// A grab without a spike drops to the top of the lower state; in Critical it kills.
+    /// With <see cref="Lethal"/> off (tutorial, D-160) damage stops at the last breath of Critical instead.
     /// </summary>
     public sealed class HealthModel
     {
@@ -16,6 +17,10 @@ namespace Heartbeat.Player
         public float Value { get; private set; }
         public HealthState State => StateFor(Value);
         public bool IsDead => Value <= 0f;
+        /// <summary>False while Lukas is in the tutorial (D-160): hits and grabs still hurt, but never below Critical.</summary>
+        public bool Lethal { get; set; } = true;
+
+        private const float LastBreath = 0.01f;
 
         public event Action<HealthState> StateChanged;
 
@@ -38,7 +43,7 @@ namespace Heartbeat.Player
         public void ApplyHit(int hitsToKill)
         {
             if (IsDead || hitsToKill <= 0) return;
-            SetValue(Value - Max / hitsToKill);
+            Damage(Value - Max / hitsToKill);
         }
 
         public void ApplyGrabWithoutSpike()
@@ -48,7 +53,7 @@ namespace Heartbeat.Player
             {
                 case HealthState.Fine: SetValue(Band * 2f); break;     // top of Injured
                 case HealthState.Injured: SetValue(Band); break;       // top of Critical
-                default: SetValue(0f); break;                          // Critical: death (Reglas y Estados)
+                default: Damage(0f); break;                            // Critical: death (Reglas y Estados)
             }
         }
 
@@ -65,6 +70,8 @@ namespace Heartbeat.Player
             }
             return true;
         }
+
+        private void Damage(float to) => SetValue(Lethal ? to : Math.Max(to, LastBreath));
 
         public void Restore() => SetValue(Max);
 
