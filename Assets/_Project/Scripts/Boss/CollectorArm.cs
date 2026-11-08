@@ -22,14 +22,55 @@ namespace Heartbeat.Boss
         [SerializeField] private Vector2 railMin = new Vector2(2f, 2f), railMax = new Vector2(18f, 18f);
         [SerializeField] private int hitsToKill = 2;
 
+        private const float GrabTolerance = 1.15f;
         private bool active;
         private float windup = -1f, cooldown, stun;
         private int patrolIndex;
+
+        private LineRenderer outerRing, closingRing;
+        private const int RingPoints = 48;
+        private const float RingLift = 0.05f, RingWidth = 0.07f;
+
+        private LineRenderer MakeRing(string ringName)
+        {
+            var ring = new GameObject(ringName).AddComponent<LineRenderer>();
+            ring.transform.SetParent(transform, false);
+            var material = new Material(Resources.Load<Shader>("HB_InteractOutline"));
+            material.SetFloat("_Width", 0f);
+            material.SetFloat("_ZTest", (float)UnityEngine.Rendering.CompareFunction.LessEqual);
+            material.SetFloat("_StencilComp", (float)UnityEngine.Rendering.CompareFunction.Always);   // no rim logic on a flat marker
+            material.SetColor("_Color", UI.UiKit.Red);
+            ring.sharedMaterial = material;
+            ring.loop = true;
+            ring.useWorldSpace = true;
+            ring.positionCount = RingPoints;
+            ring.widthMultiplier = RingWidth;
+            ring.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+            ring.enabled = false;
+            return ring;
+        }
+
+        private void DrawRing(LineRenderer ring, float radius, float floorY)
+        {
+            ring.enabled = true;
+            for (int i = 0; i < RingPoints; i++)
+            {
+                float a = i * Mathf.PI * 2f / RingPoints;
+                ring.SetPosition(i, new Vector3(transform.position.x + Mathf.Cos(a) * radius, floorY + RingLift, transform.position.z + Mathf.Sin(a) * radius));
+            }
+        }
+
+        private void HideRings()
+        {
+            if (outerRing != null) outerRing.enabled = false;
+            if (closingRing != null) closingRing.enabled = false;
+        }
 
         public void SetActive(bool on)
         {
             active = on;
             windup = -1f;
+            HideRings();
             if (warnLight != null) warnLight.enabled = false;
         }
 
@@ -44,7 +85,7 @@ namespace Heartbeat.Boss
             if (!active || !Services.TryGet(out PlayerController p) || !Services.TryGet(out MotherDirector director)) return;
             float dt = Time.deltaTime;
             cooldown -= dt;
-            if (stun > 0f) { stun -= dt; return; }
+            if (stun > 0f) { stun -= dt; windup = -1f; HideRings(); return; }
 
             Vector3 player = p.transform.position;
             float dist = Flat(player - transform.position).magnitude;
@@ -52,14 +93,22 @@ namespace Heartbeat.Boss
             if (windup >= 0f)
             {
                 windup -= dt;
-                if (windup > 0f) return;
+                if (windup > 0f)
+                {
+                    // The closing ring reaches the edge when the grab lands: step outside the outer ring to dodge it.
+                    float reach = balance.armReach * GrabTolerance;
+                    DrawRing(outerRing, reach, player.y);
+                    DrawRing(closingRing, reach * (1f - windup / balance.armWarning), player.y);
+                    return;
+                }
                 windup = -1f;
+                HideRings();
                 cooldown = balance.armCooldown;
                 if (warnLight != null) warnLight.enabled = false;
-                if (dist <= balance.armReach * 1.15f)
+                if (dist <= balance.armReach * GrabTolerance)
                 {
                     HbLog.Info("Boss", "Collector arm grabs Lukas");
-                    GameEvents.RaisePlayerAttacked(new AttackInfo(hitsToKill, true, transform.position, this));
+                    GameEvents.RaisePlayerAttacked(new AttackInfo(hitsToKill, true, transform.position, this, neverKills: true));   // D-163
                 }
                 else HbLog.Info("Boss", "Collector arm missed");
                 return;
@@ -68,6 +117,7 @@ namespace Heartbeat.Boss
             if (dist <= balance.armReach && cooldown <= 0f)
             {
                 windup = balance.armWarning;
+                if (outerRing == null) { outerRing = MakeRing("WarnRing"); closingRing = MakeRing("ClosingRing"); }
                 if (warnLight != null) warnLight.enabled = true;
                 Sfx.Play("CUE_Arm_Hydraulic", transform.position);
                 HbLog.Info("Boss", "Collector arm winds up");

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Heartbeat.AI;
 using Heartbeat.Core;
 using Heartbeat.Interaction;
@@ -7,7 +8,7 @@ using UnityEngine.AI;
 
 namespace Heartbeat.Level
 {
-    public enum DoorLock { None, MandatoryKey, OptionalKey, NoPower }
+    public enum DoorLock { None, MandatoryKey, OptionalKey, NoPower, Tutorial }
     public enum DoorState { Closed, Open, Sealed }
 
     /// <summary>
@@ -40,6 +41,8 @@ namespace Heartbeat.Level
         private float closedSecondX;
 
         public DoorState State { get; private set; } = DoorState.Closed;
+        /// <summary>What the interaction rim wraps: the leaves, not the frame.</summary>
+        public IEnumerable<Transform> Leaves { get { yield return leaf; if (secondLeaf != null) yield return secondLeaf; } }
         public DoorLock Lock => lockType;
         public bool IsLocked => lockType != DoorLock.None;
         /// <summary>Enemies can never open or cross it (spawn room, until Lukas leaves it).</summary>
@@ -83,6 +86,11 @@ namespace Heartbeat.Level
             panel = null;
             if (lockType == DoorLock.None) return;
             bool noPower = lockType == DoorLock.NoPower;
+            if (lockType == DoorLock.Tutorial)
+            {
+                panel = UI.StatusPanel.Create(transform, UI.Loc.Get("UI.PANEL.LOCKED"), UI.Loc.Get("UI.PANEL.PROCEDURE"), UI.UiKit.Amber, new Vector3(0f, PanelHeight, LeafFace()), true);
+                return;
+            }
             // On the leaf itself, not beside it: in a generated floor a door can sit right next to a corner.
             panel = UI.StatusPanel.Create(transform, UI.Loc.Get(noPower ? "UI.PANEL.NO_POWER" : "UI.PANEL.LOCKED"),
                 UI.Loc.Get(noPower ? "UI.PANEL.RESTORE_MAINS" : "UI.PANEL.KEY_REQUIRED"), UI.UiKit.Amber, new Vector3(0f, PanelHeight, LeafFace()), true);
@@ -108,7 +116,12 @@ namespace Heartbeat.Level
         {
             switch (lockType)
             {
+                case DoorLock.Tutorial:
+                    GameEvents.RaiseNotice("UI.NOTICE.PROCEDURE");
+                    Sfx.Play(Sfx.DoorLocked, transform.position);
+                    return;
                 case DoorLock.NoPower:
+                    GameEvents.RaiseNotice("UI.NOTICE.NO_POWER");
                     HbLog.Info("Door", $"{name}: no power");
                     Sfx.Play(Sfx.DoorLocked, transform.position);
                     return;
@@ -117,6 +130,7 @@ namespace Heartbeat.Level
                     var kind = lockType == DoorLock.MandatoryKey ? ItemKind.KeyMandatory : ItemKind.KeyOptional;
                     if (!who.Inventory.Model.TryConsume(kind))
                     {
+                        GameEvents.RaiseNotice("UI.NOTICE.KEY_REQUIRED");
                         HbLog.Info("Door", $"{name}: ACCESS DENIED ({kind} required)");
                         Sfx.Play(Sfx.DoorLocked, transform.position);
                         return;
@@ -145,7 +159,15 @@ namespace Heartbeat.Level
                 hack.Begin(this);
                 return;
             }
+            if (State == DoorState.Open && PlayerInDoorway()) return;   // a leaf closing on Lukas would shove him through the frame
             SetState(State == DoorState.Open ? DoorState.Closed : DoorState.Open);
+        }
+
+        private bool PlayerInDoorway()
+        {
+            if (player == null) return false;
+            Vector3 local = transform.InverseTransformPoint(player.position);
+            return Mathf.Abs(local.x) < 1.2f && Mathf.Abs(local.z) < 0.6f;
         }
 
         public void OnHackSucceeded()

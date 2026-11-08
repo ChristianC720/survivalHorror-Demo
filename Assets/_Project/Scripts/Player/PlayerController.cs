@@ -41,6 +41,11 @@ namespace Heartbeat.Player
             controller = GetComponent<CharacterController>();
             controller.height = balance.standHeight;
             controller.center = new Vector3(0f, balance.standHeight * 0.5f, 0f);
+            // Depenetrating from an enemy shoved Lukas through walls: bodies never push him, BlockedByEnemies stops him instead.
+            controller.excludeLayers = LayerMask.GetMask("Enemy", "Corpse", "Hitbox");
+            enemyMask = LayerMask.GetMask("Enemy");
+            wallMask = LayerMask.GetMask("Environment");
+            groundMask = ~LayerMask.GetMask("Player", "Enemy", "Corpse", "Hitbox", "Interactable", "RoomVolume");
         }
 
         private void OnEnable() => Services.Register(this);
@@ -111,9 +116,11 @@ namespace Heartbeat.Player
             Vector3 horizontal = dir.normalized * CurrentSpeed;
             if (controller.isGrounded && verticalVelocity < 0f) verticalVelocity = -2f;
             verticalVelocity += balance.gravity * Time.deltaTime;
+            horizontal = BlockedByEnemies(horizontal);
             Velocity = horizontal + Vector3.up * verticalVelocity;
+            Vector3 before = transform.position;
             controller.Move(Velocity * Time.deltaTime);
-            GuardFallOut();
+            if (!GuardTunnelling(before)) GuardFallOut();
 
             // Lukas always faces the camera (look input), not only when aiming: the flashlight never points into his
             // own body and movement strafes / backpedals relative to the view.
@@ -132,10 +139,41 @@ namespace Heartbeat.Player
         private Vector3 lastGrounded;
         private bool hasGrounded;
 
+        private const float VoidProbe = 40f, EnemyGap = 0.05f;
+        private int enemyMask, wallMask, groundMask;
+        private readonly Collider[] nearEnemies = new Collider[8];
+
+        /// <summary>Removes the part of the movement that walks into a living enemy; going through CharacterController.Move keeps walls solid.</summary>
+        private Vector3 BlockedByEnemies(Vector3 move)
+        {
+            int n = Physics.OverlapSphereNonAlloc(controller.bounds.center, controller.radius + EnemyGap, nearEnemies, enemyMask, QueryTriggerInteraction.Ignore);
+            for (int i = 0; i < n; i++)
+            {
+                Vector3 away = transform.position - nearEnemies[i].transform.position;
+                away.y = 0f;
+                if (away.sqrMagnitude < 0.0001f) continue;
+                away.Normalize();
+                float into = Vector3.Dot(move, away);
+                if (into < 0f) move -= away * into;
+            }
+            return move;
+        }
+
+        /// <summary>Lukas's centre can never legally cross a wall in one Move: whatever pushed him, undo it.</summary>
+        private bool GuardTunnelling(Vector3 before)
+        {
+            Vector3 chest = Vector3.up * (controller.height * 0.5f);
+            if (!Physics.Linecast(before + chest, transform.position + chest, wallMask, QueryTriggerInteraction.Ignore)) return false;
+            HbLog.Warn("Player", $"Pushed through a wall at {transform.position}: back to {before}");
+            DebugTeleport(before.x, before.y, before.z, transform.eulerAngles.y);
+            return true;
+        }
+
         private void GuardFallOut()
         {
             if (controller.isGrounded) { lastGrounded = transform.position; hasGrounded = true; return; }
-            if (!hasGrounded || transform.position.y > lastGrounded.y - FallOutDepth) return;
+            bool overVoid = !Physics.Raycast(transform.position + Vector3.up * 0.5f, Vector3.down, VoidProbe, groundMask, QueryTriggerInteraction.Ignore);
+            if (!hasGrounded || (!overVoid && transform.position.y > lastGrounded.y - FallOutDepth)) return;
             HbLog.Warn("Player", $"Fell out of the level at {transform.position}: back to {lastGrounded}");
             verticalVelocity = 0f;
             DebugTeleport(lastGrounded.x, lastGrounded.y, lastGrounded.z, transform.eulerAngles.y);

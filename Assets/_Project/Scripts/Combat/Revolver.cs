@@ -112,6 +112,7 @@ namespace Heartbeat.Combat
             {
                 case FireResult.DryFire:
                     HbLog.Info("Revolver", "Dry fire (click)");
+                    GameEvents.RaiseNotice("UI.NOTICE.EMPTY", "Gameplay/Reload");
                     Sfx.Play(Sfx.RevolverDryFire, transform.position);
                     return result;
                 case FireResult.Fired:
@@ -142,7 +143,11 @@ namespace Heartbeat.Combat
                 hitName = hit.collider.name;
                 var weak = hit.collider.GetComponent<WeakPoint>();
                 var target = weak != null ? weak.Owner : hit.collider.GetComponentInParent<IDamageable>();
-                if (target != null && target.IsAlive) target.ReceiveShot(new ShotHit(hit.point, dir, weak != null));
+                if (target != null && target.IsAlive)
+                {
+                    target.ReceiveShot(new ShotHit(hit.point, dir, weak != null));
+                    GameEvents.RaiseShotLanded(weak != null, !target.IsAlive);
+                }
                 Debug.DrawLine(chest, hit.point, Color.yellow, 0.5f);
             }
 

@@ -742,6 +742,118 @@ MonoBehaviour:
     m_Localized: "Punz\xF3n de descarga"
     m_Metadata:
       m_Items: []
+  - m_Id: 2425263014150144
+    m_Localized: PROCEDIMIENTO PENDIENTE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036224
+    m_Localized: Completa el procedimiento para abrir esta puerta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036225
+    m_Localized: Salida desbloqueada
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036226
+    m_Localized: "Sin energ\xEDa: busca el interruptor general"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036227
+    m_Localized: 'Cerrada: necesitas una llave'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036228
+    m_Localized: 'Sin balas: recarga [{0}]'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036229
+    m_Localized: '{0} +{1}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036230
+    m_Localized: Inventario lleno
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036231
+    m_Localized: Sin aliento
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036232
+    m_Localized: "Punz\xF3n usado: te has liberado"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036233
+    m_Localized: "Te agarr\xF3: \xA1corre!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036234
+    m_Localized: "Saben d\xF3nde est\xE1s"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036235
+    m_Localized: "Energ\xEDa restaurada"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036236
+    m_Localized: Herido
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036237
+    m_Localized: "Cr\xEDtico: c\xFArate desde el terminal"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036238
+    m_Localized: Tu estado mejora
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036239
+    m_Localized: "Hackea las 3 mesas de mezcla. Al\xE9jate del brazo"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036240
+    m_Localized: "Evita las c\xE1maras rojas. Llega al n\xFAcleo"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036241
+    m_Localized: Dispara a los 3 transformadores
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036242
+    m_Localized: Mesa {0}/{1}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036243
+    m_Localized: Transformador {0}/{1}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036244
+    m_Localized: 'Abre el terminal del brazo [{0}]'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036245
+    m_Localized: 'Enciende la linterna [{0}]'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036246
+    m_Localized: 'Recoge algo con [{0}]'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036247
+    m_Localized: "Mant\xE9n [{0}] al moverte para correr"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036248
+    m_Localized: "Ag\xE1chate para no hacer ruido [{0}]"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036249
+    m_Localized: "Mant\xE9n [{0}] para apuntar"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036250
+    m_Localized: Pulsa [{0}] para empujar, o para disparar apuntando
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

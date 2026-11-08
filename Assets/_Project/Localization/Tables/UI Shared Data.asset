@@ -739,6 +739,118 @@ MonoBehaviour:
     m_Key: UI.PROMPT.SPIKE
     m_Metadata:
       m_Items: []
+  - m_Id: 2425263014150144
+    m_Key: UI.PANEL.PROCEDURE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036224
+    m_Key: UI.NOTICE.PROCEDURE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036225
+    m_Key: UI.NOTICE.EXIT_OPEN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036226
+    m_Key: UI.NOTICE.NO_POWER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036227
+    m_Key: UI.NOTICE.KEY_REQUIRED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036228
+    m_Key: UI.NOTICE.EMPTY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036229
+    m_Key: UI.NOTICE.PICKED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036230
+    m_Key: UI.NOTICE.FULL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036231
+    m_Key: UI.NOTICE.BREATH
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036232
+    m_Key: UI.NOTICE.SPIKE_USED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036233
+    m_Key: UI.NOTICE.GRABBED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036234
+    m_Key: UI.NOTICE.HUNTED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036235
+    m_Key: UI.NOTICE.POWER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036236
+    m_Key: UI.NOTICE.INJURED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036237
+    m_Key: UI.NOTICE.CRITICAL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036238
+    m_Key: UI.NOTICE.HEALED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036239
+    m_Key: UI.NOTICE.BOSS1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036240
+    m_Key: UI.NOTICE.BOSS2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036241
+    m_Key: UI.NOTICE.BOSS3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036242
+    m_Key: UI.NOTICE.NODE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036243
+    m_Key: UI.NOTICE.TRANSFORMER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036244
+    m_Key: UI.TUT.TERMINAL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036245
+    m_Key: UI.TUT.FLASHLIGHT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036246
+    m_Key: UI.TUT.PICKUP
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036247
+    m_Key: UI.TUT.SPRINT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036248
+    m_Key: UI.TUT.CROUCH
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036249
+    m_Key: UI.TUT.AIM
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036250
+    m_Key: UI.TUT.ATTACK
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

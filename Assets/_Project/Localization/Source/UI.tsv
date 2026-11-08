@@ -180,3 +180,31 @@ UI.OPT.REDUCE_CRT	Reduce CRT and glitch effects	Reducir efectos CRT y glitch
 UI.OPT.PREVIEW	LUKAS: I have to keep moving.	LUKAS: Tengo que seguir.	sample of the subtitle size option
 UI.PROMPT.STRIKE	Ground strike	Golpe en el suelo	finisher over a body, click (D-27)
 UI.PROMPT.SPIKE	Discharge spike	Punzón de descarga	finisher over a body, E (D-27)
+UI.PANEL.PROCEDURE	SAFETY PROCEDURE PENDING	PROCEDIMIENTO PENDIENTE
+UI.NOTICE.PROCEDURE	Complete the procedure to open this door	Completa el procedimiento para abrir esta puerta
+UI.NOTICE.EXIT_OPEN	Exit unlocked	Salida desbloqueada
+UI.NOTICE.NO_POWER	No power: find the mains switch	Sin energía: busca el interruptor general
+UI.NOTICE.KEY_REQUIRED	Locked: you need a key	Cerrada: necesitas una llave
+UI.NOTICE.EMPTY	Empty: reload [{0}]	Sin balas: recarga [{0}]
+UI.NOTICE.PICKED	{0} +{1}	{0} +{1}
+UI.NOTICE.FULL	Inventory full	Inventario lleno
+UI.NOTICE.BREATH	Out of breath	Sin aliento
+UI.NOTICE.SPIKE_USED	Discharge spike used: you broke free	Punzón usado: te has liberado
+UI.NOTICE.GRABBED	Grabbed: run!	Te agarró: ¡corre!
+UI.NOTICE.HUNTED	They know where you are	Saben dónde estás
+UI.NOTICE.POWER	Power restored	Energía restaurada
+UI.NOTICE.INJURED	Injured	Herido
+UI.NOTICE.CRITICAL	Critical: heal from the terminal	Crítico: cúrate desde el terminal
+UI.NOTICE.HEALED	Condition improved	Tu estado mejora
+UI.NOTICE.BOSS1	Hack the 3 mixing consoles. Keep away from the arm	Hackea las 3 mesas de mezcla. Aléjate del brazo
+UI.NOTICE.BOSS2	Avoid the red cameras. Reach the core	Evita las cámaras rojas. Llega al núcleo
+UI.NOTICE.BOSS3	Shoot the 3 glowing transformers	Dispara a los 3 transformadores
+UI.NOTICE.NODE	Console {0}/{1}	Mesa {0}/{1}
+UI.NOTICE.TRANSFORMER	Transformer {0}/{1}	Transformador {0}/{1}
+UI.TUT.TERMINAL	Open your arm terminal [{0}]	Abre el terminal del brazo [{0}]
+UI.TUT.FLASHLIGHT	Turn on the flashlight [{0}]	Enciende la linterna [{0}]
+UI.TUT.PICKUP	Pick up something with [{0}]	Recoge algo con [{0}]
+UI.TUT.SPRINT	Hold [{0}] while moving to run	Mantén [{0}] al moverte para correr
+UI.TUT.CROUCH	Crouch to move quietly [{0}]	Agáchate para no hacer ruido [{0}]
+UI.TUT.AIM	Hold [{0}] to aim	Mantén [{0}] para apuntar
+UI.TUT.ATTACK	Press [{0}] to shove, or to fire while aiming	Pulsa [{0}] para empujar, o para disparar apuntando

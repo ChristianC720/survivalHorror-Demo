@@ -91,7 +91,7 @@ Cápsula → [Tutorial: 4 salas, solo el primer intento] → Salas procedurales 
 
 #### Tutorial (primer intento, D-70)
 
-Las 4 salas son fijas solo en el primer intento y forman parte de las salas procedurales del piso 1; desde el segundo intento son procedurales (D-38). Sus recursos cuentan dentro del presupuesto del piso 1. Los controles se enseñan con carteles de seguridad de Vitalis en las paredes de estas salas, que incluyen la tecla de cada acción (D-89; ver [[04 - Interfaz Visual]]). Entre todos enseñan **todas** las acciones del juego (D-160). **Lukas no puede morir en estas salas ni en la fila de cápsulas:** el daño lo deja como mucho en el borde de Crítico (D-160).
+Las 4 salas son fijas solo en el primer intento y forman parte de las salas procedurales del piso 1; desde el segundo intento son procedurales (D-38). Sus recursos cuentan dentro del presupuesto del piso 1. Los controles se enseñan con carteles de seguridad de Vitalis en las paredes de estas salas, que incluyen la tecla de cada acción (D-89; ver [[04 - Interfaz Visual]]). Entre todos enseñan **todas** las acciones del juego (D-160). La salida de cada sala se abre al completar sus acciones guiadas, o sola tras ~120 s para que nadie se quede atascado (D-164). **Lukas no puede morir en estas salas ni en la fila de cápsulas:** el daño lo deja como mucho en el borde de Crítico (D-160).
 
 | Sala | Arquetipo | Enseña | Contenido |
 |---|---|---|---|
@@ -172,7 +172,7 @@ Llegada → Salas procedurales ⇄ Salas clave secundarias → Puerta con llave 
 
 **Duración estimada:** ~3–6 min (3 fases de 1–2 min, M-19).
 
-**Dificultad:** La más alta; el brazo recolector puede matar en cualquier fase (D-65).
+**Dificultad:** La más alta; el brazo recolector hiere pero no mata (D-163) y los asimilados de la fase 2 sí pueden matar.
 
 **Mecánicas introducidas:** Cámaras hostiles (D-28).
 

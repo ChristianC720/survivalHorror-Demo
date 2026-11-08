@@ -20,6 +20,7 @@ namespace Heartbeat.Player
         public float crouchHeight = 1.2f;
 
         [Header("Interaction (M-08)")]
+        [Tooltip("Interactables within this distance get the teal rim, m (D-163).")] public float outlineRange = 3f;
         [Tooltip("Half-angle of the camera's interaction cone, degrees: only what the camera faces can be used.")]
         public float interactConeDegrees = 35f;
 

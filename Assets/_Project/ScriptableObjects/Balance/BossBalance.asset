@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8874f313fbaa7b94b9ac4d12dc354140, type: 3}
   m_Name: BossBalance
   m_EditorClassIdentifier: Heartbeat.Runtime::Heartbeat.Boss.BossBalance
-  armSpeed: 2.5
-  armReach: 3
-  armWarning: 1
-  armCooldown: 4
+  armSpeed: 1.6
+  armReach: 2.2
+  armWarning: 2.2
+  armCooldown: 7
   armStunSeconds: 2
   armChaseRadius: 6
   cameraSweepDegreesPerSecond: 20

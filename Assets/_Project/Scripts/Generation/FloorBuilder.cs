@@ -168,6 +168,7 @@ namespace Heartbeat.Generation
             }
             for (int i = 0; i < built.Count; i++) BuildShell(i);
             foreach (var c in Layout.Connections) PlaceDoor(c);
+            BuildTutorialGates(cfg.tutorialGateTimeout);
             for (int i = 0; i < Layout.Items.Count; i++) PlaceItem(Layout.Items[i], registered);
             ConfigureExit(floor);
 
@@ -261,6 +262,31 @@ namespace Heartbeat.Generation
             var leaf = door.GetComponent<DoorLeaf>();
             leaf.Configure(c.Lock);
             doors.Add(leaf);
+        }
+
+        /// <summary>D-164: each door leaving a tutorial room stays shut until that room's actions are done (see TutorialGuide).</summary>
+        private void BuildTutorialGates(float timeout)
+        {
+            var stages = new Dictionary<RoomInstance, int>();
+            foreach (var pr in Layout.Rooms)
+                if (built[pr.Index].IsTutorial) stages[built[pr.Index]] = pr.TutorialIndex > 0 ? pr.TutorialIndex : 1;
+            if (stages.Count == 0) return;
+
+            int Stage(int room) => stages.TryGetValue(built[room], out int s) ? s : int.MaxValue;
+            var gates = new Dictionary<int, List<DoorLeaf>>();
+            for (int i = 0; i < Layout.Connections.Count; i++)
+            {
+                var c = Layout.Connections[i];
+                int a = Stage(c.A), b = Stage(c.B);
+                if (a == b || c.Lock != DoorLock.None) continue;
+                int stage = Mathf.Min(a, b);
+                if (!gates.TryGetValue(stage, out var list)) gates[stage] = list = new List<DoorLeaf>();
+                doors[i].Configure(DoorLock.Tutorial);
+                list.Add(doors[i]);
+            }
+            var guide = new GameObject("TutorialGuide").AddComponent<Tutorial.TutorialGuide>();
+            guide.transform.SetParent(floorRoot, false);
+            guide.Init(stages, gates, timeout);
         }
 
         private void PlaceItem(ItemPlacement item, IReadOnlyCollection<string> registered)

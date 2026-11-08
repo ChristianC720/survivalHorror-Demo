@@ -40,14 +40,14 @@ namespace Heartbeat.Combat
                 return;
             }
 
-            if (health.State == HealthState.Critical)
+            if (health.State == HealthState.Critical && !attack.NeverKills)
             {
                 health.ApplyGrabWithoutSpike();
                 HbLog.Info("Combat", "Grabbed in Critical without a spike -> death");
                 GameEvents.RaiseGrabResolved(false);
                 return;
             }
-            health.ApplyGrabWithoutSpike();
+            health.ApplyGrabWithoutSpike(attack.NeverKills);
             HbLog.Info("Combat", $"Grabbed without a spike -> {health.State}");
             GameEvents.RaiseGrabResolved(false);
         }

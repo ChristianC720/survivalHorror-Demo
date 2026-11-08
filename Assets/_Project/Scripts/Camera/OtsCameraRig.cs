@@ -71,7 +71,11 @@ namespace Heartbeat.CameraSystem
             Configure(aimCamera, balance.aimShoulder, balance.aimDistance, balance.aimFov, 5);
             brain.DefaultBlend = new CinemachineBlendDefinition(CinemachineBlendDefinition.Styles.EaseInOut, balance.aimBlendSeconds);
             player.CameraTransform = brain.transform;
-            if (reticle != null) reticle.SetActive(false);
+            if (reticle != null)
+            {
+                reticle.AddComponent<UI.ReticleFeedback>();
+                reticle.SetActive(false);
+            }
         }
 
         private void Configure(CinemachineCamera cam, Vector3 shoulder, float distance, float fov, int priority)
@@ -86,7 +90,7 @@ namespace Heartbeat.CameraSystem
             follow.CameraSide = 1f;
             follow.AvoidObstacles.Enabled = true;
             follow.AvoidObstacles.CollisionFilter = LayerMask.GetMask("Environment", "Ceiling");   // S-01: never through geometry
-            follow.AvoidObstacles.CameraRadius = 0.15f;
+            follow.AvoidObstacles.CameraRadius = 0.3f;   // 0.15 let the near plane show the outside from a corner
         }
 
         private void LateUpdate()

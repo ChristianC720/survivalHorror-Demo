@@ -38,6 +38,7 @@ namespace Heartbeat.Interaction
             router = Services.Get<InputRouter>();
             Services.TryGet(out rig);
             router.Actions.Gameplay.Interact.performed += OnInteract;
+            gameObject.AddComponent<InteractableOutliner>().Init(this, balance.outlineRange);
         }
 
         private void OnEnable() => Services.Register(this);

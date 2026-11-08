@@ -30,6 +30,8 @@ namespace Heartbeat.Generation.Layout
         [Min(1)] public int minSecondaryDistance = 3;
         [Tooltip("Rounds dropped next to the spawn point when the floor is built (outside the budget). Floor 1 only: Lukas wakes there every cycle.")]
         [Min(0)] public int startingAmmo = 0;
+        [Tooltip("A tutorial exit opens by itself after this many seconds in the room, so nobody gets stuck (D-164).")]
+        [Min(1f)] public float tutorialGateTimeout = 120f;
 
         [Header("Budget (D-17)")]
         public IntRange heals = new IntRange(2, 3);

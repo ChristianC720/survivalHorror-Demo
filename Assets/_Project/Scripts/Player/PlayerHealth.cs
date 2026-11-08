@@ -33,9 +33,9 @@ namespace Heartbeat.Player
             Hit?.Invoke();
         }
 
-        public void ApplyGrabWithoutSpike()
+        public void ApplyGrabWithoutSpike(bool neverKills = false)
         {
-            Model.Lethal = !InTutorial;
+            Model.Lethal = !InTutorial && !neverKills;
             if (!Invulnerable) Model.ApplyGrabWithoutSpike();
             Hit?.Invoke();
         }

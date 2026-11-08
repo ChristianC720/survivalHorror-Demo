@@ -742,6 +742,118 @@ MonoBehaviour:
     m_Localized: Discharge spike
     m_Metadata:
       m_Items: []
+  - m_Id: 2425263014150144
+    m_Localized: SAFETY PROCEDURE PENDING
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036224
+    m_Localized: Complete the procedure to open this door
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036225
+    m_Localized: Exit unlocked
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036226
+    m_Localized: 'No power: find the mains switch'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036227
+    m_Localized: 'Locked: you need a key'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036228
+    m_Localized: 'Empty: reload [{0}]'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036229
+    m_Localized: '{0} +{1}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036230
+    m_Localized: Inventory full
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036231
+    m_Localized: Out of breath
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036232
+    m_Localized: 'Discharge spike used: you broke free'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036233
+    m_Localized: 'Grabbed: run!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036234
+    m_Localized: They know where you are
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036235
+    m_Localized: Power restored
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036236
+    m_Localized: Injured
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036237
+    m_Localized: 'Critical: heal from the terminal'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036238
+    m_Localized: Condition improved
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036239
+    m_Localized: Hack the 3 mixing consoles. Keep away from the arm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036240
+    m_Localized: Avoid the red cameras. Reach the core
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036241
+    m_Localized: Shoot the 3 glowing transformers
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036242
+    m_Localized: Console {0}/{1}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036243
+    m_Localized: Transformer {0}/{1}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036244
+    m_Localized: 'Open your arm terminal [{0}]'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036245
+    m_Localized: 'Turn on the flashlight [{0}]'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036246
+    m_Localized: 'Pick up something with [{0}]'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036247
+    m_Localized: Hold [{0}] while moving to run
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036248
+    m_Localized: 'Crouch to move quietly [{0}]'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036249
+    m_Localized: Hold [{0}] to aim
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2425263098036250
+    m_Localized: Press [{0}] to shove, or to fire while aiming
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

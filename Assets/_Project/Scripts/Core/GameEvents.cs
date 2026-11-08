@@ -93,6 +93,9 @@ namespace Heartbeat.Core
         public static event Action OptionsChanged;
 
         // Boss (S-10)
+        public static event Action<string, object[]> NoticeRequested;     // UI table key, format args ("Map/Action" shows its key)
+        public static event Action<string, object[]> HintChanged;         // tutorial hint; null key clears it
+        public static event Action<bool, bool> ShotLanded;                // weak point, killed
         public static event Action<int> BossPhaseChanged;                 // 1 nodes, 2 cameras, 3 transformers, 4 defeated
         public static event Action BossDefeated;
 
@@ -107,6 +110,9 @@ namespace Heartbeat.Core
         public static void RaiseAimChanged(bool aiming) => AimChanged?.Invoke(aiming);
         public static void RaiseAttentionFull(Vector3 playerPos) => AttentionFull?.Invoke(playerPos);
         public static void RaiseShotFired(Vector3 origin) => ShotFired?.Invoke(origin);
+        public static void RaiseNotice(string key, params object[] args) => NoticeRequested?.Invoke(key, args);
+        public static void RaiseHint(string key, params object[] args) => HintChanged?.Invoke(key, args);
+        public static void RaiseShotLanded(bool weakPoint, bool killed) => ShotLanded?.Invoke(weakPoint, killed);
         public static void RaisePlayerAttacked(AttackInfo info) => PlayerAttacked?.Invoke(info);
         public static void RaiseGrabResolved(bool countered) => GrabResolved?.Invoke(countered);
         public static void RaiseEnemyKilled(MonoBehaviour enemy, Vector3 pos) => EnemyKilled?.Invoke(enemy, pos);
@@ -171,6 +177,9 @@ namespace Heartbeat.Core
             AttentionFull = null;
             ShotFired = null;
             PlayerAttacked = null;
+            NoticeRequested = null;
+            HintChanged = null;
+            ShotLanded = null;
             GrabResolved = null;
             EnemyKilled = null;
             RecycleWarning = null;

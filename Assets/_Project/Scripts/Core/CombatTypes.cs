@@ -12,9 +12,12 @@ namespace Heartbeat.Core
         public readonly bool IsGrab;
         public readonly Vector3 From;
         public readonly MonoBehaviour Source;
+        /// <summary>Hurts but stops at the last breath of Critical (The Mother's arm, D-163).</summary>
+        public readonly bool NeverKills;
 
-        public AttackInfo(int hitsToKill, bool isGrab, Vector3 from, MonoBehaviour source)
+        public AttackInfo(int hitsToKill, bool isGrab, Vector3 from, MonoBehaviour source, bool neverKills = false)
         {
+            NeverKills = neverKills;
             HitsToKill = hitsToKill;
             IsGrab = isGrab;
             From = from;

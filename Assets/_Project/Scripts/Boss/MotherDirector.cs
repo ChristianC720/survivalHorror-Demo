@@ -33,7 +33,9 @@ namespace Heartbeat.Boss
         private Transform[] capsules;
         private readonly List<EnemyBrain> released = new List<EnemyBrain>();
         private AudioSource music;
-        private bool decided;
+        private bool decided, pulsing;
+        private Transform[] speakers;
+        private Vector3[] speakerScales;
 
         public MotherFight Fight => fight;
         public BossBalance Balance => balance;
@@ -61,6 +63,8 @@ namespace Heartbeat.Boss
             decisions = GetComponentsInChildren<DecisionPoint>(true);
             arm = GetComponentInChildren<CollectorArm>(true);
             capsules = GetComponentsInChildren<Transform>(true).Where(t => t.name.StartsWith("Capsule_")).ToArray();
+            speakers = GetComponentsInChildren<Transform>(true).Where(t => t.name.StartsWith("Speaker_")).ToArray();
+            speakerScales = speakers.Select(t => t.localScale).ToArray();
             if (Services.TryGet(out Recycle.RecycleSystem recycle)) recycle.Suspended = true;   // only machine here (D-28)
 
             fight = new MotherFight(balance.releasesTotal, balance.maxActive);
@@ -111,6 +115,7 @@ namespace Heartbeat.Boss
                     Subtitles.Say(Subtitles.Mother, "SUB.MOTHER.PHASE3", subject);
                     PlayMusic("CUE_Music_Mother_P3");
                     DropAmmo("Ammo3_", balance.phase3Ammo);
+                    foreach (var t in GetComponentsInChildren<Transform>(true).Where(t => t.name.StartsWith("Plate_")).ToArray()) StartCoroutine(DropPlate(t));
                     break;
                 case MotherPhase.Defeated:
                     StopMusic();
@@ -120,10 +125,37 @@ namespace Heartbeat.Boss
             }
         }
 
+        /// <summary>Phase 3 (D-59): the speaker plates fall forward and expose the transformers behind them.</summary>
+        private IEnumerator DropPlate(Transform plate)
+        {
+            foreach (var c in plate.GetComponentsInChildren<Collider>()) c.enabled = false;
+            var bounds = new Bounds(plate.position, Vector3.zero);
+            foreach (var r in plate.GetComponentsInChildren<Renderer>()) bounds.Encapsulate(r.bounds);
+            Vector3 hinge = new Vector3(bounds.center.x, bounds.min.y, bounds.center.z);
+            Sfx.Play("CUE_Arm_Hydraulic", hinge);
+            for (float turned = 0f; turned < 90f;)
+            {
+                float step = Mathf.Min(90f - turned, balance.plateFallDegreesPerSecond * Time.deltaTime);
+                plate.RotateAround(hinge, plate.right, step);
+                turned += step;
+                yield return null;
+            }
+        }
+
+        /// <summary>Phase 2 (D-59): the wall speakers throb with the heartbeat.</summary>
+        private void Update()
+        {
+            if (fight == null || speakers == null || fight.Phase != MotherPhase.Cameras && !pulsing) return;
+            pulsing = fight.Phase == MotherPhase.Cameras;
+            float beat = pulsing ? 1f + balance.speakerPulse * Mathf.Pow(Mathf.Abs(Mathf.Sin(Time.time * balance.speakerBeatsPerSecond * Mathf.PI)), 8f) : 1f;
+            for (int i = 0; i < speakers.Length; i++) speakers[i].localScale = speakerScales[i] * beat;
+        }
+
         public void NodeHacked(BossNode node)
         {
             HbLog.Info("Boss", $"Node {node.name} hacked ({fight.NodesHacked + 1}/{MotherFight.Nodes})");
             fight.NodeHacked();
+            GameEvents.RaiseNotice("UI.NOTICE.NODE", fight.NodesHacked, MotherFight.Nodes);
         }
 
         /// <summary>A hostile camera locked on Lukas (D-28): release one assimilated towards that point.</summary>
@@ -145,6 +177,7 @@ namespace Heartbeat.Boss
         {
             HbLog.Info("Boss", $"{t.name} destroyed ({fight.TransformersDown + 1}/{MotherFight.Transformers})");
             fight.TransformerDestroyed();
+            GameEvents.RaiseNotice("UI.NOTICE.TRANSFORMER", fight.TransformersDown, MotherFight.Transformers);
         }
 
         private void ReleasePending()

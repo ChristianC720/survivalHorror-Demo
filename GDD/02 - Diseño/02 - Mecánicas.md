@@ -972,7 +972,7 @@ flowchart TD
     
 - **Sala (D-59):** la central de megafonía desde donde se emitió el latido en el incidente. Es una sola sala grande que se transforma en cada fase: mesas de mezcla y racks de cinta como nodos (fase 1), altavoces que emiten el latido y cámaras hostiles (fase 2), y transformadores de alto voltaje expuestos al abrirse el núcleo criogénico de The Mother (fase 3, D-65). Sin carne: The Mother no es la criatura. The Mother es un archivo de muestras criogénicas montado en una grúa, con un brazo recolector y un núcleo criogénico (D-65). La terminal central es la consola de emisión.
     
-- **Ataque de The Mother (D-65):** fiel a su protocolo, trata a Lukas como un espécimen no conforme que debe recolectar y archivar. Su brazo recolector recorre la sala en las 3 fases y, si alcanza al jugador, lo agarra con las reglas de M-11: el punzón de descarga lo aturde 2 s; sin punzón, baja un estado de salud o mata en Crítico. Lukas puede morir en cualquier fase.
+- **Ataque de The Mother (D-65):** fiel a su protocolo, trata a Lukas como un espécimen no conforme que debe recolectar y archivar. Su brazo recolector recorre la sala en las 3 fases y, si alcanza al jugador, lo agarra con las reglas de M-11: el punzón de descarga lo aturde 2 s; sin punzón, baja un estado de salud, pero **el brazo nunca mata**: en Crítico deja a Lukas al borde de la muerte (D-163). En cualquier fase Lukas puede morir por los asimilados.
     
 - **Reglas:**
     
@@ -988,7 +988,7 @@ flowchart TD
             
     - **Sin reciclaje (D-28):** en la sala de The Mother no hay reciclaje de enemigos (M-20): la sala es solo máquina, sin carne, y el laboratorio no levanta cuerpos en ella (D-99).
         
-    - **Valores iniciales (D-98, sujetos a balance):** 3 cámaras hostiles que barren a ~20°/s con un cono de ~12 m; tras ~1 s enfocando a Lukas fijan su luz roja y liberan un asimilado. La grúa recorre sus rieles a ~2.5 m/s (Lukas corriendo la supera); el brazo recolector alcanza ~3 m y avisa ~1 s antes de agarrar con luz y sonido hidráulico.
+    - **Valores iniciales (D-98, sujetos a balance):** 3 cámaras hostiles que barren a ~20°/s con un cono de ~12 m; tras ~1 s enfocando a Lukas fijan su luz roja y liberan un asimilado. La grúa recorre sus rieles a ~1.6 m/s; el brazo recolector alcanza ~2.2 m, avisa ~2.2 s antes de agarrar con luz, sonido hidráulico y un anillo rojo en el suelo que se cierra, y descansa ~7 s entre agarres (D-163, reemplaza los valores de D-98).
             
     - Derrotarla es la condición de victoria ([[01 - Jugabilidad]]).
         
