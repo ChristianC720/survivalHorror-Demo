@@ -59,7 +59,8 @@ namespace Heartbeat.Audio
         private void OnState(GameStateId from, GameStateId to)
         {
             bool onFloor = to == GameStateId.Playing || to == GameStateId.Paused || to == GameStateId.Reconstruction
-                || to == GameStateId.FloorTransition;
+                || to == GameStateId.FloorTransition
+                || to == GameStateId.Victory || to == GameStateId.FinalDecision;   // the Awakening is this heartbeat quickening (M-19)
             if (!onFloor) StopAll();
         }
 

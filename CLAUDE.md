@@ -70,7 +70,7 @@ Assets/_Project/
 
 ## Tooling: Claude + Aura MCP
 - Claude writes `.cs`, `.md`, `.asmdef`, `.inputactions` JSON with Write/Edit.
-- **Aura (`mcp__aura-unity__*`) is the primary Unity interface**: `check_compile_errors`, `get_unity_logs`, `get_unity_editor_state`, `open_scene`/`save_scene`/`create_scene`, `create_game_object`, `set_transform`, `add_component`, `set_property`, `create_prefab`, `create_prefab_variant`, `create_pbr_material`/`assign_material`, `create_ui_element`/`set_rect_transform`/`set_ui_text`, input-action tools, `install_unity_package`, `execute_script`, `play_game`/`stop_game`/`run_play_mode_sequence`, `capture_scene_object`/`capture_editor_screenshot`/`capture_ui_canvas`.
+- **Aura (`mcp__aura-unity__*`) is the primary Unity interface.**
 - `mcp-for-unity` only for `run_tests` (EditMode) and `read_console` if Aura lacks it.
 - One-off `execute_script` files go in the session scratchpad, **never** in the repo. Keep them small; they run on the main thread.
 

@@ -203,13 +203,17 @@ namespace Heartbeat.UI
         private void ShowTitle()
         {
             NewScreen(1200, inRoom: false);
-            var logo = Line("IDENTITY DISSOLUTION", 72);   // logo placeholder (PLACEHOLDERS.md)
-            logo.fontStyle = FontStyles.Bold;
-            logo.color = UiKit.Text1;
+            var logo = UiKit.Rect("Logo", screen).gameObject.AddComponent<Image>();
+            logo.sprite = Resources.Load<Sprite>("HB_Logo");
+            logo.preserveAspect = true;
+            logo.raycastTarget = false;
+            var logoSize = logo.gameObject.AddComponent<LayoutElement>();
+            logoSize.preferredWidth = 1000;
+            logoSize.preferredHeight = 252;
             var pulse = UiEcg.Build(screen, 96, 110);
             pulse.Color = TitlePulse;
             Line(Loc.Get("UI.TITLE.PRESS"), 28).color = UiKit.Text1;
-            StartLoop("CUE_Heartbeat_Lab");                                 // the title only has the heartbeat (D-90)
+            StartLoop("CUE_Music_Title");                                   // the title only has the heartbeat (D-90)
             InputSystem.onAnyButtonPress.CallOnce(_ =>
             {
                 if (this == null || states.Current != GameStateId.Title) return;
@@ -351,16 +355,20 @@ namespace Heartbeat.UI
 
         // ---------- Helpers ----------
 
+        private string loopCue;
+
         private void StartLoop(string cue)
         {
-            StopLoop();
-            if (audioService != null && audioService.TryGetCue(cue, out var c)) loop = audioService.StartLoop(c);
+            if (cue == loopCue && loop != null) return;   // coming back from Options or Credits: the theme carries on
+            loopCue = cue;
+            if (audioService != null && audioService.TryGetCue(cue, out var c)) loop = audioService.StartMusic(c, loop);
         }
 
         private void StopLoop()
         {
-            if (audioService != null) audioService.Stop(loop);
+            if (audioService != null) audioService.FadeOutMusic(loop);
             loop = null;
+            loopCue = null;
         }
 
         public static Slider MakeSlider(Transform parent, float min, float max, float value, System.Action<float> onChange)

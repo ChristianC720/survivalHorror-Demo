@@ -28,6 +28,10 @@ namespace Heartbeat.Audio
         public float labBpmPerDegradation = 4f;
         public float labCriticalBpmBonus = 10f;
 
+        [Header("Music")]
+        [Tooltip("Fade-in and fade-out of every music cue, in seconds.")]
+        public float musicFadeSeconds = 2f;
+
         [Header("Occlusion (S-11): share of the sound that gets through")]
         [Tooltip("Per wall between source and listener (−70% → 0.3). Also scales the noise radius enemies perceive.")]
         [Range(0f, 1f)] public float wallTransmission = 0.3f;

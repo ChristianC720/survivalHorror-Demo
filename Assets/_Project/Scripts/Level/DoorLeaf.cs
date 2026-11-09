@@ -35,7 +35,6 @@ namespace Heartbeat.Level
         private float breakProgress;
         private int lastSide;               // +1 / -1: side of the door Lukas was last on (local Z)
         private Transform player;
-        private bool sealPending;
         private float closedY;
         private float closedX;
         private float closedSecondX;
@@ -151,15 +150,15 @@ namespace Heartbeat.Level
                 return;
             }
 
-            // Lukas crossed this door and turns back towards it while enemies hunt: offer the quick seal.
+            if (State == DoorState.Open && PlayerInDoorway()) return;   // a leaf closing on Lukas would shove him through the frame
+
+            // While enemies hunt, an open door is sealed behind Lukas (M-14); a closed one still just opens, so he can flee.
             bool hunting = Services.TryGet<AlertDirector>(out var d) && d.HuntingCount > 0;
-            if (hunting && Services.TryGet<PlayerHack>(out var hack))
+            if (hunting && State == DoorState.Open && Services.TryGet<PlayerHack>(out var hack))
             {
-                sealPending = true;
                 hack.Begin(this);
                 return;
             }
-            if (State == DoorState.Open && PlayerInDoorway()) return;   // a leaf closing on Lukas would shove him through the frame
             SetState(State == DoorState.Open ? DoorState.Closed : DoorState.Open);
         }
 
@@ -172,8 +171,6 @@ namespace Heartbeat.Level
 
         public void OnHackSucceeded()
         {
-            if (!sealPending) return;
-            sealPending = false;
             breakProgress = 0f;
             SetState(DoorState.Sealed);
             HbLog.Info("Door", $"{name}: SEALED");

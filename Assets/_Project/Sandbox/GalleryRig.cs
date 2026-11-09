@@ -17,7 +17,7 @@ namespace Heartbeat.Sandbox
     public sealed class GalleryRig : MonoBehaviour
     {
         private const float PanelWidth = 400f, LabelRange = 16f, CellLabelRange = 40f, Gravity = 18f, WalkSpeed = 3f;
-        private static readonly string[] Tabs = { "Ir a", "Asset", "Luz", "Vista", "Audio" };
+        private static readonly string[] Tabs = { "Ir a", "Asset", "Luz", "Vista", "Audio", "Cinemáticas" };
         private static readonly (string name, Color light, Color ambient, float intensity)[] Lights =
         {
             ("Neutra", new Color(1f, .98f, .95f), new Color(.5f, .5f, .52f), 1f),
@@ -276,9 +276,29 @@ namespace Heartbeat.Sandbox
                 case 2: DrawLightTab(); break;
                 case 3: DrawView(); break;
                 case 4: DrawAudio(); break;
+                case 5: DrawCinematics(); break;
             }
             GUILayout.EndScrollView();
             GUI.DragWindow(new Rect(0, 0, 10000, 20));
+        }
+
+        private static readonly (string label, string id)[] Cinematics =
+        {
+            ("Introducción (jugable)", "Intro"),
+            ("Reconstrucción corta (muerte)", "Reconstruction"),
+            ("Foto imposible (piso 2)", "Floor2Photo"),
+            ("Despertar (cae The Mother)", "Awakening"),
+            ("Final: Relevo básico", "BasicRelief"),
+            ("Final: Relevo completo", "FullRelief"),
+            ("Final: Ambiguo", "Ambiguous"),
+            ("Final: Asimilación", "Assimilation"),
+        };
+
+        private void DrawCinematics()
+        {
+            GUILayout.Label("Se reproduce con el juego real, sin tocar tus partidas; al terminar vuelves aquí.");
+            foreach (var c in Cinematics)
+                if (GUILayout.Button(c.label)) GalleryStart.PlayCinematic(c.id);
         }
 
         private void DrawGoTo()

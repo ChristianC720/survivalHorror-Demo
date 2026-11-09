@@ -19,6 +19,8 @@ namespace Heartbeat.Player
         [SerializeField] private float aimAngle = 28f;
         [SerializeField] private float range = 14f;
         [SerializeField] private float intensity = 18f;
+        [Tooltip("Nothing closer to the light casts its shadow: keeps Lukas's own arm and revolver out of the beam.")]
+        [SerializeField] private float shadowNearPlane = 0.9f;
 
         private InputRouter router;
         private AlertDirector director;
@@ -37,6 +39,7 @@ namespace Heartbeat.Player
             router.Actions.Gameplay.Flashlight.performed += OnToggle;
             Model.Depleted += OnDepleted;
             spot.range = range;
+            spot.shadowNearPlane = shadowNearPlane;
             Apply();
         }
 

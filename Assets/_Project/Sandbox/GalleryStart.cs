@@ -29,6 +29,13 @@ namespace Heartbeat.Sandbox
             EditorSceneManager.playModeStartScene = scene == null ? null : AssetDatabase.LoadAssetAtPath<SceneAsset>(scene);
         }
 
+        /// <summary>From the gallery's panel: plays one cinematic through the real game (CinematicPreview), then comes back.</summary>
+        public static void PlayCinematic(string id)
+        {
+            SessionState.SetString("Heartbeat.Sandbox.Cinematic", id);
+            PlayGame();
+        }
+
         /// <summary>From the gallery's panel: stops the gallery and plays the game from its real start.</summary>
         public static void PlayGame()
         {
@@ -49,6 +56,12 @@ namespace Heartbeat.Sandbox
             }
             SessionState.SetBool(Running, false);
             Apply();
+            if (SessionState.GetBool("Heartbeat.Sandbox.ReturnToGallery", false))
+            {
+                SessionState.SetBool("Heartbeat.Sandbox.ReturnToGallery", false);
+                EditorSceneManager.playModeStartScene = AssetDatabase.LoadAssetAtPath<SceneAsset>(GalleryTools.ScenePath);
+                EditorApplication.delayCall += () => EditorApplication.isPlaying = true;
+            }
         }
 
         [MenuItem(MenuPath)]

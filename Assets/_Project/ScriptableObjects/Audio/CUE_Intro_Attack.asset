@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 714307412c8508b4e91b3ad69fb53fe9, type: 3}
   m_Name: CUE_Intro_Attack
   m_EditorClassIdentifier: Heartbeat.Runtime::Heartbeat.Audio.AudioCue
-  clips: []
+  clips:
+  - {fileID: 8300000, guid: 87a73e340644d9341a7fa464c47082b1, type: 3}
   bus: {fileID: -5723580548553804568, guid: 5e97351fc7982014ba7fbec47c6a9128, type: 2}
   priority: 2
   spatial: 0

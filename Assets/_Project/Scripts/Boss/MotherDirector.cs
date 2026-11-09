@@ -118,7 +118,7 @@ namespace Heartbeat.Boss
                     foreach (var t in GetComponentsInChildren<Transform>(true).Where(t => t.name.StartsWith("Plate_")).ToArray()) StartCoroutine(DropPlate(t));
                     break;
                 case MotherPhase.Defeated:
-                    StopMusic();
+                    PlayMusic("CUE_Music_Awakening", keepPosition: false);   // one-shot: the cue does not loop
                     GameEvents.RaiseBossDefeated();
                     StartCoroutine(Victory());
                     break;
@@ -251,7 +251,14 @@ namespace Heartbeat.Boss
             if (!allEmilia)
             {
                 HbLog.Info("Boss", "No choice without the 6 Emilia documents: Lukas examines the central terminal");
-                yield return new WaitForSeconds(balance.autoDecisionSeconds);
+                // The Awakening plays out whole: the room fails while the heartbeat races to its peak.
+                float until = Time.time + Mathf.Max(balance.autoDecisionSeconds, music != null && music.clip != null ? music.clip.length - music.time - 2f : 0f);
+                var failing = GetComponentsInChildren<Light>(true);
+                while (Time.time < until)
+                {
+                    foreach (var l in failing) l.enabled = Random.value > 0.25f;
+                    yield return new WaitForSeconds(Random.Range(0.05f, 0.4f));
+                }
                 End("BasicRelief", GameStateId.EndingBasicRelief);
                 yield break;
             }
@@ -278,27 +285,28 @@ namespace Heartbeat.Boss
             else End("Ambiguous", GameStateId.EndingAmbiguous);
         }
 
-        private static void End(string id, GameStateId state)
+        private void End(string id, GameStateId state)
         {
+            StopMusic();
             Services.Get<GameStateMachine>().TryTransition(state);
             GameEvents.RaiseEndingTriggered(id);
         }
 
         // ---------- Music ----------
 
-        private void PlayMusic(string cue)
+        private void PlayMusic(string cue, bool keepPosition = true)
         {
-            StopMusic();
-            if (Services.TryGet(out AudioService audio) && audio.TryGetCue(cue, out var c)) music = audio.StartLoop(c);
+            if (Services.TryGet(out AudioService audio) && audio.TryGetCue(cue, out var c)) music = audio.StartMusic(c, music, keepPosition);
         }
 
         private void StopMusic()
         {
-            if (music != null && Services.TryGet(out AudioService audio)) audio.Stop(music);
+            if (music != null && Services.TryGet(out AudioService audio)) audio.FadeOutMusic(music);
             music = null;
         }
 
         /// <summary>Debug / playtests: jump to a phase's end condition.</summary>
+        public void DebugDefeat() => Enter(MotherPhase.Defeated);
         public void DebugHackAllNodes() { foreach (var n in nodes) if (n.IsActive) n.OnHackSucceeded(); }
         public void DebugDestroyTransformers() { foreach (var t in transformers) t.DebugDestroy(); }
         public void DebugKillReleased() { foreach (var b in released.ToArray()) b.GetComponent<EnemyHealth>()?.DebugKill(); }

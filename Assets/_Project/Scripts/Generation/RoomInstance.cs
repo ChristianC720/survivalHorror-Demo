@@ -39,9 +39,17 @@ namespace Heartbeat.Generation
         public IEnumerable<DoorSocket> Sockets() => GetComponentsInChildren<DoorSocket>(true);
         public IEnumerable<SpawnPoint> Spawns() => GetComponentsInChildren<SpawnPoint>(true);
 
-        private void OnTriggerEnter(Collider other)
+        private void OnTriggerEnter(Collider other) => TryEnter(other);
+        private void OnTriggerStay(Collider other) => TryEnter(other);
+
+        /// <summary>Volumes of adjacent rooms overlap at the walls, so the room is the one holding the player's centre.
+        /// Taking the last trigger to fire left the spawn room undrawn when a non-neighbour touched it.</summary>
+        private void TryEnter(Collider other)
         {
-            if (Retired || Generation != LiveGeneration || !other.CompareTag("Player")) return;
+            if (Current == this || Retired || Generation != LiveGeneration || !other.CompareTag("Player")) return;
+            var b = GetComponent<Collider>().bounds;
+            var p = other.transform.position;
+            if (p.x < b.min.x || p.x > b.max.x || p.z < b.min.z || p.z > b.max.z) return;
             Current = this;
             HbLog.Info("Room", $"Entered {name}");
             GameEvents.RaiseRoomEntered(this);

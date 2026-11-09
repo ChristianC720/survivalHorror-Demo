@@ -38,7 +38,10 @@ namespace Heartbeat.Audio
         private float[] baseVolume;
         private bool[] occluded;
         private float nextOcclusion;
-        private AudioListener listener;
+        private AudioListener listener, fallbackListener;
+        private float nextListenerCheck;
+        private float[] fadeGain, fadeRate;   // fadeRate 0 = no fade; reaching silence stops the voice
+        private bool[] fadesAtEnd;
         private AudioSource surveillanceLoop;
         private AlertState signaled;
 
@@ -53,6 +56,9 @@ namespace Heartbeat.Audio
             follow = new Transform[voices];
             baseVolume = new float[voices];
             occluded = new bool[voices];
+            fadeGain = new float[voices];
+            fadeRate = new float[voices];
+            fadesAtEnd = new bool[voices];
             for (int i = 0; i < voices; i++)
             {
                 var go = new GameObject($"Voice_{i:00}");
@@ -63,6 +69,7 @@ namespace Heartbeat.Audio
                 src.minDistance = 1f;
                 pool[i] = src;
             }
+            fallbackListener = gameObject.AddComponent<AudioListener>();
             if (balance != null)
             {
                 gameObject.AddComponent<ThreatAudio>().Init(this, balance);
@@ -155,6 +162,44 @@ namespace Heartbeat.Audio
             follow[i] = null;
         }
 
+        /// <summary>Music with a fade-in, crossfading from <paramref name="previous"/>. <paramref name="keepPosition"/> continues at the
+        /// same point of the bar: the boss loops have the same length, so a phase change links on the beat (D-87).</summary>
+        public AudioSource StartMusic(AudioCue cue, AudioSource previous = null, bool keepPosition = false)
+        {
+            var src = Play(cue);
+            int previousSamples = previous != null ? previous.timeSamples : 0;
+            FadeOutMusic(previous);
+            if (src == null) return null;
+            int i = System.Array.IndexOf(pool, src);
+            fadeGain[i] = 0f;
+            fadeRate[i] = 1f / FadeSeconds;
+            fadesAtEnd[i] = !src.loop;
+            src.volume = 0f;
+            if (keepPosition && src.clip != null) src.timeSamples = Mathf.Min(previousSamples, src.clip.samples - 1);
+            return src;
+        }
+
+        /// <summary>Fades the voice to silence, then frees it.</summary>
+        public void FadeOutMusic(AudioSource voice)
+        {
+            if (voice == null) return;
+            int i = System.Array.IndexOf(pool, voice);
+            if (i >= 0 && busy[i]) fadeRate[i] = -1f / FadeSeconds;
+        }
+
+        private float FadeSeconds => Mathf.Max(0.01f, balance != null ? balance.musicFadeSeconds : 2f);
+
+        private void UpdateFade(int i)
+        {
+            var src = pool[i];
+            if (fadesAtEnd[i] && src.clip != null && fadeRate[i] >= 0f && src.clip.length - src.time <= FadeSeconds) fadeRate[i] = -1f / FadeSeconds;
+            if (fadeRate[i] == 0f) return;
+            fadeGain[i] = Mathf.Clamp01(fadeGain[i] + fadeRate[i] * Time.unscaledDeltaTime);
+            src.volume = baseVolume[i] * fadeGain[i];
+            if (fadeGain[i] >= 1f) fadeRate[i] = 0f;
+            else if (fadeGain[i] <= 0f) Stop(src);
+        }
+
         private AudioSource Begin(AudioCue cue, Vector3? position, Transform target, bool loop)
         {
             if (cue == null) return null;
@@ -180,7 +225,11 @@ namespace Heartbeat.Audio
             // M-18 vocal distortion: voices drop and waver with degradation; signals are never touched (D-29).
             if (cue.name.StartsWith("CUE_Vocal_")) src.pitch *= Mathf.Max(0.75f, 1f - 0.025f * degradation) * Random.Range(1f - 0.01f * degradation, 1f);
             src.loop = loop;
+            src.ignoreListenerPause = cue.priority == CuePriority.Music;   // reading or pausing must not cut the music dead
             src.clip = cue.PickClip();
+            fadeGain[i] = 1f;
+            fadeRate[i] = 0f;
+            fadesAtEnd[i] = false;
             busy[i] = true;
             prio[i] = (int)cue.priority;
             started[i] = Time.unscaledTime;
@@ -196,7 +245,6 @@ namespace Heartbeat.Audio
         /// <summary>Share of a sound at <paramref name="source"/> that reaches the listener through walls and closed doors.</summary>
         public float Occlusion(Vector3 source)
         {
-            if (listener == null || !listener.isActiveAndEnabled) listener = FindAnyObjectByType<AudioListener>();
             return listener == null ? 1f : OcclusionBetween(source, listener.transform.position);
         }
 
@@ -217,10 +265,16 @@ namespace Heartbeat.Audio
         private void Update()
         {
             float now = Time.unscaledTime;
+            if (now >= nextListenerCheck)
+            {
+                nextListenerCheck = now + 0.2f;
+                RefreshListener();
+            }
             for (int i = 0; i < pool.Length; i++)
             {
                 if (!busy[i]) continue;
                 if (follow[i] != null) pool[i].transform.position = follow[i].position;
+                UpdateFade(i);
                 // One-shots free their voice when done; empty-clip one-shots hold it ~0.5 s so stealing stays realistic.
                 if (!pool[i].loop && !pool[i].isPlaying && now - started[i] > 0.5f) busy[i] = false;
             }
@@ -238,6 +292,16 @@ namespace Heartbeat.Audio
                 mixer.SetFloat("vol_ambience", MixMath.LinearToDb(volAmbience) + duck);
                 mixer.SetFloat("vol_music", MixMath.LinearToDb(volMusic) + duck);
             }
+        }
+
+        /// <summary>Only the player camera has a listener; menus and cinematics need this one or Unity outputs silence.</summary>
+        private void RefreshListener()
+        {
+            AudioListener camera = null;
+            foreach (var l in FindObjectsByType<AudioListener>())
+                if (l != fallbackListener && l.isActiveAndEnabled) camera = l;
+            fallbackListener.enabled = camera == null;
+            listener = camera != null ? camera : fallbackListener;
         }
 
         // ---------- Event → cue table (AUDIO_CUES.md) ----------

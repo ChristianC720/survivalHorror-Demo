@@ -24,7 +24,8 @@ namespace Heartbeat.Interaction
         private InputRouter router;
         private OtsCameraRig rig;
         private int mask;
-        private readonly Collider[] buffer = new Collider[16];
+        private readonly Collider[] buffer = new Collider[64];
+        private int wallMask;
 
         public IInteractable Current { get; private set; }
         /// <summary>How centred the current target is (dot of view direction, 1 = dead centre).</summary>
@@ -35,6 +36,7 @@ namespace Heartbeat.Interaction
         private void Start()
         {
             mask = LayerMask.GetMask("Interactable");
+            wallMask = LayerMask.GetMask("Environment");
             router = Services.Get<InputRouter>();
             Services.TryGet(out rig);
             router.Actions.Gameplay.Interact.performed += OnInteract;
@@ -72,6 +74,10 @@ namespace Heartbeat.Interaction
             return Vector3.Dot(view.forward, to.normalized);
         }
 
+        /// <summary>Doors are Environment themselves: a hit right next to the target still counts as seeing it.</summary>
+        public static bool HasLineOfSight(Vector3 eye, Vector3 point, int walls) =>
+            !Physics.Linecast(eye, point, out var hit, walls, QueryTriggerInteraction.Ignore) || Vector3.Distance(hit.point, point) < 0.6f;
+
         private IInteractable FindBest(out float bestScore)
         {
             bestScore = Mathf.Cos(balance.interactConeDegrees * Mathf.Deg2Rad);
@@ -85,6 +91,7 @@ namespace Heartbeat.Interaction
                 if (it == null || !it.CanInteract(this)) continue;
                 // The camera sits behind Lukas, so something behind him can still be near the centre of the view.
                 if (Vector3.Dot(it.InteractionPoint - transform.position, ahead) < 0f) continue;
+                if (!HasLineOfSight(transform.position + Vector3.up * 1.2f, it.InteractionPoint, wallMask)) continue;
                 float s = ViewScore(it.InteractionPoint);
                 if (s > bestScore) { bestScore = s; best = it; }
             }

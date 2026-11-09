@@ -47,7 +47,7 @@ namespace Heartbeat.Combat
         {
             Model = new RevolverModel(balance.drumSize, balance.secondsBetweenShots, balance.reloadSecondsPerRound,
                 balance.spreadCloseSeconds, balance.spreadPerShot);
-            shotMask = LayerMask.GetMask("Environment", "Enemy", "Hitbox");
+            shotMask = LayerMask.GetMask("Environment", "Hitbox");   // the root capsule of an enemy would shield its head
             SetOwned(ownedAtStart);
         }
 

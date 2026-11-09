@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 714307412c8508b4e91b3ad69fb53fe9, type: 3}
   m_Name: CUE_Music_Ending_BasicRelief
   m_EditorClassIdentifier: Heartbeat.Runtime::Heartbeat.Audio.AudioCue
-  clips: []
+  clips:
+  - {fileID: 8300000, guid: df562b19ec49e6546a8df8c706f51420, type: 3}
   bus: {fileID: -6196784388064550675, guid: 5e97351fc7982014ba7fbec47c6a9128, type: 2}
   priority: 4
   spatial: 0
   volume: 1
-  pitchRange: {x: 0.95, y: 1.05}
+  pitchRange: {x: 1, y: 1}
   maxDistance: 20
-  loop: 1
+  loop: 0
   debugCaption: '[Music: ending]'

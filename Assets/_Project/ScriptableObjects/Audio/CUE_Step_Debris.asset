@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 714307412c8508b4e91b3ad69fb53fe9, type: 3}
   m_Name: CUE_Step_Debris
   m_EditorClassIdentifier: Heartbeat.Runtime::Heartbeat.Audio.AudioCue
-  clips: []
+  clips:
+  - {fileID: 8300000, guid: 0a797d6775ff2ee4e9792cdbbda947fd, type: 3}
   bus: {fileID: -5723580548553804568, guid: 5e97351fc7982014ba7fbec47c6a9128, type: 2}
   priority: 2
   spatial: 1

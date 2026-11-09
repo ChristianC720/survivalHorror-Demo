@@ -46,7 +46,7 @@ namespace Heartbeat.Narrative
 
         [Header("Timing (initial values, subject to balance)")]
         [SerializeField] private float houseSeconds = 4f;
-        [SerializeField] private float voiceLineSeconds = 3.6f;
+        [SerializeField] private float voiceLineSeconds = 3.75f;   // one bar of Emilia's theme
         [SerializeField] private float rideSeconds = 4f;
         [SerializeField] private float fallSeconds = 2.5f;
         [SerializeField] private float attackRadius = 2.5f;
@@ -54,6 +54,7 @@ namespace Heartbeat.Narrative
 
         private const int VoiceLines = 6;
         private SceneLoader loader;
+        private AudioSource music;
 
         public string Stage { get; private set; } = "Boot";
 
@@ -75,6 +76,12 @@ namespace Heartbeat.Narrative
             Services.Get<Cycle.CycleController>().FinishIntro();
         }
 
+        // Quitting from the pause menu mid-intro: Emilia's loop must not follow the player to the menu.
+        private void OnDestroy()
+        {
+            if (Services.TryGet(out Audio.AudioService audio)) audio.FadeOutMusic(music);
+        }
+
         private IEnumerator House()
         {
             SetStage("House");
@@ -82,7 +89,8 @@ namespace Heartbeat.Narrative
             yield return loader.Fade(1f, 0f);
             yield return Wait(houseSeconds);   // Lukas, alone, looks at the family photo
             Sfx.Play2D("CUE_Intro_PhoneMessage");
-            yield return Wait(1.5f);
+            if (Services.TryGet(out Audio.AudioService audio) && audio.TryGetCue("CUE_Music_VoiceNote", out var note)) music = audio.StartMusic(note);   // Emilia (D-87)
+            yield return Wait(voiceLineSeconds);
             for (int i = 1; i <= VoiceLines; i++)
             {
                 Subtitles.Say(Subtitles.Emilia, $"SUB.EMILIA.NOTE_{i}");
@@ -176,6 +184,7 @@ namespace Heartbeat.Narrative
             // Attack from behind: cut to black, the attacker is never shown (D-53).
             player.MovementLocked = true;
             loader.SetFade(1f);
+            if (Services.TryGet(out Audio.AudioService sound)) sound.FadeOutMusic(music);   // Emilia lasts while Lukas is human
             Sfx.Play2D("CUE_Intro_Attack");
             HbLog.Info("Intro", "Scripted death (does not count, D-63)");
             yield return Wait(2.5f);

@@ -17,6 +17,8 @@ namespace Heartbeat.Narrative
         {
             public string id;
             public Transform pose;
+            [Tooltip("Actors shown only during this shot (several shots share one set).")] public GameObject actors;
+            [Tooltip("Slow camera drift, metres per second.")] public Vector3 drift;
         }
 
         [SerializeField] private Camera shotCamera;
@@ -45,9 +47,15 @@ namespace Heartbeat.Narrative
                 if (s.id != id || s.pose == null) continue;
                 shotCamera.transform.SetPositionAndRotation(s.pose.position, s.pose.rotation);
                 shotCamera.enabled = true;
+                if (s.actors != null) s.actors.SetActive(true);
                 HbLog.Info("Cinematic", $"Shot {id}");
-                for (float t = 0f; t < seconds; t += Time.unscaledDeltaTime) yield return null;
+                for (float t = 0f; t < seconds; t += Time.unscaledDeltaTime)
+                {
+                    shotCamera.transform.position += s.drift * Time.unscaledDeltaTime;
+                    yield return null;
+                }
                 shotCamera.enabled = false;
+                if (s.actors != null) s.actors.SetActive(false);
                 yield break;
             }
             HbLog.Warn("Cinematic", $"No shot '{id}'");

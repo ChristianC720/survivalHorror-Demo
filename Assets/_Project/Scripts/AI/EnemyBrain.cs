@@ -336,6 +336,7 @@ namespace Heartbeat.AI
         {
             if (health.IsAlive)
             {
+                asleep = false;   // a bullet wakes a dormant Mudo at any distance
                 lastKnown = hit.Point - hit.Direction * 10f;
                 alert.ForceHunt();
                 if (hit.WeakPoint) Stagger(hit.Point, definition.weakPointStagger);   // interrupts attack or grab (D-74)

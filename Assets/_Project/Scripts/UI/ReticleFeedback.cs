@@ -22,7 +22,7 @@ namespace Heartbeat.UI
             parts = GetComponentsInChildren<Graphic>(true);
             baseColors = new Color[parts.Length];
             for (int i = 0; i < parts.Length; i++) baseColors[i] = parts[i].color;
-            mask = LayerMask.GetMask("Environment", "Enemy", "Hitbox");
+            mask = LayerMask.GetMask("Environment", "Hitbox");   // same targets as the Revolver
 
             var go = new GameObject("HitMarker", typeof(RectTransform));
             go.transform.SetParent(transform, false);

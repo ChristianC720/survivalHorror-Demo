@@ -582,7 +582,7 @@ MonoBehaviour:
   capsuleShot: {fileID: 1743667304}
   capsuleLight: {fileID: 2048884724}
   houseSeconds: 4
-  voiceLineSeconds: 3.6
+  voiceLineSeconds: 3.75
   rideSeconds: 4
   fallSeconds: 2.5
   attackRadius: 2.5
