@@ -172,7 +172,7 @@ stateDiagram-v2
             
         2. El jugador rompe la línea de visión el tiempo suficiente para que los enemigos salgan de la caza.
             
-        3. El jugador cruza una puerta hacia una sala adyacente.
+        3. El jugador cruza una puerta y deja al enemigo en caza fuera de su sala y de las salas conectadas a ella (D-168).
             
 - **Entrada:** N/A.
     
