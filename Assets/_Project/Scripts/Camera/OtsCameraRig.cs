@@ -37,7 +37,9 @@ namespace Heartbeat.CameraSystem
         private void OnDisable() { Services.Unregister(this); GameEvents.OptionsChanged -= ReadOptions; }
 
         private float lookSensScale = 1f, aimSensScale = 1f;
-        private bool invertY, aimAssist;
+        private bool invertY, aimAssist, reduceMotion;
+        private float shakeUntil;
+        private GameStateMachine states;
 
         /// <summary>Options ▸ Controls: sensitivity multipliers and invert Y (D-104).</summary>
         private void ReadOptions()
@@ -48,6 +50,7 @@ namespace Heartbeat.CameraSystem
             aimSensScale = g.aimSensitivity;
             invertY = g.invertY;
             aimAssist = g.aimAssist;
+            reduceMotion = g.reduceMotion;   // D-106: no camera shake
         }
 
         private void Start()
@@ -61,6 +64,8 @@ namespace Heartbeat.CameraSystem
                 return;
             }
 
+            Services.TryGet(out states);
+            if (player.TryGetComponent(out PlayerHealth health)) health.Hit += () => shakeUntil = Time.time + balance.damageShakeSeconds;   // M-01: hit shake
             revolver = player.GetComponent<Combat.Revolver>();
             target = new GameObject("CameraTarget").transform;
             target.SetParent(player.transform, false);
@@ -105,6 +110,9 @@ namespace Heartbeat.CameraSystem
             float h = player.IsCrouched ? balance.crouchTargetHeight : balance.targetHeight;
             target.localPosition = Vector3.Lerp(target.localPosition, Vector3.up * h, 10f * Time.deltaTime);
             target.rotation = Quaternion.Euler(pitch, yaw, 0f);
+            // Shake on damage (M-01) and while the room trembles in the final decision (D-61); never with Reduce motion.
+            float amp = Time.time < shakeUntil ? balance.damageShakeDegrees : states != null && states.Current == GameStateId.FinalDecision ? balance.decisionShakeDegrees : 0f;
+            if (amp > 0f && !reduceMotion) target.rotation *= Quaternion.Euler(Random.Range(-amp, amp), Random.Range(-amp, amp), 0f);
         }
 
         private void ApplyLook(InputAction look)

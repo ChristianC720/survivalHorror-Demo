@@ -33,5 +33,10 @@ namespace Heartbeat.CameraSystem
         [Header("Target")]
         [Tooltip("Height of the camera target above Lukas's feet.")] public float targetHeight = 1.55f;
         [Tooltip("Crouched target height.")] public float crouchTargetHeight = 1.05f;
+
+        [Header("Shake (M-01, D-61; off with Reduce motion, D-106)")]
+        [Tooltip("Degrees of jitter when Lukas is hit.")] public float damageShakeDegrees = 1.5f;
+        public float damageShakeSeconds = 0.25f;
+        [Tooltip("Degrees of jitter while the room trembles in the final decision.")] public float decisionShakeDegrees = 0.4f;
     }
 }
