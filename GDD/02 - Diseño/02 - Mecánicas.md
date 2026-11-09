@@ -1071,9 +1071,9 @@ flowchart TD
         
     - **Sin reciclaje en la sala del jefe (D-28):** los enemigos eliminados en la sala de The Mother no se reciclan.
         
-    - **Aviso (D-99):** ~40 s después de la muerte, el cuerpo se convulsiona y emite crujidos de hueso y carne durante ~3 s antes de desaparecer (señal diegética, M-10; valores iniciales, sujetos a balance).
+    - **Aviso (D-99):** ~40 s después de la muerte, el cuerpo se convulsiona y emite crujidos de hueso y carne durante ~3 s antes de levantarse (señal diegética, M-10; valores iniciales, sujetos a balance).
         
-    - **Reaparición:** el enemigo reciclado reaparece cuando el jugador sale de la sala, en otra sala del mismo piso y nunca frente al jugador.
+    - **Reaparición (D-166):** el cuerpo se levanta donde cayó, solo fuera de la vista de Lukas (fuera del encuadre de la cámara o detrás de una pared). Si Lukas lo sigue mirando, espera como máximo ~20 s más y luego se levanta igualmente (valor inicial, sujeto a balance). Mientras espera sigue convulsionándose y se puede rematar.
         
     - **Enemigo reciclado:** es un 25% más rápido, pero muere con 2 disparos en lugar de los de su tipo, o con 1 si es un Rastrero (valores iniciales, sujetos a balance; D-37, D-66). Al ser eliminado no vuelve a reciclarse.
         
@@ -1100,7 +1100,7 @@ flowchart TD
     
     - **Rematado:** el cuerpo ya no puede ser reciclado.
         
-    - **Sin rematar:** el cuerpo desaparece tras el aviso y el enemigo reciclado reaparece en otra sala del mismo piso cuando el jugador sale de la sala.
+    - **Sin rematar:** tras el aviso, el cuerpo se levanta en el mismo sitio como enemigo reciclado en cuanto Lukas deja de verlo (D-166).
         
 - **Recursos utilizados:** Resistencia o un punzón de descarga, tiempo y exposición.
     
@@ -1128,7 +1128,7 @@ flowchart TD
         
     - Con el cuerpo de un enemigo reciclado o con los cuerpos de la sala del jefe, que no pueden reciclarse, el contexto de remate no se activa, para no gastar el punzón (D-71).
         
-    - Si el jugador sale de la sala durante el aviso, el cuerpo desaparece y el enemigo reciclado reaparece en otra sala del mismo piso.
+    - Si el jugador sale de la sala durante el aviso, el cuerpo se levanta allí sin que lo vea y queda esperándolo en esa sala (D-166).
         
     - Rematar a un enemigo reciclado no es necesario: ya no puede volver a reciclarse.
         

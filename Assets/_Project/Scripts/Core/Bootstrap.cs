@@ -17,6 +17,7 @@ namespace Heartbeat.Core
     {
         [SerializeField] private SceneLoader sceneLoader;
         [SerializeField] private Level.FaultBalance faultBalance;
+        [SerializeField] private SystemsBalance systemsBalance;
 
         public static bool IsReady { get; private set; }
 
@@ -51,6 +52,7 @@ namespace Heartbeat.Core
             var registry = new Narrative.RegistryModel();     // persistent knowledge, loaded from the slot
             Services.Register(registry);
             Services.Register(new Narrative.BestiaryUnlocker(registry));
+            if (systemsBalance != null) Services.Register(systemsBalance);
             var fb = faultBalance != null ? faultBalance : ScriptableObject.CreateInstance<Level.FaultBalance>();
             var faults = new Level.FaultModel(fb.usesBeforePatch, fb.doorLength, fb.mainFraction);   // patches loaded from the slot
             faults.Used += GameEvents.RaiseFaultUsed;

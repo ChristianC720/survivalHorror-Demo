@@ -36,7 +36,7 @@ Registra los cambios importantes realizados al GDD. Esto permite conocer cómo e
 | 0.20.0 | 2026-11-04 | Sala de llegada con elevador averiado en los pisos 2 y 3 (D-158). | Christian Coronel Palma |
 | 0.21.0 | 2026-11-04 | Rediseño de la interfaz aplicado; leer documentos y pósters detiene el juego (D-159). | Christian Coronel Palma |
 | 0.22.0 | 2026-11-05 | Tutorial sin muerte y con carteles para todas las acciones; carteles legibles y fuera de la pared (D-160). Hackeo solo con flechas o cruceta, cono de interacción y aviso de remate (D-161). Enemigos activos fuera de la vista sin dibujarse y salas lejanas sin dibujar (D-162). Corrección de animaciones: ciclos de Lukas completos y caída del Rastrero al morir. | Christian Coronel Palma |
-| 0.23.0 | 2026-11-08 | Alineación del GDD con el juego tras la revisión completa: Reiniciar siempre cuesta y autoguardado en la Decisión final (D-165, D-92). | Christian Coronel Palma |
+| 0.23.0 | 2026-11-08 | Alineación del GDD con el juego tras la revisión completa: Reiniciar siempre cuesta y autoguardado en la Decisión final (D-165, D-92); reciclaje en el sitio y fuera de la vista (D-166). | Christian Coronel Palma |
 
 ## Convención sugerida
 

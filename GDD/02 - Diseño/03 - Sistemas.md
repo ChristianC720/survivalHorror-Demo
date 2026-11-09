@@ -466,16 +466,16 @@ Cada sistema agrupa mecánicas de [[02 - Mecánicas]]. Las reglas de detalle viv
 - Los enemigos eliminados siguen muertos durante el intento, pero el laboratorio recicla **todos** los cuerpos no rematados, cada uno **una sola vez**; el aviso empieza ~40 s después de la muerte (M-20, D-99).
 - **Sin reciclaje en la sala del jefe (D-28):** los enemigos eliminados en la sala de The Mother no se reciclan.
 - **Aviso:** el cuerpo se convulsiona y emite crujidos de hueso y carne durante ~3 s (S-11).
-- **Reaparición:** cuando el jugador sale de la sala, en otra sala del mismo piso, nunca frente al jugador.
+- **Reaparición (D-166):** en el sitio donde cayó, solo fuera de la vista de Lukas; si la sigue mirando, espera como máximo ~20 s más (valor inicial, sujeto a balance).
 - **Enemigo reciclado:** un 25% más rápido y muere con 2 disparos, o con 1 si es un Rastrero (valores iniciales, sujetos a balance; D-37, D-66). No vuelve a reciclarse.
 - **Remate:** golpe en el suelo (25% de la resistencia, ~2 s, alerta a enemigos cercanos) o punzón de descarga (1 casilla, ~1.5 s, no alerta; gasta la defensa contra agarres, D-71) (valores iniciales, sujetos a balance). Solo mientras el cuerpo sigue en la sala.
 - **Disponibilidad del remate (D-27):** a ~1.5 m (valor inicial, sujeto a balance) mirando un cuerpo no rematado, también durante el combate; si hay otro elemento interactivo al lado, gana el que está al centro de la vista (M-20). Con cuerpos que no pueden reciclarse (reciclados y sala del jefe) el contexto no se activa (M-20).
 - Recibir un golpe durante el golpe en el suelo lo cancela.
 - La sala de la que se huyó sigue infestada, incluidos los reciclados (M-14).
 
-**Salidas:** Cuerpo rematado, cuerpo desaparecido, enemigo reciclado entregado a S-02, ruido para S-02, aviso para S-11.
+**Salidas:** Cuerpo rematado, cuerpo levantado, enemigo reciclado entregado a S-02, ruido para S-02, aviso para S-11.
 
-**Estados posibles:** Cuerpo en la sala, Aviso, Rematado, Desaparecido, Reciclado activo, Reciclado eliminado.
+**Estados posibles:** Cuerpo en la sala, Aviso, Esperando fuera de la vista, Rematado, Reciclado activo, Reciclado eliminado.
 
 **Dependencias:** S-02 IA y percepción, S-04 Resistencia, S-05 Inventario, S-11 Audio dinámico.
 
@@ -494,7 +494,7 @@ Cada sistema agrupa mecánicas de [[02 - Mecánicas]]. Las reglas de detalle viv
 
 - Ningún enemigo se recicla más de una vez.
 - Ningún enemigo eliminado en la sala de The Mother se recicla.
-- Un reciclado nunca reaparece en la sala del jugador ni en su campo de visión.
+- Un cuerpo nunca se levanta a la vista de Lukas salvo tras el tope de espera (~20 s mirándolo) (D-166).
 - El golpe en el suelo alerta a los enemigos cercanos y el punzón de descarga no.
 - Con un cuerpo ya rematado, `Clic izquierdo` y `E` recuperan el empujón y la interacción.
 - Ninguna tecla tiene dos funciones en el contexto "sobre un cuerpo" (ver [[04 - Controles]]).
@@ -603,7 +603,7 @@ Cada sistema agrupa mecánicas de [[02 - Mecánicas]]. Las reglas de detalle viv
 - Con la degradación máxima, el latido del laboratorio no tapa el latido del protagonista ni las señales de alerta.
 - El sonido de alerta y la calidad de la señal de vigilancia corresponden siempre al mismo estado de alerta.
 - El latido no responde a enemigos detrás de una puerta sellada.
-- Todo cuerpo reproduce el aviso orgánico antes de desaparecer.
+- Todo cuerpo reproduce el aviso orgánico antes de levantarse.
 - En la fase 2 del jefe, cada cámara que gira emite el sonido de su motor.
 - Con la degradación máxima, todas las señales de M-10 siguen audibles y la señal degradada por búsqueda sigue distinguiéndose de la señal base.
 

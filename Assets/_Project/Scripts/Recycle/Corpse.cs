@@ -43,7 +43,26 @@ namespace Heartbeat.Recycle
         /// <summary>Called when the lab raises the body (E-08) so it becomes a living, recycled enemy again.</summary>
         public void OnRaised()
         {
+            SetConvulsing(false);
             DiedAt = -1f;
+        }
+
+        // ---------- Convulsion before rising (M-20 warning) ----------
+
+        private Quaternion restRotation;
+        private bool convulsing;
+
+        public void SetConvulsing(bool on)
+        {
+            if (on == convulsing) return;
+            if (on) restRotation = transform.rotation;
+            else transform.rotation = restRotation;
+            convulsing = on;
+        }
+
+        private void LateUpdate()
+        {
+            if (convulsing) transform.rotation = restRotation * Quaternion.Euler(Random.Range(-4f, 4f), Random.Range(-6f, 6f), Random.Range(-4f, 4f));
         }
     }
 }

@@ -219,6 +219,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Heartbeat.Runtime::Heartbeat.Core.Bootstrap
   sceneLoader: {fileID: 251523369}
   faultBalance: {fileID: 11400000, guid: e651d1f7fdab7db4f928998a6f95fecf, type: 2}
+  systemsBalance: {fileID: 11400000, guid: 8044b95fe437df94a9d67991b58b03b9, type: 2}
 --- !u!114 &251523369
 MonoBehaviour:
   m_ObjectHideFlags: 0
