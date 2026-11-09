@@ -11,12 +11,12 @@ Esta ficha identifica el proyecto de forma rápida. Debe permitir que alguien qu
 | **Nombre del proyecto**      | Identity Dissolution                                                                                                                           |
 | **Nombre clave**             | Heartbeat                                                                                                                                      |
 | **Tagline**                  | *Die. Rebuild. Forget.* (D-136)                                                                                                                |
-| **Versión del GDD**          | 0.13.1                                                                                                                                         |
+| **Versión del GDD**          | 0.23.0                                                                                                                                         |
 | **Estado del proyecto**      | Preproducción <!-- / Preproducción / Producción / Pruebas / Publicado -->                                                                           |
 | **Equipo**                   | Victor Gabriel Alvarado Chay<br>Christian Coronel Palma<br>Lenin Ramón López Córdova<br>Bryan Iván Navarrete Canché<br>Lian Daniel Sierra Vera |
 | **Responsable del proyecto** | Christian Coronel Palma                                                                                                                        |
 | **Fecha de inicio**          | 2026-09-26                                                                                                                                     |
-| **Última actualización**     | 2026-10-29                                                                                                                                     |
+| **Última actualización**     | 2026-11-08                                                                                                                                     |
 | **Repositorio**              | [Repositorio Demo](https://github.com/ChristianC720/survivalHorror-Demo)                                                                       |
 
 ## Identidad del videojuego
