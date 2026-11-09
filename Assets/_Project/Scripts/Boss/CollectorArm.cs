@@ -108,7 +108,7 @@ namespace Heartbeat.Boss
                 if (dist <= balance.armReach * GrabTolerance)
                 {
                     HbLog.Info("Boss", "Collector arm grabs Lukas");
-                    GameEvents.RaisePlayerAttacked(new AttackInfo(hitsToKill, true, transform.position, this, neverKills: true));   // D-163
+                    GameEvents.RaisePlayerAttacked(new AttackInfo(hitsToKill, true, transform.position, this, neverKills: true));   // D-163, D-169: spared once in Critical
                 }
                 else HbLog.Info("Boss", "Collector arm missed");
                 return;

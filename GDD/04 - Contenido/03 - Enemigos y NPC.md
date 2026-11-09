@@ -147,11 +147,11 @@ Inmóvil → (Lukas a ~3 m o luz) → Estallido → Agarrar → Pausa → Estall
 
 **Vida:** 3 transformadores de 2 disparos cada uno (D-80).
 
-**Daño:** El agarre del brazo recolector sigue las reglas de M-11.
+**Daño:** El agarre del brazo recolector sigue las reglas de M-11, salvo que en Crítico el primer agarre sin punzón deja a Lukas al borde de la muerte y solo el siguiente lo mata (D-169).
 
 **Defensas:** Solo es vulnerable en la fase 3, con el núcleo abierto.
 
-**Velocidad:** La grúa recorre sus rieles a ~2.5 m/s; el brazo recolector alcanza ~3 m y avisa ~1 s antes de agarrar (D-98).
+**Velocidad:** La grúa recorre sus rieles a ~1.6 m/s; el brazo recolector alcanza ~2.2 m, avisa ~2.2 s antes de agarrar y descansa ~7 s (D-163).
 
 **Rango de detección:** Las cámaras de la sala (fase 2, D-28).
 

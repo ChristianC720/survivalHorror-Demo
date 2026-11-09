@@ -172,7 +172,7 @@ Llegada → Salas procedurales ⇄ Salas clave secundarias → Puerta con llave 
 
 **Duración estimada:** ~3–6 min (3 fases de 1–2 min, M-19).
 
-**Dificultad:** La más alta; el brazo recolector hiere pero no mata (D-163) y los asimilados de la fase 2 sí pueden matar.
+**Dificultad:** La más alta; el brazo recolector solo mata en un segundo agarre en Crítico (D-163, D-169) y los asimilados de la fase 2 sí pueden matar.
 
 **Mecánicas introducidas:** Cámaras hostiles (D-28).
 

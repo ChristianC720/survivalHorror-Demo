@@ -12,7 +12,7 @@ namespace Heartbeat.Core
         public readonly bool IsGrab;
         public readonly Vector3 From;
         public readonly MonoBehaviour Source;
-        /// <summary>Hurts but stops at the last breath of Critical (The Mother's arm, D-163).</summary>
+        /// <summary>Spares Lukas at the last breath once in Critical; the next such grab kills (The Mother's arm, D-163, D-169).</summary>
         public readonly bool NeverKills;
 
         public AttackInfo(int hitsToKill, bool isGrab, Vector3 from, MonoBehaviour source, bool neverKills = false)

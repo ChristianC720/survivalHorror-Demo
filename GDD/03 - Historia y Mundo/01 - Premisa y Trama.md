@@ -63,7 +63,7 @@ La estructura sigue los 3 pisos de la instalación (D-33, M-15). La distribució
 - Los documentos del piso 3 exponen la regla del mundo: **The Mother reconstruye; el laboratorio asimila**. The Mother reconstruye a todo aquel que llega y todavía conserva identidad, sin entender que cada reconstrucción alimenta la asimilación (D-47).
 - El jugador comprende que los enemigos son personas asimiladas y por qué un enemigo eliminado regresa una sola vez: el laboratorio consume su último rastro de identidad (D-47, D-48, D-99, M-20).
 - El contador de 5 muertes sigue contando: 5 muertes consecutivas en el piso 3 o en la sala de The Mother también llevan a la Asimilación (D-56).
-- **Jefe final:** The Mother, un archivo de muestras criogénicas montado en una grúa, en la central de megafonía al final del piso 3. Su brazo recolector trata a Lukas como un espécimen que debe archivar y puede matarlo (D-65). La sala se transforma en cada una de sus 3 fases, que reutilizan mecánicas existentes (M-19, D-59). Morir en la sala regresa al inicio del ciclo.
+- **Jefe final:** The Mother, un archivo de muestras criogénicas montado en una grúa, en la central de megafonía al final del piso 3. Su brazo recolector trata a Lukas como un espécimen que debe archivar; puede matarlo en un segundo agarre en Crítico (D-65, D-169). La sala se transforma en cada una de sus 3 fases, que reutilizan mecánicas existentes (M-19, D-59). Morir en la sala regresa al inicio del ciclo.
 - **Desenlace:** secuencia común de victoria, decisión final y cinemática según los documentos de Emilia reunidos (ver [[#Finales]]).
 
 ## Eventos principales

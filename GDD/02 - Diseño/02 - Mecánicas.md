@@ -972,7 +972,7 @@ flowchart TD
     
 - **Sala (D-59):** la central de megafonía desde donde se emitió el latido en el incidente. Es una sola sala grande que se transforma en cada fase: mesas de mezcla y racks de cinta como nodos (fase 1), altavoces que emiten el latido y cámaras hostiles (fase 2), y transformadores de alto voltaje expuestos al abrirse el núcleo criogénico de The Mother (fase 3, D-65). Sin carne: The Mother no es la criatura. The Mother es un archivo de muestras criogénicas montado en una grúa, con un brazo recolector y un núcleo criogénico (D-65). La terminal central es la consola de emisión.
     
-- **Ataque de The Mother (D-65):** fiel a su protocolo, trata a Lukas como un espécimen no conforme que debe recolectar y archivar. Su brazo recolector recorre la sala en las 3 fases y, si alcanza al jugador, lo agarra con las reglas de M-11: el punzón de descarga lo aturde 2 s; sin punzón, baja un estado de salud, pero **el brazo nunca mata**: en Crítico deja a Lukas al borde de la muerte (D-163). En cualquier fase Lukas puede morir por los asimilados.
+- **Ataque de The Mother (D-65):** fiel a su protocolo, trata a Lukas como un espécimen no conforme que debe recolectar y archivar. Su brazo recolector recorre la sala en las 3 fases y, si alcanza al jugador, lo agarra con las reglas de M-11: el punzón de descarga lo aturde 2 s; sin punzón, baja un estado de salud, pero **el brazo no mata al primer agarre en Crítico**: deja a Lukas al borde de la muerte, y el siguiente agarre en Crítico lo mata si antes no se curó ni usó un punzón (D-163, D-169). En cualquier fase Lukas puede morir por los asimilados.
     
 - **Reglas:**
     
