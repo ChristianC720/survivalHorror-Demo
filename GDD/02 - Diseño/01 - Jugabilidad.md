@@ -1,363 +1,193 @@
 # Jugabilidad
 
-## Descripción de la sección
+## 1. Descripción de la sección
 
 La jugabilidad explica **qué hace el jugador, qué recibe a cambio y cómo evoluciona la experiencia**.
 
-## Bucle principal de juego
+## 2. Bucle principal de juego
 
 **Bucle del proyecto:**
 
-`Explorar → Identificar amenazas y recursos → Combatir / Evadir / Interactuar → Descubrir información  → Morir  → Aplicar conocimiento adquirido → Explorar`
+`Explorar → Identificar amenazas y recursos → Combatir, evadir o interactuar → Descubrir información → Morir → Aplicar lo aprendido → Explorar`
 
-La intención es que cada intento cambie parcialmente las circunstancias del jugador, pero que el conocimiento obtenido anteriormente continúe siendo útil.
+Cada intento cambia en parte las circunstancias del jugador, pero lo aprendido en intentos anteriores sigue siendo útil. Los valores numéricos de este documento son iniciales y están sujetos a balance.
 
-## Acciones principales del jugador
-| Acción                 | Propósito                                                       | Resultado                                                                                          |
-| ---------------------- | --------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| Explorar               | Descubrir habitaciones, rutas, recursos, amenazas e información | El jugador obtiene conocimiento del escenario y encuentra nuevas oportunidades de seguir avanzando |
-| Moverse                | Desplazarse y posicionarse dentro del entorno                   | Permite explorar, evitar peligros o prepararse para un enfrentamiento                              |
-| Observar               | Analizar el entorno antes de actuar                             | Permite identificar amenazas, objetos, rutas y posibles riesgos                                    |
-| Interactuar            | Utilizar elementos del escenario                                | Permite obtener objetos, activar mecanismos, descubrir información o progresar                     |
-| Recoger objetos        | Obtener recursos útiles                                         | Los objetos pasan al inventario si existe espacio disponible                                       |
-| Administrar inventario | Identificar los recursos necesarios                             | El jugador decide qué conservar, usar o abandonar dentro del límite de 6 espacios                  |
-| Utilizar objetos       | Recuperarse, resolver situaciones o consumir recursos           | El objeto produce un beneficio inmediato a cambio de reducir los recursos disponibles              |
-| Combatir               | Defenderse o eliminar amenazas                                  | Puede permitir avanzar, pero consume recursos y expone al jugador a recibir daño                   |
-| Evadir                 | Evitar un enfrentamiento innecesario                            | Conserva recursos, aunque la amenaza puede permanecer en el escenario                              |
-| Escapar                | Romper contacto con una amenaza peligrosa                       | Reduce el riesgo inmediato sin garantizar que el peligro desaparezca                               |
-| Investigar             | Examinar elementos relevantes del entorno                       | Puede entregar información narrativa, contextual o jugable                                         |
-| Cambiar de estrategia  | Adaptarse a los recursos y amenazas encontradas                 | Permite responder de manera diferente a cada intento                                               |
-| Avanzar                | Alcanzar nuevas áreas o cumplir objetivos                       | Acerca al jugador al objetivo del intento                                                          |
-| Morir                  | Finalizar el intento actual                                     | Inicia un nuevo ciclo con una nueva configuración de escenario                                     |
+## 3. Acciones principales del jugador
 
-## Experiencia segundo a segundo
+| Acción | Propósito | Resultado |
+|---|---|---|
+| Explorar | Descubrir salas, rutas, recursos, amenazas e información | El jugador conoce el escenario y encuentra nuevas formas de avanzar |
+| Moverse | Desplazarse y tomar posición en el entorno | Permite explorar, evitar peligros o prepararse para un enfrentamiento |
+| Observar | Analizar el entorno antes de actuar | Revela amenazas, objetos, rutas y riesgos |
+| Interactuar | Usar elementos del escenario | Entrega objetos, activa mecanismos, revela información o abre el paso |
+| Recoger objetos | Obtener recursos útiles | El objeto pasa al inventario si hay espacio |
+| Administrar el inventario | Decidir qué recursos hacen falta | El jugador elige qué conservar, usar o abandonar dentro de las 6 casillas |
+| Usar objetos | Recuperarse, resolver situaciones o gastar recursos | El objeto da un beneficio inmediato y reduce lo disponible |
+| Combatir | Defenderse o eliminar amenazas | Puede abrir el paso, pero gasta recursos y expone a Lukas al daño |
+| Evadir | Evitar un enfrentamiento innecesario | Conserva recursos, aunque la amenaza sigue en el escenario |
+| Escapar | Romper el contacto con una amenaza peligrosa | Reduce el riesgo inmediato sin garantizar que el peligro desaparezca |
+| Investigar | Examinar elementos relevantes del entorno | Puede entregar información narrativa, de contexto o de reglas |
+| Cambiar de estrategia | Adaptarse a los recursos y amenazas del intento | Permite responder distinto en cada intento |
+| Avanzar | Llegar a nuevas zonas o cumplir objetivos | Acerca al jugador al objetivo del intento |
+| Morir | Terminar el intento actual | Empieza un ciclo nuevo con otra configuración del escenario |
 
-¿Qué hace el jugador durante los primeros minutos?
+## 4. Experiencia segundo a segundo
 
-Durante los primeros minutos de una partida, el jugador debe comprender rápidamente su estado actual y comenzar a interpretar el espacio que lo rodea.
+En los primeros minutos, el jugador entiende su estado actual y empieza a leer el espacio que lo rodea. Sus acciones se concentran en:
 
-Las acciones estarán centradas en:
 - Moverse por el entorno.
 - Controlar u observar la cámara según el contexto.
-- Identificar posibles rutas.
+- Identificar rutas posibles.
 - Examinar elementos del escenario.
 - Detectar recursos.
 - Reconocer amenazas.
-- Decidir si interactuar, avanzar o evitar un área.
+- Decidir si interactúa, avanza o evita una zona.
 - Familiarizarse con los controles principales.
-- Comprender las primeras reglas del inventario y de la interacción.
+- Entender las primeras reglas del inventario y de la interacción.
 
-La intención es evitar presentar una cantidad excesiva de sistemas simultáneamente.
+El juego no presenta muchos sistemas a la vez. El jugador aprende sobre todo al interactuar con el entorno y en situaciones controladas.
 
-El jugador deberá aprender principalmente mediante interacción con el entorno y situaciones controladas durante los primeros minutos.
+La sensación avanza en este orden:
 
-A nivel de sensación, el jugador debería pasar progresivamente de:
+`Desorientación → Observación → Comprensión básica → Primeras decisiones`
 
-`Desorientación → Observación → Comprensión básica → Primeras decisiones
+El primer contacto con una amenaza comunica que enfrentar a los enemigos de frente no siempre es la decisión correcta.
 
-El primer contacto con una amenaza debe comunicar que enfrentarse directamente a los enemigos no siempre es la decisión correcta.
+## 5. Experiencia minuto a minuto
 
-## Experiencia minuto a minuto
+Durante una sesión, el jugador alterna entre exploración, análisis, decisiones y momentos de tensión. Un tramo típico sigue esta estructura:
 
-¿Qué actividades se repiten durante una sesión?
+`Entrar a una zona → Observar → Explorar → Encontrar recursos o información → Detectar una amenaza → Evaluar opciones → Actuar → Gastar o conservar recursos → Continuar`
 
-Durante una sesión, el jugador alternará repetidamente entre exploración, análisis, toma de decisiones y situaciones de tensión. Un segmento típico puede seguir aproximadamente esta estructura:
+Las actividades que se repiten son:
 
-`Entrar a una zona → Observar → Explorar → Encontrar recursos o información → Detectar amenaza → Evaluar opciones → Actuar → Consumir o conservar recursos → Continuar`
-
-Las actividades recurrentes incluyen:
-
-- Explorar nuevas habitaciones.
+- Explorar salas nuevas.
 - Buscar rutas para avanzar.
 - Encontrar recursos.
-- Comparar objetos contra el espacio disponible en el inventario.
-- Revisar el estado actual del personaje.
+- Comparar objetos con el espacio libre del inventario.
+- Revisar el estado del personaje.
 - Escuchar o identificar señales de peligro.
 - Evitar enemigos.
-- Combatir cuando sea necesario.
+- Combatir cuando haga falta.
 - Recuperarse después de un enfrentamiento.
 - Investigar el entorno.
 - Encontrar información narrativa.
 - Buscar la ruta hacia el siguiente objetivo.
-- Adaptarse a la distribución de la partida.
+- Adaptarse a la distribución del intento.
 
-El juego debe evitar mantener continuamente al jugador en combate.
+El juego no mantiene al jugador en combate continuo. La tensión nace de la posibilidad de un enfrentamiento, no de enfrentamientos constantes.
 
-La tensión debe construirse mediante la posibilidad de que ocurra un enfrentamiento, no únicamente mediante enfrentamientos constantes.
+## 6. Experiencia a largo plazo
 
-## Experiencia a largo plazo
+El jugador quiere continuar por cuatro razones.
 
-¿Qué hace que el jugador quiera continuar?
+**Supervivencia.** Cada intento es el reto de llegar más lejos con menos recursos y mejores decisiones.
 
-El jugador debe querer continuar principalmente por cuatro razones:
+**Aprendizaje.** Aunque el escenario cambie, el jugador aprende sobre:
 
-### Supervivencia:
-Cada intento representa el reto de avanzar más lejos utilizando la menor cantidad de recursos disponibles y tomando mejores decisiones.
+- El comportamiento de los enemigos.
+- El valor de los recursos.
+- El funcionamiento de los sistemas.
+- Las situaciones peligrosas.
+- Las estrategias de supervivencia.
+- Los patrones del entorno.
+- Las reglas de generación del escenario.
 
-### Aprendizaje:
-Aunque el escenario pueda cambiar, el jugador adquiere conocimiento sobre:
+Ese conocimiento es una forma de progresión del jugador, aunque el personaje no reciba mejoras permanentes.
 
-- Comportamiento de enemigos.
-- Valor de los recursos.
-- Funcionamiento de sistemas.
-- Situaciones peligrosas.
-- Estrategias de supervivencia.
-- Patrones del entorno.
-- Reglas de generación del escenario.
-
-Este conocimiento constituye una forma importante de progresión del jugador, incluso cuando el personaje no recibe necesariamente mejoras permanentes.
-
-### Descubrimiento:
-
-El jugador continuará avanzando para comprender:
+**Descubrimiento.** El jugador avanza para entender:
 
 - Qué ocurre en el mundo.
-- Qué le sucede al protagonista.
-- Qué relación existe entre las muertes y los nuevos intentos.
-- Qué representan las amenazas encontradas.
-- Qué papel desempeña el antagonista.
+- Qué le pasa al protagonista.
+- Qué relación hay entre las muertes y los nuevos intentos.
+- Qué representan las amenazas.
+- Qué papel tiene la antagonista.
 
-### Variación entre intentos:
+**Variación entre intentos.** La generación procedural produce suficiente variación para que ningún intento se resuelva solo con memoria. El jugador reconoce reglas y elementos familiares, pero no sabe con exactitud cómo se desarrollará cada intento.
 
-La generación procedural deberá producir suficiente variación para evitar que cada partida pueda resolverse únicamente mediante memorización y el  jugador debe reconocer reglas y elementos familiares sin conocer exactamente cómo se desarrollará cada intento.
+## 7. Condición de victoria
 
-## Condición de victoria
+Un intento exitoso exige sobrevivir al recorrido del escenario y completar un objetivo final.
 
-¿Qué debe lograr el jugador para avanzar o terminar?
+La condición de victoria de la demo es **derrotar a The Mother**, el jefe final. Para llegar a ella, el jugador atraviesa los 3 pisos y alcanza su sala, que es una sala clave fija del piso 3 sin autoguardado. Cada piso combina salas procedurales, salas clave secundarias y una sala clave final con la escalera o el elevador al piso siguiente. Su composición en la configuración completa y en la de showcase está en [[02 - Mecánicas]].
 
-A nivel de jugabilidad, un intento exitoso deberá requerir que el jugador alcance y complete un objetivo final después de sobrevivir al recorrido del escenario.
+El encuentro tiene 3 fases que reutilizan mecánicas existentes. Son el hackeo de nodos bajo presión, la supervivencia y huida, y unos pocos disparos a puntos débiles expuestos. Al caer, The Mother revela que existe algo más, la criatura lovecraftiana que es el laboratorio, pero no puede explicarlo.
 
-La condición de victoria de la demo es **derrotar a The Mother**, el jefe final. Para llegar a ella, el jugador debe atravesar los 3 pisos del escenario y alcanzar su sala, que es una sala clave fija del piso 3 sin autoguardado (D-33). Cada piso combina salas procedurales, salas clave secundarias y una sala clave final con la escalera o el elevador al piso siguiente; su composición en la configuración completa y en la de showcase se documenta en [[02 - Mecánicas]] (M-15). El encuentro consta de 3 fases que reutilizan mecánicas existentes: hackeo de nodos bajo presión, supervivencia y huida, y pocos disparos a puntos débiles expuestos (ver [[02 - Mecánicas]]).
+Toda victoria sigue la misma secuencia:
 
-Al ser derrotada, The Mother revela que existe algo más (la criatura lovecraftiana que es el laboratorio), pero no puede explicarlo.
+1. Cae The Mother.
+2. Solo si se reunieron los 6 documentos de Emilia, los documentos corruptos y el mensaje de Emilia se completan. Lukas recupera primero el nombre de Emilia y después el suyo.
+3. Llega el **Despertar** y el latido del laboratorio se acelera.
+4. Se reproduce la cinemática de victoria.
+5. Todo cierra con un gancho abierto.
 
-Toda victoria sigue la misma secuencia (D-51): cae The Mother; solo si se reunieron los 6 documentos de Emilia, los documentos corruptos y el mensaje de Emilia se completan y Lukas recupera primero el nombre de Emilia y después el suyo (D-45, D-55); llega el **Despertar**, en el que el latido del laboratorio se acelera; se reproduce la cinemática de victoria; y todo cierra con un gancho abierto. La cinemática depende de los **6 documentos de Emilia** acumulados en el terminal del brazo en cualquier intento y, si se tienen, de la decisión final entre la terminal central y la salida, sin menú de elección (reglas en M-19 de [[02 - Mecánicas]]; estados en [[07 - Reglas y Estados del Juego]]):
+La cinemática depende de los **6 documentos de Emilia** acumulados en el terminal del brazo en cualquier intento. Si se tienen, también depende de la decisión final entre la terminal central y la salida, sin menú de elección. Las reglas están en [[02 - Mecánicas]] y los estados en [[07 - Reglas y Estados del Juego]].
 
 | Condición | Cinemática de victoria | Resultado |
 |---|---|---|
-| Victoria sin los 6 documentos de Emilia | **Relevo básico** | Lukas examina la terminal central de forma automática y reemplaza a The Mother sin recordar ningún nombre (D-55) |
-| Victoria con los 6 documentos; el jugador examina la terminal central | **Relevo completo** | Lukas reemplaza a The Mother sabiendo más; incluye el expediente R-H-01 a R-H-06 "estado desconocido" (D-49) y Lukas oye y entiende el segundo acto, ilegible para el jugador (D-61) |
-| Victoria con los 6 documentos; el jugador elige la salida | **Ambiguo** | El latido de Lukas y el del laboratorio se sincronizan en uno (D-61); no se sabe qué fue de Lukas |
+| Victoria sin los 6 documentos de Emilia | **Relevo básico** | Lukas examina la terminal central de forma automática y reemplaza a The Mother sin recordar ningún nombre |
+| Victoria con los 6 documentos, el jugador examina la terminal central | **Relevo completo** | Lukas reemplaza a The Mother sabiendo más. Incluye el expediente R-H-01 a R-H-06 con `estado desconocido`. Lukas oye y entiende el segundo acto, que el jugador ve ilegible |
+| Victoria con los 6 documentos, el jugador elige la salida | **Ambiguo** | El latido de Lukas y el del laboratorio se sincronizan en uno. No se sabe qué fue de Lukas |
 
-Ningún final ofrece salvación (D-44). No existe final de Renuncia, y "Salida" y "Encuentro con Emilia" quedan fuera de la demo (D-51). El único final de derrota es "Asimilación" ([[#Condición de derrota]]).
+Ningún final ofrece salvación. No existe final de Renuncia, y los finales *Salida* y *Encuentro con Emilia* quedan fuera de la demo. El único final de derrota es Asimilación, descrito en la condición de derrota.
 
-La condición seleccionada permite demostrar el ciclo completo de juego sin ampliar innecesariamente el alcance de la demo, ya que el encuentro no introduce sistemas nuevos.
+Esta condición demuestra el ciclo completo de juego sin ampliar el alcance de la demo, porque el encuentro no introduce sistemas nuevos.
 
-## Condición de derrota
+## 8. Condición de derrota
 
-¿Qué situaciones provocan fracaso?
+La condición principal de derrota es la muerte del personaje. Cuando la salud llega a su límite, el intento actual termina y ocurre lo siguiente:
 
-La principal condición de derrota es la muerte del personaje
-
-Cuando la salud del personaje llegue al límite definido, el intento actual finaliza.
-
-Como consecuencia:
-
-1. Se termina la ejecución actual.
+1. Termina el recorrido actual.
 2. Se activa el ciclo de muerte.
 3. El escenario anterior deja de representar el recorrido actual.
-4. Se inicia un nuevo intento.
+4. Empieza un nuevo intento.
 5. Se genera una nueva distribución del escenario.
-6. El jugador vuelve a comenzar utilizando principalmente el conocimiento adquirido previamente.
+6. El jugador vuelve a empezar apoyado sobre todo en lo que ya aprendió.
 
-Otras condiciones de fracaso podrán existir únicamente si aportan valor al diseño.
+Otras condiciones de fracaso solo existirán si aportan valor al diseño.
 
-"Reiniciar" desde el menú de pausa también finaliza el intento y cuenta como muerte (D-32). Salir del juego durante una alerta o caza cuenta como muerte completa, y salir con calma fuera de una sala clave final ya guardada suma una muerte al contador y a la degradación, aunque al volver se continúa desde la sala clave final autoguardada (D-31). El detalle de estas reglas se documenta en [[07 - Reglas y Estados del Juego]].
+Elegir `Reiniciar` en el menú de pausa también termina el intento y cuenta como muerte. Salir del juego durante una caza cuenta como muerte completa. Salir con calma fuera de una zona segura suma una muerte al contador y a la degradación, y al volver se continúa desde la sala clave final autoguardada. El detalle está en [[07 - Reglas y Estados del Juego]].
 
-Existe además un final secundario de derrota: si el jugador acumula 5 muertes consecutivas, se activa el final **"Asimilación"** (D-42): el laboratorio termina de asimilar al protagonista. Solo llegar a la sala clave final del piso 2 reinicia el contador, y después sigue contando en el piso 3 y en la sala de The Mother (D-56); las demás salas clave no lo reinician. Las muertes del primer intento (el del tutorial) no cuentan, y "Reiniciar" y salir con costo suman al contador (D-35). Cada muerte también provoca una degradación estética acumulativa (mayor corrupción CRT y distorsión del sonido vocal del protagonista; el texto de sus líneas solo se degrada en la cinemática de Asimilación, D-62) que no afecta la jugabilidad, solo se acumula y nunca se reinicia (D-29). El detalle de estas reglas se documenta en [[02 - Mecánicas]].
+Existe además un final secundario de derrota. Si el jugador acumula 5 muertes consecutivas, se activa el final **Asimilación**, en el que el laboratorio termina de asimilar al protagonista. Solo llegar a la sala clave final del piso 2 reinicia el contador, que después sigue contando en el piso 3 y en la sala de The Mother. Las demás salas clave no lo reinician. Las muertes del primer intento, el del tutorial, no cuentan. `Reiniciar` y salir con costo suman al contador.
 
-Los estados de muerte, reconstrucción, victoria y "Final: Asimilación", con sus transiciones, se documentan en [[07 - Reglas y Estados del Juego]].
+Cada muerte también provoca una degradación estética acumulativa, con más corrupción CRT y más distorsión del sonido vocal del protagonista. El texto de sus líneas solo se degrada en la cinemática de Asimilación. La degradación no afecta la jugabilidad y solo se acumula. Vuelve a 0 únicamente en el ciclo nuevo tras un final o con `Nueva partida`. El detalle está en [[02 - Mecánicas]].
 
-## Ritmo
+Los estados de muerte, reconstrucción, victoria y `Final: Asimilación`, con sus transiciones, están en [[07 - Reglas y Estados del Juego]].
 
-Describe cómo alternan:
+## 9. Ritmo
 
-- Exploración
-- Acción
-- Descanso
-- Desafío
-- Recompensa
-- Historia
+El ritmo alterna tensión y recuperación. La presión constante restaría impacto al terror y complicaría la administración de recursos. La partida alterna estos momentos.
 
-El ritmo debe alternar entre tensión y recuperación. Mantener al jugador bajo presión constante reduciría el impacto del terror y dificultaría la administración de recursos.
+**Exploración.** El jugador recorre el escenario, investiga rutas, examina objetos, busca recursos y obtiene información. La exploración mantiene una tensión moderada aunque no haya amenazas cerca.
 
-La estructura general deberá alternar según siguientes estados:
-### Exploración
+**Acción.** Son los momentos de mayor intensidad, como combates, persecuciones, escapes y situaciones que exigen reaccionar rápido. Son breves y tienen peso.
 
-Periodo donde el jugador:
+**Descanso.** La presión baja por un tiempo. El jugador revisa el inventario, se recupera, procesa información y se prepara para avanzar. Descansar no significa estar a salvo.
 
-- Recorre el escenario.
-- Investiga rutas.
-- Examina objetos.
-- Busca recursos.
-- Obtiene información.
+**Desafío.** Son situaciones que exigen decidir o superar un obstáculo. Surgen de los enemigos, la escasez de recursos, las rutas bloqueadas, el riesgo del entorno, el inventario y los objetivos concretos.
 
-La exploración debe mantener una tensión moderada incluso cuando no existan amenazas inmediatas.
+**Recompensa.** Después de un riesgo, el jugador obtiene un beneficio proporcional. Puede ser un recurso, el acceso a otra zona, información narrativa, un objeto, una ruta más segura o un avance hacia el objetivo. No todo desafío da recompensas materiales.
 
-### Acción
+**Historia.** La narrativa aparece sobre todo cuando el jugador puede prestar atención. Llega por el entorno, los documentos, los eventos, las líneas de texto de The Mother y de Lukas, los cambios de perspectiva, los elementos visuales y el ciclo de muerte. No hay diálogos. El ritmo narrativo evita interrumpir los momentos en que el jugador necesita concentrarse en sobrevivir.
 
-Momentos de mayor intensidad.
+## 10. Principios de interacción
 
-Pueden incluir:
+**1. Toda acción tiene retroalimentación directa.** Cada acción del jugador recibe una respuesta perceptible. Puede ser visual, sonora, animada, de interfaz o un cambio en el escenario. El jugador nunca debería preguntarse si una interacción funcionó.
 
-- Combate.
-- Persecuciones.
-- Escape.
-- Situaciones donde sea necesario reaccionar rápidamente.
+**2. Las interacciones parecidas se comportan igual.** Si dos elementos permiten el mismo tipo de interacción, usan las mismas reglas y los mismos controles. Así baja la carga mental y la dificultad no se confunde con falta de claridad.
 
-Deben ser relativamente breves y significativos.
+**3. Los riesgos se pueden interpretar.** El jugador puede llevarse sorpresas, pero las situaciones decisivas no dependen de información imposible de conocer. Cuando es razonable, hay una señal de sonido, animación, iluminación, comportamiento del enemigo, diseño del entorno o interfaz.
 
-### Descanso
+**4. Las decisiones tienen consecuencias comprensibles.** Si el jugador gasta un recurso, pelea o abandona un objeto, después entiende qué efecto tuvo. La dificultad sale de elegir entre opciones limitadas, no de reglas ocultas.
 
-Periodos donde la presión disminuye temporalmente.
+**5. La cámara no quita el control al jugador.** La vista sobre el hombro es la predeterminada. La vista isométrica de vigilancia se activa a mano, tiene un costo y solo existe en salas con cámara activa. Los cambios entre ambas vistas son contextuales, predecibles, claros y útiles para la acción en curso. Ninguno desorienta ni cambia las reglas de control. Cuando la vigilancia se corta o se bloquea por daño o por un enemigo cercano en caza, el jugador vuelve a la vista sobre el hombro con control completo.
 
-Permiten:
+**6. La información es legible.** El jugador conoce con claridad el estado del personaje, el espacio libre del inventario, los recursos relevantes, el objeto seleccionado y las interacciones disponibles. La interfaz mantiene una estética de terror, pero nunca impide entender información crítica.
 
-- Revisar inventario.
-- Recuperarse.
-- Procesar información.
-- Prepararse para avanzar.
+**7. Combatir es una decisión, no la respuesta.** Siempre que el escenario lo permite, el jugador puede evitar, rodear, escapar, conservar recursos, esperar o combatir. No todos los encuentros admiten todas las opciones, pero el diseño evita reducir el juego a eliminar enemigos.
 
-Estos momentos no necesariamente deben significar seguridad absoluta.
+**8. Cada intento enseña algo.** Una muerte deja un aprendizaje sobre un enemigo, una mecánica, un recurso, una situación, el escenario o la narrativa. El siguiente intento permite usar ese conocimiento, aunque el escenario no sea idéntico.
 
-### Desafío
-
-Situaciones que requieren tomar una decisión o superar un obstáculo.
-
-Pueden surgir mediante:
-
-- Enemigos.
-- Escasez de recursos.
-- Rutas bloqueadas.
-- Riesgo ambiental.
-- Administración del inventario.
-- Objetivos específicos.
-
-### Recompensa
-
-Después de asumir un riesgo, el jugador debería poder obtener algún beneficio proporcional.
-
-Las recompensas pueden incluir:
-
-- Recursos.
-- Acceso a nuevas áreas.
-- Información narrativa.
-- Objetos.
-- Una ruta más segura.
-- Progreso hacia el objetivo principal.
-
-No todos los desafíos deberán otorgar recompensas materiales.
-
-### Historia
-
-La narrativa deberá aparecer principalmente durante periodos donde el jugador pueda prestar atención.
-
-Puede presentarse mediante:
-
-- Entorno.
-- Documentos.
-- Eventos.
-- Diálogos.
-- Cambios de perspectiva.
-- Elementos visuales.
-- Situaciones relacionadas con el ciclo de muerte.
-
-El ritmo narrativo deberá evitar interrumpir repetidamente situaciones donde el jugador necesita concentrarse en sobrevivir.
-
-## Principios de interacción
-
-¿Qué reglas debe seguir el juego para que las acciones del jugador sean claras, consistentes y predecibles?
-### 1. Toda acción debe tener retroalimentación directa:
-
-Cuando el jugador realice una acción, debe recibir una respuesta perceptible.
-Puede ser:
-
-- Visual.
-- Auditiva.
-- Animada.
-- Mediante interfaz.
-- Mediante cambios en el escenario.
-
-El jugador nunca debería preguntarse constantemente si una interacción funcionó.
-
-### 2. Interacciones similares deben comportarse de manera similar:
-
-Si dos elementos permiten el mismo tipo de interacción, deben utilizar reglas y controles consistentes, esto reduce carga cognitiva y evita confundir dificultad con falta de claridad.
-
-### 3. Los riesgos deben poder interpretarse:
-
-El jugador puede ser sorprendido, pero las situaciones importantes no deben depender sistemáticamente de información imposible de conocer. Debe existir algún tipo de señal cuando sea razonable:
-
-- Sonido.
-- Animación.
-- Iluminación.
-- Comportamiento del enemigo.
-- Diseño del entorno.
-- Feedback de interfaz.
-
-### 4. Las decisiones deben tener consecuencias comprensibles:
-
-Si el jugador consume un recurso, combate o abandona un objeto, debe comprender posteriormente qué efecto produjo esa decisión. La dificultad debe surgir de elegir entre alternativas limitadas, no de reglas ocultas sin explicación.
-
-### 5. La cámara no elimina el control del jugador:
-
-La perspectiva Over the Shoulder es la vista por defecto. La vista isométrica de vigilancia se activa manualmente, tiene un costo y solo está disponible en salas con cámara activa. Los cambios entre ambas perspectivas deberán ser:
-
-- Contextuales.
-- Predecibles.
-- Visualmente claros.
-- Funcionales para la acción que se está realizando.
-
-El cambio no debe desorientar al jugador ni modificar arbitrariamente las reglas de control. Cuando la vista de vigilancia se corta o se bloquea (al recibir daño o con algún enemigo cercano en caza; ver D-23 en [[02 - Mecánicas]]), el jugador regresa a Over the Shoulder con el control completo del personaje.
-
-### 6. La información debe ser legible:
-
-El jugador debe poder conocer con suficiente claridad:
-
-- Estado del personaje.
-- Espacio disponible en el inventario.
-- Recursos relevantes.
-- Objeto seleccionado.
-- Interacciones disponibles.
-
-La interfaz puede mantener una estética de terror, pero nunca debe impedir comprender información crítica.
-
-### 7. Combatir debe ser una decisión, no la respuesta:
-
-Siempre que el diseño del escenario lo permita, el jugador debería poder considerar alternativas como:
-
-- Evitar.
-- Rodear.
-- Escapar.
-- Conservar recursos.
-- Esperar.
-- Combatir.
-
-No todos los encuentros necesitan admitir todas estas opciones, pero el diseño general debe evitar reducir el juego a eliminar enemigos.
-
-### 8. El jugador debe aprender de cada intento:
-
-Una muerte debe aportar algún tipo de aprendizaje:
-
-- Sobre un enemigo.
-- Sobre una mecánica.
-- Sobre un recurso.
-- Sobre una situación.
-- Sobre el escenario.
-- Sobre la narrativa.
-
-El siguiente intento debe permitir utilizar ese conocimiento, aunque el escenario no sea idéntico.
-
-### 9. La generación procedural debe respetar reglas de diseño:
-
-La aleatoriedad nunca debe producir situaciones incompatibles con la progresión. El generador deberá garantizar condiciones como:
-
-- Existencia de una ruta válida.
-- Acceso al objetivo.
-- Distribución razonable de recursos.
-- Habitaciones compatibles entre sí.
-- Situaciones superables.
-- Ausencia de bloqueos imposibles.
-
+**9. La generación procedural respeta reglas de diseño.** El azar nunca produce situaciones que bloqueen la progresión. El generador garantiza una ruta válida, el acceso al objetivo, una distribución razonable de recursos, salas compatibles entre sí, situaciones superables y la ausencia de bloqueos imposibles.
 
 > **Navegación:** [[00 - Índice]] · ← [[04 - Pilares de Diseño]] · [[02 - Mecánicas]] →

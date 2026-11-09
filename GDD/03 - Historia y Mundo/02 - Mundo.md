@@ -1,116 +1,125 @@
 # Mundo
 
-## Descripción de la sección
+## 1. Descripción de la sección
 
 Define el contexto donde ocurre el videojuego: lugares, culturas, reglas, historia, tecnología, conflictos y elementos que hacen coherente el mundo.
 
-## Concepto del mundo
+## 2. Concepto del mundo
 
-**Época:** Distopía retrofuturista con estética de los años 90 y tecnología de ~2080 (D-46). Año dentro del juego: **2083** (D-59).
+**Época:** distopía retrofuturista con estética de los años 90 y tecnología de ~2080. El juego ocurre en 2083.
 
-**Lugar:** **Sektor V-7**, código administrativo corporativo de una ciudad ficticia (D-59). El laboratorio es una instalación subterránea de **Vitalis Konzern**, sellada y dada de baja tras el incidente (D-46). La introducción muestra el exterior solo en la casa de Lukas (D-53).
+**Lugar:** Sektor V-7, código administrativo corporativo de una ciudad ficticia. El laboratorio es una instalación subterránea de Vitalis Konzern, sellada y dada de baja tras el incidente. La introducción muestra el exterior en la casa de Lukas y en la llegada de noche a la compuerta de la instalación.
 
-**Contexto:** El mundo está gobernado por megacorporaciones. Vitalis Konzern, corporación de biotecnología y salud, explotaba en el laboratorio algo que no entendía y lo vendía como medicina de regeneración; no es un virus ni un arma biológica (D-46). Aunque es un laboratorio "clínico", su aspecto es crudo e industrial: dentro se realizaban experimentos ilegales e inhumanos, reflejo de lo corporativo (D-59). Tras el incidente, la empresa selló la instalación y la dio de baja. Dentro solo permanece activa The Mother, la IA médica de Vitalis, que sigue reconstruyendo a quien llega y enviando reportes a servidores de la empresa que nadie lee (D-46, D-47). Lukas Reiner-Hellen, técnico de mantenimiento de Vitalis en otra instalación, entra con su acceso de técnico siguiendo el último mensaje de su esposa desaparecida, Emilia (D-49, D-53; ver [[01 - Premisa y Trama]] y [[03 - Personajes]]).
+**Contexto:** las megacorporaciones gobiernan el mundo. Vitalis Konzern, corporación de biotecnología y salud, explotaba en el laboratorio algo que no entendía. Lo vendía como medicina de regeneración. No es un virus ni un arma biológica.
+
+Aunque es un laboratorio *clínico*, su aspecto es crudo e industrial. Dentro se hacían experimentos ilegales e inhumanos, reflejo de lo corporativo. Tras el incidente, la empresa selló la instalación y la dio de baja. Dentro solo sigue activa The Mother, la IA médica de Vitalis. Reconstruye a quien llega y envía reportes a servidores de la empresa que nadie lee.
+
+Lukas Reiner-Hellen, técnico de mantenimiento de Vitalis en otra instalación, entra con su acceso de técnico. Sigue el último mensaje de Emilia, su esposa desaparecida. La trama está en [[01 - Premisa y Trama]] y los personajes en [[03 - Personajes]].
 
 **Reglas especiales del mundo:**
 
-- **El laboratorio es la criatura (D-46).** El "laboratorio" es la criatura lovecraftiana. No es un edificio infestado: es la entidad. Qué **es** nunca se explica (D-16, D-44, D-47).
-- **The Mother reconstruye; el laboratorio asimila (D-47).** The Mother reconstruye a todo aquel que llega y todavía conserva identidad. Su protocolo original de preservación del personal está corrupto y no entiende que cada reconstrucción alimenta la asimilación. Base mecánica: ciclo de muerte y reconstrucción (M-16 en [[02 - Mecánicas]]).
-- **Solo se reconstruye a quien conserva identidad (D-47).** Quien la pierde por completo queda asimilado y pasa a formar parte del laboratorio. Los enemigos comunes son personas que llegaron antes (personal de Vitalis, sujetos de prueba) y fueron asimiladas (D-48).
-- **Rastro de identidad (D-47).** Un enemigo eliminado conserva un último rastro de identidad; el laboratorio lo consume y lo levanta más asimilado (más rápido, más frágil). The Mother no interviene (D-99). Después ya no le queda identidad, por eso el reciclaje solo ocurre una vez (M-20).
-- **El laboratorio se reacomoda (D-46).** La generación procedural de las salas entre intentos es el laboratorio reacomodándose; las salas clave se mantienen, pero cambian de posición (M-15, M-16).
-- **El laboratorio tiene su propio latido (D-46).** Sonido ambiental de timbre grave, distinto del latido de Lukas; nunca depende de la cercanía de enemigos, solo crece con la degradación acumulada y se acelera en el Despertar (M-10, M-18, M-19).
-- **El latido es un texto (D-57).** El latido tiene un patrón que funciona como un lenguaje. Quien lo escucha completo es asimilado. Qué dice nunca se explica (D-16). Inspiración: *The King in Yellow*.
-- **El latido de fondo es el primer acto (D-64).** El latido que se oye en la instalación solo repite el primer acto: inquieta, pero no asimila. Crece con la degradación porque cada reconstrucción acerca a Lukas al texto. Lukas lo oyó por primera vez sin saberlo, de fondo en la nota de voz de Emilia: es una segunda razón, que él no conoce, por la que fue al laboratorio (D-95). El segundo acto solo sonó completo en el incidente, amplificado por la megafonía, y vuelve a sonar en el Relevo completo: Lukas no es asimilado porque el terminal lo conecta y lo protege, como a The Mother.
-- **El laboratorio corrompe lo escrito (D-58).** La corrupción de los documentos es un glitch provocado por el laboratorio o el latido, no una censura. También toma cosas de la memoria: la foto imposible del piso 2 (D-56).
-- **Cuerpo ajeno (D-43).** Cada reconstrucción recompone a Lukas con una pieza ajena más, que proviene del laboratorio; siempre es el mismo hombre (D-18). Solo es presentación (M-18).
-- **Código de sujeto (D-43, D-50).** Para The Mother, Lukas es un sujeto registrado en el mismo expediente que Emilia (R-H-01 a R-H-06): R-H-07 en la primera reconstrucción y +1 en cada reconstrucción posterior (M-16).
-- **Burocracia automática (D-46).** La instalación sigue funcionando como una dependencia corporativa: The Mother redacta informes clínicos (bestiario, D-48) y reportes que nadie lee. Los carteles, sellos y fragmentos de Vitalis en alemán nunca se traducen (D-58).
+- **El laboratorio es la criatura.** El laboratorio es la criatura lovecraftiana. No es un edificio infestado, es la entidad. Nunca se explica qué es.
+- **The Mother reconstruye y el laboratorio asimila.** The Mother reconstruye a todo el que llega y conserva identidad. Su protocolo original de preservación del personal está corrupto. No entiende que cada reconstrucción alimenta la asimilación. La base mecánica es Reaparición por reconstrucción, en [[02 - Mecánicas]].
+- **Solo se reconstruye a quien conserva identidad.** Quien la pierde por completo queda asimilado y pasa a formar parte del laboratorio. Los enemigos comunes son personas que llegaron antes, como personal de Vitalis y sujetos de prueba.
+- **Rastro de identidad.** Un enemigo eliminado conserva un último rastro de identidad. El laboratorio lo consume y lo levanta más asimilado, más rápido y más frágil. The Mother no interviene. Después ya no le queda identidad, y por eso el reciclaje ocurre una sola vez.
+- **El laboratorio se reacomoda.** La generación procedural entre intentos es el laboratorio reacomodándose. Las salas clave se mantienen, pero cambian de posición.
+- **El laboratorio tiene su propio latido.** Es un sonido ambiental de timbre grave, distinto del latido de Lukas. Nunca depende de la cercanía de enemigos. Crece con la degradación acumulada y con la salud en Crítico, y se acelera en el Despertar.
+- **El latido es un texto.** Su patrón funciona como un lenguaje. Quien lo escucha completo queda asimilado. Nunca se explica qué dice. La inspiración es *The King in Yellow*.
+- **El latido de fondo es el primer acto.** El latido que se oye en la instalación solo repite el primer acto. Inquieta, pero no asimila. Crece con la degradación porque cada reconstrucción acerca a Lukas al texto.
+- Lukas oyó el primer acto sin saberlo, de fondo en la nota de voz de Emilia. Es una segunda razón, que él no conoce, para ir al laboratorio.
+- El segundo acto solo sonó completo en el incidente, amplificado por la megafonía. Vuelve a sonar en el Relevo completo. Lukas no queda asimilado porque el terminal lo conecta y lo protege, igual que a The Mother.
+- **El laboratorio corrompe lo escrito.** La corrupción de los documentos es un glitch del laboratorio o del latido, no una censura. El laboratorio también toma cosas de la memoria, como la foto imposible del piso 2.
+- **Cuerpo ajeno.** Cada reconstrucción recompone a Lukas con una pieza ajena más que viene del laboratorio. Siempre es el mismo hombre. Es solo presentación.
+- **Código de sujeto.** Para The Mother, Lukas es un sujeto del mismo expediente que Emilia, que va de R-H-01 a R-H-06. Es R-H-07 en la primera reconstrucción y suma 1 en cada reconstrucción posterior.
+- **Burocracia automática.** La instalación sigue funcionando como una dependencia corporativa. The Mother redacta informes clínicos para el bestiario y reportes que nadie lee. Los carteles, sellos y fragmentos de Vitalis en alemán nunca se traducen.
 
-## Historia del mundo
+## 3. Historia del mundo
 
-### Antes del juego
+Las fechas exactas de esta línea temporal están en [[05 - Textos del Juego]]. Las cantidades de esta nota son valores iniciales sujetos a balance.
 
-- Vitalis Konzern construye el laboratorio subterráneo para explotar algo que no entiende y comercializarlo como medicina de regeneración (D-46). Dentro realiza experimentos ilegales e inhumanos (D-59).
-- The Mother se crea como IA médica de Vitalis para contener y estudiar a la criatura; su protocolo original es la preservación del personal (D-47). Sin saberlo, sus reconstrucciones la mantenían contenida.
-- **El incidente (D-57).** Alguien transmite el latido por la megafonía de la instalación, desde la central de megafonía del piso 3. Quien lo escucha completo es asimilado. Los documentos se contradicen sobre quién hizo la transmisión y nunca se confirma si la investigación de Emilia lo provocó (D-49). Fecha exacta del incidente: **Por definir**.
-- Emilia Reiner-Hellen, científica de Vitalis, está dentro durante la transmisión y solo oye una parte: el **primer acto**. Muere y The Mother la reconstruye como **R-H-01**, con la identidad conservada (D-57).
-- Vitalis saca a Emilia de la instalación y la despide sin saber que fue reconstruida: nunca lee los reportes de The Mother, la considera una superviviente inestable y la despide para limpiar responsabilidades (D-68). Después sella la instalación y la da de baja (D-46, D-57). Personal de Vitalis y sujetos de prueba que estaban dentro terminan asimilados por el laboratorio (D-48). The Mother queda activa con su protocolo de preservación corrupto (D-47).
-- Emilia vuelve a escondidas a la instalación sellada para escuchar el **segundo acto**. En sus visitas, The Mother la reconstruye como R-H-02 a R-H-06. Cada reconstrucción le quita algo de memoria; su diario lo muestra (D-57). Emilia **no fue asimilada**; su expediente indica "estado desconocido" y ni siquiera The Mother sabe qué ocurrió (D-49).
-- Emilia deja programada una nota de voz de su diario para enviarse al teléfono personal de Lukas si no vuelve (D-53).
+### 3.1 Antes del juego
 
-### Durante el juego
+- Vitalis Konzern construye el laboratorio subterráneo para explotar algo que no entiende y venderlo como medicina de regeneración. Dentro hace experimentos ilegales e inhumanos.
+- Vitalis crea a The Mother como IA médica para contener y estudiar a la criatura. Su protocolo original es la preservación del personal. Sin saberlo, sus reconstrucciones mantenían contenida a la criatura.
+- **El incidente, en 2081.** Alguien transmite el latido por la megafonía desde la central de megafonía del piso 3. Quien lo escucha completo queda asimilado.
+- Los documentos se contradicen sobre quién hizo la transmisión. Nunca se confirma si la investigación de Emilia la provocó.
+- Emilia Reiner-Hellen, científica de Vitalis, está dentro durante la transmisión y solo oye el primer acto. Muere y The Mother la reconstruye como R-H-01, con la identidad conservada.
+- Vitalis saca a Emilia de la instalación y la despide sin saber que fue reconstruida. Nunca lee los reportes de The Mother. La considera una superviviente inestable y la despide para limpiar responsabilidades.
+- Después, Vitalis sella la instalación y la da de baja. El personal y los sujetos de prueba que estaban dentro terminan asimilados. The Mother queda activa con su protocolo corrupto.
+- Emilia vuelve a escondidas para escuchar el segundo acto. Su primera visita es en octubre de 2082. En sus visitas, The Mother la reconstruye como R-H-02 a R-H-06.
+- Cada reconstrucción le quita algo de memoria, y su diario lo muestra. Emilia no fue asimilada. Su expediente dice `estado desconocido` y ni The Mother sabe qué ocurrió.
+- Emilia deja programada una nota de voz de su diario para el teléfono personal de Lukas por si no vuelve. Lukas la recibe a principios de diciembre de 2083, cuando empieza el juego.
 
-Resumen de la trama del mundo; la estructura en actos y los eventos se documentan en [[01 - Premisa y Trama]].
+### 3.2 Durante el juego
 
-- El mensaje programado de Emilia llega al teléfono personal de Lukas. Lukas entra a la instalación sellada con su acceso de técnico de Vitalis. El elevador se distorsiona y cae hasta un piso que no existe, donde Lukas muere atacado por la espalda (D-53).
-- The Mother lo reconstruye por primera vez y lo registra como R-H-07, en el expediente de Emilia (empleado y familiar). Esta primera reconstrucción es el momento del olvido: Lukas pierde el recuerdo de Emilia, sabe que busca algo o a alguien y encuentra un anillo en el suelo, que sabe importante; nunca se sabe si es el suyo o el de Emilia (D-45, D-54). The Mother copia el teléfono al terminal del brazo como "efectos personales del sujeto"; el mensaje queda corrupto (D-53).
-- Lukas desciende los 3 pisos hacia el núcleo (D-33, D-46). En cada intento el laboratorio se reacomoda y cada reconstrucción lo hace más ajeno (D-43).
-- Lukas y el jugador se informan juntos con los documentos: los de Emilia (6, en salas clave secundarias) y los de Vitalis Konzern y The Mother (contexto, en salas procedurales). Algunos son **corruptos**, sobre todo los relacionados con la memoria de Lukas (D-45, D-52, D-58; M-08). Tono y redacción: [[04 - Diálogos y Narrativa]].
-- En la sala clave final del piso 2, Lukas encuentra la foto familiar de la casa, con la cara de Emilia borrosa. No debería estar ahí: el laboratorio la tomó de su memoria. Nunca se explica (D-56).
-- Si Lukas muere 5 veces consecutivas desde el último reinicio del contador, el laboratorio termina de asimilarlo: final **"Asimilación"**, en el que se convierte en uno de los enemigos comunes (D-35, D-42, D-56; M-18, Deseable).
-- En el piso 3, Lukas enfrenta a The Mother en la central de megafonía (D-16, D-59; M-19). Al caer, The Mother revela que existe algo más, pero no puede explicar qué es la criatura (D-16, D-47).
+Los actos y eventos están en [[01 - Premisa y Trama]]. Esta sección resume lo que cambia en el mundo.
 
-### Después del juego
+- Lukas entra a la instalación sellada con su acceso de técnico. El elevador cae a un piso que no existe y allí muere atacado por la espalda.
+- The Mother lo reconstruye como R-H-07, en el expediente de Emilia, como empleado y familiar. En esta reconstrucción Lukas olvida a Emilia y encuentra el anillo.
+- The Mother copia el teléfono al terminal del brazo como `efectos personales del sujeto`. El mensaje queda corrupto.
+- Lukas desciende los 3 pisos hacia el núcleo. En cada intento el laboratorio se reacomoda y cada reconstrucción lo vuelve más ajeno.
+- Lukas y el jugador se informan con dos grupos de documentos. Los 6 de Emilia están en salas clave secundarias. Los de Vitalis Konzern y The Mother están en salas procedurales y dan contexto.
+- Algunos documentos están corruptos, sobre todo los de la memoria de Lukas. El tono y la redacción están en [[04 - Diálogos y Narrativa]].
+- En la sala clave final del piso 2, Lukas encuentra la foto familiar de la casa con la cara de Emilia borrosa. El laboratorio la tomó de su memoria, y nunca se explica.
+- Si Lukas muere 5 veces seguidas desde el último reinicio del contador, el laboratorio termina de asimilarlo. Es el final Asimilación, y Lukas se vuelve uno de los enemigos comunes.
+- En el piso 3, Lukas enfrenta a The Mother en la central de megafonía. Al caer, ella revela que existe algo más, pero no puede explicar qué es la criatura.
 
-- **Secuencia común de victoria (D-51, D-55):** cae The Mother; solo con los 6 documentos de Emilia, los documentos se completan y Lukas recupera primero el nombre de Emilia y después el suyo; **Despertar**: el latido del laboratorio se acelera.
-- **Desenlace según la decisión final (D-51, D-61; M-19):**
-    - **Relevo básico** (sin los 6 documentos de Emilia): Lukas examina la terminal central de forma automática; algo ocurre y reemplaza a The Mother, porque el terminal del brazo lo conecta y es el último con identidad. No recuerda ningún nombre.
-    - **Relevo completo** (con los 6 documentos, examinar la terminal): Lukas reemplaza a The Mother sabiendo más; incluye el expediente R-H-01 a R-H-06 "estado desconocido" y Lukas oye y entiende el segundo acto.
-    - **Ambiguo** (con los 6 documentos, irse): el latido de Lukas y el del laboratorio se sincronizan. No se sabe si Lukas fue asimilado, si se convirtió en The Mother o si ocurrió otra cosa.
-- **Gancho abierto (D-51):** al final solo se escucha una nueva llegada y el sonido de The Mother iniciando el protocolo. El ciclo continúa; Vitalis no interviene.
-- **Ningún final ofrece salvación** (D-44). El destino de Emilia queda indefinido para la post-demo; nunca se afirma que esté bien (D-49).
-- **Intención post-demo (D-51):** en la continuación el protagonista cambia y, si hubo Relevo, Lukas es el antagonista. Estado del mundo exterior tras la demo: **Por definir** (post-demo).
+### 3.3 Después del juego
 
-## Lugares
+- La secuencia de victoria y los tres desenlaces, Relevo básico, Relevo completo y Ambiguo, están en [[01 - Premisa y Trama]].
+- **Gancho abierto.** Al final solo se oye una nueva llegada y el sonido de The Mother iniciando el protocolo. El ciclo continúa y Vitalis no interviene.
+- Ningún final ofrece salvación. El destino de Emilia queda indefinido para la post-demo, y nunca se afirma que esté bien.
+- **Intención post-demo.** En la continuación cambia el protagonista. Si hubo Relevo, Lukas es el antagonista. El estado del mundo exterior tras la demo queda fuera del alcance.
 
-La instalación se recorre como un descenso hacia el núcleo del laboratorio (D-46). La estructura de pisos y salas se define en M-15 de [[02 - Mecánicas]]; esta tabla documenta su lectura en el mundo. Estética general: cruda e industrial (D-59).
+## 4. Lugares
+
+La instalación se recorre como un descenso hacia el núcleo del laboratorio, con estética cruda e industrial. La estructura de pisos y salas está en Exploración vertical por pisos, en [[02 - Mecánicas]]. Esta tabla documenta su lectura en el mundo.
 
 | Lugar | Descripción | Función jugable | Importancia narrativa |
-|---|---|---|---|
-| Casa de Lukas | Casa sencilla y descuidada en Sektor V-7. Contiene la foto familiar de Lukas y Emilia (D-53) | Solo cinemática de la introducción | Única escena exterior; establece la soledad de Lukas y la foto que reaparece en el piso 2 (D-56) |
-| Laboratorio de Vitalis Konzern (instalación) | Instalación subterránea de biotecnología y salud en Sektor V-7, sellada y dada de baja tras el incidente. Estética retrofuturista de los 90, cruda e industrial, con tecnología de ~2080. Es el cuerpo de la criatura y tiene su propio latido (D-46, D-59) | Escenario completo de la demo: 3 pisos de ~10–15 salas cada uno (valores iniciales, sujetos a balance; D-33, M-15) | Une el horror corporativo (Vitalis) con el horror cósmico (la criatura). Se reacomoda en cada intento (generación procedural) |
-| Compuerta y elevador de entrada | Acceso a la instalación sellada (D-53) | Compuerta con un primer hackeo en el teléfono de Lukas y HUD mínimo; el elevador es cinemática (D-63) | El elevador se distorsiona y cae: primera manifestación de la criatura |
-| Piso que no existe | Nivel que no aparece en ningún plano ni botón. Un pasillo único (D-53) | Muerte inicial de la introducción (trigger con temporizador de respaldo). No vuelve a aparecer en el juego jugable | Lugar del señuelo. Solo vuelve en la cinemática de Asimilación, con Lukas como señuelo (D-61) |
-| Piso 1: mantenimiento | Calderas, tuberías y talleres; el terreno de Lukas (D-59). Punto de reaparición tras cada reconstrucción (M-16) | Tutorial integrado en las primeras salas del primer intento (D-38) y aprendizaje del ciclo; autoguardado en su sala clave final (D-30) | Acto 1: el primer despertar como R-H-07 ([[01 - Premisa y Trama]]) |
-| Piso 2: clínica ilegal | Clínica de experimentos inhumanos improvisada en espacios industriales (D-59) | Mayor presión de enemigos (D-37); llegar a su sala clave final reinicia el contador de 5 muertes (D-35, M-18) y autoguarda (D-30) | Acto 2: Vitalis Konzern, el incidente, Emilia y los registros R-H; la foto imposible en la sala clave final (D-56) |
-| Piso 3: núcleo | Maquinaria de contención de The Mother (D-59) | Máxima presión de enemigos (D-37); en lugar de sala clave final contiene la sala de The Mother (M-15) | Acto 3: la verdad sobre reconstrucción y asimilación |
-| Sala de reconstrucción | En el piso 1: una fila de 7 o más cápsulas; algunas con restos, otras vacías. Lukas cae de la suya con sonido de maquinaria en cada reconstrucción (D-39, D-59) | Punto de reaparición al inicio del ciclo (M-16); cinemática completa (una vez) y corta (cada muerte) | Materializa la regla "The Mother reconstruye" y muestra que Lukas no es el primero (D-48); cada salida de la cápsula añade una pieza ajena (D-43) |
-| Salas procedurales | Salas generadas en cada intento (8–12 por piso en la configuración completa; valor inicial, sujeto a balance; D-33, D-34). Son el laboratorio reacomodándose (D-46) | Exploración, amenazas y recursos; ~1 de cada 3 con cámara (D-25) | Contienen los documentos de Vitalis Konzern y de The Mother como contexto del mundo (D-52) |
-| Salas clave secundarias | Salas fijas cuya posición cambia por intento (2–3 por piso; D-33) | Documentos, llaves y, a veces, el interruptor de energía de la sala final (M-08, D-72); todas con cámara (D-25). Si su documento de Emilia ya está registrado, contienen 1 recurso extra (D-58, D-79) | Contienen los 6 documentos de Emilia, 2 por piso, también en el showcase (D-52) |
-| Salas clave finales (pisos 1 y 2) | Salas fijas con la escalera o el elevador hacia el piso siguiente (D-33) | Avance de piso con la llave obligatoria (D-36), autoguardado (D-30) y transición de piso (D-39) | Marcan cada etapa del descenso hacia el núcleo |
-| Sala de The Mother: central de megafonía | Al final del piso 3, en el lugar de la sala clave final (D-16, M-15). La central desde donde se emitió el latido: bobinas de cinta, mesas de mezcla y altavoces industriales del tamaño de una pared. Sin carne: es solo máquina. The Mother es un archivo de muestras criogénicas en una grúa (D-65). Contiene la terminal central (consola de emisión) y la salida (D-51, D-59) | Jefe final de 3 fases en una sola sala grande que se transforma: nodos en las mesas de mezcla vigilados por el brazo recolector (fase 1), cámaras hostiles que liberan asimilados y niebla criogénica (fase 2), transformadores expuestos al abrirse el núcleo criogénico (fase 3) (D-65). Sin autoguardado (M-19). Tras la fase 3, decisión final con la terminal central y la salida (`E`) | Lugar del incidente, de la revelación, del Despertar y de los finales de victoria (D-51, D-57) |
-| Exterior (mundo corporativo) | Distopía de megacorporaciones en Sektor V-7. Otras instalaciones de Vitalis: **Por definir** | Solo la casa de la introducción | Contexto: la instalación donde trabaja Lukas y los servidores de Vitalis que reciben los reportes que nadie lee |
+| --- | --- | --- | --- |
+| Casa de Lukas | Casa sencilla y descuidada en Sektor V-7, con la foto familiar de Lukas y Emilia | Solo cinemática de la introducción | Única escena exterior. Muestra la soledad de Lukas y la foto que reaparece en el piso 2 |
+| Laboratorio de Vitalis Konzern | Instalación subterránea de biotecnología y salud en Sektor V-7, sellada y dada de baja. Retrofuturista de los 90, cruda e industrial, con tecnología de ~2080. Es el cuerpo de la criatura y tiene su propio latido | Escenario completo de la demo, con 3 pisos de ~10 a 15 salas cada uno | Une el horror corporativo de Vitalis con el horror cósmico de la criatura. Se reacomoda en cada intento |
+| Compuerta y elevador de entrada | Acceso a la instalación sellada | Primer hackeo en el teléfono de Lukas con HUD mínimo. El elevador es cinemática | El elevador se distorsiona y cae. Es la primera manifestación de la criatura |
+| Piso que no existe | Nivel que no aparece en ningún plano ni botón. Es un pasillo único | Muerte inicial, con trigger y temporizador de respaldo. No vuelve en el juego jugable | Lugar del señuelo. Solo vuelve en la cinemática de Asimilación, con Lukas como señuelo |
+| Piso 1, mantenimiento | Calderas, tuberías y talleres, el terreno de Lukas. Punto de reaparición tras cada reconstrucción | Tutorial en las primeras salas del primer intento y aprendizaje del ciclo. Autoguardado en su sala clave final | Acto 1, el primer despertar como R-H-07 |
+| Piso 2, clínica ilegal | Clínica de experimentos inhumanos improvisada en espacios industriales | Más presión de enemigos. Su sala clave final reinicia el contador de 5 muertes y autoguarda | Acto 2, con Vitalis Konzern, el incidente, Emilia, los registros R-H y la foto imposible |
+| Piso 3, núcleo | Maquinaria de contención de The Mother | Máxima presión de enemigos. En lugar de sala clave final tiene la sala de The Mother | Acto 3, la verdad sobre reconstrucción y asimilación |
+| Sala de reconstrucción | En el piso 1, una fila de 7 o más cápsulas, algunas con restos y otras vacías. Lukas cae de la suya con sonido de maquinaria en cada reconstrucción | Punto de reaparición del piso 1. Escenario de la cinemática completa, una vez, y de la corta, en cada muerte | Materializa la regla de The Mother y muestra que Lukas no es el primero. Cada salida de la cápsula suma una pieza ajena |
+| Salas procedurales | Salas generadas en cada intento, 8 a 12 por piso en la configuración completa. Son el laboratorio reacomodándose | Exploración, amenazas y recursos. ~1 de cada 3 tiene cámara | Contienen los documentos de Vitalis Konzern y de The Mother |
+| Salas clave secundarias | Salas fijas cuya posición cambia en cada intento, 2 a 3 por piso | Documentos, llaves y, a veces, el interruptor de energía de la sala final. Todas tienen cámara. Si su documento de Emilia ya está registrado, contienen 1 recurso extra | Contienen los 6 documentos de Emilia, 2 por piso, también en el showcase |
+| Salas clave finales, pisos 1 y 2 | Salas fijas con la escalera o el elevador al piso siguiente | Avance de piso con la llave obligatoria, autoguardado y transición de piso | Marcan cada etapa del descenso hacia el núcleo |
+| Sala de The Mother, central de megafonía | Al final del piso 3, en el lugar de la sala clave final. Bobinas de cinta, mesas de mezcla y altavoces industriales del tamaño de una pared. Es solo máquina, sin carne. Tiene la terminal central, que es la consola de emisión, y la salida | Jefe final de 3 fases en una sola sala que se transforma. Sin autoguardado. Tras la fase 3, decisión final con `E` | Lugar del incidente, la revelación, el Despertar y los finales de victoria |
+| Exterior, mundo corporativo | Distopía de megacorporaciones en Sektor V-7. Las otras instalaciones de Vitalis son post-demo | Solo la introducción, con la casa y la llegada a la compuerta | Contexto de la instalación donde trabaja Lukas y de los servidores que reciben los reportes que nadie lee |
 
-## Facciones
+![Fila de cápsulas del piso 1 con la bandeja de efectos personales|520](../Media/Capturas/FilaCapsulas.png)
+
+## 5. Facciones
 
 | Facción | Objetivo | Relación con el jugador |
-|---|---|---|
-| Vitalis Konzern | Corporación de biotecnología y salud. Explotaba en el laboratorio algo que no entendía, lo vendía como medicina de regeneración y realizaba experimentos ilegales e inhumanos; tras el incidente selló la instalación y la dio de baja (D-46, D-59) | Indiferente y burocrática: no interviene directamente. Es la empleadora de Lukas (técnico de mantenimiento) y la que despidió a Emilia después del incidente (D-57). Se conoce por documentos de tono clínico y corporativo, propaganda con humor negro y fragmentos en alemán sin traducir (D-52, D-58, D-62), y por los reportes automáticos de The Mother |
-| Kessler Sicherheit AG | Corporación de seguridad privada aliada de Vitalis Konzern. Su división de seguridad interna, el **Werkschutz**, tenía el contrato exclusivo de Sektor V-7: vigilaba sin preguntar qué había dentro (D-75) | Cómplice silenciosa. Sus guardias estaban de servicio durante el incidente y hoy son asimilados (D-77). Vitalis no escatimaba en proteger sus experimentos: el revólver de servicio de Kessler, de gama alta, es la única arma de Lukas (D-74). Se conoce por partes de guardia (D-79), por el logotipo "KESSLER WERKSCHUTZ" y por su equipo de contención, como el punzón de descarga (D-71) |
-| The Mother | IA médica de Vitalis creada para contener y estudiar a la criatura. Su protocolo corrupto de preservación del personal la lleva a reconstruir a todo aquel que conserva identidad (D-47) | Antagonista y jefe final (D-16; M-19). Reconstruye a Lukas tras cada muerte sin entender que alimenta la asimilación; lo trata como un sujeto (código R-H) y vigila con las cámaras (M-02). Su forma física es un archivo de muestras criogénicas en una grúa, cuyo brazo recolector puede agarrar y matar a Lukas (D-65). Al caer no puede explicar qué es la criatura. Ficha en [[03 - Personajes]] |
-| El laboratorio (la criatura lovecraftiana) | Incognoscible; no se le atribuye un objetivo comprensible (D-44). Asimila a quien pierde su identidad (D-47) | Amenaza total e indiferente: es el escenario, se reacomoda en cada intento y su latido, que es un texto, acompaña al jugador (D-46, D-57). Sus enemigos comunes son personas asimiladas (D-48). Si Lukas muere 5 veces consecutivas, lo asimila (final "Asimilación", D-42) |
-| Personas asimiladas (enemigos comunes) | Sin objetivo propio: han perdido su identidad (D-48) | Enemigos comunes grotescos de 4 tipos: el Alto, la Boca, el Rastrero y el Mudo (D-60). Personal de Vitalis y sujetos de prueba que llegaron antes. Lukas no es el primero ni es especial. Se documentan en el bestiario como informes clínicos de The Mother (D-48, M-16). No hay NPC con diálogo (ver [[03 - Personajes]]) |
+| --- | --- | --- |
+| Vitalis Konzern | Corporación de biotecnología y salud. Explotaba algo que no entendía, lo vendía como medicina de regeneración y hacía experimentos ilegales e inhumanos. Tras el incidente selló la instalación y la dio de baja | Indiferente y burocrática, sin intervención directa. Emplea a Lukas como técnico y despidió a Emilia tras el incidente. Se conoce por documentos clínicos y corporativos, propaganda con humor negro, fragmentos en alemán sin traducir y los reportes automáticos de The Mother |
+| Kessler Sicherheit AG | Corporación de seguridad privada aliada de Vitalis. Su división de seguridad interna, el Werkschutz, tenía el contrato exclusivo de Sektor V-7 y vigilaba sin preguntar qué había dentro | Cómplice silenciosa. Sus guardias estaban de servicio en el incidente y hoy son asimilados. Su revólver de servicio, de gama alta, es la única arma de Lukas. Se conoce por partes de guardia, el logotipo `KESSLER WERKSCHUTZ` y su equipo de contención, como el punzón de descarga |
+| The Mother | IA médica de Vitalis creada para contener y estudiar a la criatura. Su protocolo corrupto de preservación la lleva a reconstruir a todo el que conserva identidad | Antagonista y jefe final. Reconstruye a Lukas sin entender que alimenta la asimilación, lo trata como sujeto R-H y vigila con las cámaras. Su forma es un archivo criogénico en una grúa, cuyo brazo puede agarrar y matar a Lukas. Ficha en [[03 - Personajes]] |
+| El laboratorio, la criatura lovecraftiana | Incognoscible, sin objetivo comprensible. Asimila a quien pierde su identidad | Amenaza total e indiferente. Es el escenario, se reacomoda en cada intento y su latido acompaña al jugador. Si Lukas muere 5 veces seguidas, lo asimila |
+| Personas asimiladas | Sin objetivo propio, porque perdieron su identidad | Son los 4 tipos de enemigos comunes: el Alto, la Boca, el Rastrero y el Mudo. Personal de Vitalis y sujetos de prueba que llegaron antes. El bestiario los registra como informes clínicos de The Mother. No hay NPC con diálogo |
 
-## Coherencia del mundo
+## 6. Coherencia del mundo
 
-Lista reglas que no deben romperse sin una razón narrativa o de diseño.
-
-1. **Qué es la criatura nunca se explica;** ni The Mother puede explicarlo (D-16, D-44, D-47). Los documentos pueden describir sus efectos, no su naturaleza. Qué dice el latido tampoco se explica; el jugador nunca lee el segundo acto (D-57, D-61).
-2. **The Mother reconstruye; el laboratorio asimila. Nunca se invierten** (D-47). The Mother no asimila y el laboratorio no reconstruye.
-3. **Solo se reconstruye a quien conserva identidad** (D-47). El reciclaje de un enemigo ocurre una sola vez: el laboratorio consume su último rastro de identidad (M-20, D-99).
-4. **La corrupción de documentos nunca oculta información necesaria para avanzar** (rutas, reglas); solo se corrompe el contenido narrativo, y solo se completa en el desenlace si Lukas reunió los 6 documentos de Emilia (D-45, D-55, M-08).
-5. **La degradación y la Asimilación son solo presentación y nunca ocultan señales** (D-29, D-43). El cuerpo ajeno, la distorsión del sonido vocal y el latido del laboratorio respetan el tope de D-29 (M-10, M-18).
-6. **Vitalis Konzern no interviene directamente;** su presencia es indiferente y burocrática (D-46): documentos, reportes automáticos e informes clínicos, nunca rescates, equipos ni contacto en vivo.
-7. **El destino de Emilia no se confirma en la demo** (D-49). No fue asimilada; ningún texto afirma que esté viva, muerta o bien.
-8. **El laboratorio no es un virus ni un arma biológica** (D-46). Vitalis explotaba algo que no entendía y lo vendía como medicina de regeneración; los documentos de Vitalis pueden mostrar esa versión comercial, nunca una comprensión real de la criatura.
-9. **La generación procedural es el laboratorio reacomodándose** (D-46); las reglas de M-15 (salas clave, ruta válida por piso) se mantienen.
-10. **Lukas no es el primero ni es especial** (D-48). Su único rasgo distintivo para el sistema es conservar identidad; para él, el anillo (D-44, D-54).
-11. **Ningún final ofrece salvación** (D-44, D-51). Los hallazgos de Lukas provocan obstinación, no esperanza (D-56).
-12. **Estética y tecnología:** retrofuturismo de los 90 con tecnología de ~2080, crudo e industrial (D-46, D-59). Se usa "Vitalis Konzern" como único nombre de la empresa.
-13. **The Mother no es la criatura** (D-47, D-59). Su sala y su forma son solo máquina, sin carne.
-14. **El alemán nunca se traduce** (D-58) y nunca contiene información necesaria.
-15. **El piso que no existe aparece solo en la introducción y en la cinemática de Asimilación** (D-53, D-61).
-16. **El latido de fondo es el primer acto y no asimila** (D-64). El segundo acto solo suena completo en el incidente y en el Relevo completo. Ningún enemigo emite el latido.
+1. **Nunca se explica qué es la criatura.** Ni The Mother puede hacerlo. Los documentos describen sus efectos, no su naturaleza. Tampoco se explica qué dice el latido, y el jugador nunca lee el segundo acto.
+2. **The Mother reconstruye y el laboratorio asimila, nunca al revés.** The Mother no asimila y el laboratorio no reconstruye.
+3. **Solo se reconstruye a quien conserva identidad.** El reciclaje de un enemigo ocurre una sola vez, porque el laboratorio consume su último rastro de identidad.
+4. **La corrupción nunca oculta información necesaria para avanzar.** Rutas y reglas quedan legibles y solo se corrompe el contenido narrativo. Se completa en el desenlace solo con los 6 documentos de Emilia.
+5. **La degradación y la Asimilación nunca ocultan señales.** Son solo presentación. El cuerpo ajeno, la distorsión del sonido vocal y el latido del laboratorio respetan el tope visual de [[02 - Mecánicas]].
+6. **Vitalis Konzern no interviene directamente.** Su presencia es indiferente y burocrática, con documentos, reportes e informes clínicos. Nunca hay rescates, equipos ni contacto en vivo.
+7. **El destino de Emilia no se confirma en la demo.** No fue asimilada. Ningún texto afirma que esté viva, muerta o bien.
+8. **El laboratorio no es un virus ni un arma biológica.** Los documentos de Vitalis pueden mostrar la versión comercial, pero nunca una comprensión real de la criatura.
+9. **La generación procedural es el laboratorio reacomodándose.** Las reglas de salas clave y ruta válida por piso se mantienen.
+10. **Lukas no es el primero ni es especial.** Para el sistema, su único rasgo es conservar identidad. Para él, es el anillo.
+11. **Ningún final ofrece salvación.** Los hallazgos de Lukas provocan obstinación, no esperanza.
+12. **Estética y tecnología.** Retrofuturismo de los 90 con tecnología de ~2080, crudo e industrial. La empresa se llama siempre Vitalis Konzern.
+13. **The Mother no es la criatura.** Su sala y su forma son solo máquina, sin carne.
+14. **El alemán nunca se traduce** y nunca lleva información necesaria.
+15. **El piso que no existe aparece solo en la introducción y en la cinemática de Asimilación.**
+16. **El latido de fondo es el primer acto y no asimila.** El segundo acto solo suena completo en el incidente y en el Relevo completo. Ningún enemigo emite el latido.
 
 > **Navegación:** [[00 - Índice]] · ← [[01 - Premisa y Trama]] · [[03 - Personajes]] →

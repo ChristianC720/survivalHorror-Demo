@@ -1,93 +1,103 @@
 # UX y Flujo del Jugador
 
-## Descripción de la sección
+## 1. Descripción de la sección
 
 UX (experiencia de usuario) describe qué tan comprensible, cómoda y coherente resulta la interacción con el videojuego.
 
-Estados y transiciones completos en [[07 - Reglas y Estados del Juego]]; interfaz en [[04 - Interfaz Visual]].
+Los estados y las transiciones completos están en [[07 - Reglas y Estados del Juego]] y la interfaz en [[04 - Interfaz Visual]]. Los valores numéricos de este documento son iniciales y están sujetos a balance.
 
-## Flujo principal
+## 2. Flujo principal
 
 ```text
-Primer inicio: calibración de brillo (D-106)
-Título (negro, logotipo y latido) → Menú principal (terminal de la sala de cápsulas, D-90)
-  → Nueva partida (ranura y modo, D-103, D-105) → Introducción → Reconstrucción completa
+Primer inicio: calibración de brillo
+Título (negro, logotipo y latido) → Menú principal (terminal de la sala de cápsulas)
+  → Nueva partida (ranura y modo) → Introducción → Reconstrucción completa
   → Piso 1 (tutorial, primer intento) → Piso 2 → Piso 3 → Sala de The Mother → Final → Créditos
-  → Continuar: ciclo nuevo con el terminal conservado (D-93)
+  → Continuar: ciclo nuevo con el terminal conservado
 
 Durante el recorrido:
   Pausa ⇄ Juego
-  Muerte → Reconstrucción corta → Piso 1 (semilla nueva, D-101)
-  5.ª muerte → Final: Asimilación
+  Muerte → Reconstrucción corta → Inicio del piso actual (semilla nueva)
+  Quinta muerte consecutiva → Final: Asimilación
 ```
 
-## Primeros minutos
+## 3. Primeros minutos
 
 | Momento | Qué descubre el jugador | Cómo |
 |---|---|---|
-| Primer inicio | Que el juego es oscuro y necesita ver los negros | Calibración de brillo (D-106) |
-| Casa (cinemática) | Lukas, la foto y la nota de voz de Emilia; un latido de fondo que no sabe explicar | Cinemática con subtítulos (D-53, D-95) |
-| Compuerta | Moverse, mirar, interactuar y hackear | HUD mínimo; hackeo en el teléfono (D-63) |
-| Piso que no existe | Que algo está mal; muerte inevitable | Pasillo único y muerte guionizada (D-53) |
-| Reconstrucción completa | Que Lukas olvidó y vuelve como R-H-07 | Cinemática (D-39, D-45) |
-| Fila de cápsulas | Terminal, anillo, bandeja; único lugar seguro | Carteles de Vitalis (D-89); el anillo en el suelo (D-54) |
-| Depósito a oscuras | Linterna, recoger, inventario, revólver | Carteles; destello bajo la linterna (D-84) |
-| Túnel | Correr y resistencia | Carteles; jadeo |
-| Sala de calderas | Sigilo, empujón, disparo, que la muerte es real | 1 Rastrero real (D-70) |
-| Primera muerte | El ciclo: inventario perdido, terminal conservado, piso distinto | Reconstrucción corta y semilla nueva |
+| Primer inicio | Que el juego es oscuro y necesita ver los negros | Calibración de brillo |
+| Casa, en cinemática | A Lukas, la foto y la nota de voz de Emilia, con un latido de fondo que no sabe explicar | Cinemática con subtítulos |
+| Compuerta | Moverse, mirar, interactuar y hackear | HUD mínimo y hackeo en el teléfono |
+| Piso que no existe | Que algo está mal y que la muerte es inevitable | Pasillo único y muerte guionizada |
+| Reconstrucción completa | Que Lukas olvidó y vuelve como R-H-07 | Cinemática |
+| Fila de cápsulas | El terminal, el anillo, la bandeja y el único lugar seguro | Línea guía con la tecla del terminal, carteles de Vitalis y el anillo en el suelo |
+| Depósito a oscuras | Linterna, recoger, inventario y revólver | Línea guía para encender la linterna y recoger, carteles y destello bajo la linterna |
+| Túnel | Correr y resistencia | Línea guía para correr, carteles y jadeo |
+| Sala de calderas | Sigilo, apuntado, empujón y disparo | Línea guía para agacharse, apuntar y atacar, frente a 1 Rastrero real que hace daño pero no mata |
+| Primera muerte, ya fuera del tutorial | Que la muerte es real y el ciclo. Pierde lo recogido en el piso, conserva el terminal y encuentra un piso distinto | Reconstrucción corta y semilla nueva |
 
-## Retroalimentación
+El tutorial no mata. En la fila de cápsulas y las 4 salas del tutorial, los golpes y los agarres hacen daño, pero Lukas queda en el borde de Crítico. Cada sala abre su salida cuando el jugador hace las acciones que pide. Si no las hace, la salida se abre sola a los ~120 s.
+
+## 4. Retroalimentación
 
 **Entrada → Respuesta visual → Respuesta sonora → Resultado**
 
 | Acción | Entrada | Respuesta visual | Respuesta sonora | Resultado |
 |---|---|---|---|---|
-| Moverse / correr | `WASD` / `Shift` | Animación y postura según salud | Pasos según superficie; jadeo sin resistencia | Ruido para los enemigos (M-06) |
-| Linterna | `F` | Haz blanco; destellos en recogibles | Clic | Ver a cambio de delatarse (M-12) |
-| Interactuar | `E` | Aviso `E` a ~1.5 m | Sonido del objeto | Recoger, leer, abrir (M-08) |
-| Apuntar y disparar | `Clic derecho` + `Clic izquierdo` | Retícula de punto; contador verde del revólver | Disparo; tambor vacío | Daño; ruido a ~20 m (M-04) |
-| Recargar | `R` | Animación bala a bala | Cartucho por bala | Tambor cargado (M-04) |
-| Empujón | `Clic izquierdo` sin apuntar | Animación de empujón | Golpe | Aleja al enemigo (M-14) |
-| Remate | `Clic izquierdo` / `E` sobre un cuerpo | Golpe en el suelo o punzón (~1.5 s) | Golpe ruidoso / descarga silenciosa | El cuerpo no se recicla (M-20) |
-| Curarse | Inventario | Animación ~1.5 s; postura mejora | Kit médico | +1 estado de salud (M-05) |
-| Recibir daño | — | Vibración de cámara, cambio de postura | Impacto y quejido | Baja un estado de salud (M-05) |
-| Hackear | `E` y secuencia | Secuencia en el terminal; panel verde | Pitido por entrada / error | Abrir, sellar o activar (M-13) |
-| Vigilancia | `Q` | Imagen verde con ruido CRT | Interferencia | Información parcial; atención de The Mother (M-02) |
-| Registrar | Leer o examinar | `REGISTERED` en el terminal | Pitido de registro | Persiste entre muertes (M-16) |
-| Cambiar de piso | `E` en escalera o elevador | Cinemática ≥ 5 s o `LOCKDOWN` en caza | Ascensor / alarma de cierre | Piso siguiente y autoguardado (D-96) |
+| Moverse o correr | `WASD` o `Shift` | Animación y postura según la salud | Pasos según la superficie y jadeo sin resistencia | Ruido para los enemigos |
+| Linterna | `F` | Haz blanco y destellos en los recogibles | Clic | Ver a cambio de delatarse |
+| Interactuar | `E` | Borde teal a 3 m o menos y aviso `E` a ~1,5 m | Sonido del objeto | Recoger, leer o abrir |
+| Apuntar y disparar | `Clic derecho` y `Clic izquierdo` | Retícula de punto que se tiñe sobre un objetivo, marcador de impacto y contador verde del revólver | Disparo o tambor vacío | Daño y ruido a ~20 m |
+| Recargar | `R` | Animación bala a bala | Cartucho por bala | Tambor cargado |
+| Empujón | `Clic izquierdo` sin apuntar | Animación de empujón | Golpe | Aleja al enemigo |
+| Remate | `Clic izquierdo` o `E` sobre un cuerpo | Golpe en el suelo de ~2 s o punzón de ~1,5 s | Golpe ruidoso o descarga silenciosa | El cuerpo no se recicla |
+| Curarse | Inventario | Animación de ~1,5 s y mejora de la postura | Kit médico | Sube un estado de salud |
+| Recibir daño | Ninguna | Destello rojo, vibración de cámara y cambio de postura | Impacto y quejido | Baja un estado de salud |
+| Hackear | `E` y la secuencia | Secuencia en el terminal y panel verde | Pitido por entrada o de error | Abrir, sellar o activar |
+| Vigilancia | `Q` | Imagen verde con ruido CRT | Interferencia | Información parcial y atención de The Mother |
+| Registrar | Leer o examinar | `REGISTERED` en el terminal | Pitido de registro | Persiste entre muertes |
+| Cambiar de piso | `E` en la escalera o el elevador | Cinemática de 5 s o más, o `LOCKDOWN` en caza | Ascensor o alarma de cierre | Piso siguiente y autoguardado |
 
-## Fricción intencional
+Las respuestas inmediatas de cada entrada están en [[04 - Controles]].
 
-**Forma parte del diseño (no se suaviza):**
+## 5. Fricción intencional
 
-- Oscuridad: buscar exige linterna, y la linterna delata (Pilar 1).
-- Inventario de 6 casillas en tiempo real y munición escasa.
-- Recarga bala a bala y dispersión al moverse.
-- Sin mapa; la vigilancia da información parcial y llena la atención de The Mother.
-- Pérdida del inventario al morir, piso nuevo en cada entrada (D-101) y contador de 5 muertes.
-- Cierre de tránsito durante la caza (D-96): no se huye cambiando de piso.
+**Forma parte del diseño y no se suaviza:**
 
-**Es mala experiencia (se evita):**
+- La oscuridad obliga a buscar con la linterna, y la linterna delata. Responde al pilar Vulnerabilidad constante.
+- El inventario de 6 casillas funciona en tiempo real y la munición escasea.
+- La recarga es bala a bala y la dispersión crece al moverse.
+- No hay mapa. La vigilancia da información parcial y llena la atención de The Mother.
+- Al morir se pierde lo recogido en el piso, cada entrada a un piso genera uno nuevo y existe el contador de 5 muertes.
+- El cierre de tránsito durante una caza impide huir cambiando de piso.
 
-- Golpes "invisibles" por la cámara OTS: se compensan con las señales de M-10 y los subtítulos de sonido (D-102).
-- Perder un objeto en la oscuridad sin poder encontrarlo: los recogibles destellan bajo cualquier luz (D-84).
-- No saber por qué se murió: cada ataque tiene animación y sonido de aviso propios.
-- Perder progreso por un cierre inesperado: el terminal se autoguarda en cada cambio (S-07).
-- Saltar sin querer una cinemática: las narrativas se saltan manteniendo `Espacio` (D-91).
-- Confundir la señal degradada con la degradación estética: tope de D-29.
-- Bloquearse sin ruta: la llave obligatoria siempre es alcanzable (D-36).
+**Es mala experiencia y se evita:**
 
-## Descubrimiento
+| Problema | Respuesta |
+|---|---|
+| Golpes invisibles por la cámara sobre el hombro | Las señales diegéticas y los subtítulos de sonido los compensan |
+| Perder un objeto en la oscuridad sin poder encontrarlo | Los recogibles destellan bajo cualquier luz |
+| No saber por qué se murió | Cada ataque tiene animación y sonido de aviso propios |
+| Perder progreso por un cierre inesperado | El terminal se autoguarda en cada cambio. Ver Persistencia en [[03 - Sistemas]] |
+| Saltar sin querer una cinemática | Las narrativas se saltan manteniendo `Espacio` |
+| Confundir la señal degradada con la degradación estética | El tope de la degradación lo impide |
+| Bloquearse sin ruta | La llave obligatoria siempre es alcanzable |
 
-**Qué hacer:** entorno y líneas de protocolo de The Mother (puerta cerrada, `NO POWER`, "Restricted access: level key required.") y contadores de las secundarias en el terminal (D-78).
+## 6. Descubrimiento
 
-**Dónde ir:** sin mapa ni marcadores. La lectura del entorno (señalización de Vitalis, luz de emergencia, puertas) y la vista de vigilancia; la sala final siempre está a ≥ 4 salas (D-100).
+**Qué hacer:** Lo indican el entorno y las líneas de protocolo de The Mother, como una puerta cerrada, `NO POWER` o `Restricted access: level key required.`. Los avisos breves arriba al centro explican cada bloqueo y el objetivo de cada fase del jefe. Los contadores de las secundarias están en el terminal.
 
-**Qué puede interactuar:** destello bajo la luz y aviso `E` a ~1.5 m (D-84); carteles del tutorial (D-89).
+**Dónde ir:** No hay mapa ni marcadores. El jugador lee el entorno, con la señalización de Vitalis, la luz de emergencia y las puertas, y usa la vista de vigilancia. La sala final siempre está a 4 salas o más.
 
-**Qué ocurrió:** registros del terminal (documentos, bestiario, fallas) y señales de M-10; con subtítulos de sonido para quien los active (D-102).
+**Qué puede interactuar:** Los objetos destellan bajo la luz. Los recogibles a 3 m o menos muestran un borde teal, y las puertas y los paneles una luz de estado. El aviso `E` aparece a ~1,5 m. En el tutorial, la línea guía y los carteles enseñan cada acción.
 
-**Por qué ganó o perdió:** la muerte muestra el ataque que la causó; la cinemática corta refleja la degradación; la Asimilación llega tras 5 muertes consecutivas y la degradación acumulada la anticipa; la victoria depende de derrotar a The Mother y el final, de los 6 documentos de Emilia (D-51).
+**Qué ocurrió:** Lo cuentan los registros del terminal, con documentos, bestiario y fallas, y las señales diegéticas. Quien active los subtítulos de sonido también los lee.
 
+**Por qué ganó o perdió:**
+
+- La muerte muestra el ataque que la causó.
+- La cinemática corta refleja la degradación.
+- La Asimilación llega tras 5 muertes consecutivas, y la degradación acumulada la anticipa.
+- La victoria depende de derrotar a The Mother, y el final, de los 6 documentos de Emilia.
 
 > **Navegación:** [[00 - Índice]] · ← [[05 - Audio y Música]] · [[02 - UI y Menús]] →

@@ -1,134 +1,71 @@
 # Público y Plataforma
 
-## Descripción de la sección
+## 1. Descripción de la sección
 
 Define para quién se diseña el videojuego y dónde se jugará. Las decisiones de diseño, interfaz, controles y rendimiento dependen de estas variables.
 
-## Público objetivo
+## 2. Público objetivo
 
-**Edad aproximada:** 20 a 30 años
+**Edad aproximada:** 20 a 30 años.
 
-**Experiencia esperada:**  Intermedia.
+**Experiencia esperada:** Intermedia.
 
-**Intereses relevantes:**
-- Survival Horror.
-- Terror psicológico y ambiental.
-- Exploración.
-- Administración de recursos.
-- Generación procedural.
-- Narrativas de misterio y terror.
-- Juegos donde combatir no siempre es la mejor solución.
-- Experiencias para un solo jugador.
-- Rejugabilidad.
-- Descubrimiento progresivo de la historia y el mundo.
+**Clasificación objetivo:** PEGI 16 y ESRB M. Hay horror corporal con sangre oscura, cuerpos deformados y violencia, sin desmembramiento ni desnudez. A los niños solo se alude a través de objetos.
 
-**Conocimientos previos necesarios:**
-Se busca que el jugador no requiera haber jugado previamente títulos del género.
+**Intereses relevantes:** Survival horror, terror psicológico y ambiental, exploración y administración de recursos. También la generación procedural, las historias de misterio que se descubren poco a poco y los juegos para un jugador con rejugabilidad. Les atraen los juegos en los que pelear no siempre es la mejor salida.
 
-El videojuego deberá enseñar:
+**Conocimientos previos necesarios:** Ninguno. No hace falta haber jugado otros títulos del género. Un tutorial contextual, el diseño del entorno y la respuesta visual y sonora enseñan a moverse, interactuar, usar el inventario y administrar recursos. También enseñan a pelear, evitar amenazas, usar la cámara dinámica y entender qué pasa al morir y reiniciar.
 
-- Movimiento.
-- Interacción con objetos y escenarios.
-- Uso del inventario.
-- Administración de recursos.
-- Combate.
-- Evasión de amenazas.
-- Funcionamiento básico de la cámara dinámica.
-- Reglas asociadas a la muerte y al reinicio de una partida.
+## 3. Plataforma
 
-El jugador deberá poder comprender estas mecánicas mediante un tutorial contextual, diseño del entorno y retroalimentación visual o auditiva.
+| Elemento | Decisión |
+|---|---|
+| Plataforma principal | PC |
+| Plataformas secundarias | Ninguna |
+| Método de entrada | Teclado y mouse como método principal. Mando tipo Xbox con mapa básico fijo |
+| Resolución objetivo | 1920 × 1080 |
+| Relación de aspecto | 16:9 |
+| Rendimiento objetivo | 60 FPS |
+| Conexión requerida | No |
 
-## Plataforma
+## 4. Restricciones de plataforma
 
-| Elemento                | Decisión                                                        |
-| ----------------------- | --------------------------------------------------------------- |
-| Plataforma principal    | PC                                                              |
-| Plataformas secundarias | Ninguna                                                         |
-| Método de entrada       | Teclado y mouse como método principal, con soporte para control |
-| Resolución objetivo     | 1920 × 1080 como objetivo inicial                               |
-| Relación de aspecto     | 16:9 como formato principal                                     |
-| Rendimiento objetivo    | 60 FPS                                                          |
-| Conexión requerida      | No                                                              |
+### 4.1 Hardware
 
-## Restricciones de plataforma
+No todos los jugadores tendrán equipos de gama alta, así que ningún sistema jugable depende de efectos gráficos costosos. Se vigilan la cantidad de enemigos activos, las luces dinámicas, las sombras y las partículas. También la complejidad de modelos y texturas, la generación y carga de salas y el uso de RAM y memoria gráfica. Los requisitos mínimos y recomendados provisionales están en [[03 - Requisitos Técnicos]]. Se confirman con el perfilado de la semana de pruebas del [[03 - Roadmap]].
 
-### Hardware:
+### 4.2 Controles
 
-El videojuego deberá diseñarse considerando que no todos los usuarios dispondrán de hardware de gama alta y se buscará evitar que los principales sistemas jugables dependan de características gráficas excesivamente costosas.
+Teclado y mouse tienen prioridad, y ninguna acción principal exige combinaciones complejas. El esquema cubre movimiento, cámara, interacción, ataque, apuntado, empujón o golpe de culata, inventario, uso de objetos y pausa. La demo incluye un mapa fijo de mando tipo Xbox. Su reasignación queda para después de la demo.
 
-Deberán considerarse especialmente:
-- Cantidad de enemigos activos simultáneamente.
-- Complejidad de iluminación y sombras.
-- Cantidad de luces dinámicas.
-- Partículas y efectos visuales.
-- Complejidad de modelos 3D.
-- Resolución de texturas.
-- Generación procedural de habitaciones.
-- Carga y descarga de escenarios.
-- Uso de memoria RAM y memoria gráfica.
+### 4.3 Memoria y generación procedural
 
-Los requisitos mínimos y recomendados de hardware se definirán cuando exista una versión estable para realizar pruebas de rendimiento.
+La generación procedural no carga lo que el jugador no necesita. Salas, enemigos y recursos se activan o desactivan según la posición de Lukas.
 
-### Controles:
+### 4.4 Almacenamiento
 
-El diseño deberá priorizar teclado y mouse, considerando el soporte completo para control que se implementará posteriormente.
-Las acciones principales deberán poder realizarse sin combinaciones excesivamente complejas, y los controles deberán contemplar como mínimo:
+El objetivo es una build de 2 GB como máximo, con 3 GB libres para instalarla ([[03 - Requisitos Técnicos]]). El tamaño final depende sobre todo de modelos, texturas, audio, animaciones, cinemáticas y variantes de salas.
 
-- Movimiento.
-- Control de cámara cuando corresponda.
-- Interacción.
-- Ataque.
-- Apuntar, si la mecánica lo requiere.
-- Realizar acciones defensivas (empujón / golpe de culata).
-- Acceso al inventario.
-- Uso de objetos.
-- Pausa.
+### 4.5 Conectividad
 
-### Memoria y generación procedural:
+El juego no requiere conexión a Internet.
 
-La generación procedural deberá evitar cargar simultáneamente contenido que el jugador no necesita.
+## 5. Sesión de juego
 
-Siempre que la implementación lo permita, los escenarios deberán organizarse de forma que habitaciones, enemigos y recursos puedan activarse o desactivarse dependiendo de la posición del jugador.
+**Duración esperada de una sesión:** ~10 minutos como mínimo, con el tutorial incluido. El autoguardado de la sala clave final de los pisos 1 y 2 permite cerrar el juego y seguir después.
 
-### Almacenamiento:
+**Duración total estimada del juego:** ~45 a 60 minutos en la configuración completa de 3 pisos. La configuración showcase para eventos dura ~30 minutos, con menos salas por piso y enemigos y recursos escalados en proporción. Las tres duraciones son valores iniciales sujetos a balance. El detalle de ambas configuraciones está en [[02 - Mecánicas]].
 
-**Por definir.**
+## 6. Modelo de distribución
 
-El tamaño final dependerá principalmente de:
+Prototipo académico y demo jugable gratuita. Su propósito es demostrar los sistemas, mecánicas y decisiones de diseño principales. No tiene venta, compras dentro del juego ni anuncios. No hay modelo comercial definido para una posible versión final.
 
-- Modelos 3D.
-- Texturas.
-- Audio.
-- Animaciones.
-- Cinemáticas, si existen.
-- Cantidad de escenarios y variantes.
-
-### Conectividad:
-
-No se requerirá conexión permanente a Internet para jugar.
-
-## Sesión de juego
-
-**Duración esperada de una sesión:** ~10 minutos como mínimo por sesión, con tutorial incluido (valor inicial, sujeto a balance). El autoguardado de la sala clave final de los pisos 1 y 2 permite cerrar el juego y continuar después (D-30).
-
-**Duración total estimada del juego:** ~45–60 minutos en la configuración completa (3 pisos; D-33, D-34) (valor inicial, sujeto a balance).
-
-**Duración en la configuración de showcase:** ~30 minutos, con menos salas por piso y enemigos y recursos escalados en proporción, para eventos de presentación (D-34) (valor inicial, sujeto a balance). El detalle de ambas configuraciones se documenta en [[02 - Mecánicas]] (M-15).
-
-## Modelo de distribución
-
-Prototipo académico / Demo jugable.
-
-La versión desarrollada inicialmente tiene como propósito demostrar los principales sistemas, mecánicas y decisiones de diseño del videojuego.
-
-Actualmente no se ha definido un modelo comercial para una hipotética versión final.
-## Consideraciones
+## 7. Consideraciones
 
 - [x] Controles adaptados a la plataforma
 - [ ] Interfaz legible
 - [x] Rendimiento considerado
 - [x] Resoluciones consideradas
 - [x] Guardado compatible
-
 
 > **Navegación:** [[00 - Índice]] · ← [[02 - Visión del Juego]] · [[04 - Pilares de Diseño]] →

@@ -1,89 +1,74 @@
 # Visión del Juego
 
-## Descripción de la sección
+## 1. Descripción de la sección
 
 Aquí se define la **idea central** del videojuego. Esta sección funciona como brújula: cuando aparezca una nueva idea, el equipo puede comprobar si realmente pertenece al juego.
 
-## Concepto central
+## 2. Concepto central
 
-**El videojuego trata sobre:**
+**El videojuego trata sobre:** sobrevivir sin información completa. Lukas recorre una instalación sellada donde los recursos escasean y enfrentar una amenaza no siempre conviene. Para avanzar explora, administra un inventario corto, decide cuándo pelear y cuándo esquivar, y se adapta a salas que cambian después de cada muerte. La muerte, la generación procedural y el cambio de cámara forman parte de la jugabilidad y también de la narrativa.
 
-Identity Dissolution (nombre clave Heartbeat, D-41) es una experiencia de Survival Horror centrada en la supervivencia, la incertidumbre y las decisiones bajo presión, el jugador explora un entorno peligroso en el que la información es limitada, los recursos son escasos y enfrentarse directamente a las amenazas no siempre representa la mejor opción.
- Para avanzar, debe explorar, administrar recursos limitados, decidir cuándo combatir o evitar enfrentamientos y adaptarse a escenarios que cambian después de cada muerte. Combinando elementos de Survival Horror y Roguelite, utilizando la muerte, la generación procedural y el cambio dinámico de cámara como parte de la jugabilidad y de la narrativa.
+**Tema central:** buscar sentido dentro de algo que no puede darlo. Lukas intenta encontrar y recordar a quien ama, pero el lugar le frena cada avance.
 
-**Tema central (D-44):** *Identity Dissolution trata sobre buscar sentido dentro de algo que no puede darlo. Lukas lucha por encontrar y recordar a quien ama, pero se encuentra enfrentando las amenazas de un lugar que le frena cada avance.*
+**Postura:** nihilismo frente al horror cósmico, con lo incognoscible, la indiferencia y la insignificancia como ejes. El laboratorio de Vitalis Konzern está ligado a una criatura lovecraftiana que nunca se explica. Ni siquiera The Mother sabe qué es. El anillo es el ancla del personaje y no del universo. El jugador avanza por el misterio y el descubrimiento, no por la esperanza, y ningún final ofrece salvación. Ver [[01 - Premisa y Trama]] y [[02 - Mundo]].
 
-**Postura:** nihilismo puro frente al horror cósmico: lo incognoscible, la indiferencia y la insignificancia. El laboratorio de Vitalis Konzern tiene relación con la criatura lovecraftiana (D-46) y nunca se explica qué es, ni siquiera The Mother puede explicarlo (D-16, D-47). El anillo es el ancla del personaje, no del universo. La motivación del jugador proviene del misterio y del descubrimiento, no de la esperanza, y ningún final ofrece salvación (D-51). Ver [[01 - Premisa y Trama]] y [[02 - Mundo]].
+## 3. Experiencia deseada
 
-## Experiencia deseada
+- **Quiero que el jugador se sienta:** vulnerable, intranquilo y amenazado en todo momento por el ambiente y las criaturas.
+- **Quiero que el jugador piense:** qué objetos guardar, hacia dónde explorar y cuándo pelear o evitar un encuentro.
+- **Quiero que el jugador haga:** explorar salas desconocidas, administrar seis casillas, buscar recursos, leer el entorno y adaptarse a los cambios entre intentos.
+- **Quiero que el jugador recuerde:** la incertidumbre de cada recorrido, los encuentros inesperados, las decisiones forzadas por la escasez y el vínculo entre morir y el cambio del escenario.
 
-- **Quiero que el jugador se sienta:** Quiero que se sienta vulnerable, intranquilo, limitado y constantemente amenazado por el ambiente y las criaturas que lo rodean.
-- **Quiero que el jugador piense:** Quiero que piense en cómo utilizar sus recursos, qué objetos conservar, hacia donde explorar, cuándo combatir y cuándo evitar un enfrentamiento.
-- **Quiero que el jugador haga:** Quiero que el jugador explore escenarios desconocidos, administre un inventario limitado, encuentre recursos, se enfrente o escape de sus enemigos, interprete el entorno y se adapte a los cambios entre partidas.
-- **Quiero que el jugador recuerde:** Quiero que recuerde la sensación de incertidumbre de cada recorrido, los encuentros más inesperados con los enemigos, las decisiones difíciles provocadas por la escasez de recursos, la relación entre la muerte del personaje y los cambios del escenario.
+## 4. Fantasía del jugador
 
-## Fantasía del jugador
+El jugador es Lukas, técnico de mantenimiento de Vitalis Konzern. Entra con su acceso de técnico a una instalación sellada, siguiendo un mensaje de Emilia, su esposa desaparecida. En la primera reconstrucción la olvida. Sabe que busca algo o a alguien y le frustra no recordar a quién. Solo conserva un anillo que encontró en el suelo y que sabe importante.
 
-Le estamos permitiendo convertirse en un hombre que busca la última pista que le dejó su esposa desaparecida y que, atrapado en un ciclo sin fin dentro de un entorno hostil que no termina de comprender del todo, y al mismo tiempo representa una amenaza constante, debe sobrevivir y encontrar la forma de salir.
+El jugador y Lukas reconstruyen juntos la verdad con documentos, algunos corruptos. Cada reconstrucción deja a Lukas un poco más asimilado por el laboratorio. La fantasía no es salvarse. Es seguir buscando dentro de un ciclo y de un lugar hostil que nunca termina de entender.
 
-El jugador es Lukas, técnico de mantenimiento de Vitalis Konzern, que entra con su acceso de técnico a una instalación sellada siguiendo un mensaje de Emilia (D-50, D-53). En la primera reconstrucción la olvida (D-45): sabe que busca algo o a alguien, se frustra por no recordar a quién y solo tiene un anillo que encontró en el suelo y sabe importante (D-54). El jugador y Lukas reconstruyen juntos la verdad con documentos, algunos corruptos, mientras cada reconstrucción lo deja un poco más asimilado por el laboratorio (D-43). La fantasía no es salvarse, sino seguir buscando dentro de algo que no puede dar sentido (D-44).
+| Lukas civil, en la introducción | Lukas como R-H-07, tras la reconstrucción |
+| --- | --- |
+| ![Lukas civil|300](../Media/Referencia/Lukas-Reiner-Hellen.jpg) | ![Lukas R-H-07|300](../Media/Referencia/Lukas-R-H-07.jpg) |
 
-## Propuesta de valor
+## 5. Propuesta de valor
 
-El videojuego busca ofrecer una experiencia de Survival Horror en cada escenario, donde el jugador no pueda depender completamente de memorizarlo debido a la generación procedural y las constantes amenazas que lo rodean.
+Cada piso es survival horror que no se puede memorizar. La generación procedural reordena las salas y las amenazas siguen activas, así que la incertidumbre y el miedo no se agotan con la práctica. La cámara cambia entre la vista sobre el hombro y la vigilancia isométrica, y cada perspectiva cuenta un momento distinto. Morir no es solo perder. Es parte del ciclo y genera una nueva configuración del escenario, de modo que cada intento puede ser diferente.
 
-La combinación de exploración, recursos limitados, enemigos peligrosos y cambios entre partidas busca mantener una sensación constante de incertidumbre y miedo.
+## 6. Características principales
 
-El cambio dinámico entre una perspectiva isométrica y una cámara sobre el hombro también permite presentar diferentes momentos de la experiencia desde perspectivas distintas, utilizando la cámara como una herramienta tanto jugable como narrativa.
-
-La muerte no funciona únicamente como una condición de derrota, si no que forma parte del ciclo de juego y provoca una nueva configuración del escenario, haciendo que cada intento pueda desarrollarse de manera diferente.
-
-## Características principales
-
-Lista de características que definen la experiencia.
-
-1. Supervivencia basada en recursos limitados.
-2. Inventario limitado a 6 espacios.
-3. Generación procedural del escenario.
+1. Supervivencia con recursos limitados.
+2. Inventario de 6 casillas.
+3. Escenario generado por procedimiento.
 4. Cámara dinámica.
 5. Muerte integrada al ciclo de juego.
 
-## Diferenciadores
+## 7. Diferenciadores
 
-¿Qué hace que este videojuego sea reconocible frente a otros del mismo género?
+**Cámara con intención narrativa.** La vista sobre el hombro y la vigilancia isométrica no son solo opciones visuales. Cada una representa momentos, acciones o puntos de vista distintos.
 
-El videojuego se distingue por la combinación de cuatro elementos principales:
+**Survival horror con escenarios variables.** El género suele apoyarse en conocer el mapa. Aquí, morir obliga a enfrentar un entorno en parte desconocido.
 
-**Cambio de perspectiva con intención narrativa.**  
-La cámara isométrica y la cámara sobre el hombro no existen únicamente como opciones visuales y de jugabilidad. Cada perspectiva se utiliza para representar diferentes momentos, acciones o puntos de vista dentro del videojuego.
+**Inventario reducido.** Seis casillas convierten cada objeto en una decisión constante y no en almacenamiento.
 
-**Survival Horror con escenarios variables.**  
-La generación procedural introduce incertidumbre dentro de un género que tradicionalmente puede depender fuertemente del conocimiento del escenario. Morir significa tener que enfrentarse nuevamente a un entorno parcialmente desconocido.
+**La muerte como parte de la experiencia.** Morir no devuelve a un checkpoint. Es parte del ciclo central y cambia el escenario y el siguiente intento.
 
-**Inventario reducido.**  
-Los 6 espacios disponibles buscan convertir la administración del inventario en una decisión constante y no simplemente en un sistema de almacenamiento.
+| Vista sobre el hombro | Vigilancia isométrica |
+| --- | --- |
+| ![Lukas apuntando con la linterna concentrada|320](../Media/Capturas/CamaraHombro.png) | ![Vista de vigilancia con ruido CRT|320](../Media/Capturas/VigilanciaIsometrica.png) |
 
-**La muerte como parte de la experiencia.**  
-Morir no representa únicamente regresar a un checkpoint. Es parte del ciclo central del videojuego y provoca cambios en el escenario y en la siguiente partida.
+## 8. Límites del concepto
 
-## Límites del concepto
+Identity Dissolution **no** es:
 
-¿Qué cosas **NO** es este videojuego?
-
-> Esta sección es especialmente importante para evitar que el proyecto crezca sin control.
-
-Este videojuego **NO** es:
-
-- Un juego de acción centrado principalmente en eliminar grandes cantidades de enemigos.
-- Una fantasía donde el protagonista se vuelve considerablemente más fuerte a medida que avanza en la partida.
-- Un shooter tradicional basado en precisión, velocidad o cantidad de armas.
+- Un juego de acción centrado en eliminar grandes cantidades de enemigos.
+- Una fantasía de poder en la que Lukas se vuelve mucho más fuerte con el tiempo.
+- Un shooter basado en precisión, velocidad o cantidad de armas.
 - Un mundo abierto.
-- Un juego donde el jugador pueda almacenar grandes cantidades de recursos sin consecuencias.
-- Un Roguelike puro basado exclusivamente en progresión, estadísticas o generación procedural.
-- Un juego donde la generación procedural sustituya completamente al diseño manual de escenarios.
-- Un juego donde la cámara cambie libremente y sin costo únicamente por preferencia del jugador: la vista sobre el hombro es la vista por defecto y la vista isométrica de vigilancia solo está disponible en salas con cámara activa, con ruido y retraso, y se bloquea cuando el jugador es detectado.
-- Un videojuego donde morir implique repetir exactamente el mismo escenario.
+- Un juego en el que se acumulan recursos sin consecuencias.
+- Un roguelike puro basado solo en progresión, estadísticas o generación procedural.
+- Un juego en el que la generación procedural reemplaza por completo el diseño manual de salas.
+- Un juego de cámara libre. La vista sobre el hombro es la predeterminada. La vigilancia isométrica solo existe en salas con cámara activa, llega con ruido y retraso, y se corta y bloquea cuando un enemigo cercano entra en caza.
+- Un juego en el que morir repite exactamente el mismo escenario.
 
-El objetivo es mantener el proyecto enfocado en una experiencia de **supervivencia, vulnerabilidad, exploración, incertidumbre y terror**, evitando agregar sistemas que reduzcan estas sensaciones o incrementen innecesariamente el alcance del proyecto.
+Un sistema nuevo entra solo si sostiene la supervivencia, la vulnerabilidad, la exploración, la incertidumbre y el terror sin inflar el alcance.
 
 > **Navegación:** [[00 - Índice]] · ← [[01 - Ficha del Proyecto]] · [[03 - Público y Plataforma]] →
