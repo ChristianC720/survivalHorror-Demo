@@ -399,7 +399,7 @@ Cada sistema agrupa mecánicas de [[02 - Mecánicas]]. Las reglas de detalle viv
 | Cinemática | Cuándo | Contenido | Saltable |
 |---|---|---|---|
 | Completa de reconstrucción | Una sola vez, al terminar la introducción | Todo el proceso de reconstrucción en imágenes fugaces con cortes a negro; es el momento del olvido de Emilia (D-45, D-53). Lukas muere al final de la introducción atacado por la espalda en un piso que no existe (D-53); resto del detalle en [[01 - Premisa y Trama]] | Tras verla una vez (D-91) |
-| Corta de reconstrucción | En cada muerte o reinicio | El personaje cae de su cápsula, en la fila de cápsulas del piso 1 (D-59), con sonido de maquinaria; refleja la degradación acumulada y la pieza ajena visible de la reconstrucción (M-18, D-43) | Sí, con `Espacio` |
+| Corta de reconstrucción | En cada muerte o reinicio | Plano corto de Lukas ante su cápsula, con sonido de maquinaria (D-172); refleja la degradación acumulada y la pieza ajena visible de la reconstrucción (M-18, D-43) | Sí, con `Espacio` |
 | Hallazgo del piso 2 | Una sola vez, la primera vez que se llega a la sala clave final del piso 2 sin enemigos en caza; si los hay, espera a que la caza termine (D-67) | La foto familiar imposible, con la cara de Emilia borrosa; provoca obstinación y acompaña el reinicio del contador (D-56) | No (D-67) |
 | Transición de piso | Al usar la escalera o el elevador | Ascensor o escalera; muestra el aviso de autoguardado | No |
 

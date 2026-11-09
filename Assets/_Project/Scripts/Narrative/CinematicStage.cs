@@ -23,6 +23,16 @@ namespace Heartbeat.Narrative
 
         [SerializeField] private Camera shotCamera;
         [SerializeField] private Shot[] shots = new Shot[0];
+        [Header("Short reconstruction (D-39, D-43)")]
+        [Tooltip("Lukas's suit in the capsule shot: shows the foreign piece of the current reconstruction.")]
+        [SerializeField] private SkinnedMeshRenderer capsuleSuit;
+        [SerializeField] private Texture2D[] bodyVariants = new Texture2D[0];
+
+        /// <summary>Dresses the capsule actor for this subject code (one more foreign piece per reconstruction).</summary>
+        public void SetSubject(int subjectCode)
+        {
+            if (capsuleSuit != null) Player.LukasAttachments.ApplyVariant(capsuleSuit, new MaterialPropertyBlock(), bodyVariants, subjectCode);
+        }
 
         private void OnEnable() => Services.Register(this);
         private void OnDisable() => Services.Unregister(this);

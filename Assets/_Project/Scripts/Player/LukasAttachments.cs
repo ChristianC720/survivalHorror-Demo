@@ -44,10 +44,16 @@ namespace Heartbeat.Player
         private void ApplyBody(int subjectCode)
         {
             if (civilian || suit == null || bodyVariants == null || bodyVariants.Length == 0) return;
-            int index = subjectCode - FirstSubjectCode - 1;
             block ??= new MaterialPropertyBlock();
+            ApplyVariant(suit, block, bodyVariants, subjectCode);
+        }
+
+        /// <summary>D-43: the body texture for a subject code (R-H-07 keeps his own body); shared with the capsule shot.</summary>
+        public static void ApplyVariant(SkinnedMeshRenderer suit, MaterialPropertyBlock block, Texture2D[] variants, int subjectCode)
+        {
+            int index = subjectCode - FirstSubjectCode - 1;
             suit.GetPropertyBlock(block);
-            if (index >= 0) block.SetTexture(BaseMap, bodyVariants[Mathf.Min(index, bodyVariants.Length - 1)]);
+            if (index >= 0 && variants.Length > 0) block.SetTexture(BaseMap, variants[Mathf.Min(index, variants.Length - 1)]);
             else block.Clear();
             suit.SetPropertyBlock(block);
         }

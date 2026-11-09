@@ -300,10 +300,23 @@ namespace Heartbeat.Cycle
             GameEvents.RaiseReconstructed(Data.subjectCode);
             if (Random.value < 1f / 3f) Subtitles.Say(Subtitles.Lukas, "SUB.LUKAS.CAPSULE_RETURN");   // 1 in 3 (Textos del Juego)
             HbLog.Info("Cycle", $"RECONSTRUCTION: subject {Data.SubjectLabel} (Space skips)");
+            skipRequested = false;
+            // Short reconstruction (D-39, D-43): Lukas in front of his capsule, wearing this reconstruction's foreign piece.
+            loader.Load(SceneNames.Cinematics, null, fadeOut: false);
+            while (loader.IsBusy) yield return null;
+            yield return null;   // let the stage run Start (it switches its camera off) before the shot
+            if (!skipRequested && Services.TryGet(out Narrative.CinematicStage stage))
+            {
+                stage.SetSubject(Data.subjectCode);
+                loader.SetFade(0f);
+                Sfx.Play2D("CUE_Capsule_Reconstruction");
+                var shot = StartCoroutine(stage.Play("Capsule", shortReconstructionSeconds));
+                for (float t = 0f; t < shortReconstructionSeconds && !skipRequested; t += Time.unscaledDeltaTime) yield return null;
+                StopCoroutine(shot);
+                stage.StopAll();
+            }
             loader.SetStatus(UI.Loc.Get("UI.INTRO.SUBJECT_REGISTER", Data.subjectCode.ToString("00")));   // The Mother's label (Textos del Juego)
             loader.Load(SceneNames.Floor, null, fadeOut: false);
-            skipRequested = false;
-            for (float t = 0f; t < shortReconstructionSeconds && !skipRequested; t += Time.unscaledDeltaTime) yield return null;
             while (loader.IsBusy) yield return null;
             loader.SetStatus("");
             states.TryTransition(GameStateId.Playing);
