@@ -52,7 +52,9 @@ namespace Heartbeat.AI
         {
             agent = GetComponent<NavMeshAgent>();
             health = GetComponent<EnemyHealth>();
-            alert = new AlertModel(definition.alert);
+            var tuning = definition.alert;
+            if (Cycle.CycleController.StoryMode) tuning.sightGainPerSecond *= SystemsBalance.Current.storyDetectionMultiplier;   // D-103: slower detection
+            alert = new AlertModel(tuning);
             alert.StateChanged += OnAlertChanged;
             health.Shot += OnShot;
             health.Died += OnDied;

@@ -41,6 +41,9 @@ namespace Heartbeat.Cycle
         private readonly System.Random seeds = new System.Random();
 
         public int Slot { get; private set; }
+
+        /// <summary>Story mode (D-103) of the current slot.</summary>
+        public static bool StoryMode => Services.TryGet(out CycleController c) && c.Data != null && c.Data.mode == GameMode.Story;
         public SlotData Data { get; private set; }
         public int CurrentFloor { get; private set; } = 1;
 

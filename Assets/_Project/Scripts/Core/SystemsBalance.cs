@@ -15,6 +15,10 @@ namespace Heartbeat.Core
         [Tooltip("The body convulses this long before rising.")] public float recycleWarningSeconds = 3f;
         [Tooltip("If Lukas keeps looking at the body, it waits at most this long, then rises anyway.")] public float recycleMaxWaitSeconds = 20f;
 
+        [Header("Story mode (D-103, D-116)")]
+        [Tooltip("Each enemy needs this many times its hits to kill Lukas.")] public int storyHitsMultiplier = 2;
+        [Tooltip("Sight alert gain is multiplied by this (slower detection).")] public float storyDetectionMultiplier = 0.5f;
+
         private static SystemsBalance fallback;
 
         public static SystemsBalance Current =>

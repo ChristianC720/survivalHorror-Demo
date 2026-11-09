@@ -27,7 +27,7 @@ namespace Heartbeat.Combat
             if (health.Model.IsDead) return;
             if (!attack.IsGrab)
             {
-                health.ApplyHit(attack.HitsToKill);
+                health.ApplyHit(attack.HitsToKill * (Cycle.CycleController.StoryMode ? SystemsBalance.Current.storyHitsMultiplier : 1));   // D-116
                 return;
             }
 
