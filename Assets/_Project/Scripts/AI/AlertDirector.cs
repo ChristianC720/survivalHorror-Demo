@@ -11,9 +11,6 @@ namespace Heartbeat.AI
     /// </summary>
     public sealed class AlertDirector : MonoBehaviour
     {
-        [Tooltip("Enemies farther than this from Lukas do not count for the highest alert (M-03 scope).")]
-        [SerializeField] private float alertScopeRadius = 25f;
-
         private readonly List<EnemyBrain> enemies = new List<EnemyBrain>();
         private Transform player;
 
@@ -67,7 +64,7 @@ namespace Heartbeat.AI
         private void OnAttentionFull(Vector3 playerPos)
         {
             foreach (var e in enemies)
-                if (e.IsActive && Vector3.Distance(e.transform.position, playerPos) <= alertScopeRadius)
+                if (e.IsActive && Generation.RoomInstance.NearCurrent(e.transform.position))   // D-98: Lukas's room and connected rooms
                     e.OnAttentionFull(playerPos);
         }
 
@@ -80,7 +77,7 @@ namespace Heartbeat.AI
             {
                 if (!e.IsActive) continue;
                 if (e.Alert == AlertState.Hunt) hunting++;
-                if (p != null && Vector3.Distance(e.transform.position, p.position) > alertScopeRadius) continue;
+                if (!Generation.RoomInstance.NearCurrent(e.transform.position)) continue;   // M-03 scope: Lukas's room and connected rooms
                 if (e.Alert > highest) highest = e.Alert;
             }
 

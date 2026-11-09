@@ -20,9 +20,7 @@ namespace Heartbeat.CameraSystem
     public sealed class SurveillanceSystem : MonoBehaviour
     {
         [SerializeField] private int textureHeight = 270;
-        [SerializeField, Range(0f, 1f)] private float delaySeconds = 0.3f;
         [SerializeField] private float orthoSize = 7f;
-        [SerializeField] private float shotAttention = 0.15f;
         [Tooltip("Flat ambient light while the feed is up: the camera image covers the whole screen, so only the feed sees it (M-02 legibility).")]
         [SerializeField] private Color viewAmbient = new Color(0.32f, 0.36f, 0.34f);
 
@@ -30,6 +28,7 @@ namespace Heartbeat.CameraSystem
         private Color savedAmbient;
 
         private const int RingSize = 24;
+        private const float FeedFrameSeconds = 1f / 30f;
 
         private InputRouter router;
         private GameStateMachine states;
@@ -48,19 +47,24 @@ namespace Heartbeat.CameraSystem
         private readonly List<Renderer> outside = new List<Renderer>();
         private readonly List<Renderer> movers = new List<Renderer>();
         private Bounds viewBounds;
-        private bool lockedByHunt;
         private AlertState highest;
 
-        public AttentionMeter Attention { get; } = new AttentionMeter();
+        public AttentionMeter Attention { get; private set; }
         public bool IsOpen => viewingRoom != null;
-        public bool IsLocked => lockedByHunt;
+        public bool IsLocked => highest == AlertState.Hunt;
         public float Noise { get; private set; }
+
+        private void Awake()
+        {
+            var b = SystemsBalance.Current;
+            Attention = new AttentionMeter(b.attentionFillSeconds, b.attentionDrainSeconds);
+        }
 
         private void OnEnable()
         {
             Services.Register(this);
             GameEvents.HighestAlertChanged += OnHighestAlert;
-            GameEvents.HuntChanged += OnHunt;
+            GameEvents.BossPhaseChanged += OnBossPhase;
             GameEvents.RoomEntered += OnRoomEntered;
             RenderPipelineManager.beginCameraRendering += OnBeginCamera;
             RenderPipelineManager.endCameraRendering += OnEndCamera;
@@ -73,7 +77,7 @@ namespace Heartbeat.CameraSystem
         {
             Services.Unregister(this);
             GameEvents.HighestAlertChanged -= OnHighestAlert;
-            GameEvents.HuntChanged -= OnHunt;
+            GameEvents.BossPhaseChanged -= OnBossPhase;
             GameEvents.RoomEntered -= OnRoomEntered;
             RenderPipelineManager.beginCameraRendering -= OnBeginCamera;
             RenderPipelineManager.endCameraRendering -= OnEndCamera;
@@ -112,11 +116,13 @@ namespace Heartbeat.CameraSystem
         public bool TryOpen()
         {
             if (player == null && !Services.TryGet(out player)) return false;
-            if (lockedByHunt || highest == AlertState.Hunt) { HbLog.Info("Surveillance", "Locked: hunt in progress"); ShowNoSignal(); return false; }
+            if (IsLocked) { HbLog.Info("Surveillance", "Locked: hunt in progress"); ShowNoSignal(); return false; }
+            if (BossCamerasHostile) { HbLog.Info("Surveillance", "Locked: The Mother's cameras are hostile (phase 2)"); ShowNoSignal(); return false; }
             var room = RoomInstance.Current;
             var mount = MountFor(room);
             if (mount == null) { HbLog.Info("Surveillance", "No camera in this room"); return false; }
 
+            System.Array.Clear(stamps, 0, RingSize);   // never show a frame from the last time the view was open
             viewingRoom = room;
             CollectOutside(room);
             cam.transform.SetPositionAndRotation(mount.position, mount.rotation);
@@ -161,8 +167,9 @@ namespace Heartbeat.CameraSystem
         private static Transform MountFor(RoomInstance room)
         {
             if (room == null) return null;
+            if (!room.HasCamera) return null;   // D-25: set per floor by the generator
             if (room.CameraMount != null) return room.CameraMount;
-            if (room.Definition == null || !room.Definition.hasCamera) return null;
+            if (room.Definition == null) return null;
             var t = room.transform.Find("AutoCameraMount");
             if (t != null) return t;
             t = new GameObject("AutoCameraMount").transform;
@@ -192,18 +199,24 @@ namespace Heartbeat.CameraSystem
         private void LateUpdate()
         {
             if (!IsOpen) return;
-            // Ring buffer: render into the next slot, show the newest frame that is at least delaySeconds old.
-            head = (head + 1) % RingSize;
-            cam.targetTexture = ring[head];
-            stamps[head] = Time.time;
-            cam.Render();
+            // Ring buffer at ~30 fps (24 frames hold 0.8 s at any frame rate): show the newest frame at least the delay old.
+            // The delay grows while an enemy in scope searches (D-23).
+            var b = SystemsBalance.Current;
+            float delay = highest == AlertState.Search ? b.searchFeedDelaySeconds : b.feedDelaySeconds;
+            if (Time.time - stamps[head] >= FeedFrameSeconds)
+            {
+                head = (head + 1) % RingSize;
+                cam.targetTexture = ring[head];
+                stamps[head] = Time.time;
+                cam.Render();
+            }
             int show = head;
             for (int i = 1; i < RingSize; i++)
             {
                 int idx = (head - i + RingSize) % RingSize;
                 if (stamps[idx] <= 0f) break;
                 show = idx;
-                if (Time.time - stamps[idx] >= delaySeconds) break;
+                if (Time.time - stamps[idx] >= delay) break;
             }
             screen.texture = ring[show];
         }
@@ -236,20 +249,20 @@ namespace Heartbeat.CameraSystem
             foreach (var r in movers) if (r != null) r.forceRenderingOff = false;
         }
 
+        // M-03: a hunt in Lukas's room or a connected room (the AlertDirector's scope) cuts and locks the view;
+        // it unlocks when that enemy dies, loses the hunt or is left behind across a door.
         private void OnHighestAlert(AlertState s)
         {
             highest = s;
-            if (s == AlertState.Hunt) OnHunt(true);
-        }
-
-        // Any hunt on the floor locks the view, not only nearby ones (M-03).
-        private void OnHunt(bool hunting)
-        {
-            lockedByHunt = hunting;
-            if (!hunting) return;
+            if (s != AlertState.Hunt) return;
             if (IsOpen) ShowNoSignal();
             Close("Hunt");
         }
+
+        private static bool BossCamerasHostile =>
+            Services.TryGet(out Boss.MotherDirector m) && m.Fight != null && m.Fight.Phase == Boss.MotherPhase.Cameras;
+
+        private void OnBossPhase(int phase) { if (phase == (int)Boss.MotherPhase.Cameras) Close("BossCameras"); }   // D-28
 
         private void ShowNoSignal()
         {
@@ -260,12 +273,11 @@ namespace Heartbeat.CameraSystem
         private void OnRoomEntered(MonoBehaviour room)
         {
             if (IsOpen && room != viewingRoom) Close("LeftRoom");
-            lockedByHunt = false;   // crossing a door releases the lock (M-03)
         }
 
         private void OnAim(bool aiming) { if (aiming) Close("Aim"); }
         private void OnAttack(InputAction.CallbackContext _) { if (IsOpen) Close("Shove"); }
-        private void OnShot(Vector3 _) => Attention.Add(shotAttention);
+        private void OnShot(Vector3 _) => Attention.Add(SystemsBalance.Current.shotAttention);
 
         /// <summary>Damage cuts the view (M-03); subscribed to PlayerHealth.Hit while open.</summary>
         private void OnPlayerHit() => Close("Damage");

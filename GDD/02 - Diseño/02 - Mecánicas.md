@@ -111,10 +111,10 @@ stateDiagram-v2
 | Estado de alerta | Señal |
 |---|---|
 | Sin alerta o **sospecha** | Sin cambios |
-| **Búsqueda** | Degradada: más ruido CRT y más retraso que la señal base |
+| **Búsqueda** | Degradada: más ruido CRT y el doble de retraso que la señal base (~0.6 s frente a ~0.3 s; D-167) |
 | **Caza** | Se corta y queda bloqueada (M-03) |
 
-- **Atención de The Mother (D-24):** mientras la vista está activa se llena un medidor **oculto** (sin barra en pantalla) en ~5 s de uso; sin usar la vista, baja en ~15 s (valores iniciales, sujetos a balance). Al llenarse, los enemigos cercanos pasan a sospecha y luego a búsqueda hacia la posición del jugador. El jugador lo percibe por la degradación de la señal. El medidor es único por piso y no se vacía al cambiar de sala; "enemigos cercanos" son los de la sala de Lukas y los de las salas conectadas a ella (D-98).
+- **Atención de The Mother (D-24):** mientras la vista está activa se llena un medidor **oculto** (sin barra en pantalla) en ~5 s de uso; sin usar la vista, baja en ~15 s (valores iniciales, sujetos a balance). Al llenarse, los enemigos cercanos pasan a sospecha durante ~2 s y luego a búsqueda hacia la posición del jugador (D-168). El jugador lo percibe por la degradación de la señal: el ruido CRT de la señal base sube poco a poco mientras el medidor se llena, sin cambiar el retraso (D-167). El medidor es único por piso y no se vacía al cambiar de sala; "enemigos cercanos" son los de la sala de Lukas y los de las salas conectadas a ella (D-98).
         
     - Muestra únicamente lo que cubre la cámara de la sala y un solo piso a la vez.
         
@@ -162,7 +162,7 @@ stateDiagram-v2
     
     - Si la vista de vigilancia está activa, se corta de inmediato y la cámara queda en OTS.
         
-    - La entrada para activar la vista de vigilancia queda inhabilitada mientras exista **al menos un enemigo en caza** dentro de la sala o área cercana.
+    - La entrada para activar la vista de vigilancia queda inhabilitada mientras exista **al menos un enemigo en caza** dentro de la sala de Lukas o de una sala conectada a ella (D-168). Una caza en otra parte del piso no corta la vista.
         
     - Los enemigos en sospecha o búsqueda no bloquean la vista; en búsqueda la señal se degrada (M-02, D-23).
         

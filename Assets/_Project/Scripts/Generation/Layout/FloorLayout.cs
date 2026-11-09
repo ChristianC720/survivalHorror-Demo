@@ -20,6 +20,8 @@ namespace Heartbeat.Generation.Layout
         public int TutorialIndex;
         /// <summary>Behind a door that needs an optional key (D-79: no guaranteed minimum here).</summary>
         public bool BehindOptionalDoor;
+        /// <summary>Surveillance camera (D-25): every key room and ~1/3 of the procedural rooms.</summary>
+        public bool HasCamera;
         public readonly bool[] SocketUsed;
 
         public PlacedRoom(RoomTemplate t) { Template = t; SocketUsed = new bool[t.Sockets.Count]; }

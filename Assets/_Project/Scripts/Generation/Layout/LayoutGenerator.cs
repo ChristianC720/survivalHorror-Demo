@@ -67,7 +67,7 @@ namespace Heartbeat.Generation.Layout
             }
 
             // 3. Procedural rooms.
-            int target = p.Procedural.Pick(rng);
+            int target = p.Procedural.Pick(rng) - (p.FirstAttempt ? p.TutorialRoomIds.Length : 0);   // D-70: the tutorial rooms count inside the range
             int placed = 0, guard = 0;
             while (placed < target && guard++ < target * PlaceTries)
             {

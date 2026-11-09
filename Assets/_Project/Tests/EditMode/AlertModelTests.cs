@@ -72,9 +72,13 @@ namespace Heartbeat.Tests
         [Test]
         public void AttentionFull_NeverLeavesPatrolEnemiesInPatrol_AndDoesNotLowerHunt() // S-02 acceptance, D-24
         {
-            var patrol = New(); patrol.OnAttentionFull();
-            Assert.AreEqual(AlertState.Search, patrol.State);
-            var hunting = New(); hunting.ForceHunt(); hunting.OnAttentionFull();
+            var patrol = New(); patrol.OnAttentionFull(2f);
+            Assert.AreEqual(AlertState.Suspicion, patrol.State);   // D-98: suspicion first...
+            Run(patrol, 1.5f, false, 0f);
+            Assert.AreEqual(AlertState.Suspicion, patrol.State);   // ...without decaying back to patrol...
+            Run(patrol, 1f, false, 0f);
+            Assert.AreEqual(AlertState.Search, patrol.State);      // ...then search
+            var hunting = New(); hunting.ForceHunt(); hunting.OnAttentionFull(2f);
             Assert.AreEqual(AlertState.Hunt, hunting.State);
         }
 

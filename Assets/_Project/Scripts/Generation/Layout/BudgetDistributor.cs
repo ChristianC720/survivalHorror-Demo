@@ -109,6 +109,16 @@ namespace Heartbeat.Generation.Layout
             slots = slots.OrderBy(x => x.spawn).ThenBy(_ => rng.Next()).ToList();   // spread one per room before doubling up
             for (int i = 0; i < enemies && i < slots.Count; i++)
                 layout.Enemies.Add(new EnemyPlacement { Room = slots[i].room, Spawn = slots[i].spawn, Type = p.EnemyTypes[rng.Next(p.EnemyTypes.Length)] });
+
+            // Cameras (D-25): every key room and Surveillance room, then random procedural rooms up to a third.
+            foreach (var r in layout.Rooms) r.HasCamera = r.Template.Role != RoomRole.Procedural || r.Template.Archetype == RoomArchetype.Surveillance;
+            int cameras = proc.Count(r => r.HasCamera), cameraTarget = LayoutValidator.CameraTarget(layout);
+            foreach (var r in proc.Where(r => !r.HasCamera).OrderBy(_ => rng.Next()))
+            {
+                if (cameras >= cameraTarget) break;
+                r.HasCamera = true;
+                cameras++;
+            }
         }
 
         private static bool Place(FloorLayout layout, HashSet<(int, int)> taken, PlacedRoom room, ItemSpawnTag preferred, ItemKind kind, int amount, ItemSpawnTag result, Random rng)

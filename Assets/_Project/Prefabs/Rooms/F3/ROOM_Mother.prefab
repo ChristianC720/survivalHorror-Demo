@@ -75,6 +75,7 @@ Transform:
   - {fileID: 5277131894492503541}
   - {fileID: 2007017066374386235}
   - {fileID: 7351767809198664836}
+  - {fileID: 8132358395709813540}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &6429669390710370774
@@ -111,7 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Heartbeat.Runtime::Heartbeat.Generation.RoomInstance
   definition: {fileID: 11400000, guid: bed1c41bdf55e554891c5c31cee8c775, type: 2}
-  cameraMount: {fileID: 0}
+  cameraMount: {fileID: 8132358395709813540}
 --- !u!114 &336763587380333872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -611,6 +612,37 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!1 &3435238200693711558
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8132358395709813540}
+  m_Layer: 0
+  m_Name: CameraMount
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8132358395709813540
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3435238200693711558}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.074790314, y: 0.90606374, z: -0.1805598, w: -0.37530392}
+  m_LocalPosition: {x: 19.2, y: 5.4, z: 19.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7666973582990979284}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3561612126662527901
 GameObject:
   m_ObjectHideFlags: 0

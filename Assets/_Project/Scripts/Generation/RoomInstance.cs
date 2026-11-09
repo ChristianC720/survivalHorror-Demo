@@ -36,6 +36,30 @@ namespace Heartbeat.Generation
 
         public void AddNeighbour(RoomInstance r) { if (r != null && !neighbours.Contains(r)) neighbours.Add(r); }
 
+        private bool? hasCamera;
+        /// <summary>Surveillance camera here (D-25): set by the generator; hand-placed rooms fall back to their mount/definition.</summary>
+        public bool HasCamera
+        {
+            get => hasCamera ?? (cameraMount != null || (definition != null && definition.hasCamera));
+            set => hasCamera = value;
+        }
+
+        /// <summary>The point is inside this room's footprint (any height).</summary>
+        public bool ContainsXZ(Vector3 p)
+        {
+            var b = GetComponent<Collider>().bounds;
+            return p.x >= b.min.x && p.x <= b.max.x && p.z >= b.min.z && p.z <= b.max.z;
+        }
+
+        /// <summary>M-03 / D-98 scope: Lukas's room and the rooms connected to it. True everywhere when no room is known (sandbox).</summary>
+        public static bool NearCurrent(Vector3 p)
+        {
+            if (Current == null) return true;
+            if (Current.ContainsXZ(p)) return true;
+            foreach (var n in Current.neighbours) if (n != null && n.ContainsXZ(p)) return true;
+            return false;
+        }
+
         public IEnumerable<DoorSocket> Sockets() => GetComponentsInChildren<DoorSocket>(true);
         public IEnumerable<SpawnPoint> Spawns() => GetComponentsInChildren<SpawnPoint>(true);
 

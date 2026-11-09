@@ -198,7 +198,7 @@ namespace Heartbeat.Boss
             go.name = $"Assimilated_{fight.Released}";
             var brain = go.GetComponent<EnemyBrain>();
             released.Add(brain);
-            brain.OnAttentionFull(towards);   // heads to the point the camera saw
+            brain.OnAttentionFull(towards, immediate: true);   // heads to the point the camera saw
             Sfx.Play("CUE_Capsule_Reconstruction", capsule.position);
             HbLog.Info("Boss", $"Released {go.name} ({prefab.name}) from {capsule.name}: {fight.Active} active, {fight.Released}/{balance.releasesTotal}");
         }

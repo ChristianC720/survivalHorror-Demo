@@ -23,6 +23,7 @@ MonoBehaviour:
   unpoweredChance: 0
   loopChance: 0.35
   minSecondaryDistance: 3
+  minFinalDistance: 3
   startingAmmo: 0
   heals:
     min: 1

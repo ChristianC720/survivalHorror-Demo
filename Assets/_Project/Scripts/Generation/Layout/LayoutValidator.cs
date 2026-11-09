@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Heartbeat.Inventory;
@@ -35,7 +36,7 @@ namespace Heartbeat.Generation.Layout
             }
 
             // Counts
-            int proc = l.Rooms.Count(r => r.Template.Role == RoomRole.Procedural && r.TutorialIndex == 0);
+            int proc = l.Rooms.Count(r => r.Template.Role == RoomRole.Procedural);   // tutorial rooms included (D-70)
             int sec = l.Rooms.Count(r => r.Template.Role == RoomRole.Secondary);
             int fin = l.Rooms.Count(r => r.Template.Role == RoomRole.Final);
             if (proc < p.Procedural.min || proc > p.Procedural.max) errors.Add($"{proc} procedural rooms outside {p.Procedural.min}-{p.Procedural.max}");
@@ -77,11 +78,17 @@ namespace Heartbeat.Generation.Layout
 
             // Secondary key rooms (documents) never near the spawn room (D-new): BFS distance, loops included.
             var dist = Distances(l, l.EntryRoom);
+            if (l.FinalRoom >= 0 && dist.TryGetValue(l.FinalRoom, out int df) && df < p.MinFinalDistance) errors.Add($"final room only {df} doors from the entry (D-100)");
+            // Cameras (D-25): every key room, at least a third of the procedural rooms.
+            if (l.Rooms.Any(r => r.Template.Role != RoomRole.Procedural && !r.HasCamera)) errors.Add("key room without camera");
+            if (l.Rooms.Count(r => r.Template.Role == RoomRole.Procedural && r.HasCamera) < CameraTarget(l)) errors.Add("fewer than a third of procedural rooms with camera");
             foreach (var r in l.Rooms.Where(r => r.Template.Role == RoomRole.Secondary))
                 if (dist.TryGetValue(r.Index, out int d) && d < p.MinSecondaryDistance) errors.Add($"secondary room {r.Index} only {d} doors from the entry");
 
             return errors.Count == 0;
         }
+
+        public static int CameraTarget(FloorLayout l) => (int)Math.Round(l.Rooms.Count(r => r.Template.Role == RoomRole.Procedural) / 3.0, MidpointRounding.AwayFromZero);
 
         public static Dictionary<int, int> Distances(FloorLayout l, int start)
         {

@@ -164,11 +164,12 @@ namespace Heartbeat.AI
             else alert.Hear(noise.Source);
         }
 
-        public void OnAttentionFull(Vector3 playerPos)
+        public void OnAttentionFull(Vector3 playerPos, bool immediate = false)
         {
             if (IsDead) return;
             if (alert.State < AlertState.Search) lastKnown = playerPos;
-            alert.OnAttentionFull();
+            if (immediate) alert.Hear(NoiseSource.Machinery);   // boss release: straight to the point the camera saw
+            else alert.OnAttentionFull(SystemsBalance.Current.attentionSuspicionSeconds);
         }
 
         // ---------- Behaviour ----------

@@ -52,6 +52,11 @@ namespace Heartbeat.AI
         /// <param name="lit">The flashlight beam is on this enemy.</param>
         public void Tick(float dt, bool sees, float proximity01, bool lit)
         {
+            if (escalateIn >= 0f)
+            {
+                escalateIn -= dt;
+                if (escalateIn < 0f && Level < SearchThreshold) { Level = SearchThreshold + 0.1f; sinceStimulus = 0f; }
+            }
             if (sees)
             {
                 float factor = t.farSightFactor + (1f - t.farSightFactor) * Clamp01(proximity01);
@@ -67,7 +72,7 @@ namespace Heartbeat.AI
                 {
                     if (sinceSeen >= t.huntLoseSeconds) Level = Math.Min(Level, HuntThreshold - 0.25f); // → Search
                 }
-                else if (sinceStimulus >= t.searchHoldSeconds || Level < SearchThreshold)
+                else if (escalateIn < 0f && (sinceStimulus >= t.searchHoldSeconds || Level < SearchThreshold))
                 {
                     Level = Math.Max(0f, Level - t.decayPerSecond * dt);
                 }
@@ -86,8 +91,20 @@ namespace Heartbeat.AI
             UpdateState();
         }
 
-        /// <summary>The Mother's attention is full (D-24): patrolling enemies search towards Lukas; higher states stay.</summary>
-        public void OnAttentionFull() => Hear(NoiseSource.Machinery);
+        private float escalateIn = -1f;
+
+        /// <summary>
+        /// The Mother's attention is full (D-24, D-98): a patrolling enemy turns suspicious, then searches towards Lukas after
+        /// <paramref name="suspicionSeconds"/>. Enemies already searching or hunting stay as they are.
+        /// </summary>
+        public void OnAttentionFull(float suspicionSeconds)
+        {
+            if (Level >= SearchThreshold) return;
+            if (Level < SuspicionThreshold + 0.1f) Level = SuspicionThreshold + 0.1f;
+            sinceStimulus = 0f;
+            escalateIn = suspicionSeconds;
+            UpdateState();
+        }
 
         /// <summary>Directly enter Hunt (e.g. damaged by a shot, grabbed target, scripted).</summary>
         public void ForceHunt()
@@ -100,6 +117,7 @@ namespace Heartbeat.AI
 
         public void Reset()
         {
+            escalateIn = -1f;
             Level = 0f;
             UpdateState();
         }

@@ -52,6 +52,7 @@ namespace Heartbeat.Tests
             var p = Full(floor, seed);
             p.Procedural = new IntRange(6, 8);
             p.Secondary = new IntRange(2, 2);
+            p.MinFinalDistance = 3;   // D-100
             switch (floor)
             {
                 case 1: p.Heals = new IntRange(2, 2); p.Ammo = new IntRange(8, 12); p.Spikes = new IntRange(2, 2); p.OptionalKeys = new IntRange(0, 1); p.Enemies = new IntRange(5, 7); break;
