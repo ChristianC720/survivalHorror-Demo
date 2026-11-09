@@ -17,7 +17,7 @@ MonoBehaviour:
   runSpeed: 4
   injuredSpeedMultiplier: 0.85
   criticalSpeedMultiplier: 0.7
-  aimSpeedMultiplier: 0.6
+  aimSpeedMultiplier: 0.7
   surveillanceSpeed: 0.4
   turnSpeed: 540
   gravity: -20

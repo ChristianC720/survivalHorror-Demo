@@ -21,7 +21,8 @@ MonoBehaviour:
   recycledSpeedMultiplier: 1.25
   sightRange: 0
   sightAngle: 100
-  hearingRange: 12
+  hearingRange: 20
+  hearingMultiplier: 2
   reactsToLight: 0
   alert:
     sightGainPerSecond: 1.2

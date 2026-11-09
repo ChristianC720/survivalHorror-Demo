@@ -63,7 +63,7 @@ Patrullar → Sospecha → Búsqueda → Caza → Atacar / Agarrar
 
 **Velocidad:** 1 m/s en patrulla; 2.5 m/s en caza.
 
-**Rango de detección:** Sin vista; oído ~20 m.
+**Rango de detección:** Sin vista; oído ~20 m, y oye cualquier ruido al doble de su radio normal (correr, a ~20 m; caminar, a ~6 m; D-170).
 
 **Ataques:** Mordida frontal; grito de alerta. No agarra.
 
@@ -121,7 +121,7 @@ Patrullar → Detectar → Flanquear → Atacar
 
 **Defensas:** Indistinguible de un cuerpo mientras está inmóvil.
 
-**Velocidad:** Inmóvil; al activarse, estallidos de 4.5 m/s de ~2 s con pausas. Lukas corriendo no lo deja atrás.
+**Velocidad:** Inmóvil; al activarse, estallidos de 4.5 m/s de ~0.9 s con pausas de ~0.7 s (D-170). Lukas corriendo no lo deja atrás.
 
 **Rango de detección:** Se activa a ~3 m o al ser iluminado.
 

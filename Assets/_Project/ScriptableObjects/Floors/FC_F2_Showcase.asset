@@ -26,11 +26,11 @@ MonoBehaviour:
   minFinalDistance: 3
   startingAmmo: 0
   heals:
-    min: 1
-    max: 1
+    min: 2
+    max: 2
   ammo:
-    min: 4
-    max: 8
+    min: 8
+    max: 12
   spikes:
     min: 1
     max: 2

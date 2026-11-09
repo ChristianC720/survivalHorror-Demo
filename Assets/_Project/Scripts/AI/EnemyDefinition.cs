@@ -26,6 +26,7 @@ namespace Heartbeat.AI
         [Tooltip("0 = blind (La Boca).")] public float sightRange = 15f;
         [Tooltip("Full sight cone angle, degrees.")] public float sightAngle = 110f;
         public float hearingRange = 6f;
+        [Tooltip("Scales the radius of every noise this enemy hears (La Boca hears far, D-170).")] public float hearingMultiplier = 1f;
         public bool reactsToLight = true;
         public AI.AlertTuning alert = AI.AlertTuning.Default;
 

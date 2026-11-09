@@ -68,20 +68,20 @@ Define límites, regeneración, acumulación, intercambio y condiciones especial
 - Todo recurso del presupuesto debe ser alcanzable por una ruta válida (principio 9 de [[01 - Jugabilidad]]). La llave obligatoria siempre es alcanzable antes de la puerta de la sala clave final (D-36).
 - Al morir o reiniciar se regenera la distribución de las salas y de los recursos (M-16); el presupuesto se vuelve a repartir.
 - **Cada piso tiene menos presupuesto que el anterior**, mientras el número de enemigos aumenta (piso 1: 6–9; piso 2: 9–12; piso 3: 12–15 + The Mother en la configuración completa; M-15, D-37). La presión crece por la combinación de ambos.
-- **Criterio de munición:** el máximo de munición de cada piso es menor que los disparos necesarios para eliminar al mínimo de enemigos del piso con 3 disparos cada uno (valor inicial, sujeto a balance). Eliminar a todos los enemigos nunca está cubierto por el presupuesto.
+- **Criterio de munición:** el máximo de munición de cada piso es menor que los disparos necesarios para eliminar al mínimo de enemigos del piso con 3 disparos cada uno (valor inicial, sujeto a balance). Eliminar a todos los enemigos nunca está cubierto por el presupuesto. **Excepción del piso 1 (D-171):** su máximo (20 balas) supera los 18 disparos de su mínimo de enemigos, y se suman las 6 balas iniciales de D-145; se acepta porque el Alto necesita 4 disparos y el piso 1 enseña el combate.
 
 **Valores iniciales por piso, configuración completa** (mínimo-máximo; valores iniciales, sujetos a balance):
 
 | Recurso | Piso 1 | Piso 2 | Piso 3 | Sala de The Mother |
 |---|---|---|---|---|
-| Curas | 2-3 | 1-2 | 1 | 0-1 |
-| Munición (balas; blísteres de 4, D-74, D-122) | 12-16 | 8-12 | 4-8 | 20 (12 para la fase 2, D-115; 8 para la fase 3: 3 transformadores × 2 disparos + 2 de margen; M-19, D-28, D-80) |
+| Curas | 3-4 | 2-3 | 2 | 0-1 |
+| Munición (balas; blísteres de 4, D-74, D-122) | 16-20 | 12-16 | 8-12 | 20 (12 para la fase 2, D-115; 8 para la fase 3: 3 transformadores × 2 disparos + 2 de margen; M-19, D-28, D-80) |
 | Punzón de descarga (D-71) | 2-3 | 1-2 | 0-1 | 0 |
 | Llave obligatoria | 1 | 1 | 1 | 0 |
 | Llaves opcionales | 1-2 | 0-1 | 0-1 | 0 |
 
 - En el piso 3, la llave obligatoria abre la puerta de la sala de The Mother, que ocupa el lugar de la sala clave final (M-15, D-36).
-- **Casillas que ocupa el máximo de cada piso** (con los máximos por casilla de D-37): piso 1, 11 casillas; piso 2, 7; piso 3, 5. En los pisos 1 y 2 el máximo supera las 6 casillas del inventario y obliga a elegir qué llevar; en el piso 3 el máximo ocupa 5, pero lo que se trae de los pisos anteriores sigue compitiendo por el espacio. Las llaves liberan su casilla al usarse.
+- **Casillas que ocupa el máximo de cada piso** (con los máximos por casilla de D-37): piso 1, 12 casillas; piso 2, 9; piso 3, 6 (D-171). En los pisos 1 y 2 el máximo supera las 6 casillas del inventario y obliga a elegir qué llevar; en el piso 3 el máximo ocupa las 6 y lo que se trae de los pisos anteriores sigue compitiendo por el espacio. Las llaves liberan su casilla al usarse.
 - Fallas de la máquina (Deseable): 1-2 en toda la demo (M-17), fuera del presupuesto por piso.
 - Documentos de Emilia: 2 por piso (6 en la demo), fuera del presupuesto por piso y sin casilla; se aplica igual en el showcase, sin escalado (D-52). Si el documento de Emilia de una sala clave secundaria ya está registrado, la sala contiene en su lugar 1 recurso extra del tipo más escaso del piso en ese intento, por encima del presupuesto (D-58, D-79, M-08).
 - Las salas fijas del tutorial en el primer intento contienen 1 cura y 1 blíster de munición, que cuentan dentro del presupuesto del piso 1 (D-38, D-70).
@@ -101,8 +101,8 @@ Define límites, regeneración, acumulación, intercambio y condiciones especial
 
 | Recurso | Piso 1 | Piso 2 | Piso 3 | Sala de The Mother |
 |---|---|---|---|---|
-| Curas | 2 | 1 | 1 | 0-1 |
-| Munición (balas; blísteres de 4, D-122) | 8-12 | 4-8 | 4 | Igual que en la configuración completa (D-28) |
+| Curas | 2-3 | 2 | 1-2 | 0-1 |
+| Munición (balas; blísteres de 4, D-122) | 12-16 | 8-12 | 8 | Igual que en la configuración completa (D-28) |
 | Punzón de descarga (D-71) | 2 | 1-2 | 0-1 | 0 |
 | Llave obligatoria | 1 | 1 | 1 | 0 |
 | Llaves opcionales | 0-1 | 0-1 | 0 | 0 |

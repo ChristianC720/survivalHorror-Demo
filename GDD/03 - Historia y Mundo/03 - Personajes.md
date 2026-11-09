@@ -223,7 +223,7 @@ La distribución por piso es un valor inicial, sujeto a balance (D-76): el piso 
 | El Alto | 4 | 2 (alcance largo) | 1.2 / 3 m/s | Sí | Vigila pasillos |
 | La Boca | 3 | 3 | 1 / 2.5 m/s | No | Su grito pone a los enemigos cercanos en búsqueda hacia ella; no usa el latido (D-64) |
 | El Rastrero | 2 | 4 | 1.8 / 4.2 m/s | No | Flanquea |
-| El Mudo | 3 | 2 (emboscada) | Inmóvil; estallidos de 4.5 m/s | Sí | No patrulla; se activa a ~3 m o al ser iluminado |
+| El Mudo | 3 | 2 (emboscada) | Inmóvil; estallidos de 4.5 m/s de ~0.9 s (D-170) | Sí | No patrulla; se activa a ~3 m o al ser iluminado |
 
 Los reciclados mueren con 2 disparos, o con 1 si son un Rastrero (M-20). Detección, puntos débiles y estados de IA en [[03 - Enemigos y NPC]]. Modelos y animación: [[02 - Personajes y Animación]].
 
