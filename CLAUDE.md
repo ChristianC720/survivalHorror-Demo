@@ -1,6 +1,6 @@
 # CLAUDE.md — Identity Dissolution (codename Heartbeat)
 
-Third-person survival horror with roguelite structure. Unity **6000.6.6f1**, URP 17 (Forward+), C#. Single-player PC demo.
+Third-person survival horror with roguelite structure. Unity **6000.6.8f1**, URP 17 (Forward+), C#. Single-player PC demo.
 The design source of truth is the Obsidian vault in `GDD/` (Spanish). The development guides in `Desarrollo/` (English) translate it into implementation steps. **If the code and the GDD disagree, the GDD wins** (and the GDD's own rule: the detailed section and `GDD/10 - Referencia/03 - Registro de Decisiones.md` win over summaries).
 
 Status: rebuilt from scratch on 2026-10-31. The old prototype is only in git: `git show legacy-prototype:<path>` (e.g. `Assets/Scripts/AI/EnemyAI.cs`). Read it for ideas; never restore it wholesale.
@@ -8,7 +8,7 @@ Status: rebuilt from scratch on 2026-10-31. The old prototype is only in git: `g
 ## Where to look in the GDD
 | Need | File |
 |---|---|
-| One-page overview | `GDD/00 - GDD Estructurado.md` |
+| One-page overview | `GDD/00 - GDD simplificado.md` |
 | Mechanics M-01..M-20 (rules, numbers) | `GDD/02 - Diseño/02 - Mecánicas.md` |
 | Systems S-01..S-11 + their events | `GDD/02 - Diseño/03 - Sistemas.md` |
 | Game states and transitions | `GDD/02 - Diseño/07 - Reglas y Estados del Juego.md` |
@@ -66,7 +66,7 @@ Assets/_Project/
 ## Placeholders
 - **3D models that need Blender** (characters, enemies, The Mother, complex props): primitive composites at real scale, prefab `PH_<Name>`, pivot at the feet / floor center, root has `PlaceholderInfo` (intended model, owner, notes). Register each in `Desarrollo/PLACEHOLDERS.md`. Gameplay scripts go on the *parent* prefab, never on the PH mesh, so the mesh can be swapped.
 - **Audio**: every sound is an `AudioCue` asset (clip may be null). Never put an `AudioClip` reference directly in gameplay code. Register cues in `Desarrollo/AUDIO_CUES.md`.
-- **Cinematics**: Timelines with camera moves, text cards and fades over placeholder geometry.
+- **Cinematics**: staged shots (`CinematicStage` in `Cinematics.unity`) plus code-driven text cards and fades; no Timelines yet.
 
 ## Tooling: Claude + Aura MCP
 - Claude writes `.cs`, `.md`, `.asmdef`, `.inputactions` JSON with Write/Edit.

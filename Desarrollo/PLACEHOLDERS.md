@@ -38,7 +38,7 @@ Add a row whenever you create a new `PH_` prefab.
 ## UI placeholders
 | Item | Intended asset | Current placeholder | Status |
 |---|---|---|---|
-| Audio SFX | All `CUE_*` sound effects (`Audio/SFX/SFX_*.wav`) | procedurally generated beeps and noise | final sounds pending (Lian, D-87) |
+| Audio SFX | All `CUE_*` sound effects (`Audio/SFX/SFX_*.wav`) | clips imported in `Audio/SFX` (2026-11-08); some may still be generated placeholders | check per cue which are final (Lian, D-87) |
 | Fonts | VT323 (data), IBM Plex Sans (menus), OpenDyslexic (option) | imported (OFL, licences next to the files in `UI/Fonts/`), dynamic TMP assets via `UI/Resources/UiFontSet` | done |
 | Main menu backdrop | capsule-row room with the facility terminal next to Lukas's capsule (D-90) | flat black screen with green text | pending (E12-f1-lighting) |
 | Credits roll | END table credits | hard-coded lines in `MenuView.ShowCredits` | pending (E15) |
