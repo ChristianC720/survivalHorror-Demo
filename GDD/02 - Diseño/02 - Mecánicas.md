@@ -14,26 +14,26 @@ Documenta cada mecánica con suficiente detalle para que otro integrante pueda i
 
 | Mecánica                                                    | Prioridad | Pilares  | Estado                                                                              |
 | ----------------------------------------------------------- | --------- | -------- | ----------------------------------------------------------------------------------- |
-| M-01 Cámara Over the Shoulder y apuntado                    | Demo      | V        | Definida                                                                            |
-| M-02 Vista de vigilancia (cámaras de The Mother)            | Demo      | V, A, DC | Definida                                                                            |
-| M-03 Bloqueo de vigilancia por detección                    | Demo      | V        | Definida                                                                            |
-| M-04 Combate a distancia                                    | Demo      | V, DC    | Definida (valores iniciales D-37, sujetos a balance)                                |
-| M-05 Salud y estados                                        | Demo      | V, DC    | Definida (valores iniciales D-37, sujetos a balance)                                |
-| M-06 Resistencia y empujón                                  | Demo      | V, DC    | Definida (valores iniciales D-37, sujetos a balance)                                |
-| M-07 Inventario de 6 casillas en tiempo real                | Demo      | DC       | Definida                                                                            |
-| M-08 Interacción, recolección e investigación de documentos | Demo      | A        | Definida                                                                            |
-| M-09 Sigilo y ruido                                         | Demo      | V, A     | Definida                                                                            |
-| M-10 Señales diegéticas                                     | Demo      | A        | Definida                                                                            |
-| M-11 Punzón de descarga (defensa y remate)                            | Demo      | V, DC    | Definida                                                                            |
-| M-12 Linterna                                               | Demo      | V, DC    | Definida (barra de carga, D-71)                                                       |
-| M-13 Hackeo por secuencias                                  | Demo      | V, DC    | Definida                                                                            |
-| M-14 Escape de combate y retirada                           | Demo      | DC       | Definida                                        |
-| M-15 Exploración vertical por pisos                         | Demo      | A, DC    | Definida (3 pisos, D-33)                                                            |
-| M-16 Reaparición por reconstrucción y terminal del brazo    | Demo      | A        | Definida                                                                            |
-| M-17 Fallas de la máquina                                   | Deseable  | A, DC    | Definida                                                                            |
-| M-18 Degradación por muerte y final de 5 muertes            | Deseable  | A        | Definida (final: Asimilación, D-42)                                                 |
-| M-19 Jefe final: The Mother                                 | Demo      | V, A, DC | Definida (duración por balancear; decisión final y 3 cinemáticas de victoria, D-51) |
-| M-20 Reciclaje de enemigos y remate                         | Demo      | V, DC    | Definida (valores iniciales D-37, sujetos a balance)                                |
+| M-01 Cámara Over the Shoulder y apuntado                    | Demo      | V        | Implementada                                                                          |
+| M-02 Vista de vigilancia (cámaras de The Mother)            | Demo      | V, A, DC | Implementada                                                                          |
+| M-03 Bloqueo de vigilancia por detección                    | Demo      | V        | Implementada                                                                          |
+| M-04 Combate a distancia                                    | Demo      | V, DC    | Implementada (valores iniciales D-37, sujetos a balance)                                |
+| M-05 Salud y estados                                        | Demo      | V, DC    | Implementada (valores iniciales D-37, sujetos a balance)                                |
+| M-06 Resistencia y empujón                                  | Demo      | V, DC    | Implementada (valores iniciales D-37, sujetos a balance)                                |
+| M-07 Inventario de 6 casillas en tiempo real                | Demo      | DC       | Implementada                                                                          |
+| M-08 Interacción, recolección e investigación de documentos | Demo      | A        | Implementada                                                                          |
+| M-09 Sigilo y ruido                                         | Demo      | V, A     | Implementada                                                                          |
+| M-10 Señales diegéticas                                     | Demo      | A        | Implementada                                                                          |
+| M-11 Punzón de descarga (defensa y remate)                            | Demo      | V, DC    | Implementada                                                                          |
+| M-12 Linterna                                               | Demo      | V, DC    | Implementada (barra de carga, D-71)                                                       |
+| M-13 Hackeo por secuencias                                  | Demo      | V, DC    | Implementada                                                                          |
+| M-14 Escape de combate y retirada                           | Demo      | DC       | Implementada                                      |
+| M-15 Exploración vertical por pisos                         | Demo      | A, DC    | Implementada (3 pisos, D-33)                                                            |
+| M-16 Reaparición por reconstrucción y terminal del brazo    | Demo      | A        | Implementada                                                                          |
+| M-17 Fallas de la máquina                                   | Deseable  | A, DC    | Implementada                                                                          |
+| M-18 Degradación por muerte y final de 5 muertes            | Deseable  | A        | Implementada (final: Asimilación, D-42)                                                 |
+| M-19 Jefe final: The Mother                                 | Demo      | V, A, DC | Implementada (duración por balancear; decisión final y 3 cinemáticas de victoria, D-51) |
+| M-20 Reciclaje de enemigos y remate                         | Demo      | V, DC    | Implementada (valores iniciales D-37, sujetos a balance)                                |
 
 ## Mecánicas principales
 
