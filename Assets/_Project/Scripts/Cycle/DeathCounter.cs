@@ -31,8 +31,12 @@ namespace Heartbeat.Cycle
             return AddCost(ref s, counts);
         }
 
-        /// <summary>Quitting calmly outside a saved final key room (D-31): +1 counter and degradation, same attempt.</summary>
-        public static bool RegisterCalmExit(ref State s) => AddCost(ref s, !s.FirstAttempt);
+        /// <summary>Quitting calmly outside a saved final key room (D-31, D-94): +1 counter, degradation and subject code, same attempt.</summary>
+        public static bool RegisterCalmExit(ref State s)
+        {
+            s.SubjectCode++;
+            return AddCost(ref s, !s.FirstAttempt);
+        }
 
         private static bool AddCost(ref State s, bool counts)
         {

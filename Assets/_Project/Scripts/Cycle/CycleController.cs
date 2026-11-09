@@ -349,6 +349,7 @@ namespace Heartbeat.Cycle
             WriteCounter(s);
             Services.Get<FaultModel>().PatchDiscovered(registry.Has);   // M-17, D-09: no fault survives a death
             Data.hasAttemptSave = false;
+            autosavePending = false;
             carry = null;
             HbLog.Info("Cycle", $"Death ({cause}) -> {Data.SubjectLabel}, consecutive {Data.deathCounter}/{DeathCounter.AssimilationThreshold}");
             return assimilate;
@@ -434,6 +435,7 @@ namespace Heartbeat.Cycle
         private void OnRoomEntered(MonoBehaviour m)
         {
             var room = m as RoomInstance;
+            autosavePending = false;   // a pending autosave belongs to the final room Lukas was in (D-30)
             if (room != savedFinalRoom) savedFinalRoom = null;
             if (room == null || room.Definition == null || room.Definition.role != RoomRole.Final || CurrentFloor >= 3) return;
             bool hunting = Services.TryGet<AlertDirector>(out var d) && d.HuntingCount > 0;

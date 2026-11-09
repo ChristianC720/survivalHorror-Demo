@@ -164,13 +164,13 @@ namespace Heartbeat.Tests
         }
 
         [Test]
-        public void CalmExit_AddsCounterAndDegradation_KeepsSubjectAndAttempt() // D-31
+        public void CalmExit_AddsCounterDegradationAndSubject_KeepsAttempt() // D-31, D-94
         {
             var s = new DeathCounter.State { SubjectCode = 8, Consecutive = 1 };
             DeathCounter.RegisterCalmExit(ref s);
             Assert.AreEqual(2, s.Consecutive);
             Assert.AreEqual(1, s.Degradation);
-            Assert.AreEqual(8, s.SubjectCode);
+            Assert.AreEqual(9, s.SubjectCode);
             Assert.AreEqual(0, s.Total);
         }
 
