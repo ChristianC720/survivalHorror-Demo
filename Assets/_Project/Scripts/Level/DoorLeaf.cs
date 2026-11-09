@@ -24,7 +24,6 @@ namespace Heartbeat.Level
         [SerializeField] private Transform leaf;
         [SerializeField] private NavMeshObstacle obstacle;
         [SerializeField] private DoorLock lockType = DoorLock.None;
-        [SerializeField] private float sealBreakSeconds = 30f;
         [SerializeField] private float openHeight = 2.3f;
         [SerializeField] private float slideSpeed = 4f;
         [Tooltip("Set on a door that parts sideways into the walls (hospital door, D-157): each leaf travels this far along local X. 0 = the leaf rises.")]
@@ -230,7 +229,7 @@ namespace Heartbeat.Level
                 { hunterAtDoor = true; break; }
             if (!hunterAtDoor) return;
             breakProgress += Time.deltaTime;
-            if (breakProgress >= sealBreakSeconds)
+            if (breakProgress >= SystemsBalance.Current.sealBreakSeconds)
             {
                 HbLog.Info("Door", $"{name}: seal broken by an enemy");
                 Sfx.Play(Sfx.DoorSealBreak, transform.position);

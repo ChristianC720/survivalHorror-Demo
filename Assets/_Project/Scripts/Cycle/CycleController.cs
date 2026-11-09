@@ -24,8 +24,6 @@ namespace Heartbeat.Cycle
     /// </summary>
     public sealed class CycleController : MonoBehaviour
     {
-        [SerializeField, Min(5f)] private float floorTransitionSeconds = 5f;
-        [SerializeField] private float shortReconstructionSeconds = 3f;
 
         private SaveService saves;
         private RegistryModel registry;
@@ -310,8 +308,8 @@ namespace Heartbeat.Cycle
                 stage.SetSubject(Data.subjectCode);
                 loader.SetFade(0f);
                 Sfx.Play2D("CUE_Capsule_Reconstruction");
-                var shot = StartCoroutine(stage.Play("Capsule", shortReconstructionSeconds));
-                for (float t = 0f; t < shortReconstructionSeconds && !skipRequested; t += Time.unscaledDeltaTime) yield return null;
+                var shot = StartCoroutine(stage.Play("Capsule", SystemsBalance.Current.shortReconstructionSeconds));
+                for (float t = 0f; t < SystemsBalance.Current.shortReconstructionSeconds && !skipRequested; t += Time.unscaledDeltaTime) yield return null;
                 StopCoroutine(shot);
                 stage.StopAll();
             }
@@ -392,12 +390,12 @@ namespace Heartbeat.Cycle
             states.TryTransition(GameStateId.FloorTransition);
             carry = Snapshot();
             CurrentFloor = floor + 1;
-            HbLog.Info("Cycle", $"Floor transition {floor} -> {CurrentFloor} (≥ {floorTransitionSeconds} s, no loading screen)");
+            HbLog.Info("Cycle", $"Floor transition {floor} -> {CurrentFloor} (≥ {SystemsBalance.Current.floorTransitionSeconds} s, no loading screen)");
             yield return loader.Fade(0f, 1f);
             float start = Time.unscaledTime;
             FloorSession.Pending = NextRequest(CurrentFloor);
             loader.Load(SceneNames.Floor, null, fadeOut: false);
-            while (loader.IsBusy || Time.unscaledTime - start < floorTransitionSeconds) yield return null;
+            while (loader.IsBusy || Time.unscaledTime - start < SystemsBalance.Current.floorTransitionSeconds) yield return null;
             states.TryTransition(GameStateId.Playing);
             yield return loader.Fade(1f, 0f);
             busy = false;

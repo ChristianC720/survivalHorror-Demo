@@ -17,6 +17,22 @@ Los enemigos comunes son personas asimiladas por el laboratorio: personal de Vit
 - **Densidad:** máximo 2 enemigos activos por sala; ~1/3 de las salas vacías (D-37). El total del piso nunca supera 2 por sala ocupada (D-118).
 - **Aparición por piso (D-76):** piso 1, el Alto y el Rastrero; piso 2, se suma la Boca; piso 3, se suma el Mudo. El Mudo de la introducción es un señuelo guionizado (D-53).
 
+## Valores de IA (D-175)
+
+Valores iniciales, sujetos a balance, que ya usa el juego. Viven en los `EnemyDefinition` (`ED_*`) y en `BossBalance`.
+
+| Valor | Alto | Boca | Rastrero | Mudo |
+|---|---|---|---|---|
+| Cono de visión | 100° | — (ciega) | 140° | 100° |
+| Probabilidad de agarre en un ataque a ~1.6 m | 40% | No agarra | No agarra | 40% |
+| Preparación del ataque | 0.7 s | 0.7 s | 0.35 s | 0.7 s |
+| Descanso entre ataques | 1.8 s | 1.8 s | 1.1 s | 1.8 s |
+
+- **Alerta:** la caza dura 5 s sin ver a Lukas antes de bajar a búsqueda; la búsqueda se mantiene 6 s antes de decaer. En búsqueda el enemigo se mueve a 1.4 veces su velocidad de patrulla.
+- **El Mudo:** además del agarre de emboscada, golpea si el agarre no sale.
+- **Jefe:** cada cámara hostil descansa 5 s tras liberar un asimilado; el brazo recolector deja de patrullar los nodos y persigue a Lukas cuando está a menos de ~6 m.
+- **Sala de The Mother:** se construye después del piso 3 como un paso propio, con su propia transición de ≥ 5 s desde la sala final del piso 3.
+
 ## Plantilla de enemigo
 
 ### El Alto

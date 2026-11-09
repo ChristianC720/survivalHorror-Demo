@@ -22,6 +22,7 @@ MonoBehaviour:
   sightRange: 10
   sightAngle: 100
   hearingRange: 4
+  hearingMultiplier: 1
   reactsToLight: 1
   alert:
     sightGainPerSecond: 1.2

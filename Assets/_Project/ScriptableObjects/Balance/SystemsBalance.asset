@@ -15,3 +15,14 @@ MonoBehaviour:
   recycleAfterSeconds: 40
   recycleWarningSeconds: 3
   recycleMaxWaitSeconds: 20
+  attentionFillSeconds: 5
+  attentionDrainSeconds: 15
+  shotAttention: 0.15
+  attentionSuspicionSeconds: 2
+  feedDelaySeconds: 0.3
+  searchFeedDelaySeconds: 0.6
+  floorTransitionSeconds: 5
+  shortReconstructionSeconds: 3
+  sealBreakSeconds: 30
+  storyHitsMultiplier: 2
+  storyDetectionMultiplier: 0.5

@@ -22,6 +22,7 @@ MonoBehaviour:
   sightRange: 8
   sightAngle: 140
   hearingRange: 8
+  hearingMultiplier: 1
   reactsToLight: 1
   alert:
     sightGainPerSecond: 1.6
@@ -39,3 +40,11 @@ MonoBehaviour:
   flankOffset: 3
   patrolRadius: 7
   weakPointStagger: 0.5
+  screams: 0
+  screamRadius: 18
+  screamCooldown: 8
+  blindHuntFraction: 0.6
+  dormant: 0
+  activationRange: 3
+  burstSeconds: 0
+  burstPauseSeconds: 0.7

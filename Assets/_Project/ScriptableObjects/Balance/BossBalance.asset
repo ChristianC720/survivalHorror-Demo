@@ -27,7 +27,12 @@ MonoBehaviour:
   releasesTotal: 4
   maxActive: 2
   phase2Ammo: 12
+  healChance: 0.5
   fogDensity: 0.045
+  fogColor: {r: 0.09, g: 0.1, b: 0.115, a: 1}
+  speakerPulse: 0.04
+  speakerBeatsPerSecond: 1.2
+  plateFallDegreesPerSecond: 150
   transformerShots: 2
   phase3Ammo: 8
   autoDecisionSeconds: 6

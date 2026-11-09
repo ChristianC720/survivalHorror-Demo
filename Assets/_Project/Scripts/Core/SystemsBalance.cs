@@ -23,6 +23,11 @@ namespace Heartbeat.Core
         [Tooltip("Feed delay with no enemy searching.")] public float feedDelaySeconds = 0.3f;
         [Tooltip("Feed delay while an enemy in scope is searching (degraded signal).")] public float searchFeedDelaySeconds = 0.6f;
 
+        [Header("Cycle and doors (D-39, D-97)")]
+        [Tooltip("Floor transition cinematic, never shorter (D-39).")] [Min(5f)] public float floorTransitionSeconds = 5f;
+        [Tooltip("Short reconstruction shot (D-172).")] public float shortReconstructionSeconds = 3f;
+        [Tooltip("An enemy breaks a quick seal after this long (D-97).")] public float sealBreakSeconds = 30f;
+
         [Header("Story mode (D-103, D-116)")]
         [Tooltip("Each enemy needs this many times its hits to kill Lukas.")] public int storyHitsMultiplier = 2;
         [Tooltip("Sight alert gain is multiplied by this (slower detection).")] public float storyDetectionMultiplier = 0.5f;

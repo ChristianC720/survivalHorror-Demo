@@ -18,6 +18,9 @@ MonoBehaviour:
   invertY: 0
   minPitch: -55
   maxPitch: 65
+  aimAssistCone: 6
+  aimAssistPull: 30
+  aimAssistRange: 20
   exploreShoulder: {x: 0.65, y: 0.1, z: 0}
   exploreDistance: 2.8
   exploreFov: 55
@@ -27,3 +30,6 @@ MonoBehaviour:
   aimBlendSeconds: 0.18
   targetHeight: 1.55
   crouchTargetHeight: 1.05
+  damageShakeDegrees: 1.5
+  damageShakeSeconds: 0.25
+  decisionShakeDegrees: 0.4
