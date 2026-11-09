@@ -481,7 +481,7 @@ stateDiagram-v2
     
 - **Casos límite:**
     
-    - Si el jugador está oculto tras una cobertura pero la luz de su linterna ilumina el suelo frente al enemigo, la IA detectará el reflejo.
+    - Si el haz de la linterna toca a un enemigo que reacciona a la luz y que no ve a Lukas (de espaldas o tras una cobertura), el enemigo pasa a sospecha hacia Lukas (D-173). La detección del reflejo del haz en el suelo queda como Post-demo (D-174).
         
 - **Impacto en pilares:** Refuerza **Vulnerabilidad Constante** y **Adaptación**: el jugador decide con información incompleta. Riesgo: sin señales claras la detección puede sentirse injusta; depende de M-10.
 
@@ -597,7 +597,7 @@ stateDiagram-v2
         
     - Tiene dos modos según la cámara: sin apuntar emite un cono corto y amplio; al apuntar (M-01) se concentra en un cono estrecho de largo alcance hacia donde apunta el arma.
         
-    - Si el haz de luz ilumina directamente a un enemigo mientras el jugador está en sigilo, su alerta sube el doble de rápido.
+    - Si el haz de luz ilumina directamente a un enemigo mientras el jugador está en sigilo, su alerta sube el doble de rápido. Si el enemigo no ve a Lukas, el haz lo pone en sospecha hacia él (D-173).
         
     - **Barra de carga (D-71):** ~120 s de uso continuo; tras ~3 s apagada se recarga sola y se llena de 0 a 100% en ~30 s. En 0 parpadea, se apaga y no se puede encender durante ~10 s (D-124). No usa baterías ni ocupa casilla; el indicador está en el terminal del brazo (valores iniciales, sujetos a balance).
         
@@ -1143,6 +1143,8 @@ flowchart TD
 | Pasarelas internas | Complica la generación vertical | A |
 | Techos rotos (descenso entre pisos) | Complica la garantía de rutas válidas | A |
 | Detección por rejillas o ventanas entre salas | Requiere percepción entre salas | V |
+| Reflejo del haz de la linterna en el suelo (D-174) | Requiere muestrear la luz fuera del cuerpo del enemigo | V |
+| Modelo propio de cada enemigo reciclado (D-174) | Trabajo de modelado sin tiempo antes de la entrega; el reciclado se distingue por su temblor y su velocidad | A |
 | Cámaras que "mienten" (horror cósmico) | Aumenta el alcance y complica la legibilidad de la vigilancia (principio 3 de [[01 - Jugabilidad]]) | A |
 | Soporte completo de control (reasignación del mando) | La demo incluye un mapa básico fijo de mando (D-120) | — |
 

@@ -72,6 +72,7 @@ namespace Heartbeat.Core
         public static event Action<int> Reconstructed;                    // new subject code
         public static event Action<string> EndingTriggered;               // Assimilation, BasicRelief, FullRelief, Ambiguous
         public static event Action Autosaved;
+        public static event Action SyncFailed;                            // a save could not be written (Guardado y Configuración)
 
         // Inventory / interaction
         public static event Action InventoryChanged;
@@ -129,6 +130,7 @@ namespace Heartbeat.Core
         public static void RaiseReconstructed(int subject) => Reconstructed?.Invoke(subject);
         public static void RaiseEndingTriggered(string ending) => EndingTriggered?.Invoke(ending);
         public static void RaiseAutosaved() => Autosaved?.Invoke();
+        public static void RaiseSyncFailed() => SyncFailed?.Invoke();
         public static void RaiseInventoryChanged() => InventoryChanged?.Invoke();
         public static void RaiseInventoryFull(string kind) => InventoryFull?.Invoke(kind);
         public static void RaiseInteractTargetChanged(MonoBehaviour target) => InteractTargetChanged?.Invoke(target);
@@ -192,6 +194,7 @@ namespace Heartbeat.Core
             Reconstructed = null;
             EndingTriggered = null;
             Autosaved = null;
+            SyncFailed = null;
             RoomEntered = null;
             FloorBuilt = null;
             PowerRestored = null;

@@ -113,6 +113,7 @@ namespace Heartbeat.Boss
                     Subtitles.Say(Subtitles.Mother, "SUB.MOTHER.PHASE2");
                     PlayMusic("CUE_Music_Mother_P2");
                     DropAmmo("Ammo2_", balance.phase2Ammo);
+                    DropHeal();
                     break;
                 case MotherPhase.Transformers:
                     Subtitles.Say(Subtitles.Mother, "SUB.MOTHER.PHASE3", subject);
@@ -212,6 +213,16 @@ namespace Heartbeat.Boss
             ReleasePending();
         }
 
+        /// <summary>0-1 heal in The Mother's room (Economía), next to the last phase-2 ammo point.</summary>
+        private void DropHeal()
+        {
+            if (Random.value >= balance.healChance || !Services.TryGet(out FloorBuilder builder)) return;
+            var point = GetComponentsInChildren<Transform>(true).LastOrDefault(t => t.name.StartsWith("Ammo2_"));
+            if (point == null) return;
+            builder.DropItem(ItemKind.Heal, 1, point.position + point.right * 0.6f);
+            HbLog.Info("Boss", "1 heal placed for phase 2");
+        }
+
         private void DropAmmo(string prefix, int rounds)
         {
             if (!Services.TryGet(out FloorBuilder builder)) return;
@@ -268,7 +279,7 @@ namespace Heartbeat.Boss
                 float until = Time.time + Mathf.Max(balance.autoDecisionSeconds, music != null && music.clip != null ? music.clip.length - music.time - 2f : 0f);
                 while (Time.time < until)
                 {
-                    foreach (var l in failing) l.enabled = Random.value > 0.25f;
+                    foreach (var l in failing) l.enabled = Save.AccessOptions.ReduceFlashes || Random.value > 0.25f;   // D-106
                     yield return new WaitForSeconds(Random.Range(0.05f, 0.4f));
                 }
             }
@@ -290,7 +301,7 @@ namespace Heartbeat.Boss
             var lights = GetComponentsInChildren<Light>(true);
             while (!decided)
             {
-                foreach (var l in lights) l.enabled = Random.value > 0.25f;
+                foreach (var l in lights) l.enabled = Save.AccessOptions.ReduceFlashes || Random.value > 0.25f;   // D-106
                 yield return new WaitForSeconds(Random.Range(0.05f, 0.4f));
             }
         }

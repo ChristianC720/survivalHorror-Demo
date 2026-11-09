@@ -26,6 +26,7 @@ namespace Heartbeat.Boss
         public int releasesTotal = 4;
         public int maxActive = 2;
         [Tooltip("Rounds in the room's blind spots for phase 2 (3 blisters).")] public int phase2Ammo = 12;
+        [Tooltip("Chance of one heal in the room for phase 2 (0-1 heals, Economía).")] [Range(0f, 1f)] public float healChance = 0.5f;
         [Tooltip("Dark cold haze: hides distance, never washes the image out or hides the M-10 signals.")]
         public float fogDensity = 0.045f;
         public Color fogColor = new Color(0.09f, 0.1f, 0.115f);

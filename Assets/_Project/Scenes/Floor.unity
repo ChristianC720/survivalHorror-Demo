@@ -300,7 +300,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c786073c737a8254e8aa62da33589c27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Heartbeat.Runtime::Heartbeat.AI.AlertDirector
-  alertScopeRadius: 25
 --- !u!4 &675742611
 Transform:
   m_ObjectHideFlags: 0
@@ -328,8 +327,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 636b262e837cf604591000162596af88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Heartbeat.Runtime::Heartbeat.Recycle.RecycleSystem
-  riseAfterSeconds: 40
-  warningSeconds: 3
 --- !u!1 &1894999164
 GameObject:
   m_ObjectHideFlags: 0

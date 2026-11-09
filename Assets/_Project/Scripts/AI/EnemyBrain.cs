@@ -109,6 +109,8 @@ namespace Heartbeat.AI
             SeesPlayer = p != null && CanSee(p, out proximity);
             if (SeesPlayer) lastKnown = p.position;
             alert.Tick(dt, SeesPlayer, proximity, IsLit && definition.reactsToLight);
+            // D-173: a beam on an enemy that cannot see Lukas (back turned, behind cover) still makes it suspicious, towards him.
+            if (IsLit && definition.reactsToLight && !SeesPlayer && p != null && alert.State < AlertState.Search) { lastKnown = p.position; alert.Hear(NoiseSource.Other); }
 
             if (staggerTimer > 0f)
             {

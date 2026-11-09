@@ -49,7 +49,7 @@ namespace Heartbeat.Save
             data.saveVersion = CurrentVersion;
             if (string.IsNullOrEmpty(data.createdAt)) data.createdAt = DateTime.UtcNow.ToString("o");
             data.updatedAt = DateTime.UtcNow.ToString("o");
-            WriteAtomic(SlotPath(slot), JsonUtility.ToJson(data, true));
+            if (!WriteAtomic(SlotPath(slot), JsonUtility.ToJson(data, true))) return;
             HbLog.Info("Save", $"Slot {slot} saved ({data.SubjectLabel}, deaths {data.deathCounter}, autosave={data.hasAttemptSave})");
         }
 
@@ -80,12 +80,24 @@ namespace Heartbeat.Save
 
         // ---------- IO ----------
 
-        private static void WriteAtomic(string path, string json)
+        /// <summary>Writes .tmp then swaps it in, so a failure never corrupts the previous save. On failure the old file
+        /// stays, the terminal shows SYNC FAILED and the next change retries (Guardado y Configuración).</summary>
+        private static bool WriteAtomic(string path, string json)
         {
-            string tmp = path + ".tmp";
-            File.WriteAllText(tmp, json);
-            if (File.Exists(path)) File.Replace(tmp, path, path + ".bak");
-            else File.Move(tmp, path);
+            try
+            {
+                string tmp = path + ".tmp";
+                File.WriteAllText(tmp, json);
+                if (File.Exists(path)) File.Replace(tmp, path, path + ".bak");
+                else File.Move(tmp, path);
+                return true;
+            }
+            catch (Exception e) when (e is IOException || e is UnauthorizedAccessException)
+            {
+                HbLog.Error("Save", $"SYNC FAILED writing {Path.GetFileName(path)}: {e.Message}");
+                GameEvents.RaiseSyncFailed();
+                return false;
+            }
         }
 
         private static bool TryRead<T>(string path, out T data) where T : class

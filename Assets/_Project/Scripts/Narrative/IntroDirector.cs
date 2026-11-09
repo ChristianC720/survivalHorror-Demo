@@ -264,7 +264,7 @@ namespace Heartbeat.Narrative
         {
             for (float t = 0f; t < seconds; t += Time.deltaTime)
             {
-                foreach (var l in elevatorLights) l.enabled = Random.value > 0.5f;
+                foreach (var l in elevatorLights) l.enabled = Save.AccessOptions.ReduceFlashes || Random.value > 0.5f;   // D-106
                 yield return null;
             }
             foreach (var l in elevatorLights) l.enabled = true;

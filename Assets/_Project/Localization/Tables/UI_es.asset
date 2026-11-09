@@ -854,6 +854,10 @@ MonoBehaviour:
     m_Localized: Pulsa [{0}] para empujar, o para disparar apuntando
     m_Metadata:
       m_Items: []
+  - m_Id: 2663657614999552
+    m_Localized: SYNC FAILED
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
