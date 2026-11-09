@@ -46,9 +46,9 @@ El GDD se escribió del **2026-09-26** al **2026-10-22**. El desarrollo va del *
 
 | Hito | Entregable | Criterio de finalización | Estado |
 | ---- | ---------- | ------------------------ | ------ |
-| H1 — Base técnica | Proyecto Unity, núcleo, jugador y cámara | El jugador se mueve, corre, se agacha y mira en OTS en una sala *greybox*; el proyecto abre sin errores en los 5 equipos | Pendiente (2026-10-26) |
-| H2 — Prototipo de combate | Combate, inventario, interacción y el Alto | En una sala de prueba se puede esconder, disparar, empujar, curar y morir contra un Alto que patrulla, sospecha, busca y caza | Pendiente (2026-11-01) |
-| H3 — MVP | Piso 1 procedural y ciclo de muerte | Se cumple el MVP de [[01 - Alcance]]; el validador pasa 1 000 semillas | Pendiente (2026-11-08) |
+| H1 — Base técnica | Proyecto Unity, núcleo, jugador y cámara | El jugador se mueve, corre, se agacha y mira en OTS en una sala *greybox*; el proyecto abre sin errores en los 5 equipos | Cumplido (2026-10-31) |
+| H2 — Prototipo de combate | Combate, inventario, interacción y el Alto | En una sala de prueba se puede esconder, disparar, empujar, curar y morir contra un Alto que patrulla, sospecha, busca y caza | Cumplido (2026-11-01) |
+| H3 — MVP | Piso 1 procedural y ciclo de muerte | Se cumple el MVP de [[01 - Alcance]]; el validador pasa 1 000 semillas | Cumplido (2026-11-01) |
 | H4 — Vertical slice | Piso 1 con calidad final | Se cumple el vertical slice de [[01 - Alcance]] y una persona ajena al equipo completa el piso 1 sin ayuda | Pendiente (2026-11-11) |
 | H5 — Contenido completo | 3 pisos, The Mother, finales, menús | Se puede jugar de Nueva partida a los créditos en la showcase; congelación de funciones | Pendiente (2026-11-15) |
 | H6 — Entrega | Build final | Todos los criterios del proyecto de [[04 - Criterios de Aceptación]] marcados; sin bugs críticos ni altos abiertos | Pendiente (2026-11-20) |

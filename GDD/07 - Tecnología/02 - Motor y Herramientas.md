@@ -8,7 +8,7 @@ Documenta las herramientas utilizadas para crear el videojuego y por qué fueron
 
 **Motor:** Unity (D-107).
 
-**Versión:** Unity 6.6 (`6000.6.6f1`, *Supported release*, no LTS). Todo el equipo usa la misma versión exacta, registrada en `ProjectSettings/ProjectVersion.txt`; cambiarla es una solicitud de cambio ([[05 - Gestión de Cambios]]).
+**Versión:** Unity 6.6 (`6000.6.8f1`, *Supported release*, no LTS). Todo el equipo usa la misma versión exacta, registrada en `ProjectSettings/ProjectVersion.txt`; cambiarla es una solicitud de cambio ([[05 - Gestión de Cambios]]).
 
 **Renderizado:** Universal Render Pipeline (URP), ruta *Forward+* para muchas luces dinámicas sin luz horneada (las salas son procedurales). Resolución interna ~540p con escalado *Nearest-Neighbor* y *dithering* de cámara (D-81); la interfaz se dibuja a resolución nativa ([[03 - Accesibilidad]]).
 
@@ -29,7 +29,7 @@ Documenta las herramientas utilizadas para crear el videojuego y por qué fueron
 
 | Herramienta | Propósito | Versión |
 |---|---|---|
-| Unity Editor | Motor | 6000.6.6f1 |
+| Unity Editor | Motor | 6000.6.8f1 |
 | Visual Studio 2022 / Rider | IDE de C# (`.vsconfig` del repositorio) | Última estable |
 | Blender | Modelado, rig y animación (D-151) | 5.x |
 | Blockbench | Modelos low-poly de objetos y utilería | Última estable |
