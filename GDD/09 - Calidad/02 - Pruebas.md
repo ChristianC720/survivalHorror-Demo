@@ -20,7 +20,7 @@ Comprueban que una característica haga lo que debe.
 Comprueban que varios sistemas funcionen correctamente juntos.
 
 - **PlayMode:** generar un piso, colocar al jugador y comprobar que existe un camino en el NavMesh hasta la llave y la sala final.
-- **Cadenas de la tabla de relaciones** de [[03 - Sistemas]]: por ejemplo, morir durante una caza → contador, inventario vacío, pisos regenerados, autoguardado descartado y código de sujeto +1.
+- **Cadenas de la tabla de relaciones** de [[03 - Sistemas]]: por ejemplo, morir durante una caza → contador, inventario de llegada al piso, piso regenerado, autoguardado descartado y código de sujeto +1.
 - **Recorrido completo:** de Nueva partida a los créditos en la showcase, una vez por semana desde H5 ([[03 - Roadmap]]).
 
 ### Pruebas de usabilidad
@@ -99,7 +99,7 @@ Plantilla, seguida de los casos críticos del proyecto.
 1. Dejarse matar por un enemigo.
 2. Ver la cinemática corta; repetir saltándola con `Espacio`.
 
-**Resultado esperado:** Inventario vacío; terminal con el documento; aparición en la cápsula del piso 1; distribución del piso distinta; código de sujeto +1; contador +1. Igual resultado con "Reiniciar".
+**Resultado esperado:** Inventario de llegada al piso (vacío en el piso 1 si llegó sin nada); terminal con el documento; aparición al inicio del piso 1; distribución del piso distinta; código de sujeto +1; contador +1. Igual resultado con "Reiniciar".
 
 **Resultado obtenido:**
 
@@ -117,7 +117,7 @@ Plantilla, seguida de los casos críticos del proyecto.
 2. Salir durante una caza; Continuar.
 3. Cerrar el proceso desde el administrador de tareas; Continuar.
 
-**Resultado esperado:** 1: aparece en la sala final del piso 1 con el inventario de llegada, contador +1. 2: inicio del ciclo con muerte completa. 3: último autoguardado sin costo.
+**Resultado esperado:** 1: aparece en la sala final del piso 1 con el inventario de llegada, contador +1. 2: inicio del piso 2 con el inventario de llegada y muerte completa (D-147). 3: último autoguardado sin costo.
 
 **Resultado obtenido:**
 

@@ -46,7 +46,7 @@ La demo tiene **5 misiones principales** y **2 secundarias persistentes**; no ha
 
 **Contexto:** Lukas despierta en la fila de cápsulas buscando algo o a alguien sin recordar a quién.
 
-**Requisitos:** Reconstrucción (inicio del ciclo).
+**Requisitos:** Reconstrucción (inicio del ciclo o muerte en el piso 1).
 
 **Pasos:**
 
@@ -56,7 +56,7 @@ La demo tiene **5 misiones principales** y **2 secundarias persistentes**; no ha
 
 **Condición de éxito:** Transición al piso 2.
 
-**Condición de fracaso:** Muerte o "Reiniciar": regreso al inicio del ciclo (M-16).
+**Condición de fracaso:** Muerte o "Reiniciar": regreso al inicio del piso actual (M-16, D-147).
 
 **Recompensa:** Autoguardado (D-30).
 
@@ -139,7 +139,7 @@ La demo tiene **5 misiones principales** y **2 secundarias persistentes**; no ha
 
 **Condición de éxito:** The Mother cae; Despertar y final de victoria (D-51).
 
-**Condición de fracaso:** Muerte: regreso al inicio del ciclo.
+**Condición de fracaso:** Muerte: regreso al inicio del piso 3 (D-147).
 
 **Recompensa:** Final de victoria; con los 6 documentos de Emilia, la elección entre Relevo completo y Ambiguo.
 

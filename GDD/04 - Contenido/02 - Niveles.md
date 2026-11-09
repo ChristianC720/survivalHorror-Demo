@@ -77,7 +77,7 @@ Casa → Exterior de Sektor V-7 → Compuerta (hackeo) → Elevador (cinemática
 
 **Puntos de guardado:** Autoguardado en la sala clave final sin enemigos en caza (D-30). No reinicia el contador.
 
-**Condición de entrada:** Reconstrucción en la fila de cápsulas (inicio del ciclo, M-16).
+**Condición de entrada:** Reconstrucción en la fila de cápsulas (inicio de cada ciclo o muerte en el piso 1, M-16, D-147).
 
 **Condición de salida:** Abrir la sala clave final con la llave obligatoria, restaurar la energía si falta y usar la escalera o el elevador (cinemática de ≥5 s, D-39).
 
@@ -188,7 +188,7 @@ Llegada → Salas procedurales ⇄ Salas clave secundarias → Puerta con llave 
 
 **Recompensas:** **20 balas** fijas en la sala: 12 en los puntos ciegos para la fase 2 (D-115) y 8 junto al núcleo para la fase 3 (6 para los transformadores + 2 de margen, D-28, D-80); 0–1 curas.
 
-**Puntos de guardado:** Ninguno; morir regresa al inicio del ciclo (D-30, M-16).
+**Puntos de guardado:** Ninguno; morir regresa al inicio del piso 3 (D-30, D-147).
 
 **Condición de entrada:** Abrir la puerta con la llave obligatoria del piso 3.
 

@@ -37,7 +37,7 @@ Cada sistema tiene además su lista detallada en [[03 - Sistemas]]; aquí va un 
 | M-13 Hackeo | Lukas está ante un panel de puerta | Introduce una entrada incorrecta de la secuencia | Suena el pitido de error y la secuencia se reinicia; Lukas sigue inmóvil y el juego no se pausa |
 | M-14 Escape y retirada | Un enemigo en caza persigue a Lukas | Lukas cruza una puerta y la sella con el hackeo rápido (2-3 entradas) | La persecución se corta; un enemigo que sigue ahí rompe el sellado en ~30 s, y el sellado también se rompe si Lukas vuelve a cruzar la puerta |
 | M-15 Exploración vertical | Lukas llega a la sala final del piso 1 con la llave y sin enemigos en caza | Usa la escalera | Se crea el autoguardado, la transición dura ≥ 5 s sin pantalla de carga y aparece en el piso 2 |
-| M-16 Reconstrucción y terminal | Lukas muere con 3 objetos y 2 documentos | Termina la cinemática corta | Reaparece en la cápsula del piso 1 sin objetos, con los 2 documentos y el código R-H siguiente |
+| M-16 Reconstrucción y terminal | Lukas llega al piso 2 con 1 objeto, recoge 2 más y tiene 2 documentos | Muere y termina la cinemática corta | Reaparece al inicio del piso 2 con el objeto con el que llegó, los 2 documentos y el código R-H siguiente (D-147) |
 | M-17 Fallas de la máquina (Deseable) | Lukas descubrió una falla | La usa 2 veces | The Mother la parchea; el registro sigue en el terminal |
 | M-18 Degradación y Asimilación (Deseable) | El contador va en 4 tras el piso 2 | Lukas muere otra vez | Se reproduce el final Asimilación y después los créditos |
 | M-19 The Mother | Lukas entra en la sala sin munición | Hackea 3 nodos, elimina a los 4 asimilados con las 12 balas de la sala y llega al núcleo | Empieza la fase 3 con 8 balas junto al núcleo y 3 transformadores de 2 disparos; al destruirlos cae The Mother |
@@ -45,7 +45,7 @@ Cada sistema tiene además su lista detallada en [[03 - Sistemas]]; aquí va un 
 
 ## Criterios del proyecto
 
-Se comprueban en la configuración showcase; la completa solo se comprueba si se entrega ([[01 - Alcance]]).
+Se comprueban en la configuración completa, la predeterminada; la showcase se comprueba con el recorrido corto ([[01 - Alcance]], D-171).
 
 - [ ] El bucle principal funciona: explorar, gestionar, combatir o evadir, morir y reconstruirse con un piso distinto.
 - [ ] Las condiciones de victoria y derrota funcionan: victoria al derrotar a The Mother con el final que corresponde; la muerte reconstruye (y, si M-18 entra, la quinta activa la Asimilación).
@@ -54,7 +54,7 @@ Se comprueban en la configuración showcase; la completa solo se comprueba si se
 - [ ] Las pruebas críticas están aprobadas: CP-01..CP-07 de [[02 - Pruebas]].
 - [ ] El rendimiento cumple el objetivo definido en [[03 - Requisitos Técnicos]].
 - [ ] No existen errores bloqueantes conocidos ([[03 - Bugs y Seguimiento]]).
-- [ ] Una partida showcase completa dura ~30 min sin muertes (D-34).
+- [ ] Una partida completa dura ~45–60 min sin muertes (D-33); con `-showcase`, ~30 min (D-34).
 - [ ] Un jugador que no conoce el GDD cumple el criterio mínimo de la demo de la [[01 - Ficha del Proyecto]].
 
 

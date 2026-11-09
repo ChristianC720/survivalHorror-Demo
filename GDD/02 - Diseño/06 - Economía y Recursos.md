@@ -33,7 +33,7 @@ Las reglas de uso de cada recurso se detallan en [[02 - Mecánicas]]; esta secci
 - **Suministro inicial (D-145):** 6 balas en el suelo junto a la cápsula donde despierta Lukas al construirse el piso 1, fuera del presupuesto del piso.
 - **Regeneración automática:** la resistencia (M-06) y la carga de la linterna (M-12, D-71).
 - **Investigación:** documentos, conocimiento y fallas de la máquina, registrados en el terminal del brazo (M-08, M-16, M-17).
-- **Reconstrucción:** el personaje vuelve con la salud en Bien y la resistencia al 100%, pero con el inventario vacío (M-16).
+- **Reconstrucción:** el personaje vuelve con la salud en Bien y la resistencia al 100%, con el inventario con el que llegó al piso (M-16, D-147).
 - **Autoguardado de la sala clave final (D-30):** no genera recursos; conserva el inventario con el que se llegó a la sala final de los pisos 1 y 2, solo para continuar después de salir del juego o de un fallo (ver [[07 - Reglas y Estados del Juego]]).
 - **No son fuentes:** la regeneración de salud (D-07) y el saqueo de cadáveres (Post-demo, ver [[02 - Mecánicas]]).
 
@@ -56,7 +56,7 @@ Las reglas de uso de cada recurso se detallan en [[02 - Mecánicas]]; esta secci
 | Reiniciar (D-32) | Todo el inventario, igual que morir |
 | Salir del juego con costo (D-31) | Según el caso: todo el inventario si cuenta como muerte completa, o lo obtenido después de la sala final autoguardada (ver [[07 - Reglas y Estados del Juego]]) |
 
-Todas las acciones consumen además **tiempo y exposición**, porque el inventario, el terminal y la lectura no pausan el juego (M-07, M-08, M-16). No rematar un cuerpo es un sumidero indirecto: el enemigo reciclado vuelve al piso y obliga a gastar más recursos después (M-20).
+Todas las acciones consumen además **tiempo y exposición**, porque el inventario y la lista del terminal no pausan el juego (M-07, M-16); solo la pausa y la vista de lectura lo detienen (D-159). No rematar un cuerpo es un sumidero indirecto: el enemigo reciclado vuelve al piso y obliga a gastar más recursos después (M-20).
 
 ## Reglas
 
@@ -116,8 +116,7 @@ Define límites, regeneración, acumulación, intercambio y condiciones especial
 
 ### Pérdida total al morir (D-18)
 
-- Al morir, el personaje se reconstruye al inicio del ciclo en el piso 1 y **pierde todo el inventario**: curas, munición, punzón de descarga y llaves. The Mother devuelve el revólver descargado (D-74).
-- **Actualizado (D-147):** al morir, el personaje vuelve al inicio del piso actual y recupera el inventario con el que llegó a ese piso; solo pierde lo recogido en él.
+- Al morir, el personaje se reconstruye al inicio del piso actual con el inventario con el que llegó a ese piso: **pierde todo lo recogido en él**, también llaves (D-18, D-147). The Mother devuelve el revólver descargado (D-74).
 - **Reiniciar** (menú de pausa) tiene el mismo costo sobre el inventario que morir (D-32). Al morir o reiniciar se descarta el autoguardado de la sala final (M-16).
 - **Salir del juego** puede contar como muerte completa o continuar desde la sala final autoguardada con el inventario guardado, según el estado al salir (D-31). Las reglas completas se documentan en [[07 - Reglas y Estados del Juego]].
 - Vuelve con la salud en Bien y la resistencia al 100%.

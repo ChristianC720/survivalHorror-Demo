@@ -174,7 +174,7 @@ S-01 Cámara y vigilancia · S-02 IA y percepción · S-03 Salud y combate · S-
 
 - **El personaje no mejora** (Pilar V): sin niveles, habilidades, armas nuevas ni mejoras. Siempre un revólver, que vuelve **descargado** en cada reconstrucción.
 - **Progresa el jugador:** conocimiento persistente en el terminal del brazo (bestiario, documentos, reglas del sistema, fallas). Lo hace "más informado, no más fuerte".
-- **Al morir o "Reiniciar":** se pierde todo el inventario; se conservan los registros del terminal. Solo "Nueva partida" los borra.
+- **Al morir o "Reiniciar":** se pierde lo recogido en el piso y Lukas vuelve al inicio de ese piso con lo que traía (D-147); se conservan los registros del terminal. Solo "Nueva partida" los borra.
 - **Desbloqueo clave:** reunir los **6 documentos de Emilia** (2 por piso, en salas clave secundarias, en cualquier intento) desbloquea la elección final.
 
 Fuente: [[05 - Progresión]].
@@ -220,7 +220,7 @@ Fuente: [[03 - Personajes]], [[03 - Enemigos y NPC]].
 #### Condiciones de victoria y derrota
 
 - **Victoria:** derrotar a The Mother al final del piso 3.
-- **Derrota:** muerte → reconstrucción al inicio del ciclo con un piso nuevo. "Reiniciar" cuenta como muerte; salir durante una alerta o caza cuenta como muerte completa.
+- **Derrota:** muerte → reconstrucción al inicio del piso actual, con un piso nuevo (D-147). "Reiniciar" cuenta como muerte; salir durante una alerta o caza cuenta como muerte completa.
 - **Final de derrota "Asimilación"** (Deseable): 5 muertes consecutivas. Solo llegar a la sala clave final del piso 2 reinicia el contador. Las muertes del primer intento (tutorial) no cuentan.
 
 Estados y transiciones: [[07 - Reglas y Estados del Juego]].
@@ -395,7 +395,7 @@ Fuente: [[04 - Interfaz Visual]], [[02 - UI y Menús]], [[03 - Accesibilidad]], 
 
 ### Music
 
-Cruda, oscura, industrial, melancólica y minimalista: frágil (piano, guitarra acústica) frente a mecánico (sintetizadores, bajos, estática, máquinas). Producida en FL Studio.
+Cruda, oscura, industrial, melancólica y minimalista: frágil (piano, guitarra acústica) frente a mecánico (sintetizadores, bajos, estática, máquinas). Producida en REAPER y FL Studio.
 
 - **Leitmotivs:**
   - **Emilia:** piano y guitarra.
@@ -436,7 +436,7 @@ Fuente: [[05 - Audio y Música]].
 | Motor        | **Unity 6.6** (`6000.6.6f1`, no LTS), URP *Forward+*                                                                                                     |
 | Lenguaje     | C#; ShaderGraph/HLSL; JSON para guardado                                                                                                                 |
 | Paquetes     | Solo oficiales: URP, Input System, Cinemachine 3, AI Navigation, Timeline, Animation Rigging, Localization, TextMeshPro, Test Framework. Sin Asset Store |
-| Herramientas | Blender 5.x, Blockbench, FL Studio, Obsidian, Git + GitHub + Git LFS                                                                             |
+| Herramientas | Blender 5.x, Blockbench, REAPER y FL Studio, Obsidian, Git + GitHub + Git LFS                                                                             |
 | Ramas        | `main` (entregas), `develop` (integración), `feature/<sistema>-<tema>` con PR probado por otra persona                                                   |
 
 **Requisitos (provisionales):**

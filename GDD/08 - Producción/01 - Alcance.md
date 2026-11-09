@@ -10,7 +10,7 @@ Define qué se va a construir y, sobre todo, qué queda fuera del proyecto.
 
 ### Incluido
 
-- Configuración **showcase** completa (3 pisos de 6–8 salas procedurales + 2 secundarias + 1 final, ~30 min; D-34) como objetivo principal. La configuración completa es un ajuste de parámetros de S-06 y se activa si el balance llega a tiempo.
+- Configuración **completa** (3 pisos de 8–12 salas procedurales + 2–3 secundarias + 1 final, ~45–60 min; D-33) como configuración predeterminada. La **showcase** (6–8 + 2 + 1, ~30 min; D-34) se mantiene como ajuste de S-06 que se activa al lanzar el juego con `-showcase`, para ferias y presentaciones (D-171).
 - Todas las mecánicas de prioridad Demo: M-01..M-16, M-19 y M-20 ([[02 - Mecánicas]]).
 - Los 11 sistemas S-01..S-11 ([[03 - Sistemas]]); S-08 sin degradación si se recorta M-18.
 - 4 tipos de enemigo (el Alto, la Boca, el Rastrero, el Mudo) y The Mother con 3 fases.
@@ -46,7 +46,7 @@ Si el tiempo o los recursos son insuficientes, se recorta en este orden (D-111).
 
 1. **M-17 Fallas de la máquina** (Deseable): la fase 1 de The Mother usa la longitud original.
 2. **M-18 Degradación y final Asimilación** (Deseable): sin contador de 5 muertes ni capas de degradación; el estado Final: Asimilación no existe.
-3. **Configuración completa:** solo se entrega la showcase.
+3. **Configuración showcase:** se deja de mantener y solo se entrega la completa.
 4. **Documentos de contexto y objetos confiscados:** de 12 + 12 a 4 + 4 (uno por tipo y piso).
 5. **Cinemáticas:** las narrativas pasan a imágenes fijas con texto y sonido sobre Timeline; se mantienen la corta de reconstrucción y la transición de piso.
 6. **Modo Historia:** se mantiene la selección, pero solo cambia el daño recibido.

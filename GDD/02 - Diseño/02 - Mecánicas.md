@@ -384,7 +384,7 @@ stateDiagram-v2
     
     - Si el inventario está lleno e intentas recoger un objeto clave, el sistema permite reemplazar un objeto del inventario por el objeto clave; si se decide no cambiar, el objeto permanece en el suelo. El terminal se abre con el aviso `INVENTORY FULL — REPLACE WITH ACCESS KEY?` y el objeto reemplazado cae a los pies de Lukas, como al descartarlo; esto solo ocurre con objetos clave (D-159).
         
-    - Al morir o reiniciar se pierden las llaves junto con el resto del inventario; el piso se regenera con una llave obligatoria alcanzable nueva (D-36).
+    - Al morir o reiniciar se pierden las llaves recogidas en el piso; el piso se regenera con una llave obligatoria alcanzable nueva (D-36, D-147).
         
 - **Impacto en pilares:** Refuerza **Decisiones con Consecuencias**. Riesgo: si existen zonas totalmente seguras, el tiempo real pierde su efecto.
 
@@ -802,7 +802,7 @@ flowchart TD
     F2 -->|cinemática ≥5 s| P3[Piso 3]
     P3 --> B[Sala de The Mother, sin guardado]
     B --> V[Victoria: revelación]
-    P1 & P2 & P3 & B -. muerte o Reiniciar .-> R[Cinemática corta: caída de la cápsula] --> P1
+    P1 & P2 & P3 & B -. muerte o Reiniciar .-> R[Cinemática corta: Lukas ante su cápsula] -.-> X[Inicio del mismo piso; sala de The Mother: inicio del piso 3]
 ```
 
 ### M-16: Reaparición por reconstrucción y terminal del brazo
@@ -813,8 +813,7 @@ flowchart TD
     
 - **Reglas:**
     
-    - Al morir, el personaje se reconstruye en el punto de reaparición, al inicio del ciclo en el piso 1 (ciclo de muerte y reconstrucción). El autoguardado de la sala final (D-30) no cambia el punto de reaparición: solo sirve para continuar después de salir del juego o de un fallo (ver [[07 - Reglas y Estados del Juego]]).
-    - **Actualizado (D-147):** el punto de reaparición es el inicio del piso actual (semilla nueva) con el inventario con el que Lukas llegó a ese piso; morir en la sala de The Mother regresa al inicio del piso 3.
+    - Al morir, el personaje se reconstruye en el punto de reaparición: el inicio del piso actual, con un piso de semilla nueva y el inventario con el que llegó a ese piso; morir en la sala de The Mother regresa al inicio del piso 3 (D-147). El autoguardado de la sala final (D-30) no cambia el punto de reaparición: solo sirve para continuar después de salir del juego o de un fallo (ver [[07 - Reglas y Estados del Juego]]).
         
     - **Cinemática completa de reconstrucción (D-39, D-45, D-53):** se reproduce una sola vez, al terminar la introducción, y muestra por primera vez todo el proceso de reconstrucción en imágenes fugaces de 1–2 s con cortes a negro. Es **el momento del olvido**: Lukas recuerda a Emilia durante la introducción y la olvida de golpe en esta primera reconstrucción. Sale de su cápsula sabiendo que busca algo o a alguien, sin recordar a quién, y recoge del suelo un anillo que sabe importante; nunca se sabe si es el suyo o el de Emilia (D-54). Lukas muere al final de la introducción atacado por la espalda en un piso que no existe (D-53); el resto del contenido se documenta en [[01 - Premisa y Trama]].
         
@@ -826,11 +825,11 @@ flowchart TD
         
     - **Bestiario (D-48):** las entradas son informes clínicos de The Mother sobre sujetos asimilados, con su código de sujeto. Cada entrada se desbloquea en el primer encuentro y persiste entre muertes.
         
-    - **Reiniciar (D-32):** opción del menú de pausa. Regresa al inicio del ciclo, cuenta como muerte (suma al contador y a la degradación, M-18) y conserva el terminal del brazo. El inventario se pierde igual que al morir.
+    - **Reiniciar (D-32, D-165):** opción del menú de pausa. Regresa al inicio del piso actual, siempre cuenta como muerte (suma al contador y a la degradación, M-18) y conserva el terminal del brazo. El inventario se pierde igual que al morir.
         
     - **Nueva partida (D-32):** opción del menú principal. Borra todo el progreso de la ranura elegida (D-105), incluido el terminal del brazo, y pide confirmación.
         
-    - La muerte elimina todos los objetos del inventario.
+    - La muerte elimina los objetos recogidos en el piso actual; Lukas conserva los que traía al llegar a él (D-147).
         
     - Se regenera la distribución de las salas procedurales y de los recursos; las salas clave se mantienen pero cambian de posición. Desde el segundo intento, las salas del tutorial también son procedurales (D-38).
         
@@ -846,13 +845,13 @@ flowchart TD
     
 - **Estado inicial:** Personaje muerto o reinicio solicitado desde el menú de pausa.
     
-- **Estado final:** Personaje reconstruido en el punto de reaparición con el inventario vacío y la base de datos actualizada.
+- **Estado final:** Personaje reconstruido al inicio del piso actual con el inventario con el que llegó a él y la base de datos actualizada (D-147).
     
 - **Recursos utilizados:** Archivo de guardado en disco.
     
 - **Recompensa:** Conocimiento persistente, consejos y avance en la historia.
     
-- **Penalización:** Pérdida del inventario y del progreso del intento: se regresa al inicio del ciclo en el piso 1. Reiniciar tiene el mismo costo que morir.
+- **Penalización:** Pérdida de lo recogido en el piso y del progreso dentro de él: se regresa al inicio del piso actual (D-147). Reiniciar tiene el mismo costo que morir.
     
 - **Interacciones con otras mecánicas:** Interactúa con M-05 Salud, M-07 Inventario, M-08 Documentos, M-15 Exploración vertical, M-17 Fallas de la máquina, M-18 Degradación y M-19 Jefe final.
     
@@ -860,9 +859,9 @@ flowchart TD
     
     - Si el jugador muere mientras se registra información, esta se guarda antes de procesar la muerte.
         
-    - Morir en la sala de The Mother regresa al inicio del ciclo.
+    - Morir en la sala de The Mother regresa al inicio del piso 3 (D-147).
         
-    - Reiniciar durante el primer intento regresa al inicio del ciclo, pero no suma al contador de muertes (D-35).
+    - Reiniciar durante el primer intento regresa al inicio del piso 1, pero no suma al contador de muertes (D-35).
         
     - Al morir o reiniciar se descarta el autoguardado de la sala final; el siguiente se crea al llegar de nuevo a una sala clave final (D-30).
         
@@ -956,9 +955,9 @@ flowchart TD
     
     - Llegar a la sala clave final del piso 2 reinicia el contador, pero no la degradación (D-29).
         
-    - Si el jugador muere en el piso 3 o en la sala de The Mother después de reiniciar el contador, regresa al inicio del ciclo y esa muerte suma al contador reiniciado (es la primera si no murió antes en el piso 3).
+    - Si el jugador muere en el piso 3 o en la sala de The Mother después de reiniciar el contador, regresa al inicio de su piso (D-147) y esa muerte suma al contador reiniciado (es la primera si no murió antes en el piso 3).
         
-    - Si la quinta muerte se produce por "Reiniciar" o por salir con costo, también activa el final (D-31, D-32, D-35).
+    - Si la quinta suma se produce por "Reiniciar" o por salir con costo, el contador queda en 5 o más, pero el final solo se reproduce en la siguiente muerte real de Lukas (D-149).
         
     - Ninguna variante del cuerpo ajeno oculta el terminal del brazo ni la interfaz crítica (tope de D-29).
         
@@ -1021,7 +1020,7 @@ flowchart TD
 | Victoria con los 6 documentos, irse                 | El jugador elige la salida (`E`)                      | **Ambiguo**         | En negro, el latido de Lukas y el del laboratorio se sincronizan en uno; silencio (D-61). No se sabe si Lukas fue asimilado, si se convirtió en The Mother o si ocurrió otra cosa                                                                           |
 	El final de derrota "Asimilación" no forma parte de esta tabla: se activa por el contador de 5 muertes (M-18, D-42). Sin final de Renuncia; "Salida" y "Encuentro con Emilia" quedan fuera de la demo (D-51).
 	
-- Morir en la sala regresa al inicio del ciclo (M-16).
+- Morir en la sala regresa al inicio del piso 3 (D-147) (M-16).
 
 - **Entrada:** Las mismas de M-02, M-04, M-06 y M-13; `E` sobre la terminal central o la salida en la decisión final (M-08).
     
@@ -1033,7 +1032,7 @@ flowchart TD
     
 - **Recompensa:** Victoria, revelación narrativa y, con los 6 documentos de Emilia, la elección del final.
     
-- **Penalización:** Morir regresa al inicio del ciclo.
+- **Penalización:** Morir regresa al inicio del piso 3 (D-147).
     
 - **Interacciones con otras mecánicas:** Interactúa con M-02 (cámaras hostiles en la fase 2), M-04, M-05, M-06, M-08 (documentos de Emilia y documentos corruptos), M-10 (luz roja y sonido de motor de las cámaras; latido del laboratorio en el Despertar), M-13, M-15 (sala del piso 3), M-16 (terminal del brazo, mensaje de Emilia y código de sujeto), M-17 y M-20 (sin reciclaje en la sala, D-28).
     

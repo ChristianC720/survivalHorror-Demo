@@ -209,13 +209,13 @@ Cada sistema agrupa mecánicas de [[02 - Mecánicas]]. Las reglas de detalle viv
 - **Llaves (D-36):** cada llave ocupa 1 casilla y se consume al abrir su puerta (M-07, M-08).
 - Con el inventario lleno, un objeto clave puede reemplazar a otro; si no se cambia, permanece en el suelo.
 - El autoguardado de la sala clave final incluye el inventario que se trae (D-30, S-07).
-- Al morir o reiniciar se pierde todo el inventario, llaves incluidas (D-18, D-32).
+- Al morir o reiniciar se pierde lo recogido en el piso actual, llaves incluidas; se recupera el inventario con el que se llegó a él (D-18, D-32, D-147).
 
 **Salidas:** Objetos disponibles para S-03 y S-09, llaves para las puertas de S-06, inventario para el autoguardado de S-07, objetos descartados en el suelo.
 
 **Estados posibles:** Cerrado, Abierto, Animación de uso.
 
-**Dependencias:** S-06 Generación procedural (recursos y llaves colocados), S-08 Ciclo de muerte (vacía el inventario).
+**Dependencias:** S-06 Generación procedural (recursos y llaves colocados), S-08 Ciclo de muerte (devuelve el inventario de llegada al piso).
 
 **Interacciones:** S-03 (curas, munición, punzón de descarga), S-09 (punzón de descarga como remate), S-07 (el terminal del brazo se consulta junto al inventario con `Tab`; el inventario forma parte del autoguardado).
 
@@ -343,11 +343,11 @@ Cada sistema agrupa mecánicas de [[02 - Mecánicas]]. Las reglas de detalle viv
 | Situación al salir | Costo | Al volver |
 |---|---|---|
 | Durante alerta o caza | Muerte completa: suma al contador y a la degradación | Inicio del ciclo en el piso 1 |
-| Con calma, fuera de una sala clave final ya guardada | Suma 1 al contador y a la degradación | Desde la sala clave final autoguardada o, si no existe, inicio del ciclo |
+| Con calma, fuera de una sala clave final ya guardada | Suma 1 al contador y a la degradación | Desde la sala clave final autoguardada o, si no existe, inicio del piso guardado |
 | En una sala clave final ya guardada y sin alerta | Ninguno | Desde la sala clave final autoguardada |
-| Cierre inesperado o fallo del juego | Ninguno | Desde el último autoguardado o, si no existe, inicio del ciclo |
+| Cierre inesperado o fallo del juego | Ninguno | Desde el último autoguardado o, si no existe, inicio del piso guardado |
 
-    En el primer intento, salir no suma al contador (misma excepción de D-35). Si se sale con calma o hay un fallo antes de existir un autoguardado, se continúa desde el inicio del ciclo, porque no hay otro punto guardado (regla global 4 de [[07 - Reglas y Estados del Juego]]). Con D-23, "en alerta" equivale a caza para la vista de vigilancia; para el costo de salir, "alerta" también es solo la caza (D-96).
+    En el primer intento, salir no suma al contador (misma excepción de D-35). Si se sale con calma o hay un fallo antes de existir un autoguardado, se continúa desde el inicio del piso guardado, porque no hay otro punto guardado (regla global 4 de [[07 - Reglas y Estados del Juego]]). Con D-23, "en alerta" equivale a caza para la vista de vigilancia; para el costo de salir, "alerta" también es solo la caza (D-96).
 - S-07 distingue una salida confirmada de un cierre inesperado registrando la salida confirmada en el archivo de guardado antes de cerrar.
 - **Nueva partida (D-32):** tras la confirmación, borra la ranura elegida (D-105), incluido el terminal del brazo, las fallas, el contador y la degradación.
 
@@ -393,7 +393,7 @@ Cada sistema agrupa mecánicas de [[02 - Mecánicas]]. Las reglas de detalle viv
 
 **Procesamiento / reglas:**
 
-- **Muerte y Reiniciar (D-32):** ambos siguen el mismo proceso: S-07 guarda primero cualquier registro pendiente, se pierde todo el inventario (D-18), se descarta el autoguardado del intento, S-06 regenera los pisos y el personaje reaparece al inicio del ciclo en el piso 1 (M-16). Morir en la sala de The Mother también regresa al inicio del ciclo.
+- **Muerte y Reiniciar (D-32):** ambos siguen el mismo proceso: S-07 guarda primero cualquier registro pendiente, se pierde lo recogido en el piso actual (D-18, D-147), se descarta el autoguardado del intento, S-06 regenera los pisos y el personaje reaparece al inicio del piso actual con el inventario con el que llegó a él (M-16, D-147). Morir en la sala de The Mother regresa al inicio del piso 3.
 - **Cinemáticas (D-39):**
 
 | Cinemática | Cuándo | Contenido | Saltable |
@@ -405,7 +405,7 @@ Cada sistema agrupa mecánicas de [[02 - Mecánicas]]. Las reglas de detalle viv
 
 - **Introducción (D-53, D-63):** las partes jugables (compuerta y piso que no existe) usan un HUD mínimo: moverse, mirar e interactuar, sin inventario, salud visible, linterna, armas ni vigilancia. La compuerta se hackea en el teléfono de Lukas con las reglas de M-13. El elevador es cinemática. La muerte final está guionizada (trigger con temporizador de respaldo) y no suma al contador ni a la degradación.
 - **Transición de piso:** dura un **mínimo de 5 s** y oculta la carga del piso siguiente; si la carga tarda más, la cinemática se alarga. No existe pantalla de carga (D-39).
-- **Deseable (M-18), contador de 5 muertes (D-35):** suman cada muerte, "Reiniciar" y salir con costo. Las del primer intento (el del tutorial) no suman. Solo llegar a la sala clave final del piso 2 reinicia el contador; después sigue contando en el piso 3 y en la sala de The Mother (D-56). Al llegar a 5, se activa el final "Asimilación" (D-42), también si la quinta se debe a "Reiniciar" o a salir con costo.
+- **Deseable (M-18), contador de 5 muertes (D-35):** suman cada muerte, "Reiniciar" y salir con costo. Las del primer intento (el del tutorial) no suman. Solo llegar a la sala clave final del piso 2 reinicia el contador; después sigue contando en el piso 3 y en la sala de The Mother (D-56). Con el contador en 5 o más, la siguiente muerte real de Lukas activa el final "Asimilación" (D-42, D-149); "Reiniciar" y salir con costo suman, pero nunca lo reproducen.
 - **Deseable (M-18), degradación (D-29):** cada muerte, reinicio o salida con costo suma degradación estética (corrupción CRT y distorsión del sonido vocal; el texto de Lukas solo se degrada en la cinemática de Asimilación, D-62) sin efecto en la jugabilidad. Solo se acumula, ni siquiera se reinicia al llegar a una sala clave; solo vuelve a 0 con "Nueva partida" (D-32) o en el ciclo nuevo tras un final (D-93). **Tope visual:** ninguna capa tapa la interfaz crítica ni las señales de M-10. La degradación sí suma durante el primer intento (D-94); D-35 solo exime al contador.
 - **Piezas ajenas (D-43):** provienen del laboratorio. En cada reconstrucción se nota una pieza ajena más en el modelo de Lukas (3–5 variantes, valor inicial, sujeto a balance); al llegar a la última variante, el modelo se mantiene en ella. Es solo presentación (M-18).
 - **Código de sujeto (D-43):** cada reconstrucción, incluida la primera y las de "Reiniciar", envía a S-07 el evento que sube el código R-H (S-07).
@@ -422,13 +422,13 @@ Cada sistema agrupa mecánicas de [[02 - Mecánicas]]. Las reglas de detalle viv
 
 - **Decisión final (D-51):** con los 6 documentos de Emilia, tras el Despertar el jugador recupera el control en la sala de The Mother y elige con `E` entre la terminal central y la salida, sin menú; si ambos están al alcance, gana el que está al centro de la vista (D-27, M-19). Sin los 6 documentos no hay elección. Durante la decisión hay presión sin muerte: los altavoces y el latido suben, la sala tiembla y las luces fallan, pero no hay daño ni enemigos (D-61, M-19).
 
-**Salidas:** Personaje reconstruido con el inventario vacío, orden de regenerar a S-06, orden de descartar el autoguardado a S-07, evento de reconstrucción para el código de sujeto de S-07, contador de muertes y nivel de degradación para S-01, S-07 y S-11, evento Despertar para S-11, cinemática en curso, final "Asimilación" (D-42), cinemática de victoria (Relevo básico, Relevo completo o Ambiguo, D-51).
+**Salidas:** Personaje reconstruido con el inventario de llegada al piso, orden de regenerar a S-06, orden de descartar el autoguardado a S-07, evento de reconstrucción para el código de sujeto de S-07, contador de muertes y nivel de degradación para S-01, S-07 y S-11, evento Despertar para S-11, cinemática en curso, final "Asimilación" (D-42), cinemática de victoria (Relevo básico, Relevo completo o Ambiguo, D-51).
 
 **Estados posibles:** Cinemática de introducción, Vivo, Muerte, Cinemática corta, Reconstrucción, Transición de piso, Final: Asimilación, Victoria, Decisión final, Relevo básico, Relevo completo, Ambiguo.
 
 **Dependencias:** S-03 Salud y combate, S-07 Persistencia.
 
-**Interacciones:** S-01 (la degradación no tapa la señal de vigilancia), S-05 (vacía el inventario), S-06 (regenera los pisos; carga del piso siguiente durante la transición), S-07 (descarta el autoguardado; aviso durante la transición; costo de salir; sube el código de sujeto; conteo de documentos de Emilia para elegir la cinemática de victoria), S-10 (muerte en la sala del jefe; victoria), S-11 (la degradación no oculta las señales; Despertar y latido del laboratorio en las cinemáticas finales).
+**Interacciones:** S-01 (la degradación no tapa la señal de vigilancia), S-05 (devuelve el inventario de llegada al piso), S-06 (regenera los pisos; carga del piso siguiente durante la transición), S-07 (descarta el autoguardado; aviso durante la transición; costo de salir; sube el código de sujeto; conteo de documentos de Emilia para elegir la cinemática de victoria), S-10 (muerte en la sala del jefe; victoria), S-11 (la degradación no oculta las señales; Despertar y latido del laboratorio en las cinemáticas finales).
 
 **Datos que necesita:** Punto de reaparición, contador de muertes, nivel de degradación, variante del cuerpo ajeno, marca de primer intento, marca de cinemática completa ya vista, estado de la carga del piso siguiente, conteo de documentos de Emilia.
 
@@ -442,7 +442,7 @@ Cada sistema agrupa mecánicas de [[02 - Mecánicas]]. Las reglas de detalle viv
 
 **Criterios de aceptación (ambas configuraciones):**
 
-- Tras la reconstrucción el inventario está vacío, el terminal del brazo está intacto y el personaje está al inicio del ciclo en el piso 1.
+- Tras la reconstrucción el inventario es el de llegada al piso, el terminal del brazo está intacto y el personaje está al inicio del piso actual (D-147).
 - "Reiniciar" produce el mismo resultado que una muerte, incluida la cinemática corta.
 - La cinemática completa se reproduce al terminar la introducción y no se reproduce en ninguna muerte ni reinicio.
 - La cinemática corta se reproduce en cada muerte y reinicio; saltarla con `Espacio` deja el mismo estado que verla completa.
@@ -515,7 +515,7 @@ Cada sistema agrupa mecánicas de [[02 - Mecánicas]]. Las reglas de detalle viv
     2. **Supervivencia y huida con cámaras hostiles (D-28):** cada cámara de la sala muestra una luz roja y emite el sonido de su motor al girar (S-11). Cada vez que una cámara enfoca al jugador, S-10 libera un asimilado desde una cápsula del archivo y envía ese punto a S-02; el asimilado acude a él. Nunca hay más de 2 activos; 4 en total en la fase: 2 Altos y 2 Rastreros (D-65, D-80, D-115). Una niebla criogénica reduce la visibilidad sin ralentizar ni tapar las señales de M-10 (D-65). El jugador avanza entre los puntos ciegos de las cámaras. La fase termina cuando los 4 asimilados están eliminados y Lukas llega al núcleo (D-115). Si Lukas llega al núcleo con asimilados por liberar, salen todos los que falten, con un máximo de 2 activos, así que esquivar todas las cámaras nunca bloquea la fase (D-117). La sala tiene 12 balas (3 blísteres) en los puntos ciegos para esta fase, aparte de las de la fase 3 (D-115). La vista de vigilancia no está disponible durante esta fase (S-01). Valores iniciales (D-98): 3 cámaras que barren a ~20°/s con un cono de ~12 m y liberan tras ~1 s enfocando; el brazo recolector recorre los rieles a ~1.6 m/s, alcanza ~2.2 m, avisa ~2.2 s antes de agarrar y descansa ~7 s entre agarres (D-163). En Crítico, el primer agarre sin punzón deja a Lukas al borde de la muerte y el siguiente lo mata, salvo que se haya curado o usado un punzón (D-169).
     3. **Pocos disparos a puntos débiles expuestos** (M-04): transformadores de alto voltaje que quedan expuestos al abrirse el núcleo criogénico de The Mother (D-59, D-65). Al destruir el último, la estantería se apaga y The Mother cae. La sala contiene 8 balas, 6 para los transformadores y 2 de margen (valor inicial, sujeto a balance; D-28, D-80), aunque el jugador llegue sin munición. Son 3 transformadores de 2 disparos cada uno (D-80).
 - **Sin reciclaje (D-28):** los enemigos eliminados en la sala no se reciclan (S-09).
-- Morir en la sala regresa al inicio del ciclo (S-08).
+- Morir en la sala regresa al inicio del piso 3 (D-147) (S-08).
 - Derrotarla es la condición de victoria. Al ser derrotada revela que existe algo más (la criatura lovecraftiana que es el laboratorio), pero no puede explicarlo ([[01 - Jugabilidad]], D-47). S-10 entrega la victoria a S-08, que reproduce la secuencia común de victoria, la decisión final y la cinemática de victoria correspondiente (M-19, D-51).
 - **Decisión final (D-51):** tras el Despertar, la sala presenta la terminal central y la salida como elementos interactivos solo si S-07 informa los 6 documentos de Emilia (ver S-08).
 - D-34 no define diferencias del encuentro entre la configuración completa y la showcase.

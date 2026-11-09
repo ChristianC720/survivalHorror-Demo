@@ -38,7 +38,7 @@ Los requisitos son **objetivos provisionales** (D-112) y se confirman con el per
 
 - Unity `6000.6.6f1` con el módulo *Windows Build Support (IL2CPP)* (D-107).
 - Git y Git LFS instalados ([[02 - Motor y Herramientas]]).
-- Blender, Blockbench y FL Studio para quien produce arte y audio ([[02 - Motor y Herramientas]]).
+- Blender, Blockbench y REAPER y FL Studio para quien produce arte y audio ([[02 - Motor y Herramientas]]).
 
 ## Objetivos de rendimiento
 

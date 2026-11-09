@@ -4,7 +4,7 @@
 
 Define la identidad sonora y cómo el audio comunica información al jugador.
 
-Las reglas de las señales jugables están en S-11 Audio dinámico ([[03 - Sistemas]]) y M-10 Señales diegéticas ([[02 - Mecánicas]]); aquí se define la identidad sonora y la mezcla. Producción musical en FL Studio.
+Las reglas de las señales jugables están en S-11 Audio dinámico ([[03 - Sistemas]]) y M-10 Señales diegéticas ([[02 - Mecánicas]]); aquí se define la identidad sonora y la mezcla. Producción musical en REAPER y FL Studio.
 
 ## Música
 

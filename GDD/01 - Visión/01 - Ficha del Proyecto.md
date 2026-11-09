@@ -58,7 +58,7 @@ Esta ficha identifica el proyecto de forma rápida. Debe permitir que alguien qu
 - Local
 
 
-**Tecnología principal:**  Unity, C#, FL Studio, Blender, Blockbench, Obsidian
+**Tecnología principal:**  Unity, C#, REAPER y FL Studio, Blender, Blockbench, Obsidian
 > Motor, lenguaje y herramientas principales.
 
 ## Elevator Pitch

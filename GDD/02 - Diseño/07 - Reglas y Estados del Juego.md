@@ -16,7 +16,7 @@ Los estados de la plantilla se adaptan al ciclo de muerte y reconstrucción de I
 | Jugando | Jugando | Recorrido en tiempo real. Tiene los subestados de la tabla siguiente | Sí |
 | Pausa | Pausa | Único estado que detiene el juego durante el recorrido. Muestra el menú de pausa ([[#Menú de pausa]]) | No |
 | Transición de piso | Carga | Cinemática de ascensor o escalera de **mínimo 5 s** que oculta la carga del piso siguiente y muestra el aviso de autoguardado; se alarga si la carga tarda. No hay pantalla de carga ni se puede saltar (D-39, M-15) | No |
-| Muerte | Derrota | Fin del intento por salud en 0, por un agarre en Crítico sin punzón de descarga, por "Reiniciar" (D-32) o por salir durante alerta o caza (D-31). Se registra la información pendiente, se pierde el inventario, se descarta el autoguardado y se suma una muerte al contador y a la degradación (M-16, M-18; excepción del primer intento en la regla global 8) | No |
+| Muerte | Derrota | Fin del intento por salud en 0, por un agarre en Crítico sin punzón de descarga, por "Reiniciar" (D-32) o por salir durante alerta o caza (D-31). Se registra la información pendiente, se pierde lo recogido en el piso (D-147), se descarta el autoguardado y se suma una muerte al contador y a la degradación (M-16, M-18; excepción del primer intento en la regla global 8) | No |
 | Reconstrucción corta | Derrota (continuación) | **Cinemática corta**: plano corto de Lukas ante su cápsula, con sonido de maquinaria (D-172); refleja la degradación acumulada y se puede saltar con `Espacio` (D-39, M-16, [[04 - Controles]]). Siempre es el mismo hombre, recompuesto con piezas ajenas (D-18). Termina en el punto de reaparición: el inicio del piso actual (D-147) | No |
 | Victoria | Victoria | The Mother derrotada en su sala del piso 3 (D-16, D-33). Revela que existe algo más (la criatura lovecraftiana que es el laboratorio), pero no puede explicarlo (M-19, D-47). Reproduce los pasos 1 a 3 de la secuencia común de victoria (D-51): cae The Mother; solo con los 6 documentos de Emilia, los documentos corruptos y el mensaje de Emilia se completan y Lukas recupera primero el nombre de Emilia y después el suyo (D-45, D-55); **Despertar**: el latido del laboratorio se acelera (M-10). Se puede saltar tras verla una vez (D-91) | No |
 | Decisión final | Victoria (continuación, estado propio) | Solo con los **6 documentos de Emilia** acumulados en el terminal del brazo, en cualquier intento (M-08, D-51). Tras el Despertar, la sala de The Mother presenta dos elementos interactivos: la **terminal central** y la **salida**, ambos con Interactuar (`E`). No hay menú de elección; si los dos están al alcance, gana el que está al centro de la vista (D-27, M-19). Sin los 6 documentos este estado no se presenta: Lukas examina la terminal central de forma automática. Hay presión sin muerte: los altavoces y el latido suben, la sala tiembla y las luces fallan, pero no hay daño ni enemigos (D-61, M-19) | Sí |
@@ -41,7 +41,7 @@ Abrir el inventario o el terminal del brazo no es un subestado: es una interfaz 
 
 | Opción | Efecto | Confirmación |
 |---|---|---|
-| Continuar | Carga la partida en curso de la última ranura usada desde el autoguardado de la última sala clave final (D-30) o, si no existe, desde el inicio del ciclo. La sala de aparición empieza sin enemigos dentro (regla global 6). Sin partida, aparece deshabilitada en gris; tras un final, inicia un ciclo nuevo (D-93, D-96) | No |
+| Continuar | Carga la partida en curso de la última ranura usada desde el autoguardado de la última sala clave final (D-30) o, si no existe, desde el inicio del piso guardado (D-147). La sala de aparición empieza sin enemigos dentro (regla global 6). Sin partida, aparece deshabilitada en gris; tras un final, inicia un ciclo nuevo (D-93, D-96) | No |
 | Nueva partida | Pide una ranura (3, D-105) y un modo (D-103). Borra todo el progreso de esa ranura, incluido el terminal del brazo, y empieza desde la Cinemática de introducción y el primer intento (D-32, D-38) | Sí (D-32) |
 | Cargar partida | Elige una ranura ocupada y la carga como Continuar (D-105) | No |
 | Opciones | Audio, Video, Controles, Accesibilidad y Juego ([[04 - Guardado y Configuración]]) | Restablecer: sí |
@@ -53,7 +53,7 @@ Abrir el inventario o el terminal del brazo no es un subestado: es una interfaz 
 | Opción | Efecto | Confirmación |
 |---|---|---|
 | Volver al juego (`Esc`) | Regresa a Jugando en el mismo subestado | No |
-| Reiniciar | Regresa al inicio del ciclo y cuenta como muerte: suma al contador y a la degradación, pierde el inventario y descarta el autoguardado; conserva el terminal del brazo (D-32, M-16) | Sí: el diálogo avisa del costo (D-96) |
+| Reiniciar | Siempre cuenta como muerte, también en una zona segura (D-165): regresa al inicio del piso actual, suma al contador, a la degradación y al código de sujeto, pierde lo recogido en el piso y descarta el autoguardado; conserva el terminal del brazo (D-32, D-147, M-16). No aparece en la introducción ni en la Decisión final | Sí: el diálogo avisa del costo (D-96) |
 | Salir | Vuelve al menú principal con el costo de D-31 según la situación (regla global 4) | Sí: el diálogo avisa del costo (D-31) |
 | Opciones | Las mismas que en el menú principal ([[04 - Guardado y Configuración]]) | Restablecer: sí |
 
@@ -65,7 +65,7 @@ No existe una opción de guardado manual (D-30).
 |---|---|---|---|
 | Menú principal | Nueva partida (confirmada) | Cinemática de introducción | Se borra todo el progreso de la ranura, incluido el terminal (D-32, D-105) |
 | Cinemática de introducción | Cinemática completa terminada | Carga y Generación | Primer intento: las salas del tutorial del piso 1 son fijas (D-38) |
-| Menú principal | Continuar | Carga y Generación | Se carga el autoguardado de la última sala clave final; si no existe, se genera un intento desde el inicio del ciclo (D-30) |
+| Menú principal | Continuar | Carga y Generación | Se carga el autoguardado de la última sala clave final; si no existe, se genera el piso guardado desde su inicio (D-30, D-147). Si se salió durante la Decisión final, se vuelve a ella (D-92) |
 | Menú principal | Créditos | Créditos | — |
 | Menú principal | Salir | Cierre del juego | — |
 | Carga y Generación | Carga terminada | Jugando (Exploración) | Al cargar, la sala de aparición empieza sin enemigos dentro (regla global 6) |
@@ -81,12 +81,12 @@ No existe una opción de guardado manual (D-30).
 | Jugando | `Esc` | Pausa | Desde cualquier subestado |
 | Pausa | `Esc` | Jugando | Se vuelve al mismo subestado |
 | Pausa | Reiniciar | Muerte | Cuenta como muerte (D-32) |
-| Pausa | Salir (confirmado) durante alerta o caza | Muerte y después Menú principal | Muerte completa (D-31); al elegir Continuar se inicia desde el inicio del ciclo |
+| Pausa | Salir (confirmado) durante alerta o caza | Muerte y después Menú principal | Muerte completa (D-31); al elegir Continuar se inicia desde el inicio del piso actual (D-147) |
 | Pausa | Salir (confirmado) con calma | Menú principal | Costo según la regla global 4 (D-31) |
 | Jugando | La salud llega a 0 (o agarre en Crítico sin punzón de descarga) | Muerte | Desde cualquier subestado (M-05, M-11) |
 | Muerte | Contador menor que 5, o M-18 no implementada | Reconstrucción corta | La regeneración del intento se realiza durante la cinemática. Si al saltarla la generación no ha terminado, se muestra la pantalla de arranque del terminal (D-96) |
-| Muerte | Quinta muerte consecutiva desde el último reinicio del contador | Final: Asimilación | Solo si M-18 (Deseable) se implementa (D-35, D-56) |
-| Reconstrucción corta | Cinemática terminada o saltada (`Espacio`) | Jugando (Exploración) | Punto de reaparición al inicio del ciclo en el piso 1 (M-16) |
+| Muerte | Muerte real (salud en 0 o agarre en Crítico) con el contador en 5 o más | Final: Asimilación | "Reiniciar" y salir con costo suman al contador, pero nunca reproducen el final (D-35, D-56, D-149) |
+| Reconstrucción corta | Cinemática terminada o saltada (`Espacio`) | Jugando (Exploración) | Punto de reaparición: inicio del piso actual (M-16, D-147) |
 | Jugando | The Mother derrotada | Victoria | Fase 3 de M-19 completada |
 | Victoria | Revelación y Despertar terminados | Relevo básico | Menos de 6 documentos de Emilia en el terminal del brazo: los documentos siguen corruptos, no se recupera ningún nombre y Lukas examina la terminal central de forma automática (D-51, D-55) |
 | Victoria | Revelación, documentos completados, recuperación de los nombres y Despertar terminados | Decisión final | Los 6 documentos de Emilia acumulados en el terminal del brazo, en cualquier intento, incluido el actual (M-19, D-51) |
@@ -141,8 +141,8 @@ stateDiagram-v2
     Pausa --> Menu: salir con calma (costo D-31)
     Jugando --> Muerte: salud en 0
     Muerte --> Reconstruccion: menos de 5 muertes
-    Muerte --> Asimilacion: 5 muertes consecutivas (M-18, D-56)
-    Reconstruccion --> Jugando: inicio del ciclo (piso 1)
+    Muerte --> Asimilacion: muerte real con el contador en 5 o más (M-18, D-149)
+    Reconstruccion --> Jugando: inicio del piso actual (D-147)
     Jugando --> Victoria: The Mother derrotada
     Victoria --> RelevoBasico: Despertar, sin los 6 documentos (examen automático)
     Victoria --> Decision: Despertar, con los 6 documentos
@@ -199,14 +199,14 @@ Documenta excepciones importantes para evitar interpretaciones diferentes durant
 |---|---|---|
 | Llegar perseguido a una sala clave final | El autoguardado no se crea mientras haya enemigos en caza; se crea cuando la caza termina. Mientras tanto, salir cuenta como salida durante caza (muerte completa), y la escalera y el elevador están en cierre (D-96). En la sala final del piso 2, el reinicio del contador y la cinemática del hallazgo también esperan a que termine la caza (D-67) | D-30, D-31, D-35, M-15 |
 | Intentar cambiar de piso durante una caza | La escalera y el elevador están en cierre (`LOCKDOWN` y línea de protocolo) hasta que termina la caza; entonces se crea el autoguardado y se abren. Ningún enemigo cambia de piso (elimina D-26) | D-30, D-96, M-15 |
-| Cierre inesperado o fallo del juego | No cuenta como muerte ni suma al contador o a la degradación. Al elegir Continuar se carga el último autoguardado; si no existe, se empieza desde el inicio del ciclo. El terminal del brazo y las fallas conservan lo autoguardado al cambiar. Un cierre forzado por el jugador durante una caza tampoco se cobra (D-96) | D-30, D-31 |
-| Salir con calma a mitad de piso | Suma 1 al contador y a la degradación. En el primer intento no suma al contador, pero sí a la degradación (regla global 8). Sube el código de sujeto (D-94). Al volver se continúa desde la última sala clave final autoguardada con el estado y el inventario que se tenían al llegar; lo obtenido después se pierde. El autoguardado se conserva. Si aún no existe autoguardado, se continúa desde el inicio del ciclo | D-30, D-31, D-35 |
+| Cierre inesperado o fallo del juego | No cuenta como muerte ni suma al contador o a la degradación. Al elegir Continuar se carga el último autoguardado; si no existe, se empieza desde el inicio del piso guardado. El terminal del brazo y las fallas conservan lo autoguardado al cambiar. Un cierre forzado por el jugador durante una caza tampoco se cobra (D-96) | D-30, D-31 |
+| Salir con calma a mitad de piso | Suma 1 al contador y a la degradación. En el primer intento no suma al contador, pero sí a la degradación (regla global 8). Sube el código de sujeto (D-94). Al volver se continúa desde la última sala clave final autoguardada con el estado y el inventario que se tenían al llegar; lo obtenido después se pierde. El autoguardado se conserva. Si aún no existe autoguardado, se continúa desde el inicio del piso guardado | D-30, D-31, D-35 |
 | Salir en una sala clave final ya guardada | Sin costo si no hay alerta. Al volver se restaura el estado guardado al llegar a la sala, no el del momento de salir | D-30, D-31 |
-| Quinta muerte por "Reiniciar" o por salir con costo | También activa el Final: Asimilación (si M-18 se implementa). Con "Reiniciar", el final se reproduce de inmediato. Al salir con costo, el final se reproduce al elegir Continuar (D-96) | D-31, D-32, D-35, M-18 |
+| Quinta muerte por "Reiniciar" o por salir con costo | Suma al contador, que puede llegar a 5 o más, pero no reproduce el final: la Asimilación llega en la siguiente muerte real de Lukas, nunca al reiniciar, salir o continuar (D-149) | D-31, D-32, D-35, M-18 |
 | Carga lenta en la Transición de piso | La cinemática se alarga hasta que la carga termina; no aparece una pantalla de carga | D-39, M-15 |
 | Morir durante el hackeo | El hackeo se cancela y el panel queda sin activar. Si el golpe es un agarre, el hackeo se cancela antes de resolver el agarre. Al morir, The Mother parchea cada falla, incluida la que estuviera en uso; persiste el registro (D-09). El intento siguiente regenera las salas, así que el panel no conserva progreso | M-11, M-13, M-17 |
 | Morir al registrar información | La información se registra en el terminal del brazo y se autoguarda antes de procesar la muerte | M-08, M-16, D-30 |
-| Morir en la sala del jefe | El personaje regresa al inicio del ciclo en el piso 1 y pierde el inventario. La sala de The Mother no autoguarda y el autoguardado de la sala final del piso 2 se descarta al morir (D-30). El contador se había reiniciado en la sala final del piso 2, así que esta muerte suma al contador reiniciado (D-35). El progreso de fases no persiste. No hay reciclaje en la sala (D-28) | M-16, M-18, M-19, M-20 |
+| Morir en la sala del jefe | El personaje regresa al inicio del piso 3 con el inventario con el que llegó a ese piso (D-147). La sala de The Mother no autoguarda y el autoguardado de la sala final del piso 2 se descarta al morir (D-30). El contador se había reiniciado en la sala final del piso 2, así que esta muerte suma al contador reiniciado (D-35). El progreso de fases no persiste. No hay reciclaje en la sala (D-28) | M-16, M-18, M-19, M-20 |
 | Obtener el sexto documento de Emilia en el mismo intento en que se derrota a The Mother | Cuenta para la decisión final, porque ya está acumulado en el terminal del brazo | D-51, M-08, M-19 |
 | Terminal central y salida al alcance a la vez en la Decisión final | `E` conserva una sola función (Interactuar); se usa el elemento que está al centro de la vista | D-27, D-51, M-19 |
 | Amenazas o muerte durante la Decisión final | Presión sin muerte: los altavoces y el latido suben, la sala tiembla y las luces fallan, pero no hay daño ni enemigos (D-61). La pausa está disponible, sin "Reiniciar". Al empezar la Decisión final se crea un autoguardado: salir no tiene costo y Continuar vuelve al inicio de la Decisión final (D-92) | M-19 |
