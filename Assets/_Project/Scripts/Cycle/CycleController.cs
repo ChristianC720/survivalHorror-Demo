@@ -515,6 +515,12 @@ namespace Heartbeat.Cycle
 
         public bool DebugRegister(string id) => registry.Register(id, RecordKind.ContextDocument);
 
+        /// <summary>Playtests (CP-05): the 6 Emilia documents, so the victory offers the final decision.</summary>
+        public void DebugRegisterAllEmilia()
+        {
+            for (int i = 1; i <= RegistryModel.EmiliaTotal; i++) registry.Register($"DOC.EMILIA.{i:00}", RecordKind.EmiliaDocument);
+        }
+
         public int RegistryCount => registry.Count;
     }
 }
