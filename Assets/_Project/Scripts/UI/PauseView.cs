@@ -71,9 +71,7 @@ namespace Heartbeat.UI
         private void ConfirmRestart()
         {
             var cycle = Services.Get<CycleController>();
-            bool free = cycle.InSafeZone;   // free in a safe zone (D-147)
-            ConfirmDialog.Show(root, Loc.Get(free ? "UI.CONFIRM.RESTART_SAFE" : "UI.CONFIRM.RESTART"), cycle.Restart, null, UiKit.Green,
-                free ? null : Loc.Get("UI.CONFIRM.COST_DEATH"));
+            ConfirmDialog.Show(root, Loc.Get("UI.CONFIRM.RESTART"), cycle.Restart, null, UiKit.Green, Loc.Get("UI.CONFIRM.COST_DEATH"));   // always a death (D-148)
         }
 
         private void ConfirmQuit()

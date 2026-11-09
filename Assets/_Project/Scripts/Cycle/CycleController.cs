@@ -175,8 +175,9 @@ namespace Heartbeat.Cycle
             states.TryTransition(GameStateId.Loading);
             // D-149: a counter at 5 reached by quitting is kept; Assimilation waits for Lukas's next real death.
 
-            bool resume = Data.hasAttemptSave && !afterHuntQuit;
-            if (resume) { CurrentFloor = Data.attemptSave.floor; carry = Data.attemptSave; }
+            bool resume = Data.hasAttemptSave && !afterHuntQuit && !Data.finalDecisionSave;
+            if (Data.finalDecisionSave) { CurrentFloor = FloorBuilder.MotherFloor; carry = null; }   // D-92
+            else if (resume) { CurrentFloor = Data.attemptSave.floor; carry = Data.attemptSave; }
             else (CurrentFloor, carry) = FloorStartPoint();   // D-147: start of the saved floor, with what Lukas arrived with
             var request = NextRequest(CurrentFloor);
             request.StartInFinalRoom = resume;
@@ -228,17 +229,16 @@ namespace Heartbeat.Cycle
             busy = false;
         }
 
-        /// <summary>Pause ▸ Restart (confirmed): counts as a death (D-32, D-96). Not available in the Intro or final decision.</summary>
+        /// <summary>Pause ▸ Restart (confirmed): always counts as a death, also in a safe zone (D-32, D-148). Not in the Intro or final decision.</summary>
         public void Restart()
         {
             if (busy || states.Current != GameStateId.Paused) return;
-            if (InSafeZone) { StartCoroutine(SafeRestartRoutine()); return; }
             GameEvents.RaisePlayerDied(DeathCause.Restart);
         }
 
         /// <summary>
-        /// Safe zone (D-147): the floor's spawn room or the saved final room, with no hunt. Quitting or restarting there
-        /// costs nothing; the floor is rebuilt with a new seed from the matching save.
+        /// Safe zone (D-148): the floor's spawn room or the saved final room, with no hunt. Quitting there costs nothing;
+        /// Continue rebuilds the floor with a new seed from the matching save.
         /// </summary>
         public bool InSafeZone
         {
@@ -251,26 +251,6 @@ namespace Heartbeat.Cycle
                 return Services.TryGet(out FloorBuilder fb) && fb.Layout != null && fb.Rooms.Count > fb.Layout.EntryRoom
                        && here == fb.Rooms[fb.Layout.EntryRoom];
             }
-        }
-
-        private IEnumerator SafeRestartRoutine()
-        {
-            busy = true;
-            bool inFinal = savedFinalRoom != null && RoomInstance.Current == savedFinalRoom && Data.hasAttemptSave;
-            if (!Services.Get<PauseService>().TryLeavePauseTo(GameStateId.Loading)) PauseService.ResetTime();   // never stay frozen
-            yield return loader.Fade(0f, 1f);
-            if (inFinal) { CurrentFloor = Data.attemptSave.floor; carry = Data.attemptSave; }
-            else (CurrentFloor, carry) = FloorStartPoint();
-            var request = NextRequest(CurrentFloor);
-            request.StartInFinalRoom = inFinal;
-            resumingFinalRoom = inFinal;
-            FloorSession.Pending = request;
-            HbLog.Info("Cycle", $"Safe restart (no cost): floor {CurrentFloor}, {(inFinal ? "final room" : "floor start")}, new seed");
-            loader.Load(SceneNames.Floor, null, fadeOut: false);
-            while (loader.IsBusy) yield return null;
-            states.TryTransition(GameStateId.Playing);
-            yield return loader.Fade(1f, 0f);
-            busy = false;
         }
 
         /// <summary>Start of the saved floor and its loadout (full health); floor 1 empty-handed when there is none.</summary>
@@ -358,8 +338,8 @@ namespace Heartbeat.Cycle
         // ---------- Quit (D-31) ----------
 
         /// <summary>What quitting now would cost; the pause menu's confirmation dialog shows it before quitting.</summary>
-        public ExitCost QuitCost => states.StateBeforePause == GameStateId.Intro
-            ? ExitCost.None   // the Intro never counts (D-63): quitting replays it on Continue
+        public ExitCost QuitCost => states.StateBeforePause == GameStateId.Intro || states.StateBeforePause == GameStateId.FinalDecision
+            ? ExitCost.None   // the Intro never counts (D-63): quitting replays it on Continue; the final decision is saved (D-92)
             : ExitRules.Evaluate(Services.TryGet<AlertDirector>(out var d) && d.HuntingCount > 0, InSafeZone);
 
         /// <summary>Pause menu "Quit": applies the exit table, saves and returns to the main menu.</summary>

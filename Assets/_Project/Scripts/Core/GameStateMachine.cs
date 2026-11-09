@@ -19,12 +19,12 @@ namespace Heartbeat.Core
             { GameStateId.Intro, new[] { GameStateId.Loading, GameStateId.Paused } },
             { GameStateId.Loading, new[] { GameStateId.Playing, GameStateId.Reconstruction, GameStateId.EndingAssimilation } },
             { GameStateId.Playing, new[] { GameStateId.Paused, GameStateId.FloorTransition, GameStateId.Death, GameStateId.Victory } },
-            { GameStateId.Paused, new[] { GameStateId.Playing, GameStateId.Intro, GameStateId.Death, GameStateId.MainMenu, GameStateId.Loading } },   // Loading: free restart in a safe zone (D-147)
+            { GameStateId.Paused, new[] { GameStateId.Playing, GameStateId.Intro, GameStateId.FinalDecision, GameStateId.Death, GameStateId.MainMenu } },
             { GameStateId.FloorTransition, new[] { GameStateId.Playing } },
             { GameStateId.Death, new[] { GameStateId.Reconstruction, GameStateId.EndingAssimilation, GameStateId.MainMenu } },
             { GameStateId.Reconstruction, new[] { GameStateId.Playing } },
             { GameStateId.Victory, new[] { GameStateId.EndingBasicRelief, GameStateId.FinalDecision } },
-            { GameStateId.FinalDecision, new[] { GameStateId.EndingFullRelief, GameStateId.EndingAmbiguous } },
+            { GameStateId.FinalDecision, new[] { GameStateId.Paused, GameStateId.EndingFullRelief, GameStateId.EndingAmbiguous } },   // pause stays available (D-92)
             { GameStateId.EndingBasicRelief, new[] { GameStateId.Credits } },
             { GameStateId.EndingFullRelief, new[] { GameStateId.Credits } },
             { GameStateId.EndingAmbiguous, new[] { GameStateId.Credits } },
@@ -63,7 +63,7 @@ namespace Heartbeat.Core
         {
             if (!IsAllowed(Current, to)) return false;
             if (to == GameStateId.Paused && Current != GameStateId.Paused) StateBeforePause = Current;
-            if (Current == GameStateId.Paused && (to == GameStateId.Playing || to == GameStateId.Intro) && to != StateBeforePause) return false;
+            if (Current == GameStateId.Paused && (to == GameStateId.Playing || to == GameStateId.Intro || to == GameStateId.FinalDecision) && to != StateBeforePause) return false;
 
             var from = Current;
             Current = to;

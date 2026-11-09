@@ -81,8 +81,11 @@ namespace Heartbeat.Boss
             var states = Services.Get<GameStateMachine>();
             while (states.Current != GameStateId.Playing) yield return null;
             yield return new WaitForSeconds(2f);
-            Enter(MotherPhase.Nodes);
+            Enter(resumingDecision ? MotherPhase.Defeated : MotherPhase.Nodes);
         }
+
+        // D-92: Continue after quitting during the final decision comes back straight to it.
+        private bool resumingDecision => Services.TryGet(out Cycle.CycleController c) && c.Data != null && c.Data.finalDecisionSave;
 
         // ---------- Phases ----------
 
@@ -120,7 +123,7 @@ namespace Heartbeat.Boss
                 case MotherPhase.Defeated:
                     PlayMusic("CUE_Music_Awakening", keepPosition: false);   // one-shot: the cue does not loop
                     GameEvents.RaiseBossDefeated();
-                    StartCoroutine(Victory());
+                    StartCoroutine(Victory(resumingDecision));
                     break;
             }
         }
@@ -228,15 +231,16 @@ namespace Heartbeat.Boss
 
         // ---------- Victory and decision (D-51, D-55, D-61) ----------
 
-        private IEnumerator Victory()
+        private IEnumerator Victory(bool resume)
         {
             var states = Services.Get<GameStateMachine>();
             states.TryTransition(GameStateId.Victory);
+            bool allEmilia = Services.Get<RegistryModel>().HasAllEmilia;
+            if (resume) { yield return Decision(states); yield break; }
             HbLog.Info("Boss", "The Mother falls");
             Subtitles.Say(Subtitles.Mother, "SUB.MOTHER.FALL");
             yield return new WaitForSeconds(5f);
 
-            bool allEmilia = Services.Get<RegistryModel>().HasAllEmilia;
             if (allEmilia)
             {
                 // The documents complete; Lukas recovers Emilia's name, then his own (D-55).
@@ -262,7 +266,18 @@ namespace Heartbeat.Boss
                 End("BasicRelief", GameStateId.EndingBasicRelief);
                 yield break;
             }
+            yield return Decision(states);
+        }
 
+        private IEnumerator Decision(GameStateMachine states)
+        {
+            // D-92: autosave at the start of the decision; quitting here is free and Continue comes back here.
+            if (Services.TryGet(out Cycle.CycleController cycle) && cycle.Data != null)
+            {
+                cycle.Data.finalDecisionSave = true;
+                cycle.SaveNow();
+                GameEvents.RaiseAutosaved();
+            }
             states.TryTransition(GameStateId.FinalDecision);
             foreach (var d in decisions) d.SetActive(true);
             HbLog.Info("Boss", "Final decision: central terminal or exit (E)");
@@ -288,6 +303,7 @@ namespace Heartbeat.Boss
         private void End(string id, GameStateId state)
         {
             StopMusic();
+            if (Services.TryGet(out Cycle.CycleController cycle) && cycle.Data != null) cycle.Data.finalDecisionSave = false;   // saved with the ending (D-93)
             Services.Get<GameStateMachine>().TryTransition(state);
             GameEvents.RaiseEndingTriggered(id);
         }

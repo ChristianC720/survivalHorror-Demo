@@ -73,6 +73,7 @@ namespace Heartbeat.Save
         public bool firstAttempt = true;       // tutorial attempt (D-38, D-70)
         public bool introDone;
         public bool floor2PhotoSeen;         // the floor-2 finding plays once (D-56)
+        public bool finalDecisionSave;         // D-92: Continue returns to the start of the final decision
         public bool cycleCompleted;            // D-93
         public bool newCyclePending;           // an ending was reached: the next Continue starts a new cycle (D-93)
         public List<RecordEntry> terminal = new List<RecordEntry>();

@@ -106,6 +106,20 @@ namespace Heartbeat.Tests
         }
 
         [Test]
+        public void FinalDecision_CanPauseResumeAndQuit() // D-92
+        {
+            var sm = ToPlaying();
+            sm.TryTransition(GameStateId.Victory);
+            sm.TryTransition(GameStateId.FinalDecision);
+            Assert.IsTrue(sm.TryTransition(GameStateId.Paused));
+            Assert.IsFalse(sm.TryTransition(GameStateId.Playing));
+            Assert.IsTrue(sm.TryResume());
+            Assert.AreEqual(GameStateId.FinalDecision, sm.Current);
+            sm.TryTransition(GameStateId.Paused);
+            Assert.IsTrue(sm.TryTransition(GameStateId.MainMenu));
+        }
+
+        [Test]
         public void Death_FifthConsecutive_CanGoToAssimilation()
         {
             var sm = ToPlaying();
