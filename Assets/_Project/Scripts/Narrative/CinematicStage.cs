@@ -39,6 +39,13 @@ namespace Heartbeat.Narrative
             }
         }
 
+        /// <summary>A skipped cinematic (D-91): camera off and every shot's actors hidden.</summary>
+        public void StopAll()
+        {
+            shotCamera.enabled = false;
+            foreach (var s in shots) if (s.actors != null) s.actors.SetActive(false);
+        }
+
         /// <summary>Shows the shot for <paramref name="seconds"/> (unscaled), then switches the camera off again.</summary>
         public IEnumerator Play(string id, float seconds)
         {

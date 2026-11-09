@@ -71,7 +71,8 @@ namespace Heartbeat.Narrative
             yield return Exterior();
             yield return Elevator();
             yield return NonexistentFloor();
-            yield return Reconstruction();
+            Services.Get<InputRouting.InputRouter>().SetContext(InputRouting.InputContext.Cinematic);   // hold Skip once seen (D-91)
+            yield return SkippableCinematic.Run(this, "Reconstruction", Reconstruction(), () => { loader.SetFade(1f); loader.SetStatus(""); });
             SetStage("Done");
             Services.Get<Cycle.CycleController>().FinishIntro();
         }

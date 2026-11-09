@@ -54,6 +54,28 @@ namespace Heartbeat.Cycle
             router.Actions.Cinematic.Skip.performed += OnSkip;
             HbLog.Info("Ending", $"Start {id} ({data.SubjectLabel})");
 
+            yield return Narrative.SkippableCinematic.Run(this, id, Sequence(id, n), OnSequenceSkipped);   // D-91
+
+            // Cycle completed (D-93): the next Continue starts a new cycle from the capsule.
+            data.cycleCompleted = true;
+            data.newCyclePending = true;
+            cycle.SaveNow();
+
+            var states = Services.Get<GameStateMachine>();
+            states.TryTransition(GameStateId.Credits);
+            yield return Credits();
+
+            router.Actions.Cinematic.Skip.performed -= OnSkip;
+            Destroy(canvas.gameObject);
+            running = false;
+            StopMusic();   // or it overlaps the menu theme
+            states.TryTransition(GameStateId.MainMenu);
+            Services.Get<SceneLoader>().Load(SceneNames.MainMenu);
+            HbLog.Info("Ending", $"{id} done -> main menu");
+        }
+
+        private IEnumerator Sequence(string id, string n)
+        {
             switch (id)
             {
                 case "Assimilation":
@@ -129,23 +151,15 @@ namespace Heartbeat.Cycle
                     yield return Card("", cardSeconds);
                     break;
             }
+        }
 
-            // Cycle completed (D-93): the next Continue starts a new cycle from the capsule.
-            data.cycleCompleted = true;
-            data.newCyclePending = true;
-            cycle.SaveNow();
-
-            var states = Services.Get<GameStateMachine>();
-            states.TryTransition(GameStateId.Credits);
-            yield return Credits();
-
-            router.Actions.Cinematic.Skip.performed -= OnSkip;
-            Destroy(canvas.gameObject);
-            running = false;
-            StopMusic();   // or it overlaps the menu theme
-            states.TryTransition(GameStateId.MainMenu);
-            Services.Get<SceneLoader>().Load(SceneNames.MainMenu);
-            HbLog.Info("Ending", $"{id} done -> main menu");
+        /// <summary>Skipped with a hold (D-91): leave the staged shot and the music, go straight to the credits.</summary>
+        private void OnSequenceSkipped()
+        {
+            if (Services.TryGet(out Narrative.CinematicStage stage)) stage.StopAll();
+            canvas.enabled = true;
+            card.text = "";
+            StopMusic();
         }
 
         private void PlayMusic(string cue)

@@ -237,6 +237,15 @@ namespace Heartbeat.Boss
             states.TryTransition(GameStateId.Victory);
             bool allEmilia = Services.Get<RegistryModel>().HasAllEmilia;
             if (resume) { yield return Decision(states); yield break; }
+            // D-91: the common victory sequence can be skipped by holding Skip once seen.
+            var lights = GetComponentsInChildren<Light>(true);
+            yield return Narrative.SkippableCinematic.Run(this, "Victory", VictorySequence(allEmilia, lights), () => { foreach (var l in lights) l.enabled = true; });
+            if (!allEmilia) { End("BasicRelief", GameStateId.EndingBasicRelief); yield break; }
+            yield return Decision(states);
+        }
+
+        private IEnumerator VictorySequence(bool allEmilia, Light[] failing)
+        {
             HbLog.Info("Boss", "The Mother falls");
             Subtitles.Say(Subtitles.Mother, "SUB.MOTHER.FALL");
             yield return new WaitForSeconds(5f);
@@ -257,16 +266,12 @@ namespace Heartbeat.Boss
                 HbLog.Info("Boss", "No choice without the 6 Emilia documents: Lukas examines the central terminal");
                 // The Awakening plays out whole: the room fails while the heartbeat races to its peak.
                 float until = Time.time + Mathf.Max(balance.autoDecisionSeconds, music != null && music.clip != null ? music.clip.length - music.time - 2f : 0f);
-                var failing = GetComponentsInChildren<Light>(true);
                 while (Time.time < until)
                 {
                     foreach (var l in failing) l.enabled = Random.value > 0.25f;
                     yield return new WaitForSeconds(Random.Range(0.05f, 0.4f));
                 }
-                End("BasicRelief", GameStateId.EndingBasicRelief);
-                yield break;
             }
-            yield return Decision(states);
         }
 
         private IEnumerator Decision(GameStateMachine states)
