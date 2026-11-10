@@ -32,7 +32,7 @@ namespace Heartbeat.Tests
             Assert.IsTrue(locked.GetComponentsInChildren<NavMeshObstacle>(true).Any(o => o.enabled), "a locked door carves the NavMesh");
 
             // A hunting enemy right in front of it for 2 s: the door stays shut.
-            var enemy = Object.FindObjectsByType<EnemyBrain>(FindObjectsSortMode.None).First();
+            var enemy = Object.FindObjectsByType<EnemyBrain>().First();
             var p = locked.transform.position + locked.transform.forward * 1f;
             enemy.DebugWarp(p.x, p.y, p.z, 0f);
             enemy.DebugForceHunt();
