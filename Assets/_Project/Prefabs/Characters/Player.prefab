@@ -478,11 +478,7 @@ MonoBehaviour:
   terminalFont: {fileID: 0}
   terminalModel: {fileID: 7132450088741912209, guid: 2d330f5ef206b7149b258cbe2d660db9, type: 3}
   civilian: 0
-  bodyVariants:
-  - {fileID: 2800000, guid: ae16b1e6fe42dbe4c867bce7689acb1e, type: 3}
-  - {fileID: 2800000, guid: 48d4882e087ca464ba85a2616bf4801b, type: 3}
-  - {fileID: 2800000, guid: 5ad79d1d7d8eb954e93c39095e0105ec, type: 3}
-  - {fileID: 2800000, guid: e454685143ff7744b9546bb99bca8d70, type: 3}
+  bodyVariants: []
 --- !u!1 &3181610878793067074
 GameObject:
   m_ObjectHideFlags: 0
