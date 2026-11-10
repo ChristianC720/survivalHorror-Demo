@@ -263,6 +263,29 @@ namespace Heartbeat.Generation
             var leaf = door.GetComponent<DoorLeaf>();
             leaf.Configure(c.Lock);
             doors.Add(leaf);
+            ClearDoorway(door.transform, built[c.A], built[c.B]);
+        }
+
+        /// <summary>
+        /// Room dressing is placed by hand for every socket, used or not: a prop in front of a socket that became a doorway
+        /// cuts the NavMesh there (C-02, e.g. floor cabling against a door). The decor gives way to the door: props of the
+        /// two rooms within 1.5 m of the opening are switched off, never interactables, spawns or the shell.
+        /// </summary>
+        private static void ClearDoorway(Transform door, RoomInstance a, RoomInstance b)
+        {
+            Vector3 Abs(Vector3 v) => new Vector3(Mathf.Abs(v.x), Mathf.Abs(v.y), Mathf.Abs(v.z));
+            var zone = new Bounds(door.position + Vector3.up, 2f * (Abs(door.right) * 1.2f + Abs(door.forward) * 1.5f + Vector3.up));
+            foreach (var room in new[] { a, b })
+                foreach (Transform group in room.transform)
+                {
+                    if (!group.name.StartsWith("Dress_") && group.name != "Props") continue;
+                    foreach (Transform prop in group)
+                    {
+                        if (!prop.gameObject.activeSelf || prop.GetComponentInChildren<IInteractable>(true) != null || prop.GetComponentInChildren<SpawnPoint>(true) != null) continue;
+                        foreach (var r in prop.GetComponentsInChildren<Renderer>())
+                            if (r.bounds.Intersects(zone)) { prop.gameObject.SetActive(false); HbLog.Dev("Gen", $"{room.name}/{prop.name} cleared from {door.name}"); break; }
+                    }
+                }
         }
 
         /// <summary>D-164: each door leaving a tutorial room stays shut until that room's actions are done (see TutorialGuide).</summary>
