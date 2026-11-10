@@ -166,6 +166,7 @@ namespace Heartbeat.Audio
         /// same point of the bar: the boss loops have the same length, so a phase change links on the beat (D-87).</summary>
         public AudioSource StartMusic(AudioCue cue, AudioSource previous = null, bool keepPosition = false)
         {
+            CutCarriedMusic();   // any new music is an action that cuts an ending's music
             var src = Play(cue);
             int previousSamples = previous != null ? previous.timeSamples : 0;
             FadeOutMusic(previous);
@@ -177,6 +178,32 @@ namespace Heartbeat.Audio
             src.volume = 0f;
             if (keepPosition && src.clip != null) src.timeSamples = Mathf.Min(previousSamples, src.clip.samples - 1);
             return src;
+        }
+
+        /// <summary>
+        /// An ending's music keeps playing into the main menu until it ends or new music cuts it (user 2026-11-09). The menu
+        /// waits for <see cref="CarriedMusicPlaying"/> to turn false, then for <see cref="MenuMusicDelay"/>, before its theme.
+        /// </summary>
+        public void CarryMusic(AudioSource voice) { carried = voice; carriedClip = voice != null ? voice.clip : null; }
+
+        public bool CarriedMusicPlaying => carried != null && carried.clip == carriedClip && IsBusy(carried);   // a reused voice is not the ending
+
+        public float MenuMusicDelay => balance != null ? balance.menuMusicDelayAfterEnding : 2f;
+
+        public void CutCarriedMusic()
+        {
+            var c = carried;
+            carried = null;
+            if (c != null && c.clip == carriedClip && IsBusy(c)) FadeOutMusic(c);
+        }
+
+        private AudioSource carried;
+        private AudioClip carriedClip;
+
+        private bool IsBusy(AudioSource voice)
+        {
+            int i = System.Array.IndexOf(pool, voice);
+            return i >= 0 && busy[i] && voice.isPlaying;
         }
 
         /// <summary>Fades the voice to silence, then frees it.</summary>

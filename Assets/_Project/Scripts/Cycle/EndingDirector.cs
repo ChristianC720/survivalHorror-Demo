@@ -68,7 +68,9 @@ namespace Heartbeat.Cycle
             router.Actions.Cinematic.Skip.performed -= OnSkip;
             Destroy(canvas.gameObject);
             running = false;
-            StopMusic();   // or it overlaps the menu theme
+            // The ending's music carries on into the main menu until it ends or an action cuts it; the menu theme waits.
+            if (Services.TryGet(out Audio.AudioService carry)) carry.CarryMusic(music);
+            music = null;
             states.TryTransition(GameStateId.MainMenu);
             Services.Get<SceneLoader>().Load(SceneNames.MainMenu);
             HbLog.Info("Ending", $"{id} done -> main menu");
