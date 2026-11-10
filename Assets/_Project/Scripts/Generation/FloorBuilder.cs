@@ -122,6 +122,7 @@ namespace Heartbeat.Generation
 
             var cfg = ConfigFor(floor, showcase);
             var p = cfg.ToParams(seed, firstAttempt, storyMode);
+            blisterRounds = p.BlisterRounds;
             var templates = library.rooms.Where(r => r != null && r.floor == floor).Select(RoomTemplate.From).ToList();
             if (templates.Count == 0)
             {
@@ -307,7 +308,7 @@ namespace Heartbeat.Generation
                     if (doc == null)
                     {
                         // Already registered: 1 extra of the floor's scarcest resource instead (D-79).
-                        Spawn(ammoPrefab, at, ItemKind.Ammo, 4);
+                        Spawn(ammoPrefab, at, ItemKind.Ammo, blisterRounds);
                         return;
                     }
                     prefab = documentPrefab;
@@ -324,6 +325,7 @@ namespace Heartbeat.Generation
         }
 
         private int emiliaCursor;
+        private int blisterRounds;   // this build's blister size (Story mode: larger)
 
         private DocumentDefinition NextEmilia(IReadOnlyCollection<string> registered)
         {

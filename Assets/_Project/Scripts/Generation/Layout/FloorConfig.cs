@@ -37,7 +37,9 @@ namespace Heartbeat.Generation.Layout
 
         [Header("Budget (D-17)")]
         public IntRange heals = new IntRange(2, 3);
-        [Tooltip("Rounds; picked in blisters of 4.")] public IntRange ammo = new IntRange(12, 16);
+        [Tooltip("Rounds; picked in blisters of blisterRounds.")] public IntRange ammo = new IntRange(12, 16);
+        [Tooltip("Rounds in one ammo blister.")] [Min(1)] public int blisterRounds = 4;
+        [Tooltip("Rounds in one ammo blister in Story mode; the number of blisters stays the same.")] [Min(1)] public int storyBlisterRounds = 6;
         public IntRange spikes = new IntRange(2, 3);
         public IntRange optionalKeys = new IntRange(1, 2);
         public IntRange enemies = new IntRange(6, 9);
@@ -57,7 +59,7 @@ namespace Heartbeat.Generation.Layout
                 Floor = floor, Seed = seed, FirstAttempt = firstAttempt && floor == 1,
                 Procedural = proceduralRooms, Secondary = secondaryRooms,
                 EmptyFraction = emptyFraction, UnpoweredChance = floor < 3 ? unpoweredChance : 0f, LoopChance = loopChance, MinSecondaryDistance = minSecondaryDistance, MinFinalDistance = minFinalDistance,
-                Heals = heals, Ammo = ammo, Spikes = spikes, OptionalKeys = optionalKeys, Enemies = enemies,
+                Heals = heals, Ammo = ammo, BlisterRounds = blisterRounds, StoryBlisterRounds = storyBlisterRounds, Spikes = spikes, OptionalKeys = optionalKeys, Enemies = enemies,
                 EnemyTypes = enemyTypes, ContextDocs = contextDocs, Confiscated = confiscated,
                 TutorialRoomIds = tutorialRoomIds,
             };
@@ -81,6 +83,8 @@ namespace Heartbeat.Generation.Layout
         public int MinFinalDistance = 4;
         public IntRange Heals = new IntRange(2, 3);
         public IntRange Ammo = new IntRange(12, 16);
+        public int BlisterRounds = 4;
+        public int StoryBlisterRounds = 6;
         public IntRange Spikes = new IntRange(2, 3);
         public IntRange OptionalKeys = new IntRange(1, 2);
         public IntRange Enemies = new IntRange(6, 9);
@@ -89,12 +93,17 @@ namespace Heartbeat.Generation.Layout
         public IntRange Confiscated = new IntRange(1, 2);
         public string[] TutorialRoomIds = new string[0];
 
-        /// <summary>Story mode (D-103): +1 to each resource minimum (+1 blister for ammo); max rises if exceeded.</summary>
+        /// <summary>
+        /// Story mode (D-103): +1 to each resource minimum (+1 blister for ammo); max rises if exceeded. Each blister then
+        /// holds StoryBlisterRounds instead of BlisterRounds: same number of blisters, more rounds in each.
+        /// </summary>
         public void ApplyStoryMode()
         {
             Heals = Raise(Heals, 1);
             Spikes = Raise(Spikes, 1);
-            Ammo = Raise(Ammo, 4);
+            Ammo = Raise(Ammo, BlisterRounds);
+            Ammo = new IntRange(Ammo.min / BlisterRounds * StoryBlisterRounds, Ammo.max / BlisterRounds * StoryBlisterRounds);
+            BlisterRounds = StoryBlisterRounds;
         }
 
         private static IntRange Raise(IntRange r, int by) => new IntRange(r.min + by, Mathf.Max(r.max, r.min + by));

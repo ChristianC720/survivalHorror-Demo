@@ -93,6 +93,18 @@ namespace Heartbeat.Tests
         }
 
         [Test]
+        public void StoryMode_BlistersHold6Rounds_NormalBlistersHold4()
+        {
+            var story = Full(1, 77); story.ApplyStoryMode();
+            Assert.AreEqual(6, story.BlisterRounds);
+            Assert.AreEqual(24, story.Ammo.min);   // 12-16 rounds: min 3 blisters + 1, 6 rounds each
+            var ls = LayoutGenerator.Generate(story, Library());
+            Assert.IsTrue(ls.Items.Where(i => i.Kind == ItemKind.Ammo).All(i => i.Amount == 6));
+            var ln = LayoutGenerator.Generate(Full(1, 77), Library());
+            Assert.IsTrue(ln.Items.Where(i => i.Kind == ItemKind.Ammo).All(i => i.Amount == 4));
+        }
+
+        [Test]
         public void SameSeed_SameLayout()
         {
             var a = LayoutGenerator.Generate(Full(1, 1234), Library());
