@@ -27,7 +27,12 @@ namespace Heartbeat.Save
         public bool crouchToggle = true;
         public bool invertY;
         public float lookSensitivity = 1f, aimSensitivity = 1f;
-        public bool aimAssist;
+        // Aim assist per device (GDD Accesibilidad): off with keyboard and mouse, on with a gamepad. Saves written with the old
+        // single "aimAssist" field still load: JsonUtility skips the unknown field and these defaults apply.
+        public bool aimAssistMouse;
+        public bool aimAssistGamepad = true;
+        public bool AimAssist(bool gamepad) => gamepad ? aimAssistGamepad : aimAssistMouse;
+        public void SetAimAssist(bool gamepad, bool on) { if (gamepad) aimAssistGamepad = on; else aimAssistMouse = on; }
         public int resolutionWidth, resolutionHeight;   // 0 = native
         public int screenMode;                 // 0 fullscreen, 1 window, 2 borderless
         public bool vsync = true;
