@@ -20,9 +20,11 @@ namespace Heartbeat.CameraSystem
     public sealed class SurveillanceSystem : MonoBehaviour
     {
         [SerializeField] private int textureHeight = 270;
+        [Tooltip("Upper bound of the orthographic size; the view fits the room it shows (M-02: the room fills the feed).")]
         [SerializeField] private float orthoSize = 7f;
+        [SerializeField] private float minOrthoSize = 3f;
         [Tooltip("Flat ambient light while the feed is up: the camera image covers the whole screen, so only the feed sees it (M-02 legibility).")]
-        [SerializeField] private Color viewAmbient = new Color(0.32f, 0.36f, 0.34f);
+        [SerializeField] private Color viewAmbient = new Color(0.95f, 1f, 0.95f);   // 0.32 left the far half of the room black (C-19)
 
         private UnityEngine.Rendering.AmbientMode savedAmbientMode;
         private Color savedAmbient;
@@ -126,6 +128,7 @@ namespace Heartbeat.CameraSystem
             viewingRoom = room;
             CollectOutside(room);
             cam.transform.SetPositionAndRotation(mount.position, mount.rotation);
+            cam.orthographicSize = FitOrtho(room);
             cam.enabled = true;
             screen.enabled = true;
             noise.enabled = true;
@@ -219,6 +222,22 @@ namespace Heartbeat.CameraSystem
                 if (Time.time - stamps[idx] >= delay) break;
             }
             screen.texture = ring[show];
+        }
+
+        /// <summary>Orthographic size that frames the whole room volume (floor to ceiling) from the mount, with a small margin.</summary>
+        private float FitOrtho(RoomInstance room)
+        {
+            if (!room.TryGetComponent(out Collider vol)) return orthoSize;
+            var b = vol.bounds;
+            float aspect = (float)ring[0].width / ring[0].height;
+            float half = 0f;
+            for (int i = 0; i < 8; i++)
+            {
+                var corner = new Vector3((i & 1) == 0 ? b.min.x : b.max.x, (i & 2) == 0 ? b.min.y : b.max.y, (i & 4) == 0 ? b.min.z : b.max.z);
+                var p = cam.transform.InverseTransformPoint(corner);
+                half = Mathf.Max(half, Mathf.Abs(p.y), Mathf.Abs(p.x) / aspect);
+            }
+            return Mathf.Clamp(half * 1.05f, minOrthoSize, orthoSize);
         }
 
         private void CollectOutside(RoomInstance room)
