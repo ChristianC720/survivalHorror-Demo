@@ -112,13 +112,13 @@ namespace Heartbeat.Boss
                 case MotherPhase.Cameras:
                     Subtitles.Say(Subtitles.Mother, "SUB.MOTHER.PHASE2");
                     PlayMusic("CUE_Music_Mother_P2");
-                    DropAmmo("Ammo2_", balance.phase2Ammo);
+                    DropAmmo("Ammo2_", Cycle.CycleController.StoryMode ? balance.storyPhase2Ammo : balance.phase2Ammo);
                     DropHeal();
                     break;
                 case MotherPhase.Transformers:
                     Subtitles.Say(Subtitles.Mother, "SUB.MOTHER.PHASE3", subject);
                     PlayMusic("CUE_Music_Mother_P3");
-                    DropAmmo("Ammo3_", balance.phase3Ammo);
+                    DropAmmo("Ammo3_", Cycle.CycleController.StoryMode ? balance.storyPhase3Ammo : balance.phase3Ammo);
                     foreach (var t in GetComponentsInChildren<Transform>(true).Where(t => t.name.StartsWith("Plate_")).ToArray()) StartCoroutine(DropPlate(t));
                     break;
                 case MotherPhase.Defeated:
