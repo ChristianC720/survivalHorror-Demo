@@ -10,8 +10,17 @@ namespace Heartbeat.Player
     /// </summary>
     public sealed class LukasAttachments : MonoBehaviour
     {
-        // Rest-pose center of the terminal panel in model space, measured from the Blender mesh (BLENDER_PLAN.md).
-        private static readonly Vector3 TerminalRest = new Vector3(-0.355f, 0.99f, -0.045f);
+        // Terminal panel on the outer side of the left forearm, measured on the first mesh (BLENDER_PLAN.md): 53% of the way
+        // from elbow to wrist, 4.6 cm out from the bone. Read from the bones, so any rest pose of the rig works.
+        private const float TerminalAlong = 0.53f, TerminalOut = 0.046f;
+
+        /// <summary>Bind-pose panel centre, the direction out of the arm and the direction up the forearm. Shared with the gallery.</summary>
+        public static Vector3 TerminalPanel(Transform root, Transform forearm, Transform hand, out Vector3 outward, out Vector3 along)
+        {
+            along = (forearm.position - hand.position).normalized;
+            outward = Vector3.ProjectOnPlane(-root.right, along).normalized;
+            return Vector3.Lerp(forearm.position, hand.position, TerminalAlong) + outward * TerminalOut;
+        }
 
         [SerializeField] private Animator animator;
         [SerializeField] private PlayerBalance balance;
@@ -81,7 +90,7 @@ namespace Heartbeat.Player
                 weaponSocket.SetPositionAndRotation(grip.position, Quaternion.LookRotation(toward.position - grip.position, up.position - grip.position));
             }
 
-            Vector3 panel = animator.transform.TransformPoint(TerminalRest);
+            Vector3 panel = TerminalPanel(animator.transform, forearm, animator.GetBoneTransform(HumanBodyBones.LeftHand), out Vector3 outward, out Vector3 along);
             AddGlow("Glow_Chest", chest, chest.position + animator.transform.up * 0.1f + animator.transform.forward * 0.2f);
             AddGlow("Glow_Terminal", forearm, panel);
 
@@ -89,13 +98,13 @@ namespace Heartbeat.Player
             {
                 var device = Instantiate(terminalModel, forearm, true);
                 // The device's screen faces -Z as imported; turn it out of the arm with its long side along the forearm.
-                device.transform.SetPositionAndRotation(panel, Quaternion.LookRotation(-animator.transform.right, animator.transform.up));
+                device.transform.SetPositionAndRotation(panel, Quaternion.LookRotation(outward, along));
             }
 
             var go = new GameObject("ArmTerminalScreen");
             go.transform.SetParent(forearm, true);
-            // The panel faces out of the left arm, -X in the bind pose; TMP shows its face to a viewer looking along +Z.
-            go.transform.SetPositionAndRotation(panel, Quaternion.LookRotation(animator.transform.right, animator.transform.up));
+            // The panel faces out of the left arm; TMP shows its face to a viewer looking along +Z.
+            go.transform.SetPositionAndRotation(panel, Quaternion.LookRotation(-outward, along));
             screen = go.AddComponent<TextMeshPro>();
             if (terminalFont != null) screen.font = terminalFont;
             screen.rectTransform.sizeDelta = new Vector2(0.06f, 0.05f);

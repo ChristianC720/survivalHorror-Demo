@@ -247,11 +247,14 @@ namespace Heartbeat.Sandbox
                 gun.transform.SetPositionAndRotation(grip.position, Quaternion.LookRotation(toward.position - grip.position, up.position - grip.position));
             }
             var termAsset = AssetDatabase.LoadAssetAtPath<GameObject>(Prefabs + "Items/PROP_ArmTerminal.prefab");
-            var forearm = Bone("LeftLowerArm");
-            if (termAsset != null && forearm != null)
+            Transform forearm = Bone("LeftLowerArm"), hand = Bone("LeftHand");
+            if (termAsset != null && forearm != null && hand != null)
             {
+                // Same panel as LukasAttachments.TerminalPanel (this assembly cannot reference the game's).
+                Vector3 along = (forearm.position - hand.position).normalized;
+                Vector3 outward = Vector3.ProjectOnPlane(-lukas.transform.right, along).normalized;
                 var t = Object.Instantiate(termAsset, forearm, true);
-                t.transform.SetPositionAndRotation(lukas.transform.TransformPoint(new Vector3(-0.355f, 0.99f, -0.045f)), Quaternion.LookRotation(-lukas.transform.right, lukas.transform.up));
+                t.transform.SetPositionAndRotation(Vector3.Lerp(forearm.position, hand.position, 0.53f) + outward * 0.046f, Quaternion.LookRotation(outward, along));
             }
         }
 
