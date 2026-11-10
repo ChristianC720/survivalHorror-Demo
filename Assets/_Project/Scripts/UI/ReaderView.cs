@@ -47,10 +47,18 @@ namespace Heartbeat.UI
             var cycle = Services.TryGet(out Cycle.CycleController c) ? c.Data : null;
             string n = cycle != null ? cycle.subjectCode.ToString("00") : "07";
             bool reveal = cycle != null && cycle.cycleCompleted && Services.Get<RegistryModel>().HasAllEmilia;
-            string text = DocText.Render(Loc.Get(d.bodyKey, n), reveal);
+            string text = DocText.Render(DocText.WithGermanSubtitles(Loc.Get(d.bodyKey, n), Translation), reveal);
             if (Level.FaultModel.Faults.ContainsKey(d.id) && Services.TryGet(out Level.FaultModel faults))   // M-17 status
                 text += "\n\n" + (faults.IsPatched(d.id) ? Loc.Get("UI.TERM.FAULT_PATCHED") : Loc.Get("UI.TERM.FAULT_USES", faults.UsesLeft(d.id)));
             return text;
+        }
+
+        /// <summary>Translation of a German line (DE table), or null if it is not German.</summary>
+        private static string Translation(string german)
+        {
+            string key = DocText.GermanKey(german);
+            string t = Loc.Get(key);
+            return t == key ? null : t;
         }
 
         // Vitalis wrote these; Emilia's files and Lukas's own things are not theirs (D-157).
