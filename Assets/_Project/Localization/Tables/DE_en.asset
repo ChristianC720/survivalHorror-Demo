@@ -1,0 +1,103 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: DE_en
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.StringTable
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 23eb0ac30618eeb4684359e872296345, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 951189504
+    m_Localized: Order is half of life.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1014104064
+    m_Localized: Health is a duty.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1014104065
+    m_Localized: Confidential. Do not copy.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1014104066
+    m_Localized: Safety comes first.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1014104067
+    m_Localized: Vitalis Konzern thanks you.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1014104068
+    m_Localized: Lights out, stay calm.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1014104069
+    m_Localized: Report all found items.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1014104070
+    m_Localized: Do not run.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1014104071
+    m_Localized: Quiet in the workplace.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1014104072
+    m_Localized: Use ammunition sparingly.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1014104073
+    m_Localized: First aid in emergencies only.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1014104074
+    m_Localized: Camera surveillance active.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1014104075
+    m_Localized: Unauthorized access prohibited.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1014104076
+    m_Localized: Nothing may be left behind.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1014104077
+    m_Localized: Quiet is safety.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1014104078
+    m_Localized: Progress through preservation.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1014104079
+    m_Localized: Maintenance Department
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1014104080
+    m_Localized: OUT OF ORDER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1014104081
+    m_Localized: ACT I
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1014104082
+    m_Localized: Plant security
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

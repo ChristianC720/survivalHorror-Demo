@@ -1,0 +1,108 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: DE Shared Data
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.SharedTableData
+  m_TableCollectionName: DE
+  m_TableCollectionNameGuidString: 23eb0ac30618eeb4684359e872296345
+  m_Entries:
+  - m_Id: 951189504
+    m_Key: DE.ORDNUNG_IST_DAS_HALBE_LEBEN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1014104064
+    m_Key: DE.GESUNDHEIT_IST_PFLICHT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1014104065
+    m_Key: DE.VERTRAULICH_NICHT_KOPIEREN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1014104066
+    m_Key: DE.SICHERHEIT_GEHT_VOR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1014104067
+    m_Key: DE.VITALIS_KONZERN_DANKT_IHNEN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1014104068
+    m_Key: DE.LICHT_AUS_RUHE_BEWAHREN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1014104069
+    m_Key: DE.FUNDSACHEN_MELDEN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1014104070
+    m_Key: DE.NICHT_RENNEN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1014104071
+    m_Key: DE.RUHE_IM_BETRIEB
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1014104072
+    m_Key: DE.MUNITION_SPARSAM_VERWENDEN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1014104073
+    m_Key: DE.ERSTE_HILFE_NUR_IM_NOTFALL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1014104074
+    m_Key: DE.KAMERAUEBERWACHUNG_AKTIV
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1014104075
+    m_Key: DE.UNBEFUGTER_ZUGRIFF_VERBOTEN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1014104076
+    m_Key: DE.NICHTS_DARF_ZURUECKBLEIBEN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1014104077
+    m_Key: DE.RUHE_IST_SICHERHEIT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1014104078
+    m_Key: DE.FORTSCHRITT_DURCH_ERHALTUNG
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1014104079
+    m_Key: DE.ABTEILUNG_INSTANDHALTUNG
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1014104080
+    m_Key: DE.AUSSER_BETRIEB
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1014104081
+    m_Key: DE.AKT_I
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1014104082
+    m_Key: DE.WERKSCHUTZ
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 262737324084822102
+  references:
+    version: 2
+    RefIds:
+    - rid: 262737324084822102
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1794325381865
