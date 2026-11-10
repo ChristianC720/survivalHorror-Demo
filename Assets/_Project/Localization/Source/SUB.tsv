@@ -21,8 +21,9 @@ SUB.LUKAS.ELEVATOR_DEAD	Dead. No way back.	Muerto. No hay vuelta atrás.
 SUB.LUKAS.NAME_EMILIA	…Emilia.	…Emilia.	
 SUB.LUKAS.NAME_OWN	…Lukas. I'm Lukas.	…Lukas. Soy Lukas.	
 SUB.EMILIA.NOTE_1	Lukas. If you're hearing this, I didn't come back.	Lukas. Si estás oyendo esto, no volví.	intro voice note, live copy (not corrupt)
-SUB.EMILIA.NOTE_2	I've been looking into what happened at Vitalis. The incident. I found something in the sound and I went back for the rest of it.	He estado investigando lo que pasó en Vitalis. El incidente. Encontré algo en el sonido y volví por el resto.	
+SUB.EMILIA.NOTE_2	I've been looking into what happened at Vitalis. The incident. I found something in the sound, a shape, and I went back for the rest of it.	He estado investigando lo que pasó en Vitalis. El incidente. Encontré algo en el sonido, una forma, y volví por el resto.	
 SUB.EMILIA.NOTE_3	Something went wrong. I don't remember… I don't remember what I'm forgetting.	Algo salió mal. No recuerdo… no recuerdo qué estoy olvidando.	
-SUB.EMILIA.NOTE_4	Don't come looking for me. Please. Not you. Stay home. Keep the photo.	No vengas a buscarme. Por favor. Tú no. Quédate en casa. Guarda la foto.	
-SUB.EMILIA.NOTE_5	(breathing) …it's in the walls. I can hear it from here.	(respiración) …está en las paredes. Lo oigo desde aquí.	
-SUB.EMILIA.NOTE_6	(footsteps, running)	(pasos, corre)	
+SUB.EMILIA.NOTE_4	There is a machine down there that keeps me. Every time it keeps me, there is a little less to keep.	Ahí abajo hay una máquina que me conserva. Cada vez que me conserva, queda un poco menos que conservar.	
+SUB.EMILIA.NOTE_5	Don't come looking for me. Please. Not you. Stay home. Keep the photo. Water the plant on the window, the one you always forget.	No vengas a buscarme. Por favor. Tú no. Quédate en casa. Guarda la foto. Riega la planta de la ventana, la que siempre olvidas.	
+SUB.EMILIA.NOTE_6	(breathing) …it's in the walls. I can hear it from here.	(respiración) …está en las paredes. Lo oigo desde aquí.	
+SUB.EMILIA.NOTE_7	(footsteps, running)	(pasos, corre)	

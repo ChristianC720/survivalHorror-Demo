@@ -19,39 +19,43 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 17773018349568
-    m_Localized: "KS-W-0193 \u2014 \"El Alto\""
+    m_Localized: "KS-W-0193 \xB7 El Alto"
     m_Metadata:
       m_Items: []
   - m_Id: 17773093847040
-    m_Localized: 'Origin: Werkschutz personnel, Kessler Sicherheit AG.
+    m_Localized: 'Origin: Werkschutz personnel, Kessler Sicherheit AG. Post 7.
 
       Status: non-conforming. Identity: not detected.
 
       Observations: continues patrol routes. Sight: long range. Hearing: poor. Reach exceeds standard uniform sleeve length by 1.1 m.
 
+      Skin: pale. Pigment pools in shadowed tissue. Eye sockets empty. Vision unaffected.
+
       Recommendation: avoid its line of sight. Uniform is still under contract.'
     m_Metadata:
       m_Items: []
   - m_Id: 17773093847041
-    m_Localized: "VK-P-0441 \u2014 \"La Boca\""
+    m_Localized: "VK-P-0441 \xB7 La Boca"
     m_Metadata:
       m_Items: []
   - m_Id: 17773093847042
-    m_Localized: 'Origin: clinical test subject, Vitalis Konzern.
+    m_Localized: 'Origin: clinical test subject, Vitalis Konzern. Gown tag: SUBJ 31.
 
       Status: non-conforming. Identity: not detected.
 
-      Observations: blind. Hearing: exceptional. On detection it screams; nearby subjects respond to the scream.
+      Observations: blind. Hearing: exceptional. On detection it screams. Nearby subjects respond to the scream.
+
+      The scream is not the heartbeat. It only wants company.
 
       Recommendation: reduce noise. Consent form on file.'
     m_Metadata:
       m_Items: []
   - m_Id: 17773098041344
-    m_Localized: "VK-T-0072 \u2014 \"El Rastrero\""
+    m_Localized: "VK-T-0072 \xB7 El Rastrero"
     m_Metadata:
       m_Items: []
   - m_Id: 17773098041345
-    m_Localized: 'Origin: laboratory technician, Vitalis Konzern.
+    m_Localized: 'Origin: test subject, Vitalis Konzern. Striped intake shirt.
 
       Status: non-conforming. Identity: not detected.
 
@@ -61,11 +65,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 17773098041346
-    m_Localized: "VK-S-0009 \u2014 \"El Mudo\""
+    m_Localized: "VK-S-0009 \xB7 El Mudo"
     m_Metadata:
       m_Items: []
   - m_Id: 17773098041347
-    m_Localized: 'Origin: unknown. File incomplete.
+    m_Localized: 'Origin: unknown. File incomplete. Wears clinical staff clothing. No staff record matches.
 
       Status: non-conforming. Identity: not detected.
 
@@ -75,13 +79,15 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 17773098041348
-    m_Localized: "Annex \u2014 Recycled subjects"
+    m_Localized: "Annex \xB7 Recycled subjects"
     m_Metadata:
       m_Items: []
   - m_Id: 17773098041349
     m_Localized: 'Some non-conforming subjects rise again after ceasing to function. Faster. More fragile. Once only.
 
-      Cause: their last trace of identity is consumed. I attempted preservation. The attempt is logged as successful.'
+      Cause: their last trace of identity is consumed. I attempted preservation. The attempt is logged as successful.
+
+      I did not raise them. I am not informed of who did.'
     m_Metadata:
       m_Items: []
   - m_Id: 3064821024161792

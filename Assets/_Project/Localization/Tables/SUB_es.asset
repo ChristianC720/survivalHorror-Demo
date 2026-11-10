@@ -103,7 +103,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 238196469399552
-    m_Localized: "He estado investigando lo que pas\xF3 en Vitalis. El incidente. Encontr\xE9 algo en el sonido y volv\xED por el resto."
+    m_Localized: "He estado investigando lo que pas\xF3 en Vitalis. El incidente. Encontr\xE9 algo en el sonido, una forma, y volv\xED por el resto."
     m_Metadata:
       m_Items: []
   - m_Id: 238196469399553
@@ -111,19 +111,23 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 238196469399554
-    m_Localized: "No vengas a buscarme. Por favor. T\xFA no. Qu\xE9date en casa. Guarda la foto."
+    m_Localized: "Ah\xED abajo hay una m\xE1quina que me conserva. Cada vez que me conserva, queda un poco menos que conservar."
     m_Metadata:
       m_Items: []
   - m_Id: 238196469399555
-    m_Localized: "(respiraci\xF3n) \u2026est\xE1 en las paredes. Lo oigo desde aqu\xED."
+    m_Localized: "No vengas a buscarme. Por favor. T\xFA no. Qu\xE9date en casa. Guarda la foto. Riega la planta de la ventana, la que siempre olvidas."
     m_Metadata:
       m_Items: []
   - m_Id: 238196469399556
-    m_Localized: (pasos, corre)
+    m_Localized: "(respiraci\xF3n) \u2026est\xE1 en las paredes. Lo oigo desde aqu\xED."
     m_Metadata:
       m_Items: []
   - m_Id: 1093951087050752
     m_Localized: "Muerto. No hay vuelta atr\xE1s."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3065620953432064
+    m_Localized: (pasos, corre)
     m_Metadata:
       m_Items: []
   references:

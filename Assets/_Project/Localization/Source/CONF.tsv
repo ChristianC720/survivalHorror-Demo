@@ -1,6 +1,6 @@
 key	en	es	note
 CONF.WATCH.TITLE	Stopped wristwatch	Reloj de pulsera parado	
-CONF.WATCH.BODY	VK-INV-1031 · 2081-03-14 · Maintenance, Sublevel B\nStopped at 03:12. Battery functional.	VK-INV-1031 · 2081-03-14 · Maintenance, Sublevel B\nSe detuvo a las 03:12. La pila funciona.	
+CONF.WATCH.BODY	VK-INV-1031 · 2081-03-14 · Maintenance, Sublevel B\nStopped at 03:12. Battery functional. Owner did not wind it again.	VK-INV-1031 · 2081-03-14 · Maintenance, Sublevel B\nSe detuvo a las 03:12. La pila funciona. El dueño no volvió a darle cuerda.	
 CONF.THERMOS.TITLE	Thermos with a scratched-out name	Termo con nombre rayado	
 CONF.THERMOS.BODY	VK-INV-1047 · 2081-03-14 · Maintenance, Sublevel A\nContents: coffee, cold. Owner's name removed by owner.	VK-INV-1047 · 2081-03-14 · Maintenance, Sublevel A\nContenido: café, frío. El dueño borró su propio nombre.	
 CONF.GLASSES.TITLE	Reading glasses with one cracked lens	Gafas de lectura con un cristal roto	
@@ -20,6 +20,6 @@ CONF.EARPLUGS.BODY	VK-INV-3002 · 2081-03-14 · PA central\nInsufficient protect
 CONF.BADGE_KS.TITLE	Werkschutz badge, post 7	Placa del Werkschutz, puesto 7	
 CONF.BADGE_KS.BODY	VK-INV-3009 · 2081-03-14 · Kessler Werkschutz\nReturned to Kessler. Kessler did not collect it.	VK-INV-3009 · 2081-03-14 · Kessler Werkschutz\nDevuelta a Kessler. Kessler no vino a recogerla.	
 CONF.CASSETTE.TITLE	Cassette hand-labelled "AKT I"	Casete etiquetada a mano "AKT I"	
-CONF.CASSETTE.BODY	VK-INV-3015 · 2081-03-14 · PA central\nDo not play.	VK-INV-3015 · 2081-03-14 · PA central\nNo reproducir.	
+CONF.CASSETTE.BODY	VK-INV-3015 · 2081-03-14 · PA central\nDo not play. Side B is blank. Side B was not blank.	VK-INV-3015 · 2081-03-14 · PA central\nNo reproducir. La cara B está vacía. La cara B no estaba vacía.	
 CONF.HEADPHONES.TITLE	Melted studio headphones	Auriculares de estudio derretidos	
 CONF.HEADPHONES.BODY	VK-INV-3021 · 2081-03-14 · PA central\nOwner kept listening.	VK-INV-3021 · 2081-03-14 · PA central\nEl dueño siguió escuchando.	

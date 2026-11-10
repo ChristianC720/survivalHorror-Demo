@@ -17,4 +17,5 @@ MonoBehaviour:
   floor: 1
   titleKey: DOC.VK_MAINTENANCE_NOTICE.TITLE
   bodyKey: DOC.VK_MAINTENANCE_NOTICE.BODY
-  placeholderTitle: "Vitalis Konzern \u2014 Notice to maintenance staff"
+  placeholderTitle: Vitalis Konzern, notice to maintenance staff
+  model: {fileID: 0}

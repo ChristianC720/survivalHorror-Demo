@@ -23,7 +23,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 17772556976128
-    m_Localized: "VK-INV-1031 \xB7 2081-03-14 \xB7 Maintenance, Sublevel B\nSe detuvo a las 03:12. La pila funciona."
+    m_Localized: "VK-INV-1031 \xB7 2081-03-14 \xB7 Maintenance, Sublevel B\nSe detuvo a las 03:12. La pila funciona. El due\xF1o no volvi\xF3 a darle cuerda."
     m_Metadata:
       m_Items: []
   - m_Id: 17772556976129
@@ -103,7 +103,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 17772556976148
-    m_Localized: "VK-INV-3015 \xB7 2081-03-14 \xB7 PA central\nNo reproducir."
+    m_Localized: "VK-INV-3015 \xB7 2081-03-14 \xB7 PA central\nNo reproducir. La cara B est\xE1 vac\xEDa. La cara B no estaba vac\xEDa."
     m_Metadata:
       m_Items: []
   - m_Id: 17772556976149

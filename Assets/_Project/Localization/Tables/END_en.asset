@@ -51,7 +51,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 19800301633540
-    m_Localized: "SUBJECTS R-H-01 \u2026 R-H-06 \u2014 STATUS: UNKNOWN"
+    m_Localized: 'R-H-01 TO R-H-06. STATUS: UNKNOWN'
     m_Metadata:
       m_Items: []
   - m_Id: 19800301633541

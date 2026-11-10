@@ -17,4 +17,5 @@ MonoBehaviour:
   floor: 0
   titleKey: BEST.BOCA.TITLE
   bodyKey: BEST.BOCA.BODY
-  placeholderTitle: "VK-P-0441 \u2014 \"La Boca\""
+  placeholderTitle: "VK-P-0441 \xB7 La Boca"
+  model: {fileID: 0}

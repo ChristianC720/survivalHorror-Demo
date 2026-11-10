@@ -17,4 +17,5 @@ MonoBehaviour:
   floor: 3
   titleKey: DOC.MOTHER_ARCHIVE_INDEX.TITLE
   bodyKey: DOC.MOTHER_ARCHIVE_INDEX.BODY
-  placeholderTitle: "The Mother \u2014 Cryogenic archive index"
+  placeholderTitle: The Mother, cryogenic archive index
+  model: {fileID: 0}

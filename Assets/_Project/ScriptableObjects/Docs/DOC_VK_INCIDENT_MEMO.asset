@@ -17,4 +17,5 @@ MonoBehaviour:
   floor: 2
   titleKey: DOC.VK_INCIDENT_MEMO.TITLE
   bodyKey: DOC.VK_INCIDENT_MEMO.BODY
-  placeholderTitle: "Vitalis Konzern \u2014 Board, internal memo"
+  placeholderTitle: Vitalis Konzern, Board, internal memo
+  model: {fileID: 0}

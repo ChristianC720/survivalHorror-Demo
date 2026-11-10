@@ -17,4 +17,5 @@ MonoBehaviour:
   floor: 0
   titleKey: BEST.ALTO.TITLE
   bodyKey: BEST.ALTO.BODY
-  placeholderTitle: "KS-W-0193 \u2014 \"El Alto\""
+  placeholderTitle: "KS-W-0193 \xB7 El Alto"
+  model: {fileID: 0}
