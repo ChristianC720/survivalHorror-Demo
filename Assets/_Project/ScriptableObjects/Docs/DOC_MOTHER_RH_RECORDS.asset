@@ -17,4 +17,5 @@ MonoBehaviour:
   floor: 2
   titleKey: DOC.MOTHER_RH_RECORDS.TITLE
   bodyKey: DOC.MOTHER_RH_RECORDS.BODY
-  placeholderTitle: "The Mother \u2014 Preservation log, series R-H"
+  placeholderTitle: The Mother, preservation log, series R-H
+  model: {fileID: 0}

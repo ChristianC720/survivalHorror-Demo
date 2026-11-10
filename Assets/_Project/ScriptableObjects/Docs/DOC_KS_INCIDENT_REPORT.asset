@@ -17,4 +17,5 @@ MonoBehaviour:
   floor: 2
   titleKey: DOC.KS_INCIDENT_REPORT.TITLE
   bodyKey: DOC.KS_INCIDENT_REPORT.BODY
-  placeholderTitle: "Kessler Sicherheit AG \u2014 Incident report, post 7"
+  placeholderTitle: Kessler Sicherheit AG, incident report, post 7
+  model: {fileID: 0}

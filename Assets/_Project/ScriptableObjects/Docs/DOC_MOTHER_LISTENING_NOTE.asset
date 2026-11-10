@@ -17,4 +17,5 @@ MonoBehaviour:
   floor: 3
   titleKey: DOC.MOTHER_LISTENING_NOTE.TITLE
   bodyKey: DOC.MOTHER_LISTENING_NOTE.BODY
-  placeholderTitle: "The Mother \u2014 Clinical note: acoustic exposure"
+  placeholderTitle: 'The Mother, clinical note: acoustic exposure'
+  model: {fileID: 0}

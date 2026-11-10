@@ -23,7 +23,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 17772556976128
-    m_Localized: "VK-INV-1031 \xB7 2081-03-14 \xB7 Maintenance, Sublevel B\nStopped at 03:12. Battery functional."
+    m_Localized: "VK-INV-1031 \xB7 2081-03-14 \xB7 Maintenance, Sublevel B\nStopped at 03:12. Battery functional. Owner did not wind it again."
     m_Metadata:
       m_Items: []
   - m_Id: 17772556976129
@@ -103,7 +103,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 17772556976148
-    m_Localized: "VK-INV-3015 \xB7 2081-03-14 \xB7 PA central\nDo not play."
+    m_Localized: "VK-INV-3015 \xB7 2081-03-14 \xB7 PA central\nDo not play. Side B is blank. Side B was not blank."
     m_Metadata:
       m_Items: []
   - m_Id: 17772556976149
