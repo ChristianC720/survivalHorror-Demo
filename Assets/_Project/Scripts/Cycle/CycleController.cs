@@ -58,6 +58,12 @@ namespace Heartbeat.Cycle
             GameEvents.RoomEntered += OnRoomEntered;
             GameEvents.FloorBuilt += OnFloorBuilt;
             GameEvents.HuntChanged += OnHuntChanged;
+            // Local playtest telemetry: launch the build with -telemetry, like -showcase.
+            if (TelemetryRecorder.Requested(System.Environment.GetCommandLineArgs()))
+            {
+                try { telemetry = TelemetryRecorder.CreateFile(); }
+                catch (System.Exception ex) { HbLog.Warn("Telemetry", "Could not open the telemetry file: " + ex.Message); }
+            }
 
             if (Data != null) return;
             // Play pressed inside a gameplay/sandbox scene in the editor: a hidden dev slot, fresh every Play, so tests
@@ -73,8 +79,11 @@ namespace Heartbeat.Cycle
         /// <summary>Hidden slot file used by editor play-from-scene (never listed in the menus, never "last used").</summary>
         public const int DevSlot = SaveService.SlotCount;
 
+        private TelemetryRecorder telemetry;
+
         private void OnDestroy()
         {
+            telemetry?.Dispose();
             if (router != null) router.Actions.Cinematic.Skip.performed -= OnSkip;
             GameEvents.PlayerDied -= OnPlayerDied;
             GameEvents.FloorExitRequested -= OnFloorExit;
