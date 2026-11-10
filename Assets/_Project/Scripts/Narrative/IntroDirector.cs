@@ -43,6 +43,9 @@ namespace Heartbeat.Narrative
         [Header("Reconstruction (D-39)")]
         [SerializeField] private Transform capsuleShot;
         [SerializeField] private Light capsuleLight;
+        [Tooltip("The ring Lukas picks up from the floor in front of his capsule (GDD Premisa y Trama: full reconstruction).")]
+        [SerializeField] private GameObject ringModel;
+        [SerializeField] private float ringSeconds = 2.5f;
 
         [Header("Timing (initial values, subject to balance)")]
         [SerializeField] private float houseSeconds = 4f;
@@ -205,12 +208,40 @@ namespace Heartbeat.Narrative
                 loader.SetFade(1f);
                 yield return Wait(0.6f);
             }
+            yield return RingPickup();
             int n = Services.Get<Cycle.CycleController>().Data.subjectCode;
             loader.SetStatus(Loc.Get("UI.INTRO.SUBJECT_REGISTER", n.ToString("00")));
             yield return Wait(3f);
             loader.SetStatus(Loc.Get("UI.INTRO.PHONE_COPY", n.ToString("00")));
             yield return Wait(3f);
             loader.SetStatus("");
+        }
+
+        /// <summary>
+        /// Lukas, out of the capsule, picks a ring up from the floor and cannot remember why it matters (C-16, D-54). A close
+        /// shot of the ring on the floor in front of the capsule, the pickup sound, the ring gone and his line. The ring is
+        /// registered once, by the cycle controller when the intro ends.
+        /// </summary>
+        private IEnumerator RingPickup()
+        {
+            SetStage("Ring");
+            Vector3 ahead = Vector3.ProjectOnPlane(capsuleShot.forward, Vector3.up).normalized;
+            Vector3 at = capsuleShot.position + ahead * 1.6f;
+            if (Physics.Raycast(at, Vector3.down, out var floorHit, 10f, LayerMask.GetMask("Environment"))) at = floorHit.point;   // on the capsule row's floor
+            var ring = ringModel != null ? Instantiate(ringModel, at + Vector3.up * 0.01f, Quaternion.Euler(90f, 0f, 0f)) : null;
+            var pose = new GameObject("RingShot").transform;
+            pose.position = at + Vector3.up * 0.45f - ahead * 0.35f;
+            pose.LookAt(at);
+            Cut(pose);
+            loader.SetFade(0f);
+            yield return Wait(ringSeconds * 0.5f);
+            Sfx.Play2D(Sfx.Pickup);
+            if (ring != null) ring.SetActive(false);
+            Subtitles.Say(Subtitles.Lukas, "SUB.LUKAS.RING");   // "…This matters. I don't know why."
+            yield return Wait(ringSeconds * 0.5f);
+            loader.SetFade(1f);
+            Destroy(pose.gameObject);
+            if (ring != null) Destroy(ring);
         }
 
         // ---------- helpers ----------

@@ -225,8 +225,7 @@ namespace Heartbeat.Cycle
             loader.Load(SceneNames.Floor, null, fadeOut: false);
             while (loader.IsBusy) yield return null;
             states.TryTransition(GameStateId.Playing);
-            yield return loader.Fade(1f, 0f);
-            Subtitles.Say(Subtitles.Lukas, "SUB.LUKAS.RING");   // he picks up the ring and cannot remember (D-54)
+            yield return loader.Fade(1f, 0f);   // the ring was picked up in the reconstruction cinematic (IntroDirector.RingPickup)
             busy = false;
         }
 

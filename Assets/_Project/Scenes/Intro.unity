@@ -581,6 +581,8 @@ MonoBehaviour:
   attackPoint: {fileID: 2014576920}
   capsuleShot: {fileID: 1743667304}
   capsuleLight: {fileID: 2048884724}
+  ringModel: {fileID: 7904821481668801241, guid: 3b91e0939af2c4d4691ded8c7df0aa18, type: 3}
+  ringSeconds: 2.5
   houseSeconds: 4
   voiceLineSeconds: 3.75
   rideSeconds: 4
