@@ -203,7 +203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 142ac34620274f44b9ebf6010eaea55d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Heartbeat.Runtime::Heartbeat.CameraSystem.SurveillanceSystem
-  textureHeight: 270
+  textureHeight: 720
   orthoSize: 7
   minOrthoSize: 3
   viewAmbient: {r: 0.95, g: 1, b: 0.95, a: 1}

@@ -19,7 +19,8 @@ namespace Heartbeat.CameraSystem
     /// </summary>
     public sealed class SurveillanceSystem : MonoBehaviour
     {
-        [SerializeField] private int textureHeight = 270;
+        [Tooltip("Feed resolution: high enough that the room reads; the CRT look comes from scanlines and noise (C-19).")]
+        [SerializeField] private int textureHeight = 720;
         [Tooltip("Upper bound of the orthographic size; the view fits the room it shows (M-02: the room fills the feed).")]
         [SerializeField] private float orthoSize = 7f;
         [SerializeField] private float minOrthoSize = 3f;
@@ -126,9 +127,9 @@ namespace Heartbeat.CameraSystem
 
             System.Array.Clear(stamps, 0, RingSize);   // never show a frame from the last time the view was open
             viewingRoom = room;
-            CollectOutside(room);
             cam.transform.SetPositionAndRotation(mount.position, mount.rotation);
-            cam.orthographicSize = FitOrtho(room);
+            FrameRoom(room);
+            CollectOutside(room);   // after the pose: the hidden near walls depend on where the camera looks from
             cam.enabled = true;
             screen.enabled = true;
             noise.enabled = true;
@@ -224,33 +225,51 @@ namespace Heartbeat.CameraSystem
             screen.texture = ring[show];
         }
 
-        /// <summary>Orthographic size that frames the whole room volume (floor to ceiling) from the mount, with a small margin.</summary>
-        private float FitOrtho(RoomInstance room)
+        private const float StandOff = 40f;   // orthographic: distance only keeps the whole room in front of the near plane
+
+        /// <summary>
+        /// The mount gives the isometric angle; the camera then backs out of the room along its view and is centred on the
+        /// room's floor so the room fills the feed (C-19). The near walls it looks through are hidden while it renders.
+        /// </summary>
+        private void FrameRoom(RoomInstance room)
         {
-            if (!room.TryGetComponent(out Collider vol)) return orthoSize;
+            if (!room.TryGetComponent(out Collider vol)) { cam.orthographicSize = orthoSize; return; }
             var b = vol.bounds;
+            var t = cam.transform;
+            t.position = new Vector3(b.center.x, b.min.y, b.center.z) - t.forward * StandOff;
             float aspect = (float)ring[0].width / ring[0].height;
-            float half = 0f;
+            float minX = float.MaxValue, maxX = float.MinValue, minY = float.MaxValue, maxY = float.MinValue;
             for (int i = 0; i < 8; i++)
             {
+                // Floor and wall tops of the room volume; the hidden near walls do not need to fit.
                 var corner = new Vector3((i & 1) == 0 ? b.min.x : b.max.x, (i & 2) == 0 ? b.min.y : b.max.y, (i & 4) == 0 ? b.min.z : b.max.z);
-                var p = cam.transform.InverseTransformPoint(corner);
-                half = Mathf.Max(half, Mathf.Abs(p.y), Mathf.Abs(p.x) / aspect);
+                var p = t.InverseTransformPoint(corner);
+                minX = Mathf.Min(minX, p.x); maxX = Mathf.Max(maxX, p.x); minY = Mathf.Min(minY, p.y); maxY = Mathf.Max(maxY, p.y);
             }
-            return Mathf.Clamp(half * 1.05f, minOrthoSize, orthoSize);
+            t.position += t.right * ((minX + maxX) * 0.5f) + t.up * ((minY + maxY) * 0.5f);
+            float half = Mathf.Max((maxY - minY) * 0.5f, (maxX - minX) * 0.5f / aspect);
+            cam.orthographicSize = Mathf.Max(minOrthoSize, half);
+            cam.nearClipPlane = 0.3f;
+            cam.farClipPlane = StandOff * 3f;
         }
 
         private void CollectOutside(RoomInstance room)
         {
             outside.Clear();
             movers.Clear();
-            viewBounds = room.TryGetComponent(out Collider vol) ? vol.bounds : new Bounds(room.transform.position, Vector3.one * 20f);
+            var inner = room.TryGetComponent(out Collider vol) ? vol.bounds : new Bounds(room.transform.position, Vector3.one * 20f);
+            viewBounds = inner;
             viewBounds.Expand(new Vector3(1f, 100f, 1f));   // the room's own walls sit on its edge
+            // C-19: the two walls on the camera's side would block the view: hidden like everything outside the room.
+            var fwd = cam.transform.forward;
+            bool NearWall(Bounds rb) => rb.size.y > 1f &&
+                ((fwd.x > 0.1f && rb.center.x < inner.min.x + 0.6f) || (fwd.x < -0.1f && rb.center.x > inner.max.x - 0.6f) ||
+                 (fwd.z > 0.1f && rb.center.z < inner.min.z + 0.6f) || (fwd.z < -0.1f && rb.center.z > inner.max.z - 0.6f));
             foreach (var r in FindObjectsByType<Renderer>(FindObjectsInactive.Exclude))
             {
                 if (r.GetComponentInParent<AI.EnemyBrain>() != null) { movers.Add(r); continue; }   // they walk in and out
-                if (r.transform.IsChildOf(room.transform) || r.GetComponentInParent<PlayerController>() != null) continue;
-                if (!viewBounds.Contains(r.bounds.center)) outside.Add(r);
+                if (r.GetComponentInParent<PlayerController>() != null) continue;
+                if (!viewBounds.Contains(r.bounds.center) || NearWall(r.bounds)) outside.Add(r);
             }
         }
 
@@ -328,7 +347,7 @@ namespace Heartbeat.CameraSystem
             stamps = new float[RingSize];
             for (int i = 0; i < RingSize; i++)
             {
-                ring[i] = new RenderTexture(w, textureHeight, 16) { filterMode = FilterMode.Point, name = $"Surveillance_{i}" };
+                ring[i] = new RenderTexture(w, textureHeight, 16) { filterMode = FilterMode.Bilinear, name = $"Surveillance_{i}" };
                 ring[i].Create();
             }
 
@@ -336,10 +355,10 @@ namespace Heartbeat.CameraSystem
             canvasGo.transform.SetParent(transform, false);
             UI.UiKit.Canvas(canvasGo, 50);
             screen = MakeFull<RawImage>(canvasGo.transform, "Feed");
-            screen.color = new Color(0.75f, 1f, 0.8f);   // phosphor tint
+            screen.color = Color.white;   // C-19: no green monitor tint; the CRT look is scanlines and noise
             screen.raycastTarget = false;
             noise = MakeFull<Image>(canvasGo.transform, "CRTNoise");
-            noise.color = new Color(0.6f, 0.9f, 0.7f, 0.2f);
+            noise.color = new Color(0.85f, 0.85f, 0.85f, 0.2f);
             noise.raycastTarget = false;
             screen.enabled = noise.enabled = false;
 
