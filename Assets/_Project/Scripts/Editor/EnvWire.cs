@@ -320,15 +320,7 @@ namespace Heartbeat.EditorTools
                     // F2 and F3 are variants of F1's layout: the F1 stairs and exit they inherit would z-fight with their own.
                     foreach (var t in root.GetComponentsInChildren<Transform>(true).Where(x => (x.name.StartsWith("Model_CH_Exit_") || x.name.StartsWith("Model_CH_Stairs_")) && !x.name.EndsWith(f)).ToArray())
                         Object.DestroyImmediate(t.gameObject);
-                    var stairs = root.transform.Find("Stairs");
-                    if (stairs != null)
-                    {
-                        // The ramp stays for walking; only its look gives way to steps.
-                        foreach (var r in stairs.GetComponentsInChildren<MeshRenderer>(true)) r.enabled = false;
-                        AddModel(stairs, "CH_Stairs_" + f, Vector3.zero, Quaternion.identity);
-                    }
-                    var exit = root.transform.Find("StairsExit");
-                    if (exit != null) AddModel(exit, "CH_Exit_" + f, Vector3.zero, Quaternion.identity);
+                    // Final rooms have no ramp since 2026-11-09: "StairsExit" is the elevator to the next floor, wired by hand.
                 });
         }
 

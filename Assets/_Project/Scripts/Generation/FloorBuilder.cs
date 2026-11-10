@@ -419,6 +419,7 @@ namespace Heartbeat.Generation
                 var col = marker.gameObject.AddComponent<SphereCollider>();
                 col.isTrigger = true;
                 col.radius = 1f;
+                col.center = new Vector3(0f, 1.2f, 0.6f);   // in front of the elevator door, at hand height
                 marker.gameObject.layer = LayerMask.NameToLayer("Interactable");
             }
             exit.Floor = floor;

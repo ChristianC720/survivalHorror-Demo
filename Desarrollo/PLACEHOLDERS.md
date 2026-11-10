@@ -28,6 +28,7 @@ Rules
 | `PH_F3_CryoTank`, `PH_F3_Transformer`, `PH_F3_BrokenCapsule` | Floor 3 machines | see catalog | cylinders / boxes | ≤ 2k each | – | pending |
 | `PH_Revolver` | Kessler revolver (ceramic frame, green round counter) | 0.25 × 0.15 × 0.05 | boxes; counter is a TMP 3D text | ≤ 1.5k | – | placeholder done (inside Player prefab, WeaponSocket) |
 | `PH_Capsule_Reconstruction` | Reconstruction capsule (capsule row) | 1.0 × 2.2 × 1.0 | cylinder + glass box | ≤ 2k | open/close | placeholder done |
+| `CH_Elevator_F1` (stand-in: `Model_CH_Exit_F1` under `StairsExit` in `KEY_F1_Final`) | Floor 1 elevator door of the final room, the way to floor 2 (2026-11-09: final rooms have no ramp) | 2.8 × 3.0 × 0.4, like `CH_Elevator_F2` | the F1 exit door model at floor level | ≤ 2k | doors open/close (C-13) | pending |
 | `PH_Intro_House`, `PH_Intro_Elevator` | Intro set pieces | room-sized | kit-like boxes | – | – | placeholder done: `Set_House`, `Set_Elevator`, `Set_Elevator2`, `Set_NonexistentFloor` in `Intro.unity` (F1/F2 kit shells + primitive table, chair, photo) |
 | `PH_KesslerGuard_Corpse` | Assimilated Kessler guard lying in the tutorial depot with the revolver (D-74) | 1.8 m lying | dark capsule + assimilated head | ≤ 5k | static | placeholder done (`ROOM_F1_Storage_A`) |
 | `PH_Lukas_Mudo` | Lukas turned into a Mudo, standing far away on the floor that does not exist (Assimilation ending, D-61) | 0.55 × 1.8 × 0.35 | assimilated capsule + metal face plate | ≤ 6k | frozen idle | placeholder done (`Cinematics.unity`) |
