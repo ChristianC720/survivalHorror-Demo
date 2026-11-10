@@ -8,7 +8,7 @@ argument-hint: "<piece name, e.g. KIT_F1_Wall_2m>"
 Spec: `Desarrollo/KIT_SPEC.md` §1–2 (read the table row for this piece first).
 
 Steps
-1. `get_unity_editor_state`. If the active scene is not `Assets/_Project/Scenes/Sandbox_Kit.unity`, save the current scene, then `open_scene` it (create it with `create_scene` in `Assets/_Project/Scenes` with `add_to_editor=false` if it does not exist).
+1. `get_unity_editor_state`. If the active scene is not `Assets/_Project/Scenes/Tests/Sandbox_Kit.unity`, save the current scene, then `open_scene` it (create it with `create_scene` in `Assets/_Project/Scenes/Tests` with `add_to_editor=false` if it does not exist).
 2. Make sure snapping is on: move 2 m (kit) / 0.5 m, rotate 90°. If unsure, run a scratchpad `execute_script` that sets `EditorSnapSettings.gridSnapEnabled = true; EditorSnapSettings.move = new Vector3(2,2,2); EditorSnapSettings.rotate = 90`.
 3. Create an empty root named exactly like the piece at world (0,0,0), rotation 0, **scale (1,1,1)**. The root's position *is* the pivot.
 4. Add primitive children (Cube, Cylinder) and set `set_transform` with exact local values so the geometry matches the extent in the spec (e.g. a wall's cube: local position (0, 1.5, 0.15), scale (2, 3, 0.3)). No child may exceed the spec extent.

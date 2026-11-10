@@ -8,16 +8,16 @@ using UnityEngine.SceneManagement;
 
 namespace Heartbeat.Sandbox
 {
-    /// <summary>Creates Sandbox_Gallery without touching the open scene, and stops a build that would ship any sandbox scene.</summary>
+    /// <summary>Creates Sandbox_Gallery without touching the open scene, and stops a build that would ship any sandbox or test scene.</summary>
     public sealed class GalleryTools : IPreprocessBuildWithReport
     {
-        public const string ScenePath = "Assets/_Project/Scenes/Sandbox_Gallery.unity";
+        public const string ScenePath = "Assets/_Project/Scenes/Tests/Sandbox_Gallery.unity";
 
         public int callbackOrder => 0;
 
         public void OnPreprocessBuild(BuildReport report)
         {
-            var leaked = EditorBuildSettings.scenes.Where(s => s.enabled && s.path.Contains("/Sandbox_")).Select(s => s.path).ToArray();
+            var leaked = EditorBuildSettings.scenes.Where(s => s.enabled && (s.path.Contains("/Sandbox_") || s.path.Contains("/Scenes/Tests/"))).Select(s => s.path).ToArray();
             if (leaked.Length > 0) throw new BuildFailedException("[Heartbeat][Sandbox] Sandbox scenes must never ship: " + string.Join(", ", leaked));
         }
 
