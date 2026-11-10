@@ -14,7 +14,8 @@ namespace Heartbeat.Tests
         {
             var prefab = AssetDatabase.LoadAssetAtPath<GameObject>($"Assets/_Project/Prefabs/Characters/Enemy_{enemy}.prefab");
             var weak = prefab.GetComponentInChildren<WeakPoint>(true);
-            Assert.That(weak.transform.parent.name.ToLowerInvariant(), Is.EqualTo("head"));
+            // La Boca's head is split in two halves (head_L, head_R) around the mouth.
+            Assert.That(weak.transform.parent.name.ToLowerInvariant(), Does.StartWith("head"));
             var body = prefab.GetComponentsInChildren<CapsuleCollider>(true).Where(c => c.name.StartsWith("Hit_")).ToArray();
             Assert.That(body.Length, Is.GreaterThanOrEqualTo(11));
             int layer = LayerMask.NameToLayer("Hitbox");

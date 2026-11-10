@@ -65,7 +65,36 @@ ModelImporter:
       takeName: Rig_Rastrero|AN_Rastrero_Attack
       internalID: 6720256701485257025
       firstFrame: 0
-      lastFrame: 23
+      lastFrame: 39
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000u
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: AN_Rastrero_Bite
+      takeName: Rig_Rastrero|AN_Rastrero_Bite
+      internalID: -6671503367616526206
+      firstFrame: 0
+      lastFrame: 29
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -94,7 +123,7 @@ ModelImporter:
       takeName: Rig_Rastrero|AN_Rastrero_Crawl
       internalID: -7957741204134932660
       firstFrame: 0
-      lastFrame: 24
+      lastFrame: 159
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -123,7 +152,7 @@ ModelImporter:
       takeName: Rig_Rastrero|AN_Rastrero_Death
       internalID: 1406589031319465982
       firstFrame: 0
-      lastFrame: 44
+      lastFrame: 59
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -152,7 +181,7 @@ ModelImporter:
       takeName: Rig_Rastrero|AN_Rastrero_Hunt
       internalID: 5684545103310880834
       firstFrame: 0
-      lastFrame: 14
+      lastFrame: 16
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -181,7 +210,7 @@ ModelImporter:
       takeName: Rig_Rastrero|AN_Rastrero_Idle
       internalID: 5058485549467362393
       firstFrame: 0
-      lastFrame: 60
+      lastFrame: 79
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -206,11 +235,69 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
+      name: AN_Rastrero_Leap
+      takeName: Rig_Rastrero|AN_Rastrero_Leap
+      internalID: 1624418569289601459
+      firstFrame: 0
+      lastFrame: 74
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000u
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: AN_Rastrero_Scream
+      takeName: Rig_Rastrero|AN_Rastrero_Scream
+      internalID: -6697006349482048040
+      firstFrame: 0
+      lastFrame: 69
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000u
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
       name: AN_Rastrero_Stunned
       takeName: Rig_Rastrero|AN_Rastrero_Stunned
       internalID: 5505770492759032235
       firstFrame: 0
-      lastFrame: 30
+      lastFrame: 44
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
