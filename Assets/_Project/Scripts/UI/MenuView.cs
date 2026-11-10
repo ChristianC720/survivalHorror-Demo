@@ -359,14 +359,31 @@ namespace Heartbeat.UI
 
         private void StartLoop(string cue)
         {
-            if (cue == loopCue && loop != null) return;   // coming back from Options or Credits: the theme carries on
+            if (cue == loopCue && (loop != null || waitingForEnding != null)) return;   // coming back from Options or Credits: the theme carries on
             loopCue = cue;
+            if (audioService != null && audioService.CarriedMusicPlaying)
+            {
+                // An ending's music is still playing: the theme enters after it ends and a short silence.
+                if (waitingForEnding == null) waitingForEnding = StartCoroutine(LoopAfterEnding());
+                return;
+            }
             if (audioService != null && audioService.TryGetCue(cue, out var c)) loop = audioService.StartMusic(c, loop);
+        }
+
+        private Coroutine waitingForEnding;
+
+        private System.Collections.IEnumerator LoopAfterEnding()
+        {
+            while (audioService.CarriedMusicPlaying) yield return null;
+            for (float t = 0f; t < audioService.MenuMusicDelay; t += Time.unscaledDeltaTime) yield return null;
+            waitingForEnding = null;
+            if (loopCue != null && audioService.TryGetCue(loopCue, out var c)) loop = audioService.StartMusic(c, loop);
         }
 
         private void StopLoop()
         {
-            if (audioService != null) audioService.FadeOutMusic(loop);
+            if (waitingForEnding != null) { StopCoroutine(waitingForEnding); waitingForEnding = null; }
+            if (audioService != null) { audioService.FadeOutMusic(loop); audioService.CutCarriedMusic(); }
             loop = null;
             loopCue = null;
         }

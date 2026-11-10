@@ -31,6 +31,8 @@ namespace Heartbeat.Audio
         [Header("Music")]
         [Tooltip("Fade-in and fade-out of every music cue, in seconds.")]
         public float musicFadeSeconds = 2f;
+        [Tooltip("Silence between the end of an ending's music, carried into the main menu, and the menu theme.")]
+        public float menuMusicDelayAfterEnding = 2f;
 
         [Header("Occlusion (S-11): share of the sound that gets through")]
         [Tooltip("Per wall between source and listener (−70% → 0.3). Also scales the noise radius enemies perceive.")]
