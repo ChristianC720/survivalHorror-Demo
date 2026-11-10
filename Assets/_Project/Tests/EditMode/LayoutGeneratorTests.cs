@@ -87,6 +87,17 @@ namespace Heartbeat.Tests
         public void FirstAttempt_Floor1_1000Seeds_WithTutorial() => RunSeeds(s => Full(1, s, first: true));
 
         [Test]
+        public void FirstAttempt_StartRoomHasOneDoor_1000Seeds()
+        {
+            for (int s = 1; s <= 1000; s++)
+            {
+                var l = LayoutGenerator.Generate(Full(1, s, first: true), Library());
+                if (l == null) continue;
+                Assert.AreEqual(1, l.Connections.Count(c => c.A == l.EntryRoom || c.B == l.EntryRoom), $"seed {s}");
+            }
+        }
+
+        [Test]
         public void StoryMode_RaisesMinimums_1000Seeds()
         {
             RunSeeds(s => { var p = Full(1, s); p.ApplyStoryMode(); return p; });
