@@ -37,5 +37,23 @@ namespace Heartbeat.Tests
             Assert.AreEqual("", g.bindingOverrides);
             Assert.IsTrue(g.crouchToggle);
         }
+        [Test]
+        public void AimAssist_OffWithMouseOnWithGamepad_ByDefaultAndAfterReset()
+        {
+            var g = new GlobalData();
+            Assert.IsFalse(g.AimAssist(false)); Assert.IsTrue(g.AimAssist(true));
+            g.SetAimAssist(false, true); g.SetAimAssist(true, false);
+            Assert.IsTrue(g.aimAssistMouse); Assert.IsFalse(g.aimAssistGamepad);
+            OptionsDefaults.Reset(g, OptionsSection.Controls);
+            Assert.IsFalse(g.aimAssistMouse); Assert.IsTrue(g.aimAssistGamepad);
+        }
+
+        [Test]
+        public void AimAssist_OldSaveWithSingleField_StillLoads()
+        {
+            var g = UnityEngine.JsonUtility.FromJson<GlobalData>("{\"saveVersion\":1,\"aimAssist\":false,\"invertY\":true}");
+            Assert.IsTrue(g.invertY);
+            Assert.IsFalse(g.aimAssistMouse); Assert.IsTrue(g.aimAssistGamepad);
+        }
     }
 }
