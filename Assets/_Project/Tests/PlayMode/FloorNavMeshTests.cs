@@ -16,7 +16,7 @@ namespace Heartbeat.Tests
         private const string FloorScene = "Floor";   // in the build settings
 
         [UnityTest]
-        public IEnumerator BuiltFloor_HasNavMeshPathFromPlayerToKeyAndFinalRoom([Values(1, 2, 3)] int floor)
+        public IEnumerator BuiltFloor_HasNavMeshPathFromPlayerToKeyAndFinalRoom([Values(1, 2, 3)] int floor, [Values(4242, 1234, 98765, 31337, 555)] int seedBase)
         {
             yield return SceneManager.LoadSceneAsync(FloorScene, LoadSceneMode.Single);
             yield return null;   // FloorSession.Start builds a random floor first
@@ -25,18 +25,18 @@ namespace Heartbeat.Tests
 
             builder.Clear();
             yield return null;   // Destroy is deferred: the old floor's walls must be gone before the new bake
-            Assert.IsTrue(builder.Build(floor, 4242 + floor, false, false, false), $"floor {floor}: no valid layout");
+            Assert.IsTrue(builder.Build(floor, seedBase + floor, false, false, false), $"floor {floor} seed {seedBase + floor}: no valid layout");
             // Checked in the same frame as the bake: closed and locked doors carve the NavMesh from the next frame on,
             // and this test checks the built layout, not the door states.
             var layout = builder.Layout;
             var from = builder.Player.transform.position;
             Assert.GreaterOrEqual(layout.FinalRoom, 0, "no final room");
-            AssertPath(from, builder.Rooms[layout.FinalRoom].transform.position, $"floor {floor}: final room");
+            AssertPath(from, builder.Rooms[layout.FinalRoom].transform.position, $"floor {floor} seed {seedBase + floor}: final room");
 
             var key = layout.Items.FirstOrDefault(i => i.Kind == ItemKind.KeyMandatory);
             Assert.IsNotNull(key, $"floor {floor}: no mandatory key");
             var spawns = builder.Rooms[key.Room].GetComponentsInChildren<SpawnPoint>(true).Where(s => s.kind == SpawnKind.Item).ToList();
-            AssertPath(from, spawns[key.Spawn].transform.position, $"floor {floor}: key");
+            AssertPath(from, spawns[key.Spawn].transform.position, $"floor {floor} seed {seedBase + floor}: key");
         }
 
         private static void AssertPath(Vector3 a, Vector3 b, string what)
