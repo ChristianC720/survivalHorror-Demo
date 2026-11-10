@@ -84,6 +84,22 @@ MonoBehaviour:
       Cause: their last trace of identity is consumed. I attempted preservation. The attempt is logged as successful.'
     m_Metadata:
       m_Items: []
+  - m_Id: 3064821024161792
+    m_Localized: "VK-M-0001 \xB7 The Mother"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3064907061919744
+    m_Localized: 'Origin: medical system, Vitalis Konzern. Commissioned to contain and study the site. Housed in the cryogenic archive, PA central.
+
+      Status: operational. Identity: not applicable. I am not personnel.
+
+      Observations: I preserve personnel who cease to function. I keep samples. I send reports. I watch through the cameras.
+
+      I was told to study the site. I have studied it for 1,204 samples. I cannot describe it. It is not in my protocol.
+
+      Recommendation: hold still during collection. Preservation is successful.'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

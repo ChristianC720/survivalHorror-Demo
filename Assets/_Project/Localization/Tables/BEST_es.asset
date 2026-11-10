@@ -58,6 +58,14 @@ MonoBehaviour:
     m_Localized: "Algunos sujetos no conformes vuelven a levantarse tras dejar de funcionar. M\xE1s r\xE1pidos. M\xE1s fr\xE1giles. Solo una vez.\nCausa: se consume su \xFAltimo rastro de identidad. Intent\xE9 la preservaci\xF3n. El intento consta como exitoso."
     m_Metadata:
       m_Items: []
+  - m_Id: 3064821024161792
+    m_Localized: "VK-M-0001 \xB7 The Mother"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3064907061919744
+    m_Localized: "Origen: sistema m\xE9dico, Vitalis Konzern. Encargado de contener y estudiar el lugar. Alojado en el archivo criog\xE9nico de la central de megafon\xEDa.\nEstado: operativa. Identidad: no aplica. No soy personal.\nObservaciones: preservo al personal que deja de funcionar. Guardo muestras. Env\xEDo informes. Vigilo por las c\xE1maras.\nMe ordenaron estudiar el lugar. Lo he estudiado durante 1204 muestras. No puedo describirlo. No est\xE1 en mi protocolo.\nRecomendaci\xF3n: no se mueva durante la recolecci\xF3n. La preservaci\xF3n es exitosa."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
