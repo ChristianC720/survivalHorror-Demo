@@ -26,6 +26,7 @@ namespace Heartbeat.Boss
         public int releasesTotal = 4;
         public int maxActive = 2;
         [Tooltip("Rounds in the room's blind spots for phase 2 (3 blisters).")] public int phase2Ammo = 12;
+        [Tooltip("Story mode: phase 2 rounds scaled like the blisters (6/4).")] public int storyPhase2Ammo = 18;
         [Tooltip("Chance of one heal in the room for phase 2 (0-1 heals, Economía).")] [Range(0f, 1f)] public float healChance = 0.5f;
         [Tooltip("Dark cold haze: hides distance, never washes the image out or hides the M-10 signals.")]
         public float fogDensity = 0.045f;
@@ -39,6 +40,7 @@ namespace Heartbeat.Boss
         [Header("Transformers, phase 3 (D-80)")]
         public int transformerShots = 2;
         [Tooltip("Rounds next to the core: 6 for the transformers + 2 margin.")] public int phase3Ammo = 8;
+        [Tooltip("Story mode: phase 3 rounds scaled like the blisters (6/4).")] public int storyPhase3Ammo = 12;
 
         [Header("Final decision (D-61)")]
         [Tooltip("Without the 6 Emilia documents Lukas examines the terminal automatically after this delay, s.")]

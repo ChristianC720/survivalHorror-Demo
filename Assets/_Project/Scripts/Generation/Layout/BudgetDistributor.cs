@@ -59,21 +59,22 @@ namespace Heartbeat.Generation.Layout
 
             // Tutorial depot (room 2) holds 1 heal + 1 blister on the first attempt, inside the floor 1 budget (D-70).
             int heals = p.Heals.Pick(rng);
-            int blisters = Math.Max(0, (p.Ammo.min + 4 * rng.Next(0, (p.Ammo.max - p.Ammo.min) / 4 + 1)) / 4);
+            int b = p.BlisterRounds;
+            int blisters = Math.Max(0, (p.Ammo.min + b * rng.Next(0, (p.Ammo.max - p.Ammo.min) / b + 1)) / b);
             int spikes = p.Spikes.Pick(rng);
             var depot = layout.Rooms.FirstOrDefault(r => r.TutorialIndex == 2);
             if (depot != null)
             {
                 if (heals > 0 && Place(layout, taken, depot, ItemSpawnTag.Budget, ItemKind.Heal, 1, ItemSpawnTag.Budget, rng)) heals--;
-                if (blisters > 0 && Place(layout, taken, depot, ItemSpawnTag.Budget, ItemKind.Ammo, 4, ItemSpawnTag.Budget, rng)) blisters--;
+                if (blisters > 0 && Place(layout, taken, depot, ItemSpawnTag.Budget, ItemKind.Ammo, b, ItemSpawnTag.Budget, rng)) blisters--;
             }
 
             // Guaranteed minimum first, only in rooms reachable without optional keys (D-79); the rest anywhere.
             var minHeals = Math.Max(0, p.Heals.min - (p.Heals.min > 0 && depot != null ? 1 : 0));
-            var minBlisters = Math.Max(0, p.Ammo.min / 4 - (depot != null ? 1 : 0));
+            var minBlisters = Math.Max(0, p.Ammo.min / b - (depot != null ? 1 : 0));
             var minSpikes = p.Spikes.min;
             for (int i = 0; i < heals; i++) PlaceAny(layout, taken, i < minHeals ? reachable : layout.Rooms, ItemKind.Heal, 1, rng);
-            for (int i = 0; i < blisters; i++) PlaceAny(layout, taken, i < minBlisters ? reachable : layout.Rooms, ItemKind.Ammo, 4, rng);
+            for (int i = 0; i < blisters; i++) PlaceAny(layout, taken, i < minBlisters ? reachable : layout.Rooms, ItemKind.Ammo, b, rng);
             for (int i = 0; i < spikes; i++) PlaceAny(layout, taken, i < minSpikes ? reachable : layout.Rooms, ItemKind.Spike, 1, rng);
 
             // Context documents and confiscated objects in procedural rooms (D-73, D-79).
