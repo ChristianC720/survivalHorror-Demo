@@ -428,6 +428,7 @@ namespace Heartbeat.Generation
             var at = spawns[e.Spawn].transform;
             var go = Instantiate(prefab, at.position, Quaternion.Euler(0f, Random.Range(0f, 360f), 0f), floorRoot);
             go.name = $"{e.Type}_{e.Room}_{e.Spawn}";
+            if (built[e.Room].IsTutorial) go.GetComponent<EnemyBrain>().HoldUntilShot();   // still and harmless until the first shot
             activation.Register(built[e.Room], go);
         }
 
