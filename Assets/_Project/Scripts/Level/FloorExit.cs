@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Heartbeat.Level
 {
     /// <summary>
-    /// Stairs / elevator of a final key room (M-15, D-72, D-96). Usable once the room has power and no enemy is hunting
+    /// Elevator of a final key room (M-15, D-72, D-96; no ramp since 2026-11-09: every floor leaves by elevator). Usable once the room has power and no enemy is hunting
     /// (LOCKDOWN while a hunt lasts). Raises FloorExitRequested; the cycle controller runs the ≥ 5 s transition.
     /// </summary>
     public sealed class FloorExit : MonoBehaviour, IInteractable
@@ -15,7 +15,7 @@ namespace Heartbeat.Level
         public int Floor { get; set; } = 1;
 
         public string PromptKey => !Powered ? "UI.PROMPT.NOPOWER" : Locked ? "UI.PROMPT.LOCKDOWN" : "UI.PROMPT.DESCEND";
-        public Vector3 InteractionPoint => transform.position;
+        public Vector3 InteractionPoint => transform.position + transform.forward * .3f + Vector3.up * 1.2f;   // the elevator door, facing the room
 
         private static bool Locked => Services.TryGet<AlertDirector>(out var d) && d.HuntingCount > 0;
 
