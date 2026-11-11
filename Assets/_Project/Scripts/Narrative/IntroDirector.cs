@@ -43,8 +43,10 @@ namespace Heartbeat.Narrative
         [Header("Reconstruction (D-39)")]
         [SerializeField] private Transform capsuleShot;
         [SerializeField] private Light capsuleLight;
-        [Tooltip("The ring Lukas picks up from the floor in front of his capsule (GDD Premisa y Trama: full reconstruction).")]
-        [SerializeField] private GameObject ringModel;
+        [Tooltip("The ring resting on the personal effects tray by the capsule (GDD Premisa y Trama: full reconstruction). E picks it up.")]
+        [SerializeField] private IntroElevatorPanel ringOnTray;
+        [Tooltip("Close shot of the ring on the tray.")]
+        [SerializeField] private Transform ringShot;
         [SerializeField] private float ringSeconds = 2.5f;
 
         [Header("Timing (initial values, subject to balance)")]
@@ -218,30 +220,31 @@ namespace Heartbeat.Narrative
         }
 
         /// <summary>
-        /// Lukas, out of the capsule, picks a ring up from the floor and cannot remember why it matters (C-16, D-54). A close
-        /// shot of the ring on the floor in front of the capsule, the pickup sound, the ring gone and his line. The ring is
-        /// registered once, by the cycle controller when the intro ends.
+        /// Lukas, out of the capsule, finds a ring on the personal effects tray and cannot remember why it matters (C-16,
+        /// C-26, D-54). A close shot of the ring; the cinematic holds, with only E enabled, until the player picks it up.
+        /// Then the pickup sound, the ring gone and his line. The ring is registered once, by the cycle controller when
+        /// the intro ends.
         /// </summary>
         private IEnumerator RingPickup()
         {
             SetStage("Ring");
-            Vector3 ahead = Vector3.ProjectOnPlane(capsuleShot.forward, Vector3.up).normalized;
-            Vector3 at = capsuleShot.position + ahead * 1.6f;
-            if (Physics.Raycast(at, Vector3.down, out var floorHit, 10f, LayerMask.GetMask("Environment"))) at = floorHit.point;   // on the capsule row's floor
-            var ring = ringModel != null ? Instantiate(ringModel, at + Vector3.up * 0.01f, Quaternion.Euler(90f, 0f, 0f)) : null;
-            var pose = new GameObject("RingShot").transform;
-            pose.position = at + Vector3.up * 0.45f - ahead * 0.35f;
-            pose.LookAt(at);
-            Cut(pose);
+            Cut(ringShot);
             loader.SetFade(0f);
             yield return Wait(ringSeconds * 0.5f);
+            var router = Services.Get<InputRouting.InputRouter>();
+            router.SetContext(InputRouting.InputContext.CinematicPickup);
+            ringOnTray.Arm("UI.PROMPT.PICKUP");
+            GameEvents.RaiseInteractTargetChanged(ringOnTray);   // the same "[E] Pick up" prompt as any item
+            HbLog.Info("Intro", "Ring waits on the tray");
+            while (!router.Actions.Gameplay.Interact.WasPerformedThisFrame()) yield return null;
+            GameEvents.RaiseInteractTargetChanged(null);
+            router.SetContext(InputRouting.InputContext.Cinematic);
+            HbLog.Info("Intro", "Ring picked up");
             Sfx.Play2D(Sfx.Pickup);
-            if (ring != null) ring.SetActive(false);
+            ringOnTray.gameObject.SetActive(false);
             Subtitles.Say(Subtitles.Lukas, "SUB.LUKAS.RING");   // "…This matters. I don't know why."
             yield return Wait(ringSeconds * 0.5f);
             loader.SetFade(1f);
-            Destroy(pose.gameObject);
-            if (ring != null) Destroy(ring);
         }
 
         // ---------- helpers ----------

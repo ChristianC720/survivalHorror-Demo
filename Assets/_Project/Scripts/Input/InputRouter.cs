@@ -19,6 +19,7 @@ namespace Heartbeat.InputRouting
         Cinematic,
         IntroPlayable,   // D-63: only move, look, interact (+ pause)
         Reading,         // D-159: the world is stopped; turn pages and close
+        CinematicPickup, // C-26: a cinematic held until Lukas picks something up; only interact (+ pause), no skip
     }
 
     /// <summary>
@@ -39,6 +40,7 @@ namespace Heartbeat.InputRouting
             { InputContext.Inventory, new[] { "Move", "Sprint", "Crouch" } },   // no Look: the mouse drives the terminal
             { InputContext.IntroPlayable, new[] { "Move", "Look", "Interact" } },
             { InputContext.Reading, new[] { "Interact" } },   // the same key that opened it closes it
+            { InputContext.CinematicPickup, new[] { "Interact" } },   // Skip shares the pad's South button, so it stays off
         };
 
         public HeartbeatInput Actions { get; }

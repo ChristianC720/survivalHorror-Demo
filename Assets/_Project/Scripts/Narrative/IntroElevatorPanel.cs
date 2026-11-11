@@ -3,7 +3,10 @@ using UnityEngine;
 
 namespace Heartbeat.Narrative
 {
-    /// <summary>The intro elevator's control panel: E only when <see cref="IntroDirector"/> arms it (Descend, then Repair).</summary>
+    /// <summary>
+    /// An intro prop E uses only when <see cref="IntroDirector"/> arms it: the elevator panel (Descend, then Repair) and
+    /// the ring on the capsule's tray (Pick up, read by the director during the reconstruction cinematic).
+    /// </summary>
     public sealed class IntroElevatorPanel : MonoBehaviour, IInteractable
     {
         private string promptKey;
