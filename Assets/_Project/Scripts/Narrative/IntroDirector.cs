@@ -43,6 +43,11 @@ namespace Heartbeat.Narrative
         [Header("Reconstruction (D-39)")]
         [SerializeField] private Transform capsuleShot;
         [SerializeField] private Light capsuleLight;
+        [Tooltip("The ring resting on the personal effects tray by the capsule (GDD Premisa y Trama: full reconstruction). E picks it up.")]
+        [SerializeField] private IntroElevatorPanel ringOnTray;
+        [Tooltip("Close shot of the ring on the tray.")]
+        [SerializeField] private Transform ringShot;
+        [SerializeField] private float ringSeconds = 2.5f;
 
         [Header("Timing (initial values, subject to balance)")]
         [SerializeField] private float houseSeconds = 4f;
@@ -205,12 +210,41 @@ namespace Heartbeat.Narrative
                 loader.SetFade(1f);
                 yield return Wait(0.6f);
             }
+            yield return RingPickup();
             int n = Services.Get<Cycle.CycleController>().Data.subjectCode;
             loader.SetStatus(Loc.Get("UI.INTRO.SUBJECT_REGISTER", n.ToString("00")));
             yield return Wait(3f);
             loader.SetStatus(Loc.Get("UI.INTRO.PHONE_COPY", n.ToString("00")));
             yield return Wait(3f);
             loader.SetStatus("");
+        }
+
+        /// <summary>
+        /// Lukas, out of the capsule, finds a ring on the personal effects tray and cannot remember why it matters (C-16,
+        /// C-26, D-54). A close shot of the ring; the cinematic holds, with only E enabled, until the player picks it up.
+        /// Then the pickup sound, the ring gone and his line. The ring is registered once, by the cycle controller when
+        /// the intro ends.
+        /// </summary>
+        private IEnumerator RingPickup()
+        {
+            SetStage("Ring");
+            Cut(ringShot);
+            loader.SetFade(0f);
+            yield return Wait(ringSeconds * 0.5f);
+            var router = Services.Get<InputRouting.InputRouter>();
+            router.SetContext(InputRouting.InputContext.CinematicPickup);
+            ringOnTray.Arm("UI.PROMPT.PICKUP");
+            GameEvents.RaiseInteractTargetChanged(ringOnTray);   // the same "[E] Pick up" prompt as any item
+            HbLog.Info("Intro", "Ring waits on the tray");
+            while (!router.Actions.Gameplay.Interact.WasPerformedThisFrame()) yield return null;
+            GameEvents.RaiseInteractTargetChanged(null);
+            router.SetContext(InputRouting.InputContext.Cinematic);
+            HbLog.Info("Intro", "Ring picked up");
+            Sfx.Play2D(Sfx.Pickup);
+            ringOnTray.gameObject.SetActive(false);
+            Subtitles.Say(Subtitles.Lukas, "SUB.LUKAS.RING");   // "…This matters. I don't know why."
+            yield return Wait(ringSeconds * 0.5f);
+            loader.SetFade(1f);
         }
 
         // ---------- helpers ----------
