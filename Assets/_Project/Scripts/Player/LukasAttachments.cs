@@ -1,3 +1,4 @@
+using System.Linq;
 using Heartbeat.Core;
 using TMPro;
 using UnityEngine;
@@ -69,11 +70,14 @@ namespace Heartbeat.Player
 
         private void Awake()
         {
-            foreach (var r in animator.GetComponentsInChildren<SkinnedMeshRenderer>(true))
+            var renderers = animator.GetComponentsInChildren<SkinnedMeshRenderer>(true);
+            // C-38: the team's new Lukas has no civilian outfit yet, so the intro shows him in the suit until it arrives.
+            bool hasCivil = renderers.Any(r => r.name.EndsWith("_Civil"));
+            foreach (var r in renderers)
             {
                 bool isCivil = r.name.EndsWith("_Civil");
                 bool isHair = r.name.EndsWith("_Hair");   // the same hair in both outfits
-                r.enabled = isHair || isCivil == civilian;
+                r.enabled = isHair || isCivil == (civilian && hasCivil);
                 if (!isCivil && !isHair) suit = r;
             }
             if (civilian) return;
