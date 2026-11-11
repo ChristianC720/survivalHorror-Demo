@@ -9,13 +9,13 @@ namespace Heartbeat.Tests
     /// <summary>Hitboxes must ride the skeleton: a shot aimed at the animated head has to find the weak point.</summary>
     public class EnemyHitboxTests
     {
-        [TestCase("Alto"), TestCase("Boca"), TestCase("Mudo"), TestCase("Rastrero")]
-        public void WeakPointAndBodyFollowTheBones(string enemy)
+        // La Boca's head is split in two halves (head_L, head_R) around the mouth. El Mudo's weak point is the torso (GDD Enemigos).
+        [TestCase("Alto", "head"), TestCase("Boca", "head"), TestCase("Mudo", "chest"), TestCase("Rastrero", "head")]
+        public void WeakPointAndBodyFollowTheBones(string enemy, string weakBone)
         {
             var prefab = AssetDatabase.LoadAssetAtPath<GameObject>($"Assets/_Project/Prefabs/Characters/Enemy_{enemy}.prefab");
             var weak = prefab.GetComponentInChildren<WeakPoint>(true);
-            // La Boca's head is split in two halves (head_L, head_R) around the mouth.
-            Assert.That(weak.transform.parent.name.ToLowerInvariant(), Does.StartWith("head"));
+            Assert.That(weak.transform.parent.name.ToLowerInvariant(), Does.StartWith(weakBone));
             var body = prefab.GetComponentsInChildren<CapsuleCollider>(true).Where(c => c.name.StartsWith("Hit_")).ToArray();
             Assert.That(body.Length, Is.GreaterThanOrEqualTo(11));
             int layer = LayerMask.NameToLayer("Hitbox");
