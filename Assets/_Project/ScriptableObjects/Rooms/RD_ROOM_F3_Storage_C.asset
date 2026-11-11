@@ -20,11 +20,11 @@ MonoBehaviour:
   tutorialIndex: 0
   size: {x: 5, y: 5}
   sockets:
-  - cell: {x: 1, y: 0}
-    facing: 2
+  - cell: {x: 0, y: 1}
+    facing: 3
     allowLocked: 1
-  - cell: {x: 4, y: 3}
-    facing: 1
+  - cell: {x: 3, y: 4}
+    facing: 0
     allowLocked: 1
   hasCamera: 0
   canBeUnpowered: 0
