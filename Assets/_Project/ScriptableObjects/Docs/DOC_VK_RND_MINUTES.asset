@@ -17,4 +17,5 @@ MonoBehaviour:
   floor: 3
   titleKey: DOC.VK_RND_MINUTES.TITLE
   bodyKey: DOC.VK_RND_MINUTES.BODY
-  placeholderTitle: "Vitalis Konzern \u2014 R&D minutes"
+  placeholderTitle: Vitalis Konzern, R&D minutes
+  model: {fileID: 0}

@@ -37,7 +37,7 @@ namespace Heartbeat.CameraSystem
         private void OnDisable() { Services.Unregister(this); GameEvents.OptionsChanged -= ReadOptions; }
 
         private float lookSensScale = 1f, aimSensScale = 1f;
-        private bool invertY, aimAssist, reduceMotion;
+        private bool invertY, aimAssistMouse, aimAssistGamepad, reduceMotion;
         private float shakeUntil;
         private GameStateMachine states;
 
@@ -49,7 +49,8 @@ namespace Heartbeat.CameraSystem
             lookSensScale = g.lookSensitivity;
             aimSensScale = g.aimSensitivity;
             invertY = g.invertY;
-            aimAssist = g.aimAssist;
+            aimAssistMouse = g.aimAssistMouse;
+            aimAssistGamepad = g.aimAssistGamepad;
             reduceMotion = g.reduceMotion;   // D-106: no camera shake
         }
 
@@ -124,12 +125,12 @@ namespace Heartbeat.CameraSystem
             yaw += delta.x;
             pitch += balance.invertY != invertY ? delta.y : -delta.y;
             pitch = Mathf.Clamp(pitch, balance.minPitch, balance.maxPitch);
-            if (aiming && aimAssist && router.UsingGamepad) AssistTowardWeakPoint();
+            if (aiming && (router.UsingGamepad ? aimAssistGamepad : aimAssistMouse)) AssistTowardWeakPoint();
         }
 
         /// <summary>
-        /// Aim assist (option, off by default; gamepad only): a gentle pull toward the nearest enemy weak point inside a
-        /// small cone around the reticle. Never snaps, never helps the mouse.
+        /// Aim assist (option per device: off by default with keyboard and mouse, on with a gamepad): a gentle pull toward
+        /// the nearest enemy weak point inside a small cone around the reticle. Never snaps.
         /// </summary>
         private void AssistTowardWeakPoint()
         {

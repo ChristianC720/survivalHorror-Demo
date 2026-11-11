@@ -64,6 +64,10 @@ namespace Heartbeat.Generation.Layout
                     if (!AttachFrom(layout, occupied, last, t, rng)) return null;
                     layout.Rooms[layout.Rooms.Count - 1].TutorialIndex = i + 2;
                 }
+                // The tutorial's start room leads to one room only (user 2026-11-09): its other sockets stay walls.
+                var entry = layout.Rooms[layout.EntryRoom];
+                if (entry.SocketUsed.Any(u => u))
+                    for (int i = 0; i < entry.SocketUsed.Length; i++) entry.SocketUsed[i] = true;
             }
 
             // 3. Procedural rooms.

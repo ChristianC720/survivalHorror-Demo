@@ -17,4 +17,5 @@ MonoBehaviour:
   floor: 1
   titleKey: DOC.KS_PATROL_LOG.TITLE
   bodyKey: DOC.KS_PATROL_LOG.BODY
-  placeholderTitle: "Kessler Sicherheit AG \u2014 Werkschutz patrol log, post 3"
+  placeholderTitle: Kessler Sicherheit AG, Werkschutz, patrol log, post 3
+  model: {fileID: 0}

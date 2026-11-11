@@ -19,7 +19,7 @@ namespace Heartbeat.Save
                     break;
                 case OptionsSection.Controls:
                     g.lookSensitivity = d.lookSensitivity; g.aimSensitivity = d.aimSensitivity; g.invertY = d.invertY;
-                    g.crouchToggle = d.crouchToggle; g.aimAssist = d.aimAssist; g.bindingOverrides = d.bindingOverrides;
+                    g.crouchToggle = d.crouchToggle; g.aimAssistMouse = d.aimAssistMouse; g.aimAssistGamepad = d.aimAssistGamepad; g.bindingOverrides = d.bindingOverrides;
                     break;
                 case OptionsSection.Accessibility:
                     g.textScale = d.textScale; g.dyslexiaFont = d.dyslexiaFont; g.subtitleOpaque = d.subtitleOpaque; g.soundCaptions = d.soundCaptions;

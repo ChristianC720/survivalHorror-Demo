@@ -87,9 +87,32 @@ namespace Heartbeat.Tests
         public void FirstAttempt_Floor1_1000Seeds_WithTutorial() => RunSeeds(s => Full(1, s, first: true));
 
         [Test]
+        public void FirstAttempt_StartRoomHasOneDoor_1000Seeds()
+        {
+            for (int s = 1; s <= 1000; s++)
+            {
+                var l = LayoutGenerator.Generate(Full(1, s, first: true), Library());
+                if (l == null) continue;
+                Assert.AreEqual(1, l.Connections.Count(c => c.A == l.EntryRoom || c.B == l.EntryRoom), $"seed {s}");
+            }
+        }
+
+        [Test]
         public void StoryMode_RaisesMinimums_1000Seeds()
         {
             RunSeeds(s => { var p = Full(1, s); p.ApplyStoryMode(); return p; });
+        }
+
+        [Test]
+        public void StoryMode_BlistersHold6Rounds_NormalBlistersHold4()
+        {
+            var story = Full(1, 77); story.ApplyStoryMode();
+            Assert.AreEqual(6, story.BlisterRounds);
+            Assert.AreEqual(24, story.Ammo.min);   // 12-16 rounds: min 3 blisters + 1, 6 rounds each
+            var ls = LayoutGenerator.Generate(story, Library());
+            Assert.IsTrue(ls.Items.Where(i => i.Kind == ItemKind.Ammo).All(i => i.Amount == 6));
+            var ln = LayoutGenerator.Generate(Full(1, 77), Library());
+            Assert.IsTrue(ln.Items.Where(i => i.Kind == ItemKind.Ammo).All(i => i.Amount == 4));
         }
 
         [Test]

@@ -33,5 +33,10 @@ MonoBehaviour:
   labBaseBpm: 48
   labBpmPerDegradation: 4
   labCriticalBpmBonus: 10
+  musicFadeSeconds: 2
+  menuMusicDelayAfterEnding: 2
+  wallTransmission: 0.3
+  doorTransmission: 0.5
+  occlusionInterval: 0.2
   strideLength: 0.8
   minStepSpeed: 1

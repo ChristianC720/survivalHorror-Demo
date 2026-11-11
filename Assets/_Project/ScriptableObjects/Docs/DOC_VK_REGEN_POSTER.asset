@@ -17,4 +17,5 @@ MonoBehaviour:
   floor: 1
   titleKey: DOC.VK_REGEN_POSTER.TITLE
   bodyKey: DOC.VK_REGEN_POSTER.BODY
-  placeholderTitle: "Vitalis Konzern \u2014 Advertising poster"
+  placeholderTitle: Vitalis Konzern, advertising poster
+  model: {fileID: 0}

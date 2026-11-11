@@ -33,6 +33,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-en
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 45f5d98e3f9a5c74887e2d5a4a64baf1
+    m_Address: DE_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4e95bf10d017b714dacb0b5f6103401f
     m_Address: BEST_en
     m_ReadOnly: 1

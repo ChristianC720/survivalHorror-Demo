@@ -25,12 +25,15 @@ MonoBehaviour:
   minSecondaryDistance: 3
   minFinalDistance: 4
   startingAmmo: 0
+  tutorialGateTimeout: 120
   heals:
     min: 2
     max: 3
   ammo:
     min: 12
     max: 16
+  blisterRounds: 4
+  storyBlisterRounds: 6
   spikes:
     min: 1
     max: 2

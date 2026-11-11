@@ -55,7 +55,7 @@ namespace Heartbeat.Narrative
         [SerializeField] private float attackRadius = 2.5f;
         [SerializeField] private float attackBackupSeconds = 25f;
 
-        private const int VoiceLines = 6;
+        private const int VoiceLines = 7;   // SUB.EMILIA.NOTE_1..7 (Textos del Juego, nota de voz)
         private SceneLoader loader;
         private AudioSource music;
 

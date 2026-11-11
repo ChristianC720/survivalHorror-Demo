@@ -75,7 +75,18 @@ namespace Heartbeat.AI
             asleep = definition.dormant;
         }
 
-        public bool IsDormant => asleep;
+        public bool IsDormant => asleep || heldUntilShot;
+
+        /// <summary>
+        /// Tutorial enemy (user 2026-11-09): stands still and never attacks, sees or hears until Lukas shoots it the first time.
+        /// </summary>
+        public void HoldUntilShot()
+        {
+            heldUntilShot = true;
+            HbLog.Info("AI", $"{name} holds still until shot (tutorial)");
+        }
+
+        private bool heldUntilShot;
 
         private void OnDisable()
         {
@@ -92,6 +103,7 @@ namespace Heartbeat.AI
             screamTimer = Mathf.Max(0f, screamTimer - dt);
 
             var p = Player;
+            if (heldUntilShot) { agent.isStopped = true; return; }
             if (asleep)
             {
                 // El Mudo: still like a corpse until Lukas comes within ~3 m or lights it (D-60).
@@ -152,7 +164,7 @@ namespace Heartbeat.AI
         public void HearNoise(NoiseInfo noise)
         {
             if (IsDead) return;
-            if (asleep) return;   // El Mudo only wakes by proximity or light
+            if (asleep || heldUntilShot) return;   // El Mudo only wakes by proximity or light; the tutorial enemy only by a shot
             if (definition.screams && noise.Source == NoiseSource.Scream) return;   // La Boca ignores screams (her own too)
             float d = Vector3.Distance(transform.position, noise.Position);
             float radius = noise.Radius * definition.hearingMultiplier;
@@ -169,7 +181,7 @@ namespace Heartbeat.AI
 
         public void OnAttentionFull(Vector3 playerPos, bool immediate = false)
         {
-            if (IsDead) return;
+            if (IsDead || heldUntilShot) return;
             if (alert.State < AlertState.Search) lastKnown = playerPos;
             if (immediate) alert.Hear(NoiseSource.Machinery);   // boss release: straight to the point the camera saw
             else alert.OnAttentionFull(SystemsBalance.Current.attentionSuspicionSeconds);
@@ -343,6 +355,7 @@ namespace Heartbeat.AI
             if (health.IsAlive)
             {
                 asleep = false;   // a bullet wakes a dormant Mudo at any distance
+                if (heldUntilShot) { heldUntilShot = false; HbLog.Info("AI", $"{name} shot: the tutorial hold ends"); }
                 lastKnown = hit.Point - hit.Direction * 10f;
                 alert.ForceHunt();
                 if (hit.WeakPoint) Stagger(hit.Point, definition.weakPointStagger);   // interrupts attack or grab (D-74)

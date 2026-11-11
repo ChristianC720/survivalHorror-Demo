@@ -58,6 +58,12 @@ namespace Heartbeat.Cycle
             GameEvents.RoomEntered += OnRoomEntered;
             GameEvents.FloorBuilt += OnFloorBuilt;
             GameEvents.HuntChanged += OnHuntChanged;
+            // Local playtest telemetry: launch the build with -telemetry, like -showcase.
+            if (TelemetryRecorder.Requested(System.Environment.GetCommandLineArgs()))
+            {
+                try { telemetry = TelemetryRecorder.CreateFile(); }
+                catch (System.Exception ex) { HbLog.Warn("Telemetry", "Could not open the telemetry file: " + ex.Message); }
+            }
 
             if (Data != null) return;
             // Play pressed inside a gameplay/sandbox scene in the editor: a hidden dev slot, fresh every Play, so tests
@@ -73,8 +79,11 @@ namespace Heartbeat.Cycle
         /// <summary>Hidden slot file used by editor play-from-scene (never listed in the menus, never "last used").</summary>
         public const int DevSlot = SaveService.SlotCount;
 
+        private TelemetryRecorder telemetry;
+
         private void OnDestroy()
         {
+            telemetry?.Dispose();
             if (router != null) router.Actions.Cinematic.Skip.performed -= OnSkip;
             GameEvents.PlayerDied -= OnPlayerDied;
             GameEvents.FloorExitRequested -= OnFloorExit;
@@ -389,9 +398,21 @@ namespace Heartbeat.Cycle
             states.TryTransition(GameStateId.FloorTransition);
             carry = Snapshot();
             CurrentFloor = floor + 1;
-            HbLog.Info("Cycle", $"Floor transition {floor} -> {CurrentFloor} (≥ {SystemsBalance.Current.floorTransitionSeconds} s, no loading screen)");
+            HbLog.Info("Cycle", $"Floor transition {floor} -> {CurrentFloor} (≥ {SystemsBalance.Current.floorTransitionSeconds} s inside the elevator)");
             yield return loader.Fade(0f, 1f);
             float start = Time.unscaledTime;
+            // The wait between floors happens inside the elevator (user 2026-11-09): the cabin shot of the Cinematics scene.
+            loader.Load(SceneNames.Cinematics, null, fadeOut: false);
+            while (loader.IsBusy) yield return null;
+            if (Services.TryGet(out CinematicStage cabin))
+            {
+                Sfx.Play2D("CUE_Elevator_Hum");
+                float ride = Mathf.Max(0f, SystemsBalance.Current.floorTransitionSeconds - (Time.unscaledTime - start));
+                var shot = StartCoroutine(cabin.Play("Elevator", ride));
+                yield return loader.Fade(1f, 0f);
+                yield return shot;
+                loader.SetFade(1f);
+            }
             FloorSession.Pending = NextRequest(CurrentFloor);
             loader.Load(SceneNames.Floor, null, fadeOut: false);
             while (loader.IsBusy || Time.unscaledTime - start < SystemsBalance.Current.floorTransitionSeconds) yield return null;

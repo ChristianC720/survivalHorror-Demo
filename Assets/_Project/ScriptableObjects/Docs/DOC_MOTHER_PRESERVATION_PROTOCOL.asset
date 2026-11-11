@@ -17,4 +17,5 @@ MonoBehaviour:
   floor: 3
   titleKey: DOC.MOTHER_PRESERVATION_PROTOCOL.TITLE
   bodyKey: DOC.MOTHER_PRESERVATION_PROTOCOL.BODY
-  placeholderTitle: "The Mother \u2014 Staff preservation protocol (revision 9)"
+  placeholderTitle: The Mother, staff preservation protocol (revision 9)
+  model: {fileID: 0}

@@ -50,7 +50,7 @@ The reference sheets in `Blender3DAssets/Image_References/` were generated with 
 
 Each model has its own branch (`E16-<model>`).
 
-### v1.1-demo: Lukas and the 4 normal enemies
+### v0.2-demo: Lukas and the 4 normal enemies
 - [x] **Phase 0, pipeline:** export current Lukas, import as Humanoid, swap into `PH_Lukas`, test textures at 512 px. Record the export settings below.
 - [x] **Phase 1, Lukas model:** hair, head, boots, ring, finger bones, teal seams, file cleanup, rename to `CH_Lukas_RH07`.
 - [x] **Phase 2, Lukas locomotion:** derived from the existing clips: idle, walk (fine, injured, critical), run, crouch idle and walk, aim walk, turns.
@@ -66,12 +66,12 @@ Each model has its own branch (`E16-<model>`).
 | Boca | ~8–10: wander, hunt, bite, scream, stunned, death |
 | Rastrero | ~6–8: base cycle for procedural IK, flank, claw, death |
 
-### v1.2-demo: The Mother, recycled and civil
+### v0.3-demo: The Mother, recycled and civil
 - [x] `CH_TheMother` with collector arm and hostile camera; `PROP_F3_MixingTable`; transformer. Static: no crane patrol or core-opening clips yet.
 - [x] Recycled models (4), a second mesh on each enemy's rig, switched by `EnemyAnimator`.
 - [x] `CH_Lukas_Civil` (shares Lukas's clips; no phone-hack or scripted-death clip yet), body variants (4, texture only, no shape change), `CH_Lukas_Mudo`, corpses.
 
-### v1.3-demo: machines and objects
+### v0.4-demo: machines and objects
 - [x] F1: Generator, Boiler, Forklift, GantryCrane, WaterPump, reconstruction capsule.
 - [x] F2: HumanCapsule, MonsterCapsule, ResonanceCapsule. F3: CryoTank, BrokenCapsule.
 - [x] Revolver and items: heal, ammo, spike, 2 keys, ring, document.
@@ -96,7 +96,7 @@ Each model has its own branch (`E16-<model>`).
 - **Not placed in rooms.** New prefabs with no room yet: `PH_F1_Forklift`, `PH_F1_GantryCrane`, `PH_F1_WaterPump`, `PH_F2_MonsterCapsule`, `PH_F2_ResonanceCapsule`, `PH_Shared_Corpse`, `PH_Shared_Corpse_Subject`, `PROP_F3_MixingTable` (the boss room nodes use its model directly). Room layouts are hand-made work, so they were left alone.
 - **Lukas civil.** Recoloured from the R-H-07 mesh: tubes and terminal removed, but the belt, wrist bands and knee pads remain, so it is not yet the field jacket of the reference.
 - **Play coverage.** Tested: Lukas's movement, crouch, aim and critical gait; enemies' Idle, Scream and recycled swap; a floor loading without errors. Not played: the intro, the boss fight, the endings, body variants across real deaths. Those were checked by renders or not at all.
-- **Release tags.** `v1.1-demo` and later are not tagged, because no build was requested with these models.
+- **Release tags.** `v0.2-demo` to `v0.4-demo` (named `v1.1-demo` to `v1.3-demo` until 2026-11-09) are not tagged, because no build was requested with these models.
 
 ## 7. Signalis pass (2026-11-03)
 

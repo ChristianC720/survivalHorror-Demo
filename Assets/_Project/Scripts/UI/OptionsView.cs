@@ -104,7 +104,9 @@ namespace Heartbeat.UI
                     SliderRow("UI.OPT.AIM_SENS", 0.25f, 3f, g.aimSensitivity, x => g.aimSensitivity = x);
                     ToggleRow("UI.OPT.INVERT_Y", g.invertY, x => g.invertY = x);
                     ToggleRow("UI.OPT.CROUCH_TOGGLE", g.crouchToggle, x => g.crouchToggle = x);
-                    ToggleRow("UI.OPT.AIM_ASSIST", g.aimAssist, x => g.aimAssist = x);
+                    // One row for the device in use: each device keeps its own setting and default.
+                    bool pad = Services.Get<InputRouter>().UsingGamepad;
+                    ToggleRow("UI.OPT.AIM_ASSIST", g.AimAssist(pad), x => g.SetAimAssist(pad, x));
                     foreach (var a in RebindActions) RebindRow(a);
                     break;
                 case OptionsSection.Accessibility:

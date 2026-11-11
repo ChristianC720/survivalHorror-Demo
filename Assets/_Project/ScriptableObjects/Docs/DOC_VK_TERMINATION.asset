@@ -17,4 +17,5 @@ MonoBehaviour:
   floor: 2
   titleKey: DOC.VK_TERMINATION.TITLE
   bodyKey: DOC.VK_TERMINATION.BODY
-  placeholderTitle: "Vitalis Konzern \u2014 Human Resources, termination notice"
+  placeholderTitle: Vitalis Konzern, Human Resources, termination notice
+  model: {fileID: 0}

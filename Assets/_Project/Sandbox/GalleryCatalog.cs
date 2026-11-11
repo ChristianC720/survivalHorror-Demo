@@ -202,14 +202,16 @@ namespace Heartbeat.Sandbox
         private void AddLukas()
         {
             string fbx = Models + "Characters/CH_Lukas_RH07.fbx";
-            var asset = AssetDatabase.LoadAssetAtPath<GameObject>(fbx);
+            // The team's new Lukas has no civilian outfit: the intro keeps the earlier model, kept as the legacy clip source.
+            string legacyFbx = Models + "Characters/CH_Lukas_RH07_LegacyAnims.fbx";
             var clips = ClipsOf(fbx);
             var suit = AssetDatabase.LoadAssetAtPath<Material>(Models + "Characters/M_Lukas_RH07.mat");
             var civil = AssetDatabase.LoadAssetAtPath<Material>(Models + "Characters/M_Lukas_Civil.mat");
 
             void One(string name, bool isCivil, Texture2D variant)
             {
-                var item = Add(asset, name, fbx, "Personajes", "Shared", go =>
+                string path = isCivil ? legacyFbx : fbx;
+                var item = Add(AssetDatabase.LoadAssetAtPath<GameObject>(path), name, path, "Personajes", "Shared", go =>
                 {
                     foreach (var r in go.GetComponentsInChildren<SkinnedMeshRenderer>(true))
                     {
@@ -245,11 +247,14 @@ namespace Heartbeat.Sandbox
                 gun.transform.SetPositionAndRotation(grip.position, Quaternion.LookRotation(toward.position - grip.position, up.position - grip.position));
             }
             var termAsset = AssetDatabase.LoadAssetAtPath<GameObject>(Prefabs + "Items/PROP_ArmTerminal.prefab");
-            var forearm = Bone("LeftLowerArm");
-            if (termAsset != null && forearm != null)
+            Transform forearm = Bone("LeftLowerArm"), hand = Bone("LeftHand");
+            if (termAsset != null && forearm != null && hand != null)
             {
+                // Same panel as LukasAttachments.TerminalPanel (this assembly cannot reference the game's).
+                Vector3 along = (forearm.position - hand.position).normalized;
+                Vector3 outward = Vector3.ProjectOnPlane(-lukas.transform.right, along).normalized;
                 var t = Object.Instantiate(termAsset, forearm, true);
-                t.transform.SetPositionAndRotation(lukas.transform.TransformPoint(new Vector3(-0.355f, 0.99f, -0.045f)), Quaternion.LookRotation(-lukas.transform.right, lukas.transform.up));
+                t.transform.SetPositionAndRotation(Vector3.Lerp(forearm.position, hand.position, 0.53f) + outward * 0.046f, Quaternion.LookRotation(outward, along));
             }
         }
 

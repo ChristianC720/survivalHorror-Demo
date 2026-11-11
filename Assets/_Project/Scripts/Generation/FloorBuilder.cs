@@ -122,6 +122,7 @@ namespace Heartbeat.Generation
 
             var cfg = ConfigFor(floor, showcase);
             var p = cfg.ToParams(seed, firstAttempt, storyMode);
+            blisterRounds = p.BlisterRounds;
             var templates = library.rooms.Where(r => r != null && r.floor == floor).Select(RoomTemplate.From).ToList();
             if (templates.Count == 0)
             {
@@ -184,9 +185,11 @@ namespace Heartbeat.Generation
             BarSpawnRoom(spawnRoom);
             if (!startInFinalRoom && cfg.startingAmmo > 0)
             {
-                // Starting supplies (D-new): a few rounds on the floor next to where Lukas wakes; outside the budget.
-                var t = Player.transform;
-                DropItem(ItemKind.Ammo, cfg.startingAmmo, t.position + t.forward * 1.2f);
+                // Starting supplies: a few rounds outside the budget, always next to the revolver (user 2026-11-09), on the
+                // capsule tray or on the tutorial guard; next to where Lukas wakes only if no revolver lies on this floor.
+                var gun = built.SelectMany(r => r.GetComponentsInChildren<Interaction.RevolverPickup>(false)).FirstOrDefault();
+                var t = gun != null ? gun.transform : Player.transform;
+                DropItem(ItemKind.Ammo, cfg.startingAmmo, gun != null ? t.position + t.right * 0.3f : t.position + t.forward * 1.2f);
             }
             activation.Apply(built[spawnRoom]);
 
@@ -263,6 +266,29 @@ namespace Heartbeat.Generation
             var leaf = door.GetComponent<DoorLeaf>();
             leaf.Configure(c.Lock);
             doors.Add(leaf);
+            ClearDoorway(door.transform, built[c.A], built[c.B]);
+        }
+
+        /// <summary>
+        /// Room dressing is placed by hand for every socket, used or not: a prop in front of a socket that became a doorway
+        /// cuts the NavMesh there (C-02, e.g. floor cabling against a door). The decor gives way to the door: props of the
+        /// two rooms within 1.5 m of the opening are switched off, never interactables, spawns or the shell.
+        /// </summary>
+        private static void ClearDoorway(Transform door, RoomInstance a, RoomInstance b)
+        {
+            Vector3 Abs(Vector3 v) => new Vector3(Mathf.Abs(v.x), Mathf.Abs(v.y), Mathf.Abs(v.z));
+            var zone = new Bounds(door.position + Vector3.up, 2f * (Abs(door.right) * 1.2f + Abs(door.forward) * 1.5f + Vector3.up));
+            foreach (var room in new[] { a, b })
+                foreach (Transform group in room.transform)
+                {
+                    if (!group.name.StartsWith("Dress_") && group.name != "Props") continue;
+                    foreach (Transform prop in group)
+                    {
+                        if (!prop.gameObject.activeSelf || prop.GetComponentInChildren<IInteractable>(true) != null || prop.GetComponentInChildren<SpawnPoint>(true) != null) continue;
+                        foreach (var r in prop.GetComponentsInChildren<Renderer>())
+                            if (r.bounds.Intersects(zone)) { prop.gameObject.SetActive(false); HbLog.Dev("Gen", $"{room.name}/{prop.name} cleared from {door.name}"); break; }
+                    }
+                }
         }
 
         /// <summary>D-164: each door leaving a tutorial room stays shut until that room's actions are done (see TutorialGuide).</summary>
@@ -307,7 +333,7 @@ namespace Heartbeat.Generation
                     if (doc == null)
                     {
                         // Already registered: 1 extra of the floor's scarcest resource instead (D-79).
-                        Spawn(ammoPrefab, at, ItemKind.Ammo, 4);
+                        Spawn(ammoPrefab, at, ItemKind.Ammo, blisterRounds);
                         return;
                     }
                     prefab = documentPrefab;
@@ -324,6 +350,7 @@ namespace Heartbeat.Generation
         }
 
         private int emiliaCursor;
+        private int blisterRounds;   // this build's blister size (Story mode: larger)
 
         private DocumentDefinition NextEmilia(IReadOnlyCollection<string> registered)
         {
@@ -403,6 +430,7 @@ namespace Heartbeat.Generation
             var at = spawns[e.Spawn].transform;
             var go = Instantiate(prefab, at.position, Quaternion.Euler(0f, Random.Range(0f, 360f), 0f), floorRoot);
             go.name = $"{e.Type}_{e.Room}_{e.Spawn}";
+            if (built[e.Room].IsTutorial) go.GetComponent<EnemyBrain>().HoldUntilShot();   // still and harmless until the first shot
             activation.Register(built[e.Room], go);
         }
 
@@ -419,6 +447,7 @@ namespace Heartbeat.Generation
                 var col = marker.gameObject.AddComponent<SphereCollider>();
                 col.isTrigger = true;
                 col.radius = 1f;
+                col.center = new Vector3(0f, 1.2f, 0.6f);   // in front of the elevator door, at hand height
                 marker.gameObject.layer = LayerMask.NameToLayer("Interactable");
             }
             exit.Floor = floor;

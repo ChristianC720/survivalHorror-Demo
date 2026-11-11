@@ -23,7 +23,7 @@ public static class PropBuilder
 
     public static string Execute()
     {
-        var scene = EditorSceneManager.OpenScene("Assets/_Project/Scenes/Sandbox_Kit.unity", OpenSceneMode.Single);
+        var scene = EditorSceneManager.OpenScene("Assets/_Project/Scenes/Tests/Sandbox_Kit.unity", OpenSceneMode.Single);
         var specs = new Dictionary<string, (string floor, P[] parts, string phNotes)>
         {
             // ---- F2 illegal clinic

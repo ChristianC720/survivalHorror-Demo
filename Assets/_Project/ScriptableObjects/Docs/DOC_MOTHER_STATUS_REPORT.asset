@@ -17,4 +17,5 @@ MonoBehaviour:
   floor: 1
   titleKey: DOC.MOTHER_STATUS_REPORT.TITLE
   bodyKey: DOC.MOTHER_STATUS_REPORT.BODY
-  placeholderTitle: "The Mother \u2014 Automatic status report"
+  placeholderTitle: The Mother, automatic status report
+  model: {fileID: 0}

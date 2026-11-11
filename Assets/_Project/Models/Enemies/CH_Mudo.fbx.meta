@@ -61,40 +61,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: AN_Mudo_Activate
-      takeName: Rig_Mudo|AN_Mudo_Activate
-      internalID: -4142056175279102525
-      firstFrame: 0
-      lastFrame: 11
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 1
-      loopBlendPositionY: 1
-      loopBlendPositionXZ: 1
-      keepOriginalOrientation: 1
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 1
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000u
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
       name: AN_Mudo_Attack
       takeName: Rig_Mudo|AN_Mudo_Attack
       internalID: 6493618618392790283
       firstFrame: 0
-      lastFrame: 23
+      lastFrame: 33
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -123,7 +94,7 @@ ModelImporter:
       takeName: Rig_Mudo|AN_Mudo_Burst
       internalID: -933861718474247502
       firstFrame: 0
-      lastFrame: 20
+      lastFrame: 22
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -152,7 +123,7 @@ ModelImporter:
       takeName: Rig_Mudo|AN_Mudo_Death
       internalID: 5321000753637583010
       firstFrame: 0
-      lastFrame: 44
+      lastFrame: 69
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -181,7 +152,7 @@ ModelImporter:
       takeName: Rig_Mudo|AN_Mudo_Grab
       internalID: -5424942327741763667
       firstFrame: 0
-      lastFrame: 23
+      lastFrame: 63
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -239,7 +210,7 @@ ModelImporter:
       takeName: Rig_Mudo|AN_Mudo_Stunned
       internalID: -4799984671294629652
       firstFrame: 0
-      lastFrame: 30
+      lastFrame: 59
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
