@@ -109,7 +109,7 @@ namespace Heartbeat.Cycle
                 Data = new SlotData { mode = mode, showcase = showcase };
                 if (showcase) HbLog.Info("Cycle", "Showcase preset for this slot");
             }
-            registry.Import(Data.terminal.Select(e => (e.id, e.kind)));
+            registry.Import(Data.terminal.Select(e => (e.id, SavedKind(e.id, e.kind))));
             Services.Get<FaultModel>().Import(Data.patchedFaults);
             if (slot != DevSlot)
             {
@@ -216,11 +216,14 @@ namespace Heartbeat.Cycle
 
         public const string VoiceNoteId = "DOC.VOICE_NOTE_EMILIA", RingId = "RING";
 
+        /// <summary>Saves made before C-39 kept the voice note as a confiscated object; it is the subject's personal effects now.</summary>
+        public static RecordKind SavedKind(string id, RecordKind kind) => id == VoiceNoteId && kind == RecordKind.Confiscated ? RecordKind.VoiceNote : kind;
+
         private IEnumerator FinishIntroRoutine()
         {
             busy = true;
             Data.introDone = true;
-            registry.Register(VoiceNoteId, RecordKind.Confiscated);
+            registry.Register(VoiceNoteId, RecordKind.VoiceNote);   // the phone is lost here: The Mother copies it as the subject's personal effects, corrupt until the ending
             registry.Register(RingId, RecordKind.Ring);
             Data.hasFloorStart = false;
             SaveNow();
