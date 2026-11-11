@@ -158,9 +158,13 @@ namespace Heartbeat.Generation
                 foreach (var cue in r.GetComponentsInChildren<Audio.TutorialCue>(true)) cue.gameObject.SetActive(tutorial);
                 // D-74: the guard's revolver in the tutorial depot; afterwards on the capsule tray of floor 1.
                 foreach (var gun in r.GetComponentsInChildren<Interaction.RevolverPickup>(true))
-                    gun.gameObject.SetActive(gun.Where == Interaction.RevolverPickup.Spot.TutorialGuard
+                {
+                    bool on = gun.Where == Interaction.RevolverPickup.Spot.TutorialGuard
                         ? pr.TutorialIndex == 2
-                        : !p.FirstAttempt && pr.Index == Layout.EntryRoom && floor == 1);
+                        : !p.FirstAttempt && pr.Index == Layout.EntryRoom && floor == 1;
+                    gun.gameObject.SetActive(on);
+                    gun.ShowLabel(on);   // C-44: the tray is labelled only when The Mother left the revolver on it
+                }
             }
             foreach (var c in Layout.Connections)
             {

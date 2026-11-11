@@ -15,7 +15,12 @@ namespace Heartbeat.Interaction
 
         [SerializeField] private Spot spot = Spot.CapsuleTray;
 
+        [Tooltip("The tray's label, shown whenever the revolver is put on the tray (it stays after the pickup).")]
+        [SerializeField] private GameObject label;
+
         public Spot Where => spot;
+
+        public void ShowLabel(bool on) { if (label != null) label.SetActive(on); }
         public string PromptKey => "UI.PROMPT.PICKUP";
         public Vector3 InteractionPoint => transform.position;
 

@@ -866,6 +866,10 @@ MonoBehaviour:
     m_Localized: Subject's personal effects
     m_Metadata:
       m_Items: []
+  - m_Id: 3453598787829760
+    m_Localized: 'Personal effects R-H-{0}: 1 revolver (unloaded), 6 rounds'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
