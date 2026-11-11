@@ -229,8 +229,12 @@ namespace Heartbeat.Sandbox
 
             One("Lukas", false, null);
             One("Lukas civil", true, null);
-            for (int i = 1; i <= 4; i++)
-                One("Lukas variante " + i, false, AssetDatabase.LoadAssetAtPath<Texture2D>($"{Models}Characters/Textures/CH_Lukas_RH07_Var{i}.png"));
+            // The same body variants the game uses (D-43), read from the player's LukasAttachments.
+            var player = AssetDatabase.LoadAssetAtPath<GameObject>(Prefabs + "Characters/Player.prefab");
+            var attachments = player != null ? player.GetComponentsInChildren<MonoBehaviour>(true).FirstOrDefault(m => m != null && m.GetType().Name == "LukasAttachments") : null;
+            var variants = attachments != null ? new SerializedObject(attachments).FindProperty("bodyVariants") : null;
+            for (int i = 0; variants != null && i < variants.arraySize; i++)
+                One("Lukas variante " + (i + 1), false, variants.GetArrayElementAtIndex(i).objectReferenceValue as Texture2D);
         }
 
         /// <summary>The revolver and terminal ride on the skeleton at the same places the game uses, read from the model's markers.</summary>
