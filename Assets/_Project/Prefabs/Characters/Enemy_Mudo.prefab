@@ -425,8 +425,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Heartbeat.Runtime::Heartbeat.AI.EnemyAnimator
   animator: {fileID: 5927000358190777004}
-  headAttachments:
-  - {fileID: 4553056558903884732}
+  headAttachments: []
   noiseDegrees: 3
   recycledNoiseDegrees: 9
 --- !u!1 &4983779904320179761
@@ -441,7 +440,7 @@ GameObject:
   - component: {fileID: 4148516748083864197}
   - component: {fileID: 7496103185317131014}
   m_Layer: 15
-  m_Name: WeakPoint_Head
+  m_Name: WeakPoint_Torso
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -456,11 +455,11 @@ Transform:
   m_GameObject: {fileID: 4983779904320179761}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.8955066e-11, y: 0.18066995, z: 0.0059692897}
+  m_LocalPosition: {x: -3.4820353e-17, y: 0.17007336, z: 7.9401974e-10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2455185930615447455}
+  m_Father: {fileID: 1673359621250475006}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &4148516748083864197
 SphereCollider:
@@ -1045,6 +1044,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1446373942520339651, guid: ec6cb70a39f9e5645a13b9625cc24c37, type: 3}
       insertIndex: -1
       addedObject: {fileID: 119787993830137913}
+    - targetCorrespondingSourceObject: {fileID: 1446373942520339651, guid: ec6cb70a39f9e5645a13b9625cc24c37, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4553056558903884732}
     - targetCorrespondingSourceObject: {fileID: -6850842296494392221, guid: ec6cb70a39f9e5645a13b9625cc24c37, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8888653998352190187}
@@ -1057,9 +1059,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8676296262398850183, guid: ec6cb70a39f9e5645a13b9625cc24c37, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1688589713581991808}
-    - targetCorrespondingSourceObject: {fileID: 2393918688841261218, guid: ec6cb70a39f9e5645a13b9625cc24c37, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 4553056558903884732}
     - targetCorrespondingSourceObject: {fileID: 1850052386646800478, guid: ec6cb70a39f9e5645a13b9625cc24c37, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8938507059699047347}
@@ -1107,11 +1106,6 @@ Transform:
 --- !u!4 &1911441670040291171 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1850052386646800478, guid: ec6cb70a39f9e5645a13b9625cc24c37, type: 3}
-  m_PrefabInstance: {fileID: 228129720587501373}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &2455185930615447455 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2393918688841261218, guid: ec6cb70a39f9e5645a13b9625cc24c37, type: 3}
   m_PrefabInstance: {fileID: 228129720587501373}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &2577908361780085598 stripped
