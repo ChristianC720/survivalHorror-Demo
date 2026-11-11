@@ -313,7 +313,7 @@ namespace Heartbeat.Sandbox
             foreach (var guid in AssetDatabase.FindAssets("t:Model", new[] { Models }))
             {
                 string path = AssetDatabase.GUIDToAssetPath(guid);
-                if (path.Contains("/ModelsNew/") || !path.EndsWith(".fbx")) continue;
+                if (!path.EndsWith(".fbx")) continue;
                 var asset = AssetDatabase.LoadAssetAtPath<GameObject>(path);
                 if (asset == null) continue;
                 var meshes = asset.GetComponentsInChildren<MeshFilter>(true).Select(f => f.sharedMesh).Concat(asset.GetComponentsInChildren<SkinnedMeshRenderer>(true).Select(s => s.sharedMesh)).Where(m => m != null).ToArray();

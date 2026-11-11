@@ -45,7 +45,6 @@ namespace Heartbeat.Tests
             foreach (var g in AssetDatabase.FindAssets("t:Material", new[] { "Assets/_Project/Models" }))
             {
                 string path = AssetDatabase.GUIDToAssetPath(g);
-                if (path.Contains("/ModelsNew/")) continue;
                 var m = AssetDatabase.LoadAssetAtPath<Material>(path);
                 if (!m.HasProperty("_EmissionMap") || m.GetTexture("_EmissionMap") == null) continue;
                 if ((m.globalIlluminationFlags & MaterialGlobalIlluminationFlags.AnyEmissive) == 0) bad.Add(path);
