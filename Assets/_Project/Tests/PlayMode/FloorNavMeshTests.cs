@@ -31,7 +31,10 @@ namespace Heartbeat.Tests
             var layout = builder.Layout;
             var from = builder.Player.transform.position;
             Assert.GreaterOrEqual(layout.FinalRoom, 0, "no final room");
-            AssertPath(from, builder.Rooms[layout.FinalRoom].transform.position, $"floor {floor} seed {seedBase + floor}: final room");
+            // Room volume center, not the pivot: the pivot is the outer wall corner, and KEY_F2_Final's stairs model keeps the NavMesh more than 2 m from it.
+            var finalCenter = builder.Rooms[layout.FinalRoom].GetComponent<BoxCollider>().bounds.center;
+            finalCenter.y = builder.Rooms[layout.FinalRoom].transform.position.y;
+            AssertPath(from, finalCenter, $"floor {floor} seed {seedBase + floor}: final room");
 
             var key = layout.Items.FirstOrDefault(i => i.Kind == ItemKind.KeyMandatory);
             Assert.IsNotNull(key, $"floor {floor}: no mandatory key");
