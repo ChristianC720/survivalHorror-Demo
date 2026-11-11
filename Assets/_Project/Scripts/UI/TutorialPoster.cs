@@ -18,8 +18,43 @@ namespace Heartbeat.UI
         public Vector3 InteractionPoint => transform.position;
         public bool CanInteract(Interaction.Interactor who) => text != null && isActiveAndEnabled;
 
-        /// <summary>Read up close like any document: the world stops (D-159).</summary>
-        public void Interact(Interaction.Interactor who) => GameEvents.RaiseReadPoster(text.text, null);
+        /// <summary>Registry id: the text key and its actions, so the terminal can show it again with the current keys (C-36).</summary>
+        public string RecordId => textKey + "|" + actions;
+
+        /// <summary>Read up close like any document: the world stops (D-159). The first reading registers it in the arm terminal (C-36).</summary>
+        public void Interact(Interaction.Interactor who)
+        {
+            if (Services.TryGet(out Narrative.RegistryModel registry))
+            {
+                bool isNew = registry.Register(RecordId, Narrative.RecordKind.Poster);
+                HbLog.Info("Registry", isNew ? $"REGISTERED {RecordId}" : $"Already registered {RecordId}");
+                GameEvents.RaiseItemRegistered(RecordId, (int)Narrative.RecordKind.Poster, isNew);
+            }
+            GameEvents.RaiseReadPoster(text.text, null);
+        }
+
+        /// <summary>The poster's text from its registry id, with the keys of the current device.</summary>
+        public static string Render(string recordId, InputRouter router) => Headline(Text(recordId, router));
+
+        /// <summary>The poster's headline (its first line), the title of its entry in the terminal.</summary>
+        public static string TitleOf(string recordId, InputRouter router)
+        {
+            string s = Text(recordId, router);
+            int br = s.IndexOf('\n');
+            return br < 0 ? s : s.Substring(0, br);
+        }
+
+        private static string Text(string recordId, InputRouter router)
+        {
+            int bar = recordId.IndexOf('|');
+            return bar < 0 ? Loc.Get(recordId) : Loc.Get(recordId.Substring(0, bar), Keys(recordId.Substring(bar + 1), router));
+        }
+
+        private static object[] Keys(string actions, InputRouter router) => actions.Split(',').Select(a =>
+        {
+            var action = router?.Actions.asset.FindAction(a.Trim());
+            return (object)(action != null ? router.KeyFor(action) : "?");
+        }).ToArray();
 
         private void Awake()
         {
@@ -62,12 +97,7 @@ namespace Heartbeat.UI
         private void Refresh()
         {
             if (text == null) return;
-            var keys = actions.Split(',').Select(a =>
-            {
-                var action = router?.Actions.asset.FindAction(a.Trim());
-                return (object)(action != null ? router.KeyFor(action) : "?");
-            }).ToArray();
-            text.text = Headline(Loc.Get(textKey, keys));
+            text.text = Render(RecordId, router);
         }
 
         /// <summary>The first line is the headline, bold in deep Vitalis cyan (D-157), so a safety poster reads at a glance.

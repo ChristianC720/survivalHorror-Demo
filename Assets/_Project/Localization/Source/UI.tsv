@@ -39,6 +39,8 @@ UI.TERM.CAT_CONFISCATED	Confiscated objects	Objetos confiscados
 UI.TERM.CAT_FAULTS	Faults	Fallas
 UI.TERM.CAT_RULES	Rules	Reglas
 UI.TERM.CAT_RING	Ring	Anillo
+UI.TERM.CAT_POSTERS	Posters	Carteles
+UI.TERM.CAT_VOICE_NOTE	Subject's personal effects	Efectos personales del sujeto
 UI.ITEM.Ammo	Revolver rounds	Balas de revólver
 UI.ITEM.Heal	Stabilizer	Estabilizador
 UI.ITEM.Spike	Discharge spike	Punzón de descarga
