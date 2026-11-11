@@ -1596,6 +1596,19 @@ def elevator_f3(M):
         M.tube([(x, -.15, 2.46), (x + .05, -.2, 2.2), (x - .03, -.18, 1.95)], .02, "cable", sides=5)
 
 
+def elevator_f1(M):
+    """Maintenance lift of the floor 1 final room (C-21, C-37): the one that still works, so its floor lamp is lit amber."""
+    _elevator(M, "plate", "steel", .004)
+    M.bx((-.004, -.225, .02), (.004, -.16, 2.45), "dark")
+    M.hazard((0, -.301, 2.55), F, (2.3, .12), pitch=.2)
+    M.hazard((0, -.301, .05), F, (2.3, .1), pitch=.2)
+    M.bx((-1.15, -.227, 1.2), (1.15, -.222, 1.26), "yellow")
+    M.tube([(-1.15, -.33, 2.9), (1.15, -.33, 2.9)], .036, "rust", sides=6)
+    M.text((-.62, -.223, 1.75), F, .05, "ABTEILUNG B", PAPER * .6, wear=.4)
+    M.bx((-.14, -.335, 2.63), (.14, -.33, 2.79), "bulb")   # this floor's lamp: the lift is here
+    _call_panel(M, 1.27, 11)
+
+
 # ------------------------------------------------------------ pickups per GDD Objetos y Coleccionables
 
 def item_heal(M):
@@ -1710,6 +1723,7 @@ for name, tile, fn, folder in (
 _add("F1", "PROP_F1_CRT", 128, crt_f1)
 _add("F2", "PROP_F2_CRT", 192, crt_f2)
 _add("F3", "PROP_F3_CRTBank", 320, crt_bank)
+_add("F1", "CH_Elevator_F1", 320, elevator_f1)
 _add("F2", "CH_Elevator_F2", 320, elevator_f2)
 _add("F3", "CH_Elevator_F3", 320, elevator_f3)
 for name, tile, fn in (("CH_Item_Heal", 256, item_heal), ("CH_Item_Ammo", 96, item_ammo), ("CH_Item_Spike", 128, item_spike), ("CH_Item_KeyMandatory", 128, item_key_mandatory), ("CH_Item_KeyOptional", 128, item_key_optional)):
@@ -1735,6 +1749,61 @@ def audit(me):
     nonmanifold = sum(1 for e in bm.edges if len(e.link_faces) > 2)
     bm.free()
     return opened, degenerate, nonmanifold
+
+
+def _export(ob, folder, name):
+    os.makedirs(folder, exist_ok=True)
+    vl = bpy.context.view_layer
+    vl.update()
+    for o in bpy.context.scene.objects:
+        o.select_set(False)
+    ob.select_set(True)
+    vl.objects.active = ob
+    with bpy.context.temp_override(window=bpy.context.window_manager.windows[0]):
+        bpy.ops.export_scene.fbx(filepath=folder + rf"\{name}.fbx", use_selection=True, object_types={"MESH"}, apply_unit_scale=True, apply_scale_options="FBX_SCALE_ALL", axis_forward="-Z", axis_up="Y", bake_space_transform=True, bake_anim=False, mesh_smooth_type="FACE")
+
+
+def add_to_atlas(name):
+    """Builds one new model into the free space after its floor's existing atlas, leaving every other model and texel as it
+    is (C-37). A later full build() packs it with the rest. Reads and rewrites T_Env_<floor>.png and its emission map."""
+    d = CATALOG[name]
+    floor, tile = d["floor"], d["tile"]
+    x, y, row = 16, 0, 0
+    for n, j in sorted(((n, j) for n, j in CATALOG.items() if j["floor"] == floor and n != name), key=lambda j: -j[1]["tile"]):
+        if x + j["tile"] > ATLAS:
+            x, y, row = 0, y + row, 0
+        x += j["tile"]
+        row = max(row, j["tile"])
+    if x + tile > ATLAS:
+        x, y = 0, y + row
+    assert y + tile <= ATLAS, f"{floor} atlas full at {name}"
+    bpy.ops.wm.read_homefile(use_empty=True)
+    col = bpy.data.collections.new(floor)
+    bpy.context.scene.collection.children.link(col)
+    tex_dir = ENV + r"\Textures"
+    maps = {}
+    for key, file in (("albedo", f"T_Env_{floor}.png"), ("emission", f"T_Env_{floor}_Emission.png")):
+        im = bpy.data.images.load(tex_dir + "\\" + file)
+        a = np.empty(im.size[0] * im.size[1] * 4, dtype=np.float32)
+        im.pixels.foreach_get(a)
+        maps[key] = a.reshape(im.size[1], im.size[0], 4)
+        bpy.data.images.remove(im)
+    M = Env(name, floor, d["post"])
+    d["fn"](M)
+    ob, tris = M.finish(col)
+    B, c, e = M.paint(ob.data, tile, (x, y))
+    maps["albedo"][B.py, B.px, :3] = c
+    maps["emission"][B.py, B.px, :3] = e
+    uv = ob.data.uv_layers.active.data
+    for i, p in enumerate(ob.data.polygons):
+        if M.parts[i] == "hidden":
+            for li in p.loop_indices:
+                uv[li].uv = (.001, .001)
+    _export(ob, MODELS + "\\" + d["folder"] if d["folder"] else ENV + "\\" + floor, name)
+    hp.save(tex_dir + rf"\T_Env_{floor}.png", "T_Env_" + floor, maps["albedo"])
+    hp.save(tex_dir + rf"\T_Env_{floor}_Emission.png", "T_Env_" + floor + "_Emission", maps["emission"])
+    opened, degenerate, nonman = audit(ob.data)
+    return dict(name=name, tile=(x, y, tile), tris=tris, open=opened, degenerate=degenerate)
 
 
 def build(floors=("F1", "F2", "F3", "Shared")):
