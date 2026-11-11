@@ -352,6 +352,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 47545416198269878, guid: 55e1605f5b3a36146ba4063be6951b36, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 260904035693813323, guid: 55e1605f5b3a36146ba4063be6951b36, type: 3}
       propertyPath: m_Name
       value: ROOM_F1_Open_B

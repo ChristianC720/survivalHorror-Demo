@@ -10,12 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 5215986906178804890}
   - component: {fileID: 2036651124637274677}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PH_F2_MonsterCapsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 22
   m_IsActive: 1
 --- !u!4 &5215986906178804890
 Transform:
@@ -113,6 +113,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: de8110f22ee8e1542aeb06f6d4338ce8, type: 3}
       propertyPath: m_Name
       value: Model
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de8110f22ee8e1542aeb06f6d4338ce8, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de8110f22ee8e1542aeb06f6d4338ce8, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 22
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
