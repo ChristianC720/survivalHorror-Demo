@@ -1768,6 +1768,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5042329503124512519, guid: dd58c0fa5f4150445b9d6098ce7dbfb7, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 250d73245044b1d4ba0dca2c6ffcd146, type: 2}
     - target: {fileID: 5866666021909216657, guid: dd58c0fa5f4150445b9d6098ce7dbfb7, type: 3}
       propertyPath: m_Controller
       value: 
@@ -2915,6 +2919,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lukas_Capsule
       objectReference: {fileID: 0}
+    - target: {fileID: 5042329503124512519, guid: dd58c0fa5f4150445b9d6098ce7dbfb7, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 250d73245044b1d4ba0dca2c6ffcd146, type: 2}
     - target: {fileID: 5866666021909216657, guid: dd58c0fa5f4150445b9d6098ce7dbfb7, type: 3}
       propertyPath: m_Controller
       value: 
@@ -3647,6 +3655,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5042329503124512519, guid: dd58c0fa5f4150445b9d6098ce7dbfb7, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 250d73245044b1d4ba0dca2c6ffcd146, type: 2}
     - target: {fileID: 5866666021909216657, guid: dd58c0fa5f4150445b9d6098ce7dbfb7, type: 3}
       propertyPath: m_Controller
       value: 
