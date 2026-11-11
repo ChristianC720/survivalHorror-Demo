@@ -185,9 +185,11 @@ namespace Heartbeat.Generation
             BarSpawnRoom(spawnRoom);
             if (!startInFinalRoom && cfg.startingAmmo > 0)
             {
-                // Starting supplies: a few rounds outside the budget, always next to the revolver (user 2026-11-09), on the
-                // capsule tray or on the tutorial guard; next to where Lukas wakes only if no revolver lies on this floor.
-                var gun = built.SelectMany(r => r.GetComponentsInChildren<Interaction.RevolverPickup>(false)).FirstOrDefault();
+                // Starting supplies: a few rounds outside the budget on the capsule's personal effects tray, beside the
+                // revolver's place even when the revolver is still on the tutorial guard (C-40); elsewhere next to the
+                // revolver, or next to where Lukas wakes if no revolver lies on this floor.
+                var gun = built[Layout.EntryRoom].GetComponentsInChildren<Interaction.RevolverPickup>(true).FirstOrDefault(g => g.Where == Interaction.RevolverPickup.Spot.CapsuleTray)
+                          ?? built.SelectMany(r => r.GetComponentsInChildren<Interaction.RevolverPickup>(false)).FirstOrDefault();
                 var t = gun != null ? gun.transform : Player.transform;
                 DropItem(ItemKind.Ammo, cfg.startingAmmo, gun != null ? t.position + t.right * 0.3f : t.position + t.forward * 1.2f);
             }
