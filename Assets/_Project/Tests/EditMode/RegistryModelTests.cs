@@ -47,5 +47,12 @@ namespace Heartbeat.Tests
             var save = UnityEngine.JsonUtility.FromJson<Heartbeat.Save.RecordEntry>("{\"id\":\"RING\",\"kind\":6}");
             Assert.AreEqual(RecordKind.Ring, save.kind);
         }
+
+        [Test]
+        public void OldSave_VoiceNoteAsConfiscated_LoadsAsVoiceNote()   // C-39
+        {
+            Assert.AreEqual(RecordKind.VoiceNote, Cycle.CycleController.SavedKind(Cycle.CycleController.VoiceNoteId, RecordKind.Confiscated));
+            Assert.AreEqual(RecordKind.Confiscated, Cycle.CycleController.SavedKind("CONF.WATCH", RecordKind.Confiscated));
+        }
     }
 }

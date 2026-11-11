@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DOC_VOICE_NOTE_EMILIA
   m_EditorClassIdentifier: Heartbeat.Runtime::Heartbeat.Narrative.DocumentDefinition
   id: DOC.VOICE_NOTE_EMILIA
-  kind: 0
+  kind: 8
   floor: 0
   titleKey: DOC.VOICE_NOTE_EMILIA.TITLE
   bodyKey: DOC.VOICE_NOTE_EMILIA.BODY
