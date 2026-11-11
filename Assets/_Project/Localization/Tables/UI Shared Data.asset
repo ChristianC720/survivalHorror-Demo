@@ -863,6 +863,10 @@ MonoBehaviour:
     m_Key: UI.TERM.CAT_VOICE_NOTE
     m_Metadata:
       m_Items: []
+  - m_Id: 3453598787829760
+    m_Key: UI.TRAY.LABEL
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

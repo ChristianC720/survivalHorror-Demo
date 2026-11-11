@@ -866,6 +866,10 @@ MonoBehaviour:
     m_Localized: Efectos personales del sujeto
     m_Metadata:
       m_Items: []
+  - m_Id: 3453598787829760
+    m_Localized: "Efectos personales R-H-{0}: 1 rev\xF3lver (descargado), 6 balas"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
