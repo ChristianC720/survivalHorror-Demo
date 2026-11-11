@@ -1,0 +1,104 @@
+IDENTITY DISSOLUTION - REPORTE DE INCIDENCIA
+
+ID: BUG-005
+
+TITULO
+Dialogo incomprensible por anomalias de audio
+durante una cinematica.
+
+CATEGORIA
+Audio / Cinematicas / Dialogos
+
+SEVERIDAD PROVISIONAL
+Mayor
+
+PRIORIDAD PROPUESTA
+P2 - Alta
+
+ESTADO
+Reproducido segun el evaluador.
+Pendiente de validacion tecnica.
+
+PRUEBA RELACIONADA
+QA-MAN-006
+
+ENTORNO
+Sistema operativo: Debian GNU/Linux 13
+Unity: 6000.6.8f1
+Proyecto: Copia de trabajo QA
+
+DESCRIPCION
+Durante una cinematica en la que habla un
+personaje, el audio presenta sonidos anomalos
+que dificultan comprender el dialogo.
+
+Los subtitulos se muestran correctamente
+y son legibles.
+
+PASOS PARA REPRODUCIR
+1. Iniciar una partida.
+2. Acceder a la cinematica afectada.
+3. Reproducir la escena donde habla el personaje.
+4. Escuchar la voz y los sonidos de fondo.
+5. Comprobar si el dialogo resulta comprensible.
+6. Verificar el funcionamiento de los subtitulos.
+
+NOTA
+La cinematica exacta y el personaje estan
+pendientes de identificacion.
+
+RESULTADO ESPERADO
+El dialogo debe escucharse claramente y
+permitir comprender la informacion narrativa.
+
+La musica y los efectos deben mantener
+un equilibrio que permita escuchar la voz.
+
+RESULTADO OBSERVADO
+El audio de la cinematica contiene sonidos
+anomalos e incomprensibles.
+
+Los subtitulos funcionan correctamente.
+
+REPRODUCIBILIDAD
+Todos los intentos reportados.
+Numero exacto de repeticiones no documentado.
+
+IMPACTO
+- Dificulta comprender el dialogo mediante audio.
+- Puede afectar la inmersion narrativa.
+- Puede reducir la calidad percibida de la cinematica.
+- Obliga a depender de los subtitulos para
+  comprender la informacion presentada.
+
+CAUSA RAIZ
+No determinada.
+
+No se ha demostrado que el problema provenga
+de archivos de audio, configuraciones de mezcla,
+componentes AudioSource, codecs o scripts.
+
+EVIDENCIA DISPONIBLE
+Observacion manual de QA-MAN-006.
+
+EVIDENCIA PENDIENTE
+Grabacion audiovisual de la cinematica afectada.
+
+ACCIONES RECOMENDADAS
+1. Identificar la cinematica y el personaje.
+2. Registrar una grabacion con audio.
+3. Comprobar si el fallo aparece al repetir la escena.
+4. Comparar la reproduccion con y sin musica,
+   si el juego permite ajustar estos volumenes.
+5. Verificar el audio en otro dispositivo de salida.
+6. Solicitar revision tecnica al equipo de desarrollo.
+7. Ejecutar una prueba de regresion despues
+   de una eventual correccion.
+
+CONCLUSION
+Se registra BUG-005 como incidencia funcional
+de audio reproducida segun el evaluador.
+
+Los subtitulos funcionan correctamente.
+
+La causa tecnica permanece sin determinar.

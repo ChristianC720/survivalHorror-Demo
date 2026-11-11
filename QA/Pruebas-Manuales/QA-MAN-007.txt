@@ -1,0 +1,60 @@
+IDENTITY DISSOLUTION - REPORTE DE PRUEBA MANUAL
+
+ID: QA-MAN-007
+Nombre: Estabilidad visual e iluminacion del escenario
+Tipo: Prueba funcional manual
+Entorno: Debian GNU/Linux 13
+Unity: 6000.6.8f1
+Proyecto: Copia aislada de trabajo QA
+
+OBJETIVO
+Comprobar la estabilidad de la imagen, la iluminacion
+y la perspectiva de la camara durante la exploracion.
+
+RESULTADO ESPERADO
+La iluminacion y la perspectiva deben responder
+de acuerdo con el comportamiento previsto por el
+diseno del videojuego.
+
+PROCEDIMIENTO REPORTADO
+1. Iniciar una partida.
+2. Mantener al personaje inmovil aproximadamente
+   dos minutos.
+3. Comenzar a avanzar.
+4. Apuntar y presionar la tecla E simultaneamente.
+5. Observar los cambios visuales del escenario.
+
+RESULTADO OBSERVADO
+Al realizar la combinacion de acciones descrita,
+la perspectiva de la camara cambio y el escenario
+adquirio una tonalidad verde inusual.
+
+El evaluador considero que la apariencia visual
+resultante era anomala.
+
+FRECUENCIA
+Una vez.
+
+RECUPERACION
+No documentada.
+
+RESULTADO GENERAL
+ANOMALIA VISUAL OBSERVADA.
+PENDIENTE DE REPRODUCCION CONTROLADA.
+
+INCIDENCIA RELACIONADA
+BUG-006
+
+LIMITACIONES
+- No se identifico la escena exacta.
+- No se documento el objeto o direccion de apuntado.
+- No se confirmo la funcion asignada a la tecla E.
+- No se comprobo si el efecto es intencional.
+- No se determino la duracion del efecto.
+- No se documento la recuperacion de la camara.
+- No se identifico la causa tecnica.
+- No se ha vinculado evidencia audiovisual.
+
+ESTADO
+Prueba completada con una observacion anomala.
+Requiere investigacion adicional.

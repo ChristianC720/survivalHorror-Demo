@@ -1,0 +1,106 @@
+IDENTITY DISSOLUTION - REPORTE DE INCIDENCIA
+
+ID: BUG-003
+
+TITULO
+Perdida de perspectiva de camara y visualizacion
+de areas ocultas del escenario.
+
+CATEGORIA
+Camara / Renderizado / Jugabilidad
+
+SEVERIDAD PROVISIONAL
+Mayor
+
+PRIORIDAD PROPUESTA
+P2 - Alta
+
+ESTADO
+Reproducido segun el evaluador.
+Pendiente de validacion tecnica y evidencia audiovisual.
+
+PRUEBA RELACIONADA
+QA-MAN-004
+
+ENTORNO
+Sistema operativo: Debian GNU/Linux 13
+Unity: 6000.6.8f1
+Proyecto: Copia de trabajo QA
+
+DESCRIPCION DEL PROBLEMA
+Al posicionar al personaje en una esquina del escenario,
+la camara pierde perspectiva y permite visualizar areas
+que deberian permanecer ocultas detras de una puerta
+cerrada.
+
+PASOS PARA REPRODUCIR
+1. Iniciar una partida.
+2. Desplazar al personaje hasta una esquina del escenario
+   donde se presente el comportamiento.
+3. Posicionarse cerca de la esquina.
+4. Observar la perspectiva de la camara.
+5. Comprobar si aparecen areas situadas detras de una
+   puerta cerrada.
+
+NOTA
+La escena y la esquina exactas estan pendientes de
+documentarse para que otro evaluador pueda repetir
+la prueba de forma independiente.
+
+RESULTADO ESPERADO
+La camara debe mantener una perspectiva coherente
+con las restricciones visuales del escenario y no
+mostrar areas ocultas de manera inesperada.
+
+RESULTADO OBSERVADO
+La camara pierde perspectiva y muestra areas del
+escenario que no deberian ser visibles con la puerta
+cerrada.
+
+RECUPERACION
+El evaluador reporto que la camara no recupero su
+comportamiento normal durante la comprobacion.
+
+FRECUENCIA
+Todos los intentos reportados.
+Numero exacto de repeticiones no documentado.
+
+IMPACTO
+- Puede afectar la inmersion del jugador.
+- Puede revelar anticipadamente areas del escenario.
+- Puede dificultar la orientacion visual durante
+  la exploracion.
+
+CAUSA RAIZ
+No determinada.
+
+No se ha demostrado que el problema sea causado por
+Cinemachine, colliders, scripts de camara, renderizado
+o configuraciones especificas de Unity.
+
+EVIDENCIA DISPONIBLE
+Observacion manual reportada durante QA-MAN-004.
+
+EVIDENCIA PENDIENTE
+Video o capturas que muestren:
+- La posicion del personaje.
+- La esquina donde ocurre el fallo.
+- La puerta cerrada.
+- La perdida de perspectiva.
+- Las areas visibles inesperadamente.
+
+ACCIONES RECOMENDADAS
+1. Documentar la escena y ubicacion exactas.
+2. Asociar evidencia audiovisual.
+3. Repetir la prueba en la misma ubicacion.
+4. Verificar si el comportamiento afecta otras esquinas.
+5. Solicitar revision tecnica al equipo de desarrollo.
+6. Ejecutar una prueba de regresion despues de una
+   eventual correccion.
+
+CONCLUSION
+Se registro una incidencia de camara reproducida
+segun el evaluador.
+
+El problema requiere validacion tecnica y no debe
+atribuirse a una causa especifica sin evidencia.

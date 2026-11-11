@@ -1,0 +1,51 @@
+IDENTITY DISSOLUTION - REPORTE DE INCIDENCIA
+
+ID: BUG-001
+Titulo: Fallos de entrada con teclado y mando Xbox simultaneos
+
+Categoria: Controles / Entrada de usuario
+Severidad provisional: Mayor
+Prioridad provisional: P2 - Alta
+Estado: Observada, pendiente de reproduccion controlada
+
+ENTORNO
+Sistema operativo: Debian GNU/Linux 13
+Unity: 6000.6.8f1
+Proyecto: Copia de trabajo QA
+Teclado: Conexion por cable
+Mando: Xbox por Bluetooth
+
+CONDICION OBSERVADA
+Ambos dispositivos conectados simultaneamente.
+
+RESULTADO ESPERADO
+Los controles deben responder conforme al comportamiento
+previsto por el diseño del juego, sin perdidas inesperadas
+de entrada ni retrasos anormales.
+
+RESULTADO OBSERVADO
+Algunas teclas dejaron de funcionar.
+Determinados botones del mando Xbox respondieron con retraso
+o dejaron de responder.
+
+COMPARACION
+Teclado y raton por separado: Correcto.
+Mando Xbox por separado: Correcto.
+Ambos conectados: Fallo observado.
+
+EVIDENCIA
+Testimonio del evaluador durante QA-MAN-002.
+Captura o video especifico: Pendiente de vincular.
+
+REPRODUCIBILIDAD
+Pendiente de determinar mediante repeticiones controladas.
+
+CAUSA RAIZ
+No determinada.
+
+ACCIONES PENDIENTES
+- Repetir la prueba en la misma escena.
+- Identificar teclas y botones afectados.
+- Registrar la secuencia de alternancia.
+- Verificar si se recupera el control.
+- Conservar evidencia audiovisual si vuelve a ocurrir.

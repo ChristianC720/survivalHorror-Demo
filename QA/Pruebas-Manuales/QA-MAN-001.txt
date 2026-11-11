@@ -1,0 +1,43 @@
+IDENTITY DISSOLUTION - REPORTE DE PRUEBA MANUAL
+
+ID: QA-MAN-001
+Nombre: Interaccion y reinicio de partida
+Tipo: Prueba funcional manual
+Entorno: Debian GNU/Linux 13
+Unity: 6000.6.8f1
+Proyecto: Copia de trabajo QA
+
+OBJETIVO
+Comprobar que el jugador conserva o recupera el control
+despues de interactuar y reiniciar la partida.
+
+RESULTADO OBSERVADO
+El evaluador no observo bloqueos durante la prueba.
+Reporto funcionamiento correcto en todos los intentos,
+sin especificar el numero exacto de repeticiones.
+
+DISPOSITIVOS UTILIZADOS
+- Teclado conectado por cable.
+- Mando Xbox conectado por Bluetooth.
+- Se probaron primero los controles con teclado y despues
+  con mando Xbox.
+
+OBSERVACION ADICIONAL
+El evaluador reporto fallos al mantener ambos dispositivos
+conectados simultaneamente.
+
+Esta observacion no confirma un defecto de interaccion o
+reinicio. Se investigara por separado como QA-MAN-002.
+
+RESULTADO
+APROBADA SEGUN OBSERVACION DEL EVALUADOR.
+
+LIMITACIONES
+No se documentaron la escena exacta, los objetos utilizados
+ni el numero de repeticiones.
+
+No se puede afirmar que todas las interacciones del juego
+esten libres de defectos.
+
+EVIDENCIA
+Registro manual del evaluador.

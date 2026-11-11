@@ -1,0 +1,87 @@
+IDENTITY DISSOLUTION - REPORTE DE INCIDENCIA
+
+ID: BUG-004
+
+TITULO
+Reproduccion anomala de sonido al mantener
+presionado el clic izquierdo del raton.
+
+CATEGORIA
+Audio / Interaccion / Jugabilidad
+
+SEVERIDAD PROVISIONAL
+Menor
+
+PRIORIDAD PROPUESTA
+P2 - Media
+
+ESTADO
+Reproducido segun el evaluador.
+Pendiente de validacion tecnica.
+
+PRUEBA RELACIONADA
+QA-MAN-005
+
+ENTORNO
+Sistema operativo: Debian GNU/Linux 13
+Unity: 6000.6.8f1
+Proyecto: Copia de trabajo QA
+Dispositivo: Raton
+
+DESCRIPCION
+Al mantener presionado el clic izquierdo del raton,
+se produce un sonido anomalo.
+
+El evaluador reporto que el comportamiento ocurre
+en cualquier escenario o situacion del juego.
+
+PASOS PARA REPRODUCIR
+1. Iniciar una partida.
+2. Mantener presionado el clic izquierdo.
+3. Escuchar el sonido generado.
+4. Repetir la accion en otras situaciones.
+
+RESULTADO ESPERADO
+El juego debe reproducir unicamente los sonidos
+correspondientes a las acciones previstas por el diseno.
+
+RESULTADO OBSERVADO
+Se produce un sonido anomalo asociado a mantener
+presionado el clic izquierdo.
+
+Se reporto repeticion o superposicion inesperada.
+
+REPRODUCIBILIDAD
+Todos los intentos reportados.
+Numero exacto de repeticiones no documentado.
+
+IMPACTO
+- Puede afectar la experiencia auditiva del jugador.
+- Puede interferir con la ambientacion de terror.
+- Puede dificultar la identificacion de sonidos relevantes.
+
+CAUSA RAIZ
+No determinada.
+
+No se ha demostrado que el problema provenga
+del sistema de entrada, AudioSource, eventos
+de interaccion o scripts especificos.
+
+EVIDENCIA
+Observacion manual de QA-MAN-005.
+Grabacion de audio o video pendiente de vincular.
+
+ACCIONES RECOMENDADAS
+1. Registrar una grabacion con audio del juego.
+2. Comprobar el comportamiento con pulsaciones cortas.
+3. Comparar con una pulsacion mantenida.
+4. Comprobar si el sonido se detiene al soltar el boton.
+5. Identificar la accion asignada al clic izquierdo.
+6. Solicitar revision tecnica al equipo de desarrollo.
+7. Ejecutar una prueba de regresion tras una correccion.
+
+CONCLUSION
+Se registra BUG-004 como incidencia de audio
+reproducida segun el evaluador.
+
+La causa tecnica permanece sin determinar.

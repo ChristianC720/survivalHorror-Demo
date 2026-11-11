@@ -1,0 +1,47 @@
+IDENTITY DISSOLUTION - PRUEBA MANUAL
+
+ID: QA-MAN-002
+Nombre: Compatibilidad entre teclado y mando Xbox
+Tipo: Prueba funcional manual
+Entorno: Debian GNU/Linux 13
+Unity: 6000.6.8f1
+Proyecto: Copia de trabajo QA
+
+OBJETIVO
+Evaluar el comportamiento de los controles cuando se utiliza
+teclado y raton junto con un mando Xbox conectado por Bluetooth.
+
+RESULTADOS
+
+1. Teclado y raton:
+   Funcionamiento correcto.
+
+2. Mando Xbox por Bluetooth:
+   Funcionamiento correcto.
+
+3. Ambos dispositivos conectados simultaneamente:
+   Se observaron fallos.
+
+COMPORTAMIENTO OBSERVADO
+Al conectar simultaneamente el teclado y el mando Xbox,
+algunas teclas dejaron de funcionar.
+
+Los botones del mando tambien presentaron fallos:
+respondian con retraso o dejaban de responder.
+
+RESULTADO GENERAL
+FALLO OBSERVADO EN CONFIGURACION SIMULTANEA.
+
+INCIDENCIA RELACIONADA
+BUG-001
+
+LIMITACIONES
+No se identificaron las teclas ni los botones especificos.
+No se midio el tiempo de respuesta.
+No se documento el numero de repeticiones.
+No se ha confirmado la causa tecnica.
+No se ha verificado el comportamiento en otras plataformas.
+
+ESTADO
+Prueba completada con incidencia observada.
+Pendiente de reproduccion controlada.

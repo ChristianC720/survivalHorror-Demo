@@ -1,0 +1,52 @@
+IDENTITY DISSOLUTION - REPORTE DE PRUEBA MANUAL
+
+ID: QA-MAN-005
+Nombre: Audio durante interacciones y uso del clic izquierdo
+Tipo: Prueba funcional manual
+Entorno: Debian GNU/Linux 13
+Unity: 6000.6.8f1
+Proyecto: Copia aislada de trabajo QA
+
+OBJETIVO
+Evaluar la reproduccion de sonidos durante las interacciones
+del jugador e identificar repeticiones o superposiciones
+inesperadas.
+
+RESULTADO ESPERADO
+Las acciones del jugador deben producir los sonidos previstos
+por el diseno, sin repeticiones o superposiciones anomalas.
+
+PROCEDIMIENTO REPORTADO
+1. Iniciar una partida.
+2. Mantener presionado el clic izquierdo del raton.
+3. Escuchar el sonido producido.
+4. Repetir la comprobacion en diferentes situaciones.
+
+RESULTADO OBSERVADO
+Al mantener presionado el clic izquierdo se produce
+un sonido anomalo.
+El evaluador reporto repeticion o superposicion inesperada
+y que el comportamiento ocurre en cualquier escenario
+o situacion del juego.
+
+FRECUENCIA
+Todos los intentos reportados.
+Numero exacto de repeticiones no documentado.
+
+RESULTADO GENERAL
+FALLO OBSERVADO Y REPRODUCIDO SEGUN EL EVALUADOR.
+
+INCIDENCIA RELACIONADA
+BUG-004
+
+LIMITACIONES
+- No se identifico el evento de audio responsable.
+- No se documento la duracion del sonido.
+- No se midio la frecuencia de reproduccion.
+- No se determino si ocurre con otros botones.
+- No se verifico la causa tecnica.
+- Evidencia audiovisual pendiente de vincular.
+
+ESTADO
+Prueba completada con incidencia reproducida segun
+el reporte del evaluador.
