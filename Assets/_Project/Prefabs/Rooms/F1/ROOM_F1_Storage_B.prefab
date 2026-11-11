@@ -343,6 +343,68 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5778124250984499946, guid: ecdc1faa7c34346489b39997b7fec218, type: 3}
   m_PrefabInstance: {fileID: 2141930410689994296}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4176077397508679739
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1692439659453982933}
+    m_Modifications:
+    - target: {fileID: 745180412745725079, guid: a7fdacc9c08617c489555bb550ce888c, type: 3}
+      propertyPath: m_Name
+      value: Forklift
+      objectReference: {fileID: 0}
+    - target: {fileID: 7580865574864943351, guid: a7fdacc9c08617c489555bb550ce888c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7580865574864943351, guid: a7fdacc9c08617c489555bb550ce888c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7580865574864943351, guid: a7fdacc9c08617c489555bb550ce888c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7580865574864943351, guid: a7fdacc9c08617c489555bb550ce888c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7580865574864943351, guid: a7fdacc9c08617c489555bb550ce888c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7580865574864943351, guid: a7fdacc9c08617c489555bb550ce888c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7580865574864943351, guid: a7fdacc9c08617c489555bb550ce888c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7580865574864943351, guid: a7fdacc9c08617c489555bb550ce888c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7580865574864943351, guid: a7fdacc9c08617c489555bb550ce888c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7580865574864943351, guid: a7fdacc9c08617c489555bb550ce888c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a7fdacc9c08617c489555bb550ce888c, type: 3}
+--- !u!4 &5818876493564285132 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7580865574864943351, guid: a7fdacc9c08617c489555bb550ce888c, type: 3}
+  m_PrefabInstance: {fileID: 4176077397508679739}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4861169881117612606
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -775,6 +837,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: -8996375800105099093, guid: 44fc3ce5b2f39094396164f2cca6d805, type: 3}
+    - target: {fileID: 3676447234437511117, guid: 2dc5ac248595f8b48a99cb5fb7d85656, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3680541190697900793, guid: 2dc5ac248595f8b48a99cb5fb7d85656, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -901,6 +967,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 9037145185839598768, guid: 2dc5ac248595f8b48a99cb5fb7d85656, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2918984588451028698}
+    - targetCorrespondingSourceObject: {fileID: 9037145185839598768, guid: 2dc5ac248595f8b48a99cb5fb7d85656, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5818876493564285132}
     - targetCorrespondingSourceObject: {fileID: 5807471407114703270, guid: 2dc5ac248595f8b48a99cb5fb7d85656, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6521070207987798517}

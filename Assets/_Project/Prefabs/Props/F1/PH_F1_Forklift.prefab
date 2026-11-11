@@ -10,12 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 7580865574864943351}
   - component: {fileID: 1037117490589033611}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PH_F1_Forklift
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 22
   m_IsActive: 1
 --- !u!4 &7580865574864943351
 Transform:
@@ -109,6 +109,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d3b536b3eedad094b9378fa00b03f620, type: 3}
       propertyPath: m_Name
       value: Model
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d3b536b3eedad094b9378fa00b03f620, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d3b536b3eedad094b9378fa00b03f620, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 22
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

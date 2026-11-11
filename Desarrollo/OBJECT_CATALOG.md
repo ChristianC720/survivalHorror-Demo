@@ -14,7 +14,7 @@ Legend:
 | `PROP_Shared_Speaker` | PROP | 0.4 × 0.5 × 0.3 | – | all (wall, y 2.6) | PA horn. Also the audio emitter of The Mother's lines |
 | `PROP_Shared_CableBundle` | PROP | 2.0 × 0.15 × 0.15 | – | Cor, Ver | Runs along walls/ceiling |
 | `PROP_Shared_Pipe_2m` | PROP | 2.0 × 0.3 × 0.3 | – | Cor, Ver | Straight; plus `_Elbow` |
-| `PH_Shared_Corpse` | PH | 0.6 × 0.3 × 1.8 | – | Sto, Opn | Dead assimilated, clothed, no gore (D-85). Static décor, never a real enemy corpse |
+| `PH_Shared_Corpse` | PH | 0.6 × 0.3 × 1.8 | – | Sto, Opn | Static décor, never a real enemy corpse. Since C-41 (user 2026-11-10) it uses the team's gore `CH_Corpse_Headless`; `PH_Shared_Corpse_Subject` uses `CH_Skeleton_Bloody` |
 | `PROP_Shared_TrashPile` | PROP | 1.0 × 0.4 × 1.0 | – | Cor, Sto | Low, does not block sight |
 | `PROP_Shared_MetalCrate` | PROP | 1.0 × 1.0 × 1.0 | ✔ | Sto, Opn | Stackable (0.5 m variant too) |
 | `PROP_Shared_VitalisPoster` | PROP | 0.8 × 1.1 × 0.02 | – | all, TUT | Quad with text; tutorial posters show the bound key |
