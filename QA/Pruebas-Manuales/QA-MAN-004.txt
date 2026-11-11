@@ -1,0 +1,54 @@
+IDENTITY DISSOLUTION - REPORTE DE PRUEBA MANUAL
+
+ID: QA-MAN-004
+Nombre: Comportamiento de camara y obstaculos
+Tipo: Prueba funcional manual
+Entorno: Debian GNU/Linux 13
+Version de Unity: 6000.6.8f1
+Proyecto: Copia aislada de trabajo QA
+
+OBJETIVO
+Comprobar el comportamiento de la camara al posicionar al
+personaje cerca de paredes, esquinas y obstaculos del escenario.
+
+RESULTADO ESPERADO
+La camara debe mantener una perspectiva coherente con el
+escenario y evitar mostrar areas que deberian permanecer
+ocultas detras de paredes o puertas cerradas, salvo que
+el diseno del juego permita expresamente esa visualizacion.
+
+PROCEDIMIENTO REPORTADO
+1. Iniciar una partida.
+2. Posicionar al personaje en una esquina del escenario.
+3. Observar el comportamiento de la camara y la visibilidad
+   de las areas situadas detras de una puerta cerrada.
+
+RESULTADO OBSERVADO
+Al posicionarse en una esquina, la camara pierde perspectiva
+y permite visualizar otras areas del escenario que no
+deberian verse con la puerta cerrada.
+
+RECUPERACION DE LA CAMARA
+El evaluador reporto que la camara no recupero su
+comportamiento normal durante la comprobacion.
+
+REPRODUCIBILIDAD
+El comportamiento ocurrio en todos los intentos reportados.
+No se especifico el numero exacto de repeticiones.
+
+RESULTADO GENERAL
+FALLO OBSERVADO Y REPRODUCIDO SEGUN EL EVALUADOR.
+
+INCIDENCIA RELACIONADA
+BUG-003
+
+LIMITACIONES
+- No se documento la escena exacta ni la esquina utilizada.
+- No se registro el numero exacto de repeticiones.
+- No se comprobo si el jugador puede atravesar la pared.
+- No se identifico la causa tecnica del fallo.
+- La evidencia audiovisual especifica esta pendiente de vincular.
+
+ESTADO
+Prueba completada con incidencia reproducida segun
+el reporte del evaluador.

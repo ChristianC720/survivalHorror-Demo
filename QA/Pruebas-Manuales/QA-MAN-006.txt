@@ -1,0 +1,66 @@
+IDENTITY DISSOLUTION - REPORTE DE PRUEBA MANUAL
+
+ID: QA-MAN-006
+Nombre: Claridad de dialogos y voces
+Tipo: Prueba funcional manual
+Entorno: Debian GNU/Linux 13
+Unity: 6000.6.8f1
+Proyecto: Copia aislada de trabajo QA
+
+OBJETIVO
+Comprobar si las voces de las cinematicas son
+comprensibles y si los subtitulos permiten seguir
+correctamente los dialogos.
+
+RESULTADO ESPERADO
+Los dialogos deben escucharse con claridad.
+La musica y los efectos no deben impedir comprender
+las voces.
+Los subtitulos deben ser legibles y corresponder
+con el dialogo presentado.
+
+PROCEDIMIENTO REPORTADO
+1. Iniciar una partida.
+2. Reproducir una cinematica donde habla un personaje.
+3. Escuchar el dialogo y los sonidos de la escena.
+4. Comprobar la claridad de la voz.
+5. Verificar la legibilidad de los subtitulos.
+6. Repetir la comprobacion.
+
+RESULTADO OBSERVADO
+Durante una cinematica donde habla un personaje,
+se escuchan sonidos anomalos e incomprensibles.
+
+El evaluador reporto problemas en la claridad
+del dialogo y en la mezcla con musica y efectos.
+
+Los subtitulos se presentan correctamente y
+son legibles.
+
+FRECUENCIA
+El comportamiento ocurrio en todos los intentos
+reportados.
+
+El numero exacto de repeticiones no fue documentado.
+
+RESULTADO GENERAL
+FALLO OBSERVADO EN EL AUDIO DE LA CINEMATICA.
+
+COMPONENTES CORRECTOS
+Subtitulos: Correctos y legibles.
+
+INCIDENCIA RELACIONADA
+BUG-005
+
+LIMITACIONES
+- No se identifico la cinematica exacta.
+- No se identifico el personaje que habla.
+- No se midieron los niveles de volumen.
+- No se determino si la musica enmascara la voz.
+- No se comprobaron todas las cinematicas.
+- No se identifico la causa tecnica.
+- La evidencia audiovisual esta pendiente de vincular.
+
+ESTADO
+Prueba completada con incidencia reproducida
+segun el reporte del evaluador.

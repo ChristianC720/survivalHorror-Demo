@@ -1,0 +1,76 @@
+IDENTITY DISSOLUTION - REPORTE DE PRUEBA MANUAL
+
+ID: QA-MAN-008
+Nombre: Reproduccion controlada de anomalia visual
+Tipo: Prueba funcional manual
+Entorno: Debian GNU/Linux 13
+Unity: 6000.6.8f1
+Proyecto: Copia aislada de trabajo QA
+
+OBJETIVO
+Evaluar la reproducibilidad de la anomalia visual
+registrada previamente como BUG-006.
+
+ANTECEDENTES
+Durante QA-MAN-007 se observo un cambio inesperado
+de perspectiva de camara y tonalidad verde del escenario.
+
+PROCEDIMIENTO PROPUESTO
+1. Iniciar una partida.
+2. Permanecer inmovil aproximadamente dos minutos.
+3. Avanzar, apuntar y presionar E simultaneamente.
+4. Repetir la secuencia tres veces.
+5. Realizar pruebas de comparacion omitiendo alguna
+   de las acciones combinadas.
+6. Observar la recuperacion de la camara.
+
+RESULTADOS REPORTADOS
+Intentos con anomalia: 1
+Total de intentos: 3
+Intentos sin anomalia: 2
+
+Pruebas de comparacion:
+No se observo la anomalia.
+
+Recuperacion de camara:
+No determinada.
+
+OBSERVACIONES
+El evaluador reporto que la anomalia desaparecio
+al repetir la accion.
+
+El comportamiento se presento en uno de los
+tres intentos.
+
+ANALISIS
+La anomalia presenta reproducibilidad parcial.
+
+La proporcion observada fue de 1/3, equivalente
+al 33.3 por ciento de esta serie de pruebas.
+
+Este resultado no permite estimar la frecuencia
+real del problema.
+
+No se ha demostrado que la combinacion de
+acciones sea la causa del comportamiento.
+
+RESULTADO GENERAL
+ANOMALIA REPRODUCIDA DE FORMA INTERMITENTE.
+
+INCIDENCIA RELACIONADA
+BUG-006
+
+LIMITACIONES
+- Solo se documentaron tres intentos.
+- No se identifico la escena exacta.
+- No se especificaron las acciones individuales
+  de cada prueba de comparacion.
+- No se documento la duracion de la anomalia.
+- No se confirmo la recuperacion de la camara.
+- No se vinculo evidencia audiovisual.
+- No se identifico la causa tecnica.
+
+ESTADO
+Prueba completada.
+Incidencia reproducida parcialmente.
+Pendiente de validacion tecnica.

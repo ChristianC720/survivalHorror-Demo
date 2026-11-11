@@ -1,0 +1,87 @@
+IDENTITY DISSOLUTION - REPORTE DE PRUEBA MANUAL
+
+ID: QA-MAN-009
+Nombre: Estabilidad del movimiento de enemigos
+Tipo: Prueba funcional manual
+Entorno: Debian GNU/Linux 13
+Unity: 6000.6.8f1
+Proyecto: Copia aislada de trabajo QA
+
+OBJETIVO
+Comprobar la continuidad del movimiento de los
+enemigos, la estabilidad de su posicion y el
+comportamiento de sus animaciones.
+
+RESULTADO ESPERADO
+Los enemigos deben desplazarse de manera continua,
+sin desaparecer ni cambiar de posicion de forma
+inesperada.
+
+Sus animaciones deben corresponder con las acciones
+que realizan.
+
+PROCEDIMIENTO PROPUESTO
+1. Iniciar una partida.
+2. Localizar un enemigo.
+3. Observar su desplazamiento.
+4. Comprobar si presenta movimientos bruscos.
+5. Observar posibles desapariciones o cambios
+   inesperados de posicion.
+6. Evaluar las animaciones y sus transiciones.
+
+RESULTADOS REPORTADOS
+
+Movimiento de enemigos:
+CORRECTO.
+
+Desapariciones inesperadas:
+NO OBSERVADAS.
+
+Cambios inesperados de posicion:
+NO OBSERVADOS.
+
+Animaciones:
+PENDIENTES DE EVALUACION.
+
+Frecuencia de anomalías:
+NO DETERMINADA.
+No se observaron anomalías de movimiento.
+
+OBSERVACIONES DEL EVALUADOR
+"Los enemigos presentaron acciones correctas."
+
+RESULTADO GENERAL
+APROBACION PARCIAL.
+
+Los componentes de movimiento y estabilidad
+de posicion funcionaron correctamente durante
+la prueba reportada.
+
+La evaluacion de animaciones permanece pendiente.
+
+RELACION CON INCIDENCIAS ANTERIORES
+BUG-002:
+Penetracion parcial de paredes y daño a traves
+de obstaculos.
+
+QA-MAN-009 no reprodujo ni descarto
+especificamente el problema registrado
+en BUG-002.
+
+No se identificaron nuevas incidencias.
+
+LIMITACIONES
+- No se documento el enemigo especifico.
+- No se identifico la escena utilizada.
+- No se registro el numero de repeticiones.
+- No se evaluaron las transiciones de animacion.
+- No se realizaron comprobaciones especificas
+  de penetracion de paredes.
+- No se determino la cobertura de todos los
+  tipos de enemigos del videojuego.
+
+ESTADO
+Prueba completada parcialmente.
+Movimiento y posicion: Correctos.
+Animaciones: Pendientes.
+Nueva incidencia: No corresponde.

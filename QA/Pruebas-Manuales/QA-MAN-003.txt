@@ -1,0 +1,34 @@
+IDENTITY DISSOLUTION - REPORTE DE PRUEBA MANUAL
+
+ID: QA-MAN-003
+Nombre: Colisiones y comportamiento de enemigos
+Tipo: Prueba funcional manual
+Entorno de referencia: Debian GNU/Linux 13; Unity 6000.6.8f1
+Proyecto: Copia aislada de trabajo QA
+
+OBJETIVO
+Comprobar si los enemigos respetan los obstaculos del escenario y si el jugador recibe dano al encontrarse detras de una barrera.
+
+RESULTADO ESPERADO
+Los enemigos deben respetar los obstaculos solidos y el dano debe aplicarse conforme a las reglas de alcance y colision previstas por el diseno.
+
+RESULTADO OBSERVADO
+El evaluador reporta que un enemigo se acerco a una pared, atraveso parcialmente su geometria y el personaje perdio salud mientras estaba detras del obstaculo.
+
+COMPROBACIONES
+- Movimiento y colisiones del enemigo: fallo observado.
+- Dano a traves de obstaculos: observado.
+- Animaciones: correctas segun el evaluador.
+- Reproducibilidad: varias veces (numero exacto no documentado).
+
+RESULTADO GENERAL
+PRUEBA COMPLETADA CON INCIDENCIA OBSERVADA Y REPETIDA.
+
+INCIDENCIA RELACIONADA
+BUG-002
+
+EVIDENCIA DISPONIBLE
+Declaracion del evaluador. Video/captura de esta ejecucion: no aportados en este registro.
+
+LIMITACIONES
+Escena, pared, enemigo, posicion, distancia, numero de intentos y condiciones precisas no documentados. No se ha confirmado la causa raiz ni se ha cotejado el comportamiento con el GDD.

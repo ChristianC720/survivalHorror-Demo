@@ -1,0 +1,1488 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="202" result="Passed" total="202" passed="202" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-11-11 20:22:38Z" end-time="2026-11-11 20:22:54Z" duration="15.3661646">
+  <test-suite type="TestSuite" id="1000" name="Identity Dissolution" fullname="Identity Dissolution" runstate="Runnable" testcasecount="202" result="Passed" start-time="2026-11-11 20:22:38Z" end-time="2026-11-11 20:22:54Z" duration="15.366165" total="202" passed="202" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1248" name="Heartbeat.Tests.EditMode.dll" fullname="/home/usuario/Documents/IdentityDissolution-QA/Trabajo/survivalHorror-Demo-QA/Library/ScriptAssemblies/Heartbeat.Tests.EditMode.dll" runstate="Runnable" testcasecount="201" result="Passed" start-time="2026-11-11 20:22:38Z" end-time="2026-11-11 20:22:54Z" duration="15.339218" total="201" passed="201" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="93787" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1249" name="Heartbeat" fullname="Heartbeat" runstate="Runnable" testcasecount="201" result="Passed" start-time="2026-11-11 20:22:38Z" end-time="2026-11-11 20:22:54Z" duration="15.336549" total="201" passed="201" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1250" name="Tests" fullname="Heartbeat.Tests" runstate="Runnable" testcasecount="201" result="Passed" start-time="2026-11-11 20:22:38Z" end-time="2026-11-11 20:22:54Z" duration="15.334162" total="201" passed="201" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1001" name="AlertModelTests" fullname="Heartbeat.Tests.AlertModelTests" classname="Heartbeat.Tests.AlertModelTests" runstate="Runnable" testcasecount="8" result="Passed" start-time="2026-11-11 20:22:38Z" end-time="2026-11-11 20:22:38Z" duration="0.040354" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1008" name="AttentionFull_NeverLeavesPatrolEnemiesInPatrol_AndDoesNotLowerHunt" fullname="Heartbeat.Tests.AlertModelTests.AttentionFull_NeverLeavesPatrolEnemiesInPatrol_AndDoesNotLowerHunt" methodname="AttentionFull_NeverLeavesPatrolEnemiesInPatrol_AndDoesNotLowerHunt" classname="Heartbeat.Tests.AlertModelTests" runstate="Runnable" seed="1204151843" result="Passed" start-time="2026-11-11 20:22:38Z" end-time="2026-11-11 20:22:38Z" duration="0.013982" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1009" name="CloseRange_FasterThanFar" fullname="Heartbeat.Tests.AlertModelTests.CloseRange_FasterThanFar" methodname="CloseRange_FasterThanFar" classname="Heartbeat.Tests.AlertModelTests" runstate="Runnable" seed="2055948435" result="Passed" start-time="2026-11-11 20:22:38Z" end-time="2026-11-11 20:22:38Z" duration="0.003457" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1003" name="Flashlight_DoublesAlertSpeed" fullname="Heartbeat.Tests.AlertModelTests.Flashlight_DoublesAlertSpeed" methodname="Flashlight_DoublesAlertSpeed" classname="Heartbeat.Tests.AlertModelTests" runstate="Runnable" seed="1578524749" result="Passed" start-time="2026-11-11 20:22:38Z" end-time="2026-11-11 20:22:38Z" duration="0.001282" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1006" name="Hunt_LostAfterFiveSecondsWithoutSight_ThenSearch" fullname="Heartbeat.Tests.AlertModelTests.Hunt_LostAfterFiveSecondsWithoutSight_ThenSearch" methodname="Hunt_LostAfterFiveSecondsWithoutSight_ThenSearch" classname="Heartbeat.Tests.AlertModelTests" runstate="Runnable" seed="1083758042" result="Passed" start-time="2026-11-11 20:22:38Z" end-time="2026-11-11 20:22:38Z" duration="0.000224" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1004" name="NotSeen_StaysPatrol" fullname="Heartbeat.Tests.AlertModelTests.NotSeen_StaysPatrol" methodname="NotSeen_StaysPatrol" classname="Heartbeat.Tests.AlertModelTests" runstate="Runnable" seed="264136595" result="Passed" start-time="2026-11-11 20:22:38Z" end-time="2026-11-11 20:22:38Z" duration="0.000136" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1007" name="Search_DecaysBackToPatrol_Eventually" fullname="Heartbeat.Tests.AlertModelTests.Search_DecaysBackToPatrol_Eventually" methodname="Search_DecaysBackToPatrol_Eventually" classname="Heartbeat.Tests.AlertModelTests" runstate="Runnable" seed="1327592393" result="Passed" start-time="2026-11-11 20:22:38Z" end-time="2026-11-11 20:22:38Z" duration="0.000224" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1002" name="SeenLongEnough_GoesThroughEveryStateToHunt" fullname="Heartbeat.Tests.AlertModelTests.SeenLongEnough_GoesThroughEveryStateToHunt" methodname="SeenLongEnough_GoesThroughEveryStateToHunt" classname="Heartbeat.Tests.AlertModelTests" runstate="Runnable" seed="453042605" result="Passed" start-time="2026-11-11 20:22:38Z" end-time="2026-11-11 20:22:38Z" duration="0.001455" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1005" name="Shot_JumpsToSearch_Footsteps_ToSuspicion" fullname="Heartbeat.Tests.AlertModelTests.Shot_JumpsToSearch_Footsteps_ToSuspicion" methodname="Shot_JumpsToSearch_Footsteps_ToSuspicion" classname="Heartbeat.Tests.AlertModelTests" runstate="Runnable" seed="1633353077" result="Passed" start-time="2026-11-11 20:22:38Z" end-time="2026-11-11 20:22:38Z" duration="0.000178" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1010" name="ArmGrabTests" fullname="Heartbeat.Tests.ArmGrabTests" classname="Heartbeat.Tests.ArmGrabTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-11-11 20:22:38Z" end-time="2026-11-11 20:22:38Z" duration="0.002669" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1011" name="CollectorArm_SparesOnceInCritical_ThenKills" fullname="Heartbeat.Tests.ArmGrabTests.CollectorArm_SparesOnceInCritical_ThenKills" methodname="CollectorArm_SparesOnceInCritical_ThenKills" classname="Heartbeat.Tests.ArmGrabTests" runstate="Runnable" seed="539607114" result="Passed" start-time="2026-11-11 20:22:38Z" end-time="2026-11-11 20:22:38Z" duration="0.000994" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1012" name="OtherGrabs_NeverSpare" fullname="Heartbeat.Tests.ArmGrabTests.OtherGrabs_NeverSpare" methodname="OtherGrabs_NeverSpare" classname="Heartbeat.Tests.ArmGrabTests" runstate="Runnable" seed="314564180" result="Passed" start-time="2026-11-11 20:22:38Z" end-time="2026-11-11 20:22:38Z" duration="0.000171" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1013" name="AttentionMeterTests" fullname="Heartbeat.Tests.AttentionMeterTests" classname="Heartbeat.Tests.AttentionMeterTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-11-11 20:22:38Z" end-time="2026-11-11 20:22:38Z" duration="0.002754" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1015" name="DrainsInFifteenSeconds_WhenClosed" fullname="Heartbeat.Tests.AttentionMeterTests.DrainsInFifteenSeconds_WhenClosed" methodname="DrainsInFifteenSeconds_WhenClosed" classname="Heartbeat.Tests.AttentionMeterTests" runstate="Runnable" seed="2028139337" result="Passed" start-time="2026-11-11 20:22:38Z" end-time="2026-11-11 20:22:38Z" duration="0.000607" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1014" name="FillsInFiveSecondsOfViewing_ThenFiresOnce" fullname="Heartbeat.Tests.AttentionMeterTests.FillsInFiveSecondsOfViewing_ThenFiresOnce" methodname="FillsInFiveSecondsOfViewing_ThenFiresOnce" classname="Heartbeat.Tests.AttentionMeterTests" runstate="Runnable" seed="777403257" result="Passed" start-time="2026-11-11 20:22:38Z" end-time="2026-11-11 20:22:38Z" duration="0.000682" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1016" name="ShotsAddAttention" fullname="Heartbeat.Tests.AttentionMeterTests.ShotsAddAttention" methodname="ShotsAddAttention" classname="Heartbeat.Tests.AttentionMeterTests" runstate="Runnable" seed="1799603940" result="Passed" start-time="2026-11-11 20:22:38Z" end-time="2026-11-11 20:22:38Z" duration="0.000128" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1017" name="BestiaryUnlockerTests" fullname="Heartbeat.Tests.BestiaryUnlockerTests" classname="Heartbeat.Tests.BestiaryUnlockerTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-11-11 20:22:38Z" end-time="2026-11-11 20:22:38Z" duration="0.005128" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1018" name="MotherEntry_UnlocksOnlyInHerRoom_Once" fullname="Heartbeat.Tests.BestiaryUnlockerTests.MotherEntry_UnlocksOnlyInHerRoom_Once" methodname="MotherEntry_UnlocksOnlyInHerRoom_Once" classname="Heartbeat.Tests.BestiaryUnlockerTests" runstate="Runnable" seed="1469937250" result="Passed" start-time="2026-11-11 20:22:38Z" end-time="2026-11-11 20:22:38Z" duration="0.004060" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[[Heartbeat][Registry] REGISTERED BEST.MOTHER (bestiary, first encounter)
+]]></output>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1220" name="DeathCounterTests" fullname="Heartbeat.Tests.DeathCounterTests" classname="Heartbeat.Tests.DeathCounterTests" runstate="Runnable" testcasecount="10" result="Passed" start-time="2026-11-11 20:22:38Z" end-time="2026-11-11 20:22:38Z" duration="0.004645" total="10" passed="10" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1229" name="CalmExit_AddsCounterDegradationAndSubject_KeepsAttempt" fullname="Heartbeat.Tests.DeathCounterTests.CalmExit_AddsCounterDegradationAndSubject_KeepsAttempt" methodname="CalmExit_AddsCounterDegradationAndSubject_KeepsAttempt" classname="Heartbeat.Tests.DeathCounterTests" runstate="Runnable" seed="236157771" result="Passed" start-time="2026-11-11 20:22:38Z" end-time="2026-11-11 20:22:38Z" duration="0.000333" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1230" name="CalmExit_InTutorial_OnlyDegrades" fullname="Heartbeat.Tests.DeathCounterTests.CalmExit_InTutorial_OnlyDegrades" methodname="CalmExit_InTutorial_OnlyDegrades" classname="Heartbeat.Tests.DeathCounterTests" runstate="Runnable" seed="1195096258" result="Passed" start-time="2026-11-11 20:22:38Z" end-time="2026-11-11 20:22:38Z" duration="0.000187" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1227" name="Degradation_IsCapped" fullname="Heartbeat.Tests.DeathCounterTests.Degradation_IsCapped" methodname="Degradation_IsCapped" classname="Heartbeat.Tests.DeathCounterTests" runstate="Runnable" seed="1394131875" result="Passed" start-time="2026-11-11 20:22:38Z" end-time="2026-11-11 20:22:38Z" duration="0.000187" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1225" name="FifthConsecutiveDeath_TriggersAssimilation" fullname="Heartbeat.Tests.DeathCounterTests.FifthConsecutiveDeath_TriggersAssimilation" methodname="FifthConsecutiveDeath_TriggersAssimilation" classname="Heartbeat.Tests.DeathCounterTests" runstate="Runnable" seed="1686379551" result="Passed" start-time="2026-11-11 20:22:38Z" end-time="2026-11-11 20:22:38Z" duration="0.000168" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1226" name="Floor2Final_ResetsCounter" fullname="Heartbeat.Tests.DeathCounterTests.Floor2Final_ResetsCounter" methodname="Floor2Final_ResetsCounter" classname="Heartbeat.Tests.DeathCounterTests" runstate="Runnable" seed="1699023773" result="Passed" start-time="2026-11-11 20:22:38Z" end-time="2026-11-11 20:22:38Z" duration="0.000222" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1223" name="RealDeath_BelowThreshold_DoesNotAssimilate" fullname="Heartbeat.Tests.DeathCounterTests.RealDeath_BelowThreshold_DoesNotAssimilate" methodname="RealDeath_BelowThreshold_DoesNotAssimilate" classname="Heartbeat.Tests.DeathCounterTests" runstate="Runnable" seed="260763947" result="Passed" start-time="2026-11-11 20:22:38Z" end-time="2026-11-11 20:22:38Z" duration="0.000161" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1222" name="RestartsAndQuits_CountButNeverPlayAssimilation" fullname="Heartbeat.Tests.DeathCounterTests.RestartsAndQuits_CountButNeverPlayAssimilation" methodname="RestartsAndQuits_CountButNeverPlayAssimilation" classname="Heartbeat.Tests.DeathCounterTests" runstate="Runnable" seed="170341830" result="Passed" start-time="2026-11-11 20:22:38Z" end-time="2026-11-11 20:22:38Z" duration="0.000367" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1224" name="ScriptedIntroDeath_ChangesNothing" fullname="Heartbeat.Tests.DeathCounterTests.ScriptedIntroDeath_ChangesNothing" methodname="ScriptedIntroDeath_ChangesNothing" classname="Heartbeat.Tests.DeathCounterTests" runstate="Runnable" seed="2018444411" result="Passed" start-time="2026-11-11 20:22:38Z" end-time="2026-11-11 20:22:38Z" duration="0.000209" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1221" name="TutorialDeath_DoesNotCount_ButEndsFirstAttempt" fullname="Heartbeat.Tests.DeathCounterTests.TutorialDeath_DoesNotCount_ButEndsFirstAttempt" methodname="TutorialDeath_DoesNotCount_ButEndsFirstAttempt" classname="Heartbeat.Tests.DeathCounterTests" runstate="Runnable" seed="1137266028" result="Passed" start-time="2026-11-11 20:22:38Z" end-time="2026-11-11 20:22:38Z" duration="0.000257" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1228" name="TutorialDeath_StillDegrades" fullname="Heartbeat.Tests.DeathCounterTests.TutorialDeath_StillDegrades" methodname="TutorialDeath_StillDegrades" classname="Heartbeat.Tests.DeathCounterTests" runstate="Runnable" seed="718284251" result="Passed" start-time="2026-11-11 20:22:38Z" end-time="2026-11-11 20:22:38Z" duration="0.000169" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1019" name="DocTextTests" fullname="Heartbeat.Tests.DocTextTests" classname="Heartbeat.Tests.DocTextTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-11-11 20:22:38Z" end-time="2026-11-11 20:22:38Z" duration="0.007821" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1020" name="Corrupt_HidesMarkedPassage_KeepsTheRest" fullname="Heartbeat.Tests.DocTextTests.Corrupt_HidesMarkedPassage_KeepsTheRest" methodname="Corrupt_HidesMarkedPassage_KeepsTheRest" classname="Heartbeat.Tests.DocTextTests" runstate="Runnable" seed="190637074" result="Passed" start-time="2026-11-11 20:22:38Z" end-time="2026-11-11 20:22:38Z" duration="0.004405" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1023" name="GermanKey_MatchesTheDeTable" fullname="Heartbeat.Tests.DocTextTests.GermanKey_MatchesTheDeTable" methodname="GermanKey_MatchesTheDeTable" classname="Heartbeat.Tests.DocTextTests" runstate="Runnable" seed="967112884" result="Passed" start-time="2026-11-11 20:22:38Z" end-time="2026-11-11 20:22:38Z" duration="0.000966" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1024" name="GermanLines_KeepGerman_AndGetASubtitle" fullname="Heartbeat.Tests.DocTextTests.GermanLines_KeepGerman_AndGetASubtitle" methodname="GermanLines_KeepGerman_AndGetASubtitle" classname="Heartbeat.Tests.DocTextTests" runstate="Runnable" seed="247862331" result="Passed" start-time="2026-11-11 20:22:38Z" end-time="2026-11-11 20:22:38Z" duration="0.000895" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1022" name="Glitch_IsDeterministic" fullname="Heartbeat.Tests.DocTextTests.Glitch_IsDeterministic" methodname="Glitch_IsDeterministic" classname="Heartbeat.Tests.DocTextTests" runstate="Runnable" seed="581381624" result="Passed" start-time="2026-11-11 20:22:38Z" end-time="2026-11-11 20:22:38Z" duration="0.000149" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1021" name="Reveal_ShowsCleanText" fullname="Heartbeat.Tests.DocTextTests.Reveal_ShowsCleanText" methodname="Reveal_ShowsCleanText" classname="Heartbeat.Tests.DocTextTests" runstate="Runnable" seed="328096926" result="Passed" start-time="2026-11-11 20:22:38Z" end-time="2026-11-11 20:22:38Z" duration="0.000113" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestSuite" id="1251" name="EditMode" fullname="Heartbeat.Tests.EditMode" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-11-11 20:22:38Z" end-time="2026-11-11 20:22:38Z" duration="0.006882" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1244" name="TutorialModelTests" fullname="Heartbeat.Tests.EditMode.TutorialModelTests" classname="Heartbeat.Tests.EditMode.TutorialModelTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-11-11 20:22:38Z" end-time="2026-11-11 20:22:38Z" duration="0.006462" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1246" name="ActionsOutsideTheirRoomDoNotCount" fullname="Heartbeat.Tests.EditMode.TutorialModelTests.ActionsOutsideTheirRoomDoNotCount" methodname="ActionsOutsideTheirRoomDoNotCount" classname="Heartbeat.Tests.EditMode.TutorialModelTests" runstate="Runnable" seed="818595656" result="Passed" start-time="2026-11-11 20:22:38Z" end-time="2026-11-11 20:22:38Z" duration="0.003672" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1245" name="ClearsOnlyWhenEveryActionOfTheRoomIsDone" fullname="Heartbeat.Tests.EditMode.TutorialModelTests.ClearsOnlyWhenEveryActionOfTheRoomIsDone" methodname="ClearsOnlyWhenEveryActionOfTheRoomIsDone" classname="Heartbeat.Tests.EditMode.TutorialModelTests" runstate="Runnable" seed="783912340" result="Passed" start-time="2026-11-11 20:22:38Z" end-time="2026-11-11 20:22:38Z" duration="0.001597" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1247" name="TimeoutClearAlsoOpensTheRoomOnce" fullname="Heartbeat.Tests.EditMode.TutorialModelTests.TimeoutClearAlsoOpensTheRoomOnce" methodname="TimeoutClearAlsoOpensTheRoomOnce" classname="Heartbeat.Tests.EditMode.TutorialModelTests" runstate="Runnable" seed="1608301837" result="Passed" start-time="2026-11-11 20:22:38Z" end-time="2026-11-11 20:22:38Z" duration="0.000262" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+          </test-suite>
+          <test-suite type="TestFixture" id="1025" name="EnemyHitboxTests" fullname="Heartbeat.Tests.EnemyHitboxTests" classname="Heartbeat.Tests.EnemyHitboxTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-11-11 20:22:38Z" end-time="2026-11-11 20:22:39Z" duration="0.044738" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="ParameterizedMethod" id="1030" name="WeakPointAndBodyFollowTheBones" fullname="Heartbeat.Tests.EnemyHitboxTests.WeakPointAndBodyFollowTheBones" classname="Heartbeat.Tests.EnemyHitboxTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-11-11 20:22:38Z" end-time="2026-11-11 20:22:39Z" duration="0.044035" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1026" name="WeakPointAndBodyFollowTheBones(&quot;Alto&quot;,&quot;head&quot;)" fullname="Heartbeat.Tests.EnemyHitboxTests.WeakPointAndBodyFollowTheBones(&quot;Alto&quot;,&quot;head&quot;)" methodname="WeakPointAndBodyFollowTheBones" classname="Heartbeat.Tests.EnemyHitboxTests" runstate="Runnable" seed="939795267" result="Passed" start-time="2026-11-11 20:22:38Z" end-time="2026-11-11 20:22:38Z" duration="0.018597" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1027" name="WeakPointAndBodyFollowTheBones(&quot;Boca&quot;,&quot;head&quot;)" fullname="Heartbeat.Tests.EnemyHitboxTests.WeakPointAndBodyFollowTheBones(&quot;Boca&quot;,&quot;head&quot;)" methodname="WeakPointAndBodyFollowTheBones" classname="Heartbeat.Tests.EnemyHitboxTests" runstate="Runnable" seed="568969956" result="Passed" start-time="2026-11-11 20:22:38Z" end-time="2026-11-11 20:22:38Z" duration="0.010188" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1028" name="WeakPointAndBodyFollowTheBones(&quot;Mudo&quot;,&quot;chest&quot;)" fullname="Heartbeat.Tests.EnemyHitboxTests.WeakPointAndBodyFollowTheBones(&quot;Mudo&quot;,&quot;chest&quot;)" methodname="WeakPointAndBodyFollowTheBones" classname="Heartbeat.Tests.EnemyHitboxTests" runstate="Runnable" seed="1656263074" result="Passed" start-time="2026-11-11 20:22:38Z" end-time="2026-11-11 20:22:39Z" duration="0.007073" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1029" name="WeakPointAndBodyFollowTheBones(&quot;Rastrero&quot;,&quot;head&quot;)" fullname="Heartbeat.Tests.EnemyHitboxTests.WeakPointAndBodyFollowTheBones(&quot;Rastrero&quot;,&quot;head&quot;)" methodname="WeakPointAndBodyFollowTheBones" classname="Heartbeat.Tests.EnemyHitboxTests" runstate="Runnable" seed="1207277211" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.006884" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+          </test-suite>
+          <test-suite type="TestFixture" id="1231" name="ExitRulesTests" fullname="Heartbeat.Tests.ExitRulesTests" classname="Heartbeat.Tests.ExitRulesTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.002650" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="ParameterizedMethod" id="1236" name="ExitTable" fullname="Heartbeat.Tests.ExitRulesTests.ExitTable" classname="Heartbeat.Tests.ExitRulesTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.001794" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1232" name="ExitTable(True,False,Hunt)" fullname="Heartbeat.Tests.ExitRulesTests.ExitTable(True,False,Hunt)" methodname="ExitTable" classname="Heartbeat.Tests.ExitRulesTests" runstate="Runnable" seed="1415016565" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.000386" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1233" name="ExitTable(True,True,Hunt)" fullname="Heartbeat.Tests.ExitRulesTests.ExitTable(True,True,Hunt)" methodname="ExitTable" classname="Heartbeat.Tests.ExitRulesTests" runstate="Runnable" seed="1329951864" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.000133" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1234" name="ExitTable(False,False,Calm)" fullname="Heartbeat.Tests.ExitRulesTests.ExitTable(False,False,Calm)" methodname="ExitTable" classname="Heartbeat.Tests.ExitRulesTests" runstate="Runnable" seed="387894893" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.000088" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1235" name="ExitTable(False,True,None)" fullname="Heartbeat.Tests.ExitRulesTests.ExitTable(False,True,None)" methodname="ExitTable" classname="Heartbeat.Tests.ExitRulesTests" runstate="Runnable" seed="1169807309" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.000086" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+          </test-suite>
+          <test-suite type="TestFixture" id="1031" name="FaultModelTests" fullname="Heartbeat.Tests.FaultModelTests" classname="Heartbeat.Tests.FaultModelTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.007639" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1035" name="Death_PatchesEveryDiscoveredFault_OnlyThose" fullname="Heartbeat.Tests.FaultModelTests.Death_PatchesEveryDiscoveredFault_OnlyThose" methodname="Death_PatchesEveryDiscoveredFault_OnlyThose" classname="Heartbeat.Tests.FaultModelTests" runstate="Runnable" seed="248487212" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.003340" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1033" name="DiscoveredFault_OnlyMatchesItsHackKind" fullname="Heartbeat.Tests.FaultModelTests.DiscoveredFault_OnlyMatchesItsHackKind" methodname="DiscoveredFault_OnlyMatchesItsHackKind" classname="Heartbeat.Tests.FaultModelTests" runstate="Runnable" seed="205957582" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.000854" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1034" name="PatchedAfterTwoUses_AndPersistsThroughExport" fullname="Heartbeat.Tests.FaultModelTests.PatchedAfterTwoUses_AndPersistsThroughExport" methodname="PatchedAfterTwoUses_AndPersistsThroughExport" classname="Heartbeat.Tests.FaultModelTests" runstate="Runnable" seed="1422008876" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.000552" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1036" name="ShortLengths" fullname="Heartbeat.Tests.FaultModelTests.ShortLengths" methodname="ShortLengths" classname="Heartbeat.Tests.FaultModelTests" runstate="Runnable" seed="412488084" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.000227" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1037" name="Truncate_KeepsAtLeastOneInputToEnter" fullname="Heartbeat.Tests.FaultModelTests.Truncate_KeepsAtLeastOneInputToEnter" methodname="Truncate_KeepsAtLeastOneInputToEnter" classname="Heartbeat.Tests.FaultModelTests" runstate="Runnable" seed="938170247" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.001060" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1032" name="UndiscoveredFault_IsNotUsable" fullname="Heartbeat.Tests.FaultModelTests.UndiscoveredFault_IsNotUsable" methodname="UndiscoveredFault_IsNotUsable" classname="Heartbeat.Tests.FaultModelTests" runstate="Runnable" seed="1411973302" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.000194" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1038" name="FlashlightModelTests" fullname="Heartbeat.Tests.FlashlightModelTests" classname="Heartbeat.Tests.FlashlightModelTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.002433" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1041" name="DepletedLight_RechargesFrom0To100InAbout33s" fullname="Heartbeat.Tests.FlashlightModelTests.DepletedLight_RechargesFrom0To100InAbout33s" methodname="DepletedLight_RechargesFrom0To100InAbout33s" classname="Heartbeat.Tests.FlashlightModelTests" runstate="Runnable" seed="743261013" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.000586" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1039" name="Depletes_After120s_ThenLockedFor10s" fullname="Heartbeat.Tests.FlashlightModelTests.Depletes_After120s_ThenLockedFor10s" methodname="Depletes_After120s_ThenLockedFor10s" classname="Heartbeat.Tests.FlashlightModelTests" runstate="Runnable" seed="1440130458" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.000641" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1040" name="Recharges_After3sOff_FullIn30s" fullname="Heartbeat.Tests.FlashlightModelTests.Recharges_After3sOff_FullIn30s" methodname="Recharges_After3sOff_FullIn30s" classname="Heartbeat.Tests.FlashlightModelTests" runstate="Runnable" seed="664254827" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.000244" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1042" name="GameStateMachineTests" fullname="Heartbeat.Tests.GameStateMachineTests" classname="Heartbeat.Tests.GameStateMachineTests" runstate="Runnable" testcasecount="12" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.009387" total="12" passed="12" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1053" name="Death_FifthConsecutive_CanGoToAssimilation" fullname="Heartbeat.Tests.GameStateMachineTests.Death_FifthConsecutive_CanGoToAssimilation" methodname="Death_FifthConsecutive_CanGoToAssimilation" classname="Heartbeat.Tests.GameStateMachineTests" runstate="Runnable" seed="1649799101" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.004340" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1052" name="FinalDecision_CanPauseResumeAndQuit" fullname="Heartbeat.Tests.GameStateMachineTests.FinalDecision_CanPauseResumeAndQuit" methodname="FinalDecision_CanPauseResumeAndQuit" classname="Heartbeat.Tests.GameStateMachineTests" runstate="Runnable" seed="1747669656" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.000270" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1044" name="MainMenu_CannotJumpToPlaying" fullname="Heartbeat.Tests.GameStateMachineTests.MainMenu_CannotJumpToPlaying" methodname="MainMenu_CannotJumpToPlaying" classname="Heartbeat.Tests.GameStateMachineTests" runstate="Runnable" seed="1478005714" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.000154" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1043" name="NewGame_GoesThroughIntroThenLoading" fullname="Heartbeat.Tests.GameStateMachineTests.NewGame_GoesThroughIntroThenLoading" methodname="NewGame_GoesThroughIntroThenLoading" classname="Heartbeat.Tests.GameStateMachineTests" runstate="Runnable" seed="1884699358" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.000169" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1045" name="Pause_ResumesToSameSubState" fullname="Heartbeat.Tests.GameStateMachineTests.Pause_ResumesToSameSubState" methodname="Pause_ResumesToSameSubState" classname="Heartbeat.Tests.GameStateMachineTests" runstate="Runnable" seed="1526912239" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.000885" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1046" name="PauseInIntro_ResumesToIntro_NotPlaying" fullname="Heartbeat.Tests.GameStateMachineTests.PauseInIntro_ResumesToIntro_NotPlaying" methodname="PauseInIntro_ResumesToIntro_NotPlaying" classname="Heartbeat.Tests.GameStateMachineTests" runstate="Runnable" seed="492408234" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.000170" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1048" name="Reconstruction_StartsInExploration" fullname="Heartbeat.Tests.GameStateMachineTests.Reconstruction_StartsInExploration" methodname="Reconstruction_StartsInExploration" classname="Heartbeat.Tests.GameStateMachineTests" runstate="Runnable" seed="52872685" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.000140" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1047" name="Restart_FromPause_IsDeath" fullname="Heartbeat.Tests.GameStateMachineTests.Restart_FromPause_IsDeath" methodname="Restart_FromPause_IsDeath" classname="Heartbeat.Tests.GameStateMachineTests" runstate="Runnable" seed="1027854494" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.000129" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1054" name="StateChanged_IsRaisedWithFromAndTo" fullname="Heartbeat.Tests.GameStateMachineTests.StateChanged_IsRaisedWithFromAndTo" methodname="StateChanged_IsRaisedWithFromAndTo" classname="Heartbeat.Tests.GameStateMachineTests" runstate="Runnable" seed="489818205" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.000299" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1050" name="SubState_RequiresPlaying" fullname="Heartbeat.Tests.GameStateMachineTests.SubState_RequiresPlaying" methodname="SubState_RequiresPlaying" classname="Heartbeat.Tests.GameStateMachineTests" runstate="Runnable" seed="1126838904" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.000103" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1049" name="Surveillance_CannotGoStraightToHacking" fullname="Heartbeat.Tests.GameStateMachineTests.Surveillance_CannotGoStraightToHacking" methodname="Surveillance_CannotGoStraightToHacking" classname="Heartbeat.Tests.GameStateMachineTests" runstate="Runnable" seed="15252128" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.000124" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1051" name="Victory_WithSixDocuments_GoesToDecision" fullname="Heartbeat.Tests.GameStateMachineTests.Victory_WithSixDocuments_GoesToDecision" methodname="Victory_WithSixDocuments_GoesToDecision" classname="Heartbeat.Tests.GameStateMachineTests" runstate="Runnable" seed="1130096247" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.000142" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1055" name="HackSequenceTests" fullname="Heartbeat.Tests.HackSequenceTests" classname="Heartbeat.Tests.HackSequenceTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.004582" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1057" name="CorrectChain_Completes" fullname="Heartbeat.Tests.HackSequenceTests.CorrectChain_Completes" methodname="CorrectChain_Completes" classname="Heartbeat.Tests.HackSequenceTests" runstate="Runnable" seed="553071673" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.000164" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1061" name="Lengths_MatchGdd" fullname="Heartbeat.Tests.HackSequenceTests.Lengths_MatchGdd" classname="Heartbeat.Tests.HackSequenceTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.003317" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1058" name="Lengths_MatchGdd(QuickSeal,2,3)" fullname="Heartbeat.Tests.HackSequenceTests.Lengths_MatchGdd(QuickSeal,2,3)" methodname="Lengths_MatchGdd" classname="Heartbeat.Tests.HackSequenceTests" runstate="Runnable" seed="900931043" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.001593" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1059" name="Lengths_MatchGdd(Door,4,5)" fullname="Heartbeat.Tests.HackSequenceTests.Lengths_MatchGdd(Door,4,5)" methodname="Lengths_MatchGdd" classname="Heartbeat.Tests.HackSequenceTests" runstate="Runnable" seed="70771683" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.000607" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1060" name="Lengths_MatchGdd(Main,7,8)" fullname="Heartbeat.Tests.HackSequenceTests.Lengths_MatchGdd(Main,7,8)" methodname="Lengths_MatchGdd" classname="Heartbeat.Tests.HackSequenceTests" runstate="Runnable" seed="865634867" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.000415" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-case id="1056" name="WrongInput_RestartsSequence" fullname="Heartbeat.Tests.HackSequenceTests.WrongInput_RestartsSequence" methodname="WrongInput_RestartsSequence" classname="Heartbeat.Tests.HackSequenceTests" runstate="Runnable" seed="33888923" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.000223" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1157" name="HealthModelTests" fullname="Heartbeat.Tests.HealthModelTests" classname="Heartbeat.Tests.HealthModelTests" runstate="Runnable" testcasecount="10" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.004162" total="10" passed="10" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1158" name="AltoHit_FromFine_GoesInjured" fullname="Heartbeat.Tests.HealthModelTests.AltoHit_FromFine_GoesInjured" methodname="AltoHit_FromFine_GoesInjured" classname="Heartbeat.Tests.HealthModelTests" runstate="Runnable" seed="1826786047" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.000550" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1168" name="Grab_WithoutSpike_DropsOneState_AndKillsInCritical" fullname="Heartbeat.Tests.HealthModelTests.Grab_WithoutSpike_DropsOneState_AndKillsInCritical" methodname="Grab_WithoutSpike_DropsOneState_AndKillsInCritical" classname="Heartbeat.Tests.HealthModelTests" runstate="Runnable" seed="1342081335" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.000269" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1167" name="Heal_Critical_GoesToTopOfInjured" fullname="Heartbeat.Tests.HealthModelTests.Heal_Critical_GoesToTopOfInjured" methodname="Heal_Critical_GoesToTopOfInjured" classname="Heartbeat.Tests.HealthModelTests" runstate="Runnable" seed="324655072" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.000288" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1166" name="Heal_FineWithDamage_RestoresFull" fullname="Heartbeat.Tests.HealthModelTests.Heal_FineWithDamage_RestoresFull" methodname="Heal_FineWithDamage_RestoresFull" classname="Heartbeat.Tests.HealthModelTests" runstate="Runnable" seed="77278048" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.000130" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1165" name="Heal_NotAllowedAtFull" fullname="Heartbeat.Tests.HealthModelTests.Heal_NotAllowedAtFull" methodname="Heal_NotAllowedAtFull" classname="Heartbeat.Tests.HealthModelTests" runstate="Runnable" seed="157196544" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.000101" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1162" name="HitsToKill_KillExactly" fullname="Heartbeat.Tests.HealthModelTests.HitsToKill_KillExactly" classname="Heartbeat.Tests.HealthModelTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.000862" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1159" name="HitsToKill_KillExactly(2)" fullname="Heartbeat.Tests.HealthModelTests.HitsToKill_KillExactly(2)" methodname="HitsToKill_KillExactly" classname="Heartbeat.Tests.HealthModelTests" runstate="Runnable" seed="533508436" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.000238" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1160" name="HitsToKill_KillExactly(3)" fullname="Heartbeat.Tests.HealthModelTests.HitsToKill_KillExactly(3)" methodname="HitsToKill_KillExactly" classname="Heartbeat.Tests.HealthModelTests" runstate="Runnable" seed="1177952130" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.000053" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1161" name="HitsToKill_KillExactly(4)" fullname="Heartbeat.Tests.HealthModelTests.HitsToKill_KillExactly(4)" methodname="HitsToKill_KillExactly" classname="Heartbeat.Tests.HealthModelTests" runstate="Runnable" seed="1443215591" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.000053" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-case id="1163" name="NotLethal_HitsAndGrabsStopAtCritical" fullname="Heartbeat.Tests.HealthModelTests.NotLethal_HitsAndGrabsStopAtCritical" methodname="NotLethal_HitsAndGrabsStopAtCritical" classname="Heartbeat.Tests.HealthModelTests" runstate="Runnable" seed="874953764" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.000219" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1164" name="Rastrero_FourHits_StatesProgress" fullname="Heartbeat.Tests.HealthModelTests.Rastrero_FourHits_StatesProgress" methodname="Rastrero_FourHits_StatesProgress" classname="Heartbeat.Tests.HealthModelTests" runstate="Runnable" seed="1474116852" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.000186" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1062" name="HeartbeatModelTests" fullname="Heartbeat.Tests.HeartbeatModelTests" classname="Heartbeat.Tests.HeartbeatModelTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.002506" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1069" name="LabHeartbeat_GrowsWithDegradation_Capped_CriticalOnTop" fullname="Heartbeat.Tests.HeartbeatModelTests.LabHeartbeat_GrowsWithDegradation_Capped_CriticalOnTop" methodname="LabHeartbeat_GrowsWithDegradation_Capped_CriticalOnTop" classname="Heartbeat.Tests.HeartbeatModelTests" runstate="Runnable" seed="1937513145" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.000584" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1068" name="ThreatBand_IsQuantized" fullname="Heartbeat.Tests.HeartbeatModelTests.ThreatBand_IsQuantized" classname="Heartbeat.Tests.HeartbeatModelTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.001224" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1063" name="ThreatBand_IsQuantized(30.0f,-1)" fullname="Heartbeat.Tests.HeartbeatModelTests.ThreatBand_IsQuantized(30.0f,-1)" methodname="ThreatBand_IsQuantized" classname="Heartbeat.Tests.HeartbeatModelTests" runstate="Runnable" seed="710961873" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.000253" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1064" name="ThreatBand_IsQuantized(15.0f,0)" fullname="Heartbeat.Tests.HeartbeatModelTests.ThreatBand_IsQuantized(15.0f,0)" methodname="ThreatBand_IsQuantized" classname="Heartbeat.Tests.HeartbeatModelTests" runstate="Runnable" seed="243886784" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.000058" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1065" name="ThreatBand_IsQuantized(10.0f,0)" fullname="Heartbeat.Tests.HeartbeatModelTests.ThreatBand_IsQuantized(10.0f,0)" methodname="ThreatBand_IsQuantized" classname="Heartbeat.Tests.HeartbeatModelTests" runstate="Runnable" seed="138042124" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.000062" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1066" name="ThreatBand_IsQuantized(6.0f,1)" fullname="Heartbeat.Tests.HeartbeatModelTests.ThreatBand_IsQuantized(6.0f,1)" methodname="ThreatBand_IsQuantized" classname="Heartbeat.Tests.HeartbeatModelTests" runstate="Runnable" seed="1707004984" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.000056" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1067" name="ThreatBand_IsQuantized(2.0f,2)" fullname="Heartbeat.Tests.HeartbeatModelTests.ThreatBand_IsQuantized(2.0f,2)" methodname="ThreatBand_IsQuantized" classname="Heartbeat.Tests.HeartbeatModelTests" runstate="Runnable" seed="1947223414" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.000055" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+          </test-suite>
+          <test-suite type="TestFixture" id="1070" name="InputRouterTests" fullname="Heartbeat.Tests.InputRouterTests" classname="Heartbeat.Tests.InputRouterTests" runstate="Runnable" testcasecount="19" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.082490" total="19" passed="19" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1071" name="Exploration_EnablesGameplay_AndPause_NotInventory" fullname="Heartbeat.Tests.InputRouterTests.Exploration_EnablesGameplay_AndPause_NotInventory" methodname="Exploration_EnablesGameplay_AndPause_NotInventory" classname="Heartbeat.Tests.InputRouterTests" runstate="Runnable" seed="1964881341" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.042092" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[[Heartbeat][Input][dev] Context -> Exploration
+]]></output>
+            </test-case>
+            <test-case id="1074" name="Hacking_FreezesCharacter" fullname="Heartbeat.Tests.InputRouterTests.Hacking_FreezesCharacter" methodname="Hacking_FreezesCharacter" classname="Heartbeat.Tests.InputRouterTests" runstate="Runnable" seed="1798631292" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.001645" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[[Heartbeat][Input][dev] Context -> Hacking
+]]></output>
+            </test-case>
+            <test-case id="1075" name="IntroPlayable_OnlyMoveLookInteract" fullname="Heartbeat.Tests.InputRouterTests.IntroPlayable_OnlyMoveLookInteract" methodname="IntroPlayable_OnlyMoveLookInteract" classname="Heartbeat.Tests.InputRouterTests" runstate="Runnable" seed="11425686" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.001521" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[[Heartbeat][Input][dev] Context -> IntroPlayable
+]]></output>
+            </test-case>
+            <test-case id="1073" name="Inventory_DisablesAimAndAttack_KeepsMovement" fullname="Heartbeat.Tests.InputRouterTests.Inventory_DisablesAimAndAttack_KeepsMovement" methodname="Inventory_DisablesAimAndAttack_KeepsMovement" classname="Heartbeat.Tests.InputRouterTests" runstate="Runnable" seed="198653498" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.001994" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[[Heartbeat][Input][dev] Context -> Inventory
+]]></output>
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1090" name="NoKeyHasTwoFunctions_InAnyContext" fullname="Heartbeat.Tests.InputRouterTests.NoKeyHasTwoFunctions_InAnyContext" classname="Heartbeat.Tests.InputRouterTests" runstate="Runnable" testcasecount="12" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.023714" total="12" passed="12" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1078" name="NoKeyHasTwoFunctions_InAnyContext(None)" fullname="Heartbeat.Tests.InputRouterTests.NoKeyHasTwoFunctions_InAnyContext(None)" methodname="NoKeyHasTwoFunctions_InAnyContext" classname="Heartbeat.Tests.InputRouterTests" runstate="Runnable" seed="1980063806" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.001911" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1079" name="NoKeyHasTwoFunctions_InAnyContext(Exploration)" fullname="Heartbeat.Tests.InputRouterTests.NoKeyHasTwoFunctions_InAnyContext(Exploration)" methodname="NoKeyHasTwoFunctions_InAnyContext" classname="Heartbeat.Tests.InputRouterTests" runstate="Runnable" seed="1596066471" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.003685" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Heartbeat][Input][dev] Context -> Exploration
+]]></output>
+              </test-case>
+              <test-case id="1080" name="NoKeyHasTwoFunctions_InAnyContext(Aiming)" fullname="Heartbeat.Tests.InputRouterTests.NoKeyHasTwoFunctions_InAnyContext(Aiming)" methodname="NoKeyHasTwoFunctions_InAnyContext" classname="Heartbeat.Tests.InputRouterTests" runstate="Runnable" seed="396819093" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.001509" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Heartbeat][Input][dev] Context -> Aiming
+]]></output>
+              </test-case>
+              <test-case id="1081" name="NoKeyHasTwoFunctions_InAnyContext(Surveillance)" fullname="Heartbeat.Tests.InputRouterTests.NoKeyHasTwoFunctions_InAnyContext(Surveillance)" methodname="NoKeyHasTwoFunctions_InAnyContext" classname="Heartbeat.Tests.InputRouterTests" runstate="Runnable" seed="1016325773" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.001461" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Heartbeat][Input][dev] Context -> Surveillance
+]]></output>
+              </test-case>
+              <test-case id="1082" name="NoKeyHasTwoFunctions_InAnyContext(OverBody)" fullname="Heartbeat.Tests.InputRouterTests.NoKeyHasTwoFunctions_InAnyContext(OverBody)" methodname="NoKeyHasTwoFunctions_InAnyContext" classname="Heartbeat.Tests.InputRouterTests" runstate="Runnable" seed="749214525" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.001477" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Heartbeat][Input][dev] Context -> OverBody
+]]></output>
+              </test-case>
+              <test-case id="1083" name="NoKeyHasTwoFunctions_InAnyContext(Inventory)" fullname="Heartbeat.Tests.InputRouterTests.NoKeyHasTwoFunctions_InAnyContext(Inventory)" methodname="NoKeyHasTwoFunctions_InAnyContext" classname="Heartbeat.Tests.InputRouterTests" runstate="Runnable" seed="386478091" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.001536" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Heartbeat][Input][dev] Context -> Inventory
+]]></output>
+              </test-case>
+              <test-case id="1084" name="NoKeyHasTwoFunctions_InAnyContext(Hacking)" fullname="Heartbeat.Tests.InputRouterTests.NoKeyHasTwoFunctions_InAnyContext(Hacking)" methodname="NoKeyHasTwoFunctions_InAnyContext" classname="Heartbeat.Tests.InputRouterTests" runstate="Runnable" seed="427900265" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.001441" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Heartbeat][Input][dev] Context -> Hacking
+]]></output>
+              </test-case>
+              <test-case id="1085" name="NoKeyHasTwoFunctions_InAnyContext(Menu)" fullname="Heartbeat.Tests.InputRouterTests.NoKeyHasTwoFunctions_InAnyContext(Menu)" methodname="NoKeyHasTwoFunctions_InAnyContext" classname="Heartbeat.Tests.InputRouterTests" runstate="Runnable" seed="190964435" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.001738" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Heartbeat][Input][dev] Context -> Menu
+]]></output>
+              </test-case>
+              <test-case id="1086" name="NoKeyHasTwoFunctions_InAnyContext(Cinematic)" fullname="Heartbeat.Tests.InputRouterTests.NoKeyHasTwoFunctions_InAnyContext(Cinematic)" methodname="NoKeyHasTwoFunctions_InAnyContext" classname="Heartbeat.Tests.InputRouterTests" runstate="Runnable" seed="1754925596" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.001985" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Heartbeat][Input][dev] Context -> Cinematic
+]]></output>
+              </test-case>
+              <test-case id="1087" name="NoKeyHasTwoFunctions_InAnyContext(IntroPlayable)" fullname="Heartbeat.Tests.InputRouterTests.NoKeyHasTwoFunctions_InAnyContext(IntroPlayable)" methodname="NoKeyHasTwoFunctions_InAnyContext" classname="Heartbeat.Tests.InputRouterTests" runstate="Runnable" seed="203558773" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.001464" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Heartbeat][Input][dev] Context -> IntroPlayable
+]]></output>
+              </test-case>
+              <test-case id="1088" name="NoKeyHasTwoFunctions_InAnyContext(Reading)" fullname="Heartbeat.Tests.InputRouterTests.NoKeyHasTwoFunctions_InAnyContext(Reading)" methodname="NoKeyHasTwoFunctions_InAnyContext" classname="Heartbeat.Tests.InputRouterTests" runstate="Runnable" seed="1480076040" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.001452" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Heartbeat][Input][dev] Context -> Reading
+]]></output>
+              </test-case>
+              <test-case id="1089" name="NoKeyHasTwoFunctions_InAnyContext(CinematicPickup)" fullname="Heartbeat.Tests.InputRouterTests.NoKeyHasTwoFunctions_InAnyContext(CinematicPickup)" methodname="NoKeyHasTwoFunctions_InAnyContext" classname="Heartbeat.Tests.InputRouterTests" runstate="Runnable" seed="152379473" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.001447" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Heartbeat][Input][dev] Context -> CinematicPickup
+]]></output>
+              </test-case>
+            </test-suite>
+            <test-case id="1077" name="None_DisablesEverything" fullname="Heartbeat.Tests.InputRouterTests.None_DisablesEverything" methodname="None_DisablesEverything" classname="Heartbeat.Tests.InputRouterTests" runstate="Runnable" seed="472524348" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.002789" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[[Heartbeat][Input][dev] Context -> Exploration
+[Heartbeat][Input][dev] Context -> None
+]]></output>
+            </test-case>
+            <test-case id="1072" name="Reading_OnlyClosesAndTurnsPages" fullname="Heartbeat.Tests.InputRouterTests.Reading_OnlyClosesAndTurnsPages" methodname="Reading_OnlyClosesAndTurnsPages" classname="Heartbeat.Tests.InputRouterTests" runstate="Runnable" seed="1686462184" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.003310" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[[Heartbeat][Input][dev] Context -> Reading
+]]></output>
+            </test-case>
+            <test-case id="1076" name="SwitchingBetweenContexts_DoesNotDisableSharedActions" fullname="Heartbeat.Tests.InputRouterTests.SwitchingBetweenContexts_DoesNotDisableSharedActions" methodname="SwitchingBetweenContexts_DoesNotDisableSharedActions" classname="Heartbeat.Tests.InputRouterTests" runstate="Runnable" seed="201475035" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.002900" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[[Heartbeat][Input][dev] Context -> Exploration
+[Heartbeat][Input][dev] Context -> Aiming
+[Heartbeat][Input][dev] Context -> Exploration
+]]></output>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1091" name="InventoryModelTests" fullname="Heartbeat.Tests.InventoryModelTests" classname="Heartbeat.Tests.InventoryModelTests" runstate="Runnable" testcasecount="9" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.005097" total="9" passed="9" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1092" name="Ammo_StacksTo12PerSlot_ThenOpensNewSlot" fullname="Heartbeat.Tests.InventoryModelTests.Ammo_StacksTo12PerSlot_ThenOpensNewSlot" methodname="Ammo_StacksTo12PerSlot_ThenOpensNewSlot" classname="Heartbeat.Tests.InventoryModelTests" runstate="Runnable" seed="1431713731" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.000768" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1100" name="ChangedEvent_FiresOnAddAndConsume" fullname="Heartbeat.Tests.InventoryModelTests.ChangedEvent_FiresOnAddAndConsume" methodname="ChangedEvent_FiresOnAddAndConsume" classname="Heartbeat.Tests.InventoryModelTests" runstate="Runnable" seed="96034250" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.000401" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1099" name="Clear_LosesEverything" fullname="Heartbeat.Tests.InventoryModelTests.Clear_LosesEverything" methodname="Clear_LosesEverything" classname="Heartbeat.Tests.InventoryModelTests" runstate="Runnable" seed="841635131" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.000202" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1097" name="Consume_IsAllOrNothing" fullname="Heartbeat.Tests.InventoryModelTests.Consume_IsAllOrNothing" methodname="Consume_IsAllOrNothing" classname="Heartbeat.Tests.InventoryModelTests" runstate="Runnable" seed="55032697" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.000148" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1096" name="ConsumeAmmo_EmptiestSlotFirst_FreesSlot" fullname="Heartbeat.Tests.InventoryModelTests.ConsumeAmmo_EmptiestSlotFirst_FreesSlot" methodname="ConsumeAmmo_EmptiestSlotFirst_FreesSlot" classname="Heartbeat.Tests.InventoryModelTests" runstate="Runnable" seed="390029946" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.000154" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1094" name="Full_ReturnsLeftover_AndKeepsItemsOnFloor" fullname="Heartbeat.Tests.InventoryModelTests.Full_ReturnsLeftover_AndKeepsItemsOnFloor" methodname="Full_ReturnsLeftover_AndKeepsItemsOnFloor" classname="Heartbeat.Tests.InventoryModelTests" runstate="Runnable" seed="1366866964" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.000280" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1093" name="Heals_DoNotStack" fullname="Heartbeat.Tests.InventoryModelTests.Heals_DoNotStack" methodname="Heals_DoNotStack" classname="Heartbeat.Tests.InventoryModelTests" runstate="Runnable" seed="4851038" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.000156" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1098" name="KeyReplacesSlot_WhenFull" fullname="Heartbeat.Tests.InventoryModelTests.KeyReplacesSlot_WhenFull" methodname="KeyReplacesSlot_WhenFull" classname="Heartbeat.Tests.InventoryModelTests" runstate="Runnable" seed="1660806016" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.000421" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1095" name="PartialAmmoSlot_TakesPartOfBlister" fullname="Heartbeat.Tests.InventoryModelTests.PartialAmmoSlot_TakesPartOfBlister" methodname="PartialAmmoSlot_TakesPartOfBlister" classname="Heartbeat.Tests.InventoryModelTests" runstate="Runnable" seed="1166840960" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.000231" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1101" name="LayoutGeneratorTests" fullname="Heartbeat.Tests.LayoutGeneratorTests" classname="Heartbeat.Tests.LayoutGeneratorTests" runstate="Runnable" testcasecount="20" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:46Z" duration="7.424927" total="20" passed="20" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1115" name="DifferentSeeds_GiveDifferentFloors" fullname="Heartbeat.Tests.LayoutGeneratorTests.DifferentSeeds_GiveDifferentFloors" methodname="DifferentSeeds_GiveDifferentFloors" classname="Heartbeat.Tests.LayoutGeneratorTests" runstate="Runnable" seed="914289045" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.046162" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1110" name="FirstAttempt_Floor1_1000Seeds_WithTutorial" fullname="Heartbeat.Tests.LayoutGeneratorTests.FirstAttempt_Floor1_1000Seeds_WithTutorial" methodname="FirstAttempt_Floor1_1000Seeds_WithTutorial" classname="Heartbeat.Tests.LayoutGeneratorTests" runstate="Runnable" seed="1270554117" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:39Z" duration="0.663120" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[[Heartbeat][Gen] 1000 seeds OK, worst case 3 attempts
+]]></output>
+            </test-case>
+            <test-case id="1111" name="FirstAttempt_StartRoomHasOneDoor_1000Seeds" fullname="Heartbeat.Tests.LayoutGeneratorTests.FirstAttempt_StartRoomHasOneDoor_1000Seeds" methodname="FirstAttempt_StartRoomHasOneDoor_1000Seeds" classname="Heartbeat.Tests.LayoutGeneratorTests" runstate="Runnable" seed="56954279" result="Passed" start-time="2026-11-11 20:22:39Z" end-time="2026-11-11 20:22:40Z" duration="0.628776" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1121" name="Floor3_NeverUnpowered" fullname="Heartbeat.Tests.LayoutGeneratorTests.Floor3_NeverUnpowered" methodname="Floor3_NeverUnpowered" classname="Heartbeat.Tests.LayoutGeneratorTests" runstate="Runnable" seed="2139366259" result="Passed" start-time="2026-11-11 20:22:40Z" end-time="2026-11-11 20:22:40Z" duration="0.149328" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1105" name="Full_1000Seeds_AllValid" fullname="Heartbeat.Tests.LayoutGeneratorTests.Full_1000Seeds_AllValid" classname="Heartbeat.Tests.LayoutGeneratorTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-11-11 20:22:40Z" end-time="2026-11-11 20:22:42Z" duration="2.162376" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1102" name="Full_1000Seeds_AllValid(1)" fullname="Heartbeat.Tests.LayoutGeneratorTests.Full_1000Seeds_AllValid(1)" methodname="Full_1000Seeds_AllValid" classname="Heartbeat.Tests.LayoutGeneratorTests" runstate="Runnable" seed="666470091" result="Passed" start-time="2026-11-11 20:22:40Z" end-time="2026-11-11 20:22:41Z" duration="0.710116" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Heartbeat][Gen] 1000 seeds OK, worst case 4 attempts
+]]></output>
+              </test-case>
+              <test-case id="1103" name="Full_1000Seeds_AllValid(2)" fullname="Heartbeat.Tests.LayoutGeneratorTests.Full_1000Seeds_AllValid(2)" methodname="Full_1000Seeds_AllValid" classname="Heartbeat.Tests.LayoutGeneratorTests" runstate="Runnable" seed="1004345650" result="Passed" start-time="2026-11-11 20:22:41Z" end-time="2026-11-11 20:22:42Z" duration="0.712237" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Heartbeat][Gen] 1000 seeds OK, worst case 4 attempts
+]]></output>
+              </test-case>
+              <test-case id="1104" name="Full_1000Seeds_AllValid(3)" fullname="Heartbeat.Tests.LayoutGeneratorTests.Full_1000Seeds_AllValid(3)" methodname="Full_1000Seeds_AllValid" classname="Heartbeat.Tests.LayoutGeneratorTests" runstate="Runnable" seed="225285077" result="Passed" start-time="2026-11-11 20:22:42Z" end-time="2026-11-11 20:22:42Z" duration="0.737112" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Heartbeat][Gen] 1000 seeds OK, worst case 5 attempts
+]]></output>
+              </test-case>
+            </test-suite>
+            <test-case id="1114" name="SameSeed_SameLayout" fullname="Heartbeat.Tests.LayoutGeneratorTests.SameSeed_SameLayout" methodname="SameSeed_SameLayout" classname="Heartbeat.Tests.LayoutGeneratorTests" runstate="Runnable" seed="1978158546" result="Passed" start-time="2026-11-11 20:22:42Z" end-time="2026-11-11 20:22:42Z" duration="0.001778" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1124" name="SecondaryRooms_AreAtDepthTwoOrMore" fullname="Heartbeat.Tests.LayoutGeneratorTests.SecondaryRooms_AreAtDepthTwoOrMore" methodname="SecondaryRooms_AreAtDepthTwoOrMore" classname="Heartbeat.Tests.LayoutGeneratorTests" runstate="Runnable" seed="1460194000" result="Passed" start-time="2026-11-11 20:22:42Z" end-time="2026-11-11 20:22:42Z" duration="0.124758" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1120" name="SecondaryRooms_AtLeastTwoRoomsAwayFromSpawn" fullname="Heartbeat.Tests.LayoutGeneratorTests.SecondaryRooms_AtLeastTwoRoomsAwayFromSpawn" classname="Heartbeat.Tests.LayoutGeneratorTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-11-11 20:22:42Z" end-time="2026-11-11 20:22:43Z" duration="1.020591" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1117" name="SecondaryRooms_AtLeastTwoRoomsAwayFromSpawn(1)" fullname="Heartbeat.Tests.LayoutGeneratorTests.SecondaryRooms_AtLeastTwoRoomsAwayFromSpawn(1)" methodname="SecondaryRooms_AtLeastTwoRoomsAwayFromSpawn" classname="Heartbeat.Tests.LayoutGeneratorTests" runstate="Runnable" seed="945279842" result="Passed" start-time="2026-11-11 20:22:42Z" end-time="2026-11-11 20:22:43Z" duration="0.328909" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1118" name="SecondaryRooms_AtLeastTwoRoomsAwayFromSpawn(2)" fullname="Heartbeat.Tests.LayoutGeneratorTests.SecondaryRooms_AtLeastTwoRoomsAwayFromSpawn(2)" methodname="SecondaryRooms_AtLeastTwoRoomsAwayFromSpawn" classname="Heartbeat.Tests.LayoutGeneratorTests" runstate="Runnable" seed="928694273" result="Passed" start-time="2026-11-11 20:22:43Z" end-time="2026-11-11 20:22:43Z" duration="0.331271" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1119" name="SecondaryRooms_AtLeastTwoRoomsAwayFromSpawn(3)" fullname="Heartbeat.Tests.LayoutGeneratorTests.SecondaryRooms_AtLeastTwoRoomsAwayFromSpawn(3)" methodname="SecondaryRooms_AtLeastTwoRoomsAwayFromSpawn" classname="Heartbeat.Tests.LayoutGeneratorTests" runstate="Runnable" seed="198565301" result="Passed" start-time="2026-11-11 20:22:43Z" end-time="2026-11-11 20:22:43Z" duration="0.359285" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-suite type="ParameterizedMethod" id="1109" name="Showcase_1000Seeds_AllValid" fullname="Heartbeat.Tests.LayoutGeneratorTests.Showcase_1000Seeds_AllValid" classname="Heartbeat.Tests.LayoutGeneratorTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-11-11 20:22:43Z" end-time="2026-11-11 20:22:45Z" duration="1.712250" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1106" name="Showcase_1000Seeds_AllValid(1)" fullname="Heartbeat.Tests.LayoutGeneratorTests.Showcase_1000Seeds_AllValid(1)" methodname="Showcase_1000Seeds_AllValid" classname="Heartbeat.Tests.LayoutGeneratorTests" runstate="Runnable" seed="627881822" result="Passed" start-time="2026-11-11 20:22:43Z" end-time="2026-11-11 20:22:44Z" duration="0.473002" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Heartbeat][Gen] 1000 seeds OK, worst case 3 attempts
+]]></output>
+              </test-case>
+              <test-case id="1107" name="Showcase_1000Seeds_AllValid(2)" fullname="Heartbeat.Tests.LayoutGeneratorTests.Showcase_1000Seeds_AllValid(2)" methodname="Showcase_1000Seeds_AllValid" classname="Heartbeat.Tests.LayoutGeneratorTests" runstate="Runnable" seed="2066323550" result="Passed" start-time="2026-11-11 20:22:44Z" end-time="2026-11-11 20:22:45Z" duration="0.586086" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Heartbeat][Gen] 1000 seeds OK, worst case 5 attempts
+]]></output>
+              </test-case>
+              <test-case id="1108" name="Showcase_1000Seeds_AllValid(3)" fullname="Heartbeat.Tests.LayoutGeneratorTests.Showcase_1000Seeds_AllValid(3)" methodname="Showcase_1000Seeds_AllValid" classname="Heartbeat.Tests.LayoutGeneratorTests" runstate="Runnable" seed="275961582" result="Passed" start-time="2026-11-11 20:22:45Z" end-time="2026-11-11 20:22:45Z" duration="0.651636" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Heartbeat][Gen] 1000 seeds OK, worst case 9 attempts
+]]></output>
+              </test-case>
+            </test-suite>
+            <test-case id="1122" name="SomeFloors1And2_StartUnpowered_WithReachableSwitch" fullname="Heartbeat.Tests.LayoutGeneratorTests.SomeFloors1And2_StartUnpowered_WithReachableSwitch" methodname="SomeFloors1And2_StartUnpowered_WithReachableSwitch" classname="Heartbeat.Tests.LayoutGeneratorTests" runstate="Runnable" seed="1433393030" result="Passed" start-time="2026-11-11 20:22:45Z" end-time="2026-11-11 20:22:45Z" duration="0.201088" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1113" name="StoryMode_BlistersHold6Rounds_NormalBlistersHold4" fullname="Heartbeat.Tests.LayoutGeneratorTests.StoryMode_BlistersHold6Rounds_NormalBlistersHold4" methodname="StoryMode_BlistersHold6Rounds_NormalBlistersHold4" classname="Heartbeat.Tests.LayoutGeneratorTests" runstate="Runnable" seed="1714595500" result="Passed" start-time="2026-11-11 20:22:45Z" end-time="2026-11-11 20:22:45Z" duration="0.001510" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1112" name="StoryMode_RaisesMinimums_1000Seeds" fullname="Heartbeat.Tests.LayoutGeneratorTests.StoryMode_RaisesMinimums_1000Seeds" methodname="StoryMode_RaisesMinimums_1000Seeds" classname="Heartbeat.Tests.LayoutGeneratorTests" runstate="Runnable" seed="1830752133" result="Passed" start-time="2026-11-11 20:22:45Z" end-time="2026-11-11 20:22:46Z" duration="0.702562" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[[Heartbeat][Gen] 1000 seeds OK, worst case 4 attempts
+]]></output>
+            </test-case>
+            <test-case id="1116" name="TutorialRooms_AreFixedAndInOrder_OnFirstAttempt" fullname="Heartbeat.Tests.LayoutGeneratorTests.TutorialRooms_AreFixedAndInOrder_OnFirstAttempt" methodname="TutorialRooms_AreFixedAndInOrder_OnFirstAttempt" classname="Heartbeat.Tests.LayoutGeneratorTests" runstate="Runnable" seed="630687227" result="Passed" start-time="2026-11-11 20:22:46Z" end-time="2026-11-11 20:22:46Z" duration="0.000979" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1123" name="Validator_RejectsFinalWithoutKeyDoor" fullname="Heartbeat.Tests.LayoutGeneratorTests.Validator_RejectsFinalWithoutKeyDoor" methodname="Validator_RejectsFinalWithoutKeyDoor" classname="Heartbeat.Tests.LayoutGeneratorTests" runstate="Runnable" seed="1860139904" result="Passed" start-time="2026-11-11 20:22:46Z" end-time="2026-11-11 20:22:46Z" duration="0.004365" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1125" name="LukasTerminalPanelTests" fullname="Heartbeat.Tests.LukasTerminalPanelTests" classname="Heartbeat.Tests.LukasTerminalPanelTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-11-11 20:22:46Z" end-time="2026-11-11 20:22:46Z" duration="0.033946" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1126" name="FirstRig_KeepsTheMeasuredPanel" fullname="Heartbeat.Tests.LukasTerminalPanelTests.FirstRig_KeepsTheMeasuredPanel" methodname="FirstRig_KeepsTheMeasuredPanel" classname="Heartbeat.Tests.LukasTerminalPanelTests" runstate="Runnable" seed="1793896857" result="Passed" start-time="2026-11-11 20:22:46Z" end-time="2026-11-11 20:22:46Z" duration="0.023593" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1127" name="NewRig_PanelStaysOnTheForearm" fullname="Heartbeat.Tests.LukasTerminalPanelTests.NewRig_PanelStaysOnTheForearm" methodname="NewRig_PanelStaysOnTheForearm" classname="Heartbeat.Tests.LukasTerminalPanelTests" runstate="Runnable" seed="1965374673" result="Passed" start-time="2026-11-11 20:22:46Z" end-time="2026-11-11 20:22:46Z" duration="0.009113" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1128" name="MixMathTests" fullname="Heartbeat.Tests.MixMathTests" classname="Heartbeat.Tests.MixMathTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-11-11 20:22:46Z" end-time="2026-11-11 20:22:46Z" duration="0.002954" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1130" name="Duck_HoldsThenReleases" fullname="Heartbeat.Tests.MixMathTests.Duck_HoldsThenReleases" methodname="Duck_HoldsThenReleases" classname="Heartbeat.Tests.MixMathTests" runstate="Runnable" seed="298622481" result="Passed" start-time="2026-11-11 20:22:46Z" end-time="2026-11-11 20:22:46Z" duration="0.000802" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1129" name="LinearToDb_Ends" fullname="Heartbeat.Tests.MixMathTests.LinearToDb_Ends" methodname="LinearToDb_Ends" classname="Heartbeat.Tests.MixMathTests" runstate="Runnable" seed="1688892853" result="Passed" start-time="2026-11-11 20:22:46Z" end-time="2026-11-11 20:22:46Z" duration="0.000312" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1131" name="MotherFightTests" fullname="Heartbeat.Tests.MotherFightTests" classname="Heartbeat.Tests.MotherFightTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-11-11 20:22:46Z" end-time="2026-11-11 20:22:46Z" duration="0.002532" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1134" name="Phase2_NeedsAllKilledAndCore" fullname="Heartbeat.Tests.MotherFightTests.Phase2_NeedsAllKilledAndCore" methodname="Phase2_NeedsAllKilledAndCore" classname="Heartbeat.Tests.MotherFightTests" runstate="Runnable" seed="1924351363" result="Passed" start-time="2026-11-11 20:22:46Z" end-time="2026-11-11 20:22:46Z" duration="0.000595" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1135" name="ReachingCoreEarly_ReleasesTheRest_NeverBlocks" fullname="Heartbeat.Tests.MotherFightTests.ReachingCoreEarly_ReleasesTheRest_NeverBlocks" methodname="ReachingCoreEarly_ReleasesTheRest_NeverBlocks" classname="Heartbeat.Tests.MotherFightTests" runstate="Runnable" seed="2100637851" result="Passed" start-time="2026-11-11 20:22:46Z" end-time="2026-11-11 20:22:46Z" duration="0.000225" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1133" name="Releases_AreCappedAtTwoActive_AndFourTotal" fullname="Heartbeat.Tests.MotherFightTests.Releases_AreCappedAtTwoActive_AndFourTotal" methodname="Releases_AreCappedAtTwoActive_AndFourTotal" classname="Heartbeat.Tests.MotherFightTests" runstate="Runnable" seed="794883047" result="Passed" start-time="2026-11-11 20:22:46Z" end-time="2026-11-11 20:22:46Z" duration="0.000197" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1132" name="ThreeNodes_StartPhase2" fullname="Heartbeat.Tests.MotherFightTests.ThreeNodes_StartPhase2" methodname="ThreeNodes_StartPhase2" classname="Heartbeat.Tests.MotherFightTests" runstate="Runnable" seed="303741782" result="Passed" start-time="2026-11-11 20:22:46Z" end-time="2026-11-11 20:22:46Z" duration="0.000152" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1136" name="ThreeTransformers_Defeat" fullname="Heartbeat.Tests.MotherFightTests.ThreeTransformers_Defeat" methodname="ThreeTransformers_Defeat" classname="Heartbeat.Tests.MotherFightTests" runstate="Runnable" seed="1481180614" result="Passed" start-time="2026-11-11 20:22:46Z" end-time="2026-11-11 20:22:46Z" duration="0.000248" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1137" name="OcclusionModelTests" fullname="Heartbeat.Tests.OcclusionModelTests" classname="Heartbeat.Tests.OcclusionModelTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-11-11 20:22:46Z" end-time="2026-11-11 20:22:46Z" duration="0.001660" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1138" name="Clear_line_is_full_volume" fullname="Heartbeat.Tests.OcclusionModelTests.Clear_line_is_full_volume" methodname="Clear_line_is_full_volume" classname="Heartbeat.Tests.OcclusionModelTests" runstate="Runnable" seed="2118115565" result="Passed" start-time="2026-11-11 20:22:46Z" end-time="2026-11-11 20:22:46Z" duration="0.000216" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1142" name="Negative_counts_are_ignored" fullname="Heartbeat.Tests.OcclusionModelTests.Negative_counts_are_ignored" methodname="Negative_counts_are_ignored" classname="Heartbeat.Tests.OcclusionModelTests" runstate="Runnable" seed="865292542" result="Passed" start-time="2026-11-11 20:22:46Z" end-time="2026-11-11 20:22:46Z" duration="0.000114" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1140" name="One_closed_door_cuts_half" fullname="Heartbeat.Tests.OcclusionModelTests.One_closed_door_cuts_half" methodname="One_closed_door_cuts_half" classname="Heartbeat.Tests.OcclusionModelTests" runstate="Runnable" seed="1531853316" result="Passed" start-time="2026-11-11 20:22:46Z" end-time="2026-11-11 20:22:46Z" duration="0.000098" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1139" name="One_wall_cuts_seventy_percent" fullname="Heartbeat.Tests.OcclusionModelTests.One_wall_cuts_seventy_percent" methodname="One_wall_cuts_seventy_percent" classname="Heartbeat.Tests.OcclusionModelTests" runstate="Runnable" seed="592567165" result="Passed" start-time="2026-11-11 20:22:46Z" end-time="2026-11-11 20:22:46Z" duration="0.000097" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1141" name="Walls_and_doors_stack" fullname="Heartbeat.Tests.OcclusionModelTests.Walls_and_doors_stack" methodname="Walls_and_doors_stack" classname="Heartbeat.Tests.OcclusionModelTests" runstate="Runnable" seed="1521282913" result="Passed" start-time="2026-11-11 20:22:46Z" end-time="2026-11-11 20:22:46Z" duration="0.000094" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1143" name="OptionsDefaultsTests" fullname="Heartbeat.Tests.OptionsDefaultsTests" classname="Heartbeat.Tests.OptionsDefaultsTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-11-11 20:22:46Z" end-time="2026-11-11 20:22:46Z" duration="0.002713" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1147" name="AimAssist_OffWithMouseOnWithGamepad_ByDefaultAndAfterReset" fullname="Heartbeat.Tests.OptionsDefaultsTests.AimAssist_OffWithMouseOnWithGamepad_ByDefaultAndAfterReset" methodname="AimAssist_OffWithMouseOnWithGamepad_ByDefaultAndAfterReset" classname="Heartbeat.Tests.OptionsDefaultsTests" runstate="Runnable" seed="1534599749" result="Passed" start-time="2026-11-11 20:22:46Z" end-time="2026-11-11 20:22:46Z" duration="0.000440" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1148" name="AimAssist_OldSaveWithSingleField_StillLoads" fullname="Heartbeat.Tests.OptionsDefaultsTests.AimAssist_OldSaveWithSingleField_StillLoads" methodname="AimAssist_OldSaveWithSingleField_StillLoads" classname="Heartbeat.Tests.OptionsDefaultsTests" runstate="Runnable" seed="1071447083" result="Passed" start-time="2026-11-11 20:22:46Z" end-time="2026-11-11 20:22:46Z" duration="0.000232" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1144" name="ResetAudio_OnlyTouchesAudio" fullname="Heartbeat.Tests.OptionsDefaultsTests.ResetAudio_OnlyTouchesAudio" methodname="ResetAudio_OnlyTouchesAudio" classname="Heartbeat.Tests.OptionsDefaultsTests" runstate="Runnable" seed="148093477" result="Passed" start-time="2026-11-11 20:22:46Z" end-time="2026-11-11 20:22:46Z" duration="0.000199" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1146" name="ResetControls_ClearsRebinds" fullname="Heartbeat.Tests.OptionsDefaultsTests.ResetControls_ClearsRebinds" methodname="ResetControls_ClearsRebinds" classname="Heartbeat.Tests.OptionsDefaultsTests" runstate="Runnable" seed="1065160587" result="Passed" start-time="2026-11-11 20:22:46Z" end-time="2026-11-11 20:22:46Z" duration="0.000130" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1145" name="ResetVideoAndAccessibility_RestoreTheirNewFields" fullname="Heartbeat.Tests.OptionsDefaultsTests.ResetVideoAndAccessibility_RestoreTheirNewFields" methodname="ResetVideoAndAccessibility_RestoreTheirNewFields" classname="Heartbeat.Tests.OptionsDefaultsTests" runstate="Runnable" seed="498278463" result="Passed" start-time="2026-11-11 20:22:46Z" end-time="2026-11-11 20:22:46Z" duration="0.000258" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1149" name="PauseReadingTests" fullname="Heartbeat.Tests.PauseReadingTests" classname="Heartbeat.Tests.PauseReadingTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-11-11 20:22:46Z" end-time="2026-11-11 20:22:46Z" duration="0.001641" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1151" name="EndReading_WithoutBegin_DoesNotTouchTime" fullname="Heartbeat.Tests.PauseReadingTests.EndReading_WithoutBegin_DoesNotTouchTime" methodname="EndReading_WithoutBegin_DoesNotTouchTime" classname="Heartbeat.Tests.PauseReadingTests" runstate="Runnable" seed="455197422" result="Passed" start-time="2026-11-11 20:22:46Z" end-time="2026-11-11 20:22:46Z" duration="0.000562" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1150" name="Reading_StopsTime_WithoutPauseState_AndRestoresIt" fullname="Heartbeat.Tests.PauseReadingTests.Reading_StopsTime_WithoutPauseState_AndRestoresIt" methodname="Reading_StopsTime_WithoutPauseState_AndRestoresIt" classname="Heartbeat.Tests.PauseReadingTests" runstate="Runnable" seed="1328392649" result="Passed" start-time="2026-11-11 20:22:46Z" end-time="2026-11-11 20:22:46Z" duration="0.000444" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1169" name="PrefabOverlapTests" fullname="Heartbeat.Tests.PrefabOverlapTests" classname="Heartbeat.Tests.PrefabOverlapTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-11-11 20:22:46Z" end-time="2026-11-11 20:22:48Z" duration="1.608449" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1171" name="MaterialsWithAnEmissionMapStayEmissive" fullname="Heartbeat.Tests.PrefabOverlapTests.MaterialsWithAnEmissionMapStayEmissive" methodname="MaterialsWithAnEmissionMapStayEmissive" classname="Heartbeat.Tests.PrefabOverlapTests" runstate="Runnable" seed="1727079185" result="Passed" start-time="2026-11-11 20:22:46Z" end-time="2026-11-11 20:22:47Z" duration="0.793971" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1172" name="NoFloorShowsAnotherFloorsModel" fullname="Heartbeat.Tests.PrefabOverlapTests.NoFloorShowsAnotherFloorsModel" methodname="NoFloorShowsAnotherFloorsModel" classname="Heartbeat.Tests.PrefabOverlapTests" runstate="Runnable" seed="1450997146" result="Passed" start-time="2026-11-11 20:22:47Z" end-time="2026-11-11 20:22:48Z" duration="0.595419" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1170" name="NoPrefabHasTwoRenderersWithTheSameBounds" fullname="Heartbeat.Tests.PrefabOverlapTests.NoPrefabHasTwoRenderersWithTheSameBounds" methodname="NoPrefabHasTwoRenderersWithTheSameBounds" classname="Heartbeat.Tests.PrefabOverlapTests" runstate="Runnable" seed="1361931318" result="Passed" start-time="2026-11-11 20:22:48Z" end-time="2026-11-11 20:22:48Z" duration="0.217893" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1173" name="RealLibraryTests" fullname="Heartbeat.Tests.RealLibraryTests" classname="Heartbeat.Tests.RealLibraryTests" runstate="Runnable" testcasecount="8" result="Passed" start-time="2026-11-11 20:22:48Z" end-time="2026-11-11 20:22:53Z" duration="5.325775" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="ParameterizedMethod" id="1182" name="RealRooms_1000Seeds" fullname="Heartbeat.Tests.RealLibraryTests.RealRooms_1000Seeds" classname="Heartbeat.Tests.RealLibraryTests" runstate="Runnable" testcasecount="8" result="Passed" start-time="2026-11-11 20:22:48Z" end-time="2026-11-11 20:22:53Z" duration="5.316339" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1174" name="RealRooms_1000Seeds(&quot;FC_F1_Full&quot;,False)" fullname="Heartbeat.Tests.RealLibraryTests.RealRooms_1000Seeds(&quot;FC_F1_Full&quot;,False)" methodname="RealRooms_1000Seeds" classname="Heartbeat.Tests.RealLibraryTests" runstate="Runnable" seed="899125169" result="Passed" start-time="2026-11-11 20:22:48Z" end-time="2026-11-11 20:22:49Z" duration="0.912767" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Heartbeat][Gen] FC_F1_Full first=False: 1000 seeds OK, worst case 5 attempts
+]]></output>
+              </test-case>
+              <test-case id="1175" name="RealRooms_1000Seeds(&quot;FC_F1_Full&quot;,True)" fullname="Heartbeat.Tests.RealLibraryTests.RealRooms_1000Seeds(&quot;FC_F1_Full&quot;,True)" methodname="RealRooms_1000Seeds" classname="Heartbeat.Tests.RealLibraryTests" runstate="Runnable" seed="1186758303" result="Passed" start-time="2026-11-11 20:22:49Z" end-time="2026-11-11 20:22:49Z" duration="0.688518" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Heartbeat][Gen] FC_F1_Full first=True: 1000 seeds OK, worst case 4 attempts
+]]></output>
+              </test-case>
+              <test-case id="1176" name="RealRooms_1000Seeds(&quot;FC_F1_Showcase&quot;,False)" fullname="Heartbeat.Tests.RealLibraryTests.RealRooms_1000Seeds(&quot;FC_F1_Showcase&quot;,False)" methodname="RealRooms_1000Seeds" classname="Heartbeat.Tests.RealLibraryTests" runstate="Runnable" seed="1893396089" result="Passed" start-time="2026-11-11 20:22:49Z" end-time="2026-11-11 20:22:50Z" duration="0.548387" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Heartbeat][Gen] FC_F1_Showcase first=False: 1000 seeds OK, worst case 4 attempts
+]]></output>
+              </test-case>
+              <test-case id="1177" name="RealRooms_1000Seeds(&quot;FC_F1_Showcase&quot;,True)" fullname="Heartbeat.Tests.RealLibraryTests.RealRooms_1000Seeds(&quot;FC_F1_Showcase&quot;,True)" methodname="RealRooms_1000Seeds" classname="Heartbeat.Tests.RealLibraryTests" runstate="Runnable" seed="1892898823" result="Passed" start-time="2026-11-11 20:22:50Z" end-time="2026-11-11 20:22:51Z" duration="0.631551" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Heartbeat][Gen] FC_F1_Showcase first=True: 1000 seeds OK, worst case 5 attempts
+]]></output>
+              </test-case>
+              <test-case id="1178" name="RealRooms_1000Seeds(&quot;FC_F2_Full&quot;,False)" fullname="Heartbeat.Tests.RealLibraryTests.RealRooms_1000Seeds(&quot;FC_F2_Full&quot;,False)" methodname="RealRooms_1000Seeds" classname="Heartbeat.Tests.RealLibraryTests" runstate="Runnable" seed="1251560000" result="Passed" start-time="2026-11-11 20:22:51Z" end-time="2026-11-11 20:22:51Z" duration="0.721178" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Heartbeat][Gen] FC_F2_Full first=False: 1000 seeds OK, worst case 5 attempts
+]]></output>
+              </test-case>
+              <test-case id="1179" name="RealRooms_1000Seeds(&quot;FC_F2_Showcase&quot;,False)" fullname="Heartbeat.Tests.RealLibraryTests.RealRooms_1000Seeds(&quot;FC_F2_Showcase&quot;,False)" methodname="RealRooms_1000Seeds" classname="Heartbeat.Tests.RealLibraryTests" runstate="Runnable" seed="523773538" result="Passed" start-time="2026-11-11 20:22:51Z" end-time="2026-11-11 20:22:52Z" duration="0.567601" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Heartbeat][Gen] FC_F2_Showcase first=False: 1000 seeds OK, worst case 4 attempts
+]]></output>
+              </test-case>
+              <test-case id="1180" name="RealRooms_1000Seeds(&quot;FC_F3_Full&quot;,False)" fullname="Heartbeat.Tests.RealLibraryTests.RealRooms_1000Seeds(&quot;FC_F3_Full&quot;,False)" methodname="RealRooms_1000Seeds" classname="Heartbeat.Tests.RealLibraryTests" runstate="Runnable" seed="635714207" result="Passed" start-time="2026-11-11 20:22:52Z" end-time="2026-11-11 20:22:53Z" duration="0.714128" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Heartbeat][Gen] FC_F3_Full first=False: 1000 seeds OK, worst case 5 attempts
+]]></output>
+              </test-case>
+              <test-case id="1181" name="RealRooms_1000Seeds(&quot;FC_F3_Showcase&quot;,False)" fullname="Heartbeat.Tests.RealLibraryTests.RealRooms_1000Seeds(&quot;FC_F3_Showcase&quot;,False)" methodname="RealRooms_1000Seeds" classname="Heartbeat.Tests.RealLibraryTests" runstate="Runnable" seed="716209515" result="Passed" start-time="2026-11-11 20:22:53Z" end-time="2026-11-11 20:22:53Z" duration="0.502791" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Heartbeat][Gen] FC_F3_Showcase first=False: 1000 seeds OK, worst case 4 attempts
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+          <test-suite type="TestFixture" id="1183" name="RecycleRuleTests" fullname="Heartbeat.Tests.RecycleRuleTests" classname="Heartbeat.Tests.RecycleRuleTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-11-11 20:22:53Z" end-time="2026-11-11 20:22:53Z" duration="0.009244" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1184" name="BeforeRiseTime_NeverRises" fullname="Heartbeat.Tests.RecycleRuleTests.BeforeRiseTime_NeverRises" methodname="BeforeRiseTime_NeverRises" classname="Heartbeat.Tests.RecycleRuleTests" runstate="Runnable" seed="1373742678" result="Passed" start-time="2026-11-11 20:22:53Z" end-time="2026-11-11 20:22:53Z" duration="0.000228" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1185" name="OutOfView_RisesOnTime" fullname="Heartbeat.Tests.RecycleRuleTests.OutOfView_RisesOnTime" methodname="OutOfView_RisesOnTime" classname="Heartbeat.Tests.RecycleRuleTests" runstate="Runnable" seed="736269992" result="Passed" start-time="2026-11-11 20:22:53Z" end-time="2026-11-11 20:22:53Z" duration="0.000125" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1187" name="Seen_RisesAfterMaxWait" fullname="Heartbeat.Tests.RecycleRuleTests.Seen_RisesAfterMaxWait" methodname="Seen_RisesAfterMaxWait" classname="Heartbeat.Tests.RecycleRuleTests" runstate="Runnable" seed="461069716" result="Passed" start-time="2026-11-11 20:22:53Z" end-time="2026-11-11 20:22:53Z" duration="0.000095" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1186" name="Seen_Waits" fullname="Heartbeat.Tests.RecycleRuleTests.Seen_Waits" methodname="Seen_Waits" classname="Heartbeat.Tests.RecycleRuleTests" runstate="Runnable" seed="1752441187" result="Passed" start-time="2026-11-11 20:22:53Z" end-time="2026-11-11 20:22:53Z" duration="0.000093" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1188" name="RegistryModelTests" fullname="Heartbeat.Tests.RegistryModelTests" classname="Heartbeat.Tests.RegistryModelTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-11-11 20:22:53Z" end-time="2026-11-11 20:22:53Z" duration="0.004339" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1189" name="EmiliaDocuments_CountTowardsSix" fullname="Heartbeat.Tests.RegistryModelTests.EmiliaDocuments_CountTowardsSix" methodname="EmiliaDocuments_CountTowardsSix" classname="Heartbeat.Tests.RegistryModelTests" runstate="Runnable" seed="1552477236" result="Passed" start-time="2026-11-11 20:22:53Z" end-time="2026-11-11 20:22:53Z" duration="0.000953" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1191" name="ExportImport_RoundTrips_InOrder" fullname="Heartbeat.Tests.RegistryModelTests.ExportImport_RoundTrips_InOrder" methodname="ExportImport_RoundTrips_InOrder" classname="Heartbeat.Tests.RegistryModelTests" runstate="Runnable" seed="462819600" result="Passed" start-time="2026-11-11 20:22:53Z" end-time="2026-11-11 20:22:53Z" duration="0.001662" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1193" name="OldSave_VoiceNoteAsConfiscated_LoadsAsVoiceNote" fullname="Heartbeat.Tests.RegistryModelTests.OldSave_VoiceNoteAsConfiscated_LoadsAsVoiceNote" methodname="OldSave_VoiceNoteAsConfiscated_LoadsAsVoiceNote" classname="Heartbeat.Tests.RegistryModelTests" runstate="Runnable" seed="1809395706" result="Passed" start-time="2026-11-11 20:22:53Z" end-time="2026-11-11 20:22:53Z" duration="0.000213" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1192" name="RecordKinds_KeepTheirSavedNumbers" fullname="Heartbeat.Tests.RegistryModelTests.RecordKinds_KeepTheirSavedNumbers" methodname="RecordKinds_KeepTheirSavedNumbers" classname="Heartbeat.Tests.RegistryModelTests" runstate="Runnable" seed="546835619" result="Passed" start-time="2026-11-11 20:22:53Z" end-time="2026-11-11 20:22:53Z" duration="0.000278" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1190" name="SameId_IsNotCountedTwice" fullname="Heartbeat.Tests.RegistryModelTests.SameId_IsNotCountedTwice" methodname="SameId_IsNotCountedTwice" classname="Heartbeat.Tests.RegistryModelTests" runstate="Runnable" seed="1396999214" result="Passed" start-time="2026-11-11 20:22:53Z" end-time="2026-11-11 20:22:53Z" duration="0.000147" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1194" name="RevolverModelTests" fullname="Heartbeat.Tests.RevolverModelTests" classname="Heartbeat.Tests.RevolverModelTests" runstate="Runnable" testcasecount="8" result="Passed" start-time="2026-11-11 20:22:53Z" end-time="2026-11-11 20:22:53Z" duration="0.003468" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1197" name="CancelReload_KeepsLoadedRounds" fullname="Heartbeat.Tests.RevolverModelTests.CancelReload_KeepsLoadedRounds" methodname="CancelReload_KeepsLoadedRounds" classname="Heartbeat.Tests.RevolverModelTests" runstate="Runnable" seed="1566419007" result="Passed" start-time="2026-11-11 20:22:53Z" end-time="2026-11-11 20:22:53Z" duration="0.000608" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1198" name="CannotFireWhileReloading" fullname="Heartbeat.Tests.RevolverModelTests.CannotFireWhileReloading" methodname="CannotFireWhileReloading" classname="Heartbeat.Tests.RevolverModelTests" runstate="Runnable" seed="1033267164" result="Passed" start-time="2026-11-11 20:22:53Z" end-time="2026-11-11 20:22:53Z" duration="0.000262" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1200" name="FourShotsOnAlto_LeaveTwo" fullname="Heartbeat.Tests.RevolverModelTests.FourShotsOnAlto_LeaveTwo" methodname="FourShotsOnAlto_LeaveTwo" classname="Heartbeat.Tests.RevolverModelTests" runstate="Runnable" seed="1513915753" result="Passed" start-time="2026-11-11 20:22:53Z" end-time="2026-11-11 20:22:53Z" duration="0.000156" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1196" name="Reload_LoadsOneRoundEvery07s_UntilFull" fullname="Heartbeat.Tests.RevolverModelTests.Reload_LoadsOneRoundEvery07s_UntilFull" methodname="Reload_LoadsOneRoundEvery07s_UntilFull" classname="Heartbeat.Tests.RevolverModelTests" runstate="Runnable" seed="635610038" result="Passed" start-time="2026-11-11 20:22:53Z" end-time="2026-11-11 20:22:53Z" duration="0.000265" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1202" name="ReloadStopsWhenAmmoRunsOut" fullname="Heartbeat.Tests.RevolverModelTests.ReloadStopsWhenAmmoRunsOut" methodname="ReloadStopsWhenAmmoRunsOut" classname="Heartbeat.Tests.RevolverModelTests" runstate="Runnable" seed="1128724723" result="Passed" start-time="2026-11-11 20:22:53Z" end-time="2026-11-11 20:22:53Z" duration="0.000154" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1199" name="ShotInterval_IsEnforced" fullname="Heartbeat.Tests.RevolverModelTests.ShotInterval_IsEnforced" methodname="ShotInterval_IsEnforced" classname="Heartbeat.Tests.RevolverModelTests" runstate="Runnable" seed="324287071" result="Passed" start-time="2026-11-11 20:22:53Z" end-time="2026-11-11 20:22:53Z" duration="0.000216" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1201" name="Spread_ClosesInOneSecondStill_OpensWhenMoving" fullname="Heartbeat.Tests.RevolverModelTests.Spread_ClosesInOneSecondStill_OpensWhenMoving" methodname="Spread_ClosesInOneSecondStill_OpensWhenMoving" classname="Heartbeat.Tests.RevolverModelTests" runstate="Runnable" seed="1689665410" result="Passed" start-time="2026-11-11 20:22:53Z" end-time="2026-11-11 20:22:53Z" duration="0.000184" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1195" name="StartsUnloaded_DryFires" fullname="Heartbeat.Tests.RevolverModelTests.StartsUnloaded_DryFires" methodname="StartsUnloaded_DryFires" classname="Heartbeat.Tests.RevolverModelTests" runstate="Runnable" seed="769051286" result="Passed" start-time="2026-11-11 20:22:53Z" end-time="2026-11-11 20:22:53Z" duration="0.000114" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1203" name="RoomAppearanceTests" fullname="Heartbeat.Tests.RoomAppearanceTests" classname="Heartbeat.Tests.RoomAppearanceTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-11-11 20:22:53Z" end-time="2026-11-11 20:22:54Z" duration="0.509326" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="ParameterizedMethod" id="1208" name="RoomAppearsWithinSeeds" fullname="Heartbeat.Tests.RoomAppearanceTests.RoomAppearsWithinSeeds" classname="Heartbeat.Tests.RoomAppearanceTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-11-11 20:22:53Z" end-time="2026-11-11 20:22:54Z" duration="0.508918" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1204" name="RoomAppearsWithinSeeds(1,&quot;ROOM_F1_Storage_B&quot;)" fullname="Heartbeat.Tests.RoomAppearanceTests.RoomAppearsWithinSeeds(1,&quot;ROOM_F1_Storage_B&quot;)" methodname="RoomAppearsWithinSeeds" classname="Heartbeat.Tests.RoomAppearanceTests" runstate="Runnable" seed="1010542765" result="Passed" start-time="2026-11-11 20:22:53Z" end-time="2026-11-11 20:22:53Z" duration="0.127159" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Heartbeat][Test] ROOM_F1_Storage_B: 67/200 floor-1 layouts
+]]></output>
+              </test-case>
+              <test-case id="1205" name="RoomAppearsWithinSeeds(1,&quot;ROOM_F1_Vertical_A&quot;)" fullname="Heartbeat.Tests.RoomAppearanceTests.RoomAppearsWithinSeeds(1,&quot;ROOM_F1_Vertical_A&quot;)" methodname="RoomAppearsWithinSeeds" classname="Heartbeat.Tests.RoomAppearanceTests" runstate="Runnable" seed="1893966777" result="Passed" start-time="2026-11-11 20:22:53Z" end-time="2026-11-11 20:22:53Z" duration="0.126613" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Heartbeat][Test] ROOM_F1_Vertical_A: 64/200 floor-1 layouts
+]]></output>
+              </test-case>
+              <test-case id="1206" name="RoomAppearsWithinSeeds(2,&quot;ROOM_F2_Open_B&quot;)" fullname="Heartbeat.Tests.RoomAppearanceTests.RoomAppearsWithinSeeds(2,&quot;ROOM_F2_Open_B&quot;)" methodname="RoomAppearsWithinSeeds" classname="Heartbeat.Tests.RoomAppearanceTests" runstate="Runnable" seed="2010640476" result="Passed" start-time="2026-11-11 20:22:53Z" end-time="2026-11-11 20:22:53Z" duration="0.137439" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Heartbeat][Test] ROOM_F2_Open_B: 135/200 floor-2 layouts
+]]></output>
+              </test-case>
+              <test-case id="1207" name="RoomAppearsWithinSeeds(2,&quot;ROOM_F2_Storage_B&quot;)" fullname="Heartbeat.Tests.RoomAppearanceTests.RoomAppearsWithinSeeds(2,&quot;ROOM_F2_Storage_B&quot;)" methodname="RoomAppearsWithinSeeds" classname="Heartbeat.Tests.RoomAppearanceTests" runstate="Runnable" seed="1357384311" result="Passed" start-time="2026-11-11 20:22:53Z" end-time="2026-11-11 20:22:54Z" duration="0.116690" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Heartbeat][Test] ROOM_F2_Storage_B: 121/200 floor-2 layouts
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+          <test-suite type="TestFixture" id="1209" name="SandboxIsolationTests" fullname="Heartbeat.Tests.SandboxIsolationTests" classname="Heartbeat.Tests.SandboxIsolationTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-11-11 20:22:54Z" end-time="2026-11-11 20:22:54Z" duration="0.127576" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1212" name="GameCodeDoesNotReferenceTheSandbox" fullname="Heartbeat.Tests.SandboxIsolationTests.GameCodeDoesNotReferenceTheSandbox" methodname="GameCodeDoesNotReferenceTheSandbox" classname="Heartbeat.Tests.SandboxIsolationTests" runstate="Runnable" seed="509465417" result="Passed" start-time="2026-11-11 20:22:54Z" end-time="2026-11-11 20:22:54Z" duration="0.073075" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1210" name="NoSandboxSceneIsInTheBuild" fullname="Heartbeat.Tests.SandboxIsolationTests.NoSandboxSceneIsInTheBuild" methodname="NoSandboxSceneIsInTheBuild" classname="Heartbeat.Tests.SandboxIsolationTests" runstate="Runnable" seed="705331806" result="Passed" start-time="2026-11-11 20:22:54Z" end-time="2026-11-11 20:22:54Z" duration="0.000660" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1211" name="SandboxCodeIsNotCompiledForPlayers" fullname="Heartbeat.Tests.SandboxIsolationTests.SandboxCodeIsNotCompiledForPlayers" methodname="SandboxCodeIsNotCompiledForPlayers" classname="Heartbeat.Tests.SandboxIsolationTests" runstate="Runnable" seed="577978978" result="Passed" start-time="2026-11-11 20:22:54Z" end-time="2026-11-11 20:22:54Z" duration="0.052662" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1213" name="SaveServiceTests" fullname="Heartbeat.Tests.SaveServiceTests" classname="Heartbeat.Tests.SaveServiceTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-11-11 20:22:54Z" end-time="2026-11-11 20:22:54Z" duration="0.016246" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1216" name="CorruptFile_IsDamaged_AndBackupRestores" fullname="Heartbeat.Tests.SaveServiceTests.CorruptFile_IsDamaged_AndBackupRestores" methodname="CorruptFile_IsDamaged_AndBackupRestores" classname="Heartbeat.Tests.SaveServiceTests" runstate="Runnable" seed="1092131403" result="Passed" start-time="2026-11-11 20:22:54Z" end-time="2026-11-11 20:22:54Z" duration="0.008629" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[[Heartbeat][Save] Slot 0 saved (R-H-07, deaths 0, autosave=False)
+[Heartbeat][Save] Slot 0 saved (R-H-08, deaths 0, autosave=False)
+[Heartbeat][Save] Unreadable save slot_0.json: JSON parse error: Missing a name for object member.
+[Heartbeat][Save] Unreadable save slot_0.json: JSON parse error: Missing a name for object member.
+]]></output>
+            </test-case>
+            <test-case id="1218" name="EmptySlot_And_Delete" fullname="Heartbeat.Tests.SaveServiceTests.EmptySlot_And_Delete" methodname="EmptySlot_And_Delete" classname="Heartbeat.Tests.SaveServiceTests" runstate="Runnable" seed="917358656" result="Passed" start-time="2026-11-11 20:22:54Z" end-time="2026-11-11 20:22:54Z" duration="0.001265" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[[Heartbeat][Save] Slot 2 saved (R-H-07, deaths 0, autosave=False)
+]]></output>
+            </test-case>
+            <test-case id="1219" name="Global_RoundTrips" fullname="Heartbeat.Tests.SaveServiceTests.Global_RoundTrips" methodname="Global_RoundTrips" classname="Heartbeat.Tests.SaveServiceTests" runstate="Runnable" seed="1460889545" result="Passed" start-time="2026-11-11 20:22:54Z" end-time="2026-11-11 20:22:54Z" duration="0.000631" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1217" name="NewerVersion_IsTreatedAsDamaged" fullname="Heartbeat.Tests.SaveServiceTests.NewerVersion_IsTreatedAsDamaged" methodname="NewerVersion_IsTreatedAsDamaged" classname="Heartbeat.Tests.SaveServiceTests" runstate="Runnable" seed="1064115814" result="Passed" start-time="2026-11-11 20:22:54Z" end-time="2026-11-11 20:22:54Z" duration="0.000389" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1215" name="SecondSave_KeepsBackup" fullname="Heartbeat.Tests.SaveServiceTests.SecondSave_KeepsBackup" methodname="SecondSave_KeepsBackup" classname="Heartbeat.Tests.SaveServiceTests" runstate="Runnable" seed="1572778850" result="Passed" start-time="2026-11-11 20:22:54Z" end-time="2026-11-11 20:22:54Z" duration="0.001654" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[[Heartbeat][Save] Slot 0 saved (R-H-07, deaths 0, autosave=False)
+[Heartbeat][Save] Slot 0 saved (R-H-08, deaths 0, autosave=False)
+]]></output>
+            </test-case>
+            <test-case id="1214" name="Slot_RoundTrips_AllFields" fullname="Heartbeat.Tests.SaveServiceTests.Slot_RoundTrips_AllFields" methodname="Slot_RoundTrips_AllFields" classname="Heartbeat.Tests.SaveServiceTests" runstate="Runnable" seed="1487868517" result="Passed" start-time="2026-11-11 20:22:54Z" end-time="2026-11-11 20:22:54Z" duration="0.001884" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[[Heartbeat][Save] Slot 1 saved (R-H-09, deaths 2, autosave=True)
+]]></output>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1152" name="StaminaModelTests" fullname="Heartbeat.Tests.StaminaModelTests" classname="Heartbeat.Tests.StaminaModelTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-11-11 20:22:54Z" end-time="2026-11-11 20:22:54Z" duration="0.002106" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1155" name="ReachingZero_ExhaustsForTwoSeconds" fullname="Heartbeat.Tests.StaminaModelTests.ReachingZero_ExhaustsForTwoSeconds" methodname="ReachingZero_ExhaustsForTwoSeconds" classname="Heartbeat.Tests.StaminaModelTests" runstate="Runnable" seed="1967346360" result="Passed" start-time="2026-11-11 20:22:54Z" end-time="2026-11-11 20:22:54Z" duration="0.000649" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1154" name="Regen_WaitsThreeSeconds_ThenFillsIn4s" fullname="Heartbeat.Tests.StaminaModelTests.Regen_WaitsThreeSeconds_ThenFillsIn4s" methodname="Regen_WaitsThreeSeconds_ThenFillsIn4s" classname="Heartbeat.Tests.StaminaModelTests" runstate="Runnable" seed="25003591" result="Passed" start-time="2026-11-11 20:22:54Z" end-time="2026-11-11 20:22:54Z" duration="0.000205" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1156" name="Running_Drains10PercentPerSecond" fullname="Heartbeat.Tests.StaminaModelTests.Running_Drains10PercentPerSecond" methodname="Running_Drains10PercentPerSecond" classname="Heartbeat.Tests.StaminaModelTests" runstate="Runnable" seed="150309222" result="Passed" start-time="2026-11-11 20:22:54Z" end-time="2026-11-11 20:22:54Z" duration="0.000119" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1153" name="Shove_At30Percent_Fails" fullname="Heartbeat.Tests.StaminaModelTests.Shove_At30Percent_Fails" methodname="Shove_At30Percent_Fails" classname="Heartbeat.Tests.StaminaModelTests" runstate="Runnable" seed="315806273" result="Passed" start-time="2026-11-11 20:22:54Z" end-time="2026-11-11 20:22:54Z" duration="0.000147" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1237" name="TelemetryRecorderTests" fullname="Heartbeat.Tests.TelemetryRecorderTests" classname="Heartbeat.Tests.TelemetryRecorderTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-11-11 20:22:54Z" end-time="2026-11-11 20:22:54Z" duration="0.003410" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1238" name="OnlyWithTheArgument" fullname="Heartbeat.Tests.TelemetryRecorderTests.OnlyWithTheArgument" methodname="OnlyWithTheArgument" classname="Heartbeat.Tests.TelemetryRecorderTests" runstate="Runnable" seed="509195325" result="Passed" start-time="2026-11-11 20:22:54Z" end-time="2026-11-11 20:22:54Z" duration="0.000211" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1239" name="WritesOneJsonLinePerEvent_AndStopsListeningWhenDisposed" fullname="Heartbeat.Tests.TelemetryRecorderTests.WritesOneJsonLinePerEvent_AndStopsListeningWhenDisposed" methodname="WritesOneJsonLinePerEvent_AndStopsListeningWhenDisposed" classname="Heartbeat.Tests.TelemetryRecorderTests" runstate="Runnable" seed="935962189" result="Passed" start-time="2026-11-11 20:22:54Z" end-time="2026-11-11 20:22:54Z" duration="0.002570" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1240" name="VoicePickerTests" fullname="Heartbeat.Tests.VoicePickerTests" classname="Heartbeat.Tests.VoicePickerTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-11-11 20:22:54Z" end-time="2026-11-11 20:22:54Z" duration="0.001235" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1241" name="FreeVoice_IsUsedFirst" fullname="Heartbeat.Tests.VoicePickerTests.FreeVoice_IsUsedFirst" methodname="FreeVoice_IsUsedFirst" classname="Heartbeat.Tests.VoicePickerTests" runstate="Runnable" seed="920951916" result="Passed" start-time="2026-11-11 20:22:54Z" end-time="2026-11-11 20:22:54Z" duration="0.000217" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1243" name="Music_NeverStealsSignals_AndIsDropped" fullname="Heartbeat.Tests.VoicePickerTests.Music_NeverStealsSignals_AndIsDropped" methodname="Music_NeverStealsSignals_AndIsDropped" classname="Heartbeat.Tests.VoicePickerTests" runstate="Runnable" seed="232038053" result="Passed" start-time="2026-11-11 20:22:54Z" end-time="2026-11-11 20:22:54Z" duration="0.000122" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1242" name="Signal_StealsLeastImportant_OldestOnTie" fullname="Heartbeat.Tests.VoicePickerTests.Signal_StealsLeastImportant_OldestOnTie" methodname="Signal_StealsLeastImportant_OldestOnTie" classname="Heartbeat.Tests.VoicePickerTests" runstate="Runnable" seed="1316467113" result="Passed" start-time="2026-11-11 20:22:54Z" end-time="2026-11-11 20:22:54Z" duration="0.000134" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+    <test-suite type="Assembly" id="1255" name="Unity.Addressables.DocExampleCode.Editor.Tests.dll" fullname="/home/usuario/Documents/IdentityDissolution-QA/Trabajo/survivalHorror-Demo-QA/Library/ScriptAssemblies/Unity.Addressables.DocExampleCode.Editor.Tests.dll" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-11-11 20:22:54Z" end-time="2026-11-11 20:22:54Z" duration="0.001369" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="93787" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1256" name="AddressableAssets" fullname="AddressableAssets" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-11-11 20:22:54Z" end-time="2026-11-11 20:22:54Z" duration="0.001183" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1257" name="DocExampleCode" fullname="AddressableAssets.DocExampleCode" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-11-11 20:22:54Z" end-time="2026-11-11 20:22:54Z" duration="0.000993" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1253" name="TestStub" fullname="AddressableAssets.DocExampleCode.TestStub" classname="AddressableAssets.DocExampleCode.TestStub" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-11-11 20:22:54Z" end-time="2026-11-11 20:22:54Z" duration="0.000787" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1254" name="RequiredTest" fullname="AddressableAssets.DocExampleCode.TestStub.RequiredTest" methodname="RequiredTest" classname="AddressableAssets.DocExampleCode.TestStub" runstate="Runnable" seed="437965705" result="Passed" start-time="2026-11-11 20:22:54Z" end-time="2026-11-11 20:22:54Z" duration="0.000087" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: /home/usuario/.config/unity3d/Heartbeat/Identity Dissolution/TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

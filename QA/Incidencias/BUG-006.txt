@@ -1,0 +1,106 @@
+IDENTITY DISSOLUTION - REPORTE DE INCIDENCIA
+
+ID: BUG-006
+
+REPORTE ORIGINAL - QA-MAN-007
+
+TITULO
+Cambio inesperado de perspectiva y tonalidad verde
+al combinar movimiento, apuntado e interaccion.
+
+CATEGORIA
+Camara / Iluminacion / Jugabilidad
+
+DESCRIPCION
+Despues de permanecer inmovil aproximadamente dos
+minutos, el evaluador avanzo, apunto y presiono E
+simultaneamente.
+
+Durante esa secuencia, la perspectiva de la camara
+cambio y el escenario adquirio una tonalidad verde
+inusual.
+
+PASOS PROVISIONALES PARA REPRODUCIR
+1. Iniciar una partida.
+2. Permanecer inmovil aproximadamente dos minutos.
+3. Avanzar, apuntar y presionar E simultaneamente.
+4. Observar la perspectiva y la iluminacion.
+
+RESULTADO ESPERADO
+La camara y la iluminacion deben responder de acuerdo
+con el comportamiento previsto por el videojuego.
+
+RESULTADO OBSERVADO
+Cambio inesperado de perspectiva y tonalidad verde.
+
+FRECUENCIA INICIAL
+Una observacion durante QA-MAN-007.
+
+LIMITACIONES
+- Escena exacta no documentada.
+- Duracion del efecto no documentada.
+- Recuperacion de camara no determinada.
+- No se ha descartado un efecto intencional.
+- Causa tecnica no determinada.
+
+ESTADO INICIAL
+Anomalia observada una vez.
+Pendiente de reproduccion controlada.
+
+
+==================================================
+ACTUALIZACION DE INCIDENCIA - QA-MAN-008
+==================================================
+
+ID: BUG-006
+Prueba de seguimiento: QA-MAN-008
+
+ESTADO ACTUALIZADO
+Reproduccion parcial.
+Comportamiento intermitente.
+Pendiente de validacion tecnica.
+
+RESULTADOS DE REPRODUCCION
+Total de intentos: 3
+Intentos con anomalia: 1
+Intentos sin anomalia: 2
+
+Pruebas de comparacion:
+No se observo la anomalia.
+
+RECUPERACION DE CAMARA
+No determinada.
+
+OBSERVACION DEL EVALUADOR
+Al repetir la accion, la anomalia desaparecio.
+El comportamiento ocurrio en uno de tres intentos.
+
+INTERPRETACION
+La anomalia pudo reproducirse, pero no de forma
+consistente.
+
+No se ha demostrado que una accion especifica
+sea responsable del comportamiento.
+
+La frecuencia real del problema es desconocida.
+
+CLASIFICACION
+Severidad provisional: Moderada
+Prioridad propuesta: P3 - Media
+Estado: Reproduccion parcial
+
+ACCIONES PENDIENTES
+1. Identificar la escena exacta.
+2. Registrar evidencia audiovisual.
+3. Documentar la duracion de la anomalia.
+4. Verificar la recuperacion de la camara.
+5. Consultar si el efecto visual es intencional.
+6. Repetir la prueba despues de una eventual
+   modificacion del juego.
+
+CONCLUSION
+BUG-006 permanece abierta para investigacion.
+
+La evidencia actual no permite establecer
+una causa tecnica ni confirmar un defecto
+de implementacion.

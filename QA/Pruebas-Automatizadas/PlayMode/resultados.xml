@@ -1,0 +1,1088 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="16" result="Passed" total="16" passed="16" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-11-11 20:29:21Z" end-time="2026-11-11 20:29:30Z" duration="9.2372207">
+  <test-suite type="TestSuite" id="1026" name="Identity Dissolution" fullname="Identity Dissolution" runstate="Runnable" testcasecount="16" result="Passed" start-time="2026-11-11 20:29:21Z" end-time="2026-11-11 20:29:30Z" duration="9.237221" total="16" passed="16" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1046" name="Heartbeat.Tests.PlayMode.dll" fullname="/home/usuario/Documents/IdentityDissolution-QA/Trabajo/survivalHorror-Demo-QA/Library/ScriptAssemblies/Heartbeat.Tests.PlayMode.dll" runstate="Runnable" testcasecount="16" result="Passed" start-time="2026-11-11 20:29:21Z" end-time="2026-11-11 20:29:30Z" duration="9.228088" total="16" passed="16" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="95858" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestSuite" id="1047" name="Heartbeat" fullname="Heartbeat" runstate="Runnable" testcasecount="16" result="Passed" start-time="2026-11-11 20:29:21Z" end-time="2026-11-11 20:29:30Z" duration="9.227161" total="16" passed="16" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1048" name="Tests" fullname="Heartbeat.Tests" runstate="Runnable" testcasecount="16" result="Passed" start-time="2026-11-11 20:29:21Z" end-time="2026-11-11 20:29:30Z" duration="9.226591" total="16" passed="16" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1027" name="FloorNavMeshTests" fullname="Heartbeat.Tests.FloorNavMeshTests" classname="Heartbeat.Tests.FloorNavMeshTests" runstate="Runnable" testcasecount="15" result="Passed" start-time="2026-11-11 20:29:21Z" end-time="2026-11-11 20:29:28Z" duration="6.944970" total="15" passed="15" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="ParameterizedMethod" id="1043" name="BuiltFloor_HasNavMeshPathFromPlayerToKeyAndFinalRoom" fullname="Heartbeat.Tests.FloorNavMeshTests.BuiltFloor_HasNavMeshPathFromPlayerToKeyAndFinalRoom" classname="Heartbeat.Tests.FloorNavMeshTests" runstate="Runnable" testcasecount="15" result="Passed" start-time="2026-11-11 20:29:21Z" end-time="2026-11-11 20:29:28Z" duration="6.941213" total="15" passed="15" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+              </properties>
+              <test-case id="1028" name="BuiltFloor_HasNavMeshPathFromPlayerToKeyAndFinalRoom(1,4242)" fullname="Heartbeat.Tests.FloorNavMeshTests.BuiltFloor_HasNavMeshPathFromPlayerToKeyAndFinalRoom(1,4242)" methodname="BuiltFloor_HasNavMeshPathFromPlayerToKeyAndFinalRoom" classname="Heartbeat.Tests.FloorNavMeshTests" runstate="Runnable" seed="1751522490" result="Passed" start-time="2026-11-11 20:29:21Z" end-time="2026-11-11 20:29:24Z" duration="2.930387" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Heartbeat][Gen][dev] 09_KEY_F1_Secondary_A/PROP_Shared_Puddle cleared from Door_7_9
+[Heartbeat][Gen][dev] 11_KEY_F1_Secondary_A/PROP_Shared_Puddle cleared from Door_7_11
+[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Rooms] Active around 00_KEY_F1_CapsuleRow: 4 enemies, lights=3 shadowed=3, drawn rooms=5/13
+[Heartbeat][Gen] floor=1 seed=12345 (requested 12345, 1 attempts): 13 rooms, 6 enemies, 19 items, unpowered=True; built in 192 ms
+[Heartbeat][Audio] CUE_Amb_F1
+[Heartbeat][Audio] CUE_Heartbeat_Lab
+[Heartbeat][Audio][dev] Lab heartbeat degradation=0 critical=False
+[Heartbeat][Inventory][dev] [ ][ ][ ][ ][ ][ ]
+[Heartbeat][Save] Slot 3 saved (R-H-07, deaths 0, autosave=False)
+[Heartbeat][Cycle] Floor 1 start saved: 0 items, revolver 0
+[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Door][dev] Door_1_2 -> Closed
+[Heartbeat][Door][dev] Door_2_3 -> Closed
+[Heartbeat][Door][dev] Door_1_4 -> Closed
+[Heartbeat][Door][dev] Door_3_5 -> Closed
+[Heartbeat][Door][dev] Door_5_6 -> Closed
+[Heartbeat][Door][dev] Door_1_7 -> Closed
+[Heartbeat][Door][dev] Door_6_8 -> Closed
+[Heartbeat][Door][dev] Door_7_9 -> Closed
+[Heartbeat][Door][dev] Door_8_10 -> Closed
+[Heartbeat][Door][dev] Door_7_11 -> Closed
+[Heartbeat][Door][dev] Door_6_12 -> Closed
+[Heartbeat][Audio] CUE_Step_Metal
+There are 2 audio listeners in the scene. Please ensure there is always exactly one audio listener in the scene.
+[Heartbeat][Audio] Heartbeat band=0
+[Heartbeat][Audio] CUE_Heartbeat_Player
+[Heartbeat][Audio] Heartbeat band=-1
+[Heartbeat][Gen][dev] 01_ROOM_F1_Open_B/PROP_F1_BigContainer cleared from Door_1_4
+[Heartbeat][Gen][dev] 13_KEY_F1_Secondary_A/PROP_Shared_Puddle cleared from Door_7_13
+[Heartbeat][Gen][dev] 12_ROOM_F1_Storage_B/PROP_Shared_TrashPile cleared from Door_12_14
+[Heartbeat][Gen][dev] 12_ROOM_F1_Storage_B/PROP_Shared_TrashPile cleared from Door_12_14
+[Heartbeat][Gen][dev] 14_KEY_F1_Secondary_A/PROP_Shared_Puddle cleared from Door_12_14
+[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Door][dev] Door_0_9 -> Closed
+[Heartbeat][Rooms] Active around 00_KEY_F1_CapsuleRow: 3 enemies, lights=3 shadowed=3, drawn rooms=5/17
+[Heartbeat][Gen] floor=1 seed=4244 (requested 4243, 2 attempts): 17 rooms, 7 enemies, 17 items, unpowered=False; built in 291 ms
+[Heartbeat][Audio] CUE_Amb_F1
+[Heartbeat][Audio] CUE_Heartbeat_Lab
+[Heartbeat][Audio][dev] Lab heartbeat degradation=0 critical=False
+[Heartbeat][Inventory][dev] [ ][ ][ ][ ][ ][ ]
+[Heartbeat][Save] Slot 3 saved (R-H-07, deaths 0, autosave=False)
+[Heartbeat][Cycle] Floor 1 start saved: 0 items, revolver 0
+]]></output>
+              </test-case>
+              <test-case id="1029" name="BuiltFloor_HasNavMeshPathFromPlayerToKeyAndFinalRoom(1,1234)" fullname="Heartbeat.Tests.FloorNavMeshTests.BuiltFloor_HasNavMeshPathFromPlayerToKeyAndFinalRoom(1,1234)" methodname="BuiltFloor_HasNavMeshPathFromPlayerToKeyAndFinalRoom" classname="Heartbeat.Tests.FloorNavMeshTests" runstate="Runnable" seed="1796126834" result="Passed" start-time="2026-11-11 20:29:24Z" end-time="2026-11-11 20:29:24Z" duration="0.566290" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Door][dev] Door_1_2 -> Closed
+[Heartbeat][Door][dev] Door_2_3 -> Closed
+[Heartbeat][Door][dev] Door_1_4 -> Closed
+[Heartbeat][Door][dev] Door_3_5 -> Closed
+[Heartbeat][Door][dev] Door_5_6 -> Closed
+[Heartbeat][Door][dev] Door_6_7 -> Closed
+[Heartbeat][Door][dev] Door_4_8 -> Closed
+[Heartbeat][Door][dev] Door_0_9 -> Closed
+[Heartbeat][Door][dev] Door_5_10 -> Closed
+[Heartbeat][Door][dev] Door_10_11 -> Closed
+[Heartbeat][Door][dev] Door_8_12 -> Closed
+[Heartbeat][Door][dev] Door_7_13 -> Closed
+[Heartbeat][Door][dev] Door_12_14 -> Closed
+[Heartbeat][Door][dev] Door_8_15 -> Closed
+[Heartbeat][Door][dev] Door_11_16 -> Closed
+[Heartbeat][Room] Entered 00_KEY_F1_CapsuleRow
+[Heartbeat][Rooms] Active around 00_KEY_F1_CapsuleRow: 3 enemies, lights=3 shadowed=3, drawn rooms=5/17
+[Heartbeat][Audio] Heartbeat band=0
+[Heartbeat][Audio] CUE_Heartbeat_Player
+[Heartbeat][Gen][dev] 09_KEY_F1_Secondary_A/PROP_Shared_Puddle cleared from Door_7_9
+[Heartbeat][Gen][dev] 11_KEY_F1_Secondary_A/PROP_Shared_Puddle cleared from Door_7_11
+[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Rooms] Active around 00_KEY_F1_CapsuleRow: 4 enemies, lights=3 shadowed=3, drawn rooms=5/13
+[Heartbeat][Gen] floor=1 seed=12345 (requested 12345, 1 attempts): 13 rooms, 6 enemies, 19 items, unpowered=True; built in 82 ms
+[Heartbeat][Audio] CUE_Amb_F1
+[Heartbeat][Audio] CUE_Heartbeat_Lab
+[Heartbeat][Audio][dev] Lab heartbeat degradation=0 critical=False
+[Heartbeat][Inventory][dev] [ ][ ][ ][ ][ ][ ]
+[Heartbeat][Save] Slot 3 saved (R-H-07, deaths 0, autosave=False)
+[Heartbeat][Cycle] Floor 1 start saved: 0 items, revolver 0
+[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Door][dev] Door_1_2 -> Closed
+[Heartbeat][Door][dev] Door_2_3 -> Closed
+[Heartbeat][Door][dev] Door_1_4 -> Closed
+[Heartbeat][Door][dev] Door_3_5 -> Closed
+[Heartbeat][Door][dev] Door_5_6 -> Closed
+[Heartbeat][Door][dev] Door_1_7 -> Closed
+[Heartbeat][Door][dev] Door_6_8 -> Closed
+[Heartbeat][Door][dev] Door_7_9 -> Closed
+[Heartbeat][Door][dev] Door_8_10 -> Closed
+[Heartbeat][Door][dev] Door_7_11 -> Closed
+[Heartbeat][Door][dev] Door_6_12 -> Closed
+[Heartbeat][Audio] CUE_Step_Metal
+[Heartbeat][Gen][dev] 10_ROOM_F1_Storage_B/PROP_Shared_TrashPile cleared from Door_9_10
+[Heartbeat][Gen][dev] 10_ROOM_F1_Storage_B/PROP_Shared_TrashPile cleared from Door_9_10
+[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Door][dev] Door_0_2 -> Closed
+[Heartbeat][Rooms] Active around 00_KEY_F1_CapsuleRow: 1 enemies, lights=3 shadowed=3, drawn rooms=5/16
+[Heartbeat][Gen] floor=1 seed=1235 (requested 1235, 1 attempts): 16 rooms, 6 enemies, 18 items, unpowered=False; built in 91 ms
+[Heartbeat][Audio] CUE_Amb_F1
+[Heartbeat][Audio] CUE_Heartbeat_Lab
+[Heartbeat][Audio][dev] Lab heartbeat degradation=0 critical=False
+[Heartbeat][Inventory][dev] [ ][ ][ ][ ][ ][ ]
+[Heartbeat][Save] Slot 3 saved (R-H-07, deaths 0, autosave=False)
+[Heartbeat][Cycle] Floor 1 start saved: 0 items, revolver 0
+]]></output>
+              </test-case>
+              <test-case id="1030" name="BuiltFloor_HasNavMeshPathFromPlayerToKeyAndFinalRoom(1,98765)" fullname="Heartbeat.Tests.FloorNavMeshTests.BuiltFloor_HasNavMeshPathFromPlayerToKeyAndFinalRoom(1,98765)" methodname="BuiltFloor_HasNavMeshPathFromPlayerToKeyAndFinalRoom" classname="Heartbeat.Tests.FloorNavMeshTests" runstate="Runnable" seed="8868956" result="Passed" start-time="2026-11-11 20:29:24Z" end-time="2026-11-11 20:29:25Z" duration="0.268637" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Door][dev] Door_0_2 -> Closed
+[Heartbeat][Door][dev] Door_1_3 -> Closed
+[Heartbeat][Door][dev] Door_3_4 -> Closed
+[Heartbeat][Door][dev] Door_4_5 -> Closed
+[Heartbeat][Door][dev] Door_2_6 -> Closed
+[Heartbeat][Door][dev] Door_5_7 -> Closed
+[Heartbeat][Door][dev] Door_7_8 -> Closed
+[Heartbeat][Door][dev] Door_8_9 -> Closed
+[Heartbeat][Door][dev] Door_9_10 -> Closed
+[Heartbeat][Door][dev] Door_6_11 -> Closed
+[Heartbeat][Door][dev] Door_11_12 -> Closed
+[Heartbeat][Door][dev] Door_9_13 -> Closed
+[Heartbeat][Door][dev] Door_5_14 -> Closed
+[Heartbeat][Door][dev] Door_10_15 -> Closed
+[Heartbeat][Room] Entered 00_KEY_F1_CapsuleRow
+[Heartbeat][Rooms] Active around 00_KEY_F1_CapsuleRow: 1 enemies, lights=3 shadowed=3, drawn rooms=5/16
+[Heartbeat][Gen][dev] 09_KEY_F1_Secondary_A/PROP_Shared_Puddle cleared from Door_7_9
+[Heartbeat][Gen][dev] 11_KEY_F1_Secondary_A/PROP_Shared_Puddle cleared from Door_7_11
+[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Rooms] Active around 00_KEY_F1_CapsuleRow: 4 enemies, lights=3 shadowed=3, drawn rooms=5/13
+[Heartbeat][Gen] floor=1 seed=12345 (requested 12345, 1 attempts): 13 rooms, 6 enemies, 19 items, unpowered=True; built in 71 ms
+[Heartbeat][Audio] CUE_Amb_F1
+[Heartbeat][Audio] CUE_Heartbeat_Lab
+[Heartbeat][Audio][dev] Lab heartbeat degradation=0 critical=False
+[Heartbeat][Inventory][dev] [ ][ ][ ][ ][ ][ ]
+[Heartbeat][Save] Slot 3 saved (R-H-07, deaths 0, autosave=False)
+[Heartbeat][Cycle] Floor 1 start saved: 0 items, revolver 0
+[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Door][dev] Door_1_2 -> Closed
+[Heartbeat][Door][dev] Door_2_3 -> Closed
+[Heartbeat][Door][dev] Door_1_4 -> Closed
+[Heartbeat][Door][dev] Door_3_5 -> Closed
+[Heartbeat][Door][dev] Door_5_6 -> Closed
+[Heartbeat][Door][dev] Door_1_7 -> Closed
+[Heartbeat][Door][dev] Door_6_8 -> Closed
+[Heartbeat][Door][dev] Door_7_9 -> Closed
+[Heartbeat][Door][dev] Door_8_10 -> Closed
+[Heartbeat][Door][dev] Door_7_11 -> Closed
+[Heartbeat][Door][dev] Door_6_12 -> Closed
+[Heartbeat][Audio] CUE_Step_Metal
+[Heartbeat][Gen][dev] 04_ROOM_F1_Hack_B/Console cleared from Door_3_4
+[Heartbeat][Gen][dev] 04_ROOM_F1_Hack_B/PROP_Shared_Puddle cleared from Door_3_4
+[Heartbeat][Gen][dev] 04_ROOM_F1_Hack_B/PROP_Shared_Puddle cleared from Door_3_4
+[Heartbeat][Gen][dev] 07_ROOM_F1_Surveillance_B/PROP_Shared_TrashPile cleared from Door_5_7
+[Heartbeat][Gen][dev] 07_ROOM_F1_Surveillance_B/PROP_Shared_TrashPile cleared from Door_5_7
+[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Door][dev] Door_0_2 -> Closed
+[Heartbeat][Rooms] Active around 00_KEY_F1_CapsuleRow: 2 enemies, lights=3 shadowed=3, drawn rooms=4/15
+[Heartbeat][Gen] floor=1 seed=98766 (requested 98766, 1 attempts): 15 rooms, 7 enemies, 18 items, unpowered=False; built in 106 ms
+[Heartbeat][Audio] CUE_Amb_F1
+[Heartbeat][Audio] CUE_Heartbeat_Lab
+[Heartbeat][Audio][dev] Lab heartbeat degradation=0 critical=False
+[Heartbeat][Inventory][dev] [ ][ ][ ][ ][ ][ ]
+[Heartbeat][Save] Slot 3 saved (R-H-07, deaths 0, autosave=False)
+[Heartbeat][Cycle] Floor 1 start saved: 0 items, revolver 0
+]]></output>
+              </test-case>
+              <test-case id="1031" name="BuiltFloor_HasNavMeshPathFromPlayerToKeyAndFinalRoom(1,31337)" fullname="Heartbeat.Tests.FloorNavMeshTests.BuiltFloor_HasNavMeshPathFromPlayerToKeyAndFinalRoom(1,31337)" methodname="BuiltFloor_HasNavMeshPathFromPlayerToKeyAndFinalRoom" classname="Heartbeat.Tests.FloorNavMeshTests" runstate="Runnable" seed="640637670" result="Passed" start-time="2026-11-11 20:29:25Z" end-time="2026-11-11 20:29:25Z" duration="0.286790" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Door][dev] Door_0_2 -> Closed
+[Heartbeat][Door][dev] Door_1_3 -> Closed
+[Heartbeat][Door][dev] Door_3_4 -> Closed
+[Heartbeat][Door][dev] Door_4_5 -> Closed
+[Heartbeat][Door][dev] Door_4_6 -> Closed
+[Heartbeat][Door][dev] Door_5_7 -> Closed
+[Heartbeat][Door][dev] Door_7_8 -> Closed
+[Heartbeat][Door][dev] Door_8_9 -> Closed
+[Heartbeat][Door][dev] Door_9_10 -> Closed
+[Heartbeat][Door][dev] Door_6_11 -> Closed
+[Heartbeat][Door][dev] Door_10_12 -> Closed
+[Heartbeat][Door][dev] Door_7_13 -> Closed
+[Heartbeat][Door][dev] Door_6_14 -> Closed
+[Heartbeat][Room] Entered 00_KEY_F1_CapsuleRow
+[Heartbeat][Rooms] Active around 00_KEY_F1_CapsuleRow: 2 enemies, lights=3 shadowed=3, drawn rooms=4/15
+[Heartbeat][Gen][dev] 09_KEY_F1_Secondary_A/PROP_Shared_Puddle cleared from Door_7_9
+[Heartbeat][Gen][dev] 11_KEY_F1_Secondary_A/PROP_Shared_Puddle cleared from Door_7_11
+[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Rooms] Active around 00_KEY_F1_CapsuleRow: 4 enemies, lights=3 shadowed=3, drawn rooms=5/13
+[Heartbeat][Gen] floor=1 seed=12345 (requested 12345, 1 attempts): 13 rooms, 6 enemies, 19 items, unpowered=True; built in 72 ms
+[Heartbeat][Audio] CUE_Amb_F1
+[Heartbeat][Audio] CUE_Heartbeat_Lab
+[Heartbeat][Audio][dev] Lab heartbeat degradation=0 critical=False
+[Heartbeat][Inventory][dev] [ ][ ][ ][ ][ ][ ]
+[Heartbeat][Save] Slot 3 saved (R-H-07, deaths 0, autosave=False)
+[Heartbeat][Cycle] Floor 1 start saved: 0 items, revolver 0
+[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Door][dev] Door_1_2 -> Closed
+[Heartbeat][Door][dev] Door_2_3 -> Closed
+[Heartbeat][Door][dev] Door_1_4 -> Closed
+[Heartbeat][Door][dev] Door_3_5 -> Closed
+[Heartbeat][Door][dev] Door_5_6 -> Closed
+[Heartbeat][Door][dev] Door_1_7 -> Closed
+[Heartbeat][Door][dev] Door_6_8 -> Closed
+[Heartbeat][Door][dev] Door_7_9 -> Closed
+[Heartbeat][Door][dev] Door_8_10 -> Closed
+[Heartbeat][Door][dev] Door_7_11 -> Closed
+[Heartbeat][Door][dev] Door_6_12 -> Closed
+[Heartbeat][Audio] CUE_Step_Metal
+[Heartbeat][Gen][dev] 01_ROOM_F1_Storage_B/PROP_Shared_TrashPile cleared from Door_1_2
+[Heartbeat][Gen][dev] 01_ROOM_F1_Storage_B/PROP_Shared_TrashPile cleared from Door_1_2
+[Heartbeat][Gen][dev] 09_ROOM_F1_Surveillance_B/PROP_Shared_TrashPile cleared from Door_6_9
+[Heartbeat][Gen][dev] 09_ROOM_F1_Surveillance_B/PROP_Shared_TrashPile cleared from Door_6_9
+[Heartbeat][Gen][dev] 08_ROOM_F1_Hack_B/Console cleared from Door_8_12
+[Heartbeat][Gen][dev] 08_ROOM_F1_Hack_B/PROP_Shared_Puddle cleared from Door_8_12
+[Heartbeat][Gen][dev] 08_ROOM_F1_Hack_B/PROP_Shared_Puddle cleared from Door_8_12
+[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Rooms] Active around 00_KEY_F1_CapsuleRow: 1 enemies, lights=3 shadowed=3, drawn rooms=3/14
+[Heartbeat][Gen] floor=1 seed=31338 (requested 31338, 1 attempts): 14 rooms, 6 enemies, 18 items, unpowered=False; built in 116 ms
+[Heartbeat][Audio] CUE_Amb_F1
+[Heartbeat][Audio] CUE_Heartbeat_Lab
+[Heartbeat][Audio][dev] Lab heartbeat degradation=0 critical=False
+[Heartbeat][Inventory][dev] [ ][ ][ ][ ][ ][ ]
+[Heartbeat][Save] Slot 3 saved (R-H-07, deaths 0, autosave=False)
+[Heartbeat][Cycle] Floor 1 start saved: 0 items, revolver 0
+]]></output>
+              </test-case>
+              <test-case id="1032" name="BuiltFloor_HasNavMeshPathFromPlayerToKeyAndFinalRoom(1,555)" fullname="Heartbeat.Tests.FloorNavMeshTests.BuiltFloor_HasNavMeshPathFromPlayerToKeyAndFinalRoom(1,555)" methodname="BuiltFloor_HasNavMeshPathFromPlayerToKeyAndFinalRoom" classname="Heartbeat.Tests.FloorNavMeshTests" runstate="Runnable" seed="1824994319" result="Passed" start-time="2026-11-11 20:29:25Z" end-time="2026-11-11 20:29:25Z" duration="0.249391" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Door][dev] Door_1_2 -> Closed
+[Heartbeat][Door][dev] Door_2_3 -> Closed
+[Heartbeat][Door][dev] Door_3_4 -> Closed
+[Heartbeat][Door][dev] Door_2_5 -> Closed
+[Heartbeat][Door][dev] Door_4_6 -> Closed
+[Heartbeat][Door][dev] Door_6_7 -> Closed
+[Heartbeat][Door][dev] Door_7_8 -> Closed
+[Heartbeat][Door][dev] Door_6_9 -> Closed
+[Heartbeat][Door][dev] Door_4_10 -> Closed
+[Heartbeat][Door][dev] Door_5_11 -> Closed
+[Heartbeat][Door][dev] Door_8_12 -> Closed
+[Heartbeat][Door][dev] Door_8_13 -> Closed
+[Heartbeat][Room] Entered 00_KEY_F1_CapsuleRow
+[Heartbeat][Rooms] Active around 00_KEY_F1_CapsuleRow: 1 enemies, lights=3 shadowed=3, drawn rooms=3/14
+[Heartbeat][Gen][dev] 09_KEY_F1_Secondary_A/PROP_Shared_Puddle cleared from Door_7_9
+[Heartbeat][Gen][dev] 11_KEY_F1_Secondary_A/PROP_Shared_Puddle cleared from Door_7_11
+[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Rooms] Active around 00_KEY_F1_CapsuleRow: 4 enemies, lights=3 shadowed=3, drawn rooms=5/13
+[Heartbeat][Gen] floor=1 seed=12345 (requested 12345, 1 attempts): 13 rooms, 6 enemies, 19 items, unpowered=True; built in 85 ms
+[Heartbeat][Audio] CUE_Amb_F1
+[Heartbeat][Audio] CUE_Heartbeat_Lab
+[Heartbeat][Audio][dev] Lab heartbeat degradation=0 critical=False
+[Heartbeat][Inventory][dev] [ ][ ][ ][ ][ ][ ]
+[Heartbeat][Save] Slot 3 saved (R-H-07, deaths 0, autosave=False)
+[Heartbeat][Cycle] Floor 1 start saved: 0 items, revolver 0
+[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Door][dev] Door_1_2 -> Closed
+[Heartbeat][Door][dev] Door_2_3 -> Closed
+[Heartbeat][Door][dev] Door_1_4 -> Closed
+[Heartbeat][Door][dev] Door_3_5 -> Closed
+[Heartbeat][Door][dev] Door_5_6 -> Closed
+[Heartbeat][Door][dev] Door_1_7 -> Closed
+[Heartbeat][Door][dev] Door_6_8 -> Closed
+[Heartbeat][Door][dev] Door_7_9 -> Closed
+[Heartbeat][Door][dev] Door_8_10 -> Closed
+[Heartbeat][Door][dev] Door_7_11 -> Closed
+[Heartbeat][Door][dev] Door_6_12 -> Closed
+[Heartbeat][Audio] CUE_Step_Metal
+[Heartbeat][Gen][dev] 01_ROOM_F1_Open_B/PROP_F1_BigContainer cleared from Door_1_2
+[Heartbeat][Gen][dev] 02_ROOM_F1_Surveillance_B/PROP_Shared_TrashPile cleared from Door_2_3
+[Heartbeat][Gen][dev] 02_ROOM_F1_Surveillance_B/PROP_Shared_TrashPile cleared from Door_2_3
+[Heartbeat][Gen][dev] 04_ROOM_F1_Storage_B/PROP_Shared_TrashPile cleared from Door_1_4
+[Heartbeat][Gen][dev] 04_ROOM_F1_Storage_B/PROP_Shared_TrashPile cleared from Door_1_4
+[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Door][dev] Door_0_5 -> Closed
+[Heartbeat][Rooms] Active around 00_KEY_F1_CapsuleRow: 5 enemies, lights=3 shadowed=3, drawn rooms=5/13
+[Heartbeat][Gen] floor=1 seed=556 (requested 556, 1 attempts): 13 rooms, 9 enemies, 18 items, unpowered=True; built in 75 ms
+[Heartbeat][Audio] CUE_Amb_F1
+[Heartbeat][Audio] CUE_Heartbeat_Lab
+[Heartbeat][Audio][dev] Lab heartbeat degradation=0 critical=False
+[Heartbeat][Inventory][dev] [ ][ ][ ][ ][ ][ ]
+[Heartbeat][Save] Slot 3 saved (R-H-07, deaths 0, autosave=False)
+[Heartbeat][Cycle] Floor 1 start saved: 0 items, revolver 0
+]]></output>
+              </test-case>
+              <test-case id="1033" name="BuiltFloor_HasNavMeshPathFromPlayerToKeyAndFinalRoom(2,4242)" fullname="Heartbeat.Tests.FloorNavMeshTests.BuiltFloor_HasNavMeshPathFromPlayerToKeyAndFinalRoom(2,4242)" methodname="BuiltFloor_HasNavMeshPathFromPlayerToKeyAndFinalRoom" classname="Heartbeat.Tests.FloorNavMeshTests" runstate="Runnable" seed="947595365" result="Passed" start-time="2026-11-11 20:29:25Z" end-time="2026-11-11 20:29:25Z" duration="0.269421" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Door][dev] Door_1_2 -> Closed
+[Heartbeat][Door][dev] Door_2_3 -> Closed
+[Heartbeat][Door][dev] Door_1_4 -> Closed
+[Heartbeat][Door][dev] Door_0_5 -> Closed
+[Heartbeat][Door][dev] Door_3_6 -> Closed
+[Heartbeat][Door][dev] Door_4_7 -> Closed
+[Heartbeat][Door][dev] Door_6_8 -> Closed
+[Heartbeat][Door][dev] Door_8_9 -> Closed
+[Heartbeat][Door][dev] Door_7_10 -> Closed
+[Heartbeat][Door][dev] Door_8_11 -> Closed
+[Heartbeat][Door][dev] Door_6_12 -> Closed
+[Heartbeat][Room] Entered 00_KEY_F1_CapsuleRow
+[Heartbeat][Rooms] Active around 00_KEY_F1_CapsuleRow: 5 enemies, lights=3 shadowed=3, drawn rooms=5/13
+[Heartbeat][Gen][dev] 09_KEY_F1_Secondary_A/PROP_Shared_Puddle cleared from Door_7_9
+[Heartbeat][Gen][dev] 11_KEY_F1_Secondary_A/PROP_Shared_Puddle cleared from Door_7_11
+[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Rooms] Active around 00_KEY_F1_CapsuleRow: 4 enemies, lights=3 shadowed=3, drawn rooms=5/13
+[Heartbeat][Gen] floor=1 seed=12345 (requested 12345, 1 attempts): 13 rooms, 6 enemies, 19 items, unpowered=True; built in 72 ms
+[Heartbeat][Audio] CUE_Amb_F1
+[Heartbeat][Audio] CUE_Heartbeat_Lab
+[Heartbeat][Audio][dev] Lab heartbeat degradation=0 critical=False
+[Heartbeat][Inventory][dev] [ ][ ][ ][ ][ ][ ]
+[Heartbeat][Save] Slot 3 saved (R-H-07, deaths 0, autosave=False)
+[Heartbeat][Cycle] Floor 1 start saved: 0 items, revolver 0
+[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Door][dev] Door_1_2 -> Closed
+[Heartbeat][Door][dev] Door_2_3 -> Closed
+[Heartbeat][Door][dev] Door_1_4 -> Closed
+[Heartbeat][Door][dev] Door_3_5 -> Closed
+[Heartbeat][Door][dev] Door_5_6 -> Closed
+[Heartbeat][Door][dev] Door_1_7 -> Closed
+[Heartbeat][Door][dev] Door_6_8 -> Closed
+[Heartbeat][Door][dev] Door_7_9 -> Closed
+[Heartbeat][Door][dev] Door_8_10 -> Closed
+[Heartbeat][Door][dev] Door_7_11 -> Closed
+[Heartbeat][Door][dev] Door_6_12 -> Closed
+[Heartbeat][Audio] CUE_Step_Metal
+[Heartbeat][Audio] Heartbeat band=-1
+[Heartbeat][Gen][dev] 02_ROOM_F2_Storage_A/PROP_Shared_CableBundle cleared from Door_1_2
+[Heartbeat][Gen][dev] 02_ROOM_F2_Storage_A/PROP_Shared_Grate cleared from Door_2_3
+[Heartbeat][Gen][dev] 07_ROOM_F2_Vertical_A/PROP_Shared_CableBundle cleared from Door_7_8
+[Heartbeat][Gen][dev] 12_ROOM_F2_Hack_B/PROP_Shared_Puddle cleared from Door_1_12
+[Heartbeat][Gen][dev] 13_KEY_F2_Secondary_A/PROP_Shared_Puddle cleared from Door_3_13
+[Heartbeat][Gen][dev] 13_KEY_F2_Secondary_A/PROP_Shared_Puddle cleared from Door_3_13
+[Heartbeat][Gen][dev] 10_ROOM_F2_Hack_B/PROP_Shared_Puddle cleared from Door_10_15
+[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Door][dev] Door_0_11 -> Closed
+[Heartbeat][Rooms] Active around 00_KEY_F2_Arrival: 6 enemies, lights=3 shadowed=3, drawn rooms=6/16
+[Heartbeat][Gen] floor=2 seed=4244 (requested 4244, 1 attempts): 16 rooms, 12 enemies, 14 items, unpowered=False; built in 97 ms
+[Heartbeat][Audio] CUE_Amb_F2
+[Heartbeat][Audio] CUE_Heartbeat_Lab
+[Heartbeat][Audio][dev] Lab heartbeat degradation=0 critical=False
+[Heartbeat][Inventory][dev] [ ][ ][ ][ ][ ][ ]
+[Heartbeat][Save] Slot 3 saved (R-H-07, deaths 0, autosave=False)
+[Heartbeat][Cycle] Floor 2 start saved: 0 items, revolver 0
+]]></output>
+              </test-case>
+              <test-case id="1034" name="BuiltFloor_HasNavMeshPathFromPlayerToKeyAndFinalRoom(2,1234)" fullname="Heartbeat.Tests.FloorNavMeshTests.BuiltFloor_HasNavMeshPathFromPlayerToKeyAndFinalRoom(2,1234)" methodname="BuiltFloor_HasNavMeshPathFromPlayerToKeyAndFinalRoom" classname="Heartbeat.Tests.FloorNavMeshTests" runstate="Runnable" seed="17436749" result="Passed" start-time="2026-11-11 20:29:25Z" end-time="2026-11-11 20:29:26Z" duration="0.253832" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Door][dev] Door_1_2 -> Closed
+[Heartbeat][Door][dev] Door_2_3 -> Closed
+[Heartbeat][Door][dev] Door_1_4 -> Closed
+[Heartbeat][Door][dev] Door_3_5 -> Closed
+[Heartbeat][Door][dev] Door_5_6 -> Closed
+[Heartbeat][Door][dev] Door_6_7 -> Closed
+[Heartbeat][Door][dev] Door_7_8 -> Closed
+[Heartbeat][Door][dev] Door_5_9 -> Closed
+[Heartbeat][Door][dev] Door_8_10 -> Closed
+[Heartbeat][Door][dev] Door_0_11 -> Closed
+[Heartbeat][Door][dev] Door_1_12 -> Closed
+[Heartbeat][Door][dev] Door_3_13 -> Closed
+[Heartbeat][Door][dev] Door_12_14 -> Closed
+[Heartbeat][Door][dev] Door_10_15 -> Closed
+[Heartbeat][Room] Entered 00_KEY_F2_Arrival
+[Heartbeat][Rooms] Active around 00_KEY_F2_Arrival: 6 enemies, lights=3 shadowed=3, drawn rooms=6/16
+[Heartbeat][Audio] CUE_Step_Metal
+[Heartbeat][Gen][dev] 09_KEY_F1_Secondary_A/PROP_Shared_Puddle cleared from Door_7_9
+[Heartbeat][Gen][dev] 11_KEY_F1_Secondary_A/PROP_Shared_Puddle cleared from Door_7_11
+[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Rooms] Active around 00_KEY_F1_CapsuleRow: 4 enemies, lights=3 shadowed=3, drawn rooms=5/13
+[Heartbeat][Gen] floor=1 seed=12345 (requested 12345, 1 attempts): 13 rooms, 6 enemies, 19 items, unpowered=True; built in 70 ms
+[Heartbeat][Audio] CUE_Amb_F1
+[Heartbeat][Audio] CUE_Heartbeat_Lab
+[Heartbeat][Audio][dev] Lab heartbeat degradation=0 critical=False
+[Heartbeat][Inventory][dev] [ ][ ][ ][ ][ ][ ]
+[Heartbeat][Save] Slot 3 saved (R-H-07, deaths 0, autosave=False)
+[Heartbeat][Cycle] Floor 1 start saved: 0 items, revolver 0
+[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Door][dev] Door_1_2 -> Closed
+[Heartbeat][Door][dev] Door_2_3 -> Closed
+[Heartbeat][Door][dev] Door_1_4 -> Closed
+[Heartbeat][Door][dev] Door_3_5 -> Closed
+[Heartbeat][Door][dev] Door_5_6 -> Closed
+[Heartbeat][Door][dev] Door_1_7 -> Closed
+[Heartbeat][Door][dev] Door_6_8 -> Closed
+[Heartbeat][Door][dev] Door_7_9 -> Closed
+[Heartbeat][Door][dev] Door_8_10 -> Closed
+[Heartbeat][Door][dev] Door_7_11 -> Closed
+[Heartbeat][Door][dev] Door_6_12 -> Closed
+[Heartbeat][Audio] CUE_Step_Metal
+[Heartbeat][Gen][dev] 03_ROOM_F2_Storage_A/PROP_Shared_CableBundle cleared from Door_2_3
+[Heartbeat][Gen][dev] 03_ROOM_F2_Storage_A/PROP_Shared_Grate cleared from Door_3_4
+[Heartbeat][Gen][dev] 06_ROOM_F2_Storage_A/PROP_Shared_Grate cleared from Door_1_6
+[Heartbeat][Gen][dev] 09_ROOM_F2_Storage_A/PROP_Shared_CableBundle cleared from Door_2_9
+[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Door][dev] Door_0_5 -> Closed
+[Heartbeat][Rooms] Active around 00_KEY_F2_Arrival: 6 enemies, lights=3 shadowed=3, drawn rooms=6/14
+[Heartbeat][Gen] floor=2 seed=1236 (requested 1236, 1 attempts): 14 rooms, 9 enemies, 14 items, unpowered=False; built in 92 ms
+[Heartbeat][Audio] CUE_Amb_F2
+[Heartbeat][Audio] CUE_Heartbeat_Lab
+[Heartbeat][Audio][dev] Lab heartbeat degradation=0 critical=False
+[Heartbeat][Inventory][dev] [ ][ ][ ][ ][ ][ ]
+[Heartbeat][Save] Slot 3 saved (R-H-07, deaths 0, autosave=False)
+[Heartbeat][Cycle] Floor 2 start saved: 0 items, revolver 0
+]]></output>
+              </test-case>
+              <test-case id="1035" name="BuiltFloor_HasNavMeshPathFromPlayerToKeyAndFinalRoom(2,98765)" fullname="Heartbeat.Tests.FloorNavMeshTests.BuiltFloor_HasNavMeshPathFromPlayerToKeyAndFinalRoom(2,98765)" methodname="BuiltFloor_HasNavMeshPathFromPlayerToKeyAndFinalRoom" classname="Heartbeat.Tests.FloorNavMeshTests" runstate="Runnable" seed="1188940324" result="Passed" start-time="2026-11-11 20:29:26Z" end-time="2026-11-11 20:29:26Z" duration="0.254928" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Door][dev] Door_1_2 -> Closed
+[Heartbeat][Door][dev] Door_2_3 -> Closed
+[Heartbeat][Door][dev] Door_3_4 -> Closed
+[Heartbeat][Door][dev] Door_0_5 -> Closed
+[Heartbeat][Door][dev] Door_1_6 -> Closed
+[Heartbeat][Door][dev] Door_4_7 -> Closed
+[Heartbeat][Door][dev] Door_5_8 -> Closed
+[Heartbeat][Door][dev] Door_2_9 -> Closed
+[Heartbeat][Door][dev] Door_2_10 -> Closed
+[Heartbeat][Door][dev] Door_10_11 -> Closed
+[Heartbeat][Door][dev] Door_7_12 -> Closed
+[Heartbeat][Door][dev] Door_7_13 -> Closed
+[Heartbeat][Room] Entered 00_KEY_F2_Arrival
+[Heartbeat][Rooms] Active around 00_KEY_F2_Arrival: 6 enemies, lights=3 shadowed=3, drawn rooms=6/14
+[Heartbeat][Audio] CUE_Step_Metal
+[Heartbeat][Gen][dev] 09_KEY_F1_Secondary_A/PROP_Shared_Puddle cleared from Door_7_9
+[Heartbeat][Gen][dev] 11_KEY_F1_Secondary_A/PROP_Shared_Puddle cleared from Door_7_11
+[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Rooms] Active around 00_KEY_F1_CapsuleRow: 4 enemies, lights=3 shadowed=3, drawn rooms=5/13
+[Heartbeat][Gen] floor=1 seed=12345 (requested 12345, 1 attempts): 13 rooms, 6 enemies, 19 items, unpowered=True; built in 85 ms
+[Heartbeat][Audio] CUE_Amb_F1
+[Heartbeat][Audio] CUE_Heartbeat_Lab
+[Heartbeat][Audio][dev] Lab heartbeat degradation=0 critical=False
+[Heartbeat][Inventory][dev] [ ][ ][ ][ ][ ][ ]
+[Heartbeat][Save] Slot 3 saved (R-H-07, deaths 0, autosave=False)
+[Heartbeat][Cycle] Floor 1 start saved: 0 items, revolver 0
+[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Door][dev] Door_1_2 -> Closed
+[Heartbeat][Door][dev] Door_2_3 -> Closed
+[Heartbeat][Door][dev] Door_1_4 -> Closed
+[Heartbeat][Door][dev] Door_3_5 -> Closed
+[Heartbeat][Door][dev] Door_5_6 -> Closed
+[Heartbeat][Door][dev] Door_1_7 -> Closed
+[Heartbeat][Door][dev] Door_6_8 -> Closed
+[Heartbeat][Door][dev] Door_7_9 -> Closed
+[Heartbeat][Door][dev] Door_8_10 -> Closed
+[Heartbeat][Door][dev] Door_7_11 -> Closed
+[Heartbeat][Door][dev] Door_6_12 -> Closed
+[Heartbeat][Audio] CUE_Step_Metal
+[Heartbeat][Gen][dev] 01_ROOM_F2_Storage_B/PROP_Shared_TrashPile cleared from Door_0_1
+[Heartbeat][Gen][dev] 06_ROOM_F2_Vertical_A/PROP_Shared_CableBundle cleared from Door_4_6
+[Heartbeat][Gen][dev] 08_ROOM_F2_Surveillance_B/PROP_Shared_TrashPile cleared from Door_7_8
+[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Door][dev] Door_0_2 -> Closed
+[Heartbeat][Rooms] Active around 00_KEY_F2_Arrival: 5 enemies, lights=3 shadowed=3, drawn rooms=5/13
+[Heartbeat][Gen] floor=2 seed=98767 (requested 98767, 1 attempts): 13 rooms, 11 enemies, 12 items, unpowered=False; built in 82 ms
+[Heartbeat][Audio] CUE_Amb_F2
+[Heartbeat][Audio] CUE_Heartbeat_Lab
+[Heartbeat][Audio][dev] Lab heartbeat degradation=0 critical=False
+[Heartbeat][Inventory][dev] [ ][ ][ ][ ][ ][ ]
+[Heartbeat][Save] Slot 3 saved (R-H-07, deaths 0, autosave=False)
+[Heartbeat][Cycle] Floor 2 start saved: 0 items, revolver 0
+]]></output>
+              </test-case>
+              <test-case id="1036" name="BuiltFloor_HasNavMeshPathFromPlayerToKeyAndFinalRoom(2,31337)" fullname="Heartbeat.Tests.FloorNavMeshTests.BuiltFloor_HasNavMeshPathFromPlayerToKeyAndFinalRoom(2,31337)" methodname="BuiltFloor_HasNavMeshPathFromPlayerToKeyAndFinalRoom" classname="Heartbeat.Tests.FloorNavMeshTests" runstate="Runnable" seed="732891018" result="Passed" start-time="2026-11-11 20:29:26Z" end-time="2026-11-11 20:29:26Z" duration="0.262549" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Door][dev] Door_0_2 -> Closed
+[Heartbeat][Door][dev] Door_1_3 -> Closed
+[Heartbeat][Door][dev] Door_3_4 -> Closed
+[Heartbeat][Door][dev] Door_2_5 -> Closed
+[Heartbeat][Door][dev] Door_4_6 -> Closed
+[Heartbeat][Door][dev] Door_6_7 -> Closed
+[Heartbeat][Door][dev] Door_7_8 -> Closed
+[Heartbeat][Door][dev] Door_8_9 -> Closed
+[Heartbeat][Door][dev] Door_5_10 -> Closed
+[Heartbeat][Door][dev] Door_8_11 -> Closed
+[Heartbeat][Door][dev] Door_7_12 -> Closed
+[Heartbeat][Room] Entered 00_KEY_F2_Arrival
+[Heartbeat][Rooms] Active around 00_KEY_F2_Arrival: 5 enemies, lights=3 shadowed=3, drawn rooms=5/13
+[Heartbeat][Audio] CUE_Step_Metal
+[Heartbeat][Gen][dev] 09_KEY_F1_Secondary_A/PROP_Shared_Puddle cleared from Door_7_9
+[Heartbeat][Gen][dev] 11_KEY_F1_Secondary_A/PROP_Shared_Puddle cleared from Door_7_11
+[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Rooms] Active around 00_KEY_F1_CapsuleRow: 4 enemies, lights=3 shadowed=3, drawn rooms=5/13
+[Heartbeat][Gen] floor=1 seed=12345 (requested 12345, 1 attempts): 13 rooms, 6 enemies, 19 items, unpowered=True; built in 85 ms
+[Heartbeat][Audio] CUE_Amb_F1
+[Heartbeat][Audio] CUE_Heartbeat_Lab
+[Heartbeat][Audio][dev] Lab heartbeat degradation=0 critical=False
+[Heartbeat][Inventory][dev] [ ][ ][ ][ ][ ][ ]
+[Heartbeat][Save] Slot 3 saved (R-H-07, deaths 0, autosave=False)
+[Heartbeat][Cycle] Floor 1 start saved: 0 items, revolver 0
+[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Door][dev] Door_1_2 -> Closed
+[Heartbeat][Door][dev] Door_2_3 -> Closed
+[Heartbeat][Door][dev] Door_1_4 -> Closed
+[Heartbeat][Door][dev] Door_3_5 -> Closed
+[Heartbeat][Door][dev] Door_5_6 -> Closed
+[Heartbeat][Door][dev] Door_1_7 -> Closed
+[Heartbeat][Door][dev] Door_6_8 -> Closed
+[Heartbeat][Door][dev] Door_7_9 -> Closed
+[Heartbeat][Door][dev] Door_8_10 -> Closed
+[Heartbeat][Door][dev] Door_7_11 -> Closed
+[Heartbeat][Door][dev] Door_6_12 -> Closed
+[Heartbeat][Audio] CUE_Step_Metal
+[Heartbeat][Gen][dev] 01_ROOM_F2_Surveillance_B/PROP_Shared_TrashPile cleared from Door_0_1
+[Heartbeat][Gen][dev] 05_ROOM_F2_Storage_B/PROP_Shared_TrashPile cleared from Door_2_5
+[Heartbeat][Gen][dev] 06_ROOM_F2_Storage_A/PROP_Shared_CableBundle cleared from Door_1_6
+[Heartbeat][Gen][dev] 08_ROOM_F2_Storage_A/PROP_Shared_CableBundle cleared from Door_4_8
+[Heartbeat][Gen][dev] 08_ROOM_F2_Storage_A/PROP_Shared_Grate cleared from Door_8_9
+[Heartbeat][Gen][dev] 11_KEY_F2_Secondary_A/PROP_Shared_Puddle cleared from Door_9_11
+[Heartbeat][Gen][dev] 11_KEY_F2_Secondary_A/PROP_Shared_Puddle cleared from Door_9_11
+[Heartbeat][Gen][dev] 12_KEY_F2_Secondary_A/PROP_Shared_Puddle cleared from Door_10_12
+[Heartbeat][Gen][dev] 12_KEY_F2_Secondary_A/PROP_Shared_Puddle cleared from Door_10_12
+[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Door][dev] Door_0_2 -> Closed
+[Heartbeat][Rooms] Active around 00_KEY_F2_Arrival: 6 enemies, lights=3 shadowed=3, drawn rooms=7/14
+[Heartbeat][Gen] floor=2 seed=31340 (requested 31339, 2 attempts): 14 rooms, 9 enemies, 15 items, unpowered=False; built in 91 ms
+[Heartbeat][Audio] CUE_Amb_F2
+[Heartbeat][Audio] CUE_Heartbeat_Lab
+[Heartbeat][Audio][dev] Lab heartbeat degradation=0 critical=False
+[Heartbeat][Inventory][dev] [ ][ ][ ][ ][ ][ ]
+[Heartbeat][Save] Slot 3 saved (R-H-07, deaths 0, autosave=False)
+[Heartbeat][Cycle] Floor 2 start saved: 0 items, revolver 0
+]]></output>
+              </test-case>
+              <test-case id="1037" name="BuiltFloor_HasNavMeshPathFromPlayerToKeyAndFinalRoom(2,555)" fullname="Heartbeat.Tests.FloorNavMeshTests.BuiltFloor_HasNavMeshPathFromPlayerToKeyAndFinalRoom(2,555)" methodname="BuiltFloor_HasNavMeshPathFromPlayerToKeyAndFinalRoom" classname="Heartbeat.Tests.FloorNavMeshTests" runstate="Runnable" seed="1963535927" result="Passed" start-time="2026-11-11 20:29:26Z" end-time="2026-11-11 20:29:26Z" duration="0.251920" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Door][dev] Door_0_2 -> Closed
+[Heartbeat][Door][dev] Door_1_3 -> Closed
+[Heartbeat][Door][dev] Door_3_4 -> Closed
+[Heartbeat][Door][dev] Door_2_5 -> Closed
+[Heartbeat][Door][dev] Door_1_6 -> Closed
+[Heartbeat][Door][dev] Door_2_7 -> Closed
+[Heartbeat][Door][dev] Door_4_8 -> Closed
+[Heartbeat][Door][dev] Door_8_9 -> Closed
+[Heartbeat][Door][dev] Door_4_10 -> Closed
+[Heartbeat][Door][dev] Door_9_11 -> Closed
+[Heartbeat][Door][dev] Door_10_12 -> Closed
+[Heartbeat][Door][dev] Door_10_13 -> Closed
+[Heartbeat][Room] Entered 00_KEY_F2_Arrival
+[Heartbeat][Rooms] Active around 00_KEY_F2_Arrival: 6 enemies, lights=3 shadowed=3, drawn rooms=7/14
+[Heartbeat][Audio] CUE_Step_Metal
+[Heartbeat][Gen][dev] 09_KEY_F1_Secondary_A/PROP_Shared_Puddle cleared from Door_7_9
+[Heartbeat][Gen][dev] 11_KEY_F1_Secondary_A/PROP_Shared_Puddle cleared from Door_7_11
+[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Rooms] Active around 00_KEY_F1_CapsuleRow: 4 enemies, lights=3 shadowed=3, drawn rooms=5/13
+[Heartbeat][Gen] floor=1 seed=12345 (requested 12345, 1 attempts): 13 rooms, 6 enemies, 19 items, unpowered=True; built in 70 ms
+[Heartbeat][Audio] CUE_Amb_F1
+[Heartbeat][Audio] CUE_Heartbeat_Lab
+[Heartbeat][Audio][dev] Lab heartbeat degradation=0 critical=False
+[Heartbeat][Inventory][dev] [ ][ ][ ][ ][ ][ ]
+[Heartbeat][Save] Slot 3 saved (R-H-07, deaths 0, autosave=False)
+[Heartbeat][Cycle] Floor 1 start saved: 0 items, revolver 0
+[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Door][dev] Door_1_2 -> Closed
+[Heartbeat][Door][dev] Door_2_3 -> Closed
+[Heartbeat][Door][dev] Door_1_4 -> Closed
+[Heartbeat][Door][dev] Door_3_5 -> Closed
+[Heartbeat][Door][dev] Door_5_6 -> Closed
+[Heartbeat][Door][dev] Door_1_7 -> Closed
+[Heartbeat][Door][dev] Door_6_8 -> Closed
+[Heartbeat][Door][dev] Door_7_9 -> Closed
+[Heartbeat][Door][dev] Door_8_10 -> Closed
+[Heartbeat][Door][dev] Door_7_11 -> Closed
+[Heartbeat][Door][dev] Door_6_12 -> Closed
+[Heartbeat][Audio] CUE_Step_Metal
+[Heartbeat][Gen][dev] 02_ROOM_F2_Surveillance_B/PROP_Shared_TrashPile cleared from Door_2_3
+[Heartbeat][Gen][dev] 03_ROOM_F2_Storage_B/PROP_Shared_TrashPile cleared from Door_3_4
+[Heartbeat][Gen][dev] 06_ROOM_F2_Storage_A/PROP_Shared_CableBundle cleared from Door_6_7
+[Heartbeat][Gen][dev] 07_ROOM_F2_Vertical_A/PROP_Shared_CableBundle cleared from Door_6_7
+[Heartbeat][Gen][dev] 12_KEY_F2_Secondary_A/PROP_Shared_Puddle cleared from Door_10_12
+[Heartbeat][Gen][dev] 12_KEY_F2_Secondary_A/PROP_Shared_Puddle cleared from Door_10_12
+[Heartbeat][Gen][dev] 08_ROOM_F2_Surveillance_B/PROP_Shared_TrashPile cleared from Door_8_14
+[Heartbeat][Gen][dev] 14_KEY_F2_Secondary_A/PROP_Shared_Puddle cleared from Door_8_14
+[Heartbeat][Gen][dev] 14_KEY_F2_Secondary_A/PROP_Shared_Puddle cleared from Door_8_14
+[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Rooms] Active around 00_KEY_F2_Arrival: 1 enemies, lights=3 shadowed=3, drawn rooms=3/16
+[Heartbeat][Gen] floor=2 seed=557 (requested 557, 1 attempts): 16 rooms, 11 enemies, 14 items, unpowered=False; built in 92 ms
+[Heartbeat][Audio] CUE_Amb_F2
+[Heartbeat][Audio] CUE_Heartbeat_Lab
+[Heartbeat][Audio][dev] Lab heartbeat degradation=0 critical=False
+[Heartbeat][Inventory][dev] [ ][ ][ ][ ][ ][ ]
+[Heartbeat][Save] Slot 3 saved (R-H-07, deaths 0, autosave=False)
+[Heartbeat][Cycle] Floor 2 start saved: 0 items, revolver 0
+]]></output>
+              </test-case>
+              <test-case id="1038" name="BuiltFloor_HasNavMeshPathFromPlayerToKeyAndFinalRoom(3,4242)" fullname="Heartbeat.Tests.FloorNavMeshTests.BuiltFloor_HasNavMeshPathFromPlayerToKeyAndFinalRoom(3,4242)" methodname="BuiltFloor_HasNavMeshPathFromPlayerToKeyAndFinalRoom" classname="Heartbeat.Tests.FloorNavMeshTests" runstate="Runnable" seed="1588204318" result="Passed" start-time="2026-11-11 20:29:26Z" end-time="2026-11-11 20:29:27Z" duration="0.284759" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Door][dev] Door_1_2 -> Closed
+[Heartbeat][Door][dev] Door_2_3 -> Closed
+[Heartbeat][Door][dev] Door_3_4 -> Closed
+[Heartbeat][Door][dev] Door_4_5 -> Closed
+[Heartbeat][Door][dev] Door_5_6 -> Closed
+[Heartbeat][Door][dev] Door_6_7 -> Closed
+[Heartbeat][Door][dev] Door_7_8 -> Closed
+[Heartbeat][Door][dev] Door_2_9 -> Closed
+[Heartbeat][Door][dev] Door_9_10 -> Closed
+[Heartbeat][Door][dev] Door_5_11 -> Closed
+[Heartbeat][Door][dev] Door_10_12 -> Closed
+[Heartbeat][Door][dev] Door_8_13 -> Closed
+[Heartbeat][Door][dev] Door_8_14 -> Closed
+[Heartbeat][Door][dev] Door_11_15 -> Closed
+[Heartbeat][Room] Entered 00_KEY_F2_Arrival
+[Heartbeat][Rooms] Active around 00_KEY_F2_Arrival: 1 enemies, lights=3 shadowed=3, drawn rooms=3/16
+[Heartbeat][Audio] CUE_Step_Metal
+[Heartbeat][Gen][dev] 09_KEY_F1_Secondary_A/PROP_Shared_Puddle cleared from Door_7_9
+[Heartbeat][Gen][dev] 11_KEY_F1_Secondary_A/PROP_Shared_Puddle cleared from Door_7_11
+[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Rooms] Active around 00_KEY_F1_CapsuleRow: 4 enemies, lights=3 shadowed=3, drawn rooms=5/13
+[Heartbeat][Gen] floor=1 seed=12345 (requested 12345, 1 attempts): 13 rooms, 6 enemies, 19 items, unpowered=True; built in 84 ms
+[Heartbeat][Audio] CUE_Amb_F1
+[Heartbeat][Audio] CUE_Heartbeat_Lab
+[Heartbeat][Audio][dev] Lab heartbeat degradation=0 critical=False
+[Heartbeat][Inventory][dev] [ ][ ][ ][ ][ ][ ]
+[Heartbeat][Save] Slot 3 saved (R-H-07, deaths 0, autosave=False)
+[Heartbeat][Cycle] Floor 1 start saved: 0 items, revolver 0
+[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Door][dev] Door_1_2 -> Closed
+[Heartbeat][Door][dev] Door_2_3 -> Closed
+[Heartbeat][Door][dev] Door_1_4 -> Closed
+[Heartbeat][Door][dev] Door_3_5 -> Closed
+[Heartbeat][Door][dev] Door_5_6 -> Closed
+[Heartbeat][Door][dev] Door_1_7 -> Closed
+[Heartbeat][Door][dev] Door_6_8 -> Closed
+[Heartbeat][Door][dev] Door_7_9 -> Closed
+[Heartbeat][Door][dev] Door_8_10 -> Closed
+[Heartbeat][Door][dev] Door_7_11 -> Closed
+[Heartbeat][Door][dev] Door_6_12 -> Closed
+[Heartbeat][Audio] CUE_Step_Metal
+[Heartbeat][Gen][dev] 00_KEY_F3_Arrival/PROP_F3_HeavyCabling cleared from Door_0_1
+[Heartbeat][Gen][dev] 05_ROOM_F3_Open_B/CryoTank cleared from Door_5_7
+[Heartbeat][Gen][dev] 04_ROOM_F3_Vertical_A/PROP_Shared_CableBundle cleared from Door_4_8
+[Heartbeat][Gen][dev] 08_ROOM_F3_Storage_A/PROP_Shared_CableBundle cleared from Door_4_8
+[Heartbeat][Gen][dev] 09_ROOM_F3_Vertical_A/PROP_Shared_CableBundle cleared from Door_9_10
+[Heartbeat][Gen][dev] 03_ROOM_F3_Open_B/CryoTank cleared from Door_3_11
+[Heartbeat][Gen][dev] 08_ROOM_F3_Storage_A/PROP_Shared_Grate cleared from Door_8_12
+[Heartbeat][Gen][dev] 14_KEY_F3_Secondary_A/PROP_Shared_Puddle cleared from Door_7_14
+[Heartbeat][Gen][dev] 14_KEY_F3_Secondary_A/PROP_Shared_Puddle cleared from Door_7_14
+[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Door][dev] Door_0_2 -> Closed
+[Heartbeat][Rooms] Active around 00_KEY_F3_Arrival: 4 enemies, lights=3 shadowed=3, drawn rooms=5/17
+[Heartbeat][Gen] floor=3 seed=4246 (requested 4245, 2 attempts): 17 rooms, 13 enemies, 10 items, unpowered=False; built in 94 ms
+[Heartbeat][Audio] CUE_Amb_F3
+[Heartbeat][Audio] CUE_Heartbeat_Lab
+[Heartbeat][Audio][dev] Lab heartbeat degradation=0 critical=False
+[Heartbeat][Inventory][dev] [ ][ ][ ][ ][ ][ ]
+[Heartbeat][Save] Slot 3 saved (R-H-07, deaths 0, autosave=False)
+[Heartbeat][Cycle] Floor 3 start saved: 0 items, revolver 0
+]]></output>
+              </test-case>
+              <test-case id="1039" name="BuiltFloor_HasNavMeshPathFromPlayerToKeyAndFinalRoom(3,1234)" fullname="Heartbeat.Tests.FloorNavMeshTests.BuiltFloor_HasNavMeshPathFromPlayerToKeyAndFinalRoom(3,1234)" methodname="BuiltFloor_HasNavMeshPathFromPlayerToKeyAndFinalRoom" classname="Heartbeat.Tests.FloorNavMeshTests" runstate="Runnable" seed="624421835" result="Passed" start-time="2026-11-11 20:29:27Z" end-time="2026-11-11 20:29:27Z" duration="0.271559" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Door][dev] Door_0_2 -> Closed
+[Heartbeat][Door][dev] Door_2_3 -> Closed
+[Heartbeat][Door][dev] Door_1_4 -> Closed
+[Heartbeat][Door][dev] Door_3_5 -> Closed
+[Heartbeat][Door][dev] Door_5_6 -> Closed
+[Heartbeat][Door][dev] Door_5_7 -> Closed
+[Heartbeat][Door][dev] Door_4_8 -> Closed
+[Heartbeat][Door][dev] Door_6_9 -> Closed
+[Heartbeat][Door][dev] Door_9_10 -> Closed
+[Heartbeat][Door][dev] Door_3_11 -> Closed
+[Heartbeat][Door][dev] Door_8_12 -> Closed
+[Heartbeat][Door][dev] Door_10_13 -> Closed
+[Heartbeat][Door][dev] Door_7_14 -> Closed
+[Heartbeat][Door][dev] Door_12_15 -> Closed
+[Heartbeat][Door][dev] Door_12_16 -> Closed
+[Heartbeat][Room] Entered 00_KEY_F3_Arrival
+[Heartbeat][Rooms] Active around 00_KEY_F3_Arrival: 4 enemies, lights=3 shadowed=3, drawn rooms=5/17
+[Heartbeat][Audio] CUE_Step_Metal
+[Heartbeat][Gen][dev] 09_KEY_F1_Secondary_A/PROP_Shared_Puddle cleared from Door_7_9
+[Heartbeat][Gen][dev] 11_KEY_F1_Secondary_A/PROP_Shared_Puddle cleared from Door_7_11
+[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Rooms] Active around 00_KEY_F1_CapsuleRow: 4 enemies, lights=3 shadowed=3, drawn rooms=5/13
+[Heartbeat][Gen] floor=1 seed=12345 (requested 12345, 1 attempts): 13 rooms, 6 enemies, 19 items, unpowered=True; built in 83 ms
+[Heartbeat][Audio] CUE_Amb_F1
+[Heartbeat][Audio] CUE_Heartbeat_Lab
+[Heartbeat][Audio][dev] Lab heartbeat degradation=0 critical=False
+[Heartbeat][Inventory][dev] [ ][ ][ ][ ][ ][ ]
+[Heartbeat][Save] Slot 3 saved (R-H-07, deaths 0, autosave=False)
+[Heartbeat][Cycle] Floor 1 start saved: 0 items, revolver 0
+[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Door][dev] Door_1_2 -> Closed
+[Heartbeat][Door][dev] Door_2_3 -> Closed
+[Heartbeat][Door][dev] Door_1_4 -> Closed
+[Heartbeat][Door][dev] Door_3_5 -> Closed
+[Heartbeat][Door][dev] Door_5_6 -> Closed
+[Heartbeat][Door][dev] Door_1_7 -> Closed
+[Heartbeat][Door][dev] Door_6_8 -> Closed
+[Heartbeat][Door][dev] Door_7_9 -> Closed
+[Heartbeat][Door][dev] Door_8_10 -> Closed
+[Heartbeat][Door][dev] Door_7_11 -> Closed
+[Heartbeat][Door][dev] Door_6_12 -> Closed
+[Heartbeat][Audio] CUE_Step_Metal
+[Heartbeat][Gen][dev] 02_ROOM_F3_Storage_B/BrokenCapsule cleared from Door_1_2
+[Heartbeat][Gen][dev] 00_KEY_F3_Arrival/PROP_F3_HeavyCabling cleared from Door_0_3
+[Heartbeat][Gen][dev] 06_ROOM_F3_Storage_A/PROP_Shared_Grate cleared from Door_5_6
+[Heartbeat][Gen][dev] 06_ROOM_F3_Storage_A/PROP_Shared_CableBundle cleared from Door_6_8
+[Heartbeat][Gen][dev] 09_ROOM_F3_Hack_A/PROP_F3_HeavyCabling cleared from Door_9_10
+[Heartbeat][Gen][dev] 11_ROOM_F3_Open_B/CryoTank cleared from Door_10_11
+[Heartbeat][Gen][dev] 14_KEY_F3_Secondary_A/PROP_Shared_Puddle cleared from Door_4_14
+[Heartbeat][Gen][dev] 14_KEY_F3_Secondary_A/PROP_Shared_Puddle cleared from Door_4_14
+[Heartbeat][Gen][dev] 03_ROOM_F3_Hack_B/Transformer_2 cleared from Door_3_7
+[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Door][dev] Door_0_3 -> Closed
+[Heartbeat][Rooms] Active around 00_KEY_F3_Arrival: 5 enemies, lights=3 shadowed=3, drawn rooms=6/16
+[Heartbeat][Gen] floor=3 seed=1237 (requested 1237, 1 attempts): 16 rooms, 14 enemies, 12 items, unpowered=False; built in 97 ms
+[Heartbeat][Audio] CUE_Amb_F3
+[Heartbeat][Audio] CUE_Heartbeat_Lab
+[Heartbeat][Audio][dev] Lab heartbeat degradation=0 critical=False
+[Heartbeat][Inventory][dev] [ ][ ][ ][ ][ ][ ]
+[Heartbeat][Save] Slot 3 saved (R-H-07, deaths 0, autosave=False)
+[Heartbeat][Cycle] Floor 3 start saved: 0 items, revolver 0
+]]></output>
+              </test-case>
+              <test-case id="1040" name="BuiltFloor_HasNavMeshPathFromPlayerToKeyAndFinalRoom(3,98765)" fullname="Heartbeat.Tests.FloorNavMeshTests.BuiltFloor_HasNavMeshPathFromPlayerToKeyAndFinalRoom(3,98765)" methodname="BuiltFloor_HasNavMeshPathFromPlayerToKeyAndFinalRoom" classname="Heartbeat.Tests.FloorNavMeshTests" runstate="Runnable" seed="1530867755" result="Passed" start-time="2026-11-11 20:29:27Z" end-time="2026-11-11 20:29:27Z" duration="0.260842" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Door][dev] Door_1_2 -> Closed
+[Heartbeat][Door][dev] Door_0_3 -> Closed
+[Heartbeat][Door][dev] Door_3_4 -> Closed
+[Heartbeat][Door][dev] Door_2_5 -> Closed
+[Heartbeat][Door][dev] Door_5_6 -> Closed
+[Heartbeat][Door][dev] Door_1_7 -> Closed
+[Heartbeat][Door][dev] Door_6_8 -> Closed
+[Heartbeat][Door][dev] Door_8_9 -> Closed
+[Heartbeat][Door][dev] Door_9_10 -> Closed
+[Heartbeat][Door][dev] Door_10_11 -> Closed
+[Heartbeat][Door][dev] Door_4_12 -> Closed
+[Heartbeat][Door][dev] Door_8_13 -> Closed
+[Heartbeat][Door][dev] Door_4_14 -> Closed
+[Heartbeat][Door][dev] Door_11_15 -> Closed
+[Heartbeat][Door][dev] Door_3_7 -> Closed
+[Heartbeat][Room] Entered 00_KEY_F3_Arrival
+[Heartbeat][Rooms] Active around 00_KEY_F3_Arrival: 5 enemies, lights=3 shadowed=3, drawn rooms=6/16
+[Heartbeat][Audio] CUE_Step_Metal
+[Heartbeat][Audio] CUE_Step_Metal
+[Heartbeat][Gen][dev] 09_KEY_F1_Secondary_A/PROP_Shared_Puddle cleared from Door_7_9
+[Heartbeat][Gen][dev] 11_KEY_F1_Secondary_A/PROP_Shared_Puddle cleared from Door_7_11
+[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Rooms] Active around 00_KEY_F1_CapsuleRow: 4 enemies, lights=3 shadowed=3, drawn rooms=5/13
+[Heartbeat][Gen] floor=1 seed=12345 (requested 12345, 1 attempts): 13 rooms, 6 enemies, 19 items, unpowered=True; built in 70 ms
+[Heartbeat][Audio] CUE_Amb_F1
+[Heartbeat][Audio] CUE_Heartbeat_Lab
+[Heartbeat][Audio][dev] Lab heartbeat degradation=0 critical=False
+[Heartbeat][Inventory][dev] [ ][ ][ ][ ][ ][ ]
+[Heartbeat][Save] Slot 3 saved (R-H-07, deaths 0, autosave=False)
+[Heartbeat][Cycle] Floor 1 start saved: 0 items, revolver 0
+[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Door][dev] Door_1_2 -> Closed
+[Heartbeat][Door][dev] Door_2_3 -> Closed
+[Heartbeat][Door][dev] Door_1_4 -> Closed
+[Heartbeat][Door][dev] Door_3_5 -> Closed
+[Heartbeat][Door][dev] Door_5_6 -> Closed
+[Heartbeat][Door][dev] Door_1_7 -> Closed
+[Heartbeat][Door][dev] Door_6_8 -> Closed
+[Heartbeat][Door][dev] Door_7_9 -> Closed
+[Heartbeat][Door][dev] Door_8_10 -> Closed
+[Heartbeat][Door][dev] Door_7_11 -> Closed
+[Heartbeat][Door][dev] Door_6_12 -> Closed
+[Heartbeat][Audio] CUE_Step_Metal
+[Heartbeat][Gen][dev] 01_ROOM_F3_Vertical_A/PROP_Shared_CableBundle cleared from Door_1_2
+[Heartbeat][Gen][dev] 02_ROOM_F3_Storage_B/BrokenCapsule cleared from Door_2_3
+[Heartbeat][Gen][dev] 00_KEY_F3_Arrival/PROP_F3_HeavyCabling cleared from Door_0_4
+[Heartbeat][Gen][dev] 05_ROOM_F3_Hack_B/Transformer_2 cleared from Door_3_5
+[Heartbeat][Gen][dev] 04_ROOM_F3_Storage_B/BrokenCapsule cleared from Door_4_6
+[Heartbeat][Gen][dev] 06_ROOM_F3_Corridor_B/PROP_Shared_Puddle cleared from Door_4_6
+[Heartbeat][Gen][dev] 08_ROOM_F3_Corridor_B/PROP_Shared_Puddle cleared from Door_7_8
+[Heartbeat][Gen][dev] 09_ROOM_F3_Storage_A/PROP_Shared_Grate cleared from Door_3_9
+[Heartbeat][Gen][dev] 13_KEY_F3_Secondary_A/PROP_Shared_Puddle cleared from Door_8_13
+[Heartbeat][Gen][dev] 13_KEY_F3_Secondary_A/PROP_Shared_Puddle cleared from Door_8_13
+[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Door][dev] Door_0_4 -> Closed
+[Heartbeat][Rooms] Active around 00_KEY_F3_Arrival: 4 enemies, lights=3 shadowed=3, drawn rooms=5/15
+[Heartbeat][Gen] floor=3 seed=98768 (requested 98768, 1 attempts): 15 rooms, 13 enemies, 11 items, unpowered=False; built in 98 ms
+[Heartbeat][Audio] CUE_Amb_F3
+[Heartbeat][Audio] CUE_Heartbeat_Lab
+[Heartbeat][Audio][dev] Lab heartbeat degradation=0 critical=False
+[Heartbeat][Inventory][dev] [ ][ ][ ][ ][ ][ ]
+[Heartbeat][Save] Slot 3 saved (R-H-07, deaths 0, autosave=False)
+[Heartbeat][Cycle] Floor 3 start saved: 0 items, revolver 0
+]]></output>
+              </test-case>
+              <test-case id="1041" name="BuiltFloor_HasNavMeshPathFromPlayerToKeyAndFinalRoom(3,31337)" fullname="Heartbeat.Tests.FloorNavMeshTests.BuiltFloor_HasNavMeshPathFromPlayerToKeyAndFinalRoom(3,31337)" methodname="BuiltFloor_HasNavMeshPathFromPlayerToKeyAndFinalRoom" classname="Heartbeat.Tests.FloorNavMeshTests" runstate="Runnable" seed="452142243" result="Passed" start-time="2026-11-11 20:29:27Z" end-time="2026-11-11 20:29:27Z" duration="0.252054" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Door][dev] Door_1_2 -> Closed
+[Heartbeat][Door][dev] Door_2_3 -> Closed
+[Heartbeat][Door][dev] Door_0_4 -> Closed
+[Heartbeat][Door][dev] Door_3_5 -> Closed
+[Heartbeat][Door][dev] Door_4_6 -> Closed
+[Heartbeat][Door][dev] Door_5_7 -> Closed
+[Heartbeat][Door][dev] Door_7_8 -> Closed
+[Heartbeat][Door][dev] Door_3_9 -> Closed
+[Heartbeat][Door][dev] Door_8_10 -> Closed
+[Heartbeat][Door][dev] Door_10_11 -> Closed
+[Heartbeat][Door][dev] Door_10_12 -> Closed
+[Heartbeat][Door][dev] Door_8_13 -> Closed
+[Heartbeat][Door][dev] Door_11_14 -> Closed
+[Heartbeat][Room] Entered 00_KEY_F3_Arrival
+[Heartbeat][Rooms] Active around 00_KEY_F3_Arrival: 4 enemies, lights=3 shadowed=3, drawn rooms=5/15
+[Heartbeat][Audio] CUE_Step_Metal
+[Heartbeat][Gen][dev] 09_KEY_F1_Secondary_A/PROP_Shared_Puddle cleared from Door_7_9
+[Heartbeat][Gen][dev] 11_KEY_F1_Secondary_A/PROP_Shared_Puddle cleared from Door_7_11
+[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Rooms] Active around 00_KEY_F1_CapsuleRow: 4 enemies, lights=3 shadowed=3, drawn rooms=5/13
+[Heartbeat][Gen] floor=1 seed=12345 (requested 12345, 1 attempts): 13 rooms, 6 enemies, 19 items, unpowered=True; built in 70 ms
+[Heartbeat][Audio] CUE_Amb_F1
+[Heartbeat][Audio] CUE_Heartbeat_Lab
+[Heartbeat][Audio][dev] Lab heartbeat degradation=0 critical=False
+[Heartbeat][Inventory][dev] [ ][ ][ ][ ][ ][ ]
+[Heartbeat][Save] Slot 3 saved (R-H-07, deaths 0, autosave=False)
+[Heartbeat][Cycle] Floor 1 start saved: 0 items, revolver 0
+[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Door][dev] Door_1_2 -> Closed
+[Heartbeat][Door][dev] Door_2_3 -> Closed
+[Heartbeat][Door][dev] Door_1_4 -> Closed
+[Heartbeat][Door][dev] Door_3_5 -> Closed
+[Heartbeat][Door][dev] Door_5_6 -> Closed
+[Heartbeat][Door][dev] Door_1_7 -> Closed
+[Heartbeat][Door][dev] Door_6_8 -> Closed
+[Heartbeat][Door][dev] Door_7_9 -> Closed
+[Heartbeat][Door][dev] Door_8_10 -> Closed
+[Heartbeat][Door][dev] Door_7_11 -> Closed
+[Heartbeat][Door][dev] Door_6_12 -> Closed
+[Heartbeat][Audio] CUE_Step_Metal
+[Heartbeat][Gen][dev] 00_KEY_F3_Arrival/PROP_F3_HeavyCabling cleared from Door_0_1
+[Heartbeat][Gen][dev] 01_ROOM_F3_Vertical_A/PROP_Shared_CableBundle cleared from Door_0_1
+[Heartbeat][Gen][dev] 03_ROOM_F3_Vertical_B/PROP_Shared_Grate cleared from Door_2_3
+[Heartbeat][Gen][dev] 04_ROOM_F3_Vertical_B/PROP_Shared_Grate cleared from Door_2_4
+[Heartbeat][Gen][dev] 05_ROOM_F3_Storage_B/BrokenCapsule cleared from Door_3_5
+[Heartbeat][Gen][dev] 06_ROOM_F3_Open_B/CryoTank cleared from Door_6_9
+[Heartbeat][Gen][dev] 09_ROOM_F3_Hack_B/Transformer_2 cleared from Door_9_11
+[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Door][dev] Door_0_7 -> Closed
+[Heartbeat][Rooms] Active around 00_KEY_F3_Arrival: 6 enemies, lights=3 shadowed=3, drawn rooms=4/15
+[Heartbeat][Gen] floor=3 seed=31340 (requested 31340, 1 attempts): 15 rooms, 15 enemies, 9 items, unpowered=False; built in 93 ms
+[Heartbeat][Audio] CUE_Amb_F3
+[Heartbeat][Audio] CUE_Heartbeat_Lab
+[Heartbeat][Audio][dev] Lab heartbeat degradation=0 critical=False
+[Heartbeat][Inventory][dev] [ ][ ][ ][ ][ ][ ]
+[Heartbeat][Save] Slot 3 saved (R-H-07, deaths 0, autosave=False)
+[Heartbeat][Cycle] Floor 3 start saved: 0 items, revolver 0
+]]></output>
+              </test-case>
+              <test-case id="1042" name="BuiltFloor_HasNavMeshPathFromPlayerToKeyAndFinalRoom(3,555)" fullname="Heartbeat.Tests.FloorNavMeshTests.BuiltFloor_HasNavMeshPathFromPlayerToKeyAndFinalRoom(3,555)" methodname="BuiltFloor_HasNavMeshPathFromPlayerToKeyAndFinalRoom" classname="Heartbeat.Tests.FloorNavMeshTests" runstate="Runnable" seed="535624790" result="Passed" start-time="2026-11-11 20:29:27Z" end-time="2026-11-11 20:29:28Z" duration="0.262301" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Door][dev] Door_1_2 -> Closed
+[Heartbeat][Door][dev] Door_2_3 -> Closed
+[Heartbeat][Door][dev] Door_2_4 -> Closed
+[Heartbeat][Door][dev] Door_3_5 -> Closed
+[Heartbeat][Door][dev] Door_5_6 -> Closed
+[Heartbeat][Door][dev] Door_0_7 -> Closed
+[Heartbeat][Door][dev] Door_6_8 -> Closed
+[Heartbeat][Door][dev] Door_6_9 -> Closed
+[Heartbeat][Door][dev] Door_4_10 -> Closed
+[Heartbeat][Door][dev] Door_9_11 -> Closed
+[Heartbeat][Door][dev] Door_8_12 -> Closed
+[Heartbeat][Door][dev] Door_9_13 -> Closed
+[Heartbeat][Door][dev] Door_10_14 -> Closed
+[Heartbeat][Room] Entered 00_KEY_F3_Arrival
+[Heartbeat][Rooms] Active around 00_KEY_F3_Arrival: 6 enemies, lights=3 shadowed=3, drawn rooms=4/15
+[Heartbeat][Audio] CUE_Step_Metal
+[Heartbeat][Gen][dev] 09_KEY_F1_Secondary_A/PROP_Shared_Puddle cleared from Door_7_9
+[Heartbeat][Gen][dev] 11_KEY_F1_Secondary_A/PROP_Shared_Puddle cleared from Door_7_11
+[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Rooms] Active around 00_KEY_F1_CapsuleRow: 4 enemies, lights=3 shadowed=3, drawn rooms=5/13
+[Heartbeat][Gen] floor=1 seed=12345 (requested 12345, 1 attempts): 13 rooms, 6 enemies, 19 items, unpowered=True; built in 69 ms
+[Heartbeat][Audio] CUE_Amb_F1
+[Heartbeat][Audio] CUE_Heartbeat_Lab
+[Heartbeat][Audio][dev] Lab heartbeat degradation=0 critical=False
+[Heartbeat][Inventory][dev] [ ][ ][ ][ ][ ][ ]
+[Heartbeat][Save] Slot 3 saved (R-H-07, deaths 0, autosave=False)
+[Heartbeat][Cycle] Floor 1 start saved: 0 items, revolver 0
+[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Door][dev] Door_1_2 -> Closed
+[Heartbeat][Door][dev] Door_2_3 -> Closed
+[Heartbeat][Door][dev] Door_1_4 -> Closed
+[Heartbeat][Door][dev] Door_3_5 -> Closed
+[Heartbeat][Door][dev] Door_5_6 -> Closed
+[Heartbeat][Door][dev] Door_1_7 -> Closed
+[Heartbeat][Door][dev] Door_6_8 -> Closed
+[Heartbeat][Door][dev] Door_7_9 -> Closed
+[Heartbeat][Door][dev] Door_8_10 -> Closed
+[Heartbeat][Door][dev] Door_7_11 -> Closed
+[Heartbeat][Door][dev] Door_6_12 -> Closed
+[Heartbeat][Audio] CUE_Step_Metal
+[Heartbeat][Gen][dev] 01_ROOM_F3_Storage_B/BrokenCapsule cleared from Door_0_1
+[Heartbeat][Gen][dev] 03_ROOM_F3_Open_B/CryoTank cleared from Door_2_3
+[Heartbeat][Gen][dev] 04_ROOM_F3_Vertical_A/PROP_Shared_CableBundle cleared from Door_4_5
+[Heartbeat][Gen][dev] 06_ROOM_F3_Vertical_A/PROP_Shared_CableBundle cleared from Door_5_6
+[Heartbeat][Gen][dev] 07_ROOM_F3_Storage_B/BrokenCapsule cleared from Door_7_8
+[Heartbeat][Gen][dev] 08_ROOM_F3_Vertical_B/PROP_Shared_Grate cleared from Door_8_9
+[Heartbeat][Gen][dev] 11_KEY_F3_Secondary_A/PROP_Shared_Puddle cleared from Door_2_11
+[Heartbeat][Gen][dev] 11_KEY_F3_Secondary_A/PROP_Shared_Puddle cleared from Door_2_11
+[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Rooms] Active around 00_KEY_F3_Arrival: 1 enemies, lights=3 shadowed=3, drawn rooms=3/14
+[Heartbeat][Gen] floor=3 seed=558 (requested 558, 1 attempts): 14 rooms, 15 enemies, 10 items, unpowered=False; built in 92 ms
+[Heartbeat][Audio] CUE_Amb_F3
+[Heartbeat][Audio] CUE_Heartbeat_Lab
+[Heartbeat][Audio][dev] Lab heartbeat degradation=0 critical=False
+[Heartbeat][Inventory][dev] [ ][ ][ ][ ][ ][ ]
+[Heartbeat][Save] Slot 3 saved (R-H-07, deaths 0, autosave=False)
+[Heartbeat][Cycle] Floor 3 start saved: 0 items, revolver 0
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+          <test-suite type="TestFixture" id="1044" name="LockedDoorTests" fullname="Heartbeat.Tests.LockedDoorTests" classname="Heartbeat.Tests.LockedDoorTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-11-11 20:29:28Z" end-time="2026-11-11 20:29:30Z" duration="2.280461" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <output><![CDATA[[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Door][dev] Door_1_2 -> Closed
+[Heartbeat][Door][dev] Door_2_3 -> Closed
+[Heartbeat][Door][dev] Door_3_4 -> Closed
+[Heartbeat][Door][dev] Door_4_5 -> Closed
+[Heartbeat][Door][dev] Door_5_6 -> Closed
+[Heartbeat][Door][dev] Door_6_7 -> Closed
+[Heartbeat][Door][dev] Door_7_8 -> Closed
+[Heartbeat][Door][dev] Door_8_9 -> Closed
+[Heartbeat][Door][dev] Door_9_10 -> Closed
+[Heartbeat][Door][dev] Door_2_11 -> Closed
+[Heartbeat][Door][dev] Door_5_12 -> Closed
+[Heartbeat][Door][dev] Door_5_13 -> Closed
+[Heartbeat][Room] Entered 00_KEY_F3_Arrival
+[Heartbeat][Rooms] Active around 00_KEY_F3_Arrival: 1 enemies, lights=3 shadowed=3, drawn rooms=3/14
+[Heartbeat][Audio] CUE_Step_Metal
+]]></output>
+            <test-case id="1045" name="HuntingEnemy_NextToKeyLockedDoor_NeitherOpensNorCrossesIt" fullname="Heartbeat.Tests.LockedDoorTests.HuntingEnemy_NextToKeyLockedDoor_NeitherOpensNorCrossesIt" methodname="HuntingEnemy_NextToKeyLockedDoor_NeitherOpensNorCrossesIt" classname="Heartbeat.Tests.LockedDoorTests" runstate="Runnable" seed="1339408464" result="Passed" start-time="2026-11-11 20:29:28Z" end-time="2026-11-11 20:29:30Z" duration="2.268930" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[[Heartbeat][Gen][dev] 09_KEY_F1_Secondary_A/PROP_Shared_Puddle cleared from Door_7_9
+[Heartbeat][Gen][dev] 11_KEY_F1_Secondary_A/PROP_Shared_Puddle cleared from Door_7_11
+[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Rooms] Active around 00_KEY_F1_CapsuleRow: 4 enemies, lights=3 shadowed=3, drawn rooms=5/13
+[Heartbeat][Gen] floor=1 seed=12345 (requested 12345, 1 attempts): 13 rooms, 6 enemies, 19 items, unpowered=True; built in 68 ms
+[Heartbeat][Audio] CUE_Amb_F1
+[Heartbeat][Audio] CUE_Heartbeat_Lab
+[Heartbeat][Audio][dev] Lab heartbeat degradation=0 critical=False
+[Heartbeat][Inventory][dev] [ ][ ][ ][ ][ ][ ]
+[Heartbeat][Save] Slot 3 saved (R-H-07, deaths 0, autosave=False)
+[Heartbeat][Cycle] Floor 1 start saved: 0 items, revolver 0
+[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Door][dev] Door_1_2 -> Closed
+[Heartbeat][Door][dev] Door_2_3 -> Closed
+[Heartbeat][Door][dev] Door_1_4 -> Closed
+[Heartbeat][Door][dev] Door_3_5 -> Closed
+[Heartbeat][Door][dev] Door_5_6 -> Closed
+[Heartbeat][Door][dev] Door_1_7 -> Closed
+[Heartbeat][Door][dev] Door_6_8 -> Closed
+[Heartbeat][Door][dev] Door_7_9 -> Closed
+[Heartbeat][Door][dev] Door_8_10 -> Closed
+[Heartbeat][Door][dev] Door_7_11 -> Closed
+[Heartbeat][Door][dev] Door_6_12 -> Closed
+[Heartbeat][Audio] CUE_Step_Metal
+[Heartbeat][Gen][dev] 01_ROOM_F1_Open_B/PROP_F1_BigContainer cleared from Door_1_4
+[Heartbeat][Gen][dev] 13_KEY_F1_Secondary_A/PROP_Shared_Puddle cleared from Door_7_13
+[Heartbeat][Gen][dev] 12_ROOM_F1_Storage_B/PROP_Shared_TrashPile cleared from Door_12_14
+[Heartbeat][Gen][dev] 12_ROOM_F1_Storage_B/PROP_Shared_TrashPile cleared from Door_12_14
+[Heartbeat][Gen][dev] 14_KEY_F1_Secondary_A/PROP_Shared_Puddle cleared from Door_12_14
+[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Door][dev] Door_0_9 -> Closed
+[Heartbeat][Rooms] Active around 00_KEY_F1_CapsuleRow: 3 enemies, lights=3 shadowed=3, drawn rooms=5/17
+[Heartbeat][Gen] floor=1 seed=4244 (requested 4243, 2 attempts): 17 rooms, 7 enemies, 17 items, unpowered=False; built in 104 ms
+[Heartbeat][Audio] CUE_Amb_F1
+[Heartbeat][Audio] CUE_Heartbeat_Lab
+[Heartbeat][Audio][dev] Lab heartbeat degradation=0 critical=False
+[Heartbeat][Inventory][dev] [ ][ ][ ][ ][ ][ ]
+[Heartbeat][Save] Slot 3 saved (R-H-07, deaths 0, autosave=False)
+[Heartbeat][Cycle] Floor 1 start saved: 0 items, revolver 0
+[Heartbeat][Door][dev] Door_0_1 -> Closed
+[Heartbeat][Door][dev] Door_1_2 -> Closed
+[Heartbeat][Door][dev] Door_2_3 -> Closed
+[Heartbeat][Door][dev] Door_1_4 -> Closed
+[Heartbeat][Door][dev] Door_3_5 -> Closed
+[Heartbeat][Door][dev] Door_5_6 -> Closed
+[Heartbeat][Door][dev] Door_6_7 -> Closed
+[Heartbeat][Door][dev] Door_4_8 -> Closed
+[Heartbeat][Door][dev] Door_0_9 -> Closed
+[Heartbeat][Door][dev] Door_5_10 -> Closed
+[Heartbeat][Door][dev] Door_10_11 -> Closed
+[Heartbeat][Door][dev] Door_8_12 -> Closed
+[Heartbeat][Door][dev] Door_7_13 -> Closed
+[Heartbeat][Door][dev] Door_12_14 -> Closed
+[Heartbeat][Door][dev] Door_8_15 -> Closed
+[Heartbeat][Door][dev] Door_11_16 -> Closed
+[Heartbeat][Room] Entered 00_KEY_F1_CapsuleRow
+[Heartbeat][Rooms] Active around 00_KEY_F1_CapsuleRow: 3 enemies, lights=3 shadowed=3, drawn rooms=5/17
+[Heartbeat][AI] Rastrero_12_0 Patrol->Hunt
+[Heartbeat][AI] Hunt started
+[Heartbeat][Notice] UI.NOTICE.HUNTED
+[Heartbeat][Audio] CUE_Step_Metal
+[Heartbeat][Audio] Heartbeat band=0
+[Heartbeat][Audio] CUE_Heartbeat_Player
+[Heartbeat][Audio] CUE_Step_Metal
+[Heartbeat][Audio] CUE_Step_Metal
+[Heartbeat][Audio] CUE_Step_Metal
+[Heartbeat][Audio] CUE_Step_Metal
+[Heartbeat][Audio] CUE_Step_Metal
+[Heartbeat][Audio] CUE_Step_Metal
+[Heartbeat][Audio] CUE_Step_Metal
+[Heartbeat][Audio] CUE_Step_Metal
+[Heartbeat][Audio] CUE_Step_Metal
+[Heartbeat][Audio] CUE_Door_Open
+[Heartbeat][Door][dev] Door_1_2 -> Open
+<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: /home/usuario/.config/unity3d/Heartbeat/Identity Dissolution/TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

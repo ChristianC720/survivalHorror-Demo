@@ -1,0 +1,49 @@
+IDENTITY DISSOLUTION - REPORTE DE INCIDENCIA
+
+ID: BUG-002
+Titulo: Enemigo penetra parcialmente una pared y causa dano al jugador detras del obstaculo
+Prueba asociada: QA-MAN-003
+Categoria: Jugabilidad / Colisiones / Combate
+Severidad provisional: Mayor
+Prioridad propuesta: P1 - Alta (pendiente de validacion del equipo)
+Estado: Reproducido varias veces segun el evaluador; pendiente de documentacion detallada
+
+ENTORNO DE REFERENCIA
+Debian GNU/Linux 13
+Unity 6000.6.8f1
+Copia de trabajo QA de Identity Dissolution
+
+CONDICIONES OBSERVADAS
+Un enemigo se aproxima a una pared mientras el jugador permanece detras del obstaculo.
+
+PASOS DE REPRODUCCION PROVISIONALES
+1. Iniciar una partida y localizar un enemigo.
+2. Situarse detras de una pared u obstaculo solido.
+3. Permitir que el enemigo se acerque.
+4. Observar la interaccion del enemigo con la pared y comprobar si la salud del jugador disminuye.
+Nota: faltan escena, ubicacion y condiciones precisas para una receta de reproduccion completa.
+
+RESULTADO ESPERADO
+La geometria solida debe bloquear el paso del enemigo y evitar dano incompatible con el alcance previsto por el diseno.
+
+RESULTADO OBSERVADO
+El enemigo atraveso parcialmente la geometria de la pared y el personaje perdio salud mientras estaba detras del obstaculo.
+
+FRECUENCIA
+Varias veces, segun el evaluador. Sin recuento exacto.
+
+ANIMACIONES
+No se observaron anomalias en esta prueba.
+
+EVIDENCIA
+Reporte manual QA-MAN-003. Evidencia audiovisual especifica pendiente de vincular.
+
+CAUSA RAIZ
+No determinada. No atribuir a colliders, navegacion, hitboxes o scripts sin verificacion.
+
+ACCIONES PENDIENTES
+- Identificar escena, enemigo y pared.
+- Repetir en el mismo punto y anotar intentos y resultados.
+- Registrar video que muestre pared, enemigo y cambio de salud.
+- Revisar reglas de combate/alcance en la documentacion del juego.
+- Investigar por separado penetracion geometrica y aplicacion de dano.
