@@ -350,13 +350,18 @@ namespace Heartbeat.UI
             RecordKind.Bestiary => "UI.TERM.CAT_BESTIARY",
             RecordKind.Rule => "UI.TERM.CAT_RULES",
             RecordKind.Fault => "UI.TERM.CAT_FAULTS",
+            RecordKind.Poster => "UI.TERM.CAT_POSTERS",
+            RecordKind.VoiceNote => "UI.TERM.CAT_VOICE_NOTE",
             _ => "UI.TERM.CAT_RING",
         });
 
-        private string TitleOf(string id) => docsById.TryGetValue(id, out var d) ? ReaderView.TitleOf(d) : id;
+        private string TitleOf(string id) =>
+            docsById.TryGetValue(id, out var d) ? ReaderView.TitleOf(d)
+            : Services.Get<RegistryModel>().KindOf(id) == RecordKind.Poster ? TutorialPoster.TitleOf(id, router) : id;
 
         private void Read(string id)
         {
+            if (Services.Get<RegistryModel>().KindOf(id) == RecordKind.Poster) { reader.OpenPoster(TutorialPoster.Render(id, router), null); return; }
             if (!docsById.TryGetValue(id, out var d)) { HbLog.Warn("Terminal", $"No document asset for {id}"); return; }
             reader.OpenDocument(d, () =>
             {

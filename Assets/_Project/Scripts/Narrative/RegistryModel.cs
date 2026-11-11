@@ -4,7 +4,8 @@ using System.Collections.Generic;
 namespace Heartbeat.Narrative
 {
     /// <summary>Kinds of records in the arm terminal's Logs tab (M-08, M-16).</summary>
-    public enum RecordKind { EmiliaDocument, ContextDocument, Confiscated, Bestiary, Rule, Fault, Ring }
+    /// <remarks>Saves store the numeric value: append new kinds at the end, never renumber.</remarks>
+    public enum RecordKind { EmiliaDocument, ContextDocument, Confiscated, Bestiary, Rule, Fault, Ring, Poster, VoiceNote }
 
     /// <summary>
     /// Persistent knowledge (S-07): everything registered in the arm terminal. Survives deaths and Restart;

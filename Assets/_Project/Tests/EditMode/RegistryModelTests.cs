@@ -37,5 +37,15 @@ namespace Heartbeat.Tests
             CollectionAssert.AreEqual(new[] { "A", "B" }, copy.Order);
             Assert.AreEqual(RecordKind.Confiscated, copy.KindOf("B"));
         }
+
+        [Test]
+        public void RecordKinds_KeepTheirSavedNumbers()   // saves store the number: new kinds are appended (C-36, C-39)
+        {
+            Assert.AreEqual(6, (int)RecordKind.Ring);
+            Assert.AreEqual(7, (int)RecordKind.Poster);
+            Assert.AreEqual(8, (int)RecordKind.VoiceNote);
+            var save = UnityEngine.JsonUtility.FromJson<Heartbeat.Save.RecordEntry>("{\"id\":\"RING\",\"kind\":6}");
+            Assert.AreEqual(RecordKind.Ring, save.kind);
+        }
     }
 }

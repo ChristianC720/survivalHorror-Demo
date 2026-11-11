@@ -855,6 +855,14 @@ MonoBehaviour:
     m_Key: UI.HUD.SYNC_FAILED
     m_Metadata:
       m_Items: []
+  - m_Id: 3430740820885504
+    m_Key: UI.TERM.CAT_POSTERS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3431134452121600
+    m_Key: UI.TERM.CAT_VOICE_NOTE
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
