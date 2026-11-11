@@ -203,10 +203,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 142ac34620274f44b9ebf6010eaea55d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Heartbeat.Runtime::Heartbeat.CameraSystem.SurveillanceSystem
-  textureHeight: 270
-  delaySeconds: 0.3
+  textureHeight: 720
   orthoSize: 7
-  shotAttention: 0.15
+  minOrthoSize: 3
+  viewAmbient: {r: 0.95, g: 1, b: 0.95, a: 1}
 --- !u!1 &5700450466030563058
 GameObject:
   m_ObjectHideFlags: 0
