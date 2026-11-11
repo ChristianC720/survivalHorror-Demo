@@ -304,6 +304,9 @@ namespace Heartbeat.Sandbox
             Object.Destroy(sphere);
         }
 
+        /// <summary>The team's unused tools (Aturdidor, Stunject, Pistola) are UV-mapped to the items' atlas, M_Herramientas.</summary>
+        private static readonly string[] OnToolsAtlas = { "CH_Item_Stunner", "CH_Item_Stunject", "CH_Pistol" };
+
         /// <summary>Models no prefab uses, such as the scene-only statics and the earlier Alto.</summary>
         private void AddLooseModels()
         {
@@ -317,7 +320,8 @@ namespace Heartbeat.Sandbox
                 if (meshes.Length == 0 || meshes.Any(shown.Contains)) continue;
                 string name = System.IO.Path.GetFileNameWithoutExtension(path);
                 string dir = System.IO.Path.GetDirectoryName(path).Replace('\\', '/');
-                var mat = AssetDatabase.LoadAssetAtPath<Material>($"{dir}/M_{name}.mat")
+                var mat = (OnToolsAtlas.Contains(name) ? AssetDatabase.LoadAssetAtPath<Material>(Models + "Props/M_Herramientas.mat") : null)
+                    ?? AssetDatabase.LoadAssetAtPath<Material>($"{dir}/M_{name}.mat")
                     ?? AssetDatabase.LoadAssetAtPath<Material>(Models + "Props/M_Palette.mat");
                 // A body with clothing has a second material slot: the earlier Alto kept for comparison.
                 var cloth = AssetDatabase.LoadAssetAtPath<Material>($"{dir}/M_{name}_Cloth.mat");
