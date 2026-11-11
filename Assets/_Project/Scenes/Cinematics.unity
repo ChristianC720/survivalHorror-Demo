@@ -3271,7 +3271,11 @@ MonoBehaviour:
     actors: {fileID: 0}
     drift: {x: 0, y: 0, z: 0}
   capsuleSuit: {fileID: 1451883716}
-  bodyVariants: []
+  bodyVariants:
+  - {fileID: 2800000, guid: 9c206edbd3902984cb6c9851256f5f4d, type: 3}
+  - {fileID: 2800000, guid: 9c206edbd3902984cb6c9851256f5f4d, type: 3}
+  - {fileID: 2800000, guid: 9c206edbd3902984cb6c9851256f5f4d, type: 3}
+  - {fileID: 2800000, guid: 9c206edbd3902984cb6c9851256f5f4d, type: 3}
 --- !u!1001 &1668481575
 PrefabInstance:
   m_ObjectHideFlags: 0
