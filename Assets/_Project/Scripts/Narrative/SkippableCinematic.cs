@@ -16,6 +16,9 @@ namespace Heartbeat.Narrative
     {
         public const float HoldSeconds = 1f;
 
+        /// <summary>Playtests (C-65): counts as holding Skip for the whole hold; cleared once a cinematic is skipped.</summary>
+        public static bool DebugSkip;
+
         /// <summary>Runs <paramref name="body"/> on <paramref name="host"/>; a skip stops it and calls <paramref name="onSkipped"/>.</summary>
         public static IEnumerator Run(MonoBehaviour host, string id, IEnumerator body, Action onSkipped = null)
         {
@@ -27,10 +30,11 @@ namespace Heartbeat.Narrative
             float held = 0f;
             while (!done)
             {
-                held = canSkip && skip.IsPressed() ? held + Time.unscaledDeltaTime : 0f;
+                held = canSkip && (skip.IsPressed() || DebugSkip) ? held + Time.unscaledDeltaTime : 0f;
                 if (held >= HoldSeconds)
                 {
                     host.StopCoroutine(routine);
+                    DebugSkip = false;
                     HbLog.Info("Cinematic", $"{id} skipped (held {HoldSeconds:0.#} s)");
                     onSkipped?.Invoke();
                     break;

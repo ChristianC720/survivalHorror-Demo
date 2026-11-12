@@ -89,6 +89,7 @@ namespace Heartbeat.Narrative
         private CinemachineBrain brain;
         private CinemachineBlendDefinition playerBlend;
         private CinemachineCamera live;
+        private bool debugRing;
 
         public string Stage { get; private set; } = "Boot";
 
@@ -376,7 +377,7 @@ namespace Heartbeat.Narrative
             ringOnTray.Arm("UI.PROMPT.PICKUP");
             GameEvents.RaiseInteractTargetChanged(ringOnTray);   // the same "[E] Pick up" prompt as any item
             HbLog.Info("Intro", "Ring waits on the tray");
-            while (!router.Actions.Gameplay.Interact.WasPerformedThisFrame()) yield return null;
+            while (!router.Actions.Gameplay.Interact.WasPerformedThisFrame() && !debugRing) yield return null;
             GameEvents.RaiseInteractTargetChanged(null);
             router.SetContext(InputRouting.InputContext.Cinematic);
             HbLog.Info("Intro", "Ring picked up");
@@ -544,6 +545,9 @@ namespace Heartbeat.Narrative
         }
 
         // ---------- debug / playtests ----------
+
+        /// <summary>Playtests: picks the ring up as if E had been pressed.</summary>
+        public void DebugTakeRing() => debugRing = true;
 
         /// <summary>Playtests: jump the player to a stage marker (Exterior, Elevator, Corridor, Attack).</summary>
         public void DebugGoto(string marker)
