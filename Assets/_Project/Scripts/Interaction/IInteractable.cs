@@ -12,4 +12,13 @@ namespace Heartbeat.Interaction
         bool CanInteract(Interactor who);
         void Interact(Interactor who);
     }
+
+    /// <summary>An interactable with a second action on holding E / A (a door: tap opens, hold seals).</summary>
+    public interface IHoldInteractable : IInteractable
+    {
+        /// <summary>The hold action is on offer right now; while false, a press interacts at once.</summary>
+        bool CanHold { get; }
+        string HoldPromptKey { get; }
+        void HoldComplete(Interactor who);
+    }
 }
