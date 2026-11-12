@@ -28,7 +28,7 @@ namespace Heartbeat.Combat
 
         private InputRouter router;
         private OtsCameraRig rig;
-        private int shotMask;
+        private int shotMask, hitboxLayer;
         private bool hitThisFrame;
         private System.Func<bool> takeRound;
 
@@ -48,6 +48,7 @@ namespace Heartbeat.Combat
             Model = new RevolverModel(balance.drumSize, balance.secondsBetweenShots, balance.reloadSecondsPerRound,
                 balance.spreadCloseSeconds, balance.spreadPerShot);
             shotMask = LayerMask.GetMask("Environment", "Hitbox");   // the root capsule of an enemy would shield its head
+            hitboxLayer = LayerMask.NameToLayer("Hitbox");
             SetOwned(ownedAtStart);
         }
 
@@ -121,6 +122,7 @@ namespace Heartbeat.Combat
                     return result;
             }
 
+            Physics.SyncTransforms();   // hitboxes ride animated bones and auto-sync is off: without this they trail the pose on screen
             Ray ray = rig != null ? rig.AimRay() : new Ray(muzzle.position, muzzle.forward);
             float spreadDeg = balance.maxSpreadDegrees * spreadBeforeShot;
             Vector2 jitter = Random.insideUnitCircle * Mathf.Tan(spreadDeg * Mathf.Deg2Rad);
@@ -131,17 +133,22 @@ namespace Heartbeat.Combat
             Vector3 chest = transform.position + Vector3.up * ChestHeight;
             float skip = Mathf.Max(0f, Vector3.Dot(chest - ray.origin, dir));   // ignore what is between camera and Lukas
             Vector3 camOrigin = ray.origin + dir * skip;
-            Vector3 aimPoint = Physics.Raycast(camOrigin, dir, out var aimHit, balance.range, shotMask, QueryTriggerInteraction.Ignore)
-                ? aimHit.point : camOrigin + dir * balance.range;
+            bool aimed = Physics.Raycast(camOrigin, dir, out var aimHit, balance.range, shotMask, QueryTriggerInteraction.Ignore);
+            Vector3 aimPoint = aimed ? aimHit.point : camOrigin + dir * balance.range;
             Vector3 toAim = aimPoint - chest;
             float aimDist = toAim.magnitude;
 
             string hitName = "nothing";
-            if (aimDist > 0.01f && Physics.Raycast(chest, toAim / aimDist, out var hit, aimDist + 0.05f, shotMask, QueryTriggerInteraction.Ignore))
+            RaycastHit hit = default;
+            bool landed = aimDist > 0.01f && Physics.Raycast(chest, toAim / aimDist, out hit, aimDist + 0.05f, shotMask, QueryTriggerInteraction.Ignore);
+            // Point blank (a grab, a body against Lukas): the chest starts inside the hitbox the camera sees, and a ray
+            // never hits the collider it starts in. The camera's hit stands.
+            if (!landed && aimed && aimHit.collider.gameObject.layer == hitboxLayer) { hit = aimHit; landed = true; }
+            if (landed)
             {
-                dir = toAim / aimDist;
+                if (aimDist > 0.01f) dir = toAim / aimDist;
                 hitName = hit.collider.name;
-                var weak = hit.collider.GetComponent<WeakPoint>();
+                var weak = WeakPoint.At(hit.collider, hit.point);
                 var target = weak != null ? weak.Owner : hit.collider.GetComponentInParent<IDamageable>();
                 if (target != null && target.IsAlive)
                 {
@@ -154,7 +161,7 @@ namespace Heartbeat.Combat
             Vector3 origin = muzzle != null ? muzzle.position : transform.position;
             GameEvents.RaiseNoiseEmitted(new NoiseInfo(origin, balance.shotNoiseRadius, NoiseSource.Shot));
             GameEvents.RaiseShotFired(origin);
-            HbLog.Info("Revolver", $"Shot -> {hitName}, loaded={Model.Loaded}, spread={spreadBeforeShot:0.00}");
+            HbLog.Info("Revolver", $"Shot -> {hitName}, loaded={Model.Loaded}, spread={spreadBeforeShot:0.00}, from={chest:F2} dir={dir:F2}");
             return result;
         }
 
