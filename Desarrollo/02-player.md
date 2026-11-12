@@ -15,7 +15,7 @@
 
 ### `E02-player-motor`
 1. `PH_Lukas` (see PLACEHOLDERS.md) inside `Player` prefab: `CharacterController` (r 0.35, h 1.8), `PlayerController`, layer `Player`, tag `Player`.
-2. Speeds from `PlayerBalance`: crouch 0.8, walk 1.5, run 4 m/s; Injured −15 %; Critical drags (value in the GDD). Camera-relative movement. Gravity, step offset 0.3.
+2. Speeds from `PlayerBalance`: crouch 1, walk 1.8, run 4.5 m/s; Injured −15 %; Critical drags (value in the GDD). Camera-relative movement. Gravity, step offset 0.3.
 3. `PlayerNoise`: crouched = 0 noise; walking a small radius; running and shooting alert (radii from balance). Raises `NoiseEmitted`.
 4. `PlayerPosture`: drives a placeholder posture cue (lean/scale on the PH mesh, later the animator) from the health state.
 

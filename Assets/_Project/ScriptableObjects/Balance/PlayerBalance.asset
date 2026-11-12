@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 339d4f851aebe9b4383c34754ae53df7, type: 3}
   m_Name: PlayerBalance
   m_EditorClassIdentifier: Heartbeat.Runtime::Heartbeat.Player.PlayerBalance
-  crouchSpeed: 0.8
-  walkSpeed: 1.5
-  runSpeed: 4
+  crouchSpeed: 1
+  walkSpeed: 1.8
+  runSpeed: 4.5
   injuredSpeedMultiplier: 0.85
   criticalSpeedMultiplier: 0.7
   aimSpeedMultiplier: 0.7

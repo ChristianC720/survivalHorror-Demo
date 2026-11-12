@@ -7,9 +7,9 @@ namespace Heartbeat.Player
     public sealed class PlayerBalance : ScriptableObject
     {
         [Header("Movement (M-06, D-76)")]
-        [Tooltip("Crouched speed, m/s (D-76).")] public float crouchSpeed = 0.8f;
-        [Tooltip("Walking speed, m/s (D-76).")] public float walkSpeed = 1.5f;
-        [Tooltip("Running speed, m/s (D-76).")] public float runSpeed = 4f;
+        [Tooltip("Crouched speed, m/s (D-76).")] public float crouchSpeed = 1f;
+        [Tooltip("Walking speed, m/s (D-76).")] public float walkSpeed = 1.8f;
+        [Tooltip("Running speed, m/s (D-76).")] public float runSpeed = 4.5f;
         [Tooltip("Speed multiplier while Injured (M-05: -15%).")] public float injuredSpeedMultiplier = 0.85f;
         [Tooltip("Speed multiplier while Critical (M-05: -30%).")] public float criticalSpeedMultiplier = 0.70f;
         [Tooltip("Speed multiplier while aiming (M-01: slower; value to balance).")] public float aimSpeedMultiplier = 0.6f;

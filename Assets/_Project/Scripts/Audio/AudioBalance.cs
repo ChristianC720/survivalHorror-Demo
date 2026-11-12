@@ -44,6 +44,6 @@ namespace Heartbeat.Audio
 
         [Header("Footsteps")]
         [Tooltip("Metres travelled per step sound.")] public float strideLength = 0.8f;
-        [Tooltip("Below this speed (m/s) steps are silent (crouch).")] public float minStepSpeed = 1.0f;
+        [Tooltip("Below this speed (m/s) steps are silent (crouch).")] public float minStepSpeed = 1.1f;
     }
 }
