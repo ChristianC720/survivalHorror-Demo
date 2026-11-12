@@ -80,9 +80,10 @@ namespace Heartbeat.Tests
                 Assert.IsTrue(registry.Has(CycleController.VoiceNoteId), "voice note copied to the terminal");
                 Assert.IsTrue(registry.Has(CycleController.RingId), "ring registered");
                 Assert.IsNull(HackView_Wallpaper(), "phone wallpaper cleared with the intro");
-                yield return Seconds(12f);   // the reconstruction card on floor 1
-                var player = Object.FindAnyObjectByType<PlayerController>();
-                Assert.IsFalse(player.MovementLocked, "the player has control");
+                // Floor loads additively before Intro unloads: take floor 1's player, not the intro's locked one.
+                PlayerController player = null;
+                yield return Until(() => (player = System.Array.Find(Object.FindObjectsByType<PlayerController>(FindObjectsSortMode.None), p => p.gameObject.scene.name == "Floor")) != null, 10f);
+                yield return Until(() => !player.MovementLocked, 20f);   // the reconstruction card on floor 1
                 Debug.Log($"[Heartbeat][Test] C-65 intro {(skip ? "skipped" : "watched")}: {cycle.Data.SubjectLabel} on floor 1, in control");
             }
             finally
