@@ -37,6 +37,9 @@ namespace Heartbeat.Tests
                 ("crouch+aim", true, true, false, HealthState.Fine),
                 ("walk injured", false, false, false, HealthState.Injured),
                 ("walk critical", false, false, false, HealthState.Critical),
+                ("aim injured", true, false, false, HealthState.Injured),
+                ("aim critical", true, false, false, HealthState.Critical),
+                ("crouch+aim critical", true, true, false, HealthState.Critical),
             };
             var failures = new List<string>();
             float worst = 0f;
@@ -63,6 +66,7 @@ namespace Heartbeat.Tests
                         }
                         float moved = Vector3.Distance(start, player.transform.position);
                         worst = Mathf.Max(worst, max);
+                        Debug.Log($"[Heartbeat][Test] C-61 {m.name} {i * 45}°: twist {max:0.0}°");
                         if (moved < 0.3f) failures.Add($"{m.name} {i * 45}°: did not move ({moved:0.00} m)");
                         if (max > MaxTwist) failures.Add($"{m.name} {i * 45}°: twist {max:0.0}°");
                     }
