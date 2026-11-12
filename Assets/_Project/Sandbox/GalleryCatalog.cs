@@ -202,15 +202,15 @@ namespace Heartbeat.Sandbox
         private void AddLukas()
         {
             string fbx = Models + "Characters/CH_Lukas_RH07.fbx";
-            // The team's new Lukas has no civilian outfit: the intro keeps the earlier model, kept as the legacy clip source.
-            string legacyFbx = Models + "Characters/CH_Lukas_RH07_LegacyAnims.fbx";
+            // C-60: the civilian Lukas is its own FBX on the same skeleton, so it plays the suit's clips.
+            string civilFbx = Models + "Characters/CH_Lukas_Civil.fbx";
             var clips = ClipsOf(fbx);
             var suit = AssetDatabase.LoadAssetAtPath<Material>(Models + "Characters/M_Lukas_RH07.mat");
             var civil = AssetDatabase.LoadAssetAtPath<Material>(Models + "Characters/M_Lukas_Civil.mat");
 
             void One(string name, bool isCivil, Texture2D variant)
             {
-                string path = isCivil ? legacyFbx : fbx;
+                string path = isCivil ? civilFbx : fbx;
                 var item = Add(AssetDatabase.LoadAssetAtPath<GameObject>(path), name, path, "Personajes", "Shared", go =>
                 {
                     foreach (var r in go.GetComponentsInChildren<SkinnedMeshRenderer>(true))

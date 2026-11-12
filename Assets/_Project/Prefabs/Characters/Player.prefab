@@ -479,6 +479,8 @@ MonoBehaviour:
   terminalFont: {fileID: 0}
   terminalModel: {fileID: 7132450088741912209, guid: 2d330f5ef206b7149b258cbe2d660db9, type: 3}
   civilian: 0
+  civilianBody: {fileID: -1867930268830126381, guid: d9cb239cea1b42d8a9dcf9d0fd137181, type: 3}
+  civilianMaterial: {fileID: 2100000, guid: 526c8b901de9936469a00f3069660146, type: 2}
   bodyVariants:
   - {fileID: 2800000, guid: 9c206edbd3902984cb6c9851256f5f4d, type: 3}
   - {fileID: 2800000, guid: 9c206edbd3902984cb6c9851256f5f4d, type: 3}

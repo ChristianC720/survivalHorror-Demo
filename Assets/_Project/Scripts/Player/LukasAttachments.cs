@@ -32,6 +32,9 @@ namespace Heartbeat.Player
         [SerializeField] private GameObject terminalModel;
         [Tooltip("Intro: civilian clothes, nothing luminous, no terminal (GDD Personajes).")]
         [SerializeField] private bool civilian;
+        [Tooltip("C-60: the body of CH_Lukas_Civil.fbx, on the same skeleton. Worn instead of the suit when civilian.")]
+        [SerializeField] private SkinnedMeshRenderer civilianBody;
+        [SerializeField] private Material civilianMaterial;
         [Tooltip("D-43: one more foreign piece per reconstruction, cumulative. Index 0 is the second reconstruction.")]
         [SerializeField] private Texture2D[] bodyVariants;
 
@@ -68,10 +71,20 @@ namespace Heartbeat.Player
             suit.SetPropertyBlock(block);
         }
 
+        /// <summary>C-60: the civilian body is its own FBX on the same rig, so the renderer takes its mesh and finds each bone by name.</summary>
+        public static void WearCivilian(SkinnedMeshRenderer body, SkinnedMeshRenderer civilianBody, Material material)
+        {
+            var mine = body.bones.Where(b => b != null).ToDictionary(b => b.name);
+            body.bones = civilianBody.bones.Select(b => mine[b.name]).ToArray();
+            body.sharedMesh = civilianBody.sharedMesh;
+            body.localBounds = civilianBody.localBounds;
+            if (material != null) body.sharedMaterial = material;
+        }
+
         private void Awake()
         {
             var renderers = animator.GetComponentsInChildren<SkinnedMeshRenderer>(true);
-            // C-38: the team's new Lukas has no civilian outfit yet, so the intro shows him in the suit until it arrives.
+            // C-38: a model without a "_Civil" mesh keeps its only body visible; C-60 dresses it below.
             bool hasCivil = renderers.Any(r => r.name.EndsWith("_Civil"));
             foreach (var r in renderers)
             {
@@ -80,6 +93,7 @@ namespace Heartbeat.Player
                 r.enabled = isHair || isCivil == (civilian && hasCivil);
                 if (!isCivil && !isHair) suit = r;
             }
+            if (civilian && civilianBody != null && suit != null) WearCivilian(suit, civilianBody, civilianMaterial);
             if (civilian) return;
 
             Transform hand = animator.GetBoneTransform(HumanBodyBones.RightHand);
