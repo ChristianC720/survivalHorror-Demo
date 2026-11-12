@@ -9,7 +9,9 @@ namespace Heartbeat.Player
     /// <summary>
     /// Drives Lukas's Animator from gameplay state. Listens only; no gameplay depends on it. Clips stay in place (D-151):
     /// the CharacterController moves the body and this class turns the legs towards the movement, because Lukas always
-    /// faces the camera (D-141) and so walks sideways or backwards relative to his chest.
+    /// faces the camera (D-141) and so walks sideways or backwards relative to his chest. Without aiming the whole body
+    /// turns with the legs; only the aim keeps the torso on the camera, with the hips capped so they never twist more
+    /// than 45 degrees away from the chest (C-61).
     /// </summary>
     public sealed class PlayerAnimator : MonoBehaviour
     {
@@ -23,6 +25,10 @@ namespace Heartbeat.Player
         [SerializeField] private PlayerHack hack;
         [Tooltip("Degrees per second at which the legs turn towards the movement.")]
         [SerializeField] private float legTurnSpeed = 360f;
+        [Tooltip("While aiming, the most the legs turn away from the chest, degrees. The walk clip adds about 6 on top (C-61: 45 at most).")]
+        [SerializeField] private float maxAimTwist = 30f;
+        [Tooltip("Seconds for the torso to blend onto the camera when aiming starts or stops.")]
+        [SerializeField] private float aimTwistBlend = 0.15f;
 
         private static readonly int SpeedId = Animator.StringToHash("Speed");
         private static readonly int DirId = Animator.StringToHash("Dir");
@@ -31,7 +37,7 @@ namespace Heartbeat.Player
 
         private InputRouter router;
         private Transform spine, chest;
-        private float legYaw, upperBusy, fullBusy;
+        private float legYaw, aimWeight, upperBusy, fullBusy;
         private string upperState = Empty;
         private bool dead;
 
@@ -77,7 +83,10 @@ namespace Heartbeat.Player
 
             // Legs lead towards the movement; walking backwards plays the cycle in reverse instead of turning around.
             float target = speed > 0.1f ? Mathf.Atan2(local.x, Mathf.Abs(local.z)) * Mathf.Rad2Deg * (backwards ? -1f : 1f) : 0f;
+            if (player.IsAiming) target = Mathf.Clamp(target, -maxAimTwist, maxAimTwist);
+            if (upperBusy > 0f || fullBusy > 0f) target = 0f;   // a shove or a hand gesture plays towards the camera, where it acts
             legYaw = Mathf.MoveTowards(legYaw, target, legTurnSpeed * Time.deltaTime);
+            aimWeight = Mathf.MoveTowards(aimWeight, player.IsAiming ? 1f : 0f, Time.deltaTime / Mathf.Max(aimTwistBlend, 0.01f));
 
             upperBusy -= Time.deltaTime;
             fullBusy -= Time.deltaTime;
@@ -105,11 +114,23 @@ namespace Heartbeat.Player
                 chest.Rotate(transform.right, pitch, Space.World);
             }
             if (Mathf.Abs(legYaw) < 0.01f) { animator.transform.localRotation = Quaternion.identity; return; }
-            // The hips carry the yaw; spine and chest undo it so the shoulders and the aim stay on the camera.
+            // The whole model carries the yaw. Only while aiming do spine and chest undo it, capped at maxAimTwist, so the
+            // shoulders and the aim stay on the camera without the hips turning away from the chest (C-61).
             animator.transform.localRotation = Quaternion.Euler(0f, legYaw, 0f);
+            float undo = Mathf.Clamp(legYaw, -maxAimTwist, maxAimTwist) * aimWeight;
+            if (Mathf.Abs(undo) < 0.01f) return;
             Vector3 up = transform.up;
-            if (spine != null) spine.Rotate(up, -legYaw * 0.4f, Space.World);
-            if (chest != null) chest.Rotate(up, -legYaw * 0.6f, Space.World);
+            if (spine != null) spine.Rotate(up, -undo * 0.4f, Space.World);
+            if (chest != null) chest.Rotate(up, -undo * 0.6f, Space.World);
+        }
+
+        /// <summary>Angle in degrees between the hip line and the shoulder line on the horizontal plane (C-61 test metric).</summary>
+        public static float HipChestTwist(Animator animator)
+        {
+            Transform ll = animator.GetBoneTransform(HumanBodyBones.LeftUpperLeg), rl = animator.GetBoneTransform(HumanBodyBones.RightUpperLeg);
+            Transform la = animator.GetBoneTransform(HumanBodyBones.LeftUpperArm), ra = animator.GetBoneTransform(HumanBodyBones.RightUpperArm);
+            Vector3 up = animator.transform.parent != null ? animator.transform.parent.up : Vector3.up;
+            return Vector3.Angle(Vector3.ProjectOnPlane(rl.position - ll.position, up), Vector3.ProjectOnPlane(ra.position - la.position, up));
         }
 
         private void PlayUpper(string state, float fade, float busy = 0f)
