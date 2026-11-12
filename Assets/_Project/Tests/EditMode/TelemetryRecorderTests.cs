@@ -37,5 +37,24 @@ namespace Heartbeat.Tests
             StringAssert.Contains("\"cause\":\"Health\"", lines[4]);
             StringAssert.Contains("session_end", lines[5]);
         }
+
+        [Test]
+        public void LogsGrabsAndPickUps_ToCountSpikes() // C-64
+        {
+            var w = new StringWriter();
+            var rec = new TelemetryRecorder(w, () => 0f);
+            GameEvents.RaiseItemPickedUp("Spike", 1);
+            GameEvents.RaiseGrabResolved(true);
+            GameEvents.RaiseGrabResolved(false);
+            rec.Dispose();
+
+            var lines = w.ToString().Trim().Split('\n');
+            Assert.AreEqual(5, lines.Length, w.ToString());
+            StringAssert.Contains("\"event\":\"item_picked\"", lines[1]);
+            StringAssert.Contains("\"kind\":\"Spike\",\"amount\":1", lines[1]);
+            StringAssert.Contains("\"event\":\"grab\"", lines[2]);
+            StringAssert.Contains("\"spike\":true", lines[2]);
+            StringAssert.Contains("\"spike\":false", lines[3]);
+        }
     }
 }
