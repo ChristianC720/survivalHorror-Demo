@@ -131,7 +131,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 2394030106
-    m_Localized: 'FILES: {0}/6'
+    m_Localized: 'EXPEDIENTES: {0}/6'
     m_Metadata:
       m_Items: []
   - m_Id: 2394030107
@@ -435,7 +435,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1932914720768
-    m_Localized: 'SUBJECT {0} PRESERVED. IDENTITY: RETAINED.'
+    m_Localized: 'SUJETO {0} PRESERVADO. IDENTIDAD: CONSERVADA.'
     m_Metadata:
       m_Items: []
   - m_Id: 1932914720769
@@ -523,11 +523,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 238274185658369
-    m_Localized: 'SUBJECT R-H-{0} PRESERVED. IDENTITY: RETAINED.'
+    m_Localized: 'SUJETO R-H-{0} PRESERVADO. IDENTIDAD: CONSERVADA.'
     m_Metadata:
       m_Items: []
   - m_Id: 238274185658370
-    m_Localized: 'PERSONAL EFFECTS OF SUBJECT R-H-{0}: 1 VOICE RECORDING (DAMAGED).'
+    m_Localized: "EFECTOS PERSONALES DEL SUJETO R-H-{0}: 1 GRABACI\xD3N DE VOZ (DA\xD1ADA)."
     m_Metadata:
       m_Items: []
   - m_Id: 1094028883001344
@@ -547,11 +547,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1124350085431298
-    m_Localized: LIGHT {0}%
+    m_Localized: LUZ {0}%
     m_Metadata:
       m_Items: []
   - m_Id: 1124350085431299
-    m_Localized: DRUM {0}/6
+    m_Localized: TAMBOR {0}/6
     m_Metadata:
       m_Items: []
   - m_Id: 1124350085431300
@@ -559,47 +559,47 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1124350085431301
-    m_Localized: RESERVE {0}
+    m_Localized: RESERVA {0}
     m_Metadata:
       m_Items: []
   - m_Id: 1124350085431302
-    m_Localized: 'CONFISCATED: {0}/12'
+    m_Localized: 'CONFISCADOS: {0}/12'
     m_Metadata:
       m_Items: []
   - m_Id: 1124350085431303
-    m_Localized: ROUNDS
+    m_Localized: BALAS
     m_Metadata:
       m_Items: []
   - m_Id: 1124350085431304
-    m_Localized: STABILIZER
+    m_Localized: ESTABILIZADOR
     m_Metadata:
       m_Items: []
   - m_Id: 1124350085431305
-    m_Localized: SPIKE
+    m_Localized: "PUNZ\xD3N"
     m_Metadata:
       m_Items: []
   - m_Id: 1124350085431306
-    m_Localized: ACCESS KEY
+    m_Localized: LLAVE DE ACCESO
     m_Metadata:
       m_Items: []
   - m_Id: 1124350085431307
-    m_Localized: SERVICE KEY
+    m_Localized: LLAVE DE SERVICIO
     m_Metadata:
       m_Items: []
   - m_Id: 1124350085431308
-    m_Localized: "INVENTORY FULL \u2014 REPLACE WITH {0}?"
+    m_Localized: "INVENTARIO LLENO. \xBFREEMPLAZAR POR {0}?"
     m_Metadata:
       m_Items: []
   - m_Id: 1124350085431309
-    m_Localized: REPLACE
+    m_Localized: REEMPLAZAR
     m_Metadata:
       m_Items: []
   - m_Id: 1124350085431310
-    m_Localized: LEAVE IT
+    m_Localized: DEJARLO
     m_Metadata:
       m_Items: []
   - m_Id: 1124350085431311
-    m_Localized: PAGE {0}/{1}
+    m_Localized: "P\xC1GINA {0}/{1}"
     m_Metadata:
       m_Items: []
   - m_Id: 1124350085431312
@@ -635,23 +635,23 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1124350085431320
-    m_Localized: LOCKED
+    m_Localized: BLOQUEADO
     m_Metadata:
       m_Items: []
   - m_Id: 1124350085431321
-    m_Localized: KEY REQUIRED
+    m_Localized: REQUIERE LLAVE
     m_Metadata:
       m_Items: []
   - m_Id: 1124350085431322
-    m_Localized: NO POWER
+    m_Localized: "SIN ENERG\xCDA"
     m_Metadata:
       m_Items: []
   - m_Id: 1124350085431323
-    m_Localized: RESTORE MAINS
+    m_Localized: "RESTABLECER ENERG\xCDA"
     m_Metadata:
       m_Items: []
   - m_Id: 1124350085431324
-    m_Localized: OUT OF ORDER
+    m_Localized: FUERA DE SERVICIO
     m_Metadata:
       m_Items: []
   - m_Id: 1124350085431325
@@ -659,11 +659,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1124350085431326
-    m_Localized: CAM  LIVE
+    m_Localized: "C\xC1M  EN VIVO"
     m_Metadata:
       m_Items: []
   - m_Id: 1124350085431327
-    m_Localized: NO SIGNAL
+    m_Localized: "SIN SE\xD1AL"
     m_Metadata:
       m_Items: []
   - m_Id: 1124350085431328

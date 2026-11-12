@@ -35,7 +35,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 19800301633536
-    m_Localized: "LEVEL \u22120"
+    m_Localized: "NIVEL \u22120"
     m_Metadata:
       m_Items: []
   - m_Id: 19800301633537
@@ -51,11 +51,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 19800301633540
-    m_Localized: 'R-H-01 TO R-H-06. STATUS: UNKNOWN'
-    m_Metadata:
-      m_Items: []
-  - m_Id: 19800301633541
-    m_Localized: "Dos latidos. Despu\xE9s, uno."
+    m_Localized: 'R-H-01 A R-H-06. ESTADO: DESCONOCIDO'
     m_Metadata:
       m_Items: []
   references:
