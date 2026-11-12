@@ -17,4 +17,4 @@ MonoBehaviour:
   floor: 1
   titleKey: DOC.FAULT_DOOR_BACKDOOR.TITLE
   bodyKey: DOC.FAULT_DOOR_BACKDOOR.BODY
-  placeholderTitle: "Maintenance ticket #4471 \u2014 door lock override"
+  placeholderTitle: "Maintenance ticket #4471: door lock override"

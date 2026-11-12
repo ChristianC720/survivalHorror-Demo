@@ -23,7 +23,9 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 17772556976128
-    m_Localized: "VK-INV-1031 \xB7 2081-03-14 \xB7 Maintenance, Sublevel B\nStopped at 03:12. Battery functional. Owner did not wind it again."
+    m_Localized: 'VK-INV-1031 - 2081-03-14
+
+      Wristwatch found on Sublevel B. It stopped at 03:12 and the battery still works.'
     m_Metadata:
       m_Items: []
   - m_Id: 17772556976129
@@ -31,7 +33,9 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 17772556976130
-    m_Localized: "VK-INV-1047 \xB7 2081-03-14 \xB7 Maintenance, Sublevel A\nContents: coffee, cold. Owner's name removed by owner."
+    m_Localized: 'VK-INV-1047 - 2081-03-14
+
+      Thermos of cold coffee, from a Sublevel A technician. The owner scratched his own name off the lid.'
     m_Metadata:
       m_Items: []
   - m_Id: 17772556976131
@@ -39,7 +43,9 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 17772556976132
-    m_Localized: "VK-INV-1052 \xB7 2081-03-14 \xB7 Boiler room 2\nPrescription: strong. Owner will not need them."
+    m_Localized: 'VK-INV-1052 - 2081-03-14
+
+      Reading glasses with one cracked lens, collected in boiler room 2. Nobody claimed them.'
     m_Metadata:
       m_Items: []
   - m_Id: 17772556976133
@@ -47,7 +53,9 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 17772556976134
-    m_Localized: "VK-INV-1060 \xB7 2081-03-14 \xB7 Workshop C\nNote reads \"come home soon\". Request not processed."
+    m_Localized: 'VK-INV-1060 - 2081-03-14
+
+      Lunchbox from a Workshop C technician. Inside there is a child''s note that says "come home soon".'
     m_Metadata:
       m_Items: []
   - m_Id: 17772556976135
@@ -55,7 +63,9 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 17772556976136
-    m_Localized: "VK-INV-2004 \xB7 2080-09-01 \xB7 Subject, minor\nAdmitted with subject. Not required for treatment."
+    m_Localized: 'VK-INV-2004 - 2080-09-01
+
+      Plush rabbit with a hospital wristband. It was admitted together with an underage subject.'
     m_Metadata:
       m_Items: []
   - m_Id: 17772556976137
@@ -63,7 +73,9 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 17772556976138
-    m_Localized: "VK-INV-2018 \xB7 2080-12-11 \xB7 Subject, adult\nIdentity document retained. Identity not retained."
+    m_Localized: 'VK-INV-2018 - 2080-12-11
+
+      Wallet from an adult subject. The identity card is inside, but the photo can no longer be made out.'
     m_Metadata:
       m_Items: []
   - m_Id: 17772556976139
@@ -71,7 +83,9 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 17772556976140
-    m_Localized: "VK-INV-2023 \xB7 2081-01-30 \xB7 Subject, adult\nUsed during procedures. No measurable effect."
+    m_Localized: 'VK-INV-2023 - 2081-01-30
+
+      Plastic rosary from an adult subject. The subject held it through every procedure.'
     m_Metadata:
       m_Items: []
   - m_Id: 17772556976141
@@ -79,7 +93,9 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 17772556976142
-    m_Localized: "VK-INV-2031 \xB7 2081-02-17 \xB7 Subject, minor\nDrawing of a house. Subject was not discharged."
+    m_Localized: 'VK-INV-2031 - 2081-02-17
+
+      Drawing of a house with a sun, made by an underage subject. The subject was not discharged.'
     m_Metadata:
       m_Items: []
   - m_Id: 17772556976143
@@ -87,7 +103,9 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 17772556976144
-    m_Localized: "VK-INV-3002 \xB7 2081-03-14 \xB7 PA central\nInsufficient protection."
+    m_Localized: 'VK-INV-3002 - 2081-03-14
+
+      Bloodstained earplugs, collected in the PA central. They were not enough.'
     m_Metadata:
       m_Items: []
   - m_Id: 17772556976145
@@ -95,7 +113,9 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 17772556976146
-    m_Localized: "VK-INV-3009 \xB7 2081-03-14 \xB7 Kessler Werkschutz\nReturned to Kessler. Kessler did not collect it."
+    m_Localized: 'VK-INV-3009 - 2081-03-14
+
+      Werkschutz badge, Post 7. Kessler was notified and nobody came to collect it.'
     m_Metadata:
       m_Items: []
   - m_Id: 17772556976147
@@ -103,7 +123,9 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 17772556976148
-    m_Localized: "VK-INV-3015 \xB7 2081-03-14 \xB7 PA central\nDo not play. Side B is blank. Side B was not blank."
+    m_Localized: 'VK-INV-3015 - 2081-03-14
+
+      Cassette with a handwritten AKT I label. It was inside the console of the PA central.'
     m_Metadata:
       m_Items: []
   - m_Id: 17772556976149
@@ -111,7 +133,9 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 17772556976150
-    m_Localized: "VK-INV-3021 \xB7 2081-03-14 \xB7 PA central\nOwner kept listening."
+    m_Localized: 'VK-INV-3021 - 2081-03-14
+
+      Found melted onto a maintenance employee. The owner had been listening to a recording without stopping.'
     m_Metadata:
       m_Items: []
   references:

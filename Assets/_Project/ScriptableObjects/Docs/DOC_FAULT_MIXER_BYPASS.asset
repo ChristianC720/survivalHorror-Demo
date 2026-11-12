@@ -17,4 +17,4 @@ MonoBehaviour:
   floor: 3
   titleKey: DOC.FAULT_MIXER_BYPASS.TITLE
   bodyKey: DOC.FAULT_MIXER_BYPASS.BODY
-  placeholderTitle: "Sound engineering \u2014 mixing desk test bus"
+  placeholderTitle: "Sound engineering: mixing desk test bus"

@@ -1,25 +1,25 @@
 key	en	es	note
 CONF.WATCH.TITLE	Stopped wristwatch	Reloj de pulsera parado	
-CONF.WATCH.BODY	VK-INV-1031 · 2081-03-14 · Maintenance, Sublevel B\nStopped at 03:12. Battery functional. Owner did not wind it again.	VK-INV-1031 · 2081-03-14 · Maintenance, Sublevel B\nSe detuvo a las 03:12. La pila funciona. El dueño no volvió a darle cuerda.	
+CONF.WATCH.BODY	VK-INV-1031 - 2081-03-14\nWristwatch found on Sublevel B. It stopped at 03:12 and the battery still works.	VK-INV-1031 - 2081-03-14\nReloj de pulsera encontrado en el subnivel B. Se detuvo a las 03:12 y la pila todavía funciona.	
 CONF.THERMOS.TITLE	Thermos with a scratched-out name	Termo con nombre rayado	
-CONF.THERMOS.BODY	VK-INV-1047 · 2081-03-14 · Maintenance, Sublevel A\nContents: coffee, cold. Owner's name removed by owner.	VK-INV-1047 · 2081-03-14 · Maintenance, Sublevel A\nContenido: café, frío. El dueño borró su propio nombre.	
+CONF.THERMOS.BODY	VK-INV-1047 - 2081-03-14\nThermos of cold coffee, from a Sublevel A technician. The owner scratched his own name off the lid.	VK-INV-1047 - 2081-03-14\nTermo con café frío, de un técnico del subnivel A. El dueño raspó su propio nombre de la tapa.	
 CONF.GLASSES.TITLE	Reading glasses with one cracked lens	Lentes de lectura con un cristal roto	
-CONF.GLASSES.BODY	VK-INV-1052 · 2081-03-14 · Boiler room 2\nPrescription: strong. Owner will not need them.	VK-INV-1052 · 2081-03-14 · Boiler room 2\nGraduación: alta. El dueño ya no los necesitará.	
+CONF.GLASSES.BODY	VK-INV-1052 - 2081-03-14\nReading glasses with one cracked lens, collected in boiler room 2. Nobody claimed them.	VK-INV-1052 - 2081-03-14\nLentes de lectura con un cristal roto, recogidas en la sala de calderas 2. Nadie las reclamó.	
 CONF.LUNCHBOX_NOTE.TITLE	Lunchbox with a child's note	Lonchera con una nota infantil	
-CONF.LUNCHBOX_NOTE.BODY	VK-INV-1060 · 2081-03-14 · Workshop C\nNote reads "come home soon". Request not processed.	VK-INV-1060 · 2081-03-14 · Workshop C\nLa nota dice "vuelve pronto". Solicitud no procesada.	
+CONF.LUNCHBOX_NOTE.BODY	VK-INV-1060 - 2081-03-14\nLunchbox from a Workshop C technician. Inside there is a child's note that says "come home soon".	VK-INV-1060 - 2081-03-14\nLonchera de un técnico del taller C. Dentro hay una nota de un niño que dice "vuelve pronto".	
 CONF.PLUSH_RABBIT.TITLE	Plush rabbit with a hospital wristband	Conejo de peluche con pulsera de hospital	
-CONF.PLUSH_RABBIT.BODY	VK-INV-2004 · 2080-09-01 · Subject, minor\nAdmitted with subject. Not required for treatment.	VK-INV-2004 · 2080-09-01 · Subject, minor\nIngresó con el sujeto. No es necesario para el tratamiento.	
+CONF.PLUSH_RABBIT.BODY	VK-INV-2004 - 2080-09-01\nPlush rabbit with a hospital wristband. It was admitted together with an underage subject.	VK-INV-2004 - 2080-09-01\nConejo de peluche con una pulsera de hospital. Ingresó junto con un sujeto menor de edad.	
 CONF.WALLET.TITLE	Wallet with an ID card	Billetera con documento de identidad	
-CONF.WALLET.BODY	VK-INV-2018 · 2080-12-11 · Subject, adult\nIdentity document retained. Identity not retained.	VK-INV-2018 · 2080-12-11 · Subject, adult\nDocumento de identidad conservado. Identidad no conservada.	
+CONF.WALLET.BODY	VK-INV-2018 - 2080-12-11\nWallet from an adult subject. The identity card is inside, but the photo can no longer be made out.	VK-INV-2018 - 2080-12-11\nCartera de un sujeto adulto. El documento de identidad está dentro, pero la foto ya no se distingue.	
 CONF.ROSARY.TITLE	Plastic rosary	Rosario de plástico	
-CONF.ROSARY.BODY	VK-INV-2023 · 2081-01-30 · Subject, adult\nUsed during procedures. No measurable effect.	VK-INV-2023 · 2081-01-30 · Subject, adult\nUsado durante los procedimientos. Sin efecto medible.	
+CONF.ROSARY.BODY	VK-INV-2023 - 2081-01-30\nPlastic rosary from an adult subject. The subject held it through every procedure.	VK-INV-2023 - 2081-01-30\nRosario de plástico de un sujeto adulto. Lo llevó en la mano durante todos los procedimientos.	
 CONF.CHILD_DRAWING.TITLE	Drawing of a house with a sun	Dibujo de una casa con un sol	
-CONF.CHILD_DRAWING.BODY	VK-INV-2031 · 2081-02-17 · Subject, minor\nDrawing of a house. Subject was not discharged.	VK-INV-2031 · 2081-02-17 · Subject, minor\nDibujo de una casa. El sujeto no recibió el alta.	
+CONF.CHILD_DRAWING.BODY	VK-INV-2031 - 2081-02-17\nDrawing of a house with a sun, made by an underage subject. The subject was not discharged.	VK-INV-2031 - 2081-02-17\nDibujo de una casa con un sol, hecho por un sujeto menor de edad. El sujeto no recibió el alta.	
 CONF.EARPLUGS.TITLE	Bloodied earplugs	Tapones para los oídos ensangrentados	
-CONF.EARPLUGS.BODY	VK-INV-3002 · 2081-03-14 · PA central\nInsufficient protection.	VK-INV-3002 · 2081-03-14 · PA central\nProtección insuficiente.	
+CONF.EARPLUGS.BODY	VK-INV-3002 - 2081-03-14\nBloodstained earplugs, collected in the PA central. They were not enough.	VK-INV-3002 - 2081-03-14\nTapones para los oídos con sangre, recogidos en la central de megafonía. No fueron suficientes.	
 CONF.BADGE_KS.TITLE	Werkschutz badge, post 7	Placa del Werkschutz, puesto 7	
-CONF.BADGE_KS.BODY	VK-INV-3009 · 2081-03-14 · Kessler Werkschutz\nReturned to Kessler. Kessler did not collect it.	VK-INV-3009 · 2081-03-14 · Kessler Werkschutz\nDevuelta a Kessler. Kessler no vino a recogerla.	
+CONF.BADGE_KS.BODY	VK-INV-3009 - 2081-03-14\nWerkschutz badge, Post 7. Kessler was notified and nobody came to collect it.	VK-INV-3009 - 2081-03-14\nPlaca del Werkschutz, puesto 7. Se avisó a Kessler y nadie vino a recogerla.	
 CONF.CASSETTE.TITLE	Cassette hand-labelled "AKT I"	Casete etiquetada a mano "AKT I"	
-CONF.CASSETTE.BODY	VK-INV-3015 · 2081-03-14 · PA central\nDo not play. Side B is blank. Side B was not blank.	VK-INV-3015 · 2081-03-14 · PA central\nNo reproducir. La cara B está vacía. La cara B no estaba vacía.	
+CONF.CASSETTE.BODY	VK-INV-3015 - 2081-03-14\nCassette with a handwritten AKT I label. It was inside the console of the PA central.	VK-INV-3015 - 2081-03-14\nCasete con la etiqueta AKT I escrita a mano. Estaba dentro de la consola de la central de megafonía.	
 CONF.HEADPHONES.TITLE	Melted studio headphones	Audífonos de estudio derretidos	
-CONF.HEADPHONES.BODY	VK-INV-3021 · 2081-03-14 · PA central\nOwner kept listening.	VK-INV-3021 · 2081-03-14 · PA central\nEl dueño siguió escuchando.	
+CONF.HEADPHONES.BODY	VK-INV-3021 - 2081-03-14\nFound melted onto a maintenance employee. The owner had been listening to a recording without stopping.	VK-INV-3021 - 2081-03-14\nSe encontraron fundidos en un empleado de mantenimiento. El dueño escuchaba una grabación sin parar.	

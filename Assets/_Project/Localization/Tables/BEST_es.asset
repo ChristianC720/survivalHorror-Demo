@@ -23,7 +23,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 17773093847040
-    m_Localized: "Origen: personal del Werkschutz, Kessler Sicherheit AG. Puesto 7.\nEstado: no conforme. Identidad: no detectada.\nObservaciones: mantiene sus rutas de ronda. Vista: largo alcance. O\xEDdo: deficiente. Su alcance supera en 1,1 m el largo de manga del uniforme est\xE1ndar.\nPiel: p\xE1lida. El pigmento se acumula en el tejido en sombra. Cuencas oculares vac\xEDas. La visi\xF3n no se ve afectada.\nRecomendaci\xF3n: evitar su l\xEDnea de visi\xF3n. El uniforme sigue bajo contrato."
+    m_Localized: "Origen: personal del Werkschutz, Kessler Sicherheit AG. Puesto 7.\nEstado: estable. Identidad: no detectada.\nObservaciones: mantiene su ruta de ronda. Ve a larga distancia y oye mal. Sus brazos alcanzan 1,1 m m\xE1s que la manga del uniforme.\nPiel p\xE1lida. Cuencas oculares vac\xEDas. La visi\xF3n no se ve afectada.\nRecomendaci\xF3n: evitar su l\xEDnea de visi\xF3n."
     m_Metadata:
       m_Items: []
   - m_Id: 17773093847041
@@ -31,7 +31,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 17773093847042
-    m_Localized: "Origen: sujeto de prueba cl\xEDnico, Vitalis Konzern. Etiqueta de la bata: SUBJ 31.\nEstado: no conforme. Identidad: no detectada.\nObservaciones: ciega. O\xEDdo: excepcional. Al detectar, grita. Los sujetos cercanos responden al grito.\nEl grito no es el latido. Solo quiere compa\xF1\xEDa.\nRecomendaci\xF3n: reducir el ruido. Formulario de consentimiento archivado."
+    m_Localized: "Origen: sujeto del programa cl\xEDnico, Vitalis Konzern. Etiqueta de la bata: SUBJ 31.\nEstado: inestable. Identidad: no detectada.\nObservaciones: ciega, con o\xEDdo excepcional. Grita cuando detecta a alguien y los sujetos cercanos acuden al grito.\nEl grito no forma parte del latido.\nRecomendaci\xF3n: reducir el ruido cerca del sujeto."
     m_Metadata:
       m_Items: []
   - m_Id: 17773098041344
@@ -39,7 +39,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 17773098041345
-    m_Localized: "Origen: sujeto de prueba, Vitalis Konzern. Camisa de ingreso a rayas.\nEstado: no conforme. Identidad: no detectada.\nObservaciones: cuadr\xFApedo. R\xE1pido. Se acerca por los flancos. Fr\xE1gil.\nRecomendaci\xF3n: no permitir que rodee. Su productividad ha mejorado."
+    m_Localized: "Origen: sujeto del programa cl\xEDnico, Vitalis Konzern. Camisa de ingreso a rayas.\nEstado: inestable. Identidad: no detectada.\nObservaciones: se desplaza a cuatro patas. Es r\xE1pido y fr\xE1gil. Se acerca por los flancos.\nRecomendaci\xF3n: no permitir que rodee al personal."
     m_Metadata:
       m_Items: []
   - m_Id: 17773098041346
@@ -47,7 +47,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 17773098041347
-    m_Localized: "Origen: desconocido. Expediente incompleto. Viste ropa del personal cl\xEDnico. Ning\xFAn registro de personal coincide.\nEstado: no conforme. Identidad: no detectada.\nObservaciones: inm\xF3vil hasta que alguien se acerca o lo ilumina. Suele confundirse con un cad\xE1ver o con un compa\xF1ero.\nRecomendaci\xF3n: no saludar a los compa\xF1eros."
+    m_Localized: "Origen: desconocido. Sin etiqueta. Sin expediente.\nEstado: estable. Identidad: no detectada.\nObservaciones: inm\xF3vil hasta que alguien se acerca o lo ilumina. No se logra identificar movimiento de parte de la persona, pero desaparece sin dejar rastro.\nRecomendaci\xF3n: no interactuar con el personal de Vitalis."
     m_Metadata:
       m_Items: []
   - m_Id: 17773098041348
@@ -55,7 +55,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 17773098041349
-    m_Localized: "Algunos sujetos no conformes vuelven a levantarse tras dejar de funcionar. M\xE1s r\xE1pidos. M\xE1s fr\xE1giles. Solo una vez.\nCausa: se consume su \xFAltimo rastro de identidad. Intent\xE9 la preservaci\xF3n. El intento consta como exitoso.\nYo no los levant\xE9. No se me informa de qui\xE9n lo hizo."
+    m_Localized: "Algunos sujetos vuelven a levantarse despu\xE9s de dejar de funcionar. Regresan m\xE1s r\xE1pidos y m\xE1s fr\xE1giles. Ocurre una sola vez.\nIntent\xE9 preservarlos. El intento consta como exitoso.\nNo fui yo quien los levant\xF3."
     m_Metadata:
       m_Items: []
   - m_Id: 3064821024161792
@@ -63,7 +63,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 3064907061919744
-    m_Localized: "Origen: sistema m\xE9dico, Vitalis Konzern. Encargado de contener y estudiar el lugar. Alojado en el archivo criog\xE9nico de la central de megafon\xEDa.\nEstado: operativa. Identidad: no aplica. No soy personal.\nObservaciones: preservo al personal que deja de funcionar. Guardo muestras. Env\xEDo informes. Vigilo por las c\xE1maras.\nMe ordenaron estudiar el lugar. Lo he estudiado durante 1204 muestras. No puedo describirlo. No est\xE1 en mi protocolo.\nRecomendaci\xF3n: no se mueva durante la recolecci\xF3n. La preservaci\xF3n es exitosa."
+    m_Localized: "Origen: sistema m\xE9dico, Vitalis Konzern. Instalado en el archivo criog\xE9nico de la central de megafon\xEDa.\nEstado: operativa. Identidad: no aplica.\nObservaciones: preservo al personal que deja de funcionar. Guardo muestras. Env\xEDo informes. Vigilo por las c\xE1maras.\nMe ordenaron estudiar el lugar. Tengo 1204 muestras y ninguna descripci\xF3n.\nRecomendaci\xF3n: no moverse durante la recolecci\xF3n."
     m_Metadata:
       m_Items: []
   references:

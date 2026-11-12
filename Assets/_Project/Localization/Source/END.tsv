@@ -6,6 +6,6 @@ END.ASSIM.CAPSULE	R-H-{0}	R-H-{0}	KEEP-EN (terminal label)
 END.ASSIM.FLOOR	LEVEL −0	LEVEL −0	KEEP-EN (terminal label)
 END.ASSIM.STATE	FINAL: ASSIMILATION	FINAL: ASIMILACIÓN
 END.RELIEF.WAKE	The heartbeat quickens.	El latido se acelera.
-END.RELIEF.BASIC	The terminal on his arm connects. He is the last one with an identity.	El terminal del brazo se conecta. Es el último con identidad.
+END.RELIEF.BASIC	The Mother has fallen, relief found. Initializing...	The Mother ha caído, relevo encontrado. Inicializando...	
 END.RELIEF.FULL	R-H-01 TO R-H-06. STATUS: UNKNOWN	R-H-01 TO R-H-06. STATUS: UNKNOWN	KEEP-EN (terminal label)
 END.AMBIGUOUS.SYNC	Two heartbeats. Then one.	Dos latidos. Después, uno.

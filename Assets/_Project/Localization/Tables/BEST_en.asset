@@ -25,13 +25,13 @@ MonoBehaviour:
   - m_Id: 17773093847040
     m_Localized: 'Origin: Werkschutz personnel, Kessler Sicherheit AG. Post 7.
 
-      Status: non-conforming. Identity: not detected.
+      Status: stable. Identity: not detected.
 
-      Observations: continues patrol routes. Sight: long range. Hearing: poor. Reach exceeds standard uniform sleeve length by 1.1 m.
+      Observations: keeps to its patrol route. Sees at long range and hears poorly. Its arms reach 1.1 m beyond the uniform sleeve.
 
-      Skin: pale. Pigment pools in shadowed tissue. Eye sockets empty. Vision unaffected.
+      Pale skin. Empty eye sockets. Vision is not affected.
 
-      Recommendation: avoid its line of sight. Uniform is still under contract.'
+      Recommendation: stay out of its line of sight.'
     m_Metadata:
       m_Items: []
   - m_Id: 17773093847041
@@ -39,15 +39,15 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 17773093847042
-    m_Localized: 'Origin: clinical test subject, Vitalis Konzern. Gown tag: SUBJ 31.
+    m_Localized: 'Origin: clinical program subject, Vitalis Konzern. Gown tag: SUBJ 31.
 
-      Status: non-conforming. Identity: not detected.
+      Status: unstable. Identity: not detected.
 
-      Observations: blind. Hearing: exceptional. On detection it screams. Nearby subjects respond to the scream.
+      Observations: blind, with exceptional hearing. It screams when it detects someone and nearby subjects come to the scream.
 
-      The scream is not the heartbeat. It only wants company.
+      The scream is not part of the heartbeat.
 
-      Recommendation: reduce noise. Consent form on file.'
+      Recommendation: reduce noise near the subject.'
     m_Metadata:
       m_Items: []
   - m_Id: 17773098041344
@@ -55,13 +55,13 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 17773098041345
-    m_Localized: 'Origin: test subject, Vitalis Konzern. Striped intake shirt.
+    m_Localized: 'Origin: clinical program subject, Vitalis Konzern. Striped intake shirt.
 
-      Status: non-conforming. Identity: not detected.
+      Status: unstable. Identity: not detected.
 
-      Observations: quadrupedal. Fast. Approaches from the flanks. Fragile.
+      Observations: moves on all fours. Fast and fragile. Approaches from the flanks.
 
-      Recommendation: do not let it circle. Productivity has improved.'
+      Recommendation: do not let it circle personnel.'
     m_Metadata:
       m_Items: []
   - m_Id: 17773098041346
@@ -69,13 +69,13 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 17773098041347
-    m_Localized: 'Origin: unknown. File incomplete. Wears clinical staff clothing. No staff record matches.
+    m_Localized: 'Origin: unknown. No tag. No file.
 
-      Status: non-conforming. Identity: not detected.
+      Status: stable. Identity: not detected.
 
-      Observations: motionless until approached or illuminated. Often mistaken for a corpse or for a colleague.
+      Observations: motionless until someone approaches or lights it. No movement by the individual can be identified, but it disappears without a trace.
 
-      Recommendation: do not greet colleagues.'
+      Recommendation: do not interact with Vitalis personnel.'
     m_Metadata:
       m_Items: []
   - m_Id: 17773098041348
@@ -83,11 +83,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 17773098041349
-    m_Localized: 'Some non-conforming subjects rise again after ceasing to function. Faster. More fragile. Once only.
+    m_Localized: 'Some subjects rise again after they cease to function. They come back faster and more fragile. It happens once only.
 
-      Cause: their last trace of identity is consumed. I attempted preservation. The attempt is logged as successful.
+      I attempted to preserve them. The attempt is logged as successful.
 
-      I did not raise them. I am not informed of who did.'
+      I am not the one who raised them.'
     m_Metadata:
       m_Items: []
   - m_Id: 3064821024161792
@@ -95,15 +95,15 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 3064907061919744
-    m_Localized: 'Origin: medical system, Vitalis Konzern. Commissioned to contain and study the site. Housed in the cryogenic archive, PA central.
+    m_Localized: 'Origin: medical system, Vitalis Konzern. Installed in the cryogenic archive of the PA central.
 
-      Status: operational. Identity: not applicable. I am not personnel.
+      Status: operational. Identity: not applicable.
 
       Observations: I preserve personnel who cease to function. I keep samples. I send reports. I watch through the cameras.
 
-      I was told to study the site. I have studied it for 1,204 samples. I cannot describe it. It is not in my protocol.
+      I was ordered to study the site. I have 1,204 samples and no description.
 
-      Recommendation: hold still during collection. Preservation is successful.'
+      Recommendation: do not move during collection.'
     m_Metadata:
       m_Items: []
   references:

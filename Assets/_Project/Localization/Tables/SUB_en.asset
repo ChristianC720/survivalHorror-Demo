@@ -35,19 +35,19 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1855244599298
-    m_Localized: 'Specimen {0}: non-conforming. Initiating collection.'
+    m_Localized: Specimen {0} is out of inventory. Initiating collection.
     m_Metadata:
       m_Items: []
   - m_Id: 1855244599299
-    m_Localized: Visual containment active. Releasing archived personnel to assist.
+    m_Localized: Visual containment active. Archived personnel released to assist.
     m_Metadata:
       m_Items: []
   - m_Id: 1855244599300
-    m_Localized: Core exposed. Preservation of {0} is the priority. Please hold still.
+    m_Localized: Core exposed. Preservation of {0} is the priority. Please do not move.
     m_Metadata:
       m_Items: []
   - m_Id: 1855244599301
-    m_Localized: There is something else. I cannot describe it. It is not in my protocol.
+    m_Localized: Report 4,113. There is something under the archive. Field left blank.
     m_Metadata:
       m_Items: []
   - m_Id: 1855244599302
@@ -59,11 +59,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1855244599304
-    m_Localized: "\u2026This matters. I don't know why."
+    m_Localized: This is important. I don't remember why.
     m_Metadata:
       m_Items: []
   - m_Id: 1855244599305
-    m_Localized: "Mine? Hers? \u2026Whose?"
+    m_Localized: Is it mine? Or someone else's?
     m_Metadata:
       m_Items: []
   - m_Id: 1855244599306
@@ -71,19 +71,19 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1855244599307
-    m_Localized: "\u2026Keep going."
+    m_Localized: There are more of these.
     m_Metadata:
       m_Items: []
   - m_Id: 1855244599308
-    m_Localized: Six before me.
+    m_Localized: Someone was here not long ago.
     m_Metadata:
       m_Items: []
   - m_Id: 1855244599309
-    m_Localized: Say my name. Say it again.
+    m_Localized: I know this voice.
     m_Metadata:
       m_Items: []
   - m_Id: 1855244599310
-    m_Localized: "You're not supposed to be here. \u2026Neither am I."
+    m_Localized: This photo shouldn't be here.
     m_Metadata:
       m_Items: []
   - m_Id: 1855244599311
@@ -99,23 +99,23 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 238196427456512
-    m_Localized: Lukas. If you're hearing this, I didn't come back.
+    m_Localized: Lukas. If you're hearing this, it means I didn't come back.
     m_Metadata:
       m_Items: []
   - m_Id: 238196469399552
-    m_Localized: I've been looking into what happened at Vitalis. The incident. I found something in the sound, a shape, and I went back for the rest of it.
+    m_Localized: There is something under the lab where I used to work. I worked at Vitalis for a long time and never asked what it was.
     m_Metadata:
       m_Items: []
   - m_Id: 238196469399553
-    m_Localized: "Something went wrong. I don't remember\u2026 I don't remember what I'm forgetting."
+    m_Localized: And when I did... That was all I did. I asked and everything went wrong.
     m_Metadata:
       m_Items: []
   - m_Id: 238196469399554
-    m_Localized: There is a machine down there that keeps me. Every time it keeps me, there is a little less to keep.
+    m_Localized: I've gone back to find the thing I've been asking myself about for years. I don't know exactly what it is, but someone must know. Someone else has to.
     m_Metadata:
       m_Items: []
   - m_Id: 238196469399555
-    m_Localized: Don't come looking for me. Please. Not you. Stay home. Keep the photo. Water the plant on the window, the one you always forget.
+    m_Localized: Don't come looking for me. Please don't. Not you. Stay home. And if I don't come back, don't forget me.
     m_Metadata:
       m_Items: []
   - m_Id: 238196469399556

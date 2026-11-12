@@ -3,27 +3,27 @@ SUB.SPEAKER.LUKAS	Lukas	Lukas	KEEP-EN (proper name)
 SUB.SPEAKER.MOTHER	THE MOTHER	THE MOTHER	KEEP-EN (proper name)
 SUB.SPEAKER.EMILIA	Emilia	Emilia	KEEP-EN (proper name)
 SUB.MOTHER.LOCKDOWN	Containment breach. Transit suspended.	Brecha de contención. Tránsito suspendido.	
-SUB.MOTHER.PHASE1	Specimen {0}: non-conforming. Initiating collection.	Espécimen {0}: no conforme. Iniciando recolección.	
-SUB.MOTHER.PHASE2	Visual containment active. Releasing archived personnel to assist.	Contención visual activa. Liberando personal archivado para colaborar.	
-SUB.MOTHER.PHASE3	Core exposed. Preservation of {0} is the priority. Please hold still.	Núcleo expuesto. La preservación de {0} es prioritaria. Por favor, no se mueva.	
-SUB.MOTHER.FALL	There is something else. I cannot describe it. It is not in my protocol.	Hay algo más. No puedo describirlo. No está en mi protocolo.	
+SUB.MOTHER.PHASE1	Specimen {0} is out of inventory. Initiating collection.	Espécimen {0} fuera de inventario. Iniciando recolección.	
+SUB.MOTHER.PHASE2	Visual containment active. Archived personnel released to assist.	Contención visual activa. Se libera personal archivado para colaborar.	
+SUB.MOTHER.PHASE3	Core exposed. Preservation of {0} is the priority. Please do not move.	Núcleo expuesto. La preservación de {0} es prioritaria. Por favor, no se mueva.	
+SUB.MOTHER.FALL	Report 4,113. There is something under the archive. Field left blank.	Informe 4113. Hay algo debajo del archivo. Campo en blanco.	
 SUB.MOTHER.ASSIMILATION	Subject {0}: identity not detected. Reclassified: decoy. Assigned to level −0.	Sujeto {0}: identidad no detectada. Reclasificado: señuelo. Asignado al nivel −0.	
 SUB.MOTHER.HOOK	New arrival detected. Initiating preservation protocol.	Nueva llegada detectada. Iniciando protocolo de preservación.	
-SUB.LUKAS.RING	…This matters. I don't know why.	…Esto importa. No sé por qué.	
-SUB.LUKAS.RING_EXAMINE	Mine? Hers? …Whose?	¿Mío? ¿De ella? …¿De quién?	
+SUB.LUKAS.RING	This is important. I don't remember why.	Esto es importante. No recuerdo por qué.	
+SUB.LUKAS.RING_EXAMINE	Is it mine? Or someone else's?	¿Es mío? ¿O de alguien más?	
 SUB.LUKAS.FIRST_EMILIA_DOC	I know this handwriting.	Conozco esta letra.	
-SUB.LUKAS.EMILIA_DOC	…Keep going.	…Sigue.	
-SUB.LUKAS.RH_RECORDS	Six before me.	Seis antes que yo.	
-SUB.LUKAS.VOICE_NOTE	Say my name. Say it again.	Di mi nombre. Dilo otra vez.	
-SUB.LUKAS.PHOTO_FLOOR2	You're not supposed to be here. …Neither am I.	No deberías estar aquí. …Yo tampoco.	
+SUB.LUKAS.EMILIA_DOC	There are more of these.	Hay más de estos.	
+SUB.LUKAS.RH_RECORDS	Someone was here not long ago.	Alguien estuvo aquí hace no mucho.	
+SUB.LUKAS.VOICE_NOTE	I know this voice.	Conozco esta voz.	
+SUB.LUKAS.PHOTO_FLOOR2	This photo shouldn't be here.	Esta foto no debería estar aquí.	
 SUB.LUKAS.CAPSULE_RETURN	Again.	Otra vez.	
 SUB.LUKAS.ELEVATOR_DEAD	Dead. No way back.	Muerto. No hay vuelta atrás.	
 SUB.LUKAS.NAME_EMILIA	…Emilia.	…Emilia.	
 SUB.LUKAS.NAME_OWN	…Lukas. I'm Lukas.	…Lukas. Soy Lukas.	
-SUB.EMILIA.NOTE_1	Lukas. If you're hearing this, I didn't come back.	Lukas. Si estás oyendo esto, no volví.	intro voice note, live copy (not corrupt)
-SUB.EMILIA.NOTE_2	I've been looking into what happened at Vitalis. The incident. I found something in the sound, a shape, and I went back for the rest of it.	He estado investigando lo que pasó en Vitalis. El incidente. Encontré algo en el sonido, una forma, y volví por el resto.	
-SUB.EMILIA.NOTE_3	Something went wrong. I don't remember… I don't remember what I'm forgetting.	Algo salió mal. No recuerdo… no recuerdo qué estoy olvidando.	
-SUB.EMILIA.NOTE_4	There is a machine down there that keeps me. Every time it keeps me, there is a little less to keep.	Ahí abajo hay una máquina que me conserva. Cada vez que me conserva, queda un poco menos que conservar.	
-SUB.EMILIA.NOTE_5	Don't come looking for me. Please. Not you. Stay home. Keep the photo. Water the plant on the window, the one you always forget.	No vengas a buscarme. Por favor. Tú no. Quédate en casa. Guarda la foto. Riega la planta de la ventana, la que siempre olvidas.	
+SUB.EMILIA.NOTE_1	Lukas. If you're hearing this, it means I didn't come back.	Lukas. Si estás oyendo esto, significa que no volví.	intro voice note, live copy (not corrupt)
+SUB.EMILIA.NOTE_2	There is something under the lab where I used to work. I worked at Vitalis for a long time and never asked what it was.	Hay algo debajo del laboratorio donde trabajaba. Trabajé mucho tiempo en Vitalis y nunca pregunté qué era.	
+SUB.EMILIA.NOTE_3	And when I did... That was all I did. I asked and everything went wrong.	Y cuando lo hice... Eso fue todo lo que hice. Pregunté y todo salió mal.	
+SUB.EMILIA.NOTE_4	I've gone back to find the thing I've been asking myself about for years. I don't know exactly what it is, but someone must know. Someone else has to.	He vuelto a encontrar lo que llevo preguntándome por años. No sé exactamente qué es, pero alguien debe saber. Alguien más debe hacerlo.	
+SUB.EMILIA.NOTE_5	Don't come looking for me. Please don't. Not you. Stay home. And if I don't come back, don't forget me.	No vengas a buscarme. Por favor, no lo hagas. Tú no. Quédate en casa. Y si no vuelvo, no me olvides.	
 SUB.EMILIA.NOTE_6	(breathing) …it's in the walls. I can hear it from here.	(respiración) …está en las paredes. Lo oigo desde aquí.	
 SUB.EMILIA.NOTE_7	(footsteps, running)	(pasos, corre)	
