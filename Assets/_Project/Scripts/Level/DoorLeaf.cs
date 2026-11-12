@@ -13,13 +13,13 @@ namespace Heartbeat.Level
 
     /// <summary>
     /// Door between two rooms (KIT_SPEC §4, M-14, M-15, D-36, D-97). E opens/closes it; a key door consumes its key
-    /// (mandatory or optional); an unpowered door stays shut until power is restored. After Lukas crosses it, E on the
-    /// far side starts the quick seal hack (2-3 inputs): a sealed door blocks enemies until a hunting enemy breaks it
-    /// (~30 s next to it) or Lukas crosses back. A door that is not open is a wall for the NavMesh (carved): enemies in
+    /// (mandatory or optional); an unpowered door stays shut until power is restored. Holding E on a closed, unlocked
+    /// door (either side) seals it: a sealed door blocks enemies until a hunting enemy breaks it (~30 s next to it) or
+    /// Lukas opens it again. A door that is not open is a wall for the NavMesh (carved): enemies in
     /// patrol or suspicion never cross it; in search or hunt they walk up to it and open it. An enemy barrier (the spawn
     /// room until Lukas leaves it) is never crossed nor opened by enemies.
     /// </summary>
-    public sealed class DoorLeaf : MonoBehaviour, IInteractable, IHackTarget, ISoundOccluder
+    public sealed class DoorLeaf : MonoBehaviour, IHoldInteractable, ISoundOccluder
     {
         [SerializeField] private Transform leaf;
         [SerializeField] private NavMeshObstacle obstacle;
@@ -47,7 +47,10 @@ namespace Heartbeat.Level
         public bool EnemyBarrier { get; private set; }
         /// <summary>Search/hunt enemies may walk up to it: to open it, or to pound on it when sealed (M-14).</summary>
         public bool EnemyCanReach => !IsLocked && !EnemyBarrier && State != DoorState.Open;
-        public HackDifficulty Difficulty => HackDifficulty.QuickSeal;
+        public bool CanHold => CanSeal(lockType, State);
+        public string HoldPromptKey => "UI.PROMPT.SEAL_HOLD";
+        /// <summary>Only a closed door without key, power or tutorial lock offers the seal.</summary>
+        public static bool CanSeal(DoorLock l, DoorState s) => l == DoorLock.None && s == DoorState.Closed;
         public bool Occludes => State != DoorState.Open;   // −50% through a closed or sealed door (S-11)
         public bool IsDoor => true;
 
@@ -150,14 +153,6 @@ namespace Heartbeat.Level
             }
 
             if (State == DoorState.Open && PlayerInDoorway()) return;   // a leaf closing on Lukas would shove him through the frame
-
-            // While enemies hunt, an open door is sealed behind Lukas (M-14); a closed one still just opens, so he can flee.
-            bool hunting = Services.TryGet<AlertDirector>(out var d) && d.HuntingCount > 0;
-            if (hunting && State == DoorState.Open && Services.TryGet<PlayerHack>(out var hack))
-            {
-                hack.Begin(this);
-                return;
-            }
             SetState(State == DoorState.Open ? DoorState.Closed : DoorState.Open);
         }
 
@@ -168,7 +163,7 @@ namespace Heartbeat.Level
             return Mathf.Abs(local.x) < 1.2f && Mathf.Abs(local.z) < 0.6f;
         }
 
-        public void OnHackSucceeded()
+        public void HoldComplete(Interactor who)
         {
             breakProgress = 0f;
             SetState(DoorState.Sealed);

@@ -870,6 +870,10 @@ MonoBehaviour:
     m_Localized: 'Personal effects R-H-{0}: 1 revolver (unloaded), 6 rounds'
     m_Metadata:
       m_Items: []
+  - m_Id: 3924145560748032
+    m_Localized: 'Hold: lock'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

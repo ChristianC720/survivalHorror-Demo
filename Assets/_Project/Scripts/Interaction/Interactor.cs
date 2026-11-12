@@ -26,12 +26,17 @@ namespace Heartbeat.Interaction
         private int mask;
         private readonly Collider[] buffer = new Collider[64];
         private int wallMask;
+        private readonly HoldInteraction hold = new HoldInteraction();
+        private IHoldInteractable holdTarget;
+        private PlayerHealth health;
 
         public IInteractable Current { get; private set; }
         /// <summary>How centred the current target is (dot of view direction, 1 = dead centre).</summary>
         public float CurrentScore { get; private set; } = -1f;
         public PlayerInventory Inventory => inventory;
         public PlayerController Player => player;
+        /// <summary>0..1 while Interact is held on a target with a hold action (the prompt draws it); 0 otherwise.</summary>
+        public float HoldProgress => hold.Progress;
 
         private void Start()
         {
@@ -40,6 +45,7 @@ namespace Heartbeat.Interaction
             router = Services.Get<InputRouter>();
             Services.TryGet(out rig);
             router.Actions.Gameplay.Interact.performed += OnInteract;
+            if (player.TryGetComponent(out health)) health.Hit += hold.Cancel;   // a hit cancels the hold
             gameObject.AddComponent<InteractableOutliner>().Init(this, balance.outlineRange);
         }
 
@@ -50,6 +56,7 @@ namespace Heartbeat.Interaction
         private void OnDestroy()
         {
             if (router != null) router.Actions.Gameplay.Interact.performed -= OnInteract;
+            if (health != null) health.Hit -= hold.Cancel;
         }
 
         private void Update()
@@ -64,6 +71,24 @@ namespace Heartbeat.Interaction
                 HbLog.Dev("Interact", best == null ? "No target" : $"Target {((MonoBehaviour)best).name}");
             }
             CurrentScore = score;
+            if (hold.Active) TickHold();
+        }
+
+        private void TickHold()
+        {
+            // Out of range, looking away, movement locked or the target no longer offers it: cancelled, nothing runs.
+            if (!ReferenceEquals(holdTarget, Current) || !holdTarget.CanHold) { hold.Cancel(); return; }
+            switch (hold.Tick(Time.deltaTime, router.Actions.Gameplay.Interact.IsPressed()))
+            {
+                case HoldResult.Tap:
+                    Use(Current);
+                    break;
+                case HoldResult.Completed:
+                    HbLog.Info("Interact", $"Hold {((MonoBehaviour)Current).name}");
+                    GameEvents.RaisePlayerGesture(GestureFor(Current));
+                    holdTarget.HoldComplete(this);
+                    break;
+            }
         }
 
         /// <summary>Score of any world point as seen from the camera (used by the finisher to compare).</summary>
@@ -103,9 +128,21 @@ namespace Heartbeat.Interaction
             if (Current == null || player.MovementLocked) return;
             if (Services.TryGet(out PauseService pause) && (pause.IsReading || pause.ReadingEndedFrame == Time.frameCount)) return;   // that E closes the reading
             if (router.Context == InputContext.OverBody && Services.TryGet<Combat.PlayerFinisher>(out var f) && f.HasTarget) return;
-            HbLog.Info("Interact", $"Interact {((MonoBehaviour)Current).name}");
-            GameEvents.RaisePlayerGesture(GestureFor(Current));
-            Current.Interact(this);
+            if (Current is IHoldInteractable h && h.CanHold)
+            {
+                // Decided on release or after the hold time (TickHold): a tap interacts, a full hold runs the hold action.
+                holdTarget = h;
+                hold.Begin(SystemsBalance.Current.sealTapSeconds, SystemsBalance.Current.sealHoldSeconds);
+                return;
+            }
+            Use(Current);
+        }
+
+        private void Use(IInteractable target)
+        {
+            HbLog.Info("Interact", $"Interact {((MonoBehaviour)target).name}");
+            GameEvents.RaisePlayerGesture(GestureFor(target));
+            target.Interact(this);
         }
 
         private string GestureFor(IInteractable target)

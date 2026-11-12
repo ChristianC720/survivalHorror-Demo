@@ -211,3 +211,4 @@ UI.TUT.SPRINT	Hold [{0}] while moving to run	Mantén [{0}] al moverte para corre
 UI.TUT.CROUCH	Crouch to move quietly [{0}]	Agáchate para no hacer ruido [{0}]
 UI.TUT.AIM	Hold [{0}] to aim	Mantén [{0}] para apuntar
 UI.TUT.ATTACK	Press [{0}] to shove, or to fire while aiming	Pulsa [{0}] para empujar, o para disparar apuntando
+UI.PROMPT.SEAL_HOLD	Hold: lock	Mantén: bloquear	closed door, hold Interact to seal it (C-59)

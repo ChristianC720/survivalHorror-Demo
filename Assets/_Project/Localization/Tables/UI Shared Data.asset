@@ -867,6 +867,10 @@ MonoBehaviour:
     m_Key: UI.TRAY.LABEL
     m_Metadata:
       m_Items: []
+  - m_Id: 3924145560748032
+    m_Key: UI.PROMPT.SEAL_HOLD
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

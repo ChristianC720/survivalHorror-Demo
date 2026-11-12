@@ -870,6 +870,10 @@ MonoBehaviour:
     m_Localized: "Efectos personales R-H-{0}: 1 rev\xF3lver (descargado), 6 balas"
     m_Metadata:
       m_Items: []
+  - m_Id: 3924145560748032
+    m_Localized: "Mant\xE9n: bloquear"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
