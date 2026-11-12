@@ -23,7 +23,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 17772556976128
-    m_Localized: "VK-INV-1031 \xB7 2081-03-14 \xB7 Maintenance, Sublevel B\nSe detuvo a las 03:12. La pila funciona. El due\xF1o no volvi\xF3 a darle cuerda."
+    m_Localized: "VK-INV-1031 - 2081-03-14\nReloj de pulsera encontrado en el subnivel B. Se detuvo a las 03:12 y la pila todav\xEDa funciona."
     m_Metadata:
       m_Items: []
   - m_Id: 17772556976129
@@ -31,7 +31,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 17772556976130
-    m_Localized: "VK-INV-1047 \xB7 2081-03-14 \xB7 Maintenance, Sublevel A\nContenido: caf\xE9, fr\xEDo. El due\xF1o borr\xF3 su propio nombre."
+    m_Localized: "VK-INV-1047 - 2081-03-14\nTermo con caf\xE9 fr\xEDo, de un t\xE9cnico del subnivel A. El due\xF1o rasp\xF3 su propio nombre de la tapa."
     m_Metadata:
       m_Items: []
   - m_Id: 17772556976131
@@ -39,7 +39,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 17772556976132
-    m_Localized: "VK-INV-1052 \xB7 2081-03-14 \xB7 Boiler room 2\nGraduaci\xF3n: alta. El due\xF1o ya no los necesitar\xE1."
+    m_Localized: "VK-INV-1052 - 2081-03-14\nLentes de lectura con un cristal roto, recogidas en la sala de calderas 2. Nadie las reclam\xF3."
     m_Metadata:
       m_Items: []
   - m_Id: 17772556976133
@@ -47,7 +47,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 17772556976134
-    m_Localized: "VK-INV-1060 \xB7 2081-03-14 \xB7 Workshop C\nLa nota dice \"vuelve pronto\". Solicitud no procesada."
+    m_Localized: "VK-INV-1060 - 2081-03-14\nLonchera de un t\xE9cnico del taller C. Dentro hay una nota de un ni\xF1o que dice \"vuelve pronto\"."
     m_Metadata:
       m_Items: []
   - m_Id: 17772556976135
@@ -55,7 +55,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 17772556976136
-    m_Localized: "VK-INV-2004 \xB7 2080-09-01 \xB7 Subject, minor\nIngres\xF3 con el sujeto. No es necesario para el tratamiento."
+    m_Localized: "VK-INV-2004 - 2080-09-01\nConejo de peluche con una pulsera de hospital. Ingres\xF3 junto con un sujeto menor de edad."
     m_Metadata:
       m_Items: []
   - m_Id: 17772556976137
@@ -63,7 +63,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 17772556976138
-    m_Localized: "VK-INV-2018 \xB7 2080-12-11 \xB7 Subject, adult\nDocumento de identidad conservado. Identidad no conservada."
+    m_Localized: "VK-INV-2018 - 2080-12-11\nCartera de un sujeto adulto. El documento de identidad est\xE1 dentro, pero la foto ya no se distingue."
     m_Metadata:
       m_Items: []
   - m_Id: 17772556976139
@@ -71,7 +71,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 17772556976140
-    m_Localized: "VK-INV-2023 \xB7 2081-01-30 \xB7 Subject, adult\nUsado durante los procedimientos. Sin efecto medible."
+    m_Localized: "VK-INV-2023 - 2081-01-30\nRosario de pl\xE1stico de un sujeto adulto. Lo llev\xF3 en la mano durante todos los procedimientos."
     m_Metadata:
       m_Items: []
   - m_Id: 17772556976141
@@ -79,7 +79,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 17772556976142
-    m_Localized: "VK-INV-2031 \xB7 2081-02-17 \xB7 Subject, minor\nDibujo de una casa. El sujeto no recibi\xF3 el alta."
+    m_Localized: "VK-INV-2031 - 2081-02-17\nDibujo de una casa con un sol, hecho por un sujeto menor de edad. El sujeto no recibi\xF3 el alta."
     m_Metadata:
       m_Items: []
   - m_Id: 17772556976143
@@ -87,7 +87,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 17772556976144
-    m_Localized: "VK-INV-3002 \xB7 2081-03-14 \xB7 PA central\nProtecci\xF3n insuficiente."
+    m_Localized: "VK-INV-3002 - 2081-03-14\nTapones para los o\xEDdos con sangre, recogidos en la central de megafon\xEDa. No fueron suficientes."
     m_Metadata:
       m_Items: []
   - m_Id: 17772556976145
@@ -95,7 +95,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 17772556976146
-    m_Localized: "VK-INV-3009 \xB7 2081-03-14 \xB7 Kessler Werkschutz\nDevuelta a Kessler. Kessler no vino a recogerla."
+    m_Localized: "VK-INV-3009 - 2081-03-14\nPlaca del Werkschutz, puesto 7. Se avis\xF3 a Kessler y nadie vino a recogerla."
     m_Metadata:
       m_Items: []
   - m_Id: 17772556976147
@@ -103,7 +103,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 17772556976148
-    m_Localized: "VK-INV-3015 \xB7 2081-03-14 \xB7 PA central\nNo reproducir. La cara B est\xE1 vac\xEDa. La cara B no estaba vac\xEDa."
+    m_Localized: "VK-INV-3015 - 2081-03-14\nCasete con la etiqueta AKT I escrita a mano. Estaba dentro de la consola de la central de megafon\xEDa."
     m_Metadata:
       m_Items: []
   - m_Id: 17772556976149
@@ -111,7 +111,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 17772556976150
-    m_Localized: "VK-INV-3021 \xB7 2081-03-14 \xB7 PA central\nEl due\xF1o sigui\xF3 escuchando."
+    m_Localized: "VK-INV-3021 - 2081-03-14\nSe encontraron fundidos en un empleado de mantenimiento. El due\xF1o escuchaba una grabaci\xF3n sin parar."
     m_Metadata:
       m_Items: []
   references:

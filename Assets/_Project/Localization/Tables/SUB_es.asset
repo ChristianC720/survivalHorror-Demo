@@ -35,11 +35,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1855244599298
-    m_Localized: "Esp\xE9cimen {0}: no conforme. Iniciando recolecci\xF3n."
+    m_Localized: "Esp\xE9cimen {0} fuera de inventario. Iniciando recolecci\xF3n."
     m_Metadata:
       m_Items: []
   - m_Id: 1855244599299
-    m_Localized: "Contenci\xF3n visual activa. Liberando personal archivado para colaborar."
+    m_Localized: "Contenci\xF3n visual activa. Se libera personal archivado para colaborar."
     m_Metadata:
       m_Items: []
   - m_Id: 1855244599300
@@ -47,7 +47,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1855244599301
-    m_Localized: "Hay algo m\xE1s. No puedo describirlo. No est\xE1 en mi protocolo."
+    m_Localized: Informe 4113. Hay algo debajo del archivo. Campo en blanco.
     m_Metadata:
       m_Items: []
   - m_Id: 1855244599302
@@ -59,11 +59,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1855244599304
-    m_Localized: "\u2026Esto importa. No s\xE9 por qu\xE9."
+    m_Localized: "Esto es importante. No recuerdo por qu\xE9."
     m_Metadata:
       m_Items: []
   - m_Id: 1855244599305
-    m_Localized: "\xBFM\xEDo? \xBFDe ella? \u2026\xBFDe qui\xE9n?"
+    m_Localized: "\xBFEs m\xEDo? \xBFO de alguien m\xE1s?"
     m_Metadata:
       m_Items: []
   - m_Id: 1855244599306
@@ -71,19 +71,19 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1855244599307
-    m_Localized: "\u2026Sigue."
+    m_Localized: "Hay m\xE1s de estos."
     m_Metadata:
       m_Items: []
   - m_Id: 1855244599308
-    m_Localized: Seis antes que yo.
+    m_Localized: "Alguien estuvo aqu\xED hace no mucho."
     m_Metadata:
       m_Items: []
   - m_Id: 1855244599309
-    m_Localized: Di mi nombre. Dilo otra vez.
+    m_Localized: Conozco esta voz.
     m_Metadata:
       m_Items: []
   - m_Id: 1855244599310
-    m_Localized: "No deber\xEDas estar aqu\xED. \u2026Yo tampoco."
+    m_Localized: "Esta foto no deber\xEDa estar aqu\xED."
     m_Metadata:
       m_Items: []
   - m_Id: 1855244599311
@@ -99,23 +99,23 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 238196427456512
-    m_Localized: "Lukas. Si est\xE1s oyendo esto, no volv\xED."
+    m_Localized: "Lukas. Si est\xE1s oyendo esto, significa que no volv\xED."
     m_Metadata:
       m_Items: []
   - m_Id: 238196469399552
-    m_Localized: "He estado investigando lo que pas\xF3 en Vitalis. El incidente. Encontr\xE9 algo en el sonido, una forma, y volv\xED por el resto."
+    m_Localized: "Hay algo debajo del laboratorio donde trabajaba. Trabaj\xE9 mucho tiempo en Vitalis y nunca pregunt\xE9 qu\xE9 era."
     m_Metadata:
       m_Items: []
   - m_Id: 238196469399553
-    m_Localized: "Algo sali\xF3 mal. No recuerdo\u2026 no recuerdo qu\xE9 estoy olvidando."
+    m_Localized: "Y cuando lo hice... Eso fue todo lo que hice. Pregunt\xE9 y todo sali\xF3 mal."
     m_Metadata:
       m_Items: []
   - m_Id: 238196469399554
-    m_Localized: "Ah\xED abajo hay una m\xE1quina que me conserva. Cada vez que me conserva, queda un poco menos que conservar."
+    m_Localized: "He vuelto a encontrar lo que llevo pregunt\xE1ndome por a\xF1os. No s\xE9 exactamente qu\xE9 es, pero alguien debe saber. Alguien m\xE1s debe hacerlo."
     m_Metadata:
       m_Items: []
   - m_Id: 238196469399555
-    m_Localized: "No vengas a buscarme. Por favor. T\xFA no. Qu\xE9date en casa. Guarda la foto. Riega la planta de la ventana, la que siempre olvidas."
+    m_Localized: "No vengas a buscarme. Por favor, no lo hagas. T\xFA no. Qu\xE9date en casa. Y si no vuelvo, no me olvides."
     m_Metadata:
       m_Items: []
   - m_Id: 238196469399556
