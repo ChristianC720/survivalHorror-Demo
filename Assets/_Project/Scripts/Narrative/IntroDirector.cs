@@ -79,6 +79,8 @@ namespace Heartbeat.Narrative
         [SerializeField] private float blackSeconds = 0.6f;
         [SerializeField] private float wakeSeconds = 3f;
         [SerializeField] private float faceDistance = 0.7f;
+        [Tooltip("Both face shots are turned this much around the spine (the capsule's front bar would cover a straight one).")]
+        [SerializeField] private float faceAngle = 28f;
 
         private const int VoiceLines = 7;   // SUB.EMILIA.NOTE_1..7 (Textos del Juego, nota de voz)
         private static readonly float[] HeartGaps = { 0.8f, 0.9f, 1.1f, 1.4f, 1.9f };   // the beat slows, then stops
@@ -280,6 +282,7 @@ namespace Heartbeat.Narrative
             HbLog.Info("Intro", "Scripted death (does not count, D-63)");
             yield return Wait(attackShotSeconds);
 
+            foreach (var l in corridorLightsBehind) l.enabled = true;   // whatever struck him is gone; the body lies in the light
             var anim = player.GetComponentInChildren<Animator>();
             Transform hips = anim.GetBoneTransform(HumanBodyBones.Hips);
             Aim("Body", hips.position + Vector3.up * 2.6f + fwd * 0.3f, hips.position);
@@ -312,8 +315,10 @@ namespace Heartbeat.Narrative
             capsuleLight.intensity = 1f;
             yield return Flash("Capsules", 0);
             capsuleLight.intensity = 2.5f;
+            Frame("Forming", newBody, HumanBodyBones.Chest, 1.6f, 15f);
             yield return Flash("Forming", 4);
             capsuleLight.intensity = 4f;
+            Frame("FormingClose", newBody, HumanBodyBones.LeftLowerArm, 0.8f, 30f);   // the arm terminal
             yield return Flash("FormingClose", 2);
 
             // 5. His new face, framed like the civil one; The Mother registers the subject.
@@ -424,11 +429,26 @@ namespace Heartbeat.Narrative
         private void FrameFace(string id, Animator body)
         {
             Transform head = body.GetBoneTransform(HumanBodyBones.Head);
-            Transform chest = body.GetBoneTransform(HumanBodyBones.Chest) ?? body.GetBoneTransform(HumanBodyBones.Spine);
+            Vector3 up = (head.position - Chest(body).position).normalized;
+            Vector3 eye = head.position + up * 0.06f;
+            Aim(id, eye + Facing(body, up, faceAngle) * faceDistance, eye);
+        }
+
+        /// <summary>Frames a bone from in front of the body, turned <paramref name="angle"/> degrees around its spine.</summary>
+        private void Frame(string id, Animator body, HumanBodyBones bone, float distance, float angle)
+        {
+            Vector3 at = body.GetBoneTransform(bone).position;
+            Vector3 up = (body.GetBoneTransform(HumanBodyBones.Head).position - Chest(body).position).normalized;
+            Aim(id, at + Facing(body, up, angle) * distance + Vector3.up * 0.1f, at);
+        }
+
+        private static Transform Chest(Animator body) => body.GetBoneTransform(HumanBodyBones.Chest) ?? body.GetBoneTransform(HumanBodyBones.Spine);
+
+        // The way the body faces (shoulders × spine), turned around the spine so the capsule's front bar stays out of the face.
+        private static Vector3 Facing(Animator body, Vector3 up, float angle)
+        {
             Vector3 across = body.GetBoneTransform(HumanBodyBones.RightUpperArm).position - body.GetBoneTransform(HumanBodyBones.LeftUpperArm).position;
-            Vector3 face = Vector3.Cross(across, head.position - chest.position).normalized;
-            Vector3 eye = head.position + (head.position - chest.position).normalized * 0.06f;
-            Aim(id, eye + face * faceDistance, eye);
+            return Quaternion.AngleAxis(angle, up) * Vector3.Cross(across, up).normalized;
         }
 
         private IEnumerator Flash(string id, int degradation)
