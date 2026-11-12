@@ -100,8 +100,8 @@ namespace Heartbeat.Player
 
         private void Update()
         {
-            Vector2 move = hasInput && !MovementLocked ? actions.Move.ReadValue<Vector2>() : Vector2.zero;
-            bool wantsRun = hasInput && actions.Sprint.IsPressed();
+            Vector2 move = MovementLocked ? Vector2.zero : DebugMove ?? (hasInput ? actions.Move.ReadValue<Vector2>() : Vector2.zero);
+            bool wantsRun = DebugMove.HasValue ? DebugRun : hasInput && actions.Sprint.IsPressed();
 
             Vector3 dir = CameraRelative(move);
             bool moving = dir.sqrMagnitude > 0.0001f;
@@ -178,6 +178,13 @@ namespace Heartbeat.Player
             verticalVelocity = 0f;
             DebugTeleport(lastGrounded.x, lastGrounded.y, lastGrounded.z, transform.eulerAngles.y);
         }
+
+        /// <summary>Tests: when set, replaces the Move input (camera-relative stick) and <see cref="DebugRun"/> the Sprint input.</summary>
+        public Vector2? DebugMove { get; set; }
+        public bool DebugRun { get; set; }
+
+        /// <summary>Tests: crouch or stand up as the Crouch input would.</summary>
+        public void DebugCrouch(bool on) => SetCrouched(on);
 
         /// <summary>Debug console / tests: teleport Lukas and face yaw degrees.</summary>
         public void DebugTeleport(float x, float y, float z, float yaw)
