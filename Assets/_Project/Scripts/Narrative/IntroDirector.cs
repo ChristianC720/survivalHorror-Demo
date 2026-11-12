@@ -115,6 +115,7 @@ namespace Heartbeat.Narrative
             router.SetContext(InputRouting.InputContext.Cinematic);   // hold Skip once seen (D-91)
             yield return SkippableCinematic.Run(this, "Reconstruction", DeathAndReconstruction(), OnReconstructionSkipped);
             SetStage("Done");
+            HackView.PhoneWallpaper = null;   // the floor loads additively before Intro unloads, so OnDestroy comes late
             Services.Get<Cycle.CycleController>().FinishIntro();
         }
 
@@ -295,7 +296,7 @@ namespace Heartbeat.Narrative
             HbLog.Info("Intro", "Heart stopped");
             yield return Wait(bodySeconds - Sum(HeartGaps));
 
-            FrameFace("FaceCivil", anim);
+            FrameFace("FaceCivil", anim, lying: true);
             yield return Wait(faceSeconds);
             loader.SetFade(1f);
             yield return Wait(1f);
@@ -427,12 +428,14 @@ namespace Heartbeat.Narrative
         }
 
         /// <summary>The same close framing for both faces (civil and R-H-07), so the two bodies compare.</summary>
-        private void FrameFace(string id, Animator body)
+        private void FrameFace(string id, Animator body, bool lying = false)
         {
             Transform head = body.GetBoneTransform(HumanBodyBones.Head);
             Vector3 up = (head.position - Chest(body).position).normalized;
             Vector3 eye = head.position + up * 0.06f;
-            Aim(id, eye + Facing(body, up, faceAngle) * faceDistance, eye);
+            // Lying on his back the head tips back: seen from straight above, only hair shows. Look from over the chest.
+            Vector3 dir = lying ? (Facing(body, up, 0f) - up).normalized : Facing(body, up, faceAngle);
+            Aim(id, eye + dir * faceDistance, eye);
         }
 
         /// <summary>Frames a bone from in front of the body, turned <paramref name="angle"/> degrees around its spine.</summary>
