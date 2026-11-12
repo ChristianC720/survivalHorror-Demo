@@ -98,6 +98,10 @@ MonoBehaviour:
     m_Localized: Seguridad de planta
     m_Metadata:
       m_Items: []
+  - m_Id: 523019947737088
+    m_Localized: "Anuncios solo con autorizaci\xF3n."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

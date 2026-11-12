@@ -17,5 +17,5 @@ MonoBehaviour:
   floor: 2
   titleKey: DOC.EMILIA.04.TITLE
   bodyKey: DOC.EMILIA.04.BODY
-  placeholderTitle: Notebook, 2082-10-19
+  placeholderTitle: File 04 - 2082-10-19
   model: {fileID: 0}

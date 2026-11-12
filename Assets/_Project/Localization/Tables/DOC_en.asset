@@ -19,7 +19,7 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 17771982356480
-    m_Localized: Voice note, Emilia
+    m_Localized: Voice note
     m_Metadata:
       m_Items: []
   - m_Id: 17772024299520
@@ -27,7 +27,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 17772024299521
-    m_Localized: Notebook, 2080-11-02
+    m_Localized: File 01 - 2080-11-02
     m_Metadata:
       m_Items: []
   - m_Id: 17772024299522
@@ -43,7 +43,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 17772024299523
-    m_Localized: Notebook, 2081-03-13
+    m_Localized: File 02 - 2081-03-13
     m_Metadata:
       m_Items: []
   - m_Id: 17772024299524
@@ -61,7 +61,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 17772024299525
-    m_Localized: Notebook, 2081-03-20
+    m_Localized: File 03 - 2081-03-20
     m_Metadata:
       m_Items: []
   - m_Id: 17772024299526
@@ -79,7 +79,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 17772024299527
-    m_Localized: Notebook, 2082-10-19
+    m_Localized: File 04 - 2082-10-19
     m_Metadata:
       m_Items: []
   - m_Id: 17772024299528
@@ -97,7 +97,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 17772024299529
-    m_Localized: Notebook, 2083-05-09
+    m_Localized: File 05 - 2083-05-09
     m_Metadata:
       m_Items: []
   - m_Id: 17772024299530
@@ -115,7 +115,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 17772024299531
-    m_Localized: Notebook, 2083-11-17
+    m_Localized: File 06 - 2083-11-17
     m_Metadata:
       m_Items: []
   - m_Id: 17772024299532
@@ -372,6 +372,116 @@ MonoBehaviour:
     m_Localized: 'A plain wedding ring, worn thin. It was near the tray.
 
       There is a name engraved inside. The letters have worn away.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3764716471189504
+    m_Localized: Vitalis Konzern, maintenance, work order 4418
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3764716517326848
+    m_Localized: 'Request: locate the equipment known as the plant and check its vibration.
+
+      Sublevel A: no equipment found under that name.
+
+      Sublevel B: no equipment found under that name.
+
+      Sublevel C: the technician did not complete the inspection.
+
+      Equipment inventory: no plant is registered at this facility.
+
+      Order closed. Reason: equipment does not exist.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3764716521521152
+    m_Localized: Vitalis Konzern, Board, closure notice
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3764716521521153
+    m_Localized: 'The Sektor V-7 facility closes on 2081-04-02 for scheduled maintenance.
+
+      All personnel were evacuated and reassigned. Nobody remains inside.
+
+      Subjects in the clinical program were discharged before the closure.
+
+      The medical system stays powered to preserve the inventory.
+
+      Enquiries about reassigned personnel will not be answered.
+
+      <i>Fortschritt durch Erhaltung.</i>'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3764716521521154
+    m_Localized: Vitalis Konzern, clinical program, ward 4 sheet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3764716521521155
+    m_Localized: 'Ward 4, night shift of 2080-11-02.
+
+      Subjects on ward: 12. Monitors in service: 12.
+
+      02:40 Readings within normal range. No events.
+
+      Equipment changes during the shift: none.
+
+      Researcher on duty: no record.
+
+      Remarks: the subjects are asleep. One of them is humming.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3764716521521156
+    m_Localized: Vitalis Konzern, clinical program, intake criteria
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3764716521521157
+    m_Localized: 'Only adult volunteers with signed consent are admitted.
+
+      Minors are not admitted at any stage of the program.
+
+      Personal effects are kept in inventory and returned on discharge.
+
+      All subjects are discharged.
+
+      Families do not need to be informed of the admission.
+
+      <i>Gesundheit ist Pflicht.</i>'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3764716521521158
+    m_Localized: Vitalis Konzern, PA central, shift sheet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3764716521521159
+    m_Localized: 'Operator on duty: 1. Relief operator: not assigned.
+
+      22:00 I checked the consoles. All channels are closed.
+
+      01:30 Someone from staff leaves an envelope at the door. Signed for.
+
+      03:10 The operator requests permission to test channel 1. Request not approved.
+
+      03:12 Channel 1 has been opened. Opened from this console. Operator signature <c>unknown</c>.
+
+      03:40 End of shift. The operator did not sign out.
+
+      <i>Durchsagen nur nach Freigabe.</i>'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3764716521521160
+    m_Localized: The Mother, access audit, PA central
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3764716521521161
+    m_Localized: 'Period audited: 2081-03-13 to 2081-03-14.
+
+      System logins to the console: 0.
+
+      The PA channels are not under my control. I cannot open or close channel 1.
+
+      Badge entries to the room: 1. Holder: clinical research, Sublevel C.
+
+      Time of entry: 03:11.
+
+      Operator on duty at the console: not detected.'
     m_Metadata:
       m_Items: []
   references:

@@ -19,7 +19,7 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 17771982356480
-    m_Localized: Nota de voz, Emilia
+    m_Localized: Nota de voz
     m_Metadata:
       m_Items: []
   - m_Id: 17772024299520
@@ -27,7 +27,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 17772024299521
-    m_Localized: Cuaderno, 2080-11-02
+    m_Localized: Expediente 01 - 2080-11-02
     m_Metadata:
       m_Items: []
   - m_Id: 17772024299522
@@ -35,7 +35,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 17772024299523
-    m_Localized: Cuaderno, 2081-03-13
+    m_Localized: Expediente 02 - 2081-03-13
     m_Metadata:
       m_Items: []
   - m_Id: 17772024299524
@@ -43,7 +43,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 17772024299525
-    m_Localized: Cuaderno, 2081-03-20
+    m_Localized: Expediente 03 - 2081-03-20
     m_Metadata:
       m_Items: []
   - m_Id: 17772024299526
@@ -51,7 +51,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 17772024299527
-    m_Localized: Cuaderno, 2082-10-19
+    m_Localized: Expediente 04 - 2082-10-19
     m_Metadata:
       m_Items: []
   - m_Id: 17772024299528
@@ -59,7 +59,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 17772024299529
-    m_Localized: Cuaderno, 2083-05-09
+    m_Localized: Expediente 05 - 2083-05-09
     m_Metadata:
       m_Items: []
   - m_Id: 17772024299530
@@ -67,7 +67,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 17772024299531
-    m_Localized: Cuaderno, 2083-11-17
+    m_Localized: Expediente 06 - 2083-11-17
     m_Metadata:
       m_Items: []
   - m_Id: 17772024299532
@@ -194,6 +194,74 @@ MonoBehaviour:
     m_Localized: 'Un anillo de bodas sencillo, gastado. Estaba cerca de la bandeja.
 
       Tiene un nombre grabado por dentro. Las letras se borraron por el desgaste.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3764716471189504
+    m_Localized: Vitalis Konzern, mantenimiento, orden de trabajo 4418
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3764716517326848
+    m_Localized: "Solicitud: localizar el equipo llamado la planta y revisar su vibraci\xF3n.\nSubnivel A: no se encontr\xF3 ning\xFAn equipo con ese nombre.\nSubnivel B: no se encontr\xF3 ning\xFAn equipo con ese nombre.\nSubnivel C: el t\xE9cnico no complet\xF3 la revisi\xF3n.\nInventario de equipos: no hay ninguna planta registrada en esta instalaci\xF3n.\nOrden cerrada. Motivo: equipo inexistente."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3764716521521152
+    m_Localized: "Vitalis Konzern, Direcci\xF3n, aviso de cierre"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3764716521521153
+    m_Localized: "La instalaci\xF3n de Sektor V-7 cierra el 2081-04-02 por mantenimiento programado.\nTodo el personal fue evacuado y reubicado. No queda nadie en el interior.\nLos sujetos del programa cl\xEDnico recibieron el alta antes del cierre.\nEl sistema m\xE9dico queda encendido para conservar el inventario.\nNo se atender\xE1n consultas sobre el personal reubicado.\n<i>Fortschritt durch Erhaltung.</i>"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3764716521521154
+    m_Localized: "Vitalis Konzern, programa cl\xEDnico, hoja de la sala 4"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3764716521521155
+    m_Localized: 'Sala 4, turno de noche del 2080-11-02.
+
+      Sujetos en sala: 12. Monitores en servicio: 12.
+
+      02:40 Lecturas dentro de lo normal. Sin eventos.
+
+      Cambios de equipo durante el turno: ninguno.
+
+      Investigador de guardia: sin registro.
+
+      Observaciones: los sujetos duermen. Uno de ellos tararea.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3764716521521156
+    m_Localized: "Vitalis Konzern, programa cl\xEDnico, criterios de ingreso"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3764716521521157
+    m_Localized: 'Solo ingresan adultos voluntarios con consentimiento firmado.
+
+      No se admiten menores en ninguna fase del programa.
+
+      Los efectos personales se guardan en inventario y se devuelven con el alta.
+
+      Todos los sujetos reciben el alta.
+
+      No es necesario informar a las familias del ingreso.
+
+      <i>Gesundheit ist Pflicht.</i>'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3764716521521158
+    m_Localized: "Vitalis Konzern, central de megafon\xEDa, hoja de turno"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3764716521521159
+    m_Localized: "Operador de turno: 1. Operador de relevo: sin asignar.\n22:00 Revis\xE9 las consolas. Todos los canales est\xE1n cerrados.\n01:30 Alguien del personal deja un sobre en la puerta. Firmado de recibido.\n03:10 El operador pide permiso para probar el canal 1. Solicitud no aprobada.\n03:12 Se ha abierto el canal 1. Abierto desde esta consola. Firma del operador <c>desconocida</c>.\n03:40 Fin de turno. El operador no firm\xF3 la salida.\n<i>Durchsagen nur nach Freigabe.</i>"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3764716521521160
+    m_Localized: "The Mother, auditor\xEDa de accesos, central de megafon\xEDa"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3764716521521161
+    m_Localized: "Periodo auditado: 2081-03-13 a 2081-03-14.\nAccesos del sistema a la consola: 0.\nLos canales de megafon\xEDa no est\xE1n bajo mi control. No puedo abrir ni cerrar el canal 1.\nAccesos con tarjeta a la sala: 1. Titular: investigaci\xF3n cl\xEDnica, subnivel C.\nHora del acceso: 03:11.\nOperador de turno en la consola: no detectado."
     m_Metadata:
       m_Items: []
   references:

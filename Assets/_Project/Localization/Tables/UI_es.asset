@@ -131,11 +131,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 2394030106
-    m_Localized: 'EMILIA FILE: {0}/6'
+    m_Localized: 'FILES: {0}/6'
     m_Metadata:
       m_Items: []
   - m_Id: 2394030107
-    m_Localized: Expediente de Emilia
+    m_Localized: Expedientes
     m_Metadata:
       m_Items: []
   - m_Id: 2394030108
