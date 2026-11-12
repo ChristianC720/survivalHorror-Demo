@@ -84,6 +84,7 @@ namespace Heartbeat.Player
             // Legs lead towards the movement; walking backwards plays the cycle in reverse instead of turning around.
             float target = speed > 0.1f ? Mathf.Atan2(local.x, Mathf.Abs(local.z)) * Mathf.Rad2Deg * (backwards ? -1f : 1f) : 0f;
             if (player.IsAiming) target = Mathf.Clamp(target, -maxAimTwist, maxAimTwist);
+            if (upperBusy > 0f || fullBusy > 0f) target = 0f;   // a shove or a hand gesture plays towards the camera, where it acts
             legYaw = Mathf.MoveTowards(legYaw, target, legTurnSpeed * Time.deltaTime);
             aimWeight = Mathf.MoveTowards(aimWeight, player.IsAiming ? 1f : 0f, Time.deltaTime / Mathf.Max(aimTwistBlend, 0.01f));
 
