@@ -25,6 +25,7 @@ namespace Heartbeat.Level
         private FaultModel faults;
         private Narrative.RegistryModel registry;
         private readonly System.Random rng = new System.Random();
+        private readonly bool[] heldAtStart = new bool[4];   // indexed by HackDir: held when the hack began, ignored until released
 
         public HackSequence Current { get; private set; }
         public bool IsHacking => Current != null;
@@ -69,10 +70,10 @@ namespace Heartbeat.Level
             h.UseFault.performed -= OnUseFault;
         }
 
-        private void OnUp(InputAction.CallbackContext _) => Feed(HackDir.Up);
-        private void OnDown(InputAction.CallbackContext _) => Feed(HackDir.Down);
-        private void OnLeft(InputAction.CallbackContext _) => Feed(HackDir.Left);
-        private void OnRight(InputAction.CallbackContext _) => Feed(HackDir.Right);
+        private void OnUp(InputAction.CallbackContext _) => OnDirection(HackDir.Up);
+        private void OnDown(InputAction.CallbackContext _) => OnDirection(HackDir.Down);
+        private void OnLeft(InputAction.CallbackContext _) => OnDirection(HackDir.Left);
+        private void OnRight(InputAction.CallbackContext _) => OnDirection(HackDir.Right);
 
         public bool Begin(IHackTarget hackTarget, HackSequence fixedSequence = null)
         {
@@ -85,9 +86,38 @@ namespace Heartbeat.Level
             states?.TrySetSubState(PlaySubState.Hacking);
             player.MovementLocked = true;
             startFrame = Time.frameCount;   // the E press that started the hack must not abort it
+            for (int i = 0; i < 4; i++) heldAtStart[i] = Held((HackDir)i);   // WASD or stick still held from walking must not count
             HbLog.Info("Hack", $"Started ({Current.Steps.Count} inputs): {string.Join(" ", Current.Steps)}");
             Started?.Invoke(Current);
             return true;
+        }
+
+        private void Update()
+        {
+            if (!IsHacking) return;
+            for (int i = 0; i < 4; i++)
+                if (heldAtStart[i] && !Held((HackDir)i)) heldAtStart[i] = false;
+        }
+
+        private InputAction ActionFor(HackDir d)
+        {
+            var h = router.Actions.Hacking;
+            return d == HackDir.Up ? h.Up : d == HackDir.Down ? h.Down : d == HackDir.Left ? h.Left : h.Right;
+        }
+
+        // Reads the controls bound to the hack action (arrows, WASD, D-pad, left stick), not a device directly.
+        private bool Held(HackDir d)
+        {
+            foreach (var c in ActionFor(d).controls)
+                if (c.IsPressed()) return true;
+            return false;
+        }
+
+        private void OnDirection(HackDir dir)
+        {
+            if (IsHacking && heldAtStart[(int)dir] && Held(dir)) return;
+            heldAtStart[(int)dir] = false;
+            Feed(dir);
         }
 
         private void Feed(HackDir dir)
