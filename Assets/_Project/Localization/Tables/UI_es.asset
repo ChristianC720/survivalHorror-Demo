@@ -59,59 +59,59 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 2394030088
-    m_Localized: LOCKDOWN
+    m_Localized: CIERRE TOTAL
     m_Metadata:
       m_Items: []
   - m_Id: 2394030089
-    m_Localized: "SYNCHRONIZING\u2026"
+    m_Localized: "SINCRONIZANDO\u2026"
     m_Metadata:
       m_Items: []
   - m_Id: 2394030090
-    m_Localized: "SYNCHRONIZING SUBJECT {0}\u2026"
+    m_Localized: "SINCRONIZANDO SUJETO {0}\u2026"
     m_Metadata:
       m_Items: []
   - m_Id: 2394030091
-    m_Localized: ACCESS DENIED
+    m_Localized: ACCESO DENEGADO
     m_Metadata:
       m_Items: []
   - m_Id: 2394030092
-    m_Localized: INVENTORY
+    m_Localized: INVENTARIO
     m_Metadata:
       m_Items: []
   - m_Id: 2394030093
-    m_Localized: STATUS
+    m_Localized: ESTADO
     m_Metadata:
       m_Items: []
   - m_Id: 2394030094
-    m_Localized: LOGS
+    m_Localized: REGISTROS
     m_Metadata:
       m_Items: []
   - m_Id: 2394030095
-    m_Localized: SUBJECT {0}
+    m_Localized: SUJETO {0}
     m_Metadata:
       m_Items: []
   - m_Id: 2394030096
-    m_Localized: 'HEALTH: FINE'
+    m_Localized: 'SALUD: BIEN'
     m_Metadata:
       m_Items: []
   - m_Id: 2394030097
-    m_Localized: 'HEALTH: INJURED'
+    m_Localized: 'SALUD: HERIDO'
     m_Metadata:
       m_Items: []
   - m_Id: 2394030098
-    m_Localized: 'HEALTH: CRITICAL'
+    m_Localized: "SALUD: CR\xCDTICO"
     m_Metadata:
       m_Items: []
   - m_Id: 2394030099
-    m_Localized: 'FLASHLIGHT: {0}%'
+    m_Localized: 'LINTERNA: {0}%'
     m_Metadata:
       m_Items: []
   - m_Id: 2394030100
-    m_Localized: 'FLASHLIGHT: DEPLETED'
+    m_Localized: 'LINTERNA: AGOTADA'
     m_Metadata:
       m_Items: []
   - m_Id: 2394030101
-    m_Localized: 'DRUM: {0}/6'
+    m_Localized: 'TAMBOR: {0}/6'
     m_Metadata:
       m_Items: []
   - m_Id: 2394030102
@@ -119,11 +119,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 2394030103
-    m_Localized: USE
+    m_Localized: USAR
     m_Metadata:
       m_Items: []
   - m_Id: 2394030104
-    m_Localized: DISCARD
+    m_Localized: DESCARTAR
     m_Metadata:
       m_Items: []
   - m_Id: 2394030105
@@ -227,11 +227,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 2394030130
-    m_Localized: EMPTY
+    m_Localized: "VAC\xCDO"
     m_Metadata:
       m_Items: []
   - m_Id: 2394030131
-    m_Localized: DAMAGED
+    m_Localized: "DA\xD1ADO"
     m_Metadata:
       m_Items: []
   - m_Id: 2394030132
@@ -427,11 +427,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1385306390528
-    m_Localized: REGISTERED
+    m_Localized: REGISTRADO
     m_Metadata:
       m_Items: []
   - m_Id: 1385369305088
-    m_Localized: ACCESS GRANTED
+    m_Localized: ACCESO CONCEDIDO
     m_Metadata:
       m_Items: []
   - m_Id: 1932914720768
@@ -483,7 +483,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 181802575724544
-    m_Localized: OVERRIDE SEQUENCE
+    m_Localized: "SECUENCIA DE ANULACI\xD3N"
     m_Metadata:
       m_Items: []
   - m_Id: 181802655416320
@@ -495,11 +495,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 224916380188672
-    m_Localized: 'FAULT ACTIVE: {0} USE(S) LEFT'
+    m_Localized: 'FALLA ACTIVA: {0} USO(S) RESTANTE(S)'
     m_Metadata:
       m_Items: []
   - m_Id: 224916426326016
-    m_Localized: FAULT PATCHED BY THE MOTHER
+    m_Localized: FALLA PARCHEADA POR THE MOTHER
     m_Metadata:
       m_Items: []
   - m_Id: 224916426326017
@@ -507,7 +507,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 224916426326018
-    m_Localized: FAULT EXPLOITED
+    m_Localized: FALLA EXPLOTADA
     m_Metadata:
       m_Items: []
   - m_Id: 238274139521024
@@ -535,11 +535,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1124349997350912
-    m_Localized: CLOSE
+    m_Localized: CERRAR
     m_Metadata:
       m_Items: []
   - m_Id: 1124350085431296
-    m_Localized: OPEN
+    m_Localized: ABRIR
     m_Metadata:
       m_Items: []
   - m_Id: 1124350085431297
@@ -555,7 +555,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1124350085431300
-    m_Localized: DRUM --
+    m_Localized: TAMBOR --
     m_Metadata:
       m_Items: []
   - m_Id: 1124350085431301
@@ -603,7 +603,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1124350085431312
-    m_Localized: PAGE
+    m_Localized: "P\xC1GINA"
     m_Metadata:
       m_Items: []
   - m_Id: 1124350085431313
@@ -855,7 +855,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 2663657614999552
-    m_Localized: SYNC FAILED
+    m_Localized: "SINCRONIZACI\xD3N FALLIDA"
     m_Metadata:
       m_Items: []
   - m_Id: 3430740820885504
