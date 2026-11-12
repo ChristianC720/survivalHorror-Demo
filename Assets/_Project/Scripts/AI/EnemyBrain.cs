@@ -320,9 +320,17 @@ namespace Heartbeat.AI
             if (dist < keep) agent.isStopped = true;   // avoidance from other agents can still squeeze us in
 
             bool blind = definition.sightRange <= 0f;   // La Boca strikes at what she hears
-            float reach = grabIntent ? definition.grabRange : definition.attackRange;
+            bool grab = grabIntent && GrabPathClear(p);
+            float reach = grab ? definition.grabRange : definition.attackRange;
             if (dist <= reach && cooldownTimer <= 0f && (SeesPlayer || blind) && !(director != null && director.PlayerDead))
-                StartWindup(grabIntent);
+                StartWindup(grab);
+        }
+
+        // C-64: no grab across a low wall or a counter: Lukas would be pulled into it while the arms reach over.
+        private bool GrabPathClear(Transform p)
+        {
+            Vector3 waist = Vector3.up * 0.9f;
+            return !Physics.Linecast(transform.position + waist, p.position + waist, envMask, QueryTriggerInteraction.Ignore);
         }
 
         private void StartWindup(bool grab)
@@ -486,7 +494,7 @@ namespace Heartbeat.AI
         public void DebugStartGrab()
         {
             if (!definition.canGrab || IsDead) return;
-            StartWindup(true);
+            StartWindup(Player == null || GrabPathClear(Player));   // across cover it is a plain attack, as in the hunt
         }
 
         private void OnDrawGizmosSelected()
