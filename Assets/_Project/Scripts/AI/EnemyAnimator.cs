@@ -12,7 +12,6 @@ namespace Heartbeat.AI
     public sealed class EnemyAnimator : MonoBehaviour
     {
         private const float Fade = 0.15f;
-        private const float GrabHoldSeconds = 0.9f;
         private const float ScreamSeconds = 2f;
 
         [SerializeField] private Animator animator;
@@ -56,16 +55,9 @@ namespace Heartbeat.AI
             brain.Screamed += OnScreamed;
         }
 
-        private void OnEnable() => GameEvents.PlayerAttacked += OnPlayerAttacked;
-        private void OnDisable() => GameEvents.PlayerAttacked -= OnPlayerAttacked;
         private void OnDestroy() { if (brain != null) brain.Screamed -= OnScreamed; }
 
         private void OnScreamed() { overrideState = "Scream"; overrideTimer = ScreamSeconds; }
-
-        private void OnPlayerAttacked(AttackInfo attack)
-        {
-            if (attack.IsGrab && ReferenceEquals(attack.Source, brain)) { overrideState = "Grab"; overrideTimer = GrabHoldSeconds; }
-        }
 
         private void Update()
         {
@@ -83,6 +75,12 @@ namespace Heartbeat.AI
             if (brain.IsDead) return "Death";
             if (brain.IsStaggered) return "Stunned";
             if (overrideTimer > 0f) return overrideState;
+            if (brain.IsGrabbing)
+            {
+                // C-64: the windup plays the Grab clip so the hands close on Lukas when it ends, then the hold at its own pace.
+                if (brain.IsWindingUp) rate = brain.Definition.grabCloseSeconds / Mathf.Max(brain.Definition.attackWindup, 0.05f);
+                return "Grab";
+            }
             if (brain.IsWindingUp)
             {
                 // The swing lands when the windup ends: the blow sits about 40% into the clip.

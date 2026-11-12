@@ -41,7 +41,7 @@ namespace Heartbeat.Combat
 
         private void OnAttack(InputAction.CallbackContext _)
         {
-            if (player.IsAiming || player.MovementLocked || cooldown > 0f) return;
+            if (player.IsAiming || player.MovementLocked || player.Grabbed || cooldown > 0f) return;
             if (finisher != null && finisher.HasTarget) return;   // ground strike handles it
             TryShove();
         }

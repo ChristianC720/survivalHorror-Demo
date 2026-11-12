@@ -49,6 +49,7 @@ namespace Heartbeat.Core
         // Combat
         public static event Action<Vector3> ShotFired;
         public static event Action<AttackInfo> PlayerAttacked;
+        public static event Action<MonoBehaviour> GrabStarted;  // Heartbeat.AI.EnemyBrain: grab windup, Lukas is pulled in (C-64)
         public static event Action<bool> GrabResolved;        // true = countered by the spike
         public static event Action<MonoBehaviour, Vector3> EnemyKilled;
         public static event Action<Vector3> RecycleWarning;
@@ -76,6 +77,7 @@ namespace Heartbeat.Core
 
         // Inventory / interaction
         public static event Action InventoryChanged;
+        public static event Action<string, int> ItemPickedUp;             // item kind, amount taken (telemetry, C-64)
         public static event Action<string> InventoryFull;                 // item kind that did not fit
         public static event Action<MonoBehaviour> InteractTargetChanged;  // null = nothing to interact with
         public static event Action<string, int, bool> ItemRegistered;     // record id, RecordKind, isNew
@@ -112,10 +114,12 @@ namespace Heartbeat.Core
         public static void RaiseAimChanged(bool aiming) => AimChanged?.Invoke(aiming);
         public static void RaiseAttentionFull(Vector3 playerPos) => AttentionFull?.Invoke(playerPos);
         public static void RaiseShotFired(Vector3 origin) => ShotFired?.Invoke(origin);
+        public static void RaiseItemPickedUp(string kind, int amount) => ItemPickedUp?.Invoke(kind, amount);
         public static void RaiseNotice(string key, params object[] args) => NoticeRequested?.Invoke(key, args);
         public static void RaiseHint(string key, params object[] args) => HintChanged?.Invoke(key, args);
         public static void RaiseShotLanded(bool weakPoint, bool killed) => ShotLanded?.Invoke(weakPoint, killed);
         public static void RaisePlayerAttacked(AttackInfo info) => PlayerAttacked?.Invoke(info);
+        public static void RaiseGrabStarted(MonoBehaviour grabber) => GrabStarted?.Invoke(grabber);
         public static void RaiseGrabResolved(bool countered) => GrabResolved?.Invoke(countered);
         public static void RaiseEnemyKilled(MonoBehaviour enemy, Vector3 pos) => EnemyKilled?.Invoke(enemy, pos);
         public static void RaiseRecycleWarning(Vector3 pos) => RecycleWarning?.Invoke(pos);
@@ -182,8 +186,10 @@ namespace Heartbeat.Core
             ShotFired = null;
             PlayerAttacked = null;
             NoticeRequested = null;
+            ItemPickedUp = null;
             HintChanged = null;
             ShotLanded = null;
+            GrabStarted = null;
             GrabResolved = null;
             EnemyKilled = null;
             RecycleWarning = null;

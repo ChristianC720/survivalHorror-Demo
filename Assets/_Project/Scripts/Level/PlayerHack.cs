@@ -55,11 +55,13 @@ namespace Heartbeat.Level
             h.Abort.performed += OnAbort;
             h.UseFault.performed += OnUseFault;
             if (health != null) health.Hit += OnHit;
+            GameEvents.GrabStarted += OnGrabStarted;
         }
 
         private void OnDestroy()
         {
             if (health != null) health.Hit -= OnHit;
+            GameEvents.GrabStarted -= OnGrabStarted;
             if (router == null) return;
             var h = router.Actions.Hacking;
             h.Up.performed -= OnUp;
@@ -154,6 +156,12 @@ namespace Heartbeat.Level
         private void OnHit()
         {
             if (IsHacking) End(false, "cancelled by a hit");
+        }
+
+        /// <summary>A grab cancels the hack before it resolves, with or without a spike (Punzón de descarga).</summary>
+        private void OnGrabStarted(MonoBehaviour _)
+        {
+            if (IsHacking) End(false, "cancelled by a grab");
         }
 
         private void End(bool success, string why)

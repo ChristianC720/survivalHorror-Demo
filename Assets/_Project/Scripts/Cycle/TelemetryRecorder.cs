@@ -12,7 +12,7 @@ namespace Heartbeat.Cycle
     /// -telemetry. Appends one JSON object per line to persistentDataPath/telemetry/session_*.jsonl and flushes each line, so
     /// a crash keeps everything written so far. The metrics of the Pruebas table are computed from these lines offline:
     /// surveillance uses and seconds per floor, attention fills, time per floor and in total, deaths by floor, room and
-    /// cause, quitting before the end, finishers against recycled enemies.
+    /// cause, quitting before the end, finishers against recycled enemies, grabs (with or without a spike) and pick-ups (C-64).
     /// </summary>
     public sealed class TelemetryRecorder : IDisposable
     {
@@ -40,6 +40,8 @@ namespace Heartbeat.Cycle
             GameEvents.FloorExitRequested += OnFloorExit;
             GameEvents.EndingTriggered += OnEnding;
             GameEvents.GameStateChanged += OnState;
+            GameEvents.GrabResolved += OnGrab;
+            GameEvents.ItemPickedUp += OnPicked;
             Write("session_start", null);
         }
 
@@ -67,6 +69,8 @@ namespace Heartbeat.Cycle
             GameEvents.FloorExitRequested -= OnFloorExit;
             GameEvents.EndingTriggered -= OnEnding;
             GameEvents.GameStateChanged -= OnState;
+            GameEvents.GrabResolved -= OnGrab;
+            GameEvents.ItemPickedUp -= OnPicked;
             writer.Dispose();
         }
 
@@ -84,6 +88,8 @@ namespace Heartbeat.Cycle
         private void OnGesture(string g) { if (g == "Finisher" || g == "GroundStrike") Write("finisher", $"\"how\":\"{g}\""); }
         private void OnFloorExit(int f) => Write("floor_exit", null);
         private void OnEnding(string id) => Write("ending", $"\"id\":\"{Esc(id)}\"");
+        private void OnGrab(bool spike) => Write("grab", "\"spike\":" + (spike ? "true" : "false"));
+        private void OnPicked(string kind, int n) => Write("item_picked", $"\"kind\":\"{Esc(kind)}\",\"amount\":{n}");
         private void OnState(GameStateId from, GameStateId to) => Write("state", $"\"from\":\"{from}\",\"to\":\"{to}\"");
 
         private void Write(string evt, string extra)

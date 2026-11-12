@@ -37,6 +37,11 @@ namespace Heartbeat.AI
         public bool canGrab;
         [Range(0f, 1f)] public float grabChance = 0.35f;
         public float grabRange = 1.4f;
+        [Tooltip("C-64: Grab clip time where the hands settle on Lukas; the grab windup plays the clip up to here. Measured from the clip (EnemyGrabClipTests).")]
+        public float grabCloseSeconds = 0.94f;
+        [Tooltip("C-64: clip seconds the hands hold Lukas after closing.")] public float grabHoldSeconds = 0.85f;
+        [Tooltip("C-64: distance from this enemy's root to Lukas's root while held, so the hands rest on him.")]
+        public float grabAnchorDistance = 0.85f;
 
         [Header("Behaviour")]
         [Tooltip("Rastrero: circle to the flank before striking.")] public bool flanks;

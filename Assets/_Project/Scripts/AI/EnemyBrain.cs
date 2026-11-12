@@ -34,6 +34,9 @@ namespace Heartbeat.AI
         private float burstClock;
         private bool asleep;
         private int envMask;
+        // C-64: the next attack is a grab (rolled per attack at grabChance); it closes to grabRange before winding up.
+        private bool grabIntent, grabWindup;
+        private float holdTimer;
 
         public event System.Action Screamed;
 
@@ -44,6 +47,10 @@ namespace Heartbeat.AI
         public bool IsDead => !health.IsAlive;
         public bool IsStaggered => staggerTimer > 0f;
         public bool IsWindingUp => windupTimer >= 0f;
+        /// <summary>C-64: from the grab windup until the hands let go. Lukas is pulled and held while this is true.</summary>
+        public bool IsGrabbing => !IsDead && !IsStaggered && ((grabWindup && windupTimer >= 0f) || holdTimer > 0f);
+        /// <summary>0 at the start of the grab windup, 1 when the hands close.</summary>
+        public float GrabProgress => grabWindup && windupTimer >= 0f ? 1f - windupTimer / Mathf.Max(definition.attackWindup, 0.05f) : 1f;
         /// <summary>Set by the flashlight while its beam is on this enemy (M-12).</summary>
         public bool IsLit { get; set; }
         public bool SeesPlayer { get; private set; }
@@ -73,7 +80,10 @@ namespace Heartbeat.AI
             if (director == null && Services.TryGet(out director)) director.Register(this);
             agent.speed = definition.patrolSpeed;
             asleep = definition.dormant;
+            grabIntent = RollGrab();
         }
+
+        private bool RollGrab() => definition.canGrab && Random.value < definition.grabChance;
 
         public bool IsDormant => asleep || heldUntilShot;
 
@@ -128,6 +138,14 @@ namespace Heartbeat.AI
             {
                 staggerTimer -= dt;
                 agent.isStopped = true;
+                return;
+            }
+
+            if (holdTimer > 0f)
+            {
+                holdTimer -= dt;
+                agent.isStopped = true;
+                if (p != null) FaceTowards(p.position, 360f);
                 return;
             }
 
@@ -302,12 +320,18 @@ namespace Heartbeat.AI
             if (dist < keep) agent.isStopped = true;   // avoidance from other agents can still squeeze us in
 
             bool blind = definition.sightRange <= 0f;   // La Boca strikes at what she hears
-            if (dist <= definition.attackRange && cooldownTimer <= 0f && (SeesPlayer || blind) && !(director != null && director.PlayerDead))
-            {
-                windupTimer = definition.attackWindup;
-                agent.isStopped = true;
-                HbLog.Info("AI", $"{name} attack windup");
-            }
+            float reach = grabIntent ? definition.grabRange : definition.attackRange;
+            if (dist <= reach && cooldownTimer <= 0f && (SeesPlayer || blind) && !(director != null && director.PlayerDead))
+                StartWindup(grabIntent);
+        }
+
+        private void StartWindup(bool grab)
+        {
+            windupTimer = definition.attackWindup;
+            grabWindup = grab;
+            agent.isStopped = true;
+            HbLog.Info("AI", $"{name} {(grab ? "grab" : "attack")} windup");
+            if (grab) GameEvents.RaiseGrabStarted(this);   // Lukas is pulled to the hands while the clip closes them (C-64)
         }
 
         private void TickWindup(float dt, Transform p)
@@ -318,6 +342,9 @@ namespace Heartbeat.AI
             windupTimer = -1f;
             cooldownTimer = definition.attackCooldown;
             agent.isStopped = false;
+            bool grabbing = grabWindup;
+            grabWindup = false;
+            grabIntent = RollGrab();
             if (p == null || (director != null && director.PlayerDead)) return;
 
             float dist = Vector3.Distance(transform.position, p.position);
@@ -326,7 +353,9 @@ namespace Heartbeat.AI
                 HbLog.Info("AI", $"{name} attack missed (out of reach)");
                 return;
             }
-            bool grab = definition.canGrab && dist <= definition.grabRange && Random.value < definition.grabChance;
+            // El Mudo's ambush: if the grab does not land, it hits (Enemigos y NPC).
+            bool grab = grabbing && dist <= definition.grabRange * 1.2f;
+            if (grab) holdTimer = definition.grabHoldSeconds;
             HbLog.Info("AI", $"{name} {(grab ? "grabs" : "hits")} Lukas");
             GameEvents.RaisePlayerAttacked(new AttackInfo(definition.hitsToKillLukas, grab, transform.position, this));
         }
@@ -367,6 +396,8 @@ namespace Heartbeat.AI
             if (IsDead) return;
             staggerTimer = Mathf.Max(staggerTimer, seconds);
             windupTimer = -1f;
+            grabWindup = false;
+            holdTimer = 0f;   // a weak-point hit or the spike frees Lukas (D-74, M-11)
             agent.isStopped = true;
             if (agent.isOnNavMesh)
             {
@@ -449,6 +480,13 @@ namespace Heartbeat.AI
         {
             HbLog.Info("AI", $"{name} debug {(grab ? "grab" : "hit")}");
             GameEvents.RaisePlayerAttacked(new AttackInfo(definition.hitsToKillLukas, grab, transform.position, this));
+        }
+
+        /// <summary>Debug / tests: start a grab windup right now (Lukas is pulled in), bypassing range and chance.</summary>
+        public void DebugStartGrab()
+        {
+            if (!definition.canGrab || IsDead) return;
+            StartWindup(true);
         }
 
         private void OnDrawGizmosSelected()

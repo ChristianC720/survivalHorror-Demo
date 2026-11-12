@@ -36,6 +36,9 @@ MonoBehaviour:
   canGrab: 1
   grabChance: 0.4
   grabRange: 1.6
+  grabCloseSeconds: 0.94
+  grabHoldSeconds: 0.85
+  grabAnchorDistance: 0.57
   flanks: 0
   flankOffset: 3
   patrolRadius: 0

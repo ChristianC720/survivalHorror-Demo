@@ -43,6 +43,7 @@ namespace Heartbeat.Interaction
             amount = left;
             Sfx.Play2D(Sfx.Pickup);
             GameEvents.RaiseNotice("UI.NOTICE.PICKED", UI.Loc.Get("UI.ITEM." + kind), taken);
+            GameEvents.RaiseItemPickedUp(kind.ToString(), taken);
             HbLog.Info("Interact", $"Picked up {kind} x{taken}{(left > 0 ? $" ({left} left on the floor)" : "")}");
             if (amount <= 0) gameObject.SetActive(false);
         }
