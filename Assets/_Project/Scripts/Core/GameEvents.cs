@@ -85,6 +85,7 @@ namespace Heartbeat.Core
 
         // Audio (S-11)
         public static event Action<string, Vector3?> CueRequested;        // cue id, world position (null = 2D)
+        public static event Action<string> CueStopRequested;              // cue id: fade out every voice playing it
         public static event Action<string, Vector3?> CuePlayed;           // cue id actually played (tests, debug captions)
 
         // Narrative text (D-52: no voice acting, subtitles for every vocal sound)
@@ -159,6 +160,7 @@ namespace Heartbeat.Core
             return true;
         }
         public static void RaiseCueRequested(string cue, Vector3? pos) => CueRequested?.Invoke(cue, pos);
+        public static void RaiseCueStopRequested(string cue) => CueStopRequested?.Invoke(cue);
         public static void RaiseCuePlayed(string cue, Vector3? pos) => CuePlayed?.Invoke(cue, pos);
         public static void RaiseSubtitleRequested(string speaker, string key, object[] args) => SubtitleRequested?.Invoke(speaker, key, args);
         public static void RaiseOptionsChanged() => OptionsChanged?.Invoke();
@@ -206,6 +208,7 @@ namespace Heartbeat.Core
             ReadPoster = null;
             KeySwapOffered = null;
             CueRequested = null;
+            CueStopRequested = null;
             CuePlayed = null;
             SubtitleRequested = null;
             OptionsChanged = null;

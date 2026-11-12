@@ -134,6 +134,7 @@ namespace Heartbeat.Narrative
             yield return Wait(rideSeconds);
 
             // It fails: a jolt, the lights die to red, the panel asks for a repair.
+            Sfx.Stop("CUE_Elevator_Hum");
             Sfx.Play2D("CUE_Elevator_Fail");
             foreach (var l in elevatorLights) l.color = new Color(0.8f, 0.1f, 0.05f);
             yield return Flicker(0.8f);
@@ -143,6 +144,7 @@ namespace Heartbeat.Narrative
             // Cinematic: the elevator distorts and drops (D-46: the lab is the creature).
             player.MovementLocked = true;
             Cut(elevatorShot);
+            Sfx.Stop("CUE_Elevator_Fail");
             Sfx.Play2D("CUE_Elevator_Fall");
             var home = shotCamera.transform.localPosition;
             for (float t = 0f; t < fallSeconds; t += Time.deltaTime)
@@ -204,6 +206,7 @@ namespace Heartbeat.Narrative
             for (int i = 0; i < 5; i++)
             {
                 capsuleLight.intensity = 1f + i * 1.5f;
+                Sfx.Stop("CUE_Capsule_Reconstruction");   // each image restarts the sound instead of stacking five
                 Sfx.Play2D("CUE_Capsule_Reconstruction");
                 loader.SetFade(0f);
                 yield return Wait(Random.Range(1f, 2f));

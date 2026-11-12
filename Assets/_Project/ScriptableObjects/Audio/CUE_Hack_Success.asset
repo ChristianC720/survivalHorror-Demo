@@ -17,7 +17,7 @@ MonoBehaviour:
   bus: {fileID: 5292899124990059000, guid: 5e97351fc7982014ba7fbec47c6a9128, type: 2}
   priority: 1
   spatial: 1
-  volume: 1
+  volume: 0.7
   pitchRange: {x: 0.95, y: 1.05}
   maxDistance: 20
   loop: 0

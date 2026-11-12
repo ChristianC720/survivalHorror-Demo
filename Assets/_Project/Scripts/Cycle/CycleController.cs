@@ -323,6 +323,7 @@ namespace Heartbeat.Cycle
                 for (float t = 0f; t < SystemsBalance.Current.shortReconstructionSeconds && !skipRequested; t += Time.unscaledDeltaTime) yield return null;
                 StopCoroutine(shot);
                 stage.StopAll();
+                Sfx.Stop("CUE_Capsule_Reconstruction");   // 9 s clip, 3 s shot: not over the floor's ambience
             }
             loader.SetStatus(UI.Loc.Get("UI.INTRO.SUBJECT_REGISTER", Data.subjectCode.ToString("00")));   // The Mother's label (Textos del Juego)
             loader.Load(SceneNames.Floor, null, fadeOut: false);
@@ -414,6 +415,7 @@ namespace Heartbeat.Cycle
                 var shot = StartCoroutine(cabin.Play("Elevator", ride));
                 yield return loader.Fade(1f, 0f);
                 yield return shot;
+                Sfx.Stop("CUE_Elevator_Hum");   // the ride is over: nothing hums under the floor load
                 loader.SetFade(1f);
             }
             FloorSession.Pending = NextRequest(CurrentFloor);
