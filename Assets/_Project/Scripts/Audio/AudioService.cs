@@ -105,6 +105,7 @@ namespace Heartbeat.Audio
         private void OnEnable()
         {
             GameEvents.CueRequested += OnCueRequested;
+            GameEvents.CueStopRequested += StopCue;
             GameEvents.OptionsChanged += OnOptions;
             GameEvents.DegradationChanged += OnDegradation;
             GameEvents.ShotFired += OnShot;
@@ -125,6 +126,7 @@ namespace Heartbeat.Audio
         private void OnDisable()
         {
             GameEvents.CueRequested -= OnCueRequested;
+            GameEvents.CueStopRequested -= StopCue;
             GameEvents.OptionsChanged -= OnOptions;
             GameEvents.DegradationChanged -= OnDegradation;
             GameEvents.ShotFired -= OnShot;
@@ -161,6 +163,16 @@ namespace Heartbeat.Audio
             busy[i] = false;
             follow[i] = null;
         }
+
+        /// <summary>Fades out every voice playing one of the cue's clips (<see cref="Sfx.Stop"/>).</summary>
+        public void StopCue(string id)
+        {
+            if (!byName.TryGetValue(id, out var cue)) return;
+            for (int i = 0; i < pool.Length; i++)
+                if (busy[i] && pool[i].clip != null && System.Array.IndexOf(cue.clips, pool[i].clip) >= 0) fadeRate[i] = -1f / CueStopFadeSeconds;
+        }
+
+        private const float CueStopFadeSeconds = 0.2f;   // just long enough not to click
 
         /// <summary>Music with a fade-in, crossfading from <paramref name="previous"/>. <paramref name="keepPosition"/> continues at the
         /// same point of the bar: the boss loops have the same length, so a phase change links on the beat (D-87).</summary>

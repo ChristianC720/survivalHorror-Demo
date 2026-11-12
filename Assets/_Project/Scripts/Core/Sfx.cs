@@ -30,5 +30,7 @@ namespace Heartbeat.Core
 
         public static void Play(string cue, Vector3 position) => GameEvents.RaiseCueRequested(cue, position);
         public static void Play2D(string cue) => GameEvents.RaiseCueRequested(cue, null);
+        /// <summary>Fades out every playing instance of the cue, so a long one-shot does not run over the next sound of its sequence.</summary>
+        public static void Stop(string cue) => GameEvents.RaiseCueStopRequested(cue);
     }
 }

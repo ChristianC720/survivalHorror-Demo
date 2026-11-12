@@ -86,9 +86,11 @@ namespace Heartbeat.Cycle
                     foreach (float beat in ArrhythmiaBeats)
                     {
                         yield return CardUntil("", beat);
+                        Sfx.Stop("CUE_Capsule_Reconstruction");   // one flash, one hit: 17 stacked 9 s clips would fill the voice pool
                         Sfx.Play2D("CUE_Capsule_Reconstruction");
                         yield return CardUntil(DocText.Render("<c>" + Loc.Get("END.ASSIM.CAPSULE", n) + "</c>", false), beat + FlashSeconds);
                     }
+                    Sfx.Stop("CUE_Capsule_Reconstruction");   // silence for the stopped heart and The Mother's report
                     yield return CardUntil("", AssimReportAt);   // the heart stops: 2 s of nothing
                     // 2. The Mother's reclassification report (D-61).
                     Subtitles.Say(Subtitles.Mother, "SUB.MOTHER.ASSIMILATION", "R-H-" + n);

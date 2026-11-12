@@ -80,7 +80,7 @@ namespace Heartbeat.Audio
             if (lab == null) return;
             lab.volume = labCue.volume * HeartbeatModel.LabVolume(balance, degradation, critical);
             lab.pitch = HeartbeatModel.LabBpm(balance, degradation, critical) * (awakening ? 1.6f : 1f) / balance.clipBpm;
-            if (awakening) lab.volume = Mathf.Max(lab.volume, balance.labMaxVolume);
+            if (awakening) lab.volume = Mathf.Max(lab.volume, labCue.volume * balance.labMaxVolume);
             HbLog.Dev("Audio", $"Lab heartbeat degradation={degradation} critical={critical}");
         }
 
