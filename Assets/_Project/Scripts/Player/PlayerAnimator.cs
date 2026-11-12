@@ -176,6 +176,9 @@ namespace Heartbeat.Player
             if (!dead) PlayFull(spikeUsed ? "Grab_Release" : "Grab_Struggle", 0.06f);
         }
 
+        /// <summary>C-65: the Intro's scripted death (hit from behind) plays the same fall as a death by health.</summary>
+        public void PlayScriptedDeath() => OnDied(DeathCause.Health);
+
         private void OnDied(DeathCause cause)
         {
             if (cause != DeathCause.Health && cause != DeathCause.GrabInCritical) return;

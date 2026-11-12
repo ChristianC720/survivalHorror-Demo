@@ -19,9 +19,13 @@ namespace Heartbeat.UI
         private const float CellSize = 96f, CellGap = 8f, RowWidth = 832f, FlashSeconds = 0.6f, GrantedSeconds = 0.8f;
         private static readonly Color PhoneBg = new Color(0.93f, 0.91f, 0.88f);
 
+        /// <summary>C-65: the family photo as the phone's wallpaper, set by the Intro while it runs (null elsewhere).</summary>
+        public static Texture PhoneWallpaper;
+
         private RectTransform panel, row, keys;
         private Image panelImage;
         private Outline panelOutline;
+        private RawImage wallpaper;
         private TMP_Text title, status;
         private readonly List<Image> cellBoxes = new List<Image>();
         private readonly List<Outline> cellEdges = new List<Outline>();
@@ -141,6 +145,8 @@ namespace Heartbeat.UI
             off = phone ? new Color(0.55f, 0.53f, 0.5f) : new Color(0.165f, 0.498f, 0.459f);
             panelImage.color = phone ? PhoneBg : UiKit.BgTerminal;
             panelOutline.effectColor = phone ? UiKit.Bezel : off;
+            wallpaper.texture = PhoneWallpaper;
+            wallpaper.enabled = phone && PhoneWallpaper != null;
             title.color = fg;
             panel.anchorMin = panel.anchorMax = panel.pivot = phone ? new Vector2(0.5f, 0.5f) : Vector2.zero;
             panel.anchoredPosition = phone ? Vector2.zero : new Vector2(64f, 72f);
@@ -207,6 +213,12 @@ namespace Heartbeat.UI
             panelImage = UiKit.Crt(panel, UiKit.BgTerminal, off);
             panelOutline = panel.GetComponent<Outline>();
             UiKit.Column(panel, 14, 24);
+
+            wallpaper = UiKit.Stretch(UiKit.Rect("Wallpaper", panel), Vector2.zero, Vector2.one).gameObject.AddComponent<RawImage>();
+            wallpaper.gameObject.AddComponent<LayoutElement>().ignoreLayout = true;
+            wallpaper.color = new Color(1f, 1f, 1f, 0.45f);   // faded behind the keys, which keep their solid fills
+            wallpaper.raycastTarget = false;
+            wallpaper.enabled = false;
 
             title = UiKit.Text(panel, Loc.Get("UI.HACK.TITLE"), 28, UiKit.Teal, true);
             title.alignment = TextAlignmentOptions.MidlineLeft;
