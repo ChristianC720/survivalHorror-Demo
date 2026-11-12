@@ -81,6 +81,7 @@ namespace Heartbeat.Narrative
         [SerializeField] private float faceDistance = 0.7f;
         [Tooltip("Both face shots are turned this much around the spine (the capsule's front bar would cover a straight one).")]
         [SerializeField] private float faceAngle = 28f;
+        [SerializeField] private float faceKeyIntensity = 1.5f;      // small light on the dead civil face
 
         private const int VoiceLines = 7;   // SUB.EMILIA.NOTE_1..7 (Textos del Juego, nota de voz)
         private static readonly float[] HeartGaps = { 0.8f, 0.9f, 1.1f, 1.4f, 1.9f };   // the beat slows, then stops
@@ -296,8 +297,16 @@ namespace Heartbeat.Narrative
             HbLog.Info("Intro", "Heart stopped");
             yield return Wait(bodySeconds - Sum(HeartGaps));
 
-            FrameFace("FaceCivil", anim, lying: true);
+            FrameFace("FaceCivil", anim);
+            var key = new GameObject("FaceKey").AddComponent<Light>();   // the corridor lights leave his face black; the R-H-07 face has the capsule light
+            key.type = LightType.Point;
+            key.range = 1.6f;
+            key.intensity = faceKeyIntensity;
+            key.color = new Color(0.75f, 0.85f, 1f);
+            key.transform.SetParent(Find("FaceCivil").transform, false);
+            key.transform.localPosition = new Vector3(0.15f, 0.25f, 0f);
             yield return Wait(faceSeconds);
+            Destroy(key.gameObject);
             loader.SetFade(1f);
             yield return Wait(1f);
         }
@@ -428,14 +437,12 @@ namespace Heartbeat.Narrative
         }
 
         /// <summary>The same close framing for both faces (civil and R-H-07), so the two bodies compare.</summary>
-        private void FrameFace(string id, Animator body, bool lying = false)
+        private void FrameFace(string id, Animator body)
         {
             Transform head = body.GetBoneTransform(HumanBodyBones.Head);
             Vector3 up = (head.position - Chest(body).position).normalized;
             Vector3 eye = head.position + up * 0.06f;
-            // Lying on his back the head tips back: seen from straight above, only hair shows. Look from over the chest.
-            Vector3 dir = lying ? (Facing(body, up, 0f) - up).normalized : Facing(body, up, faceAngle);
-            Aim(id, eye + dir * faceDistance, eye);
+            Aim(id, eye + Facing(body, up, faceAngle) * faceDistance, eye);
         }
 
         /// <summary>Frames a bone from in front of the body, turned <paramref name="angle"/> degrees around its spine.</summary>
