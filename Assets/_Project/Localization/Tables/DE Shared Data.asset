@@ -95,6 +95,10 @@ MonoBehaviour:
     m_Key: DE.WERKSCHUTZ
     m_Metadata:
       m_Items: []
+  - m_Id: 523019947737088
+    m_Key: DE.DURCHSAGEN_NUR_NACH_FREIGABE
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

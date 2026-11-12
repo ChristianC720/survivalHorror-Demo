@@ -31,8 +31,8 @@ UI.TERM.DISCARD	DISCARD	DISCARD	KEEP-EN (D-62 terminal label)
 UI.TERM.NO_LOGS	No records.	Sin registros.
 UI.TERM.FAULT_USES	FAULT ACTIVE: {0} USE(S) LEFT	FAULT ACTIVE: {0} USE(S) LEFT	KEEP-EN (D-62 terminal label)
 UI.TERM.FAULT_PATCHED	FAULT PATCHED BY THE MOTHER	FAULT PATCHED BY THE MOTHER	KEEP-EN (D-62 terminal label)
-UI.TERM.EMILIA_COUNT	EMILIA FILE: {0}/6	EMILIA FILE: {0}/6	KEEP-EN (D-62 terminal label)
-UI.TERM.CAT_EMILIA	Emilia's file	Expediente de Emilia
+UI.TERM.EMILIA_COUNT	FILES: {0}/6	FILES: {0}/6	KEEP-EN (D-62 terminal label)
+UI.TERM.CAT_EMILIA	Files	Expedientes	
 UI.TERM.CAT_DOCS	Documents	Documentos
 UI.TERM.CAT_BESTIARY	Bestiary	Bestiario
 UI.TERM.CAT_CONFISCATED	Confiscated objects	Objetos confiscados

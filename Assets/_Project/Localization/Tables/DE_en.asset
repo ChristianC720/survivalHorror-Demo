@@ -98,6 +98,10 @@ MonoBehaviour:
     m_Localized: Plant security
     m_Metadata:
       m_Items: []
+  - m_Id: 523019947737088
+    m_Localized: Announcements only after clearance.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

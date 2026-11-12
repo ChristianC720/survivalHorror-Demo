@@ -9,9 +9,9 @@
 |---|---|
 | `UI` | menus, options, prompts, terminal labels (`HEALTH: FINE` …), confirmations |
 | `SUB` | subtitles: The Mother's protocol lines, Lukas's murmurs, Emilia's voice note |
-| `DOC` | 6 Emilia documents, 12 context documents (Vitalis memos, Kessler guard reports, The Mother's clinical reports, incident logs) |
+| `DOC` | 6 Emilia documents (the "files"), 18 context documents (Vitalis memos, Kessler guard reports, The Mother's clinical reports, incident logs) |
 | `BEST` | bestiary entries (clinical reports) for the 4 enemy types + recycled |
-| `CONF` | 12 confiscated objects (label: code, date, owner + 1–2 cold lines) |
+| `CONF` | 12 confiscated objects (label: code - date, no owner + 1 cold line) |
 | `POST` | tutorial and ambience posters (key names come from the binding, `{key}` smart string) |
 | `END` | ending texts and credits |
 | `CAP` | sound captions (D-102): `CAP.<CUE name without CUE_, upper case>` for every Signal cue, shown by `UI.SoundCaptionView` with an approximate direction |
