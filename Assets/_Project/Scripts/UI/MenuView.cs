@@ -281,7 +281,7 @@ namespace Heartbeat.UI
                 Column(cols, d.SubjectLabel, 130);
                 Column(cols, Loc.Get("UI.MODE_LABEL." + d.mode), 200);
                 Column(cols, Loc.Get("UI.SLOT.FLOOR", FloorOf(d)), 120);
-                Column(cols, Loc.Get("UI.SLOT.EMILIA", d.terminal.Count(e => e.kind == RecordKind.EmiliaDocument)), 170);
+                Column(cols, Loc.Get("UI.SLOT.EMILIA", d.terminal.Count(e => e.kind == RecordKind.EmiliaDocument)), 210);
                 Column(cols, date, 280);
             }
             else Column(cols, Loc.Get(status == SlotStatus.Empty ? "UI.SLOT.EMPTY" : "UI.SLOT.DAMAGED"), 500);
