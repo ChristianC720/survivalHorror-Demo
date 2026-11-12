@@ -39,4 +39,4 @@ MonoBehaviour:
   doorTransmission: 0.5
   occlusionInterval: 0.2
   strideLength: 0.8
-  minStepSpeed: 1
+  minStepSpeed: 1.1

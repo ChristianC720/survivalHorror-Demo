@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 namespace Heartbeat.Player
 {
     /// <summary>
-    /// Lukas's locomotion (M-06, M-09): crouch 0.8 / walk 1.5 / run 4 m/s, health multipliers, stamina drain while
+    /// Lukas's locomotion (M-06, M-09): crouch 1 / walk 1.8 / run 4.5 m/s, health multipliers, stamina drain while
     /// running, movement noise pulses. Camera-relative movement. No jump, no dodge (Controles).
     /// Other systems set <see cref="IsAiming"/> and <see cref="IsSurveilling"/>; this class never reads devices.
     /// </summary>
