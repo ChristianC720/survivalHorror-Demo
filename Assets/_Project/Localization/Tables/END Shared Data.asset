@@ -51,10 +51,6 @@ MonoBehaviour:
     m_Key: END.RELIEF.FULL
     m_Metadata:
       m_Items: []
-  - m_Id: 19800301633541
-    m_Key: END.AMBIGUOUS.SYNC
-    m_Metadata:
-      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -7,7 +7,8 @@ using UnityEngine;
 namespace Heartbeat.UI
 {
     /// <summary>
-    /// Vitalis safety poster of the tutorial rooms (D-89): English text with the current binding of each action,
+    /// Vitalis safety poster of the tutorial rooms (D-89): English on the wall, the selected language when read (C-51),
+    /// with the current binding of each action,
     /// following the last device used and rebinding on the fly (D-132). Placed by hand in the F1 tutorial room prefabs
     /// (pivot on the wall face, local +Z into the wall); <see cref="Generation.FloorBuilder"/> keeps it only in the fixed
     /// rooms of the first attempt and switches it off everywhere else (procedural reuse, F2/F3 re-dressed variants).
@@ -30,24 +31,26 @@ namespace Heartbeat.UI
                 HbLog.Info("Registry", isNew ? $"REGISTERED {RecordId}" : $"Already registered {RecordId}");
                 GameEvents.RaiseItemRegistered(RecordId, (int)Narrative.RecordKind.Poster, isNew);
             }
-            GameEvents.RaiseReadPoster(text.text, null);
+            GameEvents.RaiseReadPoster(Render(RecordId, router), null);   // read in the selected language; the wall stays English
         }
 
-        /// <summary>The poster's text from its registry id, with the keys of the current device.</summary>
-        public static string Render(string recordId, InputRouter router) => Headline(Text(recordId, router));
+        /// <summary>The poster's text from its registry id, with the keys of the current device. <paramref name="inWorld"/>: always English.</summary>
+        public static string Render(string recordId, InputRouter router, bool inWorld = false) => Headline(Text(recordId, router, inWorld));
 
         /// <summary>The poster's headline (its first line), the title of its entry in the terminal.</summary>
         public static string TitleOf(string recordId, InputRouter router)
         {
-            string s = Text(recordId, router);
+            string s = Text(recordId, router, false);
             int br = s.IndexOf('\n');
             return br < 0 ? s : s.Substring(0, br);
         }
 
-        private static string Text(string recordId, InputRouter router)
+        private static string Text(string recordId, InputRouter router, bool english)
         {
             int bar = recordId.IndexOf('|');
-            return bar < 0 ? Loc.Get(recordId) : Loc.Get(recordId.Substring(0, bar), Keys(recordId.Substring(bar + 1), router));
+            string key = bar < 0 ? recordId : recordId.Substring(0, bar);
+            object[] keys = bar < 0 ? new object[0] : Keys(recordId.Substring(bar + 1), router);
+            return english ? Loc.GetEnglish(key, keys) : Loc.Get(key, keys);
         }
 
         private static object[] Keys(string actions, InputRouter router) => actions.Split(',').Select(a =>
@@ -97,7 +100,7 @@ namespace Heartbeat.UI
         private void Refresh()
         {
             if (text == null) return;
-            text.text = Render(RecordId, router);
+            text.text = Render(RecordId, router, true);
         }
 
         /// <summary>The first line is the headline, bold in deep Vitalis cyan (D-157), so a safety poster reads at a glance.

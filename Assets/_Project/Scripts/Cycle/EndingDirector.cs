@@ -129,7 +129,7 @@ namespace Heartbeat.Cycle
                         yield return CardUntil(Loc.Get("END.RELIEF.FULL"), Bar * 6);
                         // He hears the second act: on screen only total glitch, never readable (D-61, D-16).
                         Sfx.Play2D("CUE_Ending_BeatLab");
-                        yield return CardUntil(DocText.Render("<c>" + Loc.Get("END.RELIEF.BASIC") + " " + Loc.Get("END.AMBIGUOUS.SYNC") + "</c>", false), Bar * 8);
+                        yield return CardUntil(DocText.Render("<c>" + Loc.Get("END.RELIEF.BASIC") + "</c>", false), Bar * 8);
                     }
                     if (id == "Ambiguous")
                     {
@@ -145,7 +145,6 @@ namespace Heartbeat.Cycle
                             Sfx.Play2D("CUE_Ending_BeatLab");
                             for (float t = 0f; t < 1.1f - gap; t += Time.unscaledDeltaTime) yield return null;
                         }
-                        yield return Card(Loc.Get("END.AMBIGUOUS.SYNC"), cardSeconds);
                         yield return Card("", 2f);   // silence before the hook
                     }
                     // Open hook: a new arrival and The Mother starting the protocol (D-51).

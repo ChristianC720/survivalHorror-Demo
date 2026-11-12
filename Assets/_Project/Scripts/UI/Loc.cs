@@ -18,6 +18,15 @@ namespace Heartbeat.UI
             return LocalizationSettings.StringDatabase.GetLocalizedString(key.Substring(0, dot), key, args);
         }
 
+        /// <summary>The English text whatever the selected language: signs fixed in the world, like the Vitalis safety posters (C-51).</summary>
+        public static string GetEnglish(string key, params object[] args)
+        {
+            int dot = string.IsNullOrEmpty(key) ? -1 : key.IndexOf('.');
+            if (dot <= 0) return key ?? "";
+            var english = LocalizationSettings.AvailableLocales.GetLocale(new LocaleIdentifier("en"));
+            return LocalizationSettings.StringDatabase.GetLocalizedString(key.Substring(0, dot), key, english, FallbackBehavior.UseProjectSettings, args);
+        }
+
         public static string Language => LocalizationSettings.SelectedLocale != null ? LocalizationSettings.SelectedLocale.Identifier.Code : "en";
 
         /// <summary>Switch at runtime ("en" / "es"). Every LocalizedLabel refreshes through SelectedLocaleChanged.</summary>

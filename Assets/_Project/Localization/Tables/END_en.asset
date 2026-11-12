@@ -54,10 +54,6 @@ MonoBehaviour:
     m_Localized: 'R-H-01 TO R-H-06. STATUS: UNKNOWN'
     m_Metadata:
       m_Items: []
-  - m_Id: 19800301633541
-    m_Localized: Two heartbeats. Then one.
-    m_Metadata:
-      m_Items: []
   references:
     version: 2
     RefIds: []

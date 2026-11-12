@@ -19,59 +19,39 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 230949035048960
-    m_Localized: 'WELCOME BACK, VALUED COLLEAGUE.
+    m_Localized: 'BIENVENIDO DE VUELTA, ESTIMADO COLEGA.
 
-      Company property may be handled with [{0}].
+      Los bienes de la empresa se manipulan con [{0}].
 
       <i>Sicherheit geht vor.</i>'
     m_Metadata:
       m_Items: []
   - m_Id: 230949106352128
-    m_Localized: 'YOUR ARM TERMINAL REMEMBERS SO YOU DON''T HAVE TO.
-
-      Consult it at any time: [{0}]. Scheduled breaks: [{1}].
-
-      <i>Vitalis Konzern dankt Ihnen.</i>'
+    m_Localized: "SU TERMINAL DEL BRAZO RECUERDA PARA QUE USTED NO TENGA QUE HACERLO.\nCons\xFAltelo en cualquier momento: [{0}]. Pausas programadas: [{1}].\n<i>Vitalis Konzern dankt Ihnen.</i>"
     m_Metadata:
       m_Items: []
   - m_Id: 230949110546432
-    m_Localized: 'IN CASE OF DARKNESS: PRESS [{0}].
-
-      Batteries are company property. Do not waste light.
-
-      <i>Licht aus, Ruhe bewahren.</i>'
+    m_Localized: "EN CASO DE OSCURIDAD: PULSE [{0}].\nLas bater\xEDas son propiedad de la empresa. No desperdicie la luz.\n<i>Licht aus, Ruhe bewahren.</i>"
     m_Metadata:
       m_Items: []
   - m_Id: 230949110546433
-    m_Localized: 'ALL FINDINGS MUST BE DECLARED.
+    m_Localized: 'TODO HALLAZGO DEBE DECLARARSE.
 
-      Review your belongings with [{0}]. Pick up with [{1}].
+      Revise sus pertenencias con [{0}]. Recoja con [{1}].
 
       <i>Fundsachen melden.</i>'
     m_Metadata:
       m_Items: []
   - m_Id: 230949114740736
-    m_Localized: 'RUNNING IN CORRIDORS IS PERMITTED IN EMERGENCIES ONLY.
-
-      Hold [{0}]. Mind your breathing.
-
-      <i>Nicht rennen.</i>'
+    m_Localized: "SOLO SE PERMITE CORRER EN LOS PASILLOS EN CASO DE EMERGENCIA.\nMantenga [{0}]. Cuide su respiraci\xF3n.\n<i>Nicht rennen.</i>"
     m_Metadata:
       m_Items: []
   - m_Id: 230949114740737
-    m_Localized: 'NOISE IS A WORKPLACE HAZARD.
-
-      Move quietly: [{0}].
-
-      <i>Ruhe im Betrieb.</i>'
+    m_Localized: "EL RUIDO ES UN RIESGO LABORAL.\nMu\xE9vase en silencio: [{0}].\n<i>Ruhe im Betrieb.</i>"
     m_Metadata:
       m_Items: []
   - m_Id: 230949114740738
-    m_Localized: 'UNAUTHORISED CONTACT?
-
-      Shove: [{0}]. Hold [{1}] to aim, then [{0}] fires. Reload: [{2}].
-
-      <i>Munition sparsam verwenden.</i>'
+    m_Localized: "\xBFCONTACTO NO AUTORIZADO?\nEmpuje: [{0}]. Mantenga [{1}] para apuntar y dispare con [{0}]. Recarga: [{2}].\n<i>Munition sparsam verwenden.</i>"
     m_Metadata:
       m_Items: []
   - m_Id: 298167991140352
@@ -97,27 +77,19 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1528817867948032
-    m_Localized: 'FIRST AID IS A PRIVILEGE, NOT A RIGHT.
-
-      Open your terminal [{0}], then use an item [{1}] or discard it [{2}].
-
-      <i>Erste Hilfe nur im Notfall.</i>'
+    m_Localized: "LOS PRIMEROS AUXILIOS SON UN PRIVILEGIO, NO UN DERECHO.\nAbra su terminal [{0}] y use un objeto [{1}] o desc\xE1rtelo [{2}].\n<i>Erste Hilfe nur im Notfall.</i>"
     m_Metadata:
       m_Items: []
   - m_Id: 1528817951834112
-    m_Localized: "THE COMPANY SEES WHAT YOU SEE.\nTap into nearby cameras: [{0}]. Stand still while connected.\n<i>Kamera\xFCberwachung aktiv.</i>"
+    m_Localized: "LA EMPRESA VE LO QUE USTED VE.\nCon\xE9ctese a las c\xE1maras cercanas: [{0}]. No se mueva mientras est\xE9 conectado.\n<i>Kamera\xFCberwachung aktiv.</i>"
     m_Metadata:
       m_Items: []
   - m_Id: 1528817951834113
-    m_Localized: 'MAINTENANCE PANELS: AUTHORISED STAFF ONLY.
-
-      At a panel [{0}], enter the code with [{1}] [{2}] [{3}] [{4}]. Abort: [{5}]. Known fault: [{6}].
-
-      <i>Unbefugter Zugriff verboten.</i>'
+    m_Localized: "PANELES DE MANTENIMIENTO: SOLO PERSONAL AUTORIZADO.\nEn un panel [{0}], introduzca el c\xF3digo con [{1}] [{2}] [{3}] [{4}]. Cancelar: [{5}]. Falla conocida: [{6}].\n<i>Unbefugter Zugriff verboten.</i>"
     m_Metadata:
       m_Items: []
   - m_Id: 1528817951834114
-    m_Localized: "DECEASED COLLEAGUES MAY NOT BE LEFT UNATTENDED.\nOver a body: strike [{0}], or drive a discharge spike [{1}].\n<i>Nichts darf zur\xFCckbleiben.</i>"
+    m_Localized: "LOS COLEGAS FALLECIDOS NO PUEDEN QUEDAR SIN ATENDER.\nSobre un cuerpo: golpee [{0}] o clave un punz\xF3n de descarga [{1}].\n<i>Nichts darf zur\xFCckbleiben.</i>"
     m_Metadata:
       m_Items: []
   references:
