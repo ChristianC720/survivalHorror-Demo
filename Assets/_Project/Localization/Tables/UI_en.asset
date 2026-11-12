@@ -235,7 +235,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 2394030132
-    m_Localized: "{0} \xB7 {1} \xB7 Floor {2} \xB7 Emilia {3}/6 \xB7 {4}"
+    m_Localized: "{0} \xB7 {1} \xB7 Floor {2} \xB7 Files {3}/6 \xB7 {4}"
     m_Metadata:
       m_Items: []
   - m_Id: 2394030133
@@ -623,7 +623,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1124350085431317
-    m_Localized: Emilia {0}/6
+    m_Localized: Files {0}/6
     m_Metadata:
       m_Items: []
   - m_Id: 1124350085431318
