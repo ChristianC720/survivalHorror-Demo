@@ -34,7 +34,7 @@ namespace Heartbeat.Tests
             player = Object.FindAnyObjectByType<PlayerController>();
             health = player.GetComponent<PlayerHealth>();
             inventory = player.GetComponent<PlayerInventory>();
-            var brains = Object.FindObjectsByType<EnemyBrain>(FindObjectsSortMode.None);
+            var brains = Object.FindObjectsByType<EnemyBrain>();
             alto = brains.FirstOrDefault(b => b.Definition.type == EnemyType.Alto);
             if (alto == null) Assert.Inconclusive("no Alto on this floor");
             foreach (var b in brains) if (b != alto) b.gameObject.SetActive(false);
