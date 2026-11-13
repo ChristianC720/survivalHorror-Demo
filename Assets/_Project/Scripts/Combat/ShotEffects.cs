@@ -8,7 +8,7 @@ namespace Heartbeat.Combat
     /// <summary>
     /// Revolver visual effects (C-71): a muzzle flash on <see cref="GameEvents.ShotFired"/> and, where a shot lands on a
     /// surface without <see cref="IDamageable"/>, sparks, dust and a bullet mark that fades out. Enemies, alive or dead,
-    /// never get this impact. Both run through one <see cref="VfxPool"/>.
+    /// never get this impact. A live enemy gets a dark blood splatter instead (C-72). All of them run through one <see cref="VfxPool"/>.
     /// </summary>
     public sealed class ShotEffects : MonoBehaviour
     {
@@ -19,6 +19,7 @@ namespace Heartbeat.Combat
         [SerializeField] private Transform muzzle;
         [SerializeField] private GameObject muzzleFlashPrefab;
         [SerializeField] private GameObject impactPrefab;
+        [SerializeField] private GameObject splatterPrefab;
 
         private GameObject root;
         private VfxPool pool;
@@ -37,6 +38,7 @@ namespace Heartbeat.Combat
         {
             GameEvents.ShotFired += OnShot;
             GameEvents.ShotImpact += OnImpact;
+            GameEvents.ShotHitEnemy += OnHitEnemy;
             GameEvents.FloorBuilt += OnFloorBuilt;
         }
 
@@ -44,6 +46,7 @@ namespace Heartbeat.Combat
         {
             GameEvents.ShotFired -= OnShot;
             GameEvents.ShotImpact -= OnImpact;
+            GameEvents.ShotHitEnemy -= OnHitEnemy;
             GameEvents.FloorBuilt -= OnFloorBuilt;
         }
 
@@ -64,6 +67,12 @@ namespace Heartbeat.Combat
         {
             if (!IsMine(origin)) return;
             pool.Spawn(impactPrefab, balance.bulletMarkMax, point, Quaternion.LookRotation(normal), balance.bulletMarkSeconds);
+        }
+
+        private void OnHitEnemy(Vector3 origin, Vector3 point, Vector3 normal)
+        {
+            if (!IsMine(origin)) return;
+            pool.Spawn(splatterPrefab, balance.splatterMax, point, Quaternion.LookRotation(normal), balance.splatterSeconds);
         }
 
         private void OnFloorBuilt(int floor, int seed) => pool.Clear();

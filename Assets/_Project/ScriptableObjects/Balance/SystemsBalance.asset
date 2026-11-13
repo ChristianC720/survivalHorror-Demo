@@ -27,5 +27,7 @@ MonoBehaviour:
   enemyDoorOpenDelaySeconds: 5
   sealHoldSeconds: 0.5
   sealTapSeconds: 0.25
+  hitMarkerSeconds: 0.3
+  hitFlashSeconds: 0.1
   storyHitsMultiplier: 2
   storyDetectionMultiplier: 0.5

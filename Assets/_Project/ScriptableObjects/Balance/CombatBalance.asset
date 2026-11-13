@@ -25,6 +25,8 @@ MonoBehaviour:
   muzzleFlashSeconds: 0.06
   bulletMarkSeconds: 10
   bulletMarkMax: 20
+  splatterSeconds: 0.6
+  splatterMax: 6
   shoveRange: 1.6
   shoveRadius: 0.6
   shoveStaggerSeconds: 1.2

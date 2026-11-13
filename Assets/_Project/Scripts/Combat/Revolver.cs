@@ -136,6 +136,7 @@ namespace Heartbeat.Combat
             bool landed = BulletMagnet.Resolve(camOrigin, dir, chest, balance.range, balance.bulletMagnetRadius,
                 balance.bulletMagnetMaxDegrees, shotMask, hitboxLayer, out var hit, out dir);
             string hitName = "nothing";
+            Vector3 origin = muzzle != null ? muzzle.position : transform.position;
             if (landed)
             {
                 hitName = hit.collider.name;
@@ -145,11 +146,12 @@ namespace Heartbeat.Combat
                 {
                     target.ReceiveShot(new ShotHit(hit.point, dir, weak != null));
                     GameEvents.RaiseShotLanded(weak != null, !target.IsAlive);
+                    GameEvents.RaiseShotHitEnemy(origin, hit.point, hit.normal);
+                    Sfx.Play2D(Sfx.HitCue(weak != null, !target.IsAlive));
                 }
                 Debug.DrawLine(chest, hit.point, Color.yellow, 0.5f);
             }
 
-            Vector3 origin = muzzle != null ? muzzle.position : transform.position;
             GameEvents.RaiseNoiseEmitted(new NoiseInfo(origin, balance.shotNoiseRadius, NoiseSource.Shot));
             GameEvents.RaiseShotFired(origin);
             if (landed && ShotEffects.ShowsImpact(hit.collider)) GameEvents.RaiseShotImpact(origin, hit.point, hit.normal);

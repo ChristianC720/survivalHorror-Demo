@@ -741,6 +741,7 @@ GameObject:
   - component: {fileID: 3832383360589686939}
   - component: {fileID: 4105343024025492986}
   - component: {fileID: 4524424309478913051}
+  - component: {fileID: 6526496570314122146}
   m_Layer: 11
   m_Name: Enemy_Boca
   m_TagString: Untagged
@@ -879,6 +880,19 @@ MonoBehaviour:
   - {fileID: 0}
   noiseDegrees: 3
   recycledNoiseDegrees: 9
+--- !u!114 &6526496570314122146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4636455638720379637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dd87dafb08b9164ba4c3f8daac63fd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Heartbeat.Runtime::Heartbeat.Render.HitFlash
+  flashMaterial: {fileID: 2100000, guid: 888d930e1c9387042890b8a78bd01bf4, type: 2}
 --- !u!1 &5026360464689156904
 GameObject:
   m_ObjectHideFlags: 0

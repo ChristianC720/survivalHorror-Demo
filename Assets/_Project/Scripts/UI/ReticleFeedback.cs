@@ -5,16 +5,20 @@ using UnityEngine.UI;
 
 namespace Heartbeat.UI
 {
-    /// <summary>Combat feedback on the reticle (D-163): tints over targets, and a four-tick hit marker for hits, weak points and kills.</summary>
+    /// <summary>
+    /// Combat feedback on the reticle (D-163): tints over targets, and a four-tick hit marker for hits, weak points and
+    /// kills. The marker grows in, holds and shrinks out over <see cref="SystemsBalance.hitMarkerSeconds"/> (C-72).
+    /// </summary>
     public sealed class ReticleFeedback : MonoBehaviour
     {
-        private const float MarkerSeconds = 0.18f, Range = 60f;
+        private const float Range = 60f;
 
         private Graphic[] parts;
         private Color[] baseColors;
         private readonly Image[] ticks = new Image[4];
         private RectTransform marker;
-        private float markerUntil;
+        private float markerStart = float.NegativeInfinity, markerSize = 1f;
+        private Color markerColor;
         private int mask;
 
         private void Awake()
@@ -47,15 +51,32 @@ namespace Heartbeat.UI
 
         private void OnShot(bool weakPoint, bool killed)
         {
-            Color color = killed ? UiKit.Red : weakPoint ? UiKit.Amber : UiKit.Text1;
-            marker.localScale = Vector3.one * (killed ? 1.5f : 1f);
-            foreach (var t in ticks) { t.color = color; t.enabled = true; }
-            markerUntil = Time.unscaledTime + MarkerSeconds;
+            markerColor = killed ? UiKit.Red : weakPoint ? UiKit.Amber : UiKit.Text1;
+            markerSize = killed ? 1.5f : 1f;
+            markerStart = Time.unscaledTime;
+        }
+
+        /// <summary>Marker scale and alpha at <paramref name="t"/> (0..1 of its life): grows in, holds, shrinks and fades out.</summary>
+        public static void MarkerPose(float t, out float scale, out float alpha)
+        {
+            const float growEnd = 0.2f, shrinkStart = 0.6f;
+            if (t < growEnd) { scale = Mathf.Lerp(0.5f, 1f, t / growEnd); alpha = 1f; }
+            else if (t < shrinkStart) { scale = 1f; alpha = 1f; }
+            else { float k = Mathf.Clamp01((t - shrinkStart) / (1f - shrinkStart)); scale = Mathf.Lerp(1f, 0.6f, k); alpha = 1f - k; }
         }
 
         private void Update()
         {
-            if (Time.unscaledTime >= markerUntil) foreach (var t in ticks) t.enabled = false;
+            float t = (Time.unscaledTime - markerStart) / SystemsBalance.Current.hitMarkerSeconds;
+            bool show = t >= 0f && t < 1f;
+            if (show)
+            {
+                MarkerPose(t, out float scale, out float alpha);
+                marker.localScale = Vector3.one * (markerSize * scale);
+                var c = markerColor; c.a *= alpha;
+                foreach (var tick in ticks) tick.color = c;
+            }
+            foreach (var tick in ticks) tick.enabled = show;
             var cam = Camera.main;
             if (cam == null) return;
 
