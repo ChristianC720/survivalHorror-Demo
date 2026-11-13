@@ -31,6 +31,8 @@ namespace Heartbeat.Player
         public bool IsSurveilling { get; set; }
         /// <summary>When true (hacking, cinematics, heal animation lock) the character does not move.</summary>
         public bool MovementLocked { get; set; }
+        /// <summary>C-64: held by an enemy's grab. No walking, running or crouching; aiming and firing still work.</summary>
+        public bool Grabbed { get; set; }
         public float CurrentSpeed { get; private set; }
         /// <summary>Camera used for camera-relative movement (set by the OTS camera rig).</summary>
         public Transform CameraTransform { get => cameraTransform; set => cameraTransform = value; }
@@ -93,6 +95,7 @@ namespace Heartbeat.Player
 
         private void OnCrouch(InputAction.CallbackContext _)
         {
+            if (Grabbed) return;
             if (!crouchToggle) { if (!IsCrouched) SetCrouched(true); return; }
             if (IsCrouched && !CanStandUp()) return;
             SetCrouched(!IsCrouched);
@@ -100,7 +103,7 @@ namespace Heartbeat.Player
 
         private void Update()
         {
-            Vector2 move = MovementLocked ? Vector2.zero : DebugMove ?? (hasInput ? actions.Move.ReadValue<Vector2>() : Vector2.zero);
+            Vector2 move = MovementLocked || Grabbed ? Vector2.zero : DebugMove ?? (hasInput ? actions.Move.ReadValue<Vector2>() : Vector2.zero);
             bool wantsRun = DebugMove.HasValue ? DebugRun : hasInput && actions.Sprint.IsPressed();
 
             Vector3 dir = CameraRelative(move);
@@ -124,7 +127,7 @@ namespace Heartbeat.Player
 
             // Lukas always faces the camera (look input), not only when aiming: the flashlight never points into his
             // own body and movement strafes / backpedals relative to the view.
-            if (!IsAiming && !MovementLocked && cameraTransform != null)
+            if (!IsAiming && !MovementLocked && !Grabbed && cameraTransform != null)
             {
                 Vector3 look = cameraTransform.forward; look.y = 0f;
                 if (look.sqrMagnitude > 0.0001f)
@@ -185,6 +188,20 @@ namespace Heartbeat.Player
 
         /// <summary>Tests: crouch or stand up as the Crouch input would.</summary>
         public void DebugCrouch(bool on) => SetCrouched(on);
+
+        /// <summary>C-64: a grab drags Lukas. Goes through CharacterController.Move so walls stay solid.</summary>
+        public void Pull(Vector3 delta)
+        {
+            Vector3 before = transform.position;
+            controller.Move(delta);
+            GuardTunnelling(before);
+        }
+
+        /// <summary>C-64: a grab stands Lukas up when there is room, so the hands reach his shoulders.</summary>
+        public void StandUp()
+        {
+            if (IsCrouched && CanStandUp()) SetCrouched(false);
+        }
 
         /// <summary>Debug console / tests: teleport Lukas and face yaw degrees.</summary>
         public void DebugTeleport(float x, float y, float z, float yaw)

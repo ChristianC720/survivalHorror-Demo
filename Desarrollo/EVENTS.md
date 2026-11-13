@@ -14,6 +14,7 @@
 | `HuntChanged` | `bool hunting` (first enemy enters Hunt / last one leaves) | S-02 → S-01 (cut + lock), S-07 (pending autosave, exit cost), Level (transit lockdown) | M-03, D-96 |
 | `PlayerAttacked` | `AttackInfo info` | S-02 → S-03 | S-03 |
 | `PlayerGesture` | `string gesture` (animation name: Shove, Use_Door, Heal...) | S-03, Interaction, S-05 → PlayerAnimator | D-151 |
+| `GrabStarted` | `MonoBehaviour grabber` (`EnemyBrain`; grab windup: Lukas is pulled to the hands, a hack is cancelled) | S-02 → S-03, Level | M-11 |
 | `GrabResolved` | `bool spikeUsed` (grabs arrive as `PlayerAttacked` with `IsGrab`) | S-03 → UI, S-11 | M-11 |
 | `HealthStateChanged` | `HealthState state` | S-03 → UI, Player (posture), S-11 | M-05 |
 | `PlayerDied` | `DeathCause cause` | S-03 → S-08 | S-08 |
@@ -42,5 +43,6 @@
 | `AimChanged` | `bool aiming` | Camera → UI, Flashlight | M-01 |
 | `ShotFired` | `Vector3 origin` | Combat → S-01 (attention), S-11 | M-04 |
 | `InventoryChanged` | – | S-05 → UI, S-07 | M-07 |
+| `ItemPickedUp` | `string kind, int amount` (a `WorldItem` picked up; local telemetry counts spikes found) | Interaction → S-11 | M-07 |
 | `GameStateChanged` | `GameStateId from, GameStateId to` | state machine → all | Reglas y Estados |
 | `InputContextChanged` | `InputContext ctx` | InputRouter → UI prompts | Controles |
