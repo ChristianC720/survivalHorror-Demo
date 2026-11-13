@@ -28,6 +28,7 @@ Source: `GDD/05 - Arte y Audio/05 - Audio y Música.md`, S-11 in `GDD/02 - Dise�
 | `CUE_Revolver_Shot` | Player&Combat / 2 | ✔ | – | shot (noise ~20 m) | M-04, D-74 |
 | `CUE_Revolver_ReloadRound` | Player&Combat / 2 | ✔ | – | each round loaded | M-04 |
 | `CUE_Revolver_DryFire` | Player&Combat / 2 | ✔ | – | empty drum | M-04 |
+| `CUE_Hit_Body` / `CUE_Hit_WeakPoint` / `CUE_Hit_Kill` | PlayerCombat / 2 | – | – | a shot lands on a live enemy: body, weak point, kill (`Sfx.HitCue`, C-72) | C-72 |
 | `CUE_Shove` | Player&Combat / 2 | ✔ | – | shove / butt strike | M-06 |
 | `CUE_Spike_Discharge` | Player&Combat / 2 | ✔ | – | spike fires (grab or finisher) | M-11, M-20 |
 | `CUE_Hack_Input` / `CUE_Hack_Error` / `CUE_Hack_Success` | Signals / 1 | ✔ | – | hacking | M-13 |
