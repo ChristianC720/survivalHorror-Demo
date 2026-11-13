@@ -77,7 +77,7 @@ namespace Heartbeat.Core
 
         // Inventory / interaction
         public static event Action InventoryChanged;
-        public static event Action<MonoBehaviour> DoorSealed;             // DoorLeaf sealed with a hold (telemetry, C-66)
+        public static event Action<MonoBehaviour> DoorSealed;             // DoorLeaf sealed by the quick seal hack (telemetry, C-66, C-69)
         public static event Action<string, int> ItemPickedUp;             // item kind, amount taken (telemetry, C-64)
         public static event Action<string> InventoryFull;                 // item kind that did not fit
         public static event Action<MonoBehaviour> InteractTargetChanged;  // null = nothing to interact with
