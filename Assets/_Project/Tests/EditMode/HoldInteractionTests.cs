@@ -4,10 +4,10 @@ using NUnit.Framework;
 
 namespace Heartbeat.Tests
 {
-    /// <summary>C-59: on a closed door a tap of Interact opens it and a 2 s hold seals it.</summary>
+    /// <summary>C-59, C-69: on a closed door a tap of Interact opens it and a 0.5 s hold opens the quick seal hack.</summary>
     public sealed class HoldInteractionTests
     {
-        private const float Tap = 0.25f, Hold = 2f;
+        private const float Tap = 0.25f, Hold = 0.5f;
 
         private static HoldInteraction Begun()
         {
@@ -26,21 +26,21 @@ namespace Heartbeat.Tests
         }
 
         [Test]
-        public void HeldTwoSeconds_Completes_SoTheDoorSeals()
+        public void HeldHalfASecond_Completes_SoTheSealHackOpens()
         {
             var h = Begun();
-            Assert.AreEqual(HoldResult.None, h.Tick(1.9f, true));
-            Assert.AreEqual(0.95f, h.Progress, 0.001f);
-            Assert.AreEqual(HoldResult.Completed, h.Tick(0.2f, true));
+            Assert.AreEqual(HoldResult.None, h.Tick(0.4f, true));
+            Assert.AreEqual(0.8f, h.Progress, 0.001f);
+            Assert.AreEqual(HoldResult.Completed, h.Tick(0.15f, true));
             Assert.IsFalse(h.Active);
             Assert.AreEqual(HoldResult.None, h.Tick(1f, true), "one press completes once");
         }
 
         [Test]
-        public void ReleasedAt1_9Seconds_Cancels_NeitherSealsNorOpens()
+        public void ReleasedAt0_4Seconds_Cancels_NeitherHacksNorOpens()
         {
             var h = Begun();
-            h.Tick(1.9f, true);
+            h.Tick(0.4f, true);
             Assert.AreEqual(HoldResult.Cancelled, h.Tick(0.02f, false));
         }
 
@@ -48,7 +48,7 @@ namespace Heartbeat.Tests
         public void Cancel_StopsTheHold()
         {
             var h = Begun();
-            h.Tick(1f, true);
+            h.Tick(0.3f, true);
             h.Cancel();   // out of range or hit
             Assert.AreEqual(0f, h.Progress);
             Assert.AreEqual(HoldResult.None, h.Tick(5f, true));
@@ -65,10 +65,28 @@ namespace Heartbeat.Tests
             Assert.AreEqual(expected, DoorLeaf.CanSeal(l, s));
 
         [Test]
+        public void Door_UsesTheQuickSealHack()
+        {
+            var door = new UnityEngine.GameObject("Door").AddComponent<DoorLeaf>();
+            Assert.AreEqual(HackDifficulty.QuickSeal, door.Difficulty);
+            UnityEngine.Object.DestroyImmediate(door.gameObject);
+        }
+
+        [Test]
+        public void HackCompletedOnADoorNoLongerClosed_DoesNotSealIt()
+        {
+            var door = new UnityEngine.GameObject("Door").AddComponent<DoorLeaf>();
+            door.DebugSetState("Open");   // an enemy opened it while Lukas was hacking
+            door.OnHackSucceeded();
+            Assert.AreEqual(DoorState.Open, door.State);
+            UnityEngine.Object.DestroyImmediate(door.gameObject);
+        }
+
+        [Test]
         public void BalanceAsset_HoldsTheSealTimes()
         {
             var b = UnityEditor.AssetDatabase.LoadAssetAtPath<Core.SystemsBalance>("Assets/_Project/ScriptableObjects/Balance/SystemsBalance.asset");
-            Assert.AreEqual(2f, b.sealHoldSeconds);
+            Assert.AreEqual(0.5f, b.sealHoldSeconds);
             Assert.AreEqual(0.25f, b.sealTapSeconds);
         }
     }

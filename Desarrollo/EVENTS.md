@@ -43,7 +43,7 @@
 | `AimChanged` | `bool aiming` | Camera → UI, Flashlight | M-01 |
 | `ShotFired` | `Vector3 origin` | Combat → S-01 (attention), S-11 | M-04 |
 | `InventoryChanged` | – | S-05 → UI, S-07 | M-07 |
-| `DoorSealed` | `MonoBehaviour door` (`DoorLeaf`, sealed with a 2 s Interact hold; local telemetry) | Level → S-11 | M-12 |
+| `DoorSealed` | `MonoBehaviour door` (`DoorLeaf`, sealed by completing the quick seal hack opened with a 0.5 s Interact hold, C-69; local telemetry) | Level → S-11 | M-12 |
 | `ItemPickedUp` | `string kind, int amount` (a `WorldItem` picked up; local telemetry counts spikes found) | Interaction → S-11 | M-07 |
 | `GameStateChanged` | `GameStateId from, GameStateId to` | state machine → all | Reglas y Estados |
 | `InputContextChanged` | `InputContext ctx` | InputRouter → UI prompts | Controles |

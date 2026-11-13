@@ -14,12 +14,13 @@ namespace Heartbeat.Level
     /// <summary>
     /// Door between two rooms (KIT_SPEC §4, M-14, M-15, D-36, D-97). E opens/closes it; a key door consumes its key
     /// (mandatory or optional); an unpowered door stays shut until power is restored. Holding E on a closed, unlocked
-    /// door (either side) seals it: a sealed door blocks enemies until a hunting enemy breaks it (~30 s next to it) or
+    /// door (either side) opens the quick seal hack (2-3 inputs, C-69); completing it seals the door, failing it leaves the
+    /// door closed and unsealed. A sealed door blocks enemies until a hunting enemy breaks it (~30 s next to it) or
     /// Lukas opens it again. A door that is not open is a wall for the NavMesh (carved): enemies in
     /// patrol or suspicion never cross it; in search or hunt they walk up to it, wait (enemyDoorOpenDelaySeconds) and open it. An enemy barrier (the spawn
     /// room until Lukas leaves it) is never crossed nor opened by enemies.
     /// </summary>
-    public sealed class DoorLeaf : MonoBehaviour, IHoldInteractable, ISoundOccluder
+    public sealed class DoorLeaf : MonoBehaviour, IHoldInteractable, IHackTarget, ISoundOccluder
     {
         [SerializeField] private Transform leaf;
         [SerializeField] private NavMeshObstacle obstacle;
@@ -52,6 +53,7 @@ namespace Heartbeat.Level
         /// <summary>Search/hunt enemies may walk up to it: to open it, or to pound on it when sealed (M-14).</summary>
         public bool EnemyCanReach => !IsLocked && !EnemyBarrier && State != DoorState.Open;
         public bool CanHold => CanSeal(lockType, State);
+        public HackDifficulty Difficulty => HackDifficulty.QuickSeal;
         public string HoldPromptKey => "UI.PROMPT.SEAL_HOLD";
         /// <summary>Only a closed door without key, power or tutorial lock offers the seal.</summary>
         public static bool CanSeal(DoorLock l, DoorState s) => l == DoorLock.None && s == DoorState.Closed;
@@ -167,8 +169,15 @@ namespace Heartbeat.Level
             return Mathf.Abs(local.x) < 1.2f && Mathf.Abs(local.z) < 0.6f;
         }
 
+        /// <summary>C-69: the hold opens the quick seal hack; only completing it seals the door.</summary>
         public void HoldComplete(Interactor who)
         {
+            if (Services.TryGet<PlayerHack>(out var hack)) hack.Begin(this);
+        }
+
+        public void OnHackSucceeded()
+        {
+            if (!CanSeal(lockType, State)) return;   // opened by an enemy or by Lukas mid-hack: nothing to seal
             breakProgress = 0f;
             SetState(DoorState.Sealed);
             HbLog.Info("Door", $"{name}: SEALED");

@@ -6,7 +6,7 @@ namespace Heartbeat.Level
     public enum HackDir { Up, Down, Left, Right }
     public enum HackStep { Correct, Error, Complete }
 
-    /// <summary>Hack lengths (M-13): quick 2-3 (no target uses it since doors seal by holding Interact), standard door 4-5, elevator / main terminal 7-8.</summary>
+    /// <summary>Hack lengths (M-13): quick seal 2-3 (a door after holding Interact, C-69), standard door 4-5, elevator / main terminal 7-8.</summary>
     public enum HackDifficulty { QuickSeal, Door, Main }
 
     /// <summary>
