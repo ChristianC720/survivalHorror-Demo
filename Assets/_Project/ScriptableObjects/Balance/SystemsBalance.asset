@@ -25,7 +25,7 @@ MonoBehaviour:
   shortReconstructionSeconds: 3
   sealBreakSeconds: 30
   enemyDoorOpenDelaySeconds: 5
-  sealHoldSeconds: 2
+  sealHoldSeconds: 0.5
   sealTapSeconds: 0.25
   storyHitsMultiplier: 2
   storyDetectionMultiplier: 0.5

@@ -59,12 +59,15 @@ namespace Heartbeat.Tests
         }
 
         [Test]
-        public void LogsDoorsSealedWithAHold() // C-66
+        public void LogsDoorsSealed_OnlyWhenTheSealHackCompletes() // C-66, C-69
         {
             var w = new StringWriter();
             var rec = new TelemetryRecorder(w, () => 0f);
             var door = new GameObject("Door_0_1").AddComponent<Heartbeat.Level.DoorLeaf>();
-            door.HoldComplete(null);
+            door.HoldComplete(null);   // the hold only opens the hack: nothing sealed yet
+            Assert.AreEqual(Heartbeat.Level.DoorState.Closed, door.State);
+            door.OnHackSucceeded();
+            Assert.AreEqual(Heartbeat.Level.DoorState.Sealed, door.State);
             Object.DestroyImmediate(door.gameObject);
             rec.Dispose();
 
