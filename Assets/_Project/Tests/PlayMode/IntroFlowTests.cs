@@ -82,7 +82,7 @@ namespace Heartbeat.Tests
                 Assert.IsNull(HackView_Wallpaper(), "phone wallpaper cleared with the intro");
                 // Floor loads additively before Intro unloads: take floor 1's player, not the intro's locked one.
                 PlayerController player = null;
-                yield return Until(() => (player = System.Array.Find(Object.FindObjectsByType<PlayerController>(FindObjectsSortMode.None), p => p.gameObject.scene.name == "Floor")) != null, 10f);
+                yield return Until(() => (player = System.Array.Find(Object.FindObjectsByType<PlayerController>(), p => p.gameObject.scene.name == "Floor")) != null, 10f);
                 yield return Until(() => !player.MovementLocked, 20f);   // the reconstruction card on floor 1
                 Debug.Log($"[Heartbeat][Test] C-65 intro {(skip ? "skipped" : "watched")}: {cycle.Data.SubjectLabel} on floor 1, in control");
             }
