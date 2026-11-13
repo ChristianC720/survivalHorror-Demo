@@ -408,6 +408,7 @@ GameObject:
   - component: {fileID: 1254749380019379143}
   - component: {fileID: 4914633292272389508}
   - component: {fileID: 7904371605345020921}
+  - component: {fileID: 2405802278892977807}
   m_Layer: 11
   m_Name: Enemy_Rastrero
   m_TagString: Untagged
@@ -544,6 +545,19 @@ MonoBehaviour:
   - {fileID: 0}
   noiseDegrees: 3
   recycledNoiseDegrees: 9
+--- !u!114 &2405802278892977807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4402736197546997208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dd87dafb08b9164ba4c3f8daac63fd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Heartbeat.Runtime::Heartbeat.Render.HitFlash
+  flashMaterial: {fileID: 2100000, guid: 888d930e1c9387042890b8a78bd01bf4, type: 2}
 --- !u!1 &4583393639840528503
 GameObject:
   m_ObjectHideFlags: 0

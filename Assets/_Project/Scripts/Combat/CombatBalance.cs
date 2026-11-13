@@ -20,6 +20,8 @@ namespace Heartbeat.Combat
         [Tooltip("Muzzle flash light and particles, seconds (C-71).")] public float muzzleFlashSeconds = 0.06f;
         [Tooltip("A bullet mark on a wall fades out over this many seconds (C-71).")] public float bulletMarkSeconds = 10f;
         [Tooltip("Bullet marks at once; the oldest is recycled (C-71).")] public int bulletMarkMax = 20;
+        [Tooltip("Dark blood splatter where a shot hits an enemy, seconds (C-72).")] public float splatterSeconds = 0.6f;
+        [Tooltip("Splatters at once; the oldest is recycled (C-72).")] public int splatterMax = 6;
 
         [Header("Shove (M-06)")]
         public float shoveRange = 1.6f;

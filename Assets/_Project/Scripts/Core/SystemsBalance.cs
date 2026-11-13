@@ -31,6 +31,10 @@ namespace Heartbeat.Core
         [Tooltip("Holding Interact on a closed door this long opens the quick seal hack (M-14, C-69).")] public float sealHoldSeconds = 0.5f;
         [Tooltip("An Interact press shorter than this on a closed door opens it; longer, released early, does nothing.")] public float sealTapSeconds = 0.25f;
 
+        [Header("Hit feedback (C-72)")]
+        [Tooltip("The reticle hit marker grows in, holds and shrinks out over this many seconds.")] public float hitMarkerSeconds = 0.3f;
+        [Tooltip("A shot enemy flashes this long.")] public float hitFlashSeconds = 0.1f;
+
         [Header("Story mode (D-103, D-116)")]
         [Tooltip("Each enemy needs this many times its hits to kill Lukas.")] public int storyHitsMultiplier = 2;
         [Tooltip("Sight alert gain is multiplied by this (slower detection).")] public float storyDetectionMultiplier = 0.5f;

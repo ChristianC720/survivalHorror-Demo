@@ -27,6 +27,12 @@ namespace Heartbeat.Core
         public const string FlashlightFlicker = "CUE_Flashlight_Flicker";
         public const string TerminalOn = "CUE_Terminal_On";
         public const string TransitLockdown = "CUE_Transit_Lockdown";
+        public const string HitBody = "CUE_Hit_Body";
+        public const string HitWeakPoint = "CUE_Hit_WeakPoint";
+        public const string HitKill = "CUE_Hit_Kill";
+
+        /// <summary>Short confirmation of a shot that landed on an enemy (C-72): one cue each for body, weak point and kill.</summary>
+        public static string HitCue(bool weakPoint, bool killed) => killed ? HitKill : weakPoint ? HitWeakPoint : HitBody;
 
         public static void Play(string cue, Vector3 position) => GameEvents.RaiseCueRequested(cue, position);
         public static void Play2D(string cue) => GameEvents.RaiseCueRequested(cue, null);

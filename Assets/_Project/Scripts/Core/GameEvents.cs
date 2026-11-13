@@ -49,6 +49,7 @@ namespace Heartbeat.Core
         // Combat
         public static event Action<Vector3> ShotFired;
         public static event Action<Vector3, Vector3, Vector3> ShotImpact; // muzzle, point, normal: a shot landed on a surface without IDamageable (C-71)
+        public static event Action<Vector3, Vector3, Vector3> ShotHitEnemy; // muzzle, point, normal: a shot hit a live IDamageable (C-72)
         public static event Action<AttackInfo> PlayerAttacked;
         public static event Action<MonoBehaviour> GrabStarted;  // Heartbeat.AI.EnemyBrain: grab windup, Lukas is pulled in (C-64)
         public static event Action<bool> GrabResolved;        // true = countered by the spike
@@ -117,6 +118,7 @@ namespace Heartbeat.Core
         public static void RaiseAttentionFull(Vector3 playerPos) => AttentionFull?.Invoke(playerPos);
         public static void RaiseShotFired(Vector3 origin) => ShotFired?.Invoke(origin);
         public static void RaiseShotImpact(Vector3 origin, Vector3 point, Vector3 normal) => ShotImpact?.Invoke(origin, point, normal);
+        public static void RaiseShotHitEnemy(Vector3 origin, Vector3 point, Vector3 normal) => ShotHitEnemy?.Invoke(origin, point, normal);
         public static void RaiseDoorSealed(MonoBehaviour door) => DoorSealed?.Invoke(door);
         public static void RaiseItemPickedUp(string kind, int amount) => ItemPickedUp?.Invoke(kind, amount);
         public static void RaiseNotice(string key, params object[] args) => NoticeRequested?.Invoke(key, args);
@@ -189,6 +191,7 @@ namespace Heartbeat.Core
             AttentionFull = null;
             ShotFired = null;
             ShotImpact = null;
+            ShotHitEnemy = null;
             PlayerAttacked = null;
             NoticeRequested = null;
             ItemPickedUp = null;
