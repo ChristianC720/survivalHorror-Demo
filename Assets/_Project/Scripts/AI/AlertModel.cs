@@ -18,7 +18,7 @@ namespace Heartbeat.AI
             sightGainPerSecond = 1.2f,
             farSightFactor = 0.35f,
             huntLoseSeconds = 5f,
-            searchHoldSeconds = 6f,
+            searchHoldSeconds = 12f,
             decayPerSecond = 0.12f,
         };
     }

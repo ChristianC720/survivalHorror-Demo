@@ -70,6 +70,26 @@ namespace Heartbeat.Tests
         }
 
         [Test]
+        public void Search_HoldsTwelveSecondsAfterOneNoise() // C-73: outlasts the 5 s wait at a closed door
+        {
+            var m = New();
+            m.Hear(NoiseSource.Shot);
+            Run(m, 11.9f, false);
+            Assert.AreEqual(AlertState.Search, m.State);
+            Assert.AreEqual(AlertModel.SearchThreshold + 0.1f, m.Level, 0.001f); // no decay during the hold
+            Run(m, 1.5f, false);
+            Assert.Less(m.Level, AlertModel.SearchThreshold + 0.1f);            // decaying after 12 s
+        }
+
+        [TestCase("ED_Alto"), TestCase("ED_Boca"), TestCase("ED_Mudo"), TestCase("ED_Rastrero")]
+        public void EveryEnemy_SearchHoldIsTwelveSeconds(string asset) // C-73
+        {
+            var def = UnityEditor.AssetDatabase.LoadAssetAtPath<EnemyDefinition>($"Assets/_Project/ScriptableObjects/Enemies/{asset}.asset");
+            Assert.IsNotNull(def, asset);
+            Assert.AreEqual(12f, def.alert.searchHoldSeconds, asset);
+        }
+
+        [Test]
         public void AttentionFull_NeverLeavesPatrolEnemiesInPatrol_AndDoesNotLowerHunt() // S-02 acceptance, D-24
         {
             var patrol = New(); patrol.OnAttentionFull(2f);
