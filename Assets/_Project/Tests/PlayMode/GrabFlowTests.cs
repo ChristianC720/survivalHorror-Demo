@@ -23,6 +23,7 @@ namespace Heartbeat.Tests
         private PlayerHealth health;
         private PlayerInventory inventory;
         private EnemyBrain alto;
+        private Vector3? home;
 
         [UnityTest]
         public IEnumerator AltoGrab_PullsHoldsAndReleases_WithAndWithoutSpike()
@@ -91,7 +92,9 @@ namespace Heartbeat.Tests
             while (inventory.Model.TryConsume(ItemKind.Spike)) { }
             for (int i = 0; i < spikes; i++) inventory.Model.Add(ItemKind.Spike, 1);
 
-            Vector3 a = alto.transform.position;
+            // Every stage from the Alto's first spot: a hunting Alto can wander next to a wall between stages (C-66).
+            if (home == null) home = alto.transform.position;
+            Vector3 a = home.Value;
             for (int i = 0; i < 16; i++)
             {
                 Vector3 dir = Quaternion.Euler(0f, i * 22.5f, 0f) * Vector3.forward;

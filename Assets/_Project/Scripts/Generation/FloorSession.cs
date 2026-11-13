@@ -38,7 +38,7 @@ namespace Heartbeat.Generation
                 Seed = seed != 0 ? seed : Random.Range(1, int.MaxValue / 2),
                 FirstAttempt = firstAttempt,
                 StoryMode = storyMode,
-                Showcase = showcase,
+                Showcase = showcase || LaunchArgs.Has(LaunchArgs.Showcase),
             };
             Pending = null;
             Services.TryGet<RegistryModel>(out var registry);
@@ -48,7 +48,7 @@ namespace Heartbeat.Generation
         /// <summary>Debug console / tests: rebuild with a given seed.</summary>
         public void DebugRebuild(int newSeed, int newFloor)
         {
-            builder.Build(newFloor, newSeed, false, storyMode, showcase);
+            builder.Build(newFloor, newSeed, false, storyMode, showcase || LaunchArgs.Has(LaunchArgs.Showcase));
         }
     }
 }

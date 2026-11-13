@@ -64,6 +64,7 @@ namespace Heartbeat.Cycle
             {
                 try { telemetry = TelemetryRecorder.CreateFile(); }
                 catch (System.Exception ex) { HbLog.Warn("Telemetry", "Could not open the telemetry file: " + ex.Message); }
+                if (telemetry != null && Services.TryGet(out FloorBuilder built) && built.Layout != null) telemetry.FloorStarted(built.Layout.Floor, built.Layout.Seed);
             }
 
             if (Data != null) return;

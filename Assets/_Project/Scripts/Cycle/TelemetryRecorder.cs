@@ -57,7 +57,9 @@ namespace Heartbeat.Cycle
             Directory.CreateDirectory(dir);
             string path = Path.Combine(dir, $"session_{DateTime.Now:yyyyMMdd_HHmmss}.jsonl");
             HbLog.Info("Telemetry", $"Local telemetry on: {path}");
-            return new TelemetryRecorder(new StreamWriter(path, false, new UTF8Encoding(false)) { AutoFlush = true }, () => Time.realtimeSinceStartup);
+            // Seconds since the session started: realtimeSinceStartup restarts when the editor leaves Play, before OnDestroy.
+            var clock = System.Diagnostics.Stopwatch.StartNew();
+            return new TelemetryRecorder(new StreamWriter(path, false, new UTF8Encoding(false)) { AutoFlush = true }, () => (float)clock.Elapsed.TotalSeconds);
         }
 
         public void Dispose()
@@ -81,6 +83,9 @@ namespace Heartbeat.Cycle
         }
 
         private void OnFloorBuilt(int f, int seed) { floor = f; Write("floor_start", "\"seed\":" + seed); }
+
+        /// <summary>A floor built before the recorder opened (Play pressed in the Floor scene): log its start now.</summary>
+        public void FloorStarted(int f, int seed) => OnFloorBuilt(f, seed);
         private void OnRoomEntered(MonoBehaviour r) { room = r != null ? r.name : ""; Write("room", null); }
         private void OnSubState(PlaySubState from, PlaySubState to)
         {
