@@ -231,7 +231,7 @@ namespace Heartbeat.AI
                    && scratchPath.status == NavMeshPathStatus.PathComplete;
         }
 
-        // ---------- Doors (M-14): search/hunt walk up to the closed door on the way and open it (or pound a seal) ----------
+        // ---------- Doors (M-14): search/hunt walk up to the closed door on the way, wait and open it (or pound a seal) ----------
 
         private Level.DoorLeaf viaDoor;
         private float routeCheck;
@@ -285,6 +285,16 @@ namespace Heartbeat.AI
             {
                 transform.Rotate(0f, 60f * dt, 0f);   // look around
             }
+            WaitAtClosedDoor();
+        }
+
+        /// <summary>C-68: at the closed door on the way, stand still facing it until the door opens (DoorLeaf times the wait).</summary>
+        private void WaitAtClosedDoor()
+        {
+            if (viaDoor == null || viaDoor.State != Level.DoorState.Closed) return;
+            if (Vector3.Distance(transform.position, viaDoor.transform.position) >= Level.DoorLeaf.EnemyReach) return;
+            agent.isStopped = true;
+            FaceTowards(viaDoor.transform.position, 240f);
         }
 
         private void TickHunt(Transform p)
@@ -318,6 +328,7 @@ namespace Heartbeat.AI
                 agent.isStopped = Mathf.Repeat(burstClock, cycle) > definition.burstSeconds;
             }
             if (dist < keep) agent.isStopped = true;   // avoidance from other agents can still squeeze us in
+            WaitAtClosedDoor();
 
             bool blind = definition.sightRange <= 0f;   // La Boca strikes at what she hears
             bool grab = grabIntent && GrabPathClear(p);

@@ -24,6 +24,7 @@ MonoBehaviour:
   floorTransitionSeconds: 5
   shortReconstructionSeconds: 3
   sealBreakSeconds: 30
+  enemyDoorOpenDelaySeconds: 5
   sealHoldSeconds: 2
   sealTapSeconds: 0.25
   storyHitsMultiplier: 2
