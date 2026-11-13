@@ -241,10 +241,12 @@ namespace Heartbeat.AI
         {
             if (viaDoor != null && !viaDoor.EnemyCanReach) viaDoor = null;   // it opened
             routeCheck -= Time.deltaTime;
-            if (viaDoor == null && routeCheck <= 0f)
+            if (routeCheck <= 0f)
             {
                 routeCheck = 0.5f;
-                if (!Reachable(goal)) viaDoor = DoorTowards(goal);
+                // C-68: the door no longer opens on arrival, so pick it again every check: a cancelled wait or an older
+                // chase must not leave the enemy staring at a door when the goal is reachable or behind another one.
+                viaDoor = Reachable(goal) ? null : DoorTowards(goal);
             }
             if (viaDoor == null) return goal;
             var t = viaDoor.transform;
