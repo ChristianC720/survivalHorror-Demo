@@ -32,6 +32,14 @@ namespace Heartbeat.Tests
                 Assert.AreEqual(AudioClipLoadType.CompressedInMemory, a.clips[0].loadType, amb);
             }
 
+            // C-72: short 2D hit cues, one each for body, weak point and kill.
+            foreach (string hit in new[] { Sfx.HitBody, Sfx.HitWeakPoint, Sfx.HitKill })
+            {
+                Assert.IsTrue(audio.TryGetCue(hit, out var h), hit);
+                Assert.IsFalse(h.spatial, hit);
+                Assert.LessOrEqual(h.clips[0].length, 0.3f, hit);
+            }
+
             var voice = audio.Play(hum);
             yield return null;
             Assert.IsTrue(voice.isPlaying);
