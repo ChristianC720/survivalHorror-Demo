@@ -77,6 +77,7 @@ namespace Heartbeat.Core
 
         // Inventory / interaction
         public static event Action InventoryChanged;
+        public static event Action<MonoBehaviour> DoorSealed;             // DoorLeaf sealed with a hold (telemetry, C-66)
         public static event Action<string, int> ItemPickedUp;             // item kind, amount taken (telemetry, C-64)
         public static event Action<string> InventoryFull;                 // item kind that did not fit
         public static event Action<MonoBehaviour> InteractTargetChanged;  // null = nothing to interact with
@@ -114,6 +115,7 @@ namespace Heartbeat.Core
         public static void RaiseAimChanged(bool aiming) => AimChanged?.Invoke(aiming);
         public static void RaiseAttentionFull(Vector3 playerPos) => AttentionFull?.Invoke(playerPos);
         public static void RaiseShotFired(Vector3 origin) => ShotFired?.Invoke(origin);
+        public static void RaiseDoorSealed(MonoBehaviour door) => DoorSealed?.Invoke(door);
         public static void RaiseItemPickedUp(string kind, int amount) => ItemPickedUp?.Invoke(kind, amount);
         public static void RaiseNotice(string key, params object[] args) => NoticeRequested?.Invoke(key, args);
         public static void RaiseHint(string key, params object[] args) => HintChanged?.Invoke(key, args);
@@ -187,6 +189,7 @@ namespace Heartbeat.Core
             PlayerAttacked = null;
             NoticeRequested = null;
             ItemPickedUp = null;
+            DoorSealed = null;
             HintChanged = null;
             ShotLanded = null;
             GrabStarted = null;

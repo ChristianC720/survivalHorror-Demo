@@ -169,6 +169,7 @@ namespace Heartbeat.Level
             SetState(DoorState.Sealed);
             HbLog.Info("Door", $"{name}: SEALED");
             Sfx.Play(Sfx.DoorSeal, transform.position);
+            GameEvents.RaiseDoorSealed(this);
         }
 
         /// <summary>Enemies call this when their path crosses a closed, unlocked door.</summary>
