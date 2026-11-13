@@ -17,6 +17,9 @@ namespace Heartbeat.Combat
         [Tooltip("Shots alert enemies within this radius (M-09).")] public float shotNoiseRadius = 20f;
         [Tooltip("A shot that misses bends to a live enemy hitbox this close to its ray, metres (C-70).")] public float bulletMagnetRadius = 0.25f;
         [Tooltip("Largest bend of that magnet, degrees (C-70).")] public float bulletMagnetMaxDegrees = 2f;
+        [Tooltip("Muzzle flash light and particles, seconds (C-71).")] public float muzzleFlashSeconds = 0.06f;
+        [Tooltip("A bullet mark on a wall fades out over this many seconds (C-71).")] public float bulletMarkSeconds = 10f;
+        [Tooltip("Bullet marks at once; the oldest is recycled (C-71).")] public int bulletMarkMax = 20;
 
         [Header("Shove (M-06)")]
         public float shoveRange = 1.6f;
