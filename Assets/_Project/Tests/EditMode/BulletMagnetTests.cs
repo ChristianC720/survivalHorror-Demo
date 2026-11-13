@@ -130,5 +130,30 @@ namespace Heartbeat.Tests.EditMode
             Assert.That(Shoot(out var hit), Is.True);
             Assert.That(hit.collider.GetComponentInParent<IDamageable>(), Is.SameAs(closer));
         }
+
+        [TestCase(3f)]
+        [TestCase(10f)]
+        [TestCase(30f)]
+        public void WithNoBackstopTheBulletFollowsTheCrosshairLine(float z)
+        {
+            // C-75: the chest sits left of and below the camera. A frame with a 0.2 m hole on the crosshair line at z
+            // catches a bullet more than 0.1 m off the line.
+            var env = LayerMask.NameToLayer("Environment");
+            foreach (var (pos, size) in new[]
+                     {
+                         (new Vector3(-1.1f, 0f, z), new Vector3(2f, 4.2f, 0.02f)), (new Vector3(1.1f, 0f, z), new Vector3(2f, 4.2f, 0.02f)),
+                         (new Vector3(0f, 1.1f, z), new Vector3(0.2f, 2f, 0.02f)), (new Vector3(0f, -1.1f, z), new Vector3(0.2f, 2f, 0.02f)),
+                     })
+            {
+                var part = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                part.layer = env;
+                part.transform.SetParent(root.transform);
+                part.transform.localScale = size;
+                part.transform.position = pos;
+            }
+            Physics.SyncTransforms();
+            Assert.That(BulletMagnet.Resolve(Vector3.zero, Vector3.forward, new Vector3(-0.6f, -0.3f, 0f), Range, Radius, MaxDegrees,
+                mask, hitboxLayer, out var hit, out _), Is.False, $"bullet hit {(hit.collider != null ? hit.collider.name : "-")} at {hit.point}");
+        }
     }
 }
