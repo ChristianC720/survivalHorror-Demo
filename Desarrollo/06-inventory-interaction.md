@@ -12,8 +12,8 @@
 - Full inventory: a key can replace another item (prompt). Discard drops the item to the floor.
 - Using an item never pauses (heal ~1.5 s, cancelled by a hit without consuming).
 - Flashlight: ~120 s of charge; recharges after ~3 s off, 0→100 % in ~30 s; at 0 it flickers, turns off and is locked ~10 s (D-124).
-- Hacking: direction sequences of 2–3 (quick seal), 4–5 (door / panel), 7–8 (hard). One mistake restarts the sequence with an error beep. Lukas cannot move. Never pauses.
-- Sealing: after crossing a door, a quick hack (2–3 inputs) seals it and breaks the chase. A hunting enemy breaks the seal in ~30 s. The seal also breaks if Lukas crosses back.
+- Hacking: direction sequences of 2–3 (quick), 4–5 (door / panel), 7–8 (hard). One mistake restarts the sequence with an error beep. Lukas cannot move. Never pauses.
+- Sealing (C-59): on a closed door with no key lock, with power and outside the tutorial, a tap of Interact (< `sealTapSeconds` 0.25 s) opens it and holding Interact `sealHoldSeconds` 2 s seals it; releasing in between cancels. The prompt shows both options and a progress bar. The hold cancels when the door stops being the target, Lukas is hit or the door changes state; Lukas can move. Logic in `Interaction/HoldInteraction.cs` (pure) and `IHoldInteractable` on `DoorLeaf` (no longer an `IHackTarget`); values in `SystemsBalance`. A hunting enemy breaks the seal in `sealBreakSeconds` 30 s. The seal also breaks if Lukas crosses back. Telemetry logs `door_sealed`.
 
 ## Tasks
 `E06-inventory` · `E06-interaction` · `E06-documents-registry` · `E06-flashlight` · `E06-hacking` · `E06-doors-seal`. Each pure model gets EditMode tests.

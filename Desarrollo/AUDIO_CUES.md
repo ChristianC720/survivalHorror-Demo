@@ -34,7 +34,7 @@ Source: `GDD/05 - Arte y Audio/05 - Audio y Música.md`, S-11 in `GDD/02 - Dise�
 | `CUE_Power_Startup` | Signals / 1 | ✔ | – | power switch (alerts nearby enemies) | D-72 |
 | `CUE_HostileCamera_Motor` | Signals / 1 | ✔ | ✔ | boss phase 2 camera turning | D-28 |
 | `CUE_Terminal_On` / `CUE_Terminal_Register` | Player&Combat / 2 | – | – | arm terminal opens / item registered | M-08 |
-| `CUE_Capsule_Reconstruction` | Signals / 1 | ✔ | – | reconstruction | D-39 |
+| `CUE_Capsule_Reconstruction` | Signals / 1 | ✔ | – | reconstruction: played once by the shot that shows the capsule (intro, short reconstruction, The Mother) and stopped with `Sfx.Stop` at the cut; the `Reconstructed` event plays nothing | D-39 |
 | `CUE_Transit_Lockdown` | Signals / 1 | ✔ | – | stairs/elevator locked during a hunt | D-96 |
 | `CUE_Autosave_Sync` | Signals / 1 | – | – | "SYNCHRONIZING…" | D-30 |
 | `CUE_Door_Open` / `CUE_Door_Locked` / `CUE_Door_Seal` / `CUE_Door_SealBreak` | Player&Combat / 2 | ✔ | – | doors | M-14 |
@@ -57,4 +57,4 @@ Source: `GDD/05 - Arte y Audio/05 - Audio y Música.md`, S-11 in `GDD/02 - Dise�
 | `CUE_Elevator_Impact` | PlayerCombat / 2 | – | – | intro elevator stops at the floor that does not exist | D-53 |
 | `CUE_Intro_Attack` | PlayerCombat / 2 | – | – | attack from behind, cut to black (scripted death) | D-53, D-63 |
 | `CUE_Rastrero_Behind` | PlayerCombat / 2 | ✔ | – | tutorial tunnel (first attempt): a Rastrero drags itself behind the far door when Lukas is within 4 m (`TutorialCue`) | D-70 |
-| `CUE_Ending_BeatLukas` / `CUE_Ending_BeatLab` | Ambience / 3 | – | – | one-shot heartbeats of the endings: Ambiguous (out of phase, then one) and Full relief (second act) | D-61 |
+| `CUE_Ending_BeatLukas` / `CUE_Ending_BeatLab` | Ambience / 3 | – | – | one-shot heartbeats of the endings: Ambiguous (out of phase, then one) and Full relief (second act: five shots of the one-beat `BeatLab` clip, 1.1 s apart) | D-61 |
