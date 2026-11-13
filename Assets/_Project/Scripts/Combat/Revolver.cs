@@ -144,7 +144,7 @@ namespace Heartbeat.Combat
                 var target = weak != null ? weak.Owner : hit.collider.GetComponentInParent<IDamageable>();
                 if (target != null && target.IsAlive)
                 {
-                    target.ReceiveShot(new ShotHit(hit.point, dir, weak != null));
+                    target.ReceiveShot(new ShotHit(hit.point, dir, weak != null, balance.ShotDamage(weak != null)));
                     GameEvents.RaiseShotLanded(weak != null, !target.IsAlive);
                     if (ShotEffects.IsEnemy(target))   // a boss transformer has its own crack and no blood
                     {

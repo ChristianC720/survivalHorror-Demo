@@ -5,17 +5,21 @@ using UnityEngine;
 
 namespace Heartbeat.AI
 {
-    /// <summary>Enemy toughness counted in revolver shots (M-04, D-66). Weak-point hits interrupt but do not add damage.</summary>
+    /// <summary>Enemy toughness counted in normal revolver shots (M-04, D-66). A hit adds its <see cref="ShotHit.Damage"/>: weak points count double and still interrupt (C-74).</summary>
     public sealed class EnemyHealth : MonoBehaviour, IDamageable
     {
         [SerializeField] private EnemyDefinition definition;
 
-        private int shotsTaken;
+        // Fractional damage (shove, C-77) that sums exactly to the limit must kill despite float rounding.
+        private const float Tolerance = 0.001f;
+
+        private float damageTaken;
 
         public bool IsRecycled { get; private set; }
-        public bool IsAlive => shotsTaken < ShotsToKill;
+        public bool IsAlive => damageTaken < ShotsToKill - Tolerance;
         public int ShotsToKill => IsRecycled ? definition.recycledShotsToKill : definition.shotsToKill;
-        public int ShotsTaken => shotsTaken;
+        /// <summary>Damage taken so far, in normal-shot units.</summary>
+        public float DamageTaken => damageTaken;
 
         public event Action<ShotHit> Shot;
         public event Action Died;
@@ -23,8 +27,8 @@ namespace Heartbeat.AI
         public void ReceiveShot(in ShotHit hit)
         {
             if (!IsAlive) return;
-            shotsTaken++;
-            HbLog.Info("Enemy", $"{name} shot {shotsTaken}/{ShotsToKill}{(hit.WeakPoint ? " weak point" : "")}");
+            damageTaken += hit.Damage;
+            HbLog.Info("Enemy", $"{name} shot {damageTaken:0.##}/{ShotsToKill}{(hit.WeakPoint ? " weak point" : "")}");
             Shot?.Invoke(hit);
             if (!IsAlive)
             {
@@ -43,7 +47,7 @@ namespace Heartbeat.AI
         public void Revive(bool recycled)
         {
             IsRecycled = recycled;
-            shotsTaken = 0;
+            damageTaken = 0f;
         }
     }
 }
