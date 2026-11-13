@@ -2,6 +2,7 @@ using System.IO;
 using Heartbeat.Core;
 using Heartbeat.Cycle;
 using NUnit.Framework;
+using UnityEngine;
 
 namespace Heartbeat.Tests
 {
@@ -55,6 +56,22 @@ namespace Heartbeat.Tests
             StringAssert.Contains("\"event\":\"grab\"", lines[2]);
             StringAssert.Contains("\"spike\":true", lines[2]);
             StringAssert.Contains("\"spike\":false", lines[3]);
+        }
+
+        [Test]
+        public void LogsDoorsSealedWithAHold() // C-66
+        {
+            var w = new StringWriter();
+            var rec = new TelemetryRecorder(w, () => 0f);
+            var door = new GameObject("Door_0_1").AddComponent<Heartbeat.Level.DoorLeaf>();
+            door.HoldComplete(null);
+            Object.DestroyImmediate(door.gameObject);
+            rec.Dispose();
+
+            var lines = w.ToString().Trim().Split('\n');
+            Assert.AreEqual(3, lines.Length, w.ToString());
+            StringAssert.Contains("\"event\":\"door_sealed\"", lines[1]);
+            StringAssert.Contains("\"door\":\"Door_0_1\"", lines[1]);
         }
     }
 }

@@ -12,13 +12,17 @@ namespace Heartbeat.Cycle
     /// -telemetry. Appends one JSON object per line to persistentDataPath/telemetry/session_*.jsonl and flushes each line, so
     /// a crash keeps everything written so far. The metrics of the Pruebas table are computed from these lines offline:
     /// surveillance uses and seconds per floor, attention fills, time per floor and in total, deaths by floor, room and
-    /// cause, quitting before the end, finishers against recycled enemies, grabs (with or without a spike) and pick-ups (C-64).
+    /// cause, quitting before the end, finishers against recycled enemies, grabs (with or without a spike) and pick-ups (C-64), doors sealed
+    /// with a hold (C-66).
     /// </summary>
     public sealed class TelemetryRecorder : IDisposable
     {
-        public const string Arg = "-telemetry";
+        public const string Arg = LaunchArgs.Telemetry;
 
         public static bool Requested(string[] args) => Array.IndexOf(args, Arg) >= 0;
+
+        /// <summary>True when this run has -telemetry (or the editor simulates it, Heartbeat ▸ Launch Arguments).</summary>
+        public static bool Requested() => LaunchArgs.Has(Arg);
 
         private readonly TextWriter writer;
         private readonly Func<float> clock;
@@ -42,6 +46,7 @@ namespace Heartbeat.Cycle
             GameEvents.GameStateChanged += OnState;
             GameEvents.GrabResolved += OnGrab;
             GameEvents.ItemPickedUp += OnPicked;
+            GameEvents.DoorSealed += OnSealed;
             Write("session_start", null);
         }
 
@@ -52,7 +57,9 @@ namespace Heartbeat.Cycle
             Directory.CreateDirectory(dir);
             string path = Path.Combine(dir, $"session_{DateTime.Now:yyyyMMdd_HHmmss}.jsonl");
             HbLog.Info("Telemetry", $"Local telemetry on: {path}");
-            return new TelemetryRecorder(new StreamWriter(path, false, new UTF8Encoding(false)) { AutoFlush = true }, () => Time.realtimeSinceStartup);
+            // Seconds since the session started: realtimeSinceStartup restarts when the editor leaves Play, before OnDestroy.
+            var clock = System.Diagnostics.Stopwatch.StartNew();
+            return new TelemetryRecorder(new StreamWriter(path, false, new UTF8Encoding(false)) { AutoFlush = true }, () => (float)clock.Elapsed.TotalSeconds);
         }
 
         public void Dispose()
@@ -71,10 +78,14 @@ namespace Heartbeat.Cycle
             GameEvents.GameStateChanged -= OnState;
             GameEvents.GrabResolved -= OnGrab;
             GameEvents.ItemPickedUp -= OnPicked;
+            GameEvents.DoorSealed -= OnSealed;
             writer.Dispose();
         }
 
         private void OnFloorBuilt(int f, int seed) { floor = f; Write("floor_start", "\"seed\":" + seed); }
+
+        /// <summary>A floor built before the recorder opened (Play pressed in the Floor scene): log its start now.</summary>
+        public void FloorStarted(int f, int seed) => OnFloorBuilt(f, seed);
         private void OnRoomEntered(MonoBehaviour r) { room = r != null ? r.name : ""; Write("room", null); }
         private void OnSubState(PlaySubState from, PlaySubState to)
         {
@@ -90,6 +101,7 @@ namespace Heartbeat.Cycle
         private void OnEnding(string id) => Write("ending", $"\"id\":\"{Esc(id)}\"");
         private void OnGrab(bool spike) => Write("grab", "\"spike\":" + (spike ? "true" : "false"));
         private void OnPicked(string kind, int n) => Write("item_picked", $"\"kind\":\"{Esc(kind)}\",\"amount\":{n}");
+        private void OnSealed(MonoBehaviour d) => Write("door_sealed", $"\"door\":\"{Esc(d != null ? d.name : "")}\"");
         private void OnState(GameStateId from, GameStateId to) => Write("state", $"\"from\":\"{from}\",\"to\":\"{to}\"");
 
         private void Write(string evt, string extra)

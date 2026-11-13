@@ -58,11 +58,13 @@ namespace Heartbeat.Cycle
             GameEvents.RoomEntered += OnRoomEntered;
             GameEvents.FloorBuilt += OnFloorBuilt;
             GameEvents.HuntChanged += OnHuntChanged;
+            if (LaunchArgs.Has(LaunchArgs.Showcase)) HbLog.Info("Cycle", "-showcase: new slots use the Showcase preset");
             // Local playtest telemetry: launch the build with -telemetry, like -showcase.
-            if (TelemetryRecorder.Requested(System.Environment.GetCommandLineArgs()))
+            if (TelemetryRecorder.Requested())
             {
                 try { telemetry = TelemetryRecorder.CreateFile(); }
                 catch (System.Exception ex) { HbLog.Warn("Telemetry", "Could not open the telemetry file: " + ex.Message); }
+                if (telemetry != null && Services.TryGet(out FloorBuilder built) && built.Layout != null) telemetry.FloorStarted(built.Layout.Floor, built.Layout.Seed);
             }
 
             if (Data != null) return;
@@ -105,7 +107,7 @@ namespace Heartbeat.Cycle
             {
                 if (newGame) saves.Delete(slot);
                 // Showcase preset (×0.75 budgets, 6–8 + 2 + 1 rooms) for fairs/demos: launch the build with -showcase.
-                bool showcase = System.Array.IndexOf(System.Environment.GetCommandLineArgs(), "-showcase") >= 0;
+                bool showcase = LaunchArgs.Has(LaunchArgs.Showcase);
                 Data = new SlotData { mode = mode, showcase = showcase };
                 if (showcase) HbLog.Info("Cycle", "Showcase preset for this slot");
             }
