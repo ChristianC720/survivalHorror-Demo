@@ -78,6 +78,9 @@ namespace Heartbeat.Tests
         private IEnumerator Stage(bool crouched, int spikes)
         {
             yield return Seconds(2.2f);   // let any stun and cooldown run out
+            // The hunting Alto may have grabbed Lukas on its own meanwhile; a hold blocks the next windup, so end it.
+            alto.Stagger(alto.transform.position, 0.05f);
+            yield return Seconds(0.1f);
             health.Model.SetValue(health.Model.Max);
             while (inventory.Model.TryConsume(ItemKind.Spike)) { }
             for (int i = 0; i < spikes; i++) inventory.Model.Add(ItemKind.Spike, 1);
