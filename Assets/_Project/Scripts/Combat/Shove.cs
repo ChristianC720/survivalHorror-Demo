@@ -1,3 +1,4 @@
+using Heartbeat.AI;
 using Heartbeat.Core;
 using Heartbeat.InputRouting;
 using Heartbeat.Player;
@@ -8,7 +9,8 @@ namespace Heartbeat.Combat
 {
     /// <summary>
     /// Shove / butt strike (M-06): left click / RT without aiming. Costs 35% stamina (fails with a gasp otherwise),
-    /// pushes and briefly staggers the enemy in front, gives no protection against damage.
+    /// pushes and briefly staggers the enemy in front and deals <see cref="CombatBalance.shoveDamageMultiplier"/> of a normal
+    /// shot's damage, which can kill (C-77). Gives no protection against damage and no hit feedback.
     /// Over an unfinished body the same input is the ground strike instead (<see cref="PlayerFinisher"/>).
     /// </summary>
     public sealed class Shove : MonoBehaviour
@@ -64,7 +66,8 @@ namespace Heartbeat.Combat
             GameEvents.RaisePlayerGesture("Shove");
             if (target != null)
             {
-                target.Stagger(transform.position, balance.shoveStaggerSeconds);
+                if (target is Component c && c.TryGetComponent(out EnemyHealth health)) health.ReceiveShove(balance.shoveDamageMultiplier);
+                target.Stagger(transform.position, balance.shoveStaggerSeconds);   // no-op if the shove killed it
                 HbLog.Info("Combat", "Shove hit");
             }
             else HbLog.Info("Combat", "Shove (no target)");
