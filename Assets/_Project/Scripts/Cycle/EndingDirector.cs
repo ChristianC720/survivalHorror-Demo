@@ -29,8 +29,8 @@ namespace Heartbeat.Cycle
 
         // Cut points in seconds of the rendered clips (songs/latido and songs/emilia-tema in reaper-daemon).
         private const float Bar = 3.75f;   // Emilia's theme: 4/4 at 64 BPM
-        private const int LabBeats = 5;
-        private const float LabBeatSeconds = 1.1f;
+        private const int LabBeats = 3;
+        private const float LabBeatSeconds = 1.3f, LabBeatFade = 0.63f;   // measured on Heartbeat_Audio_Final/3_Latidos/CUE_Ending_BeatLab.wav
         private const float FlashSeconds = 0.2f, AssimReportAt = 16f, AssimRootFallsAt = 28f, AssimNameAt = 42f, AssimStateAt = 45f, AssimEnd = 47f;
         private static readonly float[] ArrhythmiaBeats = { 0f, 0.5f, 1f, 1.3f, 2.2f, 2.7f, 2.95f, 3.2f, 4.3f, 4.8f, 5.2f, 6.6f, 6.9f, 7.5f, 9.3f, 9.8f, 11.6f };
 
@@ -132,12 +132,15 @@ namespace Heartbeat.Cycle
                         yield return StageUntil(set, "Relief_Close", Bar * 5);
                         yield return CardUntil(Loc.Get("END.RELIEF.FULL"), Bar * 6);
                         // He hears the second act: on screen only total glitch, never readable (D-61, D-16).
-                        // The clip is one beat (C-57); the old 7 s file beat five times, 1.1 s apart.
+                        // The clip is one beat (C-57); the original 7 s file beat three times, 1.3 s apart, ~4 dB softer each time.
                         card.text = DocText.Render("<c>" + Loc.Get("END.RELIEF.BASIC") + "</c>", false);
                         float beatsFrom = MusicTime;
+                        Audio.AudioCue lab = null;
+                        if (Services.TryGet(out Audio.AudioService sound)) sound.TryGetCue("CUE_Ending_BeatLab", out lab);
                         for (int i = 0; i < LabBeats; i++)
                         {
-                            Sfx.Play2D("CUE_Ending_BeatLab");
+                            var beat = lab != null ? sound.Play(lab) : null;
+                            if (beat != null) beat.volume *= Mathf.Pow(LabBeatFade, i);
                             yield return CardUntil(card.text, Mathf.Min(beatsFrom + (i + 1) * LabBeatSeconds, Bar * 8));
                             if (music == null || !music.isPlaying) break;
                         }

@@ -5,7 +5,7 @@
 **GDD sources:** `02 - Diseño/04 - Controles.md`, M-05, M-06, M-09 in `02 - Mecánicas.md`, S-03/S-04 in `03 - Sistemas.md`, D-104, D-119, D-120.
 
 ## Deliverables
-`Input/Heartbeat.inputactions` (+ generated C# wrapper via `generate_input_action_wrapper_code`), `Scripts/Input/InputRouter.cs`, `InputContext.cs`; `Scripts/Player/PlayerController.cs`, `PlayerMotor.cs`, `PlayerNoise.cs`, `PlayerPosture.cs`; `Scripts/Combat/HealthModel.cs` + `PlayerHealth.cs`; `Scripts/Player/StaminaModel.cs` + `PlayerStamina.cs`; `Balance/PlayerBalance.asset`; prefabs `PH/PH_Lukas`, `Characters/Player`.
+`Input/Heartbeat.inputactions` (+ generated C# wrapper via `generate_input_action_wrapper_code`), `Scripts/Input/InputRouter.cs`, `InputContext.cs`; `Scripts/Player/PlayerController.cs`, `PlayerMotor.cs`, `PlayerNoise.cs`, `PlayerPosture.cs`; `Scripts/Combat/HealthModel.cs` + `PlayerHealth.cs`; `Scripts/Player/StaminaModel.cs` + `PlayerStamina.cs`; `Balance/PlayerBalance.asset`; prefab `Characters/Player` with `Models/Characters/CH_Lukas_RH07.fbx` (`CH_Lukas_Civil.fbx` in the Intro).
 
 ## Tasks
 ### `E02-input`
@@ -14,7 +14,7 @@
 3. Rebinding support (keyboard and mouse only, D-120): save overrides JSON through `SettingsService`.
 
 ### `E02-player-motor`
-1. `PH_Lukas` (see PLACEHOLDERS.md) inside `Player` prefab: `CharacterController` (r 0.35, h 1.8), `PlayerController`, layer `Player`, tag `Player`.
+1. `CH_Lukas_RH07` (C-60, see PLACEHOLDERS.md) inside the `Player` prefab: `CharacterController` (r 0.35, h 1.8), `PlayerController`, layer `Player`, tag `Player`.
 2. Speeds from `PlayerBalance`: crouch 1, walk 1.8, run 4.5 m/s; Injured −15 %; Critical drags (value in the GDD). Camera-relative movement. Gravity, step offset 0.3.
 3. `PlayerNoise`: crouched = 0 noise; walking a small radius; running and shooting alert (radii from balance). Raises `NoiseEmitted`.
 4. `PlayerPosture`: drives a placeholder posture cue (lean/scale on the PH mesh, later the animator) from the health state.
