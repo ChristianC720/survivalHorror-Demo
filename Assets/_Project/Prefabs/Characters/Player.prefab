@@ -206,6 +206,7 @@ GameObject:
   - component: {fileID: 3160600446358626508}
   - component: {fileID: 9036344417216781618}
   - component: {fileID: 1909535544382082952}
+  - component: {fileID: 4734337151347419645}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -503,6 +504,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: Heartbeat.Runtime::Heartbeat.Combat.GrabPull
   player: {fileID: 5604194892502960124}
   health: {fileID: 1368415113503638425}
+--- !u!114 &4734337151347419645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2442423367564465436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7e6332b2fa63c64c88b5c5c6fcecb27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Heartbeat.Runtime::Heartbeat.Combat.ShotEffects
+  balance: {fileID: 11400000, guid: 92b7612bc1f7e744ba276570c0aff41e, type: 2}
+  muzzle: {fileID: 9197430729809118785}
+  muzzleFlashPrefab: {fileID: 8884898369599752806, guid: babe5e1f83ed2c34dba25bd3f7979e8f, type: 3}
+  impactPrefab: {fileID: 6622743880564910450, guid: e9ee1bd4768dfc742b611e5404e105bd, type: 3}
 --- !u!1 &3181610878793067074
 GameObject:
   m_ObjectHideFlags: 0
