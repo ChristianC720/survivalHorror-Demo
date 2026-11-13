@@ -133,20 +133,11 @@ namespace Heartbeat.Combat
             Vector3 chest = transform.position + Vector3.up * ChestHeight;
             float skip = Mathf.Max(0f, Vector3.Dot(chest - ray.origin, dir));   // ignore what is between camera and Lukas
             Vector3 camOrigin = ray.origin + dir * skip;
-            bool aimed = Physics.Raycast(camOrigin, dir, out var aimHit, balance.range, shotMask, QueryTriggerInteraction.Ignore);
-            Vector3 aimPoint = aimed ? aimHit.point : camOrigin + dir * balance.range;
-            Vector3 toAim = aimPoint - chest;
-            float aimDist = toAim.magnitude;
-
+            bool landed = BulletMagnet.Resolve(camOrigin, dir, chest, balance.range, balance.bulletMagnetRadius,
+                balance.bulletMagnetMaxDegrees, shotMask, hitboxLayer, out var hit, out dir);
             string hitName = "nothing";
-            RaycastHit hit = default;
-            bool landed = aimDist > 0.01f && Physics.Raycast(chest, toAim / aimDist, out hit, aimDist + 0.05f, shotMask, QueryTriggerInteraction.Ignore);
-            // Point blank (a grab, a body against Lukas): the chest starts inside the hitbox the camera sees, and a ray
-            // never hits the collider it starts in. The camera's hit stands.
-            if (!landed && aimed && aimHit.collider.gameObject.layer == hitboxLayer) { hit = aimHit; landed = true; }
             if (landed)
             {
-                if (aimDist > 0.01f) dir = toAim / aimDist;
                 hitName = hit.collider.name;
                 var weak = WeakPoint.At(hit.collider, hit.point);
                 var target = weak != null ? weak.Owner : hit.collider.GetComponentInParent<IDamageable>();

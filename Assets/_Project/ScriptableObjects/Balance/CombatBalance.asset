@@ -20,6 +20,8 @@ MonoBehaviour:
   spreadPerShot: 0.6
   range: 60
   shotNoiseRadius: 20
+  bulletMagnetRadius: 0.25
+  bulletMagnetMaxDegrees: 2
   shoveRange: 1.6
   shoveRadius: 0.6
   shoveStaggerSeconds: 1.2

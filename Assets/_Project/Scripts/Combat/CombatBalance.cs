@@ -15,6 +15,8 @@ namespace Heartbeat.Combat
         [Tooltip("Spread added by each shot (0..1).")] public float spreadPerShot = 0.6f;
         public float range = 60f;
         [Tooltip("Shots alert enemies within this radius (M-09).")] public float shotNoiseRadius = 20f;
+        [Tooltip("A shot that misses bends to a live enemy hitbox this close to its ray, metres (C-70).")] public float bulletMagnetRadius = 0.25f;
+        [Tooltip("Largest bend of that magnet, degrees (C-70).")] public float bulletMagnetMaxDegrees = 2f;
 
         [Header("Shove (M-06)")]
         public float shoveRange = 1.6f;
