@@ -49,7 +49,7 @@ namespace Heartbeat.Core
         // Combat
         public static event Action<Vector3> ShotFired;
         public static event Action<Vector3, Vector3, Vector3> ShotImpact; // muzzle, point, normal: a shot landed on a surface without IDamageable (C-71)
-        public static event Action<Vector3, Vector3, Vector3> ShotHitEnemy; // muzzle, point, normal: a shot hit a live IDamageable (C-72)
+        public static event Action<Vector3, Vector3, Vector3> ShotHitEnemy; // muzzle, point, normal: a shot hit a live enemy (C-72)
         public static event Action<AttackInfo> PlayerAttacked;
         public static event Action<MonoBehaviour> GrabStarted;  // Heartbeat.AI.EnemyBrain: grab windup, Lukas is pulled in (C-64)
         public static event Action<bool> GrabResolved;        // true = countered by the spike
