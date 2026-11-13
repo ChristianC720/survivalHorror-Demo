@@ -24,4 +24,4 @@
 - `SameSeed_SameLayout` (determinism).
 - Budget totals stay within range for 1 000 seeds.
 - PlayMode/Aura: build floor 1, measure the time → log `[Heartbeat][Gen] built in X ms` (≤ 5 000 ms).
-- Showcase (fairs/demos): launch the build with `-showcase`; new slots then use the `FC_F*_Showcase` configs (`SlotData.showcase`).
+- Showcase (fairs/demos): launch the build with `-showcase`; new slots then use the `FC_F*_Showcase` configs (`SlotData.showcase`). In the editor, `Heartbeat ▸ Launch Arguments ▸ -showcase` (and `-telemetry`) simulates the switch until the editor closes; Play in `Floor.unity` then builds the first floor with the Showcase config too.
