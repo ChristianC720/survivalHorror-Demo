@@ -38,6 +38,21 @@ namespace Heartbeat.Tests
             Sfx.Stop("CUE_Elevator_Hum");
             for (float t = 0f; t < 0.5f; t += Time.unscaledDeltaTime) yield return null;
             Assert.IsFalse(voice.isPlaying, "Sfx.Stop fades the cue out and frees its voice");
+
+            // C-67: the reconstruction event plays nothing; the shot that shows the capsule plays the cue once and stops it.
+            Assert.IsTrue(audio.TryGetCue("CUE_Capsule_Reconstruction", out var capsule));
+            int before = Voices(capsule.clips[0]);
+            GameEvents.RaiseReconstructed(1);
+            yield return null;
+            Assert.AreEqual(before, Voices(capsule.clips[0]), "Reconstructed starts no capsule voice");
+        }
+
+        private static int Voices(AudioClip clip)
+        {
+            int n = 0;
+            foreach (var s in Object.FindObjectsByType<AudioSource>())
+                if (s.isPlaying && s.clip == clip) n++;
+            return n;
         }
     }
 }

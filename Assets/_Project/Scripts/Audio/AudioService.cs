@@ -114,7 +114,6 @@ namespace Heartbeat.Audio
             GameEvents.RecycleWarning += OnRecycleWarning;
             GameEvents.StaminaExhausted += OnStaminaExhausted;
             GameEvents.Autosaved += OnAutosaved;
-            GameEvents.Reconstructed += OnReconstructed;
             GameEvents.ItemRegistered += OnItemRegistered;
             GameEvents.EnemyKilled += OnEnemyKilled;
             GameEvents.PlayerAttacked += OnPlayerAttacked;
@@ -135,7 +134,6 @@ namespace Heartbeat.Audio
             GameEvents.RecycleWarning -= OnRecycleWarning;
             GameEvents.StaminaExhausted -= OnStaminaExhausted;
             GameEvents.Autosaved -= OnAutosaved;
-            GameEvents.Reconstructed -= OnReconstructed;
             GameEvents.ItemRegistered -= OnItemRegistered;
             GameEvents.EnemyKilled -= OnEnemyKilled;
             GameEvents.PlayerAttacked -= OnPlayerAttacked;
@@ -350,7 +348,7 @@ namespace Heartbeat.Audio
         private void OnRecycleWarning(Vector3 pos) => Play("CUE_Recycle_Warning", pos);
         private void OnStaminaExhausted() => Play("CUE_Lukas_Gasp", null);
         private void OnAutosaved() => Play("CUE_Autosave_Sync", null);
-        private void OnReconstructed(int _) => Play("CUE_Capsule_Reconstruction", null);
+        // Capsule_Reconstruction is not on this table: CycleController, IntroDirector and MotherDirector play it with their shot and stop it (C-67).
         private void OnItemRegistered(string _, int __, bool isNew) { if (isNew) Play("CUE_Terminal_Register", null); }
         private void OnEnemyKilled(MonoBehaviour _, Vector3 pos) => Play("CUE_Enemy_Death", pos);
         private void OnPlayerAttacked(AttackInfo a) => Play(a.IsGrab ? "CUE_Enemy_Grab" : "CUE_Enemy_Attack", a.From);
