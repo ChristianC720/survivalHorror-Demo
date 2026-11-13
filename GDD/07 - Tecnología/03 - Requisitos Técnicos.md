@@ -1,18 +1,18 @@
 # Requisitos Técnicos
 
-## Descripción de la sección
+## 1. Descripción de la sección
 
 Define las condiciones técnicas necesarias para ejecutar y desarrollar el videojuego.
 
-Los requisitos son **objetivos provisionales** (D-112) y se confirman con el perfilado de la semana de pruebas del [[03 - Roadmap]].
+Los requisitos son objetivos provisionales y se confirman con el perfilado de la semana de pruebas del [[03 - Roadmap]]. Los valores numéricos de este documento son iniciales y están sujetos a balance.
 
-## Requisitos mínimos
+## 2. Requisitos mínimos
 
 **Sistema operativo:** Windows 10 de 64 bits.
 
-**CPU:** 4 núcleos a ~2.5 GHz (Intel Core i5 de 6.ª generación o AMD Ryzen 3 1200).
+**CPU:** 4 núcleos a ~2.5 GHz, como un Intel Core i5 de 6.ª generación o un AMD Ryzen 3 1200.
 
-**GPU:** compatible con DirectX 11 y 2 GB de VRAM (NVIDIA GTX 950 o AMD RX 460).
+**GPU:** Compatible con DirectX 11 y con 2 GB de VRAM, como una NVIDIA GTX 950 o una AMD RX 460.
 
 **RAM:** 8 GB.
 
@@ -22,57 +22,56 @@ Los requisitos son **objetivos provisionales** (D-112) y se confirman con el per
 
 **Conexión:** No requerida.
 
-## Requisitos recomendados
+## 3. Requisitos recomendados
 
 **Sistema operativo:** Windows 10 u 11 de 64 bits.
 
-**CPU:** 6 núcleos a ~3 GHz (Intel Core i5 de 9.ª generación o AMD Ryzen 5 2600).
+**CPU:** 6 núcleos a ~3 GHz, como un Intel Core i5 de 9.ª generación o un AMD Ryzen 5 2600.
 
-**GPU:** 4 GB de VRAM (NVIDIA GTX 1060 o AMD RX 580).
+**GPU:** 4 GB de VRAM, como una NVIDIA GTX 1060 o una AMD RX 580.
 
 **RAM:** 16 GB.
 
 **Almacenamiento:** 3 GB libres en SSD.
 
-## Requisitos de desarrollo
+## 4. Objetivos de rendimiento
 
-- Unity `6000.6.6f1` con el módulo *Windows Build Support (IL2CPP)* (D-107).
-- Git y Git LFS instalados ([[02 - Motor y Herramientas]]).
-- Blender, Blockbench y REAPER y FL Studio para quien produce arte y audio ([[02 - Motor y Herramientas]]).
+**FPS objetivo:** 60 FPS a 1920 × 1080 en el equipo recomendado ([[03 - Público y Plataforma]]). Nunca baja de 30 FPS en el equipo mínimo.
 
-## Objetivos de rendimiento
+**Tiempo de carga objetivo:** La generación del piso y la construcción del NavMesh tardan 5 s o menos, para que la transición de piso no se alargue. El arranque hasta el menú principal tarda 15 s o menos.
 
-**FPS objetivo:** 60 FPS a 1920 × 1080 en el equipo recomendado ([[03 - Público y Plataforma]]); nunca por debajo de 30 FPS en el mínimo.
+**Memoria máxima:** 3 GB de RAM del proceso y 1.5 GB de VRAM como máximo.
 
-**Tiempo de carga objetivo:** generación del piso y construcción del NavMesh en **≤ 5 s**, para que la transición de piso no se alargue (D-39). Arranque hasta el menú principal en ≤ 15 s.
-
-**Memoria máxima:** ≤ 3 GB de RAM del proceso y ≤ 1.5 GB de VRAM.
-
-**Presupuestos por fotograma (D-112):**
+**Presupuestos por fotograma:**
 
 | Elemento | Presupuesto |
 |---|---|
-| Salas activas | La sala actual y sus adyacentes; el resto del piso desactivado (`SetActive(false)`) |
-| Enemigos con IA activa | Todos los del piso (6–12): nunca se desactivan; fuera de la vista no se dibujan (D-162) |
-| Salas dibujadas | La actual y las que están a 2 puertas o menos (D-162) |
-| Resolución interna | ~540 líneas, escalado sin suavizado (estilo pixelado, D-81, D-162) |
-| Luces dinámicas visibles | ≤ 16 (Forward+) |
-| Luces con sombra | ≤ 4 a la vez (linterna + 3); el resto sin sombra |
-| Triángulos en pantalla | ≤ 300 000 |
-| *Draw calls* / *batches* | ≤ 1 500 |
-| Texturas de mundo | ≤ 256 × 256 (512 para personajes) con filtro *Point* (D-81) |
-| Audio simultáneo | ≤ 32 voces |
+| Salas activas | La sala actual y sus adyacentes. El resto del piso queda desactivado con `SetActive(false)` |
+| Enemigos con IA activa | Todos los del piso, que nunca se desactivan y fuera de la vista no se dibujan. Configuración completa: 6 a 9 en el piso 1, 9 a 12 en el piso 2 y 12 a 15 en el piso 3. Showcase: 5 a 7, 7 a 9 y 9 a 11 |
+| Salas dibujadas | La actual y las que están a 2 puertas o menos |
+| Resolución interna | ~540 líneas, con escalado sin suavizado para el estilo pixelado |
+| Luces dinámicas visibles | 16 como máximo, con *Forward+* |
+| Luces con sombra | 4 como máximo a la vez, la linterna y 3 más. El resto va sin sombra |
+| Triángulos en pantalla | 300 000 como máximo |
+| *Draw calls* / *batches* | 1 500 como máximo |
+| Texturas de mundo | 256 × 256 como máximo, 512 para personajes, con filtro *Point* |
+| Audio simultáneo | 32 voces como máximo |
 
-## Restricciones
+## 5. Restricciones
 
-- Solo Windows de 64 bits; no hay versión de consola, macOS ni Linux en la demo.
-- Sin luz horneada: las salas cambian en cada intento (S-06); la iluminación es dinámica con *Forward+*.
-- El render a ~540p no se desactiva (D-81); la interfaz siempre a resolución nativa.
-- Teclado y ratón completos; mando tipo Xbox con el mapa básico fijo de [[04 - Controles]], sin reasignación (D-120).
-- **NavMesh:** se construye una vez por piso, durante la transición o la reconstrucción; nunca durante el juego (D-110).
-- **Vista de vigilancia:** el retraso de imagen (~0.3 s) se hace guardando unas pocas imágenes de baja resolución; no debe bajar de 60 FPS.
-- **Unity 6.6 no es LTS:** ver el riesgo en [[05 - Seguridad y Riesgos Técnicos]].
-- **Tamaño del build:** objetivo ≤ 2 GB; cierra el punto de almacenamiento de [[03 - Público y Plataforma]].
+- Solo Windows de 64 bits. La demo no tiene versión de consola, macOS ni Linux.
+- No hay luz horneada, porque las salas cambian en cada intento. La iluminación es dinámica con *Forward+*.
+- El render a ~540p no se desactiva. La interfaz siempre va a resolución nativa.
+- Teclado y mouse están completos. El mando tipo Xbox usa el mapa básico fijo de [[04 - Controles]], sin reasignación.
+- **NavMesh.** Se construye una vez por piso, durante la transición o la reconstrucción, y nunca durante el juego.
+- **Vista de vigilancia.** El retraso de imagen de ~0.3 s se logra guardando unas pocas imágenes de baja resolución. No debe bajar de 60 FPS.
+- **Unity 6.6 no es LTS.** El riesgo está en [[05 - Seguridad y Riesgos Técnicos]].
+- **Tamaño del build.** El objetivo es 2 GB como máximo, y cierra el punto de almacenamiento de [[03 - Público y Plataforma]].
 
+## 6. Requisitos de desarrollo
+
+- Unity `6000.6.8f1` con *Windows Build Support*. La build de Windows de 64 bits usa el backend Mono.
+- Git y Git LFS instalados ([[02 - Motor y Herramientas]]).
+- Blender, REAPER y FL Studio para quien produce arte y audio ([[02 - Motor y Herramientas]]).
 
 > **Navegación:** [[00 - Índice]] · ← [[02 - Motor y Herramientas]] · [[04 - Datos y Persistencia]] →

@@ -1,61 +1,84 @@
 # Alcance
 
-## Descripción de la sección
+## 1. Descripción de la sección
 
 Define qué se va a construir y, sobre todo, qué queda fuera del proyecto.
 
-**Versión objetivo:** demo jugable para PC, entrega el **2026-11-20** (D-111, D-134). Plan semanal en [[03 - Roadmap]].
+**Versión objetivo:** Demo jugable para PC, con entrega el 13 de noviembre de 2026. El plan está en [[03 - Roadmap]]. Los valores numéricos de este documento son iniciales y están sujetos a balance.
 
-## Alcance de la versión objetivo
+## 2. Alcance de la versión objetivo
 
-### Incluido
+### 2.1 Incluido
 
-- Configuración **completa** (3 pisos de 8–12 salas procedurales + 2–3 secundarias + 1 final, ~45–60 min; D-33) como configuración predeterminada. La **showcase** (6–8 + 2 + 1, ~30 min; D-34) se mantiene como ajuste de S-06 que se activa al lanzar el juego con `-showcase`, para ferias y presentaciones (D-171).
-- Todas las mecánicas de prioridad Demo: M-01..M-16, M-19 y M-20 ([[02 - Mecánicas]]).
-- Los 11 sistemas S-01..S-11 ([[03 - Sistemas]]); S-08 sin degradación si se recorta M-18.
-- 4 tipos de enemigo (el Alto, la Boca, el Rastrero, el Mudo) y The Mother con 3 fases.
+- **Configuración completa** como predeterminada, con 3 pisos y ~45 a 60 min de juego.
+- **Configuración showcase** para ferias y presentaciones, con ~30 min de juego. Se activa al lanzar el juego con `-showcase`. Las salas y los recursos de ambas configuraciones están en Generación procedural por pisos, en [[03 - Sistemas]].
+- Todas las mecánicas de prioridad Demo de [[02 - Mecánicas]].
+- Los 11 sistemas de [[03 - Sistemas]]. El ciclo de muerte va sin degradación si se recorta la degradación por muerte.
+- 4 tipos de enemigo, que son el Alto, la Boca, el Rastrero y el Mudo, y The Mother con 3 fases.
 - 6 arquetipos de sala con el tema de cada piso, salas clave secundarias, salas finales y la sala de The Mother ([[02 - Niveles]]).
-- Tutorial de 4 salas con carteles (D-70, D-89) e introducción jugable (D-53, D-63).
-- Los 6 documentos de Emilia, la decisión final y las 3 cinemáticas de victoria (Relevo básico, Relevo completo, Ambiguo).
-- Terminal del brazo, menús, 3 ranuras, Opciones y las opciones de [[03 - Accesibilidad]].
-- Modo Supervivencia y Modo Historia (D-103).
-- Textos en inglés y español (D-62).
-- Mando tipo Xbox con mapa básico fijo (D-120).
+- Tutorial de 4 salas con carteles e introducción jugable.
+- Los 6 documentos de Emilia, la decisión final y las 3 cinemáticas de victoria: Relevo básico, Relevo completo y Ambiguo.
+- Terminal del brazo, menús, 3 ranuras, `Opciones` y las opciones de [[03 - Accesibilidad]].
+- Modo Supervivencia y Modo Historia.
+- Textos en inglés y español.
+- Mando tipo Xbox con mapa básico fijo.
 
-### No incluido
+### 2.2 No incluido
 
-- Reasignación del mando (D-120).
-- Todo lo marcado Post-demo en [[02 - Mecánicas]]: saqueo de cadáveres, pasarelas entre salas, techos rotos.
-- Finales "Salida" y "Encuentro con Emilia" (D-51).
-- Actuación de voz (D-52), otras plataformas, logros, estadísticas en línea.
-- NPC vivos (D-77).
+- Reasignación del mando.
+- Todo lo marcado como Post-demo en [[02 - Mecánicas]], como el saqueo de cadáveres, las pasarelas entre salas y los techos rotos.
+- El reflejo del haz de la linterna en el suelo, el modelo propio de cada enemigo reciclado y la opción de salida estéreo o auriculares.
+- Los finales *Salida* y *Encuentro con Emilia*.
+- Actuación de voz, otras plataformas, logros y estadísticas en línea.
+- NPC vivos.
 
-## MVP
+## 3. MVP
 
 El **Producto Mínimo Viable** debe contener únicamente lo necesario para demostrar que la experiencia principal funciona.
 
-**MVP del proyecto (hito H3, 2026-11-08):** un **piso 1 generado proceduralmente** en *greybox* donde Lukas se mueve en OTS, encuentra recursos en el inventario de 6 casillas, evita o combate a un enemigo con IA (el Alto) con revólver y empujón, consigue la llave obligatoria, llega a la sala clave final y, si muere, se reconstruye en la cápsula con un piso distinto y el terminal conservado. Prueba el bucle de [[01 - Jugabilidad]] sin arte final.
+**MVP del proyecto:** Se cierra con el hito H3, del 1 al 7 de noviembre de 2026. Es un piso 1 generado por procedimiento en *greybox* que prueba el bucle de [[01 - Jugabilidad]] sin arte final. En él, Lukas cumple estos pasos.
 
-## Vertical Slice
+- Se mueve con la cámara sobre el hombro.
+- Encuentra recursos y los guarda en el inventario de 6 casillas.
+- Evita o combate a un enemigo con IA, el Alto, con revólver y empujón.
+- Consigue la llave obligatoria y llega a la sala clave final.
+- Si muere, se reconstruye en la cápsula con un piso distinto y el terminal conservado.
 
-**Vertical slice (hito H4, 2026-11-11):** el **piso 1 completo con calidad final**: tutorial de 4 salas con carteles, arte y luz ámbar de mantenimiento, el Alto y el Rastrero animados, vista de vigilancia con señal escalonada, sigilo con linterna, hackeo, reciclaje y remate, audio de alertas y latidos, terminal del brazo y autoguardado en la sala final. Demuestra el tono, el render ~540p y los tres pilares.
+## 4. Vertical Slice
 
-## Criterios de recorte
+**Vertical slice:** Se cierra con el hito H4, del 8 al 10 de noviembre de 2026. Es el piso 1 completo con calidad final, y demuestra el tono, el render a ~540p y los tres pilares. Incluye estos elementos.
 
-Si el tiempo o los recursos son insuficientes, se recorta en este orden (D-111). Cada recorte se registra en [[05 - Gestión de Cambios]].
+- Tutorial de 4 salas con carteles.
+- Arte y luz ámbar de mantenimiento.
+- El Alto y el Rastrero animados.
+- Vista de vigilancia con señal escalonada.
+- Sigilo con linterna, hackeo, reciclaje y remate.
+- Audio de alertas y latidos.
+- Terminal del brazo y autoguardado en la sala final.
 
-1. **M-17 Fallas de la máquina** (Deseable): la fase 1 de The Mother usa la longitud original.
-2. **M-18 Degradación y final Asimilación** (Deseable): sin contador de 5 muertes ni capas de degradación; el estado Final: Asimilación no existe.
-3. **Configuración showcase:** se deja de mantener y solo se entrega la completa.
-4. **Documentos de contexto y objetos confiscados:** de 12 + 12 a 4 + 4 (uno por tipo y piso).
-5. **Cinemáticas:** las narrativas pasan a imágenes fijas con texto y sonido sobre Timeline; se mantienen la corta de reconstrucción y la transición de piso.
-6. **Modo Historia:** se mantiene la selección, pero solo cambia el daño recibido.
-7. **Español:** se entrega solo en inglés (idioma principal, D-62).
-8. **Introducción:** se reduce a la compuerta y el elevador.
-9. **Enemigos de los pisos 2 y 3:** la Boca y el Mudo reutilizan la IA del Alto o del Rastrero con otro modelo y otros valores.
-10. **Fase 2 de The Mother:** sin cámaras hostiles.
+## 5. Criterios de recorte
 
-**Nunca se recorta:** el ciclo muerte → reconstrucción → piso nuevo, la generación válida, la vista de vigilancia con costo, el inventario en tiempo real, The Mother (salvo lo que permite el recorte 10), los 6 documentos de Emilia y la decisión final, ni las opciones de accesibilidad de brillo y subtítulos.
+Si falta tiempo o recursos, se recorta en este orden. Cada recorte se registra en [[05 - Gestión de Cambios]].
 
+1. **Fallas de la máquina**, que es Deseable. La fase 1 de The Mother usa la longitud original.
+2. **Degradación por muerte y final Asimilación**, que es Deseable. No hay contador de 5 muertes ni capas de degradación, y el estado Final: Asimilación no existe.
+3. **Configuración showcase.** Se deja de mantener y solo se entrega la completa.
+4. **Documentos de contexto y objetos confiscados.** Pasan de 12 y 12 a 4 y 4, uno por tipo y piso.
+5. **Cinemáticas.** Las narrativas pasan a imágenes fijas con texto y sonido sobre Timeline. Se mantienen la cinemática corta de reconstrucción y la transición de piso.
+6. **Modo Historia.** Se mantiene la selección, pero solo cambia el daño recibido.
+7. **Español.** Se entrega solo en inglés, el idioma principal.
+8. **Introducción.** Se reduce a la compuerta y el elevador.
+9. **Enemigos de los pisos 2 y 3.** La Boca y el Mudo reutilizan la IA del Alto o del Rastrero, con otro modelo y otros valores.
+10. **Fase 2 de The Mother.** Se juega sin cámaras hostiles.
+
+**Nunca se recorta:**
+
+- El ciclo de muerte, reconstrucción y piso nuevo.
+- La generación válida.
+- La vista de vigilancia con costo.
+- El inventario en tiempo real.
+- The Mother, salvo lo que permite el recorte 10.
+- Los 6 documentos de Emilia y la decisión final.
+- Las opciones de accesibilidad de brillo y subtítulos.
 
 > **Navegación:** [[00 - Índice]] · ← [[05 - Seguridad y Riesgos Técnicos]] · [[02 - Roles y Responsabilidades]] →

@@ -1,131 +1,133 @@
 # Pruebas
 
-## Descripción de la sección
+## 1. Descripción de la sección
 
 Define cómo se comprobará que el videojuego funciona como fue diseñado.
 
-Responsable de QA: Lenin Ramón López Córdova ([[02 - Roles y Responsabilidades]]). Calendario de hitos en [[03 - Roadmap]].
+## 2. Tipos de prueba
 
-## Tipos de prueba
+Lenin Ramón López Córdova es el responsable de QA ([[02 - Roles y Responsabilidades]]). Las pruebas y el balance general de la demo van del 9 al 12 de noviembre de 2026, y la entrega es el 13 de noviembre ([[03 - Roadmap]]). Los valores numéricos de este documento son iniciales y están sujetos a balance.
 
-### Pruebas funcionales
+### 2.1 Pruebas funcionales
 
 Comprueban que una característica haga lo que debe.
 
-- **Automáticas (Unity Test Framework, EditMode):** lógica pura sin escena. Obligatorias para: validador del generador, reglas de inventario, resistencia, contador de muertes, código de sujeto, serialización y migración del guardado, tabla de costo de salida.
-- **Manuales:** casos de prueba de esta nota y criterios de aceptación de [[03 - Sistemas]], en una escena de prueba por sistema (`Scenes/Tests/`).
+- **Automáticas.** Usan Unity Test Framework en EditMode y prueban lógica pura sin escena.
+- Son obligatorias para el validador del generador, las reglas del inventario, la resistencia, el contador de muertes y el código de sujeto. También para la serialización y migración del guardado y la tabla de costo de salida.
+- **Manuales.** Ejecutan los casos de esta nota y los criterios de aceptación de [[03 - Sistemas]], en una escena de prueba por sistema dentro de `Assets/_Project/Scenes/Tests/`.
+- Esa carpeta también guarda las escenas `Sandbox_AI`, `Sandbox_Gallery`, `Sandbox_Kit`, `Sandbox_Movement` y `Sandbox_Render`.
 
-### Pruebas de integración
+### 2.2 Pruebas de integración
 
 Comprueban que varios sistemas funcionen correctamente juntos.
 
-- **PlayMode:** generar un piso, colocar al jugador y comprobar que existe un camino en el NavMesh hasta la llave y la sala final.
-- **Cadenas de la tabla de relaciones** de [[03 - Sistemas]]: por ejemplo, morir durante una caza → contador, inventario de llegada al piso, piso regenerado, autoguardado descartado y código de sujeto +1.
-- **Recorrido completo:** de Nueva partida a los créditos en la showcase, una vez por semana desde H5 ([[03 - Roadmap]]).
+- **PlayMode.** Se genera un piso, se coloca al jugador y se comprueba que existe un camino en el NavMesh hasta la llave y la sala final.
+- **Cadenas entre sistemas.** Se recorren las relaciones de [[03 - Sistemas]]. Por ejemplo, morir durante una caza suma al contador, devuelve el inventario de llegada, regenera el piso, descarta el autoguardado y sube el código de sujeto.
+- **Recorrido completo.** Va de `Nueva partida` a los créditos en la configuración showcase, desde el hito H5 ([[03 - Roadmap]]).
 
-### Pruebas de usabilidad
+### 2.3 Pruebas de usabilidad
 
 Comprueban si los jugadores entienden y pueden utilizar el sistema.
 
-- Desde H4, una persona ajena al equipo juega el piso 1 sin ayuda mientras alguien anota dónde se confunde. Preguntas: ¿entendió cómo se usa la vigilancia y su costo?, ¿supo que la muerte cambia el piso?, ¿entendió los estados de alerta por el sonido?
-- **Playtests con métricas** en cada hito desde H2, con personas que no conocen el GDD. Se les observa sin ayudar y luego se les pregunta. Los datos salen de la telemetría local de las compilaciones de prueba ([[05 - Seguridad y Riesgos Técnicos]]).
+- Desde el hito H4, una persona ajena al equipo juega el piso 1 sin ayuda mientras alguien anota dónde se confunde.
+- Después se le pregunta si entendió el uso y el costo de la vigilancia y si supo que la muerte cambia el piso. También si entendió los estados de alerta por el sonido.
+- **Playtests con métricas.** Se hacen en cada hito desde H2, con personas que no conocen el GDD. Se les observa sin ayudar y luego se les pregunta.
+- Los datos salen del modo de telemetría local, que se activa al lanzar el juego con `-telemetry`, igual que `-showcase` ([[05 - Seguridad y Riesgos Técnicos]]).
 
 | Pregunta | Cómo se mide |
 |---|---|
-| ¿La vista de vigilancia es útil y divertida? | Usos y segundos por piso; ¿la usa sin que se le diga? |
-| ¿Se percibe la atención de The Mother? | Veces que se llena; ¿siente que los enemigos lo encuentran "sin razón"? |
-| ¿Cuánto dura un piso y la partida? | Tiempo por piso y total (objetivo ~30 min en la showcase) |
-| ¿Morir es justo o frustrante? | Muertes por piso, sala y causa; ¿abandona antes de terminar? |
-| ¿Se entienden las reglas? | Que explique el reciclaje, el remate y el autoguardado sin haberlos leído |
+| ¿La vista de vigilancia es útil y divertida? | Usos y segundos por piso. Si la usa sin que se le diga |
+| ¿Se percibe la atención de The Mother? | Veces que se llena. Si siente que los enemigos lo encuentran *sin razón* |
+| ¿Cuánto dura un piso y la partida? | Tiempo por piso y total, con ~30 min como objetivo en la showcase |
+| ¿Morir es justo o frustrante? | Muertes por piso, sala y causa. Si abandona antes de terminar |
+| ¿Se entienden las reglas? | Si explica el reciclaje, el remate y el autoguardado sin haberlos leído |
 | ¿Rematar es una decisión o una tarea? | Remates frente a enemigos reciclados |
 
-### Pruebas de rendimiento
+### 2.4 Pruebas de rendimiento
 
 Comprueban FPS, memoria, tiempos de carga y estabilidad.
 
-- Profiler y Memory Profiler en una build de desarrollo, en el piso 3 con 2 enemigos en caza y la linterna encendida.
-- Medir el tiempo de generación + NavMesh por piso (objetivo ≤ 5 s) y el tamaño del build ([[03 - Requisitos Técnicos]]).
-- Escenarios adicionales: vista de vigilancia con señal degradada y fase 2 de The Mother.
-- Partida de 60 min sin cierre inesperado ni crecimiento de memoria.
-- Cerrar el proceso a la fuerza durante un autoguardado: la ranura no se corrompe ([[04 - Datos y Persistencia]]).
+- Se usan Profiler y Memory Profiler en una build de desarrollo, en el piso 3, con 2 enemigos en caza y la linterna encendida.
+- Se mide el tiempo de generación y NavMesh por piso, con 5 s como máximo, y el tamaño de la build ([[03 - Requisitos Técnicos]]).
+- Otros escenarios son la vista de vigilancia con señal degradada y la fase 2 de The Mother.
+- Una partida de 60 min termina sin cierre inesperado ni crecimiento de memoria.
+- Cerrar el proceso a la fuerza durante un autoguardado no corrompe la ranura ([[04 - Datos y Persistencia]]).
 
-## Caso de prueba
+## 3. Caso de prueba
 
-Plantilla, seguida de los casos críticos del proyecto.
+Estos son los casos críticos del proyecto. Se ejecutan en la semana de pruebas, del 9 al 12 de noviembre de 2026.
 
-### Nombre
+### 3.1 Generación válida
 
-**Objetivo:**
+**Objetivo:** Comprobar que ningún piso es imposible, según Generación procedural por pisos en [[03 - Sistemas]]. Es una prueba automática.
 
-**Precondiciones:**
-
-**Pasos:**
-
-1.
-2.
-3.
-
-**Resultado esperado:**
-
-**Resultado obtenido:**
-
-**Estado:** Correcto / Incorrecto
-
-### CP-01 Generación válida (automática)
-
-**Objetivo:** Ningún piso es imposible (S-06).
-
-**Precondiciones:** `LayoutValidator` y parámetros de showcase y completa.
+**Precondiciones:** `LayoutValidator` con los parámetros de las configuraciones showcase y completa.
 
 **Pasos:**
 
-1. Generar 1 000 grafos por piso y configuración con semillas 0..999.
-2. Validar cada uno.
+1. Generar 1 000 grafos por piso y configuración con las semillas 0 a 999.
+2. Validar cada grafo.
 
-**Resultado esperado:** Todos pasan: ruta entrada → llave obligatoria → sala final sin cruzar su puerta ni puertas opcionales; distancia ≥ 4 salas (≥ 3 en showcase); máximo 2 enemigos por sala; presupuesto dentro de mínimo y máximo; 2 documentos de Emilia en salas secundarias.
+**Resultado esperado:** Todos pasan.
 
-**Resultado obtenido:**
+- Hay ruta de la entrada a la llave obligatoria y de ahí a la sala final, sin cruzar su puerta ni puertas opcionales.
+- La sala final queda al menos a 4 salas, o a 3 en la showcase.
+- Ninguna sala tiene más de 2 enemigos y cada recurso queda entre su mínimo y su máximo.
+- Hay 2 documentos de Emilia en salas secundarias.
 
-**Estado:**
+**Resultado obtenido:** Sin ejecutar.
 
-### CP-02 Muerte y reconstrucción
+**Estado:** Pendiente.
 
-**Objetivo:** El ciclo funciona (S-08).
+### 3.2 Muerte y reconstrucción
 
-**Precondiciones:** Partida en el piso 1 tras el primer intento, con objetos y un documento registrado.
+**Objetivo:** Comprobar el Ciclo de muerte y reconstrucción de [[03 - Sistemas]].
+
+**Precondiciones:** Partida en el piso 1 después del primer intento, con objetos y un documento registrado.
 
 **Pasos:**
 
 1. Dejarse matar por un enemigo.
-2. Ver la cinemática corta; repetir saltándola con `Espacio`.
+2. Ver la cinemática corta.
+3. Repetir la muerte y saltar la cinemática con `Espacio`.
+4. Repetir con `Reiniciar`.
 
-**Resultado esperado:** Inventario de llegada al piso (vacío en el piso 1 si llegó sin nada); terminal con el documento; aparición al inicio del piso 1; distribución del piso distinta; código de sujeto +1; contador +1. Igual resultado con "Reiniciar".
+**Resultado esperado:**
 
-**Resultado obtenido:**
+- Lukas aparece al inicio del piso 1 con el inventario de llegada, vacío si llegó sin nada.
+- El terminal conserva el documento y la distribución del piso es distinta.
+- El código de sujeto y el contador suben 1.
+- `Reiniciar` y la cinemática saltada dejan el mismo resultado.
 
-**Estado:**
+**Resultado obtenido:** Sin ejecutar.
 
-### CP-03 Autoguardado y salida
+**Estado:** Pendiente.
 
-**Objetivo:** Guardar y continuar según la tabla de salida (S-07).
+### 3.3 Autoguardado y salida
+
+**Objetivo:** Comprobar que guardar y continuar siguen la tabla de salida de Persistencia en [[03 - Sistemas]].
 
 **Precondiciones:** Partida con autoguardado en la sala final del piso 1.
 
 **Pasos:**
 
-1. Salir con calma a mitad del piso 2; Continuar.
-2. Salir durante una caza; Continuar.
-3. Cerrar el proceso desde el administrador de tareas; Continuar.
+1. Salir con calma a mitad del piso 2 y elegir `Continuar`.
+2. Salir durante una caza y elegir `Continuar`.
+3. Cerrar el proceso desde el administrador de tareas y elegir `Continuar`.
 
-**Resultado esperado:** 1: aparece en la sala final del piso 1 con el inventario de llegada, contador +1. 2: inicio del piso 2 con el inventario de llegada y muerte completa (D-147). 3: último autoguardado sin costo.
+**Resultado esperado:**
 
-**Resultado obtenido:**
+1. Lukas aparece en la sala final del piso 1 con el inventario de llegada y el contador sube 1.
+2. Lukas aparece al inicio del piso 2 con el inventario de llegada y cuenta como muerte completa.
+3. Lukas vuelve al último autoguardado sin costo.
 
-**Estado:**
+**Resultado obtenido:** Sin ejecutar.
 
-### CP-04 Vigilancia con costo
+**Estado:** Pendiente.
 
-**Objetivo:** La vista de vigilancia respeta la señal escalonada (S-01).
+### 3.4 Vigilancia con costo
+
+**Objetivo:** Comprobar que la Vista de vigilancia respeta la señal escalonada de [[02 - Mecánicas]].
 
 **Precondiciones:** Sala con cámara y un Alto en la sala adyacente.
 
@@ -133,32 +135,45 @@ Plantilla, seguida de los casos críticos del proyecto.
 
 1. Activar `Q` con el Alto en patrulla durante 6 s.
 2. Repetir con el Alto en búsqueda.
-3. Provocar que entre en caza.
+3. Provocar que el Alto entre en caza.
 
-**Resultado esperado:** 1: tras ~5 s el Alto pasa a sospecha y búsqueda. 2: señal con más ruido y retraso. 3: la vista se corta y `Q` no la reactiva.
+**Resultado esperado:**
 
-**Resultado obtenido:**
+1. Tras ~5 s, el Alto pasa a sospecha y a búsqueda.
+2. La señal llega con más ruido y más retraso.
+3. La vista se corta y `Q` no la reactiva.
 
-**Estado:**
+**Resultado obtenido:** Sin ejecutar.
 
-### CP-05 The Mother y decisión final
+**Estado:** Pendiente.
 
-**Objetivo:** El jefe y los finales se resuelven según S-10 y S-08.
+### 3.5 The Mother y decisión final
 
-**Precondiciones:** Ranura de depuración en el piso 3 con 0 y con 6 documentos de Emilia.
+**Objetivo:** Comprobar que el jefe y los finales se resuelven según Jefe The Mother y Ciclo de muerte y reconstrucción, en [[03 - Sistemas]].
+
+**Precondiciones:** Ranura de depuración en el piso 3, una con 0 documentos de Emilia y otra con 6.
 
 **Pasos:**
 
-1. Completar las 3 fases sin munición al entrar.
-2. Con 0 documentos, ver la victoria; con 6, elegir la terminal y luego (cargando) la salida.
+1. Completar las 3 fases entrando sin munición.
+2. Con 0 documentos, ver la victoria.
+3. Con 6 documentos, elegir la terminal central.
+4. Cargar de nuevo y elegir la salida.
 
-**Resultado esperado:** La sala da 12 balas en la fase 2 y 8 en la fase 3; la fase 3 solo empieza con los 4 asimilados eliminados y Lukas en el núcleo; si llega al núcleo sin ser enfocado, salen los asimilados que falten (D-117); 0 documentos → Relevo básico sin elección; 6 → Relevo completo con la terminal y Ambiguo con la salida; todas terminan en el gancho y los créditos.
+**Resultado esperado:**
 
-**Resultado obtenido:**
+- La sala da 12 balas en la fase 2 y 8 en la fase 3.
+- La fase 3 solo empieza con los 4 asimilados eliminados y Lukas en el núcleo.
+- Si Lukas llega al núcleo sin ser enfocado, salen los asimilados que falten.
+- Con 0 documentos se reproduce el Relevo básico sin elección.
+- Con 6, la terminal lleva al Relevo completo y la salida al Ambiguo.
+- Todos los finales terminan en el gancho y los créditos.
 
-**Estado:**
+**Resultado obtenido:** Sin ejecutar.
 
-### CP-06 Rendimiento
+**Estado:** Pendiente.
+
+### 3.6 Rendimiento
 
 **Objetivo:** Cumplir [[03 - Requisitos Técnicos]].
 
@@ -169,30 +184,30 @@ Plantilla, seguida de los casos críticos del proyecto.
 1. Jugar 10 min en el piso 3 con la linterna encendida y enemigos en caza.
 2. Medir 3 transiciones de piso.
 
-**Resultado esperado:** ≥ 30 FPS en el mínimo y 60 en el recomendado; generación + NavMesh ≤ 5 s.
+**Resultado esperado:** Al menos 30 FPS en el equipo mínimo y 60 en el recomendado. La generación y el NavMesh tardan 5 s o menos.
 
-**Resultado obtenido:**
+**Resultado obtenido:** Sin ejecutar.
 
-**Estado:**
+**Estado:** Pendiente.
 
-### CP-07 Autoguardado pendiente durante una caza
+### 3.7 Autoguardado pendiente durante una caza
 
-**Objetivo:** Llegar perseguido a la sala clave final no guarda hasta que termina la caza (S-07, D-96).
+**Objetivo:** Comprobar que llegar perseguido a la sala clave final no guarda hasta que termina la caza, según Persistencia en [[03 - Sistemas]].
 
-**Precondiciones:** Piso 1, sin autoguardado previo; un Alto en caza persigue al jugador.
+**Precondiciones:** Piso 1 sin autoguardado previo, con un Alto en caza detrás del jugador.
 
 **Pasos:**
 
 1. Entrar en la sala clave final con el Alto en caza.
-2. Comprobar que no aparece "sincronizando…" y que la escalera y el elevador muestran `LOCKDOWN`.
+2. Comprobar que no aparece `sincronizando…` y que la escalera y el elevador muestran `LOCKDOWN`.
 3. Perder al Alto o eliminarlo hasta que salga de la caza.
 4. Salir del juego con calma y volver a cargar la ranura.
 
-**Resultado esperado:** "sincronizando…" aparece solo al terminar la caza; al cargar, el jugador aparece en la sala clave final con el mismo inventario y la sala sin enemigos dentro (D-97).
+**Resultado esperado:** `sincronizando…` aparece solo al terminar la caza. Al cargar, el jugador aparece en la sala clave final con el mismo inventario y la sala empieza sin enemigos dentro.
 
-**Resultado obtenido:**
+**Resultado obtenido:** Sin ejecutar.
 
-**Estado:**
+**Estado:** Pendiente.
 
 
 > **Navegación:** [[00 - Índice]] · ← [[01 - Criterios de Calidad]] · [[03 - Bugs y Seguimiento]] →

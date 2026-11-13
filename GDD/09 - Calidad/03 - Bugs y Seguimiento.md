@@ -1,53 +1,54 @@
 # Bugs y Seguimiento
 
-## Descripción de la sección
+## 1. Descripción de la sección
 
 Registra problemas encontrados durante las pruebas y permite darles seguimiento.
 
-Los bugs se registran como tarjetas en **Trello** con la etiqueta "Bug" y una etiqueta de severidad (Crítica, Alta, Media, Baja) (D-113). Lenin Ramón López Córdova los clasifica y les asigna responsable ([[02 - Roles y Responsabilidades]]). El ID es el número de la tarjeta. La tabla de esta nota solo resume los críticos y altos abiertos en cada hito.
+## 2. Reporte de bug
+
+Cada bug se registra en el Excel de seguimiento `CronogramaIdentityDissolution_Objetivos_v3.xlsx`, con su severidad. Lenin Ramón López Córdova los clasifica y les asigna responsable ([[02 - Roles y Responsabilidades]]). Cada registro lleva estos campos.
+
+**Título:** El sistema afectado entre corchetes y qué falla, en una frase.
+
+**Versión:** Commit o build, con el resultado de `git rev-parse --short HEAD`.
+
+**Nivel / escena:** Piso, sala o escena, y la semilla del piso que muestra la consola de depuración.
+
+**Pasos para reproducir:** Lista numerada con las acciones mínimas que provocan el fallo desde la ranura o escena indicada.
+
+**Resultado esperado:** La regla del GDD que no se cumple, citada por el nombre de su mecánica o sistema y su nota.
+
+**Resultado actual:** Lo que ocurre en el juego.
+
+**Frecuencia:** Siempre, A veces o Rara vez.
 
 **Severidad:**
 
-- **Crítica:** cierre del juego, pérdida o corrupción del guardado, piso imposible, progreso bloqueado.
-- **Alta:** una regla del GDD no se cumple de forma visible (por ejemplo, la vigilancia no se corta en caza) o el rendimiento cae por debajo del mínimo.
-- **Media:** error con rodeo fácil, animación o sonido incorrecto.
-- **Baja:** detalle visual o de texto.
+- **Crítica.** Cierre del juego, pérdida o corrupción del guardado, piso imposible o progreso bloqueado.
+- **Alta.** Una regla del GDD falla de forma visible, como una vigilancia que no se corta en caza, o el rendimiento cae por debajo del mínimo.
+- **Media.** Error con rodeo fácil, o una animación o un sonido incorrecto.
+- **Baja.** Detalle visual o de texto.
 
-**Regla de hitos:** no se cierra un hito con bugs críticos abiertos; la entrega (H6) no tiene críticos ni altos abiertos ([[03 - Roadmap]]).
+**Evidencia:** Captura, video o el archivo `%USERPROFILE%\AppData\LocalLow\Heartbeat\Identity Dissolution\Player.log`.
 
-## Reporte de bug
+**Estado:** Abierto, En progreso, Resuelto o Cerrado.
 
-**Título:** [Sistema S-xx] Qué falla, en una frase.
+## 3. Registro
 
-**Versión:** commit o build (`git rev-parse --short HEAD`).
+El ID de cada bug es su número en el Excel de seguimiento. Esta tabla solo resume los bugs críticos y altos abiertos en cada hito.
 
-**Nivel / escena:** piso, sala o escena, y semilla del piso (visible en la consola de depuración).
+Los estados avanzan en este orden:
 
-**Pasos para reproducir:**
+1. **Abierto.** Sin asignar.
+2. **En progreso.** Con responsable trabajando en él.
+3. **Resuelto.** Corregido en `develop`.
+4. **Cerrado.** QA lo verificó en una build.
 
-1.
-2.
-3.
-
-**Resultado esperado:** (cita la regla del GDD: M-xx, S-xx o D-xx)
-
-**Resultado actual:**
-
-**Frecuencia:** Siempre / A veces / Rara vez
-
-**Severidad:** Crítica / Alta / Media / Baja
-
-**Evidencia:** captura, video o `Player.log` (`%USERPROFILE%\AppData\LocalLow\<Compañía>\Identity Dissolution\Player.log`).
-
-**Estado:** Abierto / En progreso / Resuelto / Cerrado
-
-## Registro
-
-Estados: **Abierto** (sin asignar) → **En progreso** → **Resuelto** (corregido en `develop`) → **Cerrado** (QA lo verificó en una build).
+Ningún hito se cierra con bugs críticos abiertos. La entrega del 13 de noviembre de 2026 no puede tener bugs críticos ni altos abiertos ([[03 - Roadmap]]).
 
 | ID | Bug | Severidad | Responsable | Estado |
 |---|---|---|---|---|
-| — | Sin bugs registrados todavía | — | — | — |
+| Ninguno | Sin bugs registrados todavía | No aplica | No aplica | No aplica |
 
 
 > **Navegación:** [[00 - Índice]] · ← [[02 - Pruebas]] · [[04 - Criterios de Aceptación]] →

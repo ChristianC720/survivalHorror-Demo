@@ -24,7 +24,6 @@ Cada sección explica **qué información debe escribirse**, por qué es importa
 ## Acerca de esta guía
 
 - [[00 - Acerca de esta guía]]
-- [[00 - GDD simplificado]] (vista consolidada del GDD)
 
 ### 01 — Visión
 - [[01 - Ficha del Proyecto]]
@@ -46,7 +45,6 @@ Cada sección explica **qué información debe escribirse**, por qué es importa
 - [[02 - Mundo]]
 - [[03 - Personajes]]
 - [[04 - Diálogos y Narrativa]]
-- [[05 - Textos del Juego]]
 
 ### 04 — Contenido
 - [[01 - Estructura del Contenido]]

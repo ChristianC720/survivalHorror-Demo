@@ -1,120 +1,133 @@
 # Referencias e Inspiración
 
-## Descripción de la sección
+## 1. Descripción de la sección
 
 Registra juegos, películas, libros, fotografías, artículos, diseños o cualquier otra referencia utilizada para tomar decisiones.
 
-## Referencia
+## 2. Referencia
 
-**Nombre:** *Signalis* (rose-engine, 2022)
+### 2.1 Signalis
 
-**Tipo:** Videojuego (survival horror).
+**Nombre:** *Signalis*, de rose-engine, 2022.
+
+**Tipo:** Videojuego de survival horror.
 
 **Enlace:** [Signalis en Steam](https://store.steampowered.com/app/1262350/SIGNALIS/)
 
-**Qué nos interesa:** Referencia principal (D-58). Estética retrofuturista, low-poly y con texturas crudas. Atmósfera fría y burocrática. Documentos en dos voces (burocracia y diario íntimo), texto con glitch e idioma sin traducir. Frases clave repetidas entre fuentes. Inventario de 6 casillas y escasez de recursos.
+**Qué nos interesa:** Es la referencia principal. Toma su estética retrofuturista y low-poly con texturas crudas, y su atmósfera fría y burocrática. También los documentos en dos voces, burocracia y diario íntimo, el texto con glitch y el idioma sin traducir. Suma las frases clave repetidas entre fuentes, el inventario de 6 casillas y la escasez de recursos.
 
-**Qué NO queremos copiar:** Su lore (replicantes, Eusan Nation), su estética comunista, su paleta concreta, sus personajes ni sus textos. No copiar la vista cenital como cámara principal: usamos OTS (D-01).
+**Qué NO queremos copiar:** Su lore de replicantes y Eusan Nation, su estética comunista, su paleta concreta, sus personajes y sus textos. Tampoco la vista cenital como cámara principal, porque el juego usa la vista sobre el hombro.
 
----
+### 2.2 Silent Hill
 
-**Nombre:** *Silent Hill* (Konami, saga)
+**Nombre:** *Silent Hill*, saga de Konami.
 
-**Tipo:** Videojuego (survival horror).
+**Tipo:** Videojuego de survival horror.
 
-**Qué nos interesa:** Protagonista civil roto, fuera de lugar. Monstruos grotescos que mezclan terror físico y psicológico (D-60). Terror basado en la atmósfera y el sonido.
+**Enlace:** Sin enlace.
 
-**Qué NO queremos copiar:** Su pueblo y su simbolismo religioso, sus criaturas concretas (Pyramid Head, enfermeras) y la niebla como recurso principal.
+**Qué nos interesa:** El protagonista civil, roto y fuera de lugar. Los monstruos grotescos que mezclan terror físico y psicológico. El terror basado en la atmósfera y el sonido.
 
----
+**Qué NO queremos copiar:** Su pueblo y su simbolismo religioso, sus criaturas concretas, como Pyramid Head o las enfermeras, y la niebla como recurso principal.
 
-**Nombre:** *Resident Evil* (Capcom, saga)
+### 2.3 Resident Evil
 
-**Tipo:** Videojuego (survival horror).
+**Nombre:** *Resident Evil*, saga de Capcom.
 
-**Qué nos interesa:** Corporación farmacéutica que experimenta con humanos. Gestión de inventario y munición escasa. Laboratorios subterráneos.
+**Tipo:** Videojuego de survival horror.
 
-**Qué NO queremos copiar:** El virus como explicación del horror: nuestro laboratorio no es un virus ni un arma biológica (D-46). Tampoco la acción ni la abundancia de armas.
+**Enlace:** Sin enlace.
 
----
+**Qué nos interesa:** La corporación farmacéutica que experimenta con humanos, la gestión de inventario con munición escasa y los laboratorios subterráneos.
 
-**Nombre:** *Alan Wake* (Remedy, saga)
+**Qué NO queremos copiar:** El virus como explicación del horror, porque el laboratorio no es un virus ni un arma biológica. Tampoco la acción ni la abundancia de armas.
 
-**Tipo:** Videojuego (thriller de terror).
+### 2.4 Alan Wake
 
-**Qué nos interesa:** Protagonista corriente que busca a su esposa desaparecida. Narrativa por fragmentos que se recuperan. Ambigüedad sobre lo real.
+**Nombre:** *Alan Wake*, saga de Remedy.
+
+**Tipo:** Videojuego, thriller de terror.
+
+**Enlace:** Sin enlace.
+
+**Qué nos interesa:** El protagonista corriente que busca a su esposa desaparecida, la narrativa por fragmentos que se recuperan y la ambigüedad sobre lo real.
 
 **Qué NO queremos copiar:** El combate con luz como mecánica central y la estructura episódica.
 
----
+### 2.5 The King in Yellow
 
-**Nombre:** *The King in Yellow* (Robert W. Chambers, 1895)
+**Nombre:** *The King in Yellow*, de Robert W. Chambers, 1895.
 
-**Tipo:** Libro (relatos de horror sobrenatural).
+**Tipo:** Libro de relatos de horror sobrenatural.
 
-**Qué nos interesa:** Un texto que destruye a quien lo lee completo: inspira el latido como texto, con un primer acto y un segundo acto (D-57, D-64). La identidad como máscara.
+**Enlace:** Sin enlace.
 
-**Qué NO queremos copiar:** Sus nombres y símbolos (Carcosa, Hastur, el Signo Amarillo) ni su obra de teatro.
+**Qué nos interesa:** Un texto que destruye a quien lo lee completo. Inspira el latido como texto, con un primer acto y un segundo acto. También la identidad como máscara.
 
----
+**Qué NO queremos copiar:** Sus nombres y símbolos, como Carcosa, Hastur o el Signo Amarillo, ni su obra de teatro.
 
-**Nombre:** Lustmord, John Carpenter, Trent Reznor y Atticus Ross, Hildur Guðnadóttir, Akira Yamaoka y Petri Alanko
+### 2.6 Música de referencia
 
-**Tipo:** Música (bandas sonoras y dark ambient).
+**Nombre:** Lustmord, John Carpenter, Trent Reznor y Atticus Ross, Hildur Guðnadóttir, Akira Yamaoka y Petri Alanko.
 
-**Qué nos interesa:** Música cruda, oscura e industrial, con melancolía y minimalismo; contraste entre instrumentos frágiles (piano, guitarra acústica) y sonidos de máquinas; loops para eventos sin duración fija (D-87). Ver [[05 - Audio y Música]].
+**Tipo:** Música de bandas sonoras y dark ambient.
 
-**Qué NO queremos copiar:** Sus temas, melodías ni samples.
+**Enlace:** Sin enlace.
 
----
+**Qué nos interesa:** Música cruda, oscura e industrial, con melancolía y minimalismo. El contraste entre instrumentos frágiles, como piano y guitarra acústica, y sonidos de máquinas. Los loops para eventos sin duración fija. Ver [[05 - Audio y Música]].
 
-**Nombre:** H. P. Lovecraft (obra)
+**Qué NO queremos copiar:** Sus temas, melodías y samples.
 
-**Tipo:** Libros (horror cósmico).
+### 2.7 H. P. Lovecraft
 
-**Qué nos interesa:** Horror cósmico: lo incognoscible, la indiferencia y la insignificancia humana (D-44). La criatura nunca se explica (D-16, D-47).
+**Nombre:** Obra de H. P. Lovecraft.
 
-**Qué NO queremos copiar:** Sus entidades concretas (Cthulhu y otras), sus tentáculos como cliché visual y su racismo.
+**Tipo:** Libros de horror cósmico.
 
-## Referencias visuales
+**Enlace:** Sin enlace.
 
-Añade imágenes utilizando la sintaxis de Obsidian:
+**Qué nos interesa:** El horror cósmico con lo incognoscible, la indiferencia y la insignificancia humana. La criatura nunca se explica.
 
-```markdown
-![[imagen.png]]
-```
+**Qué NO queremos copiar:** Sus entidades concretas, como Cthulhu, sus tentáculos como cliché visual y su racismo.
 
-Imágenes guardadas en `10 - Referencia` (D-82, D-83):
+## 3. Referencias visuales
 
-- Paletas: ![[PaletaBase.png]] ![[PaletaCarmesi.png]] ![[PaletaMorados.png]] ![[PaletaVerde.png]]
-- Ambientación (solo como guía de color): ![[ReferenciaConColoresOscurosFrios.jpg]]
-- Lukas civil y R-H-07: ![[Lukas-Reiner-Hellen.jpg]] ![[Lukas-R-H-07.jpg]]
+Las imágenes de referencia están en `Media/Referencia/`. El uso de cada paleta está en [[01 - Dirección de Arte]].
 
-Uso de cada paleta en [[01 - Dirección de Arte]].
+| Paleta base | Paleta carmesí |
+| --- | --- |
+| ![Paleta base|300](../Media/Referencia/PaletaBase.png) | ![Paleta carmesí|300](../Media/Referencia/PaletaCarmesi.png) |
 
-**Lista de búsqueda de referencias (pendiente de reunir las imágenes):** se guardan en `10 - Referencia` y se enlazan aquí.
+| Paleta de morados | Paleta verde |
+| --- | --- |
+| ![Paleta de morados|300](../Media/Referencia/PaletaMorados.png) | ![Paleta verde|300](../Media/Referencia/PaletaVerde.png) |
+
+La siguiente imagen sirve solo como guía de color para la ambientación.
+
+![Referencia de ambientación con colores oscuros y fríos|520](../Media/Referencia/ReferenciaConColoresOscurosFrios.jpg)
+
+| Lukas civil | Lukas como R-H-07 |
+| --- | --- |
+| ![Lukas civil|300](../Media/Referencia/Lukas-Reiner-Hellen.jpg) | ![Lukas R-H-07|300](../Media/Referencia/Lukas-R-H-07.jpg) |
+
+**Lista de búsqueda.** Las imágenes de esta lista están pendientes de reunir. Se guardan en `Media/Referencia/` y se enlazan aquí.
 
 | Para | Qué buscar |
 |---|---|
-| Emilia (foto familiar) | Fotos familiares de los 90 en película, con flash directo y grano; retrato de boda informal en interior; tono cálido que contraste con el resto del juego |
-| Emilia (diario) | Cuadernos de laboratorio manuscritos; partituras anotadas a mano con tachaduras; documentos de *Signalis* |
-| The Mother | Almacenes criogénicos automatizados de biobancos; bibliotecas de cintas robotizadas; grúas pórtico industriales; la cámara de GLaDOS en *Portal 2* (máquina colgada del techo); la sala de MU-TH-UR en *Alien* (1979); el núcleo de *Event Horizon* (1997) |
-| Asimilados | Criaturas de *Silent Hill 2* (Lying Figure, Mannequin); Réplicas corruptas de *Signalis*; efectos prácticos de *The Thing* (1982); pinturas de Zdzisław Beksiński; manga de Junji Ito |
-| Reciclados (carne y metal) | Enfermeras de *Silent Hill* (Mudo reciclado); arañas y quelíceros (Rastrero reciclado); *Tetsuo: The Iron Man* (1989); cenobitas de *Hellraiser* (1987); prótesis médicas antiguas y aparatos ortopédicos de acero |
-| Piso 1 — Mantenimiento | Salas de calderas y talleres industriales; interiores de la central de Chernóbil; cubiertas de ingeniería de *Alien: Isolation* |
-| Piso 2 — Clínica ilegal | Hospitales soviéticos abandonados; el hospital Brookhaven de *Silent Hill 2*; quirófanos improvisados en naves industriales |
-| Piso 3 — Núcleo y central de megafonía | Estudios de radiodifusión de los 70-80 con bobinas de cinta y mesas de mezcla; salas de control de emisoras; la estación de escucha de Teufelsberg (Berlín) |
+| Emilia, foto familiar | Fotos familiares de los 90 en película, con flash directo y grano. Retrato de boda informal en interior. Tono cálido que contraste con el resto del juego |
+| Emilia, diario | Cuadernos de laboratorio manuscritos con tachaduras y documentos de *Signalis* |
+| The Mother | Almacenes criogénicos automatizados de biobancos, bibliotecas de cintas robotizadas y grúas pórtico industriales. La cámara de GLaDOS en *Portal 2*, la sala de MU-TH-UR en *Alien* (1979) y el núcleo de *Event Horizon* (1997) |
+| Asimilados | Lying Figure y Mannequin de *Silent Hill 2*, Réplicas corruptas de *Signalis*, efectos prácticos de *The Thing* (1982), pinturas de Zdzisław Beksiński y manga de Junji Ito |
+| Reciclados, carne y metal | Enfermeras de *Silent Hill* para el Mudo reciclado, arañas y quelíceros para el Rastrero reciclado, *Tetsuo: The Iron Man* (1989), cenobitas de *Hellraiser* (1987), prótesis médicas antiguas y aparatos ortopédicos de acero |
+| Piso 1, mantenimiento | Salas de calderas y talleres industriales, interiores de la central de Chernóbil y cubiertas de ingeniería de *Alien: Isolation* |
+| Piso 2, clínica ilegal | Hospitales soviéticos abandonados, el hospital Brookhaven de *Silent Hill 2* y quirófanos improvisados en naves industriales |
+| Piso 3, núcleo y central de megafonía | Estudios de radiodifusión de los 70 y 80 con bobinas de cinta y mesas de mezcla, salas de control de emisoras y la estación de escucha de Teufelsberg, en Berlín |
 
-## Referencias externas
+## 4. Referencias externas
 
-Puedes utilizar enlaces normales:
+- [Signalis en Steam](https://store.steampowered.com/app/1262350/SIGNALIS/)
 
-```markdown
-[Nombre de la referencia](https://ejemplo.com)
-```
-
-> [!warning] Propiedad intelectual
-> Una referencia sirve para analizar y comunicar una idea. No implica que el proyecto pueda copiar recursos protegidos.
+Las referencias sirven para analizar y comunicar ideas. El proyecto no copia recursos protegidos de ninguna de ellas.
 
 
 > **Navegación:** [[00 - Índice]] · ← [[01 - Glosario]] · [[03 - Registro de Decisiones]] →

@@ -1,18 +1,18 @@
 # UI y Menús
 
-## Descripción de la sección
+## 1. Descripción de la sección
 
 Define la estructura funcional de las interfaces y menús.
 
-Estilo visual en [[04 - Interfaz Visual]]; efectos de cada opción en [[07 - Reglas y Estados del Juego]]; opciones de configuración en [[04 - Guardado y Configuración]].
+El estilo visual está en [[04 - Interfaz Visual]] y el efecto de cada opción en [[07 - Reglas y Estados del Juego]]. Las opciones de configuración están en [[04 - Guardado y Configuración]]. Los valores numéricos de este documento son iniciales y están sujetos a balance.
 
-## Mapa de navegación
+## 2. Mapa de navegación
 
 ```text
 Calibración de brillo (solo el primer inicio)
 Pantalla de título
 └── Menú principal (terminal de la sala de cápsulas)
-    ├── Continuar (última ranura usada; en gris sin partida)
+    ├── Continuar (última ranura usada, en gris sin partida)
     ├── Nueva partida → Elegir ranura → Elegir modo → Introducción
     ├── Cargar partida → Elegir ranura
     ├── Opciones
@@ -28,124 +28,129 @@ Pausa (Esc)
 ├── Volver al juego
 ├── Opciones (mismas secciones)
 ├── Reiniciar (no en la introducción ni en la decisión final)
-└── Salir (con el costo de D-31)
+└── Salir (con el costo de salir del juego)
 
 Terminal del brazo (Tab)
 ├── Inventario
 ├── Estado (salud y linterna)
-└── Registros (documentos, expediente de Emilia, bestiario, objetos confiscados, fallas, anillo)
+└── Registros (documentos, carteles, expediente de Emilia, efectos personales del sujeto, bestiario, objetos confiscados, fallas y anillo)
 ```
 
-## Pantallas
+## 3. Pantallas
 
-### Calibración de brillo
+### 3.1 Calibración de brillo
 
-**Propósito:** Ajustar el brillo para un juego casi a oscuras (D-106).
+**Propósito:** Ajustar el brillo para un juego casi a oscuras.
 
-**Elementos:** 3 símbolos sobre negro (uno debe verse apenas, otro no); barra de brillo.
+**Elementos:** 3 símbolos sobre negro, uno que apenas debe verse y otro que no. Una barra de brillo.
 
-**Acciones disponibles:** Ajustar, Aceptar.
+**Acciones disponibles:** Ajustar y Aceptar.
 
-**Estados:** Solo aparece en el primer inicio del juego; después está en Opciones > Video.
+**Estados:** Solo aparece en el primer inicio del juego. Después está en `Opciones > Video`.
 
-**Transiciones:** → Pantalla de título.
+**Transiciones:** Lleva a la pantalla de título.
 
-### Pantalla de título
+![Calibración de brillo con los 3 símbolos sobre negro|520](../Media/Capturas/CalibracionBrillo.png)
 
-**Propósito:** Entrada al juego (D-90).
+### 3.2 Pantalla de título
+
+**Propósito:** Entrada al juego.
 
 **Elementos:** Fondo negro, logotipo y el latido del laboratorio.
 
 **Acciones disponibles:** Cualquier tecla o botón.
 
-**Estados:** Único.
+**Estados:** Tiene un único estado.
 
-**Transiciones:** → Menú principal.
+**Transiciones:** Lleva al menú principal.
 
-### Menú principal
+### 3.3 Menú principal
 
-**Propósito:** Elegir partida y opciones (D-39, D-90).
+**Propósito:** Elegir partida y opciones.
 
-**Elementos:** Terminal verde de la instalación en la sala de la fila de cápsulas, junto a la cápsula de Lukas; opciones del mapa de navegación.
+**Elementos:** Un terminal verde de la instalación en la sala de la fila de cápsulas, junto a la cápsula de Lukas, con las opciones del mapa de navegación.
 
-**Acciones disponibles:** Continuar, Nueva partida, Cargar partida, Opciones, Créditos, Salir.
+**Acciones disponibles:** `Continuar`, `Nueva partida`, `Cargar partida`, `Opciones`, `Créditos` y `Salir`.
 
-**Estados:** Continuar en gris si no hay ninguna partida (D-96). Tras un final, Continuar inicia un ciclo nuevo (D-93).
+**Estados:** `Continuar` aparece en gris si no hay ninguna partida. Tras un final, `Continuar` inicia un ciclo nuevo.
 
-**Transiciones:** → Carga (arranque del terminal) → Juego; → Introducción; → Opciones; → Créditos; → cierre del juego.
+**Transiciones:** Lleva a la carga con el arranque del terminal y luego al juego. También a la introducción, a Opciones, a los créditos o al cierre del juego.
 
-### Selección de ranura
+![Menú principal en el terminal verde junto a la cápsula de Lukas|520](../Media/Capturas/MenuPrincipalTerminal.png)
 
-**Propósito:** Elegir una de las 3 ranuras (D-105).
+### 3.4 Selección de ranura
 
-**Elementos:** Por ranura: código de sujeto actual (R-H-xx), modo, piso del autoguardado, documentos de Emilia (x/6) y fecha. Ranura vacía: `EMPTY`.
+**Propósito:** Elegir una de las 3 ranuras.
 
-**Acciones disponibles:** Elegir; borrar (con confirmación).
+**Elementos:** Cada ranura muestra el código de sujeto actual, `R-H-xx`, el modo, el piso del autoguardado, los documentos de Emilia en formato x/6 y la fecha. Una ranura vacía muestra `EMPTY`.
 
-**Estados:** Desde Nueva partida, una ranura ocupada pide confirmar que se sobrescribirá. Desde Cargar partida, las vacías no se pueden elegir.
+**Acciones disponibles:** Elegir y borrar, con confirmación.
 
-**Transiciones:** Nueva partida → Selección de modo; Cargar partida → Carga.
+**Estados:** Desde `Nueva partida`, una ranura ocupada pide confirmar que se sobrescribirá. Desde `Cargar partida`, las ranuras vacías no se pueden elegir.
 
-### Selección de modo
+**Transiciones:** `Nueva partida` lleva a la selección de modo y `Cargar partida` a la carga.
 
-**Propósito:** Elegir el modo de la partida (D-103).
+![Selección de ranura con una ranura ocupada y dos vacías|520](../Media/Capturas/SeleccionRanura.png)
+
+### 3.5 Selección de modo
+
+**Propósito:** Elegir el modo de la partida.
 
 **Elementos:** Modo Supervivencia y Modo Historia, cada uno con una línea que lo describe.
 
-**Acciones disponibles:** Elegir, Volver.
+**Acciones disponibles:** Elegir y Volver.
 
 **Estados:** El modo queda fijo en la ranura.
 
-**Transiciones:** → Introducción.
+**Transiciones:** Lleva a la introducción.
 
-### Pausa
+### 3.6 Pausa
 
-**Propósito:** Detener el recorrido (regla global 2).
+**Propósito:** Detener el recorrido, según la regla global 2 de [[07 - Reglas y Estados del Juego]].
 
 **Elementos:** Menú sobre la imagen oscurecida.
 
-**Acciones disponibles:** Volver al juego, Opciones, Reiniciar, Salir.
+**Acciones disponibles:** Volver al juego, `Opciones`, `Reiniciar` y `Salir`.
 
-**Estados:** Sin "Reiniciar" en la introducción (D-63) y en la decisión final (D-92).
+**Estados:** No ofrece `Reiniciar` en la introducción ni en la decisión final.
 
-**Transiciones:** → Juego; → Muerte (Reiniciar); → Menú principal (Salir).
+**Transiciones:** Vuelve al juego, lleva a Muerte con `Reiniciar` o al menú principal con `Salir`.
 
-### Terminal del brazo
+### 3.7 Terminal del brazo
 
-**Propósito:** Gestionar recursos y consultar estados y registros sin pausar (M-07, M-16, D-86). Abrir una entrada lleva a la vista de lectura, que sí detiene el juego (D-159). Una tira con pulso, salud, luz y tambor queda visible en todas las pestañas.
+**Propósito:** Gestionar recursos y consultar estados y registros sin pausar. Abrir una entrada lleva a la vista de lectura, que sí detiene el juego.
 
-**Elementos:** Pestañas Inventario, Estado y Registros; contadores de las secundarias.
+**Elementos:** Pestañas Inventario, Estado y Registros, con los contadores de las secundarias. Una tira con pulso, salud, luz y tambor queda visible en todas las pestañas.
 
-**Acciones disponibles:** Usar o descartar objetos; leer registros; cambiar de pestaña.
+**Acciones disponibles:** Usar o descartar objetos, leer registros y cambiar de pestaña.
 
-**Estados:** Abierto o cerrado; el juego sigue en tiempo real.
+**Estados:** Abierto o cerrado. El juego sigue en tiempo real.
 
-**Transiciones:** `Tab` abre y cierra.
+**Transiciones:** `Tab` lo abre y lo cierra.
 
-### Créditos
+### 3.8 Créditos
 
-**Propósito:** Cierre de cada final y consulta desde el menú.
+**Propósito:** Cerrar cada final y permitir la consulta desde el menú.
 
 **Elementos:** Créditos del equipo.
 
-**Acciones disponibles:** Saltar (`Espacio`) solo si ya se vieron (D-39).
+**Acciones disponibles:** Saltar con `Espacio`, solo si ya se vieron.
 
-**Estados:** —
+**Estados:** Tiene un único estado.
 
-**Transiciones:** → Menú principal.
+**Transiciones:** Llevan al menú principal.
 
-## Confirmaciones
+## 4. Confirmaciones
 
 | Acción | Confirmación | Texto |
 |---|---|---|
-| Nueva partida en una ranura ocupada | Sí | Avisa que se borra esa ranura, incluido el terminal (D-32) |
+| `Nueva partida` en una ranura ocupada | Sí | Avisa que se borra esa ranura, incluido el terminal |
 | Borrar ranura | Sí | Avisa que no se puede deshacer |
-| Reiniciar | Sí | Avisa que cuenta como muerte (D-32, D-96) |
-| Salir durante el recorrido | Sí | Avisa del costo según la situación (D-31) |
-| Salir desde el menú principal | Sí (D-96) | Confirma el cierre |
+| `Reiniciar` | Sí | Avisa que cuenta como muerte |
+| `Salir` durante el recorrido | Sí | Avisa del costo según la situación |
+| `Salir` desde el menú principal | Sí | Confirma el cierre |
 | Restablecer opciones | Sí | Indica qué sección vuelve a sus valores predeterminados |
 
-Las confirmaciones usan `Cancelar` como opción por defecto.
-
+Las confirmaciones usan `Cancelar` como opción por defecto. El costo de cada salida está en la regla global 4 de [[07 - Reglas y Estados del Juego]].
 
 > **Navegación:** [[00 - Índice]] · ← [[01 - UX y Flujo del Jugador]] · [[03 - Accesibilidad]] →

@@ -1,56 +1,58 @@
 # Backlog del Proyecto
 
-## Descripción de la sección
+## 1. Descripción de la sección
 
 El backlog contiene el trabajo necesario para convertir el diseño en un videojuego funcional.
 
-El backlog vivo se lleva en **Trello** (D-113): tablero **Por definir** (enlace), con una tarjeta por tarea, la etiqueta de su épica y el hito H1..H6 ([[03 - Roadmap]]). Esta nota define el formato y las épicas; el estado de cada tarea se consulta en el tablero y los pasos de cada tarea están en la guía de `Desarrollo/` indicada.
+El seguimiento se lleva en el Excel `CronogramaIdentityDissolution_Objetivos_v3.xlsx`, compartido en el OneDrive de la universidad. Cada actividad tiene su responsable, su objetivo y su hito, de H1 a la entrega ([[03 - Roadmap]]). Esta nota define el formato y las épicas. El estado de cada tarea se consulta en el cronograma, y sus pasos están en la guía de `Desarrollo/` indicada. Los valores numéricos de este documento son iniciales y están sujetos a balance.
 
-## Formato de tarea
+**Cronograma:** [CronogramaIdentityDissolution_Objetivos_v3.xlsx](https://utcancunmx-my.sharepoint.com/:x:/r/personal/23393274_utcancun_edu_mx/_layouts/15/Doc.aspx?sourcedoc=%7B7E079720-7475-412B-B81D-BA1CC55BD030%7D&file=CronogramaIdentityDissolution_Objetivos_v3.xlsx&action=default&mobileredirect=true)
 
-### Tarea
+## 2. Formato de tarea
 
-**Descripción:** Qué se construye, con el M-xx / S-xx / D-xx que la define.
+### 2.1 Tarea
+
+**Descripción:** Qué se construye, con la mecánica, el sistema o la decisión que lo define.
 
 **Responsable:** Una persona ([[02 - Roles y Responsabilidades]]).
 
-**Prioridad:** Alta / Media / Baja
+**Prioridad:** Alta, Media o Baja.
 
 **Dependencias:** Tareas que deben estar terminadas antes.
 
 **Criterio de aceptación:** El criterio de [[03 - Sistemas]] o de [[04 - Criterios de Aceptación]] que la cierra.
 
-**Estado:** Pendiente / En progreso / Bloqueada / Terminada (columnas del tablero).
+**Estado:** Pendiente, En progreso, Bloqueada o Terminada.
 
-## Backlog
+## 3. Backlog
 
-Épicas en orden de prioridad. Cada línea es una tarjeta inicial con su responsable ([[02 - Roles y Responsabilidades]]); Alta = necesaria para el MVP (H3).
+Las épicas van en orden de prioridad. Cada línea es una épica con su responsable. Alta significa necesaria para el MVP del hito H3. El estado sigue las fechas del [[03 - Roadmap]].
 
-- [x] **E-00 Proyecto** (guía 00) — Alta: crear proyecto Unity 6.6 URP, paquetes, carpetas, escenas base, ajustes de calidad y build de prueba. *Christian Coronel Palma.*
-- [x] **E-01 Núcleo** (guía 01) — Alta: `Bootstrap`, `GameStateMachine`, `GameEvents`, `SceneLoader`, pausa. *Christian Coronel Palma.*
-- [x] **E-02 Jugador** (guía 02) — Alta: Input System por contextos, movimiento (0.8 / 1.5 / 4 m/s), resistencia (S-04), salud (M-05, D-119). Media: mapa fijo de mando (D-120). *Christian Coronel Palma.*
-- [x] **E-03 Cámara** (guía 03) — Alta: OTS y apuntado (M-01). Media: vigilancia, señal escalonada, atención y bloqueo (M-02, M-03). *Christian Coronel Palma.*
-- [x] **E-04 Combate** (guía 04) — Alta: revólver, empujón, agarre con punzón (M-04, M-06, M-11). Media: remate (M-20). *Christian Coronel Palma.*
-- [x] **E-05 IA** (guía 05) — Alta: percepción y estados del Alto (S-02). Media: Rastrero, Boca, Mudo; respuesta a la atención. *Christian Coronel Palma.*
-- [x] **E-06 Inventario e interacción** (guía 06) — Alta: 6 casillas, recoger, usar, descartar, llaves, documentos (M-07, M-08). Media: linterna (M-12), hackeo y sellado (M-13). *Christian Coronel Palma.*
-- [x] **E-07 Generación** (guía 07) — Alta: grafo, validador, instanciado, NavMesh, presupuesto, activación por cercanía (S-06). Media: tutorial fijo, energía (D-72), showcase y completa. *Christian Coronel Palma.*
-- [x] **E-08 Ciclo y persistencia** (guía 08) — Alta: muerte, reinicio, reconstrucción, terminal, ranuras, autoguardado (S-07, S-08). Media: reciclaje (S-09), costo de salir. Baja: degradación y Asimilación (M-18), fallas (M-17). *Christian Coronel Palma.*
-- [x] **E-09 Jefe** (guía 09) — Media: 3 fases, cámaras hostiles, brazo recolector, decisión final (S-10). *Christian Coronel Palma.*
-- [x] **E-10 UI** (guía 10) — Media: terminal del brazo, menú en el terminal, pausa, confirmaciones, Opciones, subtítulos, accesibilidad, localización. *Programación: Christian Coronel Palma; diseño visual: por asignar.*
-- [x] **E-11 Audio** (guía 11) — Media: alertas, latidos, pasos, avisos, mezcla y *ducking*. Baja: música y leitmotivs. *Lian Daniel Sierra Vera.*
-- [x] **E-12 Arte y render** (guía 12) — Media: render ~540p, materiales *Point*, luz por piso, personajes y salas. Baja: cinemáticas. *Bryan Iván Navarrete Canché.*
-- [ ] **E-13 Calidad y build** (guía 13) — Pendiente: build final `v1.3-demo` tras CP-01..07 (H6). Alta: pruebas EditMode del generador y del guardado. Media: perfilado, build final. *Christian Coronel Palma; playtests y bugs: Lenin Ramón López Córdova.*
-- [x] **E-14 Niveles** — Alta: arquetipos de sala y tema del piso 1 en *greybox* (prefabs para S-06). Media: temas de los pisos 2 y 3, tutorial y sala de The Mother ([[02 - Niveles]]). *Victor Gabriel Alvarado Chay y Bryan Iván Navarrete Canché.*
-- [x] **E-15 Textos** — Media: documentos de Emilia y de contexto, bestiario, carteles y líneas en inglés y español ([[05 - Textos del Juego]]). *Victor Gabriel Alvarado Chay.*
+- [x] **Proyecto** (guía 00). Alta: proyecto Unity 6.6 URP, paquetes, carpetas, escenas base, ajustes de calidad y build de prueba. *Christian Coronel Palma.* Terminada.
+- [x] **Núcleo** (guía 01). Alta: `Bootstrap`, `GameStateMachine`, `GameEvents`, `SceneLoader` y pausa. *Christian Coronel Palma.* Terminada.
+- [x] **Jugador** (guía 02). Alta: Input System por contextos, movimiento a 0.8, 1.5 y 4 m/s, resistencia y salud. Media: mapa fijo de mando. *Christian Coronel Palma.* Terminada.
+- [ ] **Cámara** (guía 03). Alta: cámara sobre el hombro y apuntado. Media: vigilancia, señal escalonada, atención y bloqueo de vigilancia. *Christian Coronel Palma.* En progreso.
+- [ ] **Combate** (guía 04). Alta: revólver, empujón y agarre con punzón. Media: remate. *Christian Coronel Palma.* En progreso.
+- [ ] **IA** (guía 05). Alta: percepción y estados del Alto. Media: Rastrero, Boca y Mudo, y respuesta a la atención de The Mother. *Christian Coronel Palma.* En progreso.
+- [x] **Inventario e interacción** (guía 06). Alta: 6 casillas, recoger, usar, descartar, llaves y documentos. Media: linterna, hackeo y sellado. *Christian Coronel Palma.* Terminada.
+- [ ] **Generación** (guía 07). Alta: grafo, validador, instanciado, NavMesh, presupuesto y activación por cercanía. Media: tutorial fijo, energía y configuraciones showcase y completa. *Christian Coronel Palma.* En progreso.
+- [ ] **Ciclo y persistencia** (guía 08). Alta: muerte, reinicio, reconstrucción, terminal, ranuras y autoguardado. Media: reciclaje y costo de salir. Baja: degradación por muerte, final Asimilación y fallas de la máquina. *Christian Coronel Palma.* En progreso.
+- [ ] **Jefe** (guía 09). Media: 3 fases, cámaras hostiles, brazo recolector y decisión final. *Christian Coronel Palma.* Pendiente.
+- [ ] **Interfaz** (guía 10). Media: terminal del brazo, menú en el terminal, pausa, confirmaciones, `Opciones`, subtítulos, accesibilidad y localización. *Programación: Christian Coronel Palma. Diseño: Victor Gabriel Alvarado Chay.* En progreso.
+- [ ] **Audio** (guía 11). Media: alertas, latidos, pasos, avisos, mezcla y *ducking*. Baja: música y leitmotivs. *Lian Daniel Sierra Vera.* En progreso.
+- [ ] **Arte y render** (guía 12). Media: render a ~540p, materiales *Point*, luz por piso, personajes y salas. Baja: cinemáticas. *Bryan Iván Navarrete Canché.* En progreso.
+- [ ] **Calidad y build** (guía 13). Alta: pruebas EditMode del generador y del guardado. Media: perfilado, builds intermedias numeradas 0.1, 0.2 y así en adelante, y build de entrega `v1.0-demo`. *Christian Coronel Palma. Playtests y bugs: Lenin Ramón López Córdova.* En progreso.
+- [ ] **Niveles.** Alta: arquetipos de sala y tema del piso 1 en *greybox*, como prefabs para el generador. Media: temas de los pisos 2 y 3, tutorial y sala de The Mother ([[02 - Niveles]]). *Victor Gabriel Alvarado Chay y Bryan Iván Navarrete Canché.* En progreso.
+- [ ] **Textos.** Media: documentos de Emilia y de contexto, bestiario, carteles y líneas en inglés y español ([[05 - Textos del Juego]]). *Victor Gabriel Alvarado Chay.* En progreso.
 
-## Priorización
+## 4. Priorización
 
 Prioriza aquello que desbloquea otras tareas o valida primero las partes más riesgosas del proyecto.
 
-- Primero lo que **todo** usa: núcleo, jugador y eventos (E-01, E-02).
-- Después lo más **riesgoso**: generación con NavMesh (E-07) y ciclo de muerte con guardado (E-08), antes del contenido.
-- El arte entra sobre sistemas ya probados en *greybox*; nunca bloquea a programación. Como una sola persona programa, el arte, el audio y los niveles se producen en paralelo y se integran por prefabs con los nombres acordados ([[02 - Motor y Herramientas]]).
-- Lo Deseable (M-17, M-18) solo se empieza con H4 cumplido.
-
+- Primero va lo que todo usa, que es el núcleo, el jugador y los eventos.
+- Después va lo más riesgoso, antes del contenido. Son la generación con NavMesh y el ciclo de muerte con guardado.
+- El arte entra sobre sistemas ya probados en *greybox* y nunca bloquea a programación.
+- Como una sola persona programa, el arte, el audio y los niveles se producen en paralelo. Se integran por prefabs con los nombres acordados en [[02 - Motor y Herramientas]].
+- Lo Deseable, que son las fallas de la máquina y la degradación por muerte, solo se empieza con el hito H4 cumplido.
 
 > **Navegación:** [[00 - Índice]] · ← [[03 - Roadmap]] · [[05 - Gestión de Cambios]] →
