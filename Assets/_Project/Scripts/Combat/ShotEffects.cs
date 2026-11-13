@@ -27,6 +27,9 @@ namespace Heartbeat.Combat
         /// <summary>Rule 3 of C-71: only a hit on something that cannot take a shot shows the impact.</summary>
         public static bool ShowsImpact(Collider hit) => hit != null && hit.GetComponentInParent<IDamageable>() == null;
 
+        /// <summary>C-72: only enemies bleed and get the hit cue; the boss transformers and the debug dummy do not.</summary>
+        public static bool IsEnemy(IDamageable target) => target is AI.EnemyHealth;
+
         private void Awake()
         {
             root = new GameObject("VFX_Shots");

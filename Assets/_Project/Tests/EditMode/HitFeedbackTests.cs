@@ -55,6 +55,16 @@ namespace Heartbeat.Tests.EditMode
         }
 
         [Test]
+        public void OnlyEnemiesBleedAndGetTheHitCue()
+        {
+            var enemy = root.AddComponent<Heartbeat.AI.EnemyHealth>();
+            var transformer = new GameObject("Transformer").AddComponent<Heartbeat.Boss.BossTransformer>();
+            transformer.transform.SetParent(root.transform);
+            Assert.That(Heartbeat.Combat.ShotEffects.IsEnemy(enemy), Is.True);
+            Assert.That(Heartbeat.Combat.ShotEffects.IsEnemy(transformer), Is.False);
+        }
+
+        [Test]
         public void FlashSwapsMaterialsAndStopRestoresThem()
         {
             var body = Mesh(root, 2);

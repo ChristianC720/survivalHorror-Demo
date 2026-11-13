@@ -146,8 +146,11 @@ namespace Heartbeat.Combat
                 {
                     target.ReceiveShot(new ShotHit(hit.point, dir, weak != null));
                     GameEvents.RaiseShotLanded(weak != null, !target.IsAlive);
-                    GameEvents.RaiseShotHitEnemy(origin, hit.point, hit.normal);
-                    Sfx.Play2D(Sfx.HitCue(weak != null, !target.IsAlive));
+                    if (ShotEffects.IsEnemy(target))   // a boss transformer has its own crack and no blood
+                    {
+                        GameEvents.RaiseShotHitEnemy(origin, hit.point, hit.normal);
+                        Sfx.Play2D(Sfx.HitCue(weak != null, !target.IsAlive));
+                    }
                 }
                 Debug.DrawLine(chest, hit.point, Color.yellow, 0.5f);
             }
