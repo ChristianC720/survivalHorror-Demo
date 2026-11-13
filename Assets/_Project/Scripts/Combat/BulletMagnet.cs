@@ -11,6 +11,7 @@ namespace Heartbeat.Combat
     public static class BulletMagnet
     {
         private const float Inset = 0.02f;   // the sphere touches the silhouette edge: aim a little inside so the chest ray cannot graze past
+        private const float ConvergeDistance = 2f;   // with no backstop the bullet joins the crosshair line this far in front of Lukas (C-75)
 
         /// <param name="camOrigin">Camera ray origin, already moved up to Lukas.</param>
         /// <param name="dir">Shot direction after spread.</param>
@@ -21,7 +22,9 @@ namespace Heartbeat.Combat
         {
             shotDir = dir;
             bool aimed = Physics.Raycast(camOrigin, dir, out var aimHit, range, shotMask, QueryTriggerInteraction.Ignore);
-            Vector3 aimPoint = aimed ? aimHit.point : camOrigin + dir * range;
+            // No backstop: aiming the chest at a point at range crossed the crosshair line only there, 0.5 m left of it at
+            // 10 m (C-75). Join the line close to Lukas; past that point the camera ray already found nothing to hit.
+            Vector3 aimPoint = aimed ? aimHit.point : camOrigin + dir * Mathf.Min(ConvergeDistance, range);
             bool landed = ChestRay(chest, aimPoint, shotMask, out hit, ref shotDir);
             // Point blank (a grab, a body against Lukas): the chest starts inside the hitbox the camera sees, and a ray
             // never hits the collider it starts in. The camera's hit stands.
