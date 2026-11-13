@@ -28,6 +28,7 @@ namespace Heartbeat.Combat
         public float shoveRange = 1.6f;
         public float shoveRadius = 0.6f;
         [Tooltip("Stagger applied to the shoved enemy, seconds.")] public float shoveStaggerSeconds = 1.2f;
+        [Tooltip("A shove that lands deals this many times the damage of a normal shot (C-77).")] public float shoveDamageMultiplier = 0.6f;
         public float shoveCooldown = 0.6f;
 
         [Header("Spike (M-11) and finisher (M-20)")]

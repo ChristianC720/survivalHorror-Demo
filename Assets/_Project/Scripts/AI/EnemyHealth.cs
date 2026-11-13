@@ -30,11 +30,23 @@ namespace Heartbeat.AI
             damageTaken += hit.Damage;
             HbLog.Info("Enemy", $"{name} shot {damageTaken:0.##}/{ShotsToKill}{(hit.WeakPoint ? " weak point" : "")}");
             Shot?.Invoke(hit);
-            if (!IsAlive)
-            {
-                HbLog.Info("Enemy", $"{name} killed");
-                Died?.Invoke();
-            }
+            DieIfDone();
+        }
+
+        /// <summary>A shove that lands (C-77): adds its damage like a shot but raises no <see cref="Shot"/>, so no hit feedback. It can kill.</summary>
+        public void ReceiveShove(float damage)
+        {
+            if (!IsAlive) return;
+            damageTaken += damage;
+            HbLog.Info("Enemy", $"{name} shoved {damageTaken:0.##}/{ShotsToKill}");
+            DieIfDone();
+        }
+
+        private void DieIfDone()
+        {
+            if (IsAlive) return;
+            HbLog.Info("Enemy", $"{name} killed");
+            Died?.Invoke();
         }
 
         /// <summary>Debug console / tests: kill outright.</summary>

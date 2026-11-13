@@ -31,6 +31,7 @@ MonoBehaviour:
   shoveRange: 1.6
   shoveRadius: 0.6
   shoveStaggerSeconds: 1.2
+  shoveDamageMultiplier: 0.6
   shoveCooldown: 0.6
   spikeStunSeconds: 2
   finisherRange: 1.5
