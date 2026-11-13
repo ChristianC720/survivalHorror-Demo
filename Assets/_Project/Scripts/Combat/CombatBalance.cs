@@ -22,6 +22,7 @@ namespace Heartbeat.Combat
         [Tooltip("Bullet marks at once; the oldest is recycled (C-71).")] public int bulletMarkMax = 20;
         [Tooltip("Dark blood splatter where a shot hits an enemy, seconds (C-72).")] public float splatterSeconds = 0.6f;
         [Tooltip("Splatters at once; the oldest is recycled (C-72).")] public int splatterMax = 6;
+        [Tooltip("A weak-point hit deals this many times the damage of a normal hit (C-74).")] public float weakPointDamageMultiplier = 2f;
 
         [Header("Shove (M-06)")]
         public float shoveRange = 1.6f;
@@ -35,5 +36,8 @@ namespace Heartbeat.Combat
         [Tooltip("Spike finisher duration (silent).")] public float spikeFinisherSeconds = 1.5f;
         [Tooltip("Ground strike duration.")] public float groundStrikeSeconds = 2f;
         [Tooltip("Ground strike noise radius.")] public float groundStrikeNoiseRadius = 10f;
+
+        /// <summary>Damage of one revolver hit, in normal-shot units (C-74).</summary>
+        public float ShotDamage(bool weakPoint) => weakPoint ? weakPointDamageMultiplier : 1f;
     }
 }
