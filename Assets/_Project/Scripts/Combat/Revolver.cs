@@ -152,6 +152,7 @@ namespace Heartbeat.Combat
             Vector3 origin = muzzle != null ? muzzle.position : transform.position;
             GameEvents.RaiseNoiseEmitted(new NoiseInfo(origin, balance.shotNoiseRadius, NoiseSource.Shot));
             GameEvents.RaiseShotFired(origin);
+            if (landed && ShotEffects.ShowsImpact(hit.collider)) GameEvents.RaiseShotImpact(origin, hit.point, hit.normal);
             HbLog.Info("Revolver", $"Shot -> {hitName}, loaded={Model.Loaded}, spread={spreadBeforeShot:0.00}, from={chest:F2} dir={dir:F2}");
             return result;
         }
