@@ -28,7 +28,7 @@ MonoBehaviour:
     sightGainPerSecond: 1.6
     farSightFactor: 0.35
     huntLoseSeconds: 5
-    searchHoldSeconds: 6
+    searchHoldSeconds: 12
     decayPerSecond: 0.12
   attackRange: 1.5
   attackWindup: 0.35
