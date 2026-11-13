@@ -49,6 +49,12 @@ namespace Heartbeat.Tests
             AssertHeldAtAnchor();
             Assert.Greater((int)health.State, (int)before, "a grab without a spike drops one state");
             yield return Released(start);
+            // The cooldown runs after the hands let go, so Lukas gets the full attackCooldown to step away.
+            for (float t = 0f; t < alto.Definition.attackCooldown - 0.2f; t += Time.deltaTime)
+            {
+                Assert.IsFalse(alto.IsWindingUp, $"the Alto winds up again {t:0.00} s after letting go");
+                yield return null;
+            }
 
             // 2. One spike: spent, the Alto is stunned, Lukas is free and unhurt.
             yield return Stage(crouched: false, spikes: 1);

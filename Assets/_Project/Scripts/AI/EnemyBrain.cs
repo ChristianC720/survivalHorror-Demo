@@ -363,7 +363,7 @@ namespace Heartbeat.AI
             }
             // El Mudo's ambush: if the grab does not land, it hits (Enemigos y NPC).
             bool grab = grabbing && dist <= definition.grabRange * 1.2f;
-            if (grab) holdTimer = definition.grabHoldSeconds;
+            if (grab) { holdTimer = definition.grabHoldSeconds; cooldownTimer += holdTimer; }   // the cooldown runs after the hands let go
             HbLog.Info("AI", $"{name} {(grab ? "grabs" : "hits")} Lukas");
             GameEvents.RaisePlayerAttacked(new AttackInfo(definition.hitsToKillLukas, grab, transform.position, this));
         }
