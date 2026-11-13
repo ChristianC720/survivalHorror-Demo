@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using Heartbeat.Core;
 using Heartbeat.InputRouting;
 using Heartbeat.Inventory;
@@ -23,8 +24,8 @@ namespace Heartbeat.Combat
         [SerializeField] private PlayerInventory inventory;
 
         private InputRouter router;
-        private int corpseMask;
-        private readonly Collider[] buffer = new Collider[8];
+        private readonly List<Corpse> candidates = new();
+        private Vector3 targetPoint;
 
         public Corpse Target { get; private set; }
         public bool HasTarget => Target != null;
@@ -35,7 +36,6 @@ namespace Heartbeat.Combat
 
         private void Start()
         {
-            corpseMask = LayerMask.GetMask("Corpse");
             router = Services.Get<InputRouter>();
             router.Actions.Gameplay.Attack.performed += OnAttack;
             router.Actions.Gameplay.Interact.performed += OnInteract;
@@ -54,7 +54,7 @@ namespace Heartbeat.Combat
             Target = player.IsAiming ? null : FindTarget();
             // D-27: if a door, panel or item is more centred in the view than the body, E/click go to it instead.
             if (Target != null && Services.TryGet<Interaction.Interactor>(out var interactor) && interactor.Current != null
-                && interactor.CurrentScore > interactor.ViewScore(Target.transform.position))
+                && interactor.CurrentScore > interactor.ViewScore(targetPoint))
                 Target = null;
 
             var ctx = router.Context;
@@ -64,16 +64,26 @@ namespace Heartbeat.Combat
 
         private Corpse FindTarget()
         {
-            int n = Physics.OverlapSphereNonAlloc(transform.position, balance.finisherRange, buffer, corpseMask, QueryTriggerInteraction.Collide);
+            candidates.Clear();
+            foreach (var c in Corpse.All)
+                if (c.CanBeRecycled) candidates.Add(c);
+            return Pick(candidates, transform.position, transform.forward, balance.finisherRange, out targetPoint);
+        }
+
+        /// <summary>
+        /// C-76: the body Lukas finishes. Any part of the lying body within <paramref name="range"/> and roughly in front
+        /// counts (head, torso or feet), not only the root where the enemy died. With two bodies near, the one most in
+        /// front wins. <paramref name="point"/> is the part of the chosen body most in front.
+        /// </summary>
+        public static Corpse Pick(IReadOnlyList<Corpse> corpses, Vector3 from, Vector3 forward, float range, out Vector3 point)
+        {
             Corpse best = null;
             float bestDot = 0.5f;   // must be roughly in front of Lukas
-            for (int i = 0; i < n; i++)
+            point = from;
+            foreach (var c in corpses)
             {
-                var c = buffer[i].GetComponentInParent<Corpse>();
-                if (c == null || !c.CanBeRecycled) continue;
-                Vector3 to = c.transform.position - transform.position; to.y = 0f;
-                float dot = to.sqrMagnitude < 0.01f ? 1f : Vector3.Dot(transform.forward, to.normalized);
-                if (dot > bestDot) { bestDot = dot; best = c; }
+                if (!c.TryFacingPoint(from, forward, range, out var p, out float dot)) continue;
+                if (dot > bestDot) { bestDot = dot; best = c; point = p; }
             }
             return best;
         }
