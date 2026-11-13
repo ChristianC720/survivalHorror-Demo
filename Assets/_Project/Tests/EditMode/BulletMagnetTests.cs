@@ -45,15 +45,6 @@ namespace Heartbeat.Tests.EditMode
             return enemy.GetComponent<Target>();
         }
 
-        private void Wall(float z)
-        {
-            var wall = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            wall.layer = LayerMask.NameToLayer("Environment");
-            wall.transform.SetParent(root.transform);
-            wall.transform.localScale = new Vector3(4f, 4f, 0.2f);
-            wall.transform.position = new Vector3(0f, 0f, z);
-        }
-
         private bool Shoot(out RaycastHit hit)
         {
             Physics.SyncTransforms();   // auto-sync is off in this project
@@ -88,13 +79,24 @@ namespace Heartbeat.Tests.EditMode
             Assert.That(Shoot(out _), Is.False);
         }
 
-        [Test]
-        public void WallInFrontOfTheCameraStopsTheSearch()
+        [TestCase(true)]
+        [TestCase(false)]
+        public void WallInFrontOfTheCameraStopsTheSearch(bool wall)
         {
+            // The chest sits left of the camera, so its ray to the enemy clears a wall that only the camera sees.
             Enemy(10f, 0.2f);
-            Wall(5f);
-            Assert.That(Shoot(out var hit), Is.True);
-            Assert.That(hit.collider.gameObject.layer, Is.EqualTo(LayerMask.NameToLayer("Environment")));
+            if (wall)
+            {
+                var w = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                w.layer = LayerMask.NameToLayer("Environment");
+                w.transform.SetParent(root.transform);
+                w.transform.localScale = new Vector3(0.4f, 1f, 0.2f);
+                w.transform.position = new Vector3(0.15f, 0f, 5f);
+            }
+            Physics.SyncTransforms();
+            Assert.That(BulletMagnet.Resolve(Vector3.zero, Vector3.forward, new Vector3(-0.6f, 0f, 0f), Range, Radius, MaxDegrees,
+                mask, hitboxLayer, out var hit, out _), Is.True);
+            Assert.That(hit.collider.gameObject.layer, Is.EqualTo(wall ? LayerMask.NameToLayer("Environment") : hitboxLayer));
         }
 
         [Test]
