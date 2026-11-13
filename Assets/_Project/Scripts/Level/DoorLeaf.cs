@@ -16,7 +16,7 @@ namespace Heartbeat.Level
     /// (mandatory or optional); an unpowered door stays shut until power is restored. Holding E on a closed, unlocked
     /// door (either side) seals it: a sealed door blocks enemies until a hunting enemy breaks it (~30 s next to it) or
     /// Lukas opens it again. A door that is not open is a wall for the NavMesh (carved): enemies in
-    /// patrol or suspicion never cross it; in search or hunt they walk up to it and open it. An enemy barrier (the spawn
+    /// patrol or suspicion never cross it; in search or hunt they walk up to it, wait (enemyDoorOpenDelaySeconds) and open it. An enemy barrier (the spawn
     /// room until Lukas leaves it) is never crossed nor opened by enemies.
     /// </summary>
     public sealed class DoorLeaf : MonoBehaviour, IHoldInteractable, ISoundOccluder
@@ -31,6 +31,10 @@ namespace Heartbeat.Level
         [Tooltip("The other half of a door that parts sideways; it travels the opposite way.")]
         [SerializeField] private Transform secondLeaf;
 
+        /// <summary>A search/hunt enemy this close to a closed door stands and waits to open it (C-68).</summary>
+        public const float EnemyReach = 1.8f;
+
+        private readonly DoorEnemyWait enemyWait = new DoorEnemyWait();
         private float breakProgress;
         private int lastSide;               // +1 / -1: side of the door Lukas was last on (local Z)
         private Transform player;
@@ -172,7 +176,7 @@ namespace Heartbeat.Level
             GameEvents.RaiseDoorSealed(this);
         }
 
-        /// <summary>Enemies call this when their path crosses a closed, unlocked door.</summary>
+        /// <summary>Opens a closed, unlocked door at once (HackPanel after unlocking it). Enemies on foot wait first (C-68).</summary>
         public bool TryOpenByEnemy()
         {
             if (State != DoorState.Closed || IsLocked || EnemyBarrier) return State == DoorState.Open && !EnemyBarrier;
@@ -198,6 +202,7 @@ namespace Heartbeat.Level
             TrackPlayerSide();
             if (State == DoorState.Sealed) TickSealBreak();
             if (State == DoorState.Closed && !IsLocked && !EnemyBarrier) OpenForNearbyEnemies();
+            else enemyWait.Reset();   // opened by Lukas, sealed or locked mid-wait: the wait is over
         }
 
         private void TrackPlayerSide()
@@ -233,12 +238,17 @@ namespace Heartbeat.Level
             }
         }
 
+        /// <summary>C-68: a search/hunt enemy within <see cref="EnemyReach"/> stands at the door, then opens it after the delay.</summary>
         private void OpenForNearbyEnemies()
         {
-            if (!Services.TryGet<AlertDirector>(out var d)) return;
-            foreach (var e in d.Enemies)
-                if (e.IsActive && e.Alert >= AlertState.Search && Vector3.Distance(e.transform.position, transform.position) < 1.8f)
-                { SetState(DoorState.Open); return; }
+            bool waiting = false;
+            if (Services.TryGet<AlertDirector>(out var d))
+                foreach (var e in d.Enemies)
+                    if (e.IsActive && e.Alert >= AlertState.Search && Vector3.Distance(e.transform.position, transform.position) < EnemyReach)
+                    { waiting = true; break; }
+            if (!enemyWait.Tick(Time.deltaTime, waiting, SystemsBalance.Current.enemyDoorOpenDelaySeconds)) return;
+            HbLog.Info("Door", $"{name}: opened by an enemy");
+            SetState(DoorState.Open);
         }
 
         private void SetState(DoorState s)

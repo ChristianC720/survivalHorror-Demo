@@ -27,6 +27,7 @@ namespace Heartbeat.Core
         [Tooltip("Floor transition cinematic, never shorter (D-39).")] [Min(5f)] public float floorTransitionSeconds = 5f;
         [Tooltip("Short reconstruction shot (D-172).")] public float shortReconstructionSeconds = 3f;
         [Tooltip("An enemy breaks a quick seal after this long (D-97).")] public float sealBreakSeconds = 30f;
+        [Tooltip("A search or hunt enemy waits this long at a closed, unlocked door before it opens it (C-68).")] public float enemyDoorOpenDelaySeconds = 5f;
         [Tooltip("Holding Interact on a closed door this long seals it (M-14).")] public float sealHoldSeconds = 2f;
         [Tooltip("An Interact press shorter than this on a closed door opens it; longer, released early, does nothing.")] public float sealTapSeconds = 0.25f;
 
